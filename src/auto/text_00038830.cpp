@@ -13,3 +13,19 @@ void func_00039100(int param_1, int param_2)
   }
   return;
 }
+
+void func_00039220(int param_1, undefined4 *param_2)
+{
+  int func_000A2370(...);
+  int iVar1;
+  
+  iVar1 = func_000A2370(param_1 + 100);
+  if (iVar1 == 0) {
+    *param_2 = 2;
+    param_2[0x27] = 0;
+    param_2[0x28] = 0;
+    param_2[0x26] = 0;
+  }
+  return;
+}
+
