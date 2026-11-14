@@ -50,6 +50,29 @@ void func_00078FA0(int *param_1, undefined4 param_2)
   return;
 }
 
+int func_000790E0(int a0) {
+    extern void func_0011DEF0(...);
+    func_0011DEF0(a0);
+    return 0;
+}
+
+extern int _D_001D2F4C;
+extern int __cdecl _func_0011D000(int*, void (*)(void));
+extern int __cdecl _func_0011D270(int*, void (*)(void));
+extern int __cdecl _func_0011D290(int*, void (*)(void));
+extern int __cdecl _func_0011D2B0(int*, void (*)(void));
+extern void _func_00078FA0(void);
+extern void _func_000790E0(void);
+extern void _func_00085E20(void);
+extern void _func_000790F0(void);
+void __cdecl _func_00079270(void)
+{
+    _func_0011D000(&_D_001D2F4C, _func_00078FA0);
+    _func_0011D270(&_D_001D2F4C, _func_000790E0);
+    _func_0011D290(&_D_001D2F4C, _func_00085E20);
+    _func_0011D2B0(&_D_001D2F4C, _func_000790F0);
+}
+
 void func_000792B0(void) {
     extern int D_001D2F4C;
     int func_0011D0E0(...);
