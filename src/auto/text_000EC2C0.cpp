@@ -26,6 +26,14 @@ void func_000EC500(int param_1, int *param_2)
   return;
 }
 
+void func_000EC520(int param_1, int *param_2)
+{
+  if (*param_2 != 0) {
+    *(byte *)(param_1 + 0x9d) = *(byte *)(param_1 + 0x9d) | 2;
+  }
+  return;
+}
+
 void func_000EC5C0(undefined4 param_1, undefined4 *param_2)
 {
   int func_0013E9DB(...);
