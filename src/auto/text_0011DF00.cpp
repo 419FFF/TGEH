@@ -7,6 +7,11 @@ bool func_0011DF40(int param_1)
   return *(int *)(param_1 + 0x4c) != 0;
 }
 
+void func_0011E480(int a0, int a1) {
+    int func_0011DD60(...);
+    func_0011DD60(a0, a1, 0, 0);
+}
+
 void func_0011E830(int param_1, undefined4 param_2)
 {
   *(undefined4 *)(param_1 + 0x158) = param_2;
