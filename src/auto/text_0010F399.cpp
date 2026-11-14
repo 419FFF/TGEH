@@ -41,3 +41,30 @@ void func_00110140(int param_1, undefined4 *param_2)
   return;
 }
 
+int func_00110290(int param_1, undefined4 param_2, uint param_3)
+{
+  extern undefined4 D_003291C0;
+  int func_0011B4F0(...);
+  undefined4 *puVar1;
+  int iVar2;
+  
+  if (*(int *)(param_1 + 0x24) == D_003291C0) {
+    return 0;
+  }
+  *(int *)(param_1 + 0x24) = D_003291C0;
+  if ((*(int *)(param_1 + 0x38) != 0) &&
+     (iVar2 = func_0011B4F0(*(int *)(param_1 + 0x38),param_2), iVar2 == 0)) {
+    return param_1;
+  }
+  puVar1 = *(undefined4 **)(param_1 + 0x28);
+  while( true ) {
+    if (puVar1 == (undefined4 *)0x0) {
+      return 0;
+    }
+    if (((param_3 & *(ushort *)((int)puVar1 + 6)) == 0) &&
+       (iVar2 = func_00110290(*puVar1,param_2,param_3), iVar2 != 0)) break;
+    puVar1 = (undefined4 *)puVar1[3];
+  }
+  return iVar2;
+}
+
