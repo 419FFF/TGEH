@@ -35,3 +35,10 @@ void func_000FDFB0(void) {
     int func_000C1370(...);
     func_000C1370();
 }
+
+char func_000FE390(void) {
+    int func_00101360(...);
+    func_00101360();
+    return 1;
+}
+
