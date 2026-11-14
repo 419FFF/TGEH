@@ -183,6 +183,16 @@ void func_000A2A00(undefined4 *param_1)
   return;
 }
 
+void func_000A2A50(undefined4 *param_1)
+{
+  extern undefined D_00312088;
+  extern undefined D_0031151C;
+  extern undefined D_0031208C;
+  *param_1 = *(undefined4 *)(((undefined *)&D_00312088) + (D_0031151C / 3) * 0x70);
+  param_1[1] = *(undefined4 *)(((undefined *)&D_0031208C) + (D_0031151C / 3) * 0x70);
+  return;
+}
+
 void func_000A2AA0(int param_1, undefined4 *param_2)
 {
   extern undefined D_003116B0;
