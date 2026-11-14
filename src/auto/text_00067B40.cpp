@@ -2,6 +2,15 @@
 #include "common.h"
 #include "ghidra.h"
 
+undefined4 func_00068090(int param_1, int param_2)
+{
+  if ((*(int *)(param_1 + 0x14 + param_2 * 4) != 0) && (*(int *)(param_1 + 0x38 + param_2 * 4) != 3)
+     ) {
+    return 0;
+  }
+  return 1;
+}
+
 void func_000687F0(void) {
     extern char D_002F7F00;
     D_002F7F00 = 0;
