@@ -2,6 +2,33 @@
 #include "common.h"
 #include "ghidra.h"
 
+void func_0011C340(void)
+{
+  extern undefined4 D_003278AC;
+  extern undefined4 D_003268DC;
+  extern undefined4 D_003268E0;
+  extern undefined4 D_003268E8;
+  extern undefined4 D_003278A8;
+  int func_0013AF00(...);
+  extern undefined4 D_003278A4;
+  int func_0013B250(...);
+  extern undefined4 D_003278A0;
+  extern undefined4 D_003268D8;
+  int func_0013AFB0(...);
+  int func_0011C1D0(...);
+  if (D_003278AC == 0) {
+    D_003268DC = 0;
+    D_003268E0 = 0;
+    D_003268E8 = 0;
+    D_003278A8 = func_0013AF00();
+    D_003278A4 = func_0013B250();
+    D_003278A0 = func_0013B250();
+    D_003268D8 = func_0013AFB0(&func_0011C1D0,0,0x2000);
+  }
+  D_003278AC = D_003278AC + 1;
+  return;
+}
+
 void func_0011C3B0(int *param_1, int *param_2, int param_3)
 {
   *param_2 = *param_1;
