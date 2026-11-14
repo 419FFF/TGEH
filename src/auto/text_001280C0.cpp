@@ -77,6 +77,14 @@ void func_00128990(int param_1, char param_2)
   return;
 }
 
+void func_00128D90(int param_1)
+{
+  extern int _D_00331AEC;
+  int func_0013ADD0(...);
+  _D_00331AEC = param_1;
+  func_0013ADD0(param_1);
+}
+
 void func_00128DB0(int a0) {
     extern int D_00331B08;
     D_00331B08 = a0;
