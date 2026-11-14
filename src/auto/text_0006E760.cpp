@@ -15,3 +15,12 @@ char func_0006E880(void) {
     extern char D_002FA00D;
     return D_002FA00D;
 }
+
+void func_0006EC00(int a0) {
+    extern int D_0032923C;
+    extern int D_002FA020;
+    extern int D_002FA014;
+    D_002FA020 = D_0032923C;
+    D_002FA014 = a0;
+}
+
