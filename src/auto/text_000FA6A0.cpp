@@ -4,7 +4,9 @@
 
 
 extern void* D_00324B68;
-extern undefined1 func_0001CC10(void);
+
+extern void* _func_0001CC10(void* param_1);
+
 extern int func_000F9C00(int param_1);
 extern undefined1 func_00063C40(undefined4 param_1, int param_2);
 
