@@ -22,6 +22,20 @@ void func_000451B0(int a0) {
     D_002EEB58 = a0;
 }
 
+void func_000451C0(void)
+{
+  int func_000B6AF0(...);
+  int func_000400C0(...);
+  int func_001096B0(...);
+  extern undefined D_001D4D38;
+  extern undefined D_002EEB74;
+  func_000B6AF0();
+  func_000400C0(1);
+  func_001096B0(((undefined *)&D_001D4D38),0x3f800000);
+  D_002EEB74 = 1;
+  return;
+}
+
 void func_000452E0(void) {
     extern char D_002EEAFC;
     D_002EEAFC = 1;
