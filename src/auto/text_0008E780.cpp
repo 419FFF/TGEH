@@ -11,6 +11,12 @@ char func_0008F2E0(void) {
     return D_00302A14;
 }
 
+void func_0008F370(void) {
+    extern int D_00302DA4;
+    int func_00110760(...);
+    func_00110760(D_00302DA4);
+}
+
 void func_0008F610(void) {
     extern int D_001E7D64;
     D_001E7D64 = 10;
