@@ -19,6 +19,18 @@ void func_00060F60(void)
   return;
 }
 
+void func_00061540(int a0, int a1) {
+    extern int D_002EF00C;
+    extern int D_00307DB4;
+    extern int D_002EF008;
+    extern int D_002EF010;
+    extern int D_002EF014;
+    D_002EF008 = D_002EF00C;
+    D_002EF00C = a0;
+    D_002EF010 = D_00307DB4;
+    D_002EF014 = a1;
+}
+
 void func_00061600(void) {
     extern int D_002EEF80;
     D_002EEF80 = 0;
