@@ -16,6 +16,11 @@ float func_000A05C0(void) {
     return D_00311558;
 }
 
+void func_000A0690(char a0) {
+    extern char D_001E4630;
+    D_001E4630 = a0;
+}
+
 char func_000A06A0(void) {
     extern char D_001E4630;
     return D_001E4630;
