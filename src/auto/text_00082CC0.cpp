@@ -40,3 +40,20 @@ void func_00083650(int param_1)
   return;
 }
 
+void func_000837F0(void)
+{
+  int func_001160B0(...);
+  extern undefined D_002FBB3C;
+  int func_00110760(...);
+  extern undefined D_002FBB38;
+  uint uVar1;
+  
+  uVar1 = 0;
+  do {
+    func_001160B0(*(undefined4 *)(((undefined *)&D_002FBB3C) + uVar1));
+    func_00110760(*(undefined4 *)(((undefined *)&D_002FBB38) + uVar1));
+    uVar1 = uVar1 + 0x10;
+  } while (uVar1 < 0x50);
+  return;
+}
+
