@@ -13,3 +13,19 @@ void func_000A3F00(void)
   func_0011B990(D_0031277C);
   return;
 }
+
+void func_000A40E0(int param_1)
+{
+  extern undefined4 D_00312610;
+  extern undefined4 D_00312694;
+  extern undefined4 D_0031269C;
+  if ((D_00312610 != param_1) && (D_00312610 = param_1, param_1 != -1)) {
+    if (D_00312694 != 1) {
+      D_00312694 = 2;
+      return;
+    }
+    D_0031269C = 0x40a00000;
+  }
+  return;
+}
+
