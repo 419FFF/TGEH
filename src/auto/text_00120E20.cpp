@@ -55,4 +55,5 @@ void func_00120F80(int a0, int a1) {
     D_0032B704 = a0;
     D_0032B708 = a1;
 }
-
+extern int D_001E7D2C;
+extern int D_001E7D30;
