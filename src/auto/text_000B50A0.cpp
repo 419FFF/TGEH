@@ -9,6 +9,17 @@ void func_000B50A0(void) {
     D_00313BB0 = -1;
 }
 
+void func_000B5180(undefined4 *param_1)
+{
+  int func_00116FB0(...);
+  int func_0006EB40(...);
+  func_00116FB0(param_1[6]);
+  func_0006EB40(*param_1);
+  func_0006EB40(param_1[1]);
+  func_00116FB0(param_1);
+  return;
+}
+
 void func_000B5420(int param_1, undefined1 param_2)
 {
   *(undefined1 *)(param_1 + 0x3c) = param_2;
