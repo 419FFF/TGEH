@@ -7,6 +7,26 @@ void func_001045F0(void) {
     func_00104200();
 }
 
+void func_00104B30(void)
+{
+  extern undefined4 D_00324F70;
+  int func_00104190(...);
+  int func_000688D0(...);
+  extern undefined4 D_00324F74;
+  int func_00116160(...);
+  extern undefined4 D_00324F10;
+  extern undefined4 D_00324F14;
+  extern undefined4 D_00324F18;
+  if (D_00324F70 != 0) {
+    func_00104190();
+  }
+  func_000688D0(D_00324F74);
+  func_00116160(D_00324F10);
+  func_00116160(D_00324F14);
+  func_00116160(D_00324F18);
+  return;
+}
+
 void func_00105270(void) {
     extern int D_00324F80;
     D_00324F80 = 0;
