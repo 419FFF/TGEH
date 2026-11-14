@@ -5,3 +5,9 @@ void func_000E2D50(void) {
     extern char D_00322488;
     D_00322488 = 1;
 }
+
+void func_000E2D60(void) {
+    extern char D_00322488;
+    D_00322488 = 0;
+}
+
