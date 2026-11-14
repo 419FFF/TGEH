@@ -24,6 +24,23 @@ void func_00084390(void) {
     func_00136510(-1082130432, 1065353216, -1082130432, 1065353216);
 }
 
+void func_000845C0(void)
+{
+  extern undefined4 D_002FBBD4;
+  int func_00110760(...);
+  extern undefined4 D_002FBBD0;
+  int func_00122AB0(...);
+  int func_001103C0(...);
+  extern undefined4 D_002FC150;
+  D_002FBBD4 = D_002FBBD4 + -1;
+  if (D_002FBBD4 == 0) {
+    func_00110760(D_002FBBD0);
+    func_00122AB0();
+    func_001103C0(D_002FC150);
+  }
+  return;
+}
+
 void func_00084740(void) {
     extern int D_002FDD60;
     D_002FDD60 = 0;
