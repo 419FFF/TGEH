@@ -23,6 +23,17 @@ void func_000AE930(int param_1, undefined4 *param_2)
   return;
 }
 
+void func_000AE9D0(undefined4 *param_1, undefined4 *param_2)
+{
+  int func_001053E0(...);
+  extern undefined4 D_00307D18;
+  undefined4 uVar1;
+  
+  uVar1 = func_001053E0(D_00307D18,*param_2);
+  *param_1 = uVar1;
+  return;
+}
+
 void func_000AE9F0(int param_1)
 {
   *(undefined1 *)(param_1 + 0xc) = 1;
