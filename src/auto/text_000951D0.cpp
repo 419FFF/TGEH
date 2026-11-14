@@ -7,6 +7,13 @@ void func_00095610(void) {
     func_0011D0E0((int)&D_001D71F8);
 }
 
+void func_00095650(int a0, int a1) {
+    extern int D_00307BF0;
+    extern int D_00307BF8;
+    D_00307BF0 = a0;
+    D_00307BF8 = a1;
+}
+
 void func_00095C80(void) {
     int func_00131230(...);
     func_00131230();
