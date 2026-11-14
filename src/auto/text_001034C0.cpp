@@ -20,3 +20,22 @@ void func_00103FA0(void)
   D_00324EB4 = func_00136F80();
   return;
 }
+
+void func_00104080(void)
+{
+  extern undefined4 D_00324EB0;
+  int func_00139570(...);
+  int func_00139370(...);
+  int func_00139B10(...);
+  int iVar1;
+  
+  if (D_00324EB0 != 0) {
+    iVar1 = func_00139570(D_00324EB0);
+    if (iVar1 == 0) {
+      func_00139370(D_00324EB0);
+    }
+    func_00139B10(D_00324EB0);
+  }
+  return;
+}
+
