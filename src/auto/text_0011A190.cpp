@@ -8,6 +8,18 @@ void func_0011A290(int *param_1)
   return;
 }
 
+void func_0011A330(int param_1, undefined4 *param_2)
+{
+  int func_0013E9DB(...);
+  int iVar1;
+  
+  iVar1 = func_0013E9DB(*param_2);
+  if (iVar1 != 0) {
+    *(uint *)(param_1 + 0x14) = *(uint *)(param_1 + 0x14) | 1;
+  }
+  return;
+}
+
 void func_0011A450(int param_1)
 {
   *(undefined4 *)(param_1 + 0xc) = 0;
