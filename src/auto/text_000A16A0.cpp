@@ -20,3 +20,24 @@ int func_000A2230(undefined4 *param_1, undefined4 param_2)
   }
   return iVar1;
 }
+
+void func_000A2500(undefined4 param_1)
+{
+  int func_00120E00(...);
+  extern undefined4 D_00313AB8;
+  int func_00120F60(...);
+  int func_00120F70(...);
+  int func_00120F80(...);
+  int func_00120E70(...);
+  int func_00120ED0(...);
+  int func_00120EA0(...);
+  func_00120E00(D_00313AB8);
+  func_00120F60(param_1);
+  func_00120F70(param_1);
+  func_00120F80(param_1,param_1);
+  func_00120E70(0x3f800000,0x3f800000,0x3f800000,0x3f800000);
+  func_00120ED0(4,5);
+  func_00120EA0(1,1,1,0);
+  return;
+}
+
