@@ -31,6 +31,15 @@ int func_001460D6(void)
   return iVar1 + 8;
 }
 
+int func_001460DF(void)
+{
+  int func_00142880(...);
+  int iVar1;
+  
+  iVar1 = func_00142880();
+  return iVar1 + 0xc;
+}
+
 int func_0014615B(void) {
     return 0;
 }
