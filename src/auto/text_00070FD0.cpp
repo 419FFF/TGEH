@@ -5,3 +5,9 @@ void func_000716B0(char a0) {
     extern char D_002FA364;
     D_002FA364 = a0;
 }
+
+void func_000716C0(void) {
+    extern int D_002FA324;
+    D_002FA324 = -1;
+}
+
