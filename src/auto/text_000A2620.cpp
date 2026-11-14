@@ -11,3 +11,8 @@ int func_000A27D0(void) {
     return D_00312610;
 }
 
+void func_000A2E30(char a0) {
+    extern char D_003128A0;
+    D_003128A0 = a0;
+}
+
