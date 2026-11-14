@@ -25,6 +25,18 @@ void func_000824A0(void)
   return;
 }
 
+void func_00082B20(void)
+{
+  extern int D_001D681C;
+  int func_0011D000(...); int func_0011D270(...); int func_0011D290(...); int func_0011D2B0(...); int func_0011D2D0(...);
+  int func_00082570(...); int func_00078730(...); int func_00085E20(...); int func_00082820(...); int func_00082930(...);
+  func_0011D000(&D_001D681C,func_00082570);
+  func_0011D270(&D_001D681C,func_00078730);
+  func_0011D290(&D_001D681C,func_00085E20);
+  func_0011D2B0(&D_001D681C,func_00082820);
+  func_0011D2D0(&D_001D681C,func_00082930);
+}
+
 void func_00082B70(void) {
     extern int D_001D681C;
     int func_0011D0E0(...);
