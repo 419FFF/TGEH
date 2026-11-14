@@ -10,3 +10,9 @@ char func_0008F2E0(void) {
     extern char D_00302A14;
     return D_00302A14;
 }
+
+void func_0008F770(void) {
+    extern int D_0033116C;
+    D_0033116C = 0;
+}
+
