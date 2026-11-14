@@ -2,6 +2,19 @@
 #include "common.h"
 #include "ghidra.h"
 
+void func_000885F0(void)
+{
+  int func_00095670(...);
+  extern undefined4 D_002EECA4;
+  extern undefined4 D_002EECAC;
+  undefined4 *puVar1;
+  
+  puVar1 = (undefined4 *)func_00095670();
+  D_002EECA4 = *puVar1;
+  D_002EECAC = puVar1[1];
+  return;
+}
+
 void func_000886F0(void)
 {
   int func_00081F60(...);
