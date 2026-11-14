@@ -41,3 +41,20 @@ void func_00080A10(void) {
     D_002FBAF8 = 1;
 }
 
+void func_00080ED0(int param_1, int param_2)
+{
+  int func_0011DED0(...);
+  int func_00116A90(...);
+  undefined4 *puVar1;
+  
+  func_0011DED0(param_1);
+  puVar1 = (undefined4 *)func_00116A90(0x10,1,0);
+  *(undefined4 **)(param_1 + 0x17c) = puVar1;
+  *puVar1 = 0;
+  puVar1[1] = 0;
+  puVar1[2] = 0;
+  puVar1[3] = 0;
+  *(uint *)(param_2 + 0x154) = *(uint *)(param_2 + 0x154) & 0xfffffffd;
+  return;
+}
+
