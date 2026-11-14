@@ -46,3 +46,14 @@ void func_001009B0(int a0) {
     extern int D_00324D28;
     D_00324D28 = a0;
 }
+
+void func_00100A40(undefined4 param_1)
+{
+  extern undefined D_001E5EC8;
+  extern undefined4 D_00324BC8;
+  if (D_001E5EC8 != '\0') {
+    D_00324BC8 = param_1;
+  }
+  return;
+}
+
