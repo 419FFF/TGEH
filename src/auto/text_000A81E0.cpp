@@ -44,3 +44,17 @@ void func_000A8A90(void)
   return;
 }
 
+void __cdecl _func_000A8E00(void)
+{
+    extern int _D_00312E0C;
+    extern int _D_00312E10;
+    extern int _D_00312E14;
+    extern int _D_00312E08;
+    extern int __cdecl _func_001160B0(int);
+    extern int __cdecl _func_00100730(int);
+    _func_001160B0(_D_00312E0C);
+    _func_001160B0(_D_00312E10);
+    _func_001160B0(_D_00312E14);
+    _func_00100730(_D_00312E08);
+}
+
