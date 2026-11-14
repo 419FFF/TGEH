@@ -64,6 +64,35 @@ undefined4 func_000FB760(undefined4 param_1, int *param_2)
   return 1;
 }
 
+undefined4 func_000FBA20(void)
+{
+  int func_0013E3F4(...);
+  int func_000ACFB0(...);
+  undefined4 uVar1;
+
+  uVar1 = func_0013E3F4();
+  switch(uVar1) {
+  case 0:
+    func_000ACFB0(3,1);
+    return 1;
+  case 1:
+    func_000ACFB0(4,1);
+    return 1;
+  case 2:
+    func_000ACFB0(5,1);
+    return 1;
+  case 3:
+    func_000ACFB0(6,1);
+    return 1;
+  case 4:
+    func_000ACFB0(7,1);
+    return 1;
+  case 5:
+    func_000ACFB0(8,1);
+  }
+  return 1;
+}
+
 void func_000FBC20(int a0, int a1) {
     int func_000FBAB0(...);
     func_000FBAB0(a0, a1, 1);
@@ -85,6 +114,14 @@ undefined1 func_000FC290(void)
 {
   extern undefined4 D_00312DDC;
   D_00312DDC = D_00312DDC + -1;
+  return 1;
+}
+
+extern int D_001D27B8;
+unsigned char func_000FC2E0(unsigned int param_1, unsigned int *param_2)
+{
+  int func_000459A0(...);
+  func_000459A0(*param_2, 1);
   return 1;
 }
 
