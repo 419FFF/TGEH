@@ -26,3 +26,10 @@ void func_00027560(int param_1)
   func_000273C0(param_1,param_1 + 0x110);
   return;
 }
+
+void func_00027600(int a0)
+{
+  void func_0007E570(int);
+  func_0007E570(a0 + 0x160);
+}
+
