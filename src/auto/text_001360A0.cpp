@@ -5,3 +5,9 @@ void func_00136AE0(void) {
     int func_00137B20(...);
     func_00137B20();
 }
+
+int func_00136B70(void) {
+    extern int D_00332340;
+    return (int)&D_00332340;
+}
+
