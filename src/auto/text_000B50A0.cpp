@@ -11,3 +11,8 @@ void func_000B54B0(void) {
     func_000400B0();
 }
 
+void func_000B54C0(void) {
+    int func_000400C0(...);
+    func_000400C0();
+}
+
