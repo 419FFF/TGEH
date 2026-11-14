@@ -8,6 +8,12 @@ int func_0011F200(int *param_1)
   return func_00116FB0(param_1[0x3b]);
 }
 
+int func_0011F900(int *param_1)
+{
+  int func_001384D0(...);
+  return func_001384D0(param_1[0x38]);
+}
+
 void func_0011FD20(void) {
     extern int D_003291B8;
     D_003291B8 = 0;
