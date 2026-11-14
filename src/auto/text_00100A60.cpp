@@ -122,3 +122,18 @@ void func_001019C0(int a0) {
     D_00324EAC = a0;
 }
 
+void func_001019D0(int param_1)
+{
+  int func_001100A0(...);
+  extern undefined4 D_00324BD4;
+  int func_0012E6D0(...);
+  int func_0012E940(...);
+  int local_14;
+  undefined1 local_10 [16];
+  
+  func_001100A0(D_00324BD4,&local_14);
+  func_0012E6D0(local_10,param_1 + 0xe4,local_14 + 0x30);
+  func_0012E940(local_10);
+  return;
+}
+
