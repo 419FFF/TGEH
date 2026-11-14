@@ -33,3 +33,10 @@ void func_00083640(void) {
     int func_0011D0E0(...);
     func_0011D0E0((int)&D_001D6840);
 }
+
+void func_00083650(int param_1)
+{
+  *(undefined4 *)(*(int *)(*(int *)(param_1 + 0x158) + 0x17c) + 4) = 0x3f800000;
+  return;
+}
+
