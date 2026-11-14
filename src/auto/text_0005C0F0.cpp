@@ -13,6 +13,14 @@ void func_0005C5E0(int param_1)
   return;
 }
 
+void func_0005CCC0(int param_1)
+{
+  extern unsigned char D_002EEE4C;
+  extern int D_002EECA0;
+  if (D_002EEE4C == 0)
+    D_002EECA0 = param_1;
+}
+
 void func_0005CCE0(char a0) {
     extern char D_002EEE4C;
     D_002EEE4C = a0;
