@@ -47,6 +47,8 @@ int func_00124F20(undefined4 param_1, undefined4 param_2, undefined4 param_3)
   return iVar1;
 }
 
+int func_0011B990(int); void func_00125020(int *a0) { func_0011B990(a0[12]); }
+
 void func_00125440(undefined4 param_1, short *param_2)
 {
   int func_00129C90(...);
