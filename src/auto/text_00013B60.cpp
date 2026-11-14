@@ -2,6 +2,12 @@
 #include "common.h"
 #include "ghidra.h"
 
+int _func_00013E30(void *arg)
+{
+    int _func_00116FB0(...);
+    return _func_00116FB0(*(int *)((char *)arg + 0x110));
+}
+
 void func_000148F0(int param_1)
 {
   int func_000487A0(...);
