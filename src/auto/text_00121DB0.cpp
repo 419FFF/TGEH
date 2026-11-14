@@ -12,6 +12,18 @@ char func_001226C0(void) {
     return D_0032F754;
 }
 
+void func_00122AB0(void)
+{
+  extern undefined4 D_0032F90C;
+  int func_001103C0(...);
+  extern undefined4 D_0032F908;
+  D_0032F90C = D_0032F90C + -1;
+  if (D_0032F90C == 0) {
+    func_001103C0(D_0032F908);
+  }
+  return;
+}
+
 void func_00122AD0(void)
 {
   extern undefined4 D_00331110;
