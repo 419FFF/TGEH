@@ -21,3 +21,8 @@ char func_000B5690(void) {
     return D_00313F0E;
 }
 
+int func_000B57F0(void) {
+    extern int D_00313ED8;
+    return D_00313ED8;
+}
+
