@@ -51,6 +51,8 @@ void func_00103400(int *param_1)
   return;
 }
 
+int _func_00103430(int *p) { int _func_0013AB30(...); return _func_0013AB30(p[1]); }
+
 void func_00103440(int param_1, char param_2)
 {
   int func_0013AC00(...);
