@@ -9,6 +9,13 @@ undefined1 func_000FC280(void)
   return 1;
 }
 
+undefined1 func_000FC290(void)
+{
+  extern undefined4 D_00312DDC;
+  D_00312DDC = D_00312DDC + -1;
+  return 1;
+}
+
 char func_000FC430(void) {
     int func_00099E50(...);
     func_00099E50();
