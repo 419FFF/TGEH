@@ -17,6 +17,18 @@ void func_0013ADD0(int param_1)
   return;
 }
 
+void func_0013B280(undefined4 *param_1, char param_2)
+{
+  int __stdcall func_00109C1F(int);
+  int __stdcall func_00109C3F(int);
+  if (param_2 != '\0') {
+    func_00109C1F((int)(*param_1));
+    return;
+  }
+  func_00109C3F((int)(*param_1));
+  return;
+}
+
 void func_0013B300(undefined4 *param_1)
 {
   int __stdcall func_0010B7F8(int);
