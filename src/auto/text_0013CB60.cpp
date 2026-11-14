@@ -5,3 +5,8 @@ void func_0013CDD0(void) {
     int func_0013CA40(...);
     func_0013CA40();
 }
+
+int func_0013D090(void) {
+    return 12;
+}
+
