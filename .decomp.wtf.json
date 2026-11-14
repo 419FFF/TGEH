@@ -1,0 +1,43 @@
+{
+  "created": "from scratch",
+  "platform": "xbox",
+  "version": "animaniacstgeh",
+  "compiler": "MSVC/7.1",
+  "analysis": 7,
+  "tools": "5242cc835575",
+  "game": {
+    "what": "the PE view of your copy of the game's program (default.xbe), which decompdecomp makes from it",
+    "path": "orig/animaniacstgeh.exe",
+    "sha1": "5d7c8dea21b299f4ced3327a1556262c382cd3ff"
+  },
+  "setup": [
+    [
+      "python",
+      "tools/configure.py",
+      "animaniacstgeh",
+      "--msvc",
+      "C:\\Users\\oreos\\AppData\\Local\\decompnet\\toolchains\\msvc"
+    ],
+    [
+      "ninja",
+      "prepare"
+    ]
+  ],
+  "rebuild": {
+    "identical": true,
+    "detail": "identical: the whole program (3,046,141 bytes); its 6,048 functions (1,792,578 bytes of code), 0 of them from C",
+    "what": "The game's program, rebuilt from the project,"
+  },
+  "ltcg_detected": {
+    "ltcg": false,
+    "confirmed": 41,
+    "sampled": 1500,
+    "share": 0.0273,
+    "why": "41 of 1500 called functions looked at (2.7%) take a register other than ECX/EDX that their callers load right before calling them: not link-time code generation",
+    "examples": [
+      "_func_0001BE10 reads eax before writing it, and _func_0001BFD0+0xEF sets it up: mov eax, edi -> call",
+      "_func_0001E500 reads eax before writing it, and _func_00013FB0+0x567 sets it up: mov eax, edi -> call",
+      "_func_000245D0 reads eax before writing it, and _func_00024910+0xC33 sets it up: mov eax, edi -> call"
+    ]
+  }
+}
