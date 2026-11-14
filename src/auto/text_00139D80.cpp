@@ -20,3 +20,14 @@ void func_0013AC20(int param_1, undefined4 param_2)
   *(uint *)(param_1 + 0x10) = *(uint *)(param_1 + 0x10) | 0x20;
   return;
 }
+
+void func_0013ACF0(undefined4 param_1)
+{
+  int func_00011CB0(...);
+  extern undefined D_00332B30;
+  extern undefined4 D_00332B10;
+  func_00011CB0(((undefined *)&D_00332B30),param_1);
+  D_00332B10 = D_00332B10 | 1;
+  return;
+}
+
