@@ -1,5 +1,6 @@
 /* 48 functions from 0x000A2620 to 0x000A34DC, found by Ghidra. */
 #include "common.h"
+#include "ghidra.h"
 
 void func_000A2770(void) {
     int func_000688D0(...);
@@ -24,6 +25,15 @@ void func_000A2840(void) {
     extern int D_00311678;
     int func_00102E80(...);
     func_00102E80(D_00311678);
+}
+
+void func_000A2AA0(int param_1, undefined4 *param_2)
+{
+  extern undefined D_003116B0;
+  extern undefined D_003116B4;
+  *param_2 = *(undefined4 *)(((undefined *)&D_003116B0) + param_1 * 0x70);
+  param_2[1] = *(undefined4 *)(((undefined *)&D_003116B4) + param_1 * 0x70);
+  return;
 }
 
 void func_000A2BE0(int a0) {
