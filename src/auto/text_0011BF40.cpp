@@ -2,6 +2,18 @@
 #include "common.h"
 #include "ghidra.h"
 
+void func_0011C3B0(int *param_1, int *param_2, int param_3)
+{
+  *param_2 = *param_1;
+  param_2[1] = (int)param_1;
+  param_2[2] = param_3;
+  if (*param_1 != 0) {
+    *(int **)(*param_1 + 4) = param_2;
+  }
+  *param_1 = (int)param_2;
+  return;
+}
+
 void func_0011CDF0(int param_1)
 {
   undefined1 *puVar1;
