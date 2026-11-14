@@ -101,3 +101,15 @@ void func_0011CDF0(int param_1)
   } while (iVar2 != 0);
   return;
 }
+
+void func_0011CE10(int param_1, double param_2)
+{
+  *(float *)(param_1 + 8) = (float)param_2;
+}
+
+void func_0011CE20(int param_1, float param_2)
+{
+  double value = param_2;
+  *(float *)(param_1 + 4) = (float)value;
+}
+
