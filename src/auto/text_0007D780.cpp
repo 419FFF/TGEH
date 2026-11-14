@@ -22,3 +22,21 @@ void func_0007E050(void) {
     int func_0011D0E0(...);
     func_0011D0E0((int)&D_001D66B0);
 }
+
+void func_0007E1F0(void)
+{
+  int func_001160B0(...);
+  extern undefined D_002FADFC;
+  int func_00110760(...);
+  extern undefined D_002FADF8;
+  uint uVar1;
+  
+  uVar1 = 0;
+  do {
+    func_001160B0(*(undefined4 *)(((undefined *)&D_002FADFC) + uVar1));
+    func_00110760(*(undefined4 *)(((undefined *)&D_002FADF8) + uVar1));
+    uVar1 = uVar1 + 0x10;
+  } while (uVar1 < 0x50);
+  return;
+}
+
