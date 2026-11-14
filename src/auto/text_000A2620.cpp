@@ -16,6 +16,17 @@ void func_000A2780(int a0, char a1, int a2) {
     D_003127A8 = a2;
 }
 
+void func_000A27A0(int a0, char a1, int a2, int a3) {
+    extern int D_00311DF0;
+    extern char D_00311DD8;
+    extern int D_00311DD0;
+    extern int D_00311DD4;
+    D_00311DF0 = a0;
+    D_00311DD8 = a1;
+    D_00311DD0 = a2;
+    D_00311DD4 = a3;
+}
+
 int func_000A27D0(void) {
     extern int D_00312610;
     return D_00312610;
