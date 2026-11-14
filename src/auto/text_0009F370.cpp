@@ -4,6 +4,11 @@
 
 extern u16 D_00311510;
 
+void func_0009F840(unsigned short param_1)
+{
+  D_00311510 |= param_1;
+}
+
 void func_0009F870(void)
 {
   extern undefined4 D_003115C8;
