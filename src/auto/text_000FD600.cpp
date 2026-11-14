@@ -156,3 +156,9 @@ char func_000FE390(void) {
     return 1;
 }
 
+char func_000FE3A0(void) {
+    int func_000B7080(...);
+    func_000B7080(20);
+    return 1;
+}
+
