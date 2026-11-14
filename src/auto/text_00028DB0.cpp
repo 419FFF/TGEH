@@ -2,6 +2,28 @@
 #include "common.h"
 #include "ghidra.h"
 
+void func_00028EF0(int param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
+{
+  extern undefined4 D_003268B0;
+  int func_00028DB0(...);
+  extern undefined D_00325314;
+  undefined4 *puVar1;
+  
+  if (*(byte *)(param_1 + 0x22) == D_003268B0) {
+    if ((char)param_3 != '\0') {
+      func_00028DB0(param_1,param_2,param_4);
+    }
+  }
+  else if (*(code **)(((undefined *)&D_00325314) + (uint)*(byte *)(param_1 + 0x22) * 0x1c) != (code *)0x0) {
+    (**(code **)(((undefined *)&D_00325314) + (uint)*(byte *)(param_1 + 0x22) * 0x1c))(param_1,param_2,0);
+  }
+  for (puVar1 = *(undefined4 **)(param_1 + 0x28); puVar1 != (undefined4 *)0x0;
+      puVar1 = (undefined4 *)puVar1[3]) {
+    func_00028EF0(*puVar1,param_2,param_3,param_4);
+  }
+  return;
+}
+
 undefined4 func_000291F0(int param_1)
 {
   return *(undefined4 *)(param_1 + 0x110);
