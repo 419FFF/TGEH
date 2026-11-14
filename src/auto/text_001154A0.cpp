@@ -52,6 +52,15 @@ unsigned char __cdecl _func_00115E70(unsigned short *arg)
   return 0;
 }
 
+unsigned char __cdecl _func_00115E90(unsigned short *arg)
+{
+  extern unsigned char D_0032618C[];
+  unsigned short index = *arg;
+  unsigned char (__cdecl *callback)(unsigned short *) = *(unsigned char (__cdecl **)(unsigned short *))(D_0032618C + (unsigned int)index * 24);
+  if (callback != 0) return callback(arg);
+  return 0;
+}
+
 void func_00115EB0(int param_1, undefined4 param_2, undefined *param_3, undefined *param_4, undefined4 param_5, undefined4 param_6)
 {
   extern undefined D_0000FFFF;
