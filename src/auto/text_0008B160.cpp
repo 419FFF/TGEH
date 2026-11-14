@@ -36,3 +36,18 @@ void func_0008BAD0(void) {
     func_0011D0E0((int)&D_001D6EAC);
 }
 
+void func_0008BD80(void)
+{
+  int func_001160B0(...);
+  extern undefined4 D_002FE01C;
+  int func_00110760(...);
+  extern undefined4 D_002FE018;
+  extern undefined4 D_002FE028;
+  extern undefined4 D_002FE024;
+  func_001160B0(D_002FE01C);
+  func_00110760(D_002FE018);
+  func_001160B0(D_002FE028);
+  func_00110760(D_002FE024);
+  return;
+}
+
