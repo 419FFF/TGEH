@@ -57,3 +57,32 @@ void func_001040E0(int param_1, undefined4 param_2)
   return;
 }
 
+void func_00104190(void)
+{
+  int func_00104130(...);
+  extern undefined D_00324F20;
+  int func_00115E40(...);
+  extern undefined D_00324F00;
+  int func_00105D10(...);
+  extern undefined D_001D29C7;
+  extern undefined4 D_00324F70;
+  uint uVar1;
+  
+  func_00104130();
+  uVar1 = 0;
+  do {
+    if (*(int *)(((undefined *)&D_00324F20) + uVar1) != 0) {
+      func_00115E40(*(int *)(((undefined *)&D_00324F20) + uVar1));
+      *(undefined4 *)(((undefined *)&D_00324F20) + uVar1) = 0;
+    }
+    if (*(int *)(((undefined *)&D_00324F00) + uVar1) != 0) {
+      func_001040E0(*(undefined4 *)(*(int *)(((undefined *)&D_00324F00) + uVar1) + 0x2c),0);
+      *(undefined4 *)(((undefined *)&D_00324F00) + uVar1) = 0;
+    }
+    uVar1 = uVar1 + 4;
+  } while (uVar1 < 0xc);
+  func_00105D10(((undefined *)&D_001D29C7));
+  D_00324F70 = 0;
+  return;
+}
+
