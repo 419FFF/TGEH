@@ -14,6 +14,22 @@ void func_000809C0(void)
   return;
 }
 
+void func_000809E0(void)
+{
+  extern undefined D_002FBA00;
+  int func_00110760(...);
+  uint uVar1;
+  
+  uVar1 = 0;
+  do {
+    if (*(int *)(((undefined *)&D_002FBA00) + uVar1) != 0) {
+      func_00110760(*(int *)(((undefined *)&D_002FBA00) + uVar1));
+    }
+    uVar1 = uVar1 + 4;
+  } while (uVar1 < 0x80);
+  return;
+}
+
 void func_00080A10(void) {
     extern int D_002FBA90;
     extern int D_002FBAF0;
