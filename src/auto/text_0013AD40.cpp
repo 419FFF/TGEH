@@ -33,6 +33,8 @@ void func_0013AF70(void *param_1)
     ((void (__stdcall *)(void *))__imp__RtlLeaveCriticalSection)(param_1);
 }
 
+int __stdcall func_0013AF90(int *a0) { ((void (__cdecl *)(int))a0[2])(a0[3]); return 0; }
+
 void func_0013B280(undefined4 *param_1, char param_2)
 {
   int __stdcall func_00109C1F(int);
