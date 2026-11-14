@@ -20,3 +20,9 @@ void func_00088700(void)
   return;
 }
 
+void func_00088F00(void) {
+    extern int D_001D6D24;
+    int func_0011D0E0(...);
+    func_0011D0E0((int)&D_001D6D24);
+}
+
