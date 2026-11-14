@@ -20,6 +20,16 @@ void func_00090940(void) {
     func_0011D0E0((int)&D_001D6FB0);
 }
 
+void func_00090A70(void)
+{
+  int func_001160B0(...);
+  extern undefined4 D_00304150;
+  int func_00110760(...);
+  extern undefined4 D_0030414C;
+  func_001160B0(D_00304150);
+  func_00110760(D_0030414C);
+}
+
 void func_00090F10(void) {
     extern int D_001D6FE0;
     int func_0011D0E0(...);
