@@ -44,6 +44,26 @@ void func_00088680(void)
   return;
 }
 
+undefined4 func_000886A0(undefined4 param_1)
+{
+  int func_0009C7A0(...);
+  extern undefined D_001D6CFC;
+  extern undefined D_001D6CEC;
+  extern undefined D_001D6CDC;
+  int func_0007D540(...);
+  int iVar1;
+  undefined4 *puVar2;
+  undefined4 *puVar3;
+  
+  iVar1 = func_0009C7A0(param_1,((undefined *)&D_001D6CFC),0);
+  if (iVar1 != 0) {
+    puVar2 = (undefined4 *)func_0009C7A0(param_1,((undefined *)&D_001D6CEC),0);
+    puVar3 = (undefined4 *)func_0009C7A0(param_1,((undefined *)&D_001D6CDC),0);
+    func_0007D540(param_1,*puVar2,*puVar3);
+  }
+  return 0;
+}
+
 void func_000886F0(void)
 {
   int func_00081F60(...);
