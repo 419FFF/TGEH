@@ -118,6 +118,26 @@ void func_000A2910(int param_1)
   return;
 }
 
+void func_000A2950(int param_1)
+{
+  extern undefined4 D_00311EE4;
+  extern undefined4 D_00311EEC;
+  if (param_1 == 0) {
+    if (D_00311EE4 != 0) {
+      D_00311EE4 = 3;
+      return;
+    }
+  }
+  else {
+    if (D_00311EE4 != 1) {
+      D_00311EE4 = 2;
+      return;
+    }
+    D_00311EEC = 0x41200000;
+  }
+  return;
+}
+
 void func_000A2990(int param_1)
 {
   extern undefined4 D_00312734;
