@@ -8,6 +8,19 @@ void func_0011A290(int *param_1)
   return;
 }
 
+void func_0011A300(undefined4 param_1, undefined4 *param_2)
+{
+  int func_00131A10(...);
+  int func_00125E80(...);
+  char cVar1;
+  
+  cVar1 = func_00131A10(*param_2);
+  if (cVar1 != '\0') {
+    func_00125E80(*param_2,param_1);
+  }
+  return;
+}
+
 void func_0011A330(int param_1, undefined4 *param_2)
 {
   int func_0013E9DB(...);
