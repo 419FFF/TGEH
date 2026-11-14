@@ -2,6 +2,13 @@
 #include "common.h"
 #include "ghidra.h"
 
+int _func_00059610(void *arg)
+{
+    int _func_00059390(...);
+    *((char *)arg + 0x4c) = 0;
+    return _func_00059390(arg);
+}
+
 void func_00059880(void)
 {
   extern undefined4 D_002EEBA4;
