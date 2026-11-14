@@ -1,9 +1,20 @@
 /* 13 functions from 0x00044350 to 0x000452E8, found by Ghidra. */
 #include "common.h"
+#include "ghidra.h"
 
 void func_00044F90(void) {
     extern int D_002EEB70;
     D_002EEB70 = 0;
+}
+
+void func_000450D0(void)
+{
+  extern undefined4 D_002EEAF0;
+  int func_00044FA0(...);
+  if (*(char *)(D_002EEAF0 + 0x15) == 'F') {
+    func_00044FA0(D_002EEAF0);
+  }
+  return;
 }
 
 void func_000451B0(int a0) {
