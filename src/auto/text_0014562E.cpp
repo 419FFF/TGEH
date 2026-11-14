@@ -11,6 +11,11 @@ void func_00145809(void) {
     func_001435DF(1);
 }
 
+void func_00145812(void) {
+    int func_0014573D(...);
+    func_0014573D(1);
+}
+
 void func_0014607B(void) {
     int func_001435DF(...);
     func_001435DF(13);
