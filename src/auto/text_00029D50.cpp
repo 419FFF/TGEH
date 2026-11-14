@@ -16,6 +16,20 @@ void func_0002A140(int param_1, char param_2)
   return;
 }
 
+void func_0002A170(int param_1, char param_2)
+{
+  int iVar1;
+  
+  iVar1 = *(int *)(param_1 + 0x110);
+  *(uint *)(iVar1 + 4) = (uint)(param_2 == '\0');
+  if (param_2 == '\0') {
+    *(uint *)(iVar1 + 0x1c) = *(uint *)(iVar1 + 0x1c) | 2;
+    return;
+  }
+  *(uint *)(iVar1 + 0x1c) = *(uint *)(iVar1 + 0x1c) & 0xfffffffd;
+  return;
+}
+
 void func_0002A1D0(int param_1, char param_2)
 {
   *(uint *)(*(int *)(param_1 + 0x110) + 0x18) = (uint)(param_2 != '\0');
