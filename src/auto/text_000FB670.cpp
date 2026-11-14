@@ -103,6 +103,14 @@ void func_000FBC40(int a0, int a1) {
     func_000FBAB0(a0, a1, 0);
 }
 
+char func_000FC260(void *param_1, int *param_2)
+{
+  int func_001313C0(int);
+  int func_000A8FD0(int);
+  func_000A8FD0(func_001313C0(*(int *)*(int **)((char *)param_2 + 4)));
+  return 1;
+}
+
 undefined1 func_000FC280(void)
 {
   extern undefined4 D_00312DDC;
