@@ -106,3 +106,11 @@ void func_000AFD00(void) {
     int func_001266B0(...);
     func_001266B0();
 }
+
+unsigned char _func_000AFE70(void *value)
+{
+    int _func_001266F0(...);
+    unsigned char result = _func_001266F0(value) != 0;
+    return result;
+}
+
