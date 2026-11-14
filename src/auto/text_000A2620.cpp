@@ -304,4 +304,9 @@ void func_000A3150(char a0, int a1) {
     D_00312584 = a0;
     D_00312580 = a1;
 }
-
+extern uint D_00312620, D_00312624;
+void func_000A2B20(uint *param_1)
+{
+    param_1[0] = D_00312620;
+    param_1[1] = D_00312624;
+}
