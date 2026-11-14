@@ -7,6 +7,8 @@ void func_001045F0(void) {
     func_00104200();
 }
 
+extern int _D_00324F70; unsigned char _func_00104600(void) { return (unsigned char)(_D_00324F70 != 0); }
+
 void func_00104B30(void)
 {
   extern undefined4 D_00324F70;
