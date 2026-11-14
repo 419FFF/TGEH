@@ -43,6 +43,12 @@ char func_000FDD30(void) {
     return 1;
 }
 
+char func_000FDD40(void) {
+    int func_0009A920(...);
+    func_0009A920(3);
+    return 1;
+}
+
 char func_000FDDF0(void) {
     int func_000B6510(...);
     func_000B6510(1, 0);
