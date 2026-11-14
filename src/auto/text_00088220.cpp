@@ -62,6 +62,17 @@ void func_00088700(void)
   return;
 }
 
+void func_00088820(void)
+{
+  extern undefined4 D_002FDF4C;
+  int func_000B5180(...);
+  if (D_002FDF4C != 0) {
+    func_000B5180(D_002FDF4C);
+  }
+  D_002FDF4C = 0;
+  return;
+}
+
 void func_00088F00(void) {
     extern int D_001D6D24;
     int func_0011D0E0(...);
