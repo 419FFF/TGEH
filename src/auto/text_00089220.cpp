@@ -5,3 +5,10 @@ char func_00089430(void) {
     extern char D_002FDF64;
     return D_002FDF64;
 }
+
+void func_00089D40(void) {
+    extern int D_001D6DF4;
+    int func_0011D0E0(...);
+    func_0011D0E0((int)&D_001D6DF4);
+}
+
