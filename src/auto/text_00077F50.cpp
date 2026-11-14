@@ -59,7 +59,7 @@ void func_00078F30(void) {
     int func_0011D0E0(...);
     func_0011D0E0((int)&D_001D64EC);
 }
-extern undefined D_001D64EC;
-extern undefined D_001D64F4;
+extern undefined4 D_001D64EC[0xc];
+extern undefined4 D_001D64F4[0xc];
 void func_001160B0(undefined4 param_1);
 void func_00110760(undefined4 param_1);
