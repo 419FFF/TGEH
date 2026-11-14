@@ -77,6 +77,20 @@ undefined1 func_000FAE20(undefined4 param_1, int *param_2)
   return 1;
 }
 
+undefined4 _func_000FB200(undefined4 param_1, undefined4 *param_2)
+{
+    int func_0001CC10(...);
+    func_0001CC10(*param_2);
+    return 1;
+}
+
+int _func_0005DA70(...);
+unsigned char _func_000FB340(unsigned int a, unsigned int *p)
+{
+    _func_0005DA70(*(unsigned int *)p[1]);
+    return 1;
+}
+
 undefined1 func_000FB5A0(void)
 {
   int func_00100D80(...);
