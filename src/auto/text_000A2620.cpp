@@ -94,6 +94,22 @@ void func_000A2BE0(int a0) {
     D_00312740 = a0;
 }
 
+void func_000A2BF0(int param_1, int param_2)
+{
+  extern undefined D_003119F8;
+  extern undefined4 D_00311A30;
+  extern undefined4 D_00311A38;
+  *(int *)(((undefined *)&D_003119F8) + param_1 * 4) = param_2;
+  if (param_2 == 0) {
+    if (D_00311A30 != 1) {
+      D_00311A30 = 2;
+      return;
+    }
+    D_00311A38 = 0x41200000;
+  }
+  return;
+}
+
 void func_000A2E30(char a0) {
     extern char D_003128A0;
     D_003128A0 = a0;
