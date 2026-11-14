@@ -2,6 +2,47 @@
 #include "common.h"
 #include "ghidra.h"
 
+
+extern void* D_00324B68;
+
+void func_000FA6A0(undefined4 param_1)
+{
+  int func_0011C3E0(...);
+  int func_00116FB0(...);
+  undefined4 *puVar1;
+  int iVar2;
+  undefined4 *puVar3;
+  
+  puVar3 = *(undefined4 **)(param_1 + 4);
+  while (puVar3 != (undefined4 *)0x0) {
+    puVar1 = (undefined4 *)*puVar3;
+    func_0011C3E0(puVar3);
+    iVar2 = puVar3[2];
+    func_00116FB0(*(undefined4 *)(iVar2 + 0x10));
+    func_00116FB0(iVar2);
+    puVar3 = puVar1;
+  }
+  func_00116FB0(param_1);
+}
+
+void _func_000FA700(undefined4 param_1, undefined4 param_2)
+{
+  int func_0013F2E9(...);
+  
+  if (D_00324B68 == 0) {
+    return;
+  }
+  
+  for( ; ; ) {
+    if (D_00324B68 == 0) {
+      break;
+    }
+    
+    func_0013F2E9(*(undefined4 **)(param_1 + 8), param_2);
+    param_1 = *(undefined4 *)(param_1 + 8);
+  }
+}
+
 void func_000FA740(void) {
     int func_000FA600(...);
     func_000FA600();
