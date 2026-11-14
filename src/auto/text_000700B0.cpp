@@ -11,6 +11,12 @@ void func_00070370(void) {
     func_00137AB0();
 }
 
+void func_000708B0(void) {
+    extern int D_002FA310;
+    int func_00122C10(...);
+    func_00122C10(D_002FA310, 1148846080, 1050253722);
+}
+
 void func_00070D50(int a0) {
     extern int D_002FA2EC;
     D_002FA2EC = a0;
