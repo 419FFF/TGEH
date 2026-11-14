@@ -84,6 +84,17 @@ void func_000A2E30(char a0) {
     D_003128A0 = a0;
 }
 
+void func_000A2E40(int a0, int a1, int a2, int a3) {
+    extern int D_00311684;
+    extern int D_00311688;
+    extern int D_0031168C;
+    extern int D_00311690;
+    D_00311684 = a0;
+    D_00311688 = a1;
+    D_0031168C = a2;
+    D_00311690 = a3;
+}
+
 void func_000A3130(char a0, int a1) {
     extern char D_00312824;
     extern int D_00312820;
