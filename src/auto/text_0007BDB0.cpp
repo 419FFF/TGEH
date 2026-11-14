@@ -22,6 +22,24 @@ void func_0007C750(void) {
     func_0011D0E0((int)&D_001D6654);
 }
 
+void func_0007C8E0(int param_1, int param_2)
+{
+  int func_00116A90(...);
+  int func_0011DED0(...);
+  undefined4 *puVar1;
+  
+  puVar1 = (undefined4 *)func_00116A90(0x10,1,0);
+  *(undefined4 **)(param_1 + 0x17c) = puVar1;
+  *puVar1 = 0;
+  puVar1[1] = 0;
+  puVar1[2] = 0;
+  puVar1[3] = 0;
+  *(undefined4 *)(param_2 + 0x11c) = 1;
+  *(undefined4 *)(param_2 + 0x120) = 1;
+  func_0011DED0(param_1);
+  return;
+}
+
 void func_0007C9F0(void) {
     extern int D_001D6660;
     int func_0011D0E0(...);
