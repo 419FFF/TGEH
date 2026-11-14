@@ -11,3 +11,9 @@ char func_000FC880(void) {
     return 1;
 }
 
+char func_000FD160(void) {
+    int func_0007CF70(...);
+    func_0007CF70();
+    return 1;
+}
+
