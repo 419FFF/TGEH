@@ -36,3 +36,8 @@ void func_00101680(int a0) {
     D_001E5ED8 = a0;
 }
 
+void func_00101690(int a0) {
+    extern int D_00324D6C;
+    D_00324D6C = a0;
+}
+
