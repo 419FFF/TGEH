@@ -15,3 +15,14 @@ void func_001033A0(int a0) {
     extern int D_00324EA8;
     D_00324EA8 = a0;
 }
+
+undefined4 func_001034A0(int param_1)
+{
+  extern undefined4 D_00324BD8;
+  extern undefined4 D_00324BC8;
+  if ((*(int *)(param_1 + 0x7c) != D_00324BD8) && (*(int *)(param_1 + 0x7c) != D_00324BC8)) {
+    return 0;
+  }
+  return 1;
+}
+
