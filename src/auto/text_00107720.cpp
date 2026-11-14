@@ -2,6 +2,22 @@
 #include "common.h"
 #include "ghidra.h"
 
+void func_00107BB0(void)
+{
+  extern undefined4 D_0032519C;
+  int func_00116FB0(...);
+  extern undefined4 D_00325218;
+  if (D_0032519C != 0) {
+    func_00116FB0(D_0032519C);
+    D_0032519C = 0;
+  }
+  if (D_00325218 != 0) {
+    func_00116FB0(D_00325218);
+    D_00325218 = 0;
+  }
+  return;
+}
+
 void func_00108500(undefined4 param_1)
 {
   extern undefined D_00307CF8;
