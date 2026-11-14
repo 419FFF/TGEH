@@ -12,3 +12,10 @@ void func_00079580(void) {
     int func_0011D0E0(...);
     func_0011D0E0((int)&D_001D6510);
 }
+
+void func_00079990(void) {
+    extern int D_001D651C;
+    int func_0011D0E0(...);
+    func_0011D0E0((int)&D_001D651C);
+}
+
