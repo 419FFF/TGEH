@@ -57,3 +57,16 @@ void func_000ECB60(void) {
     int func_00122D30(...);
     func_00122D30(D_00307D08);
 }
+
+void func_000ECEE0(undefined4 param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
+{
+  int func_00131990(...);
+  extern undefined D_001DC8DC;
+  int func_0013B7E0(...);
+  extern undefined D_001D29C7;
+  func_00131990(((undefined *)&D_001DC8DC));
+  func_0013B7E0(param_1,param_2,param_3,param_4);
+  func_00131990(((undefined *)&D_001D29C7));
+  return;
+}
+
