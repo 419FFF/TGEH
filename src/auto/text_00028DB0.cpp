@@ -19,3 +19,22 @@ void func_00029B40(int param_1)
   return;
 }
 
+void func_00029BA0(int param_1)
+{
+  int func_0009C7A0(...);
+  extern undefined D_001D38A8;
+  extern undefined D_001D3898;
+  int iVar1;
+  undefined4 uVar2;
+  
+  iVar1 = func_0009C7A0(param_1,((undefined *)&D_001D38A8),0);
+  *(undefined4 *)(param_1 + 0x11c) = 0;
+  if (iVar1 != 0) {
+    *(int *)(param_1 + 0x11c) = iVar1;
+  }
+  *(undefined4 *)(param_1 + 0x110) = 0;
+  uVar2 = func_0009C7A0(param_1,((undefined *)&D_001D3898),0);
+  *(undefined4 *)(param_1 + 0x114) = uVar2;
+  return;
+}
+
