@@ -27,3 +27,10 @@ void func_000A2E30(char a0) {
     D_003128A0 = a0;
 }
 
+void func_000A3130(char a0, int a1) {
+    extern char D_00312824;
+    extern int D_00312820;
+    D_00312824 = a0;
+    D_00312820 = a1;
+}
+
