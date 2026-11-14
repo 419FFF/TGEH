@@ -13,6 +13,13 @@ void func_00061E60(void) {
     func_00061CA0((int)&D_002EF434, (int)&D_002EF424, (int)&D_002EF498, (int)&D_002EF484, (int)&D_002EF444, (int)&D_002EF454);
 }
 
+void _func_000620E0(void)
+{
+    char _func_00061B20(...);
+    int _func_0005CCC0(...);
+    if (_func_00061B20()) _func_0005CCC0(1);
+}
+
 void func_00062100(void) {
     int func_0005CCC0(...);
     func_0005CCC0(20);
