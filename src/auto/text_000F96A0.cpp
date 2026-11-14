@@ -37,6 +37,30 @@ int func_000F9760(void)
   return D_00324B80 + -0x48 + D_00324B84 * 0x48;
 }
 
+void func_000FA000(int *param_1, void *param_2, int *param_3)
+{
+  extern char func_000F9D50(...);
+  extern int func_0009C510(...);
+  extern int func_0009C6A0(...);
+  extern int func_0009C590(...);
+  extern int func_0009CB40(...);
+  char local_80[0x80];
+  char local_100[0x80];
+  char local_180[0x80];
+  int value;
+  if (func_000F9D50(param_1, param_2, local_80)) {
+    func_0009C510(param_2, local_180, local_100);
+    value = func_0009C6A0(param_1[3], local_180);
+    param_3[0] = value;
+    param_3[1] = func_0009CB40(value, param_2);
+  } else {
+    func_0009C510(local_80, local_180, local_100);
+    value = func_0009C590(local_180);
+    param_3[0] = value;
+    param_3[1] = func_0009CB40(value, local_100);
+  }
+}
+
 void func_000FA270(int param_1, undefined4 param_2, undefined4 *param_3)
 {
   int func_000F9D50(...);
