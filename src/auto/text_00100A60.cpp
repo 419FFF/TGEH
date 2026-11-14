@@ -16,3 +16,8 @@ char func_00100D90(void) {
     return D_001E5EC9;
 }
 
+void func_001010A0(void) {
+    int func_00104B70(...);
+    func_00104B70();
+}
+
