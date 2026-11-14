@@ -67,6 +67,24 @@ void func_001015F0(undefined4 param_1)
   return;
 }
 
+void func_00101610(void)
+{
+  int func_00103210(...);
+  extern undefined D_001DE51C;
+  int func_00102E80(...);
+  extern undefined D_001DE504;
+  extern undefined D_001DE4F0;
+  undefined4 uVar1;
+  
+  uVar1 = func_00103210(((undefined *)&D_001DE51C));
+  func_00102E80(uVar1);
+  uVar1 = func_00103210(((undefined *)&D_001DE504));
+  func_00102E80(uVar1);
+  uVar1 = func_00103210(((undefined *)&D_001DE4F0));
+  func_00102E80(uVar1);
+  return;
+}
+
 void func_00101680(int a0) {
     extern int D_001E5ED8;
     D_001E5ED8 = a0;
