@@ -19,3 +19,10 @@ void func_0001C930(int param_1)
   func_00116FB0(iVar1);
   return;
 }
+
+int _func_0001CB50(void *arg)
+{
+    int _func_000688D0(...);
+    return _func_000688D0(*(void **)((char *)arg + 0x2c));
+}
+
