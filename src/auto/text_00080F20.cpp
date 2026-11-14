@@ -11,3 +11,10 @@ char func_00081290(void) {
     extern char D_002FBAFD;
     return D_002FBAFD;
 }
+
+void func_000814D0(void) {
+    extern int D_001D67A0;
+    int func_0011D0E0(...);
+    func_0011D0E0((int)&D_001D67A0);
+}
+
