@@ -36,6 +36,15 @@ void func_000A2AA0(int param_1, undefined4 *param_2)
   return;
 }
 
+void func_000A2AC0(int param_1, undefined4 *param_2)
+{
+  extern undefined D_003116B8;
+  extern undefined D_003116BC;
+  *param_2 = *(undefined4 *)(((undefined *)&D_003116B8) + param_1 * 0x70);
+  param_2[1] = *(undefined4 *)(((undefined *)&D_003116BC) + param_1 * 0x70);
+  return;
+}
+
 void func_000A2BE0(int a0) {
     extern int D_00312740;
     D_00312740 = a0;
