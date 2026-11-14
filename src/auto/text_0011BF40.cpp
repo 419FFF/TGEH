@@ -14,6 +14,21 @@ void func_0011C3B0(int *param_1, int *param_2, int param_3)
   return;
 }
 
+undefined4 func_0011CCD0(int param_1)
+{
+  undefined4 *puVar1;
+  
+  puVar1 = *(undefined4 **)(param_1 + 0x30);
+  while( true ) {
+    if (puVar1 == (undefined4 *)0x0) {
+      return 0;
+    }
+    if ((*(byte *)((int)puVar1 + 6) & 0x10) == 0) break;
+    puVar1 = (undefined4 *)puVar1[3];
+  }
+  return *puVar1;
+}
+
 void func_0011CDF0(int param_1)
 {
   undefined1 *puVar1;
