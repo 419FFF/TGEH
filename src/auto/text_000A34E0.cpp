@@ -14,6 +14,22 @@ void func_000A3F00(void)
   return;
 }
 
+void func_000A4060(int param_1, int param_2)
+{
+  extern undefined D_003119DC;
+  extern undefined4 D_00311A30;
+  extern undefined4 D_00311A38;
+  if ((*(int *)(((undefined *)&D_003119DC) + param_1 * 4) != param_2) &&
+     (*(int *)(((undefined *)&D_003119DC) + param_1 * 4) = param_2, param_2 != -1)) {
+    if (D_00311A30 != 1) {
+      D_00311A30 = 2;
+      return;
+    }
+    D_00311A38 = 0x41200000;
+  }
+  return;
+}
+
 void func_000A40E0(int param_1)
 {
   extern undefined4 D_00312610;
