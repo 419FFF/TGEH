@@ -12,9 +12,12 @@ void func_00078730(undefined4 param_1, int param_2)
 
 void _func_00078760(void) {
     int func_0011D0E0(...);
-    func_0011D0E0(0x3250);
-    func_0011D0E0(0x3240);
-    func_0011D0E0(0x3270);
+    extern undefined D_001D64BC;
+    func_0011D0E0((int)&D_001D64BC);
+    int func_0011D270(...);
+    func_0011D270(((undefined *)&D_001D64BC), &func_0011D270);
+    int func_0011D290(...);
+    func_0011D290(((undefined *)&D_001D64BC), &func_0011D290);
 }
 
 void func_000787A0(void) {
@@ -25,10 +28,14 @@ void func_000787A0(void) {
 
 void _func_000789C0(void) {
     int func_0011D0E0(...);
-    func_0011D0E0(0x3250);
-    func_0011D0E0(0x3240);
-    func_0011D0E0(0x3270);
-    func_0011D0E0(0x3280);
+    extern undefined D_001D64D0;
+    func_0011D0E0((int)&D_001D64D0);
+    int func_0011D270(...);
+    func_0011D270(((undefined *)&D_001D64D0), &func_0011D270);
+    int func_0011D290(...);
+    func_0011D290(((undefined *)&D_001D64D0), &func_0011D290);
+    int func_0011D2B0(...);
+    func_0011D2B0(((undefined *)&D_001D64D0), &func_0011D2B0);
 }
 
 void func_00078A00(void) {
@@ -54,6 +61,24 @@ void func_00078B90(void)
   return;
 }
 
+extern int D_001D2B64;
+void _func_00078ED0(void) {
+    extern int D_001D64EC;
+    extern int D_001D64F4;
+    int func_0011DED0(...);
+    func_0011DED0(D_001D64EC);
+    int func_0011DEF0(...);
+    func_0011DEF0(D_001D64F4);
+    int func_0011DF10(...);
+    func_0011DF10(D_001D64EC);
+    int func_0011DF30(...);
+    func_0011DF30(D_001D64F4);
+    int func_0011DF50(...);
+    func_0011DF50(D_001D64EC);
+    int func_0011DF70(...);
+    func_0011DF70(D_001D64F4);
+}
+
 void func_00078F30(void) {
     extern int D_001D64EC;
     int func_0011D0E0(...);
@@ -63,5 +88,10 @@ void func_00078F30(void) {
 extern int D_001D64EC;
 extern int D_001D64F4;
 int func_0011D0E0(...);
-
-
+// Shared externs for this file
+extern int D_001D64BC;
+extern int D_001D64D0;
+extern int _D_001D64D0;
+extern int _D_001D2B64;
+extern int _D_001D64EC;
+extern int D_001D64F4;
