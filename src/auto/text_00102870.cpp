@@ -28,6 +28,20 @@ void func_00103400(int *param_1)
   return;
 }
 
+void func_00103440(int param_1, char param_2)
+{
+  int func_0013AC00(...);
+  extern undefined4 D_00324D0C;
+  int func_0013AA30(...);
+  func_0013AC00(*(undefined4 *)(param_1 + 4),D_00324D0C);
+  if (param_2 != '\0') {
+    func_0013AA30(*(undefined4 *)(param_1 + 4),1);
+    return;
+  }
+  func_0013AA30(*(undefined4 *)(param_1 + 4),0);
+  return;
+}
+
 undefined4 func_001034A0(int param_1)
 {
   extern undefined4 D_00324BD8;
