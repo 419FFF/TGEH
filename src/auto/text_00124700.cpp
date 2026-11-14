@@ -41,6 +41,18 @@ int func_00124F20(undefined4 param_1, undefined4 param_2, undefined4 param_3)
   return iVar1;
 }
 
+void func_00125440(undefined4 param_1, short *param_2)
+{
+  int func_00129C90(...);
+  int func_00116FB0(...);
+  if (*param_2 == 0) {
+    func_00129C90(*(undefined4 *)(param_2 + 2));
+    func_00116FB0(*(undefined4 *)(param_2 + 4));
+  }
+  func_00116FB0(param_2);
+  return;
+}
+
 void func_00125470(void) {
     extern int D_00331530;
     int func_00115DE0(...);
