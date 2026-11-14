@@ -46,6 +46,16 @@ other:
     return D_00324D14;
 }
 
+float _func_00100CF0(void) {
+    extern unsigned char D_001E5EC8;
+    extern volatile float D_001D27B8;
+    extern volatile float D_00324D18;
+    if (D_001E5EC8 == 0) goto other;
+    return D_001D27B8;
+other:
+    return D_00324D18;
+}
+
 char func_00100D80(void) {
     extern char D_001E5EC8;
     return D_001E5EC8;
