@@ -28,6 +28,19 @@ void func_00124F00(void) {
     func_00115DE0(D_00331528, 28);
 }
 
+int func_00124F20(undefined4 param_1, undefined4 param_2, undefined4 param_3)
+{
+  int func_00115E10(...);
+  int func_0011BF40(...);
+  int iVar1;
+  undefined4 uVar2;
+  
+  iVar1 = func_00115E10(param_1,0x34);
+  uVar2 = func_0011BF40(param_2,param_3);
+  *(undefined4 *)(iVar1 + 0x30) = uVar2;
+  return iVar1;
+}
+
 void func_00125470(void) {
     extern int D_00331530;
     int func_00115DE0(...);
