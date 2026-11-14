@@ -8,6 +8,28 @@ void func_000A8790(void) {
     func_00100730(D_00312D8C);
 }
 
+void func_000A8930(void)
+{
+  extern undefined4 D_00312DB4;
+  int func_00110300(...);
+  extern undefined4 D_00308158;
+  extern undefined D_001D7B50;
+  extern undefined4 D_00312DB8;
+  extern undefined D_001D7B3C;
+  extern undefined4 D_00312DBC;
+  extern undefined D_001D7B28;
+  extern undefined4 D_00312DC0;
+  extern undefined D_001D7B14;
+  extern undefined4 D_00312DC4;
+  extern undefined D_001D7B00;
+  D_00312DB4 = func_00110300(*(undefined4 *)(D_00308158 + 0x2c),((undefined *)&D_001D7B50),0x18);
+  D_00312DB8 = func_00110300(*(undefined4 *)(D_00308158 + 0x2c),((undefined *)&D_001D7B3C),0x18);
+  D_00312DBC = func_00110300(*(undefined4 *)(D_00308158 + 0x2c),((undefined *)&D_001D7B28),0x18);
+  D_00312DC0 = func_00110300(*(undefined4 *)(D_00308158 + 0x2c),((undefined *)&D_001D7B14),0x18);
+  D_00312DC4 = func_00110300(*(undefined4 *)(D_00308158 + 0x2c),((undefined *)&D_001D7B00),0x18);
+  return;
+}
+
 void func_000A8A90(void)
 {
   extern undefined D_00313040;
