@@ -14,6 +14,12 @@ int func_0011F900(int *param_1)
   return func_001384D0(param_1[0x38]);
 }
 
+void func_0011F960(int param_1)
+{
+  extern int _D_003291B8;
+  _D_003291B8 -= param_1;
+}
+
 void func_0011FD20(void) {
     extern int D_003291B8;
     D_003291B8 = 0;
