@@ -36,3 +36,24 @@ void func_0002D4A0(void)
   return;
 }
 
+void func_0002D9B0(int param_1, int param_2)
+{
+  int func_0009C7A0(...);
+  extern undefined D_001D2A60;
+  extern undefined D_001D2A30;
+  int *piVar1;
+  int iVar2;
+  int *piVar3;
+  
+  piVar1 = *(int **)(param_1 + 0x110);
+  if (*piVar1 == 0x43) {
+    piVar1[0xc6] = 1;
+    piVar1[199] = param_2;
+    iVar2 = func_0009C7A0(param_1,((undefined *)&D_001D2A60),1);
+    piVar1[200] = iVar2;
+    piVar3 = (int *)func_0009C7A0(param_1,((undefined *)&D_001D2A30),1);
+    piVar1[0xcd] = *piVar3;
+  }
+  return;
+}
+
