@@ -23,3 +23,14 @@ void func_00105280(void)
   return;
 }
 
+void func_001052A0(void)
+{
+  extern undefined D_001E5ECB;
+  int func_00127930(...);
+  extern undefined4 D_00324BE8;
+  if (D_001E5ECB != '\0') {
+    func_00127930(D_00324BE8);
+  }
+  return;
+}
+
