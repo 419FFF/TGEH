@@ -17,3 +17,16 @@ void func_000920E0(void) {
     int func_0011D0E0(...);
     func_0011D0E0((int)&D_001D7140);
 }
+
+void func_00092300(void)
+{
+  extern undefined4 D_00306E38;
+  int func_0011CFC0(...);
+  extern undefined4 D_00306E40;
+  if (D_00306E38 == 0) {
+    D_00306E38 = 10;
+    func_0011CFC0(D_00306E40 + 0x54,0x3a83126f);
+  }
+  return;
+}
+
