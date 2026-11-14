@@ -41,6 +41,28 @@ void func_0008ACB0(void) {
     func_0011D0E0((int)&D_001D6E38);
 }
 
+void func_0008AEF0(void) {
+    extern int D_001D6E48;
+    extern void func_0008ACC0(void);
+    extern void func_0008B120(void);
+    extern void func_00079D10(void);
+    extern void func_0008AE70(void);
+    extern void func_00092810(void);
+    extern void func_00083D60(void);
+    extern void func_0011D000(...);
+    extern void func_0011D270(...);
+    extern void func_0011D290(...);
+    extern void func_0011D2B0(...);
+    extern void func_0011D2D0(...);
+    extern void func_0011D2F0(...);
+    func_0011D000(func_0008ACC0, &D_001D6E48);
+    func_0011D270(func_0008B120, &D_001D6E48);
+    func_0011D290(func_00079D10, &D_001D6E48);
+    func_0011D2B0(func_0008AE70, &D_001D6E48);
+    func_0011D2D0(func_00092810, &D_001D6E48);
+    func_0011D2F0(func_00083D60, &D_001D6E48);
+}
+
 void func_0008AF50(void) {
     extern int D_001D6E48;
     int func_0011D0E0(...);
