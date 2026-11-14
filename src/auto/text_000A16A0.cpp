@@ -107,6 +107,13 @@ void func_000A22F0(int param_1)
   if (param_1) func_000A1EA0(param_1);
 }
 
+void _func_000A2350(int param_1)
+{
+  int func_000A1F10(...);
+  param_1 = *(int *)(param_1 + 0x18);
+  if (param_1) func_000A1F10(param_1);
+}
+
 void func_000A23B0(int param_1)
 {
   extern void func_000A1F80(...);
