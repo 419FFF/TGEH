@@ -21,3 +21,9 @@ void func_00064450(int a0) {
     D_002F76A0 = a0;
 }
 
+void func_00064EA0(void) {
+    extern int D_002F7718;
+    int func_00110760(...);
+    func_00110760(D_002F7718);
+}
+
