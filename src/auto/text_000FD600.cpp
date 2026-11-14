@@ -122,6 +122,19 @@ char func_000FDEC0(void) {
     return 1;
 }
 
+undefined1 func_000FDEF0(void)
+{
+  int func_000B5650(...);
+  int func_000B6600(...);
+  char cVar1;
+  
+  cVar1 = func_000B5650(0x11);
+  if (cVar1 != '\0') {
+    func_000B6600(0x11);
+  }
+  return 1;
+}
+
 char func_000FDF10(void) {
     int func_000E2D50(...);
     func_000E2D50();
