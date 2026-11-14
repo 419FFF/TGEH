@@ -17,6 +17,15 @@ void func_0013ADD0(int param_1)
   return;
 }
 
+void func_0013B300(undefined4 *param_1)
+{
+  int __stdcall func_0010B7F8(int);
+  int func_00116FB0(...);
+  func_0010B7F8((int)(*param_1));
+  func_00116FB0(param_1);
+  return;
+}
+
 void func_0013BB20(void) {
     extern char D_00334F50;
     D_00334F50 = 0;
