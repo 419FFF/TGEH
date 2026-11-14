@@ -5,3 +5,9 @@ void func_000400A0(char a0) {
     extern char D_002EEAA2;
     D_002EEAA2 = a0;
 }
+
+void func_000400B0(char a0) {
+    extern char D_002EEAA3;
+    D_002EEAA3 = a0;
+}
+
