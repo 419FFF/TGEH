@@ -2,6 +2,17 @@
 #include "common.h"
 #include "ghidra.h"
 
+void func_00120E20(int a0, int a1, int a2, int a3) {
+    extern int D_0032B6E4;
+    extern int D_0032B6E8;
+    extern int D_001E7D38;
+    extern int D_001E7D3C;
+    D_0032B6E4 = a0;
+    D_0032B6E8 = a1;
+    D_001E7D38 = a2;
+    D_001E7D3C = a3;
+}
+
 void func_00120E50(int a0, int a1) {
     extern int D_0032B6EC;
     extern int D_0032B6F0;
