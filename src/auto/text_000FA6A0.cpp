@@ -92,7 +92,10 @@ char func_000FB5C0(void) {
 }
 extern void* D_00324B68;
 
-struct D_00324B68_struct {
-  int value;      // [0]
-  void* next;     // [0x1C = 28] - derived from assembly offsets
-};
+typedef struct {
+  u32 field_0;
+  u32 field_4;
+  u32 field_8;
+  void* next;   // [0x1C = 28]
+} D_00324B68_node;
+typedef D_00324B68_node* D_00324B68_node_ptr;
