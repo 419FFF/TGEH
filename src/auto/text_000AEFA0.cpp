@@ -2,6 +2,56 @@
 #include "common.h"
 #include "ghidra.h"
 
+void func_000AF480(void)
+{
+  extern undefined D_00313940;
+  int func_0013B2B0(...);
+  extern undefined4 D_00313924;
+  int func_0013B140(...);
+  extern undefined4 D_00313954;
+  int func_00136450(...);
+  extern undefined4 D_00313930;
+  int func_0009CE80(...);
+  extern undefined4 D_00313928;
+  extern undefined4 D_00313938;
+  int func_0011B990(...);
+  int func_00110760(...);
+  extern undefined4 D_0031394C;
+  int func_0013B300(...);
+  int func_001053A0(...);
+  extern undefined4 D_00313944;
+  int func_0010F8A0(...);
+  int func_0011BE30(...);
+  extern undefined4 D_003291E0;
+  extern undefined4 D_00313934;
+  int func_0013B380(...);
+  extern undefined4 D_00313B00;
+  undefined4 uVar1;
+  
+  D_00313940 = 1;
+  func_0013B2B0(D_00313924,0xbf800000);
+  func_0013B140(D_00313954);
+  D_00313954 = 0;
+  func_00136450();
+  uVar1 = *(undefined4 *)(D_00313930 + 0x18);
+  func_0009CE80(D_00313930);
+  func_0009CE80(D_00313928);
+  func_0009CE80(D_00313938);
+  func_0011B990(uVar1);
+  func_00110760(D_0031394C);
+  func_0013B300(D_00313924);
+  func_001053A0(D_00313944);
+  func_0010F8A0();
+  func_0010F8A0();
+  func_0010F8A0();
+  func_0011BE30();
+  func_0011BE30();
+  func_0011BE30();
+  D_003291E0 = D_00313934;
+  func_0013B380(D_00313B00);
+  return;
+}
+
 void func_000AF540(void)
 {
   extern undefined4 D_00313AB8;
