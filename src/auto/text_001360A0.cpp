@@ -11,3 +11,7 @@ int func_00136B70(void) {
     return (int)&D_00332340;
 }
 
+int func_00136F80(void) {
+    return 0;
+}
+
