@@ -16,6 +16,18 @@ void func_001033A0(int a0) {
     D_00324EA8 = a0;
 }
 
+void func_00103400(int *param_1)
+{
+  int func_0013ADF0(...);
+  int func_0011B990(...);
+  int func_00116FB0(...);
+  func_0013ADF0(param_1[1]);
+  *(short *)(*param_1 + 0x2a) = *(short *)(*param_1 + 0x2a) + -1;
+  func_0011B990(*param_1);
+  func_00116FB0(param_1);
+  return;
+}
+
 undefined4 func_001034A0(int param_1)
 {
   extern undefined4 D_00324BD8;
