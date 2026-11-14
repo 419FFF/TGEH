@@ -27,3 +27,9 @@ void func_00064EA0(void) {
     func_00110760(D_002F7718);
 }
 
+bool func_00064F30(void)
+{
+  extern undefined4 D_002F7714;
+  return D_002F7714 == 0;
+}
+
