@@ -7,6 +7,13 @@ void func_00137A60(int a0) {
     func_0014DCF0(3, a0);
 }
 
+void func_00137A70(undefined4 *param_1)
+{
+  int __stdcall func_0014DC90(int, int, int, int, int);
+  func_0014DC90((int)(3), (int)(*param_1), (int)(param_1[1]), (int)(param_1[2]), (int)(param_1[3]));
+  return;
+}
+
 undefined * func_00137C30(int param_1)
 {
   extern undefined D_00332748;
