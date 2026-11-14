@@ -36,6 +36,12 @@ void func_00101240(void) {
     func_00105D10();
 }
 
+void func_00101250(void) {
+    extern int D_00307DB4;
+    int func_00105D40(...);
+    func_00105D40(D_00307DB4, 0);
+}
+
 void func_00101680(int a0) {
     extern int D_001E5ED8;
     D_001E5ED8 = a0;
