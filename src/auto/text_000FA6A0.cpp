@@ -92,10 +92,9 @@ char func_000FB5C0(void) {
 }
 extern void* D_00324B68;
 
-typedef struct {
+struct D_00324B68_struct {
   u32 field_0;
   u32 field_4;
   u32 field_8;
   void* next;   // [0x1C = 28]
-} D_00324B68_node;
-typedef D_00324B68_node* D_00324B68_node_ptr;
+};
