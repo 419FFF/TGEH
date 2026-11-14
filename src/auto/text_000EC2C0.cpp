@@ -52,6 +52,76 @@ void func_000EC640(undefined4 *param_1, undefined4 *param_2)
   return;
 }
 
+void func_000EC970(void)
+{
+  extern undefined4 D_00324584;
+  int func_00125BC0(...);
+  extern undefined D_001DC8C0;
+  int func_000EC1F0(...);
+  int func_000EC230(...);
+  int func_00125D20(...);
+  extern undefined D_001D88E8;
+  int func_000EC260(...);
+  extern undefined D_001DC8B8;
+  int func_000EC280(...);
+  extern undefined D_001DC8AC;
+  int func_000EC2A0(...);
+  extern undefined D_001DC8A4;
+  int func_000EC2C0(...);
+  extern undefined D_001DC89C;
+  int func_000EC3C0(...);
+  extern undefined D_001D28F0;
+  int func_000EC400(...);
+  extern undefined D_001DC88C;
+  int func_000EC470(...);
+  extern undefined D_001DC880;
+  extern undefined D_001DC870;
+  extern undefined D_001DC864;
+  extern undefined D_001D8824;
+  int func_000EC540(...);
+  extern undefined D_001DC858;
+  extern undefined D_001DC844;
+  extern undefined D_001DC834;
+  extern undefined D_001DC824;
+  extern undefined D_001DC810;
+  int func_000EC5D0(...);
+  extern undefined D_001DC808;
+  int func_000EC600(...);
+  int func_000EC7F0(...);
+  int func_000EC660(...);
+  extern undefined D_001DC800;
+  int func_000EC760(...);
+  extern undefined D_001DC7F8;
+  int func_000EC790(...);
+  undefined4 uVar1;
+  
+  D_00324584 = func_00125BC0(0,((undefined *)&D_001DC8C0),&func_000EC1F0,0);
+  uVar1 = func_00125BC0(D_00324584,((undefined *)&D_001DC8C0),&func_000EC230,0);
+  func_00125D20(uVar1,((undefined *)&D_001D88E8),&func_000EC260);
+  func_00125D20(uVar1,((undefined *)&D_001DC8B8),&func_000EC280);
+  func_00125D20(uVar1,((undefined *)&D_001DC8AC),&func_000EC2A0);
+  func_00125D20(uVar1,((undefined *)&D_001DC8A4),&func_000EC2C0);
+  func_00125D20(uVar1,((undefined *)&D_001DC89C),&func_000EC3C0);
+  func_00125D20(uVar1,((undefined *)&D_001D28F0),&func_000EC400);
+  func_00125D20(uVar1,((undefined *)&D_001DC88C),&func_000EC470);
+  func_00125D20(uVar1,((undefined *)&D_001DC880),&func_000EC4C0);
+  func_00125D20(uVar1,((undefined *)&D_001DC870),&func_000EC4E0);
+  func_00125D20(uVar1,((undefined *)&D_001DC864),&func_000EC520);
+  func_00125D20(uVar1,((undefined *)&D_001D8824),&func_000EC540);
+  func_00125D20(uVar1,((undefined *)&D_001DC858),0xec5b0);
+  func_00125D20(uVar1,((undefined *)&D_001DC844),&func_000EC5C0);
+  func_00125D20(uVar1,((undefined *)&D_001DC834),&func_000EC5C0);
+  func_00125D20(uVar1,((undefined *)&D_001DC824),&func_000EC500);
+  func_00125D20(uVar1,((undefined *)&D_001DC810),&func_000EC5D0);
+  uVar1 = func_00125BC0(D_00324584,((undefined *)&D_001DC808),&func_000EC600,&func_000EC7F0);
+  func_00125D20(uVar1,((undefined *)&D_001D88E8),&func_000EC640);
+  func_00125D20(uVar1,((undefined *)&D_001DC8B8),&func_000EC260);
+  func_00125D20(uVar1,((undefined *)&D_001DC8A4),&func_000EC660);
+  func_00125D20(uVar1,((undefined *)&D_001DC800),&func_000EC760);
+  func_00125D20(uVar1,((undefined *)&D_001DC7F8),&func_000EC790);
+  return;
+}
+
 void func_000ECB60(void) {
     extern int D_00307D08;
     int func_00122D30(...);
