@@ -209,6 +209,12 @@ undefined1 func_000FE1C0(void)
   return 1;
 }
 
+unsigned char func_000FE300(int param_1)
+{
+  ++*(int *)(param_1 + 0x4e0);
+  return 1;
+}
+
 char func_000FE380(void) {
     int func_000B7080(...);
     func_000B7080(21);
