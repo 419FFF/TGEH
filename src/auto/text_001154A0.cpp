@@ -43,6 +43,13 @@ void func_00115DE0(undefined2 param_1, undefined4 param_2)
   return;
 }
 
+void func_001160E0(int param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4, undefined4 param_5)
+{
+  int func_00115EB0(...);
+  func_00115EB0(*(undefined4 *)(*(int *)(param_1 + 4) + 8),param_2,param_3,param_4,param_5,0);
+  return;
+}
+
 void func_00116150(void) {
     extern int D_00326788;
     D_00326788 = 0;
