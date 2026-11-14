@@ -32,6 +32,41 @@ void func_00120B80(undefined4 param_1, undefined4 param_2)
   return;
 }
 
+void func_00120BA0(void)
+{
+  int func_00136360(...);
+  extern undefined4 D_00329240;
+  extern undefined4 D_00329244;
+  extern undefined4 D_00329258;
+  extern undefined4 D_00329268;
+  extern undefined4 D_0032925C;
+  extern undefined4 D_0032926C;
+  extern undefined4 D_00329260;
+  extern undefined4 D_00329270;
+  extern undefined4 D_00329264;
+  extern undefined4 D_00329274;
+  extern undefined4 D_0032924C;
+  extern undefined4 D_00329248;
+  extern undefined4 D_00329250;
+  extern undefined4 D_00329254;
+  func_00136360();
+  D_00329240 = 0;
+  D_00329244 = 0;
+  D_00329258 = 0;
+  D_00329268 = 0;
+  D_0032925C = 0;
+  D_0032926C = 0;
+  D_00329260 = 0;
+  D_00329270 = 0;
+  D_00329264 = 0;
+  D_00329274 = 0;
+  D_0032924C = 0;
+  D_00329248 = 0;
+  D_00329250 = 0;
+  D_00329254 = 0;
+  return;
+}
+
 void func_00120E00(int param_1)
 {
   extern undefined4 D_0032B6F4;
