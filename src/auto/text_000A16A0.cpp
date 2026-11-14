@@ -2,6 +2,78 @@
 #include "common.h"
 #include "ghidra.h"
 
+void _func_000A1BB0(int param_1, undefined4 param_2)
+{
+  int func_000A18A0(...);
+  extern undefined4 D_003080AC;
+  if ((*(byte *)(param_1 + 0x10) & 8) != 0) {
+    func_000A18A0(param_1 + 100, param_2, 3);
+    return;
+  }
+  func_000A18A0(param_1 + 100, param_2, (D_003080AC != 0) + '\x01');
+  return;
+}
+
+void _func_000A1C00(int param_1)
+{
+  int func_00115E40(...);
+  int func_0011C3E0(...);
+  int func_00116FB0(...);
+  int iVar1;
+  uint uVar2;
+  
+  if (*(int *)(*(int *)(param_1 + 0x18) + 0x20) == param_1) {
+    *(undefined4 *)(*(int *)(param_1 + 0x18) + 0x20) = 0;
+  }
+  uVar2 = 0;
+  if (*(short *)(param_1 + 0xc) != 0) {
+    do {
+      iVar1 = *(int *)(*(int *)(param_1 + 0x10) + uVar2 * 8);
+      if (iVar1 != 0) {
+        func_00115E40(iVar1);
+      }
+      uVar2 = uVar2 + 1;
+    } while (uVar2 < *(ushort *)(param_1 + 0xc));
+  }
+  func_0011C3E0(param_1);
+  func_00116FB0(param_1);
+  return;
+}
+
+void _func_000A1C50(int param_1, undefined4 param_2)
+{
+  int func_000A18A0(...);
+  extern undefined D_001D756C;
+  undefined4 uVar1; 
+  if (*(char *)(param_1 + 0x30) != '\0') {
+    uVar1 = func_000A18A0(param_1, ((undefined *)&D_001D756C), param_2);
+    *(undefined4 *)(param_1 + 0x18) = uVar1;
+    uVar1 = func_000A18A0(param_1, ((undefined *)&D_001D756C), param_2);
+    *(undefined4 *)(param_1 + 0x1c) = uVar1;
+    return;
+  }
+  uVar1 = func_000A18A0(param_1, 0x3f80, param_2);
+  *(undefined4 *)(param_1 + 0x18) = uVar1;
+  uVar1 = func_000A18A0(param_1, 0x3f80, param_2);
+  *(undefined4 *)(param_1 + 0x1c) = uVar1;
+  return;
+}
+
+void func_000A1EA0(int param_1, undefined4 param_2)
+{
+  int func_00115F60(...);
+  unsigned int i;
+  int *p;
+  int value;
+  i = 0;
+  while (i < *(unsigned short *)(param_1 + 0xc)) {
+    p = (int *)(*(int *)(param_1 + 0x10) + i * 8);
+    value = *p;
+    if (value) func_00115F60(value, param_2);
+    i++;
+  }
+}
+
 int func_000A2230(undefined4 *param_1, undefined4 param_2)
 {
   int func_0011B4F0(...);
@@ -19,6 +91,13 @@ int func_000A2230(undefined4 *param_1, undefined4 param_2)
     param_1 = (undefined4 *)*param_1;
   }
   return iVar1;
+}
+
+void _func_000A22D0(int param_1)
+{
+  int func_000A1E60(...);
+  param_1 = *(int *)(param_1 + 0x18);
+  if (param_1) func_000A1E60(param_1);
 }
 
 void func_000A2410(undefined4 *param_1, undefined4 param_2)
