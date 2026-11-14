@@ -6,3 +6,10 @@ void func_000AB120(void) {
     int func_00100730(...);
     func_00100730(D_00313440);
 }
+
+void func_000AB130(void) {
+    extern int D_00313440;
+    int func_001006C0(...);
+    func_001006C0(D_00313440);
+}
+
