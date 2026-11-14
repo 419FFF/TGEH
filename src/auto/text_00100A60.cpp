@@ -21,3 +21,8 @@ void func_001010A0(void) {
     func_00104B70();
 }
 
+void func_00101240(void) {
+    int func_00105D10(...);
+    func_00105D10();
+}
+
