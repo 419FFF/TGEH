@@ -21,6 +21,12 @@ void func_0013AC20(int param_1, undefined4 param_2)
   return;
 }
 
+void _func_0013AC50(char *param_1, float param_2)
+{
+  double value = param_2;
+  *(float *)(param_1 + 0x74) = (float)value;
+}
+
 void func_0013ACF0(undefined4 param_1)
 {
   int func_00011CB0(...);
