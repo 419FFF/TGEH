@@ -19,6 +19,16 @@ void func_001137E0(int param_1, undefined4 *param_2)
   return;
 }
 
+void func_00113980(undefined4 param_1, char *param_2)
+{
+  int func_00116FB0(...);
+  if (*param_2 == '\0') {
+    func_00116FB0(*(undefined4 *)(param_2 + 8));
+  }
+  func_00116FB0(param_2);
+  return;
+}
+
 void func_00113B10(int param_1)
 {
   *(undefined1 *)(param_1 + 0xd) = 0;
