@@ -158,6 +158,13 @@ void func_000FDFB0(void) {
     func_000C1370();
 }
 
+unsigned char func_000FE100(unsigned int a, unsigned int *p)
+{
+    int func_0006EC00(...);
+    func_0006EC00(*(unsigned int *)p[1]);
+    return 1;
+}
+
 undefined1 func_000FE1C0(void)
 {
   int func_0005F310(...);
