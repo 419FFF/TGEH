@@ -63,6 +63,13 @@ void func_0011B810(char a0) {
     D_003268EC = a0;
 }
 
+void func_0011BAE0(int param_1)
+{
+  int func_0011B990(...);
+  *(short *)(param_1 + 0x2c) = *(short *)(param_1 + 0x2c) - 1;
+  func_0011B990(param_1);
+}
+
 void func_0011BED0(void)
 {
   int func_0013AF50(...);
