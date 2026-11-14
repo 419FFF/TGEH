@@ -56,6 +56,17 @@ void func_00101250(void) {
     func_00105D40(D_00307DB4, 0);
 }
 
+void func_001015F0(undefined4 param_1)
+{
+  int func_00100E00(...);
+  int func_001049F0(...);
+  int func_000688B0(...);
+  func_00100E00(param_1);
+  func_001049F0(param_1);
+  func_000688B0(param_1);
+  return;
+}
+
 void func_00101680(int a0) {
     extern int D_001E5ED8;
     D_001E5ED8 = a0;
