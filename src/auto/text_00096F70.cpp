@@ -32,3 +32,32 @@ void func_00097260(int param_1)
   return;
 }
 
+void func_00097840(void)
+{
+  extern undefined4 D_00307C94;
+  int __stdcall func_0014DF80(int);
+  extern undefined4 D_00307C88;
+  extern undefined4 D_00307C70;
+  extern undefined4 D_00307C80;
+  extern undefined4 D_00307C8C;
+  extern undefined4 D_00307C7C;
+  extern undefined4 D_00307C74;
+  int func_001103C0(...);
+  extern undefined4 D_00307C58;
+  D_00307C94 = D_00307C94 + -1;
+  if (D_00307C94 == 0) {
+    func_0014DF80((int)(D_00307C88));
+    D_00307C88 = 0;
+    func_0014DF80((int)(D_00307C70));
+    D_00307C70 = 0;
+    D_00307C80 = 0;
+    D_00307C8C = 0;
+    func_0014DF80((int)(D_00307C7C));
+    D_00307C7C = 0;
+    func_0014DF80((int)(D_00307C74));
+    D_00307C74 = 0;
+    func_001103C0(D_00307C58);
+  }
+  return;
+}
+
