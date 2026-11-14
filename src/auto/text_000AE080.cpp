@@ -17,3 +17,15 @@ void func_000AE9F0(int param_1)
   *(undefined1 *)(param_1 + 0xc) = 1;
   return;
 }
+
+void func_000AEAE0(int param_1, undefined4 *param_2)
+{
+  int func_0013E9DB(...);
+  undefined4 uVar1;
+  
+  uVar1 = func_0013E9DB(*param_2);
+  *(undefined4 *)(param_1 + 0x44) = uVar1;
+  *(undefined1 *)(param_1 + 0x60) = 1;
+  return;
+}
+
