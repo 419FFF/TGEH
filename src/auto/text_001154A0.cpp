@@ -100,6 +100,8 @@ void func_001160E0(int param_1, undefined4 param_2, undefined4 param_3, undefine
   return;
 }
 
+void _func_00116110(void *obj, int flag) { int _func_00115F60(...); _func_00115F60(*(void **)(*(char **) ((char *)obj + 4) + 8), flag); }
+
 void func_00116150(void) {
     extern int D_00326788;
     D_00326788 = 0;
