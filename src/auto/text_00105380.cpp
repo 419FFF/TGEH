@@ -12,3 +12,10 @@ int func_00106070(int param_1, int *param_2)
   return param_2[1] * param_1 + *param_2;
 }
 
+void func_00106080(int param_1, int param_2, int *param_3)
+{
+  *param_3 = param_2 % param_1;
+  param_3[1] = param_2 / param_1;
+  return;
+}
+
