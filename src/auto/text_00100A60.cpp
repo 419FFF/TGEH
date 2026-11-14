@@ -89,6 +89,16 @@ void func_00101970(int param_1)
   return;
 }
 
+void func_00101990(int param_1, ushort param_2, char param_3)
+{
+  if (param_3 != '\0') {
+    *(ushort *)(param_1 + 0xb6) = *(ushort *)(param_1 + 0xb6) | param_2;
+    return;
+  }
+  *(ushort *)(param_1 + 0xb6) = *(ushort *)(param_1 + 0xb6) & ~param_2;
+  return;
+}
+
 void func_001019C0(int a0) {
     extern int D_00324EAC;
     D_00324EAC = a0;
