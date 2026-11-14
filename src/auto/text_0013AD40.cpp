@@ -11,3 +11,10 @@ void func_0013BB20(void) {
     extern char D_00334F50;
     D_00334F50 = 0;
 }
+
+undefined4 func_0013BB70(int param_1)
+{
+  extern undefined D_00334E40;
+  return *(undefined4 *)(((undefined *)&D_00334E40) + param_1 * 4);
+}
+
