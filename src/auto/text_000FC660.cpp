@@ -54,6 +54,12 @@ char func_000FD160(void) {
     return 1;
 }
 
+unsigned char _func_000FD2B0(int param_1)
+{
+  *(unsigned int *)(param_1 + 0x18) = (unsigned int)*(unsigned short *)(*(int *)(param_1 + 0x10) + 6);
+  return 1;
+}
+
 char func_000FD500(void) {
     int func_0005F310(...);
     func_0005F310(0);
