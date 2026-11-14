@@ -28,6 +28,21 @@ void func_000832B0(void)
   return;
 }
 
+void func_00083550(int param_1)
+{
+  int func_0011CFC0(...);
+  int func_0011DED0(...);
+  int func_00116A90(...);
+  int iVar1;
+  
+  func_0011CFC0(param_1 + 0x54,0);
+  func_0011DED0(param_1);
+  iVar1 = func_00116A90(8,1,0);
+  *(int *)(param_1 + 0x17c) = iVar1;
+  *(undefined4 *)(iVar1 + 4) = 0;
+  return;
+}
+
 void func_00083640(void) {
     extern int D_001D6840;
     int func_0011D0E0(...);
