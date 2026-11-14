@@ -7,3 +7,10 @@ void func_0011A290(int *param_1)
   *(undefined4 *)(*param_1 + 0x34) = 0;
   return;
 }
+
+void func_0011AF30(int param_1, undefined4 param_2)
+{
+  *(undefined4 *)(param_1 + 0xe4) = param_2;
+  return;
+}
+
