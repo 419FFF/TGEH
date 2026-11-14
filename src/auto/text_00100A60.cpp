@@ -5,3 +5,9 @@ int func_00100A70(void) {
     extern int D_001E5ED0;
     return D_001E5ED0;
 }
+
+char func_00100D80(void) {
+    extern char D_001E5EC8;
+    return D_001E5EC8;
+}
+
