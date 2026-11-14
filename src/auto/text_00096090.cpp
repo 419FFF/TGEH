@@ -7,6 +7,23 @@ undefined4 func_00096940(int param_1)
   return *(undefined4 *)(**(int **)(param_1 + 0x2c) + 0xe0);
 }
 
+void _func_00096B60(void)
+{
+  extern int D_001D7210;
+  int _func_0011D000(...);
+  int _func_0011D270(...);
+  int _func_0011D290(...);
+  int _func_0011D2B0(...);
+  int _func_00096950(...);
+  int _func_00086E60(...);
+  int _func_00085E20(...);
+  int _func_000688D0(...);
+  _func_0011D000(&D_001D7210, _func_00096950);
+  _func_0011D270(&D_001D7210, _func_00086E60);
+  _func_0011D290(&D_001D7210, _func_00085E20);
+  _func_0011D2B0(&D_001D7210, _func_000688D0);
+}
+
 void func_00096BA0(void) {
     extern int D_001D7210;
     int func_0011D0E0(...);
