@@ -6,3 +6,10 @@ void func_0007B740(void) {
     int func_0011D0E0(...);
     func_0011D0E0((int)&D_001D65F8);
 }
+
+void func_0007B8F0(void) {
+    extern int D_001D6604;
+    int func_0011D0E0(...);
+    func_0011D0E0((int)&D_001D6604);
+}
+
