@@ -32,3 +32,12 @@ void func_000DB0B0(void) {
     D_0031E6B0 = 0;
     D_0031E6B1 = 0;
 }
+
+void func_000DB0C0(void) {
+    extern int D_003080AC;
+    extern void func_000DA4E0(void);
+    if (D_003080AC != 2) {
+        func_000DA4E0();
+    }
+}
+
