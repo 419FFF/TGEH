@@ -12,3 +12,11 @@ void func_000EC260(int param_1, undefined4 *param_2)
   *(undefined4 *)(param_1 + 4) = uVar1;
   return;
 }
+
+void func_000EC280(int param_1, undefined4 *param_2)
+{
+  int func_001053E0(...);
+  extern undefined4 D_00324588;
+  *(undefined4 *)(param_1 + 8) = func_001053E0(D_00324588, *param_2);
+}
+
