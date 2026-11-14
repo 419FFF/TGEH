@@ -32,3 +32,9 @@ longdouble func_0012E8A0(float *param_1, float *param_2)
          (longdouble)param_1[1] * (longdouble)param_2[1];
 }
 
+longdouble func_0012E9B0(float *param_1)
+{
+  return (longdouble)param_1[1] * (longdouble)param_1[1] +
+         (longdouble)*param_1 * (longdouble)*param_1;
+}
+
