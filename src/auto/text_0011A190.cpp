@@ -26,3 +26,9 @@ void func_0011AF50(int param_1, undefined4 param_2)
   return;
 }
 
+void func_0011AF60(int param_1, undefined4 param_2)
+{
+  *(undefined4 *)(param_1 + 0xf0) = param_2;
+  return;
+}
+
