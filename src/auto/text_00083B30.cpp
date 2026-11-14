@@ -1,5 +1,11 @@
 /* 22 functions from 0x00083B30 to 0x0008474B, found by Ghidra. */
 #include "common.h"
+#include "ghidra.h"
+
+undefined4 func_00083D60(int param_1)
+{
+  return **(undefined4 **)(param_1 + 0x17c);
+}
 
 void func_00083DD0(void) {
     extern int D_001D68D8;
