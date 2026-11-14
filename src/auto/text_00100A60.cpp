@@ -20,9 +20,30 @@ void func_00100C10(unsigned int param_1) {
     }
 }
 
-void _func_00100C80(int a0) {
-    extern int D_001E5ED0;
-    D_001E5ED0 = a0;
+void __cdecl _func_00100C30(float value)
+{
+  extern unsigned char D_001E5EC8;
+  extern volatile float D_001D27B8;
+  extern volatile float D_001D27B0;
+  extern volatile float D_00324D14;
+  if (D_001E5EC8) {
+    if (value < D_001D27B8) {
+      D_00324D14 = D_001D27B8;
+      return;
+    }
+    if (D_001D27B0 < value) D_00324D14 = D_001D27B0;
+    else D_00324D14 = value;
+  }
+}
+
+float _func_00100C80(void) {
+    extern unsigned char D_001E5EC8;
+    extern volatile float D_001D27B8;
+    extern volatile float D_00324D14;
+    if (D_001E5EC8 == 0) goto other;
+    return D_001D27B8;
+other:
+    return D_00324D14;
 }
 
 char func_00100D80(void) {
