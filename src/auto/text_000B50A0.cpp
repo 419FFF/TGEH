@@ -51,3 +51,28 @@ int func_000B57F0(void) {
     return D_00313ED8;
 }
 
+void func_000B5860(void)
+{
+  extern undefined4 D_00307DF8;
+  int func_00110330(...);
+  int func_0006F7F0(...);
+  int func_0006F820(...);
+  int func_00089410(...);
+  int func_0002D450(...);
+  extern undefined D_001D3BE4;
+  int func_000A05D0(...);
+  int func_000860B0(...);
+  int iVar1;
+  
+  iVar1 = *(int *)(D_00307DF8 + 0x110);
+  *(undefined1 *)(iVar1 + 0x1ac) = 0;
+  func_00110330(*(undefined4 *)(iVar1 + 0x210),0);
+  func_0006F7F0(2,0x42c84ccd);
+  func_0006F820();
+  func_00089410(0,1);
+  func_0002D450(((undefined *)&D_001D3BE4));
+  func_000A05D0(0);
+  func_000860B0();
+  return;
+}
+
