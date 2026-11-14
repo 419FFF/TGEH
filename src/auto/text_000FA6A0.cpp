@@ -7,6 +7,30 @@ void func_000FA740(void) {
     func_000FA600();
 }
 
+undefined1 func_000FAE20(undefined4 param_1, int *param_2)
+{
+  int func_000A2230(...);
+  int func_000A21A0(...);
+  int func_000A1D10(...);
+  extern undefined D_0000FFFF;
+  int iVar1;
+  char cVar2;
+  int iVar3;
+  
+  iVar1 = *param_2;
+  iVar3 = func_000A2230(iVar1 + 100,*(undefined4 *)param_2[3]);
+  if (iVar3 != 0) {
+    if ((*(byte *)(iVar1 + 0x10) & 8) == 0) {
+      cVar2 = func_000A21A0(iVar3);
+      if (cVar2 == '\0') {
+        return 0;
+      }
+    }
+    func_000A1D10(iVar3,1,0,((undefined *)&D_0000FFFF),*(undefined4 *)param_2[5],*(undefined4 *)param_2[7]);
+  }
+  return 1;
+}
+
 undefined1 func_000FB5A0(void)
 {
   int func_00100D80(...);
