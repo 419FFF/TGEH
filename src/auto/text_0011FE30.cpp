@@ -2,6 +2,16 @@
 #include "common.h"
 #include "ghidra.h"
 
+void func_0011FEA0(int param_1)
+{
+  extern undefined4 D_00329338;
+  int func_00116A90(...);
+  extern undefined4 D_00329334;
+  D_00329338 = func_00116A90(param_1 * 0x60,1,1);
+  D_00329334 = param_1;
+  return;
+}
+
 void func_00120B60(undefined4 param_1, undefined4 param_2)
 {
   int func_00120750(...);
