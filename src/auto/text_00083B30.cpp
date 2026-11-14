@@ -13,6 +13,12 @@ void func_00083DD0(void) {
     func_0011D0E0((int)&D_001D68D8);
 }
 
+undefined4 func_00084080(int param_1)
+{
+  extern undefined D_002FBBD8;
+  return *(undefined4 *)(((undefined *)&D_002FBBD8) + param_1 * 0x14);
+}
+
 void func_00084740(void) {
     extern int D_002FDD60;
     D_002FDD60 = 0;
