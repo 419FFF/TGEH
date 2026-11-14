@@ -44,4 +44,5 @@ void func_00078F30(void) {
     int func_0011D0E0(...);
     func_0011D0E0((int)&D_001D64EC);
 }
-
+extern undefined D_001D64EC;
+extern undefined D_001D64F4;
