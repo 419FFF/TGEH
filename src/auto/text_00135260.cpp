@@ -28,3 +28,16 @@ void func_001359C0(undefined4 param_1)
   return;
 }
 
+void func_001359E0(undefined4 *param_1, undefined4 *param_2)
+{
+  extern undefined4 D_0033232C;
+  extern undefined4 D_0033228C;
+  if (param_1 != (undefined4 *)0x0) {
+    *param_1 = D_0033232C;
+  }
+  if (param_2 != (undefined4 *)0x0) {
+    *param_2 = D_0033228C;
+  }
+  return;
+}
+
