@@ -55,6 +55,12 @@ char func_000FDD70(void) {
     return 1;
 }
 
+char func_000FDD80(void) {
+    int func_000B6510(...);
+    func_000B6510(12, 0);
+    return 1;
+}
+
 char func_000FDDF0(void) {
     int func_000B6510(...);
     func_000B6510(1, 0);
