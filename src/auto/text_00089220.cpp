@@ -12,3 +12,9 @@ void func_00089D40(void) {
     func_0011D0E0((int)&D_001D6DF4);
 }
 
+void func_00089FF0(void) {
+    extern int D_001D6DFC;
+    int func_0011D0E0(...);
+    func_0011D0E0((int)&D_001D6DFC);
+}
+
