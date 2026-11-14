@@ -57,6 +57,13 @@ unsigned char func_000FD820(unsigned int param_1, unsigned int *param_2)
   return 1;
 }
 
+unsigned char func_000FD840(unsigned int param_1, unsigned int *param_2)
+{
+  int func_0002A1D0(...);
+  func_0002A1D0(*param_2, 0);
+  return 1;
+}
+
 char func_000FD940(void) {
     int func_00044E50(...);
     func_00044E50();
