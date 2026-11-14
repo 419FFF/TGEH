@@ -23,3 +23,9 @@ char func_000FD160(void) {
     return 1;
 }
 
+char func_000FD500(void) {
+    int func_0005F310(...);
+    func_0005F310(0);
+    return 1;
+}
+
