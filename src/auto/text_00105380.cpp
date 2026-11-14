@@ -15,6 +15,17 @@ void func_00105380(undefined4 param_1)
   return;
 }
 
+void func_00105480(int a0, int a1, int a2) {
+    int func_00137A20(...);
+    extern int D_00332738;
+    extern int D_0033273C;
+    extern int D_00332740;
+    func_00137A20();
+    D_00332738 = a0;
+    D_0033273C = a1;
+    D_00332740 = a2;
+}
+
 void func_001054B0(int a0) {
     extern int D_003250E4;
     D_003250E4 = a0;
