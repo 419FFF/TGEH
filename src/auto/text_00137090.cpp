@@ -14,6 +14,11 @@ void func_00137A70(undefined4 *param_1)
   return;
 }
 
+void func_00137A90(int a0, int a1) {
+    int __stdcall func_0014DC90(int, int, int, int, int);
+    func_0014DC90(9, a0, a1, 0, 1065353216);
+}
+
 undefined * func_00137C30(int param_1)
 {
   extern undefined D_00332748;
