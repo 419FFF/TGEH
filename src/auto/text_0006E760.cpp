@@ -33,3 +33,19 @@ void func_0006EC00(int a0) {
     D_002FA014 = a0;
 }
 
+void func_0006F670(void)
+{
+  extern undefined4 D_002FA058;
+  int func_00110760(...);
+  extern undefined4 D_002FA054;
+  extern undefined4 D_002FA07C;
+  if (D_002FA058 != 0) {
+    func_00110760(D_002FA054);
+    func_00110760(D_002FA07C);
+  }
+  D_002FA054 = 0;
+  D_002FA07C = 0;
+  D_002FA058 = 0;
+  return;
+}
+
