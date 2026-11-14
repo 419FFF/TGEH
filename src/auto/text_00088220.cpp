@@ -28,6 +28,22 @@ void func_00088610(void)
   return;
 }
 
+void func_00088680(void)
+{
+  int func_00089440(...);
+  int func_00089430(...);
+  int func_0007EEE0(...);
+  char cVar1;
+  
+  func_00089440();
+  cVar1 = func_00089430();
+  if (cVar1 == '\0') {
+    func_0007EEE0();
+    return;
+  }
+  return;
+}
+
 void func_000886F0(void)
 {
   int func_00081F60(...);
