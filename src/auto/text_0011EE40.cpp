@@ -13,3 +13,20 @@ void func_0011FD30(int param_1, undefined4 param_2)
   return;
 }
 
+extern int _D_003291BC;
+extern int _D_00328200;
+extern int __cdecl _func_00110370(void*);
+extern void _func_0011F900(void);
+void __cdecl _func_0011FD40(void)
+{
+    if (_D_003291BC == 0) {
+        int local[7];
+        local[4] = 0;
+        local[1] = 0;
+        local[2] = 0;
+        local[3] = (int)_func_0011F900;
+        _D_00328200 = _func_00110370(local);
+    }
+    ++_D_003291BC;
+}
+
