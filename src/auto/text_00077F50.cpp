@@ -62,23 +62,26 @@ void func_00078B90(void)
 }
 
 extern int D_001D2B64;
-void _func_00078ED0(void) {
-    
-extern int* D_001D64EC;
-   extern int* D_001D64F4;
-   void func_0011DED0(...);
-   func_0011DED0(D_001D64EC);
-   void func_0011DEF0(...);
-   func_0011DEF0(D_001D64F4);
-   void func_0011DF10(...);
-   func_0011DF10(D_001D64EC);
-   void func_0011DF30(...);
-   func_0011DF30(D_001D64F4);
-   void func_0011DF50(...);
-   func_0011DF50(D_001D64EC);
-   void func_0011DF70(...);
-   func_0011DF70(D_001D64F4);
-
+void func_00078ED0(void) {
+    extern int D_001D64EC;
+    extern void func_00078C90(void);
+    extern void func_00083D00(void);
+    extern void func_00079D10(void);
+    extern void func_00078E60(void);
+    extern void func_00092810(void);
+    extern void func_00083D60(void);
+    extern void func_0011D000(...);
+    extern void func_0011D270(...);
+    extern void func_0011D290(...);
+    extern void func_0011D2B0(...);
+    extern void func_0011D2D0(...);
+    extern void func_0011D2F0(...);
+    func_0011D000(func_00078C90, &D_001D64EC);
+    func_0011D270(func_00083D00, &D_001D64EC);
+    func_0011D290(func_00079D10, &D_001D64EC);
+    func_0011D2B0(func_00078E60, &D_001D64EC);
+    func_0011D2D0(func_00092810, &D_001D64EC);
+    func_0011D2F0(func_00083D60, &D_001D64EC);
 }
 
 void func_00078F30(void) {
