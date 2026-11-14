@@ -14,3 +14,9 @@ void func_0011AF30(int param_1, undefined4 param_2)
   return;
 }
 
+void func_0011AF40(int param_1, undefined4 param_2)
+{
+  *(undefined4 *)(param_1 + 0xe8) = param_2;
+  return;
+}
+
