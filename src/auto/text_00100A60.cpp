@@ -11,3 +11,8 @@ char func_00100D80(void) {
     return D_001E5EC8;
 }
 
+char func_00100D90(void) {
+    extern char D_001E5EC9;
+    return D_001E5EC9;
+}
+
