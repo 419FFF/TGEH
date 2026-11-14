@@ -11,3 +11,10 @@ void func_00085E20(void) {
     int func_0011DEF0(...);
     func_0011DEF0();
 }
+
+void func_00085E70(void) {
+    extern int D_001D6BA8;
+    int func_0011D0E0(...);
+    func_0011D0E0((int)&D_001D6BA8);
+}
+
