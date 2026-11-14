@@ -61,6 +61,12 @@ char func_000FDD80(void) {
     return 1;
 }
 
+char func_000FDD90(void) {
+    int func_000B6510(...);
+    func_000B6510(2, 0);
+    return 1;
+}
+
 char func_000FDDF0(void) {
     int func_000B6510(...);
     func_000B6510(1, 0);
