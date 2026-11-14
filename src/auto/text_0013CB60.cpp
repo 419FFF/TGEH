@@ -40,3 +40,45 @@ int func_0013D0A0(uint param_1)
   return iVar1;
 }
 
+void func_0013D0F0(int param_1, uint param_2)
+{
+  int iVar1;
+  
+  *(undefined4 *)(param_1 + 0xc) = 0xc;
+  iVar1 = 1;
+  if ((param_2 & 0x40000) != 0) {
+    *(undefined4 *)(param_1 + 0x1c) = 0xc;
+    *(undefined4 *)(param_1 + 0x2c) = 0xc;
+    *(undefined4 *)(param_1 + 0x3c) = 0xc;
+    iVar1 = 4;
+  }
+  if ((param_2 & 1) != 0) {
+    *(undefined4 *)(iVar1 * 0x10 + 0xc + param_1) = 8;
+    iVar1 = iVar1 + 1;
+  }
+  if ((param_2 & 2) != 0) {
+    *(undefined4 *)(iVar1 * 0x10 + 0xc + param_1) = 8;
+    iVar1 = iVar1 + 1;
+  }
+  if ((param_2 & 4) != 0) {
+    *(undefined4 *)(iVar1 * 0x10 + 0xc + param_1) = 8;
+    iVar1 = iVar1 + 1;
+  }
+  if ((param_2 & 8) != 0) {
+    *(undefined4 *)(iVar1 * 0x10 + 0xc + param_1) = 8;
+    iVar1 = iVar1 + 1;
+  }
+  if ((param_2 & 0x10) != 0) {
+    *(undefined4 *)(iVar1 * 0x10 + 0xc + param_1) = 4;
+    iVar1 = iVar1 + 1;
+  }
+  if ((param_2 & 0x100000) != 0) {
+    *(undefined4 *)(iVar1 * 0x10 + 0xc + param_1) = 4;
+    iVar1 = iVar1 + 1;
+  }
+  if ((param_2 & 0x20000) != 0) {
+    *(undefined4 *)(iVar1 * 0x10 + 0xc + param_1) = 0xc;
+  }
+  return;
+}
+
