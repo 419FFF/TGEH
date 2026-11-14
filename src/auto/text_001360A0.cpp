@@ -6,6 +6,12 @@ void func_00136AE0(void) {
     func_00137B20();
 }
 
+void func_00136B20(void) {
+    extern int D_00332724;
+    int __stdcall MmFreeContiguousMemory(int);
+    MmFreeContiguousMemory(D_00332724);
+}
+
 int func_00136B70(void) {
     extern int D_00332340;
     return (int)&D_00332340;
