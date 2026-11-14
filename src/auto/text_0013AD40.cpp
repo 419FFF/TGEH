@@ -18,3 +18,9 @@ undefined4 func_0013BB70(int param_1)
   return *(undefined4 *)(((undefined *)&D_00334E40) + param_1 * 4);
 }
 
+undefined * func_0013BB80(int param_1)
+{
+  extern undefined D_00334E50;
+  return ((undefined *)&D_00334E50) + param_1 * 0x40;
+}
+
