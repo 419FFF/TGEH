@@ -30,3 +30,10 @@ void func_00063F30(void) {
     func_00122A50();
 }
 
+void func_00063F40(void) {
+    extern int D_002F7324;
+    extern int D_002F7328;
+    D_002F7324 = 1060320051;
+    D_002F7328 = 0;
+}
+
