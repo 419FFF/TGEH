@@ -11,3 +11,12 @@ void func_0005D400(void) {
     func_00063360();
 }
 
+extern float _D_001D2BC0;
+extern float _D_002EEE80;
+void _func_0005DA70(float value)
+{
+    double result = value;
+    result = result * _D_001D2BC0;
+    _D_002EEE80 = (float)result;
+}
+
