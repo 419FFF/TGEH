@@ -29,6 +29,20 @@ void func_00113980(undefined4 param_1, char *param_2)
   return;
 }
 
+int func_001139B0(undefined4 param_1)
+{
+  int func_00117100(...);
+  int func_00116A90(...);
+  int func_00117130(...);
+  int iVar1;
+  
+  func_00117100();
+  iVar1 = func_00116A90(0x1c,1,1);
+  *(undefined4 *)(iVar1 + 0x18) = param_1;
+  func_00117130();
+  return iVar1;
+}
+
 void func_00113B10(int param_1)
 {
   *(undefined1 *)(param_1 + 0xd) = 0;
