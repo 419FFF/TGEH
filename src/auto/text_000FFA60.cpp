@@ -13,6 +13,14 @@ void func_000FFA60(void) {
     D_00324BB4 = 0;
 }
 
+void func_00100730(undefined4 param_1)
+{
+  int func_00110480(...);
+  extern undefined4 D_00324968;
+  func_00110480(*(undefined4 *)(D_00324968 + 0xe0),param_1,0);
+  return;
+}
+
 void func_00100750(undefined4 param_1)
 {
   extern undefined D_001E5EC8;
