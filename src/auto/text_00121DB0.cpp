@@ -23,3 +23,16 @@ void func_00122AD0(void)
   return;
 }
 
+int func_00122B80(undefined4 param_1, undefined4 param_2)
+{
+  int func_00116A90(...);
+  int func_0013CC70(...);
+  int iVar1;
+  
+  iVar1 = func_00116A90(0x2c,1,1);
+  *(undefined4 *)(iVar1 + 4) = param_1;
+  *(undefined4 *)(iVar1 + 8) = param_2;
+  func_0013CC70(iVar1);
+  return iVar1;
+}
+
