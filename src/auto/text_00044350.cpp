@@ -11,3 +11,8 @@ void func_000451B0(int a0) {
     D_002EEB58 = a0;
 }
 
+void func_000452E0(void) {
+    extern char D_002EEAFC;
+    D_002EEAFC = 1;
+}
+
