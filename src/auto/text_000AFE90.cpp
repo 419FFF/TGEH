@@ -11,3 +11,8 @@ int func_000B0E60(void) {
     return D_00313DAC;
 }
 
+int func_000B0E70(void) {
+    extern int D_00313BB0;
+    return D_00313BB0;
+}
+
