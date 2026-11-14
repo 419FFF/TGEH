@@ -12,6 +12,18 @@ void func_00128830(int a0) {
     D_00331B04 = a0;
 }
 
+void func_00128870(int param_1, undefined4 param_2)
+{
+  int func_0013AC20(...);
+  if (*(int *)(param_1 + 0xf0) != 0) {
+    func_0013AC20(*(int *)(param_1 + 0xf0),param_2);
+    *(undefined4 *)(param_1 + 0x104) = param_2;
+    return;
+  }
+  *(undefined4 *)(param_1 + 0x104) = param_2;
+  return;
+}
+
 void func_00128990(int param_1, char param_2)
 {
   if (param_2 != '\0') {
