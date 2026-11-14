@@ -11,6 +11,17 @@ void func_000E2C40(void)
   return;
 }
 
+void func_000E2D30(void)
+{
+  int func_0011B990(...);
+  extern undefined4 D_0031FEF0;
+  int func_00116FB0(...);
+  extern undefined4 D_00322478;
+  func_0011B990(D_0031FEF0);
+  func_00116FB0(D_00322478);
+  return;
+}
+
 void func_000E2D50(void) {
     extern char D_00322488;
     D_00322488 = 1;
