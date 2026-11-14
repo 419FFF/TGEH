@@ -22,6 +22,19 @@ char func_00100D90(void) {
     return D_001E5EC9;
 }
 
+void func_00100E50(void)
+{
+  int func_00068450(...);
+  int func_00104B30(...);
+  int func_00100880(...);
+  int func_001395C0(...);
+  func_00068450();
+  func_00104B30();
+  func_00100880();
+  func_001395C0();
+  return;
+}
+
 void func_00100E70(void) {
     extern char D_00324D64;
     D_00324D64 = 1;
