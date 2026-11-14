@@ -8,6 +8,12 @@ void func_00113B10(int param_1)
   return;
 }
 
+void func_00113CA0(int param_1)
+{
+  *(undefined1 *)(param_1 + 0xd) = 1;
+  return;
+}
+
 int func_00113CB0(int a0) {
     return a0;
 }
