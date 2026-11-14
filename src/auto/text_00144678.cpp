@@ -83,12 +83,12 @@ int _func_001460D6(...);
 int _func_001460DF(...);
 int _func_0013EF1F(...);
 
-    int _func_0014544F(void)
+int _func_0014544F(void)
 {
     int *p = (int *)_func_001460D6();
     *p = 9;
     p = (int *)_func_001460DF();
-    *p = 0;
+    *p &= 0;
     return _func_0013EF1F() | -1;
 }
 
