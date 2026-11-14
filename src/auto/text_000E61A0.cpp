@@ -40,6 +40,25 @@ void func_000E6C30(void)
   return;
 }
 
+void func_000E7050(void)
+{
+  extern undefined4 D_003080AC;
+  extern undefined4 D_003234B8;
+  extern undefined4 D_00322490;
+  int func_000A27A0(...);
+  extern undefined4 D_003227EC;
+  extern undefined D_003227C8;
+  extern undefined4 D_00322808;
+  if (D_003080AC != 2) {
+    if (((D_003227C8 == '\0') && ((s32)D_003234B8 < 3)) || (0x32 > (s32)D_00322490)) {
+      func_000A27A0(0x32,1,D_003227EC,D_00322808);
+      return;
+    }
+    func_000A27A0(0x32,0,0,0);
+  }
+  return;
+}
+
 void func_000E70D0(void)
 {
   int func_000B54D0(...);
