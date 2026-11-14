@@ -2,6 +2,18 @@
 #include "common.h"
 #include "ghidra.h"
 
+void func_000908F0(void)
+{
+  extern int D_001D6FB0;
+  int func_0011D000(...); int func_0011D270(...); int func_0011D290(...); int func_0011D2B0(...); int func_0011D2D0(...);
+  int func_000903F0(...); int func_00078730(...); int func_00085E20(...); int func_000905C0(...); int func_00090850(...);
+  func_0011D000(&D_001D6FB0,func_000903F0);
+  func_0011D270(&D_001D6FB0,func_00078730);
+  func_0011D290(&D_001D6FB0,func_00085E20);
+  func_0011D2B0(&D_001D6FB0,func_000905C0);
+  func_0011D2D0(&D_001D6FB0,func_00090850);
+}
+
 void func_00090940(void) {
     extern int D_001D6FB0;
     int func_0011D0E0(...);
