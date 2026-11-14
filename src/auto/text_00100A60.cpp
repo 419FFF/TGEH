@@ -12,6 +12,19 @@ int func_00100A70(void) {
     return D_001E5ED0;
 }
 
+void func_00100C10(unsigned int param_1) {
+    extern unsigned char D_001E5EC8;
+    extern unsigned int D_00324D08;
+    if (D_001E5EC8 != 0) {
+        D_00324D08 = param_1;
+    }
+}
+
+void _func_00100C80(int a0) {
+    extern int D_001E5ED0;
+    D_001E5ED0 = a0;
+}
+
 char func_00100D80(void) {
     extern char D_001E5EC8;
     return D_001E5EC8;
