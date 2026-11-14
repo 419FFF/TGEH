@@ -24,6 +24,18 @@ void func_00093980(void) {
     func_0011D0E0((int)&D_001D7174);
 }
 
+void func_00093BA0(void)
+{
+  extern undefined4 D_00306E70;
+  int func_001103C0(...);
+  extern undefined4 D_00306E6C;
+  D_00306E70 = D_00306E70 + -1;
+  if (D_00306E70 == 0) {
+    func_001103C0(D_00306E6C);
+  }
+  return;
+}
+
 void func_00093C50(undefined4 param_1, int param_2)
 {
   int func_0010F750(...);
