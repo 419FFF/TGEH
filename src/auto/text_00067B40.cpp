@@ -2,6 +2,21 @@
 #include "common.h"
 #include "ghidra.h"
 
+void func_00067D50(void)
+{
+  extern undefined4 D_002F77B0;
+  int func_00116FB0(...);
+  extern undefined4 D_002F77B4;
+  extern undefined4 D_002F77B8;
+  if (D_002F77B0 != 0) {
+    func_00116FB0(D_002F77B0);
+  }
+  D_002F77B0 = 0;
+  D_002F77B4 = 0;
+  D_002F77B8 = 0;
+  return;
+}
+
 undefined4 func_00068090(int param_1, int param_2)
 {
   if ((*(int *)(param_1 + 0x14 + param_2 * 4) != 0) && (*(int *)(param_1 + 0x38 + param_2 * 4) != 3)
