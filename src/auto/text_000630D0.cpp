@@ -16,6 +16,15 @@ void func_00063C60(void) {
     D_002F7315 = 0;
 }
 
+void func_00063F10(void) {
+    extern char D_002EEEB0;
+    extern int D_002EEE88;
+    extern char D_002F7318;
+    extern int D_002F731C;
+    D_002F7318 = D_002EEEB0;
+    D_002F731C = D_002EEE88;
+}
+
 void func_00063F30(void) {
     int func_00122A50(...);
     func_00122A50();
