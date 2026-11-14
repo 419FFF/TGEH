@@ -14,6 +14,19 @@ void func_0011C3B0(int *param_1, int *param_2, int param_3)
   return;
 }
 
+void func_0011C3E0(int *param_1)
+{
+  if ((int *)param_1[1] != (int *)0x0) {
+    *(int *)param_1[1] = *param_1;
+  }
+  if (*param_1 != 0) {
+    *(int *)(*param_1 + 4) = param_1[1];
+  }
+  *param_1 = 0;
+  param_1[1] = 0;
+  return;
+}
+
 undefined4 func_0011CCD0(int param_1)
 {
   undefined4 *puVar1;
