@@ -31,3 +31,22 @@ void func_0011B810(char a0) {
     extern char D_003268EC;
     D_003268EC = a0;
 }
+
+void func_0011BED0(void)
+{
+  int func_0013AF50(...);
+  extern undefined4 D_003278A8;
+  extern undefined4 D_003268E8;
+  int func_0013AF70(...);
+  int func_0013B2B0(...);
+  extern undefined4 D_003278A0;
+  func_0013AF50(D_003278A8);
+  while (D_003268E8 != 0) {
+    func_0013AF70(D_003278A8);
+    func_0013B2B0(D_003278A0,0xbf800000);
+    func_0013AF50(D_003278A8);
+  }
+  func_0013AF70(D_003278A8);
+  return;
+}
+
