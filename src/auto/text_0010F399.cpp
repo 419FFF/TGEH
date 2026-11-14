@@ -2,6 +2,21 @@
 #include "common.h"
 #include "ghidra.h"
 
+void func_0010F930(int param_1)
+{
+  ushort *puVar1;
+  int *piVar2;
+  
+  for (piVar2 = *(int **)(param_1 + 0x28); piVar2 != (int *)0x0; piVar2 = (int *)piVar2[3]) {
+    if ((*(byte *)(*piVar2 + 0x20) & 2) == 0) {
+      puVar1 = (ushort *)(*piVar2 + 0x20);
+      *puVar1 = *puVar1 | 2;
+      func_0010F930(*piVar2);
+    }
+  }
+  return;
+}
+
 void func_0010FB70(int a0, int a1, int a2) {
     int func_0010F970(...);
     func_0010F970(a0, a1, a2, 0, a2, 16, 0, 0);
