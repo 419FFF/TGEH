@@ -5,3 +5,9 @@ int func_000B06A0(void) {
     extern int D_001E46C4;
     return D_001E46C4;
 }
+
+int func_000B0E60(void) {
+    extern int D_00313DAC;
+    return D_00313DAC;
+}
+
