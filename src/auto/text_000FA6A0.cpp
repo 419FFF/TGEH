@@ -38,7 +38,7 @@ void _func_000FA700(undefined4 param_1, undefined4 param_2)
       break;
     }
     
-    func_0013F2E9(*(undefined4 **)(param_1 + 8), param_2);
+    func_0013F2E9(*(void **)(param_1 + 8), param_2);
     param_1 = *(undefined4 *)(param_1 + 8);
   }
 }
@@ -90,4 +90,9 @@ char func_000FB5C0(void) {
     func_000688D0();
     return 1;
 }
+extern void* D_00324B68;
 
+struct D_00324B68_struct {
+  int value;      // [0]
+  void* next;     // [0x1C = 28] - derived from assembly offsets
+};
