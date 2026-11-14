@@ -1,5 +1,25 @@
 /* 28 functions from 0x000630D0 to 0x00064083, found by Ghidra. */
 #include "common.h"
+#include "ghidra.h"
+
+void func_00063240(void)
+{
+  extern undefined4 D_002EF480;
+  int func_0011B990(...);
+  extern undefined4 D_002EF420;
+  int func_00110760(...);
+  extern undefined4 D_002EF494;
+  int iVar1;
+  
+  iVar1 = D_002EF480;
+  *(short *)(D_002EF480 + 0x2a) = *(short *)(D_002EF480 + 0x2a) + -1;
+  func_0011B990(iVar1);
+  iVar1 = D_002EF420;
+  *(short *)(D_002EF420 + 0x2a) = *(short *)(D_002EF420 + 0x2a) + -1;
+  func_0011B990(iVar1);
+  func_00110760(D_002EF494);
+  return;
+}
 
 void func_00063320(void) {
     extern int D_001E3B30;
