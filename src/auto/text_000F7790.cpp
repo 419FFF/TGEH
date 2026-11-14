@@ -2,6 +2,17 @@
 #include "common.h"
 #include "ghidra.h"
 
+void func_000F7BE0(int param_1)
+{
+  *(undefined4 *)(param_1 + 0x310) = 0;
+  *(undefined4 *)(param_1 + 0x314) = 0;
+  *(undefined4 *)(param_1 + 0x318) = 0x3f800000;
+  *(undefined1 *)(param_1 + 0x31c) = 0;
+  *(undefined4 *)(param_1 + 800) = 0;
+  *(undefined4 *)(param_1 + 0x324) = 0x3f800000;
+  return;
+}
+
 undefined4 func_000F7C10(undefined4 param_1)
 {
   int func_00131C80(...);
