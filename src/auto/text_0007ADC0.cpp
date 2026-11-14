@@ -2,6 +2,36 @@
 #include "common.h"
 #include "ghidra.h"
 
+void func_0007B110(void)
+{
+  int func_0011D000(...);
+  extern undefined D_001D65C0;
+  int func_0007AAA0(...);
+  int func_0011D270(...);
+  int func_00078730(...);
+  int func_0011D290(...);
+  int func_00085E20(...);
+  int func_0011D2B0(...);
+  int func_0007AC20(...);
+  int func_0011D2D0(...);
+  int func_0007AD30(...);
+  extern undefined D_001D65B8;
+  int func_0007ADC0(...);
+  int func_0007AF50(...);
+  int func_0007B080(...);
+  func_0011D000(((undefined *)&D_001D65C0),&func_0007AAA0);
+  func_0011D270(((undefined *)&D_001D65C0),&func_00078730);
+  func_0011D290(((undefined *)&D_001D65C0),&func_00085E20);
+  func_0011D2B0(((undefined *)&D_001D65C0),&func_0007AC20);
+  func_0011D2D0(((undefined *)&D_001D65C0),&func_0007AD30);
+  func_0011D000(((undefined *)&D_001D65B8),&func_0007ADC0);
+  func_0011D270(((undefined *)&D_001D65B8),&func_00078730);
+  func_0011D290(((undefined *)&D_001D65B8),&func_00085E20);
+  func_0011D2B0(((undefined *)&D_001D65B8),&func_0007AF50);
+  func_0011D2D0(((undefined *)&D_001D65B8),&func_0007B080);
+  return;
+}
+
 void func_0007B3A0(void)
 {
   int func_001160B0(...);
