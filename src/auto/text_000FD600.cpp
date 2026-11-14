@@ -144,6 +144,12 @@ void func_000FDFB0(void) {
     func_000C1370();
 }
 
+char func_000FE380(void) {
+    int func_000B7080(...);
+    func_000B7080(21);
+    return 1;
+}
+
 char func_000FE390(void) {
     int func_00101360(...);
     func_00101360();
