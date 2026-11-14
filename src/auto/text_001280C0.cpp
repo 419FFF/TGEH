@@ -2,6 +2,30 @@
 #include "common.h"
 #include "ghidra.h"
 
+undefined4 func_00128540(undefined4 param_1)
+{
+  int func_00117100(...);
+  int func_0012DFD0(...);
+  int func_001280C0(...);
+  int func_00117130(...);
+  int func_00135280(...);
+  int func_00116FB0(...);
+  int iVar1;
+  undefined4 uVar2;
+  
+  func_00117100();
+  iVar1 = func_0012DFD0(param_1);
+  if (iVar1 == 0) {
+    return 0;
+  }
+  func_001280C0(iVar1,1,1,0x20);
+  func_00117130();
+  uVar2 = func_00135280(iVar1);
+  func_00116FB0(*(undefined4 *)(iVar1 + 0x30));
+  func_00116FB0(iVar1);
+  return uVar2;
+}
+
 void func_00128590(void)
 {
   extern undefined4 D_00331AD8;
