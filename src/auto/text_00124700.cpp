@@ -12,6 +12,16 @@ void func_00124DC0(undefined4 *param_1)
   return;
 }
 
+void func_00124DE0(undefined4 *param_1, undefined4 *param_2)
+{
+  int func_0013E9DB(...);
+  undefined4 uVar1;
+  
+  uVar1 = func_0013E9DB(*param_2);
+  *param_1 = uVar1;
+  return;
+}
+
 void func_00124F00(void) {
     extern int D_00331528;
     int func_00115DE0(...);
