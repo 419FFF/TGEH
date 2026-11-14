@@ -5,3 +5,9 @@ void func_00044F90(void) {
     extern int D_002EEB70;
     D_002EEB70 = 0;
 }
+
+void func_000451B0(int a0) {
+    extern int D_002EEB58;
+    D_002EEB58 = a0;
+}
+
