@@ -18,3 +18,17 @@ void func_00097240(undefined4 param_1)
   return;
 }
 
+void func_00097260(int param_1)
+{
+  int __stdcall func_0014CD60(int, int, int);
+  int __stdcall func_0014D160(int);
+  int __stdcall func_0014BD70(int, int);
+  int __stdcall func_0014D9F0(int, int, int);
+  extern undefined4 D_00159EE4;
+  func_0014CD60((int)(0), (int)(*(undefined4 *)(param_1 + 0xf8)), (int)(0x10));
+  func_0014D160((int)(0x42));
+  func_0014BD70((int)(*(undefined4 *)(param_1 + 0xfc)), (int)(0));
+  func_0014D9F0((int)(5), (int)((*(int *)(param_1 + 0x108) / 3) * 3), (int)(D_00159EE4));
+  return;
+}
+
