@@ -11,3 +11,8 @@ void func_0014386D(void) {
     func_00143691(8);
 }
 
+void func_00143876(void) {
+    int func_001435DF(...);
+    func_001435DF(8);
+}
+
