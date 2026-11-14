@@ -15,6 +15,19 @@ void func_000885F0(void)
   return;
 }
 
+void func_00088610(void)
+{
+  int func_000688D0(...);
+  int func_0007D1F0(...);
+  int func_0008F400(...);
+  int func_00097900(...);
+  func_000688D0();
+  func_0007D1F0();
+  func_0008F400();
+  func_00097900();
+  return;
+}
+
 void func_000886F0(void)
 {
   int func_00081F60(...);
