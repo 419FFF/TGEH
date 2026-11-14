@@ -6,6 +6,15 @@ void func_000A2770(void) {
     func_000688D0();
 }
 
+void func_000A2780(int a0, char a1, int a2) {
+    extern int D_003127C0;
+    extern char D_003127A4;
+    extern int D_003127A8;
+    D_003127C0 = a0;
+    D_003127A4 = a1;
+    D_003127A8 = a2;
+}
+
 int func_000A27D0(void) {
     extern int D_00312610;
     return D_00312610;
