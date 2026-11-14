@@ -31,6 +31,17 @@ void func_0013BB20(void) {
     D_00334F50 = 0;
 }
 
+void func_0013BB30(undefined4 param_1)
+{
+  int func_00116A90(...);
+  undefined1 *puVar1;
+  
+  puVar1 = (undefined1 *)func_00116A90(0x50,1,1);
+  *(undefined4 *)(puVar1 + 4) = param_1;
+  *puVar1 = 1;
+  return;
+}
+
 undefined4 func_0013BB70(int param_1)
 {
   extern undefined D_00334E40;
