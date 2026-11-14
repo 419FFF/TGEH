@@ -2,6 +2,12 @@
 #include "common.h"
 #include "ghidra.h"
 
+void func_00119E20(int param_1)
+{
+  *(undefined4 *)(param_1 + 0xac) = 0xffffffff;
+  return;
+}
+
 void func_00119E30(int param_1)
 {
   *(int *)(param_1 + 0xac) = *(int *)(param_1 + 0xac) + 1;
