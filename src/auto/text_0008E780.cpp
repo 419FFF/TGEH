@@ -22,6 +22,12 @@ void func_0008F610(void) {
     D_001E7D64 = 10;
 }
 
+void _func_0008F740(int value)
+{
+    extern int _D_0033116C;
+    _D_0033116C = (value == 0) ? 0 : 0x8f620;
+}
+
 void func_0008F760(void)
 {
   extern int _D_0033116C;
