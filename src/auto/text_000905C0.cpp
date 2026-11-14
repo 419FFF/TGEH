@@ -1,2 +1,8 @@
 /* 21 functions from 0x000905C0 to 0x0009150A, found by Ghidra. */
 #include "common.h"
+
+void func_00090940(void) {
+    extern int D_001D6FB0;
+    int func_0011D0E0(...);
+    func_0011D0E0((int)&D_001D6FB0);
+}
