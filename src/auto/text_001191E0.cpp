@@ -12,6 +12,31 @@ void func_00119D10(int param_1, undefined4 *param_2)
   return;
 }
 
+void func_00119DA0(int param_1, undefined4 *param_2)
+{
+  int func_0011B4F0(...);
+  extern undefined D_001DCFFC;
+  extern undefined D_001DF514;
+  extern undefined D_001DF510;
+  int iVar1;
+  
+  iVar1 = func_0011B4F0(*param_2,((undefined *)&D_001DCFFC));
+  if (iVar1 == 0) {
+    *(undefined4 *)(*(int *)(param_1 + 0xb0) + 0x4c) = 2;
+    return;
+  }
+  iVar1 = func_0011B4F0(*param_2,((undefined *)&D_001DF514));
+  if (iVar1 == 0) {
+    *(undefined4 *)(*(int *)(param_1 + 0xb0) + 0x4c) = 0;
+    return;
+  }
+  iVar1 = func_0011B4F0(*param_2,((undefined *)&D_001DF510));
+  if (iVar1 == 0) {
+    *(undefined4 *)(*(int *)(param_1 + 0xb0) + 0x4c) = 1;
+  }
+  return;
+}
+
 void func_00119E20(int param_1)
 {
   *(undefined4 *)(param_1 + 0xac) = 0xffffffff;
