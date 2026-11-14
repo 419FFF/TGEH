@@ -15,6 +15,27 @@ void func_00105380(undefined4 param_1)
   return;
 }
 
+void func_001053A0(int param_1)
+{
+  int func_0011C3E0(...);
+  int func_00116FB0(...);
+  undefined4 *puVar1;
+  int iVar2;
+  undefined4 *puVar3;
+  
+  puVar3 = *(undefined4 **)(param_1 + 4);
+  while (puVar3 != (undefined4 *)0x0) {
+    puVar1 = (undefined4 *)*puVar3;
+    func_0011C3E0(puVar3);
+    iVar2 = puVar3[2];
+    func_00116FB0(*(undefined4 *)(iVar2 + 0x10));
+    func_00116FB0(iVar2);
+    puVar3 = puVar1;
+  }
+  func_00116FB0(param_1);
+  return;
+}
+
 void func_00105480(int a0, int a1, int a2) {
     int func_00137A20(...);
     extern int D_00332738;
