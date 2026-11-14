@@ -1,5 +1,6 @@
 /* 41 functions from 0x00100A60 to 0x00101A0D, found by Ghidra. */
 #include "common.h"
+#include "ghidra.h"
 
 void func_00100A60(int a0) {
     extern int D_001E5ED0;
@@ -50,6 +51,18 @@ void func_00101680(int a0) {
 void func_00101690(int a0) {
     extern int D_00324D6C;
     D_00324D6C = a0;
+}
+
+void func_00101970(int param_1)
+{
+  extern undefined4 D_00324D78;
+  int func_00101360(...);
+  D_00324D78 = param_1;
+  if (param_1 == 0) {
+    func_00101360();
+    return;
+  }
+  return;
 }
 
 void func_001019C0(int a0) {
