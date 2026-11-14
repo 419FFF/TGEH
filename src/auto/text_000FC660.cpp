@@ -26,6 +26,14 @@ char func_000FC880(void) {
     return 1;
 }
 
+char func_000FCED0(void *param_1, int *param_2)
+{
+  int func_000F91D0(int);
+  int func_000F8870(int);
+  func_000F8870(func_000F91D0(*(int *)*(int **)((char *)param_2 + 4)));
+  return 1;
+}
+
 char func_000FCEF0(void *param_1, int *param_2)
 {
   int func_000F91D0(int);
