@@ -26,6 +26,18 @@ void func_00090F10(void) {
     func_0011D0E0((int)&D_001D6FE0);
 }
 
+void func_000912F0(void)
+{
+  extern undefined4 D_003041F0;
+  int func_001103C0(...);
+  extern undefined4 D_003041EC;
+  D_003041F0 = D_003041F0 + -1;
+  if (D_003041F0 == 0) {
+    func_001103C0(D_003041EC);
+  }
+  return;
+}
+
 void func_00091310(int a0) {
     extern int D_003041EC;
     int func_0010F750(...);
