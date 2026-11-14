@@ -82,3 +82,24 @@ void func_00106080(int param_1, int param_2, int *param_3)
   return;
 }
 
+undefined4 func_001060A0(undefined4 param_1)
+{
+  extern undefined4 D_0032511C;
+  int func_0011B4F0(...);
+  extern undefined4 D_00325120;
+  int iVar1;
+  int iVar2;
+  
+  iVar2 = 0;
+  if (D_0032511C != 0) {
+    do {
+      iVar1 = func_0011B4F0(param_1,*(undefined4 *)(D_00325120 + iVar2 * 4));
+      if (iVar1 == 0) {
+        return *(undefined4 *)(D_00325120 + iVar2 * 4);
+      }
+      iVar2 = iVar2 + 1;
+    } while (iVar2 != D_0032511C);
+  }
+  return 0;
+}
+
