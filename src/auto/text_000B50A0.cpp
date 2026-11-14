@@ -1,11 +1,18 @@
 /* 23 functions from 0x000B50A0 to 0x000B58B3, found by Ghidra. */
 #include "common.h"
+#include "ghidra.h"
 
 void func_000B50A0(void) {
     extern int D_00313D84;
     extern int D_00313BB0;
     D_00313D84 = -1;
     D_00313BB0 = -1;
+}
+
+void func_000B5420(int param_1, undefined1 param_2)
+{
+  *(undefined1 *)(param_1 + 0x3c) = param_2;
+  return;
 }
 
 void func_000B54A0(void) {
