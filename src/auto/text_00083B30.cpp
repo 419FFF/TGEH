@@ -2,6 +2,24 @@
 #include "common.h"
 #include "ghidra.h"
 
+void func_00083D00(int param_1, int param_2)
+{
+  int func_00116A90(...);
+  int func_0011DED0(...);
+  undefined4 *puVar1;
+  
+  puVar1 = (undefined4 *)func_00116A90(0x10,1,0);
+  *(undefined4 **)(param_1 + 0x17c) = puVar1;
+  *puVar1 = 0;
+  puVar1[1] = 0;
+  puVar1[2] = 0;
+  puVar1[3] = 0;
+  *(undefined4 *)(param_2 + 0x11c) = 4;
+  *(undefined4 *)(param_2 + 0x120) = 5;
+  func_0011DED0(param_1);
+  return;
+}
+
 undefined4 func_00083D60(int param_1)
 {
   return **(undefined4 **)(param_1 + 0x17c);
