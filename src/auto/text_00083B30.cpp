@@ -19,6 +19,11 @@ undefined4 func_00084080(int param_1)
   return *(undefined4 *)(((undefined *)&D_002FBBD8) + param_1 * 0x14);
 }
 
+void func_00084390(void) {
+    int func_00136510(...);
+    func_00136510(-1082130432, 1065353216, -1082130432, 1065353216);
+}
+
 void func_00084740(void) {
     extern int D_002FDD60;
     D_002FDD60 = 0;
