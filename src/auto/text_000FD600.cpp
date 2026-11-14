@@ -22,6 +22,13 @@ unsigned char func_000FD7A0(unsigned int param_1, unsigned int *param_2)
   return 1;
 }
 
+unsigned char func_000FD7E0(unsigned int param_1, unsigned int *param_2)
+{
+  int func_0002A1A0(...);
+  func_0002A1A0(*param_2, 1);
+  return 1;
+}
+
 char func_000FD940(void) {
     int func_00044E50(...);
     func_00044E50();
