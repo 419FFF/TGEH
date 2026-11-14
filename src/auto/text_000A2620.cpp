@@ -230,6 +230,22 @@ void func_000A2BF0(int param_1, int param_2)
   return;
 }
 
+void func_000A2D70(void)
+{
+  extern undefined4 D_00311B30;
+  extern undefined4 D_00311B34;
+  extern undefined4 D_00311B38;
+  extern undefined4 D_00311B3C;
+  if ((((D_00311B30 == 2) && (D_00311B34 == 2)) && (D_00311B38 == 2)) && (D_00311B3C == 2))
+  {
+    D_00311B30 = 0;
+    D_00311B34 = 0;
+    D_00311B38 = 0;
+    D_00311B3C = 0;
+  }
+  return;
+}
+
 void func_000A2E30(char a0) {
     extern char D_003128A0;
     D_003128A0 = a0;
