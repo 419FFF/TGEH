@@ -25,6 +25,14 @@ void func_0013AF50(void *param_1)
     ((void (__stdcall *)(void *))__imp__RtlEnterCriticalSection)(param_1);
 }
 
+void func_0013AF70(void *param_1)
+{
+  extern unsigned char D_00334E31;
+  extern void *__imp__RtlLeaveCriticalSection;
+  if (D_00334E31 == 0 && param_1 != 0)
+    ((void (__stdcall *)(void *))__imp__RtlLeaveCriticalSection)(param_1);
+}
+
 void func_0013B280(undefined4 *param_1, char param_2)
 {
   int __stdcall func_00109C1F(int);
