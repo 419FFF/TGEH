@@ -7,6 +7,11 @@ void func_000FBC20(int a0, int a1) {
     func_000FBAB0(a0, a1, 1);
 }
 
+void func_000FBC40(int a0, int a1) {
+    int func_000FBAB0(...);
+    func_000FBAB0(a0, a1, 0);
+}
+
 undefined1 func_000FC280(void)
 {
   extern undefined4 D_00312DDC;
