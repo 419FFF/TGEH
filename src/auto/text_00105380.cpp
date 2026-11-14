@@ -70,6 +70,8 @@ void func_00105CC0(void)
   return;
 }
 
+int _func_00106060(int *p) { int _func_00026970(...); return _func_00026970(p[9]); }
+
 int func_00106070(int param_1, int *param_2)
 {
   return param_2[1] * param_1 + *param_2;
