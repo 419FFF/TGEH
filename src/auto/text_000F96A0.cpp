@@ -37,6 +37,27 @@ int func_000F9760(void)
   return D_00324B80 + -0x48 + D_00324B84 * 0x48;
 }
 
+void func_000FA270(int param_1, undefined4 param_2, undefined4 *param_3)
+{
+  int func_000F9D50(...);
+  extern undefined4 D_00308158;
+  int func_0009C6A0(...);
+  int func_0009C590(...);
+  char cVar1;
+  undefined4 uVar2;
+  undefined1 local_80 [128];
+  
+  cVar1 = func_000F9D50(param_1,param_2,local_80);
+  if ((cVar1 != '\0') && (*(int *)(param_1 + 0xc) != D_00308158)) {
+    uVar2 = func_0009C6A0(*(int *)(param_1 + 0xc),param_2);
+    *param_3 = uVar2;
+    return;
+  }
+  uVar2 = func_0009C590(local_80);
+  *param_3 = uVar2;
+  return;
+}
+
 void func_000FA640(int param_1, char param_2)
 {
   if (param_2 != '\0') {
