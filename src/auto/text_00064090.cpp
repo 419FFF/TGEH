@@ -15,3 +15,9 @@ void func_00064440(int a0) {
     extern int D_002F769C;
     D_002F769C = a0;
 }
+
+void func_00064450(int a0) {
+    extern int D_002F76A0;
+    D_002F76A0 = a0;
+}
+
