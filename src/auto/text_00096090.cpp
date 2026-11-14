@@ -24,6 +24,28 @@ void func_00096E30(int a0) {
     D_00307C10 = a0;
 }
 
+void func_00096EB0(int param_1)
+{
+  int func_0011B990(...);
+  int __stdcall func_0014DF80(int);
+  int func_00116FB0(...);
+  int func_000968D0(...);
+  short *psVar1;
+  
+  if (*(int *)(param_1 + 0x100) != 0) {
+    psVar1 = (short *)(*(int *)(param_1 + 0x100) + 0x2a);
+    *psVar1 = *psVar1 + -1;
+    func_0011B990(*(undefined4 *)(param_1 + 0x100));
+  }
+  func_0014DF80((int)(*(undefined4 *)(param_1 + 0xf8)));
+  *(undefined4 *)(param_1 + 0xf8) = 0;
+  func_0014DF80((int)(*(undefined4 *)(param_1 + 0xfc)));
+  *(undefined4 *)(param_1 + 0xfc) = 0;
+  func_00116FB0(0);
+  func_000968D0(*(undefined4 *)(param_1 + 0xf4));
+  return;
+}
+
 void func_00096F20(undefined4 param_1, int param_2, undefined4 param_3)
 {
   int func_0010F750(...);
