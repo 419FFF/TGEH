@@ -8,6 +8,38 @@ void func_0007A080(void) {
     func_0011D0E0((int)&D_001D6548);
 }
 
+void func_0007A240(int param_1, undefined4 param_2, int param_3)
+{
+  int func_0011E3D0(...);
+  int func_0012E7B0(...);
+  extern undefined4 D_001D2B64;
+  extern undefined4 D_001D411C;
+  int func_0011CFC0(...);
+  int func_0011CE50(...);
+  int iVar1;
+  longdouble lVar2;
+  undefined4 uVar3;
+  func_0011E3D0(param_1);
+  iVar1 = *(int *)(param_1 + 0x17c);
+  lVar2 = (longdouble)func_0012E7B0((undefined4 *)(iVar1 + 4),(undefined4 *)(param_3 + 0x30));
+  param_1 = param_1 + 0x54;
+  if ((longdouble)D_001D2B64 <= lVar2) {
+    if ((longdouble)D_001D411C <= lVar2) {
+      func_0011CFC0(param_1,0x41f00000);
+      uVar3 = 0xbf000000;
+    } else {
+      func_0011CFC0(param_1,0x40a00000);
+      uVar3 = 0xbf333333;
+    }
+    func_0011CE50(param_1,0,0,0,uVar3);
+  } else {
+    func_0011CFC0(param_1,0);
+  }
+  *(undefined4 *)(iVar1 + 4) = *(undefined4 *)(param_3 + 0x30);
+  *(undefined4 *)(iVar1 + 8) = *(undefined4 *)(param_3 + 0x34);
+  *(undefined4 *)(iVar1 + 0xc) = *(undefined4 *)(param_3 + 0x38);
+}
+
 void func_0007A340(void) {
     extern int D_001D6554;
     int func_0011D0E0(...);
@@ -29,6 +61,41 @@ void func_0007A4A0(void)
     uVar1 = uVar1 + 0x10;
   } while (uVar1 < 0x40);
   return;
+}
+
+void func_0007A850(int param_1)
+{
+  int func_00131310(...);
+  int func_00131760(...);
+  extern undefined4 D_001D541C;
+  extern undefined4 D_001D5420;
+  extern undefined4 D_001D35FC;
+  extern undefined4 D_001D31C8;
+  uint uVar1; int iVar2; int iVar3; longdouble lVar4;
+  iVar2 = 0xf;
+  do {
+    uVar1 = func_00131310();
+    iVar3 = (uVar1 % *(uint *)(param_1 + 0x15c)) * 0x58;
+    lVar4 = (longdouble)func_00131760();
+    *(float *)(*(int *)(param_1 + 0x160) + 0x30 + iVar3) = (float)(lVar4 * (longdouble)D_001D541C - (longdouble)D_001D5420);
+    lVar4 = (longdouble)func_00131760();
+    *(float *)(*(int *)(param_1 + 0x160) + 0x34 + iVar3) = (float)(lVar4 * (longdouble)D_001D35FC - (longdouble)D_001D31C8);
+    lVar4 = (longdouble)func_00131760();
+    iVar2 = iVar2 + -1;
+    *(float *)(*(int *)(param_1 + 0x160) + 0x38 + iVar3) = (float)(lVar4 * (longdouble)D_001D541C - (longdouble)D_001D5420);
+  } while (iVar2 != 0);
+}
+
+void func_0007AA40(void)
+{
+  extern int D_001D6560;
+  int func_0011D000(...); int func_0011D270(...); int func_0011D290(...); int func_0011D2B0(...); int func_0011D2D0(...);
+  int func_0007A690(...); int func_000688D0(...); int func_00085E20(...); int func_0007A850(...); int func_0007A8D0(...);
+  func_0011D000(&D_001D6560,func_0007A690);
+  func_0011D270(&D_001D6560,func_000688D0);
+  func_0011D290(&D_001D6560,func_00085E20);
+  func_0011D2B0(&D_001D6560,func_0007A850);
+  func_0011D2D0(&D_001D6560,func_0007A8D0);
 }
 
 void func_0007AA90(void) {
