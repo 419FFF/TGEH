@@ -20,6 +20,16 @@ void func_0011E7E0(int param_1)
   return;
 }
 
+void func_0011E800(int param_1)
+{
+  int func_00116A90(...);
+  undefined4 uVar1;
+  
+  uVar1 = func_00116A90(*(int *)(param_1 + 0x150) * *(int *)(param_1 + 0x148),1,1);
+  *(undefined4 *)(param_1 + 0x14c) = uVar1;
+  return;
+}
+
 void func_0011E830(int param_1, undefined4 param_2)
 {
   *(undefined4 *)(param_1 + 0x158) = param_2;
