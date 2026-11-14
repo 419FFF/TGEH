@@ -7,6 +7,12 @@ char func_000FD6C0(void) {
     return 1;
 }
 
+char func_000FD940(void) {
+    int func_00044E50(...);
+    func_00044E50();
+    return 1;
+}
+
 void func_000FDFB0(void) {
     int func_000C1370(...);
     func_000C1370();
