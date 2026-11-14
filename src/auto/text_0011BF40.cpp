@@ -69,6 +69,23 @@ undefined4 func_0011CCD0(int param_1)
   return *puVar1;
 }
 
+extern int _D_003281D4;
+extern int _D_003281D0;
+extern int __cdecl _func_00110370(void*);
+extern void _func_0011C540(void);
+void __cdecl _func_0011CD00(void)
+{
+    if (_D_003281D4 == 0) {
+        int local[7];
+        local[4] = 0;
+        local[1] = 0;
+        local[2] = 0;
+        local[3] = (int)_func_0011C540;
+        _D_003281D0 = _func_00110370(local);
+    }
+    ++_D_003281D4;
+}
+
 void func_0011CDF0(int param_1)
 {
   undefined1 *puVar1;
