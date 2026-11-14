@@ -1,2 +1,7 @@
 /* 11 functions from 0x0003F990 to 0x0004098B, found by Ghidra. */
 #include "common.h"
+
+void func_000400A0(char a0) {
+    extern char D_002EEAA2;
+    D_002EEAA2 = a0;
+}
