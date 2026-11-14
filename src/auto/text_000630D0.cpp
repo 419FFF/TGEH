@@ -29,6 +29,14 @@ void func_00063320(void) {
     func_0005D410(D_001E3B30, (int)&D_002EEE70, (int)&D_002EEF08);
 }
 
+void func_00063340(void) {
+    extern int D_001E3B30;
+    extern int D_002EF4F4;
+    extern int D_002EF4E4;
+    int func_0005D410(...);
+    func_0005D410(D_001E3B30, (int)&D_002EF4E4, (int)&D_002EF4F4);
+}
+
 void func_00063C40(void) {
     extern char D_002F7314;
     D_002F7314 = 0;
