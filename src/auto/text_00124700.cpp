@@ -2,6 +2,12 @@
 #include "common.h"
 #include "ghidra.h"
 
+void func_00124BE0(int param_1, float param_2)
+{
+  *(float *)(param_1 + 0xc) = param_2;
+  *(unsigned char *)(param_1 + 0x12) = 1;
+}
+
 void func_00124DC0(undefined4 *param_1)
 {
   int func_00116A90(...);
