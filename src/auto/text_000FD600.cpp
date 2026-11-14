@@ -1,5 +1,6 @@
 /* 91 functions from 0x000FD600 to 0x000FE408, found by Ghidra. */
 #include "common.h"
+#include "ghidra.h"
 
 char func_000FD6C0(void) {
     int func_000A8A90(...);
@@ -142,6 +143,15 @@ char func_000FDF30(void) {
 void func_000FDFB0(void) {
     int func_000C1370(...);
     func_000C1370();
+}
+
+undefined1 func_000FE1C0(void)
+{
+  int func_0005F310(...);
+  int func_0005CCC0(...);
+  func_0005F310(0);
+  func_0005CCC0(1);
+  return 1;
 }
 
 char func_000FE380(void) {
