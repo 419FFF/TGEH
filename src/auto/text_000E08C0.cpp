@@ -5,3 +5,9 @@ void func_000E1110(int a0) {
     extern int D_001E556C;
     D_001E556C = a0;
 }
+
+void func_000E1270(int a0) {
+    extern int D_0031FEC4;
+    D_0031FEC4 = a0;
+}
+
