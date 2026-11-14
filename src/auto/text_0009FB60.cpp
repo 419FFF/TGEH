@@ -5,3 +5,9 @@ float func_000A05A0(void) {
     extern float D_003115CC;
     return D_003115CC;
 }
+
+int func_000A05B0(void) {
+    extern int D_00311548;
+    return D_00311548;
+}
+
