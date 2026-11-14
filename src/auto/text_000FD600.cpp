@@ -133,6 +133,12 @@ char func_000FDF20(void) {
     return 1;
 }
 
+char func_000FDF30(void) {
+    int func_000B6510(...);
+    func_000B6510(16, 0);
+    return 1;
+}
+
 void func_000FDFB0(void) {
     int func_000C1370(...);
     func_000C1370();
