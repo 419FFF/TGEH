@@ -13,3 +13,15 @@ void func_000809C0(void)
   }
   return;
 }
+
+void func_00080A10(void) {
+    extern int D_002FBA90;
+    extern int D_002FBAF0;
+    extern int D_002FBA94;
+    extern int D_002FBAF8;
+    D_002FBA90 = 0;
+    D_002FBAF0 = 0;
+    D_002FBA94 = 0;
+    D_002FBAF8 = 1;
+}
+
