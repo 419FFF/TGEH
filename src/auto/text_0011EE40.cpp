@@ -25,6 +25,7 @@ void func_0011FD30(int param_1, undefined4 param_2)
   return;
 }
 
+extern int _D_003291B8;
 extern int _D_003291BC;
 extern int _D_00328200;
 extern int __cdecl _func_00110370(void*);
