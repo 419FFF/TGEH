@@ -52,6 +52,24 @@ void func_001054B0(int a0) {
     D_003250E4 = a0;
 }
 
+void func_00105CC0(void)
+{
+  extern undefined4 D_00313B54;
+  int func_0011B990(...);
+  extern undefined4 D_003250E8;
+  int func_00110760(...);
+  extern undefined4 D_003250FC;
+  int func_000845C0(...);
+  if ((D_00313B54 != 1) && (D_00313B54 != 2)) {
+    func_0011B990(D_003250E8);
+    return;
+  }
+  func_00110760(**(undefined4 **)(D_003250FC + 0x28));
+  func_00110760(D_003250FC);
+  func_000845C0();
+  return;
+}
+
 int func_00106070(int param_1, int *param_2)
 {
   return param_2[1] * param_1 + *param_2;
