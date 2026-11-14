@@ -28,6 +28,17 @@ void func_00120E70(undefined4 param_1, undefined4 param_2, undefined4 param_3, u
   return;
 }
 
+void func_00120EA0(int a0, int a1, char a2, char a3) {
+    extern int D_0032B6F8;
+    extern int D_0032B6FC;
+    extern char D_001E7D40;
+    extern char D_0032B700;
+    D_0032B6F8 = a0;
+    D_0032B6FC = a1;
+    D_001E7D40 = a2;
+    D_0032B700 = a3;
+}
+
 void func_00120F60(int a0) {
     extern int D_001E7D2C;
     D_001E7D2C = a0;
