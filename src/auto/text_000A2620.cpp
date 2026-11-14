@@ -38,6 +38,26 @@ void func_000A2840(void) {
     func_00102E80(D_00311678);
 }
 
+void func_000A2850(int param_1)
+{
+  extern undefined4 D_00312480;
+  extern undefined4 D_00312488;
+  if (param_1 == 0) {
+    if (D_00312480 != 0) {
+      D_00312480 = 3;
+      return;
+    }
+  }
+  else {
+    if (D_00312480 != 1) {
+      D_00312480 = 2;
+      return;
+    }
+    D_00312488 = 0x41200000;
+  }
+  return;
+}
+
 void func_000A2990(int param_1)
 {
   extern undefined4 D_00312734;
