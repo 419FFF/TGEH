@@ -47,6 +47,17 @@ void func_0007B3A0(void)
   return;
 }
 
+void _func_0007B710(void)
+{
+  extern int D_001D65F8;
+  int _func_0011D000(...);
+  int _func_0011D2B0(...);
+  int _func_0007B560(...);
+  int _func_000688D0(...);
+  _func_0011D000(&D_001D65F8, _func_0007B560);
+  _func_0011D2B0(&D_001D65F8, _func_000688D0);
+}
+
 void func_0007B740(void) {
     extern int D_001D65F8;
     int func_0011D0E0(...);
