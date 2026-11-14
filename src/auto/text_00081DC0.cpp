@@ -31,3 +31,14 @@ void func_00082B70(void) {
     func_0011D0E0((int)&D_001D681C);
 }
 
+void func_00082CA0(void)
+{
+  int func_001160B0(...);
+  extern undefined4 D_002FBB1C;
+  int func_00110760(...);
+  extern undefined4 D_002FBB18;
+  func_001160B0(D_002FBB1C);
+  func_00110760(D_002FBB18);
+  return;
+}
+
