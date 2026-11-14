@@ -53,6 +53,28 @@ void func_000FA740(void) {
     func_000FA600();
 }
 
+void _func_000FA8D0(void)
+{
+  int func_00063C40(...);
+  extern undefined4 D_003104B4;
+  extern undefined D_0030C630;
+  int func_000F9C00(...);
+  extern undefined D_001DD164;
+  int func_000FA750(...);
+  int iVar1;
+  int iVar2;
+  
+  func_00063C40();
+  iVar1 = D_003104B4;
+  while (iVar1 = iVar1 + -1, -1 < iVar1) {
+    if ((*(int *)(((undefined *)&D_0030C630) + iVar1 * 4) != 0) &&
+       (iVar2 = func_000F9C00(*(int *)(((undefined *)&D_0030C630) + iVar1 * 4),((undefined *)&D_001DD164)), iVar2 != 0)) {
+      func_000FA750(iVar2);
+    }
+  }
+  return;
+}
+
 undefined1 func_000FAE20(undefined4 param_1, int *param_2)
 {
   int func_000A2230(...);
@@ -79,10 +101,12 @@ undefined1 func_000FAE20(undefined4 param_1, int *param_2)
 
 undefined4 _func_000FB200(undefined4 param_1, undefined4 *param_2)
 {
-    int func_0001CC10(...);
-    func_0001CC10(*param_2);
-    return 1;
+  int func_0001CC10(...);
+  func_0001CC10(*param_2);
+  return 1;
 }
+
+unsigned char _func_000FB300(int a, int *p) { int func_0005D3F0(...); func_0005D3F0(p[1]); return 1; }
 
 int _func_0005DA70(...);
 unsigned char _func_000FB340(unsigned int a, unsigned int *p)
