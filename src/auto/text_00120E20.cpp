@@ -18,3 +18,10 @@ void func_00120F70(int a0) {
     D_001E7D30 = a0;
 }
 
+void func_00120F80(int a0, int a1) {
+    extern int D_0032B704;
+    extern int D_0032B708;
+    D_0032B704 = a0;
+    D_0032B708 = a1;
+}
+
