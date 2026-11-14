@@ -25,3 +25,37 @@ void func_000EFA10(void)
   func_00110760(D_003246D0);
   return;
 }
+
+void func_000EFA70(void)
+{
+  extern undefined4 D_00313B54;
+  extern undefined4 D_003246CC;
+  extern undefined4 D_00324694;
+  switch(D_00313B54) {
+  case 3:
+    D_003246CC = 0;
+    D_00324694 = 3;
+    return;
+  case 4:
+    D_003246CC = 1;
+    D_00324694 = 4;
+    return;
+  case 5:
+    D_003246CC = 2;
+    D_00324694 = 5;
+    return;
+  case 6:
+    D_003246CC = 3;
+    D_00324694 = 6;
+    return;
+  case 7:
+    D_003246CC = 4;
+    D_00324694 = 7;
+    return;
+  case 8:
+    D_003246CC = 5;
+    D_00324694 = 8;
+  }
+  return;
+}
+
