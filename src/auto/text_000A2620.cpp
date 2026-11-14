@@ -282,6 +282,15 @@ void func_000A2E40(int a0, int a1, int a2, int a3) {
     D_00311690 = a3;
 }
 
+void func_000A3020(undefined4 *param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4, undefined4 param_5, undefined4 param_6, undefined4 param_7, undefined4 param_8)
+{
+  int func_000A2E70(...);
+  func_000A2E70(param_1 + 1,param_2,param_5,param_6,param_7,param_8);
+  func_000A2E70(param_1 + 0xb,param_3,param_5,param_6,param_7,param_8);
+  *param_1 = param_4;
+  return;
+}
+
 void func_000A3130(char a0, int a1) {
     extern char D_00312824;
     extern int D_00312820;
