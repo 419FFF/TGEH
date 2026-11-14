@@ -26,16 +26,20 @@ void func_000787A0(void) {
     func_0011D0E0((int)&D_001D64BC);
 }
 
-void _func_000789C0(void) {
-    int func_0011D0E0(...);
-    extern undefined D_001D64D0;
-    func_0011D0E0((int)&D_001D64D0);
-    int func_0011D270(...);
-    func_0011D270(((undefined *)&D_001D64D0), &func_0011D270);
-    int func_0011D290(...);
-    func_0011D290(((undefined *)&D_001D64D0), &func_0011D290);
-    int func_0011D2B0(...);
-    func_0011D2B0(((undefined *)&D_001D64D0), &func_0011D2B0);
+void _func_000789C0(void)
+{
+  extern int D_001D64D0;
+  int _func_0011D000(...);
+  int _func_0011D270(...);
+  int _func_0011D290(...);
+  int _func_0011D2B0(...);
+  int _func_000787B0(...);
+  int _func_000688D0(...);
+  int _func_00085E20(...);
+  _func_0011D000(&D_001D64D0, _func_000787B0);
+  _func_0011D270(&D_001D64D0, _func_000688D0);
+  _func_0011D290(&D_001D64D0, _func_00085E20);
+  _func_0011D2B0(&D_001D64D0, _func_000688D0);
 }
 
 void func_00078A00(void) {
