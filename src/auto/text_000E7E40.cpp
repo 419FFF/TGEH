@@ -2,6 +2,11 @@
 #include "common.h"
 #include "ghidra.h"
 
+#pragma optimize("y", on)
+void func_000E8310(char a0) {
+    extern char _D_00323E48;
+    _D_00323E48 = a0;
+}
 void func_000E8320(void)
 {
   int func_000687F0(...);
