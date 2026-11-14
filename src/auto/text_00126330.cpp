@@ -2,6 +2,19 @@
 #include "common.h"
 #include "ghidra.h"
 
+void func_001266B0(int param_1)
+{
+  int func_0011C3E0(...);
+  int func_00116FB0(...);
+  func_0011C3E0(param_1);
+  func_00116FB0(*(undefined4 *)(param_1 + 0x18));
+  func_00116FB0(*(undefined4 *)(param_1 + 0x14));
+  func_00116FB0(*(undefined4 *)(param_1 + 0x10));
+  func_00116FB0(*(undefined4 *)(param_1 + 0x1c));
+  func_00116FB0(param_1);
+  return;
+}
+
 void func_00127170(void) {
     int func_00126EC0(...);
     func_00126EC0();
