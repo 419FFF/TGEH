@@ -2,6 +2,17 @@
 #include "common.h"
 #include "ghidra.h"
 
+void func_000FFA60(void) {
+    extern int D_00324BA4;
+    extern int D_00324BA8;
+    extern int D_00324BB0;
+    extern int D_00324BB4;
+    D_00324BA4 = 0;
+    D_00324BA8 = 0;
+    D_00324BB0 = 0;
+    D_00324BB4 = 0;
+}
+
 void func_00100750(undefined4 param_1)
 {
   extern undefined D_001E5EC8;
