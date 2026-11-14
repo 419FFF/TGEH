@@ -2,6 +2,13 @@
 #include "common.h"
 #include "ghidra.h"
 
+void func_000AF470(int ignored)
+{
+  extern undefined4 D_00313B00;
+  int func_0013B380(undefined4);
+  func_0013B380(D_00313B00);
+}
+
 void func_000AF480(void)
 {
   extern undefined D_00313940;
