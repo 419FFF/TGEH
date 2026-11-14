@@ -13,3 +13,9 @@ void func_000930A0(void) {
     func_0011D0E0((int)&D_001D2F30);
 }
 
+void func_00093490(void) {
+    extern int D_001D2F28;
+    int func_0011D0E0(...);
+    func_0011D0E0((int)&D_001D2F28);
+}
+
