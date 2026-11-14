@@ -1,5 +1,15 @@
 /* 12 functions from 0x00064090 to 0x00064F3E, found by Ghidra. */
 #include "common.h"
+#include "ghidra.h"
+
+void func_00064180(void)
+{
+  int func_00063FD0(...);
+  int func_00064090(...);
+  func_00063FD0();
+  func_00064090();
+  return;
+}
 
 void func_00064440(int a0) {
     extern int D_002F769C;
