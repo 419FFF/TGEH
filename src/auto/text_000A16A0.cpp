@@ -21,6 +21,39 @@ int func_000A2230(undefined4 *param_1, undefined4 param_2)
   return iVar1;
 }
 
+void func_000A2410(undefined4 *param_1, undefined4 param_2)
+{
+  int func_00115410(...);
+  extern undefined4 D_003080B0;
+  extern undefined4 D_00307D00;
+  extern undefined4 D_00307CFC;
+  int func_00116800(...);
+  extern undefined4 D_00307CF4;
+  int func_000A2070(...);
+  int func_00116820(...);
+  undefined4 *puVar1;
+  
+  if (param_1[0xd] != 0) {
+    func_00115410(param_1[0xd],param_2);
+  }
+  if (((param_1 == (undefined4 *)(D_003080B0 + 100)) ||
+      (param_1 == (undefined4 *)(D_00307D00 + 100))) ||
+     (param_1 == (undefined4 *)(D_00307CFC + 100))) {
+    func_00116800(D_00307CF4);
+  }
+  for (puVar1 = (undefined4 *)*param_1; puVar1 != (undefined4 *)0x0; puVar1 = (undefined4 *)*puVar1)
+  {
+    func_000A2070(puVar1[2],param_2);
+  }
+  if (((param_1 != (undefined4 *)(D_003080B0 + 100)) &&
+      (param_1 != (undefined4 *)(D_00307D00 + 100))) &&
+     (param_1 != (undefined4 *)(D_00307CFC + 100))) {
+    return;
+  }
+  func_00116820();
+  return;
+}
+
 void func_000A2500(undefined4 param_1)
 {
   int func_00120E00(...);
