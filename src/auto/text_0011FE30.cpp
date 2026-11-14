@@ -11,6 +11,17 @@ void func_00120B60(undefined4 param_1, undefined4 param_2)
   return;
 }
 
+void func_00120B80(undefined4 param_1, undefined4 param_2)
+{
+  int func_001360A0(...);
+  extern undefined4 D_003292E0;
+  extern undefined4 D_00329330;
+  func_001360A0(param_1,param_2);
+  D_003292E0 = 0;
+  D_00329330 = 0;
+  return;
+}
+
 void func_00120E00(int param_1)
 {
   extern undefined4 D_0032B6F4;
