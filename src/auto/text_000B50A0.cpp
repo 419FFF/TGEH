@@ -16,3 +16,8 @@ void func_000B54C0(void) {
     func_000400C0();
 }
 
+char func_000B5690(void) {
+    extern char D_00313F0E;
+    return D_00313F0E;
+}
+
