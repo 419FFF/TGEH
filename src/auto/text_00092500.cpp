@@ -42,3 +42,24 @@ void func_00093490(void) {
     func_0011D0E0((int)&D_001D2F28);
 }
 
+undefined4 func_000934A0(undefined4 param_1)
+{
+  int func_0010F750(...);
+  extern undefined4 D_00306E58;
+  extern undefined4 D_00306E60;
+  int func_000688D0(...);
+  extern undefined4 D_00306E64;
+  int func_0011BF40(...);
+  extern undefined D_001D7160;
+  undefined4 uVar1;
+  
+  uVar1 = func_0010F750(param_1,D_00306E58,0x160);
+  if (D_00306E60 == 0) {
+    func_000688D0();
+    D_00306E64 = func_0011BF40(((undefined *)&D_001D7160),0);
+    func_000688D0();
+  }
+  D_00306E60 = D_00306E60 + 1;
+  return uVar1;
+}
+
