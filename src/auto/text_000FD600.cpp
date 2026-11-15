@@ -58,6 +58,8 @@ char func_000FD940(void) { int func_00044E50(...); func_00044E50(); return 1; }
 
 unsigned char _func_000FD950(int *p, int *q) { extern int D_003248E8, D_003248EC, D_003248F0; int func_0009C590(...); int func_0009A0D0(...); D_003248E8=p[3]; D_003248EC=func_0009C590(**(int **)(q+1)); D_003248F0=func_0009C590(**(int **)(q+3)); func_0009A0D0(4); return 1; }
 
+unsigned char _func_000FDA60(int *p, int *q) { extern int D_00307DF8, D_00308158; int *x=*(int **)(D_00307DF8+0x110); if (*x != 0x25 && *x != 0x26) { *x=0x25; x[0x104]=**(int **)(q+1); x[0x105]=p[3]==D_00308158 ? 0 : p[3]; } return 1; }
+
 char func_000FDCF0(void) {
     int func_00100990(...);
     func_00100990(1);
@@ -231,6 +233,8 @@ undefined1 func_000FE1C0(void)
   func_0005CCC0(1);
   return 1;
 }
+
+unsigned char _func_000FE210(unsigned int a, unsigned int *p) { int _func_000912B0(unsigned int); _func_000912B0(*p); return 1; }
 
 unsigned char func_000FE300(int param_1)
 {
