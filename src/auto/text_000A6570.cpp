@@ -35,6 +35,19 @@ int func_000A6900(void) {
     return D_00312D78;
 }
 
+unsigned char func_000A6910(void)
+{
+  extern void *_D_00312D78;
+  extern int _D_00313A94, _D_00313ABC, _D_00313B58, _D_00313B24;
+  unsigned char result = 0;
+  unsigned char *base = *(unsigned char **)((char *)_D_00312D78 + 0x10);
+  if (*(short *)(base + _D_00313A94 * 0x18 + 0x10) ||
+      *(short *)(base + _D_00313ABC * 0x18 + 0x10) ||
+      *(short *)(base + _D_00313B58 * 0x18 + 0x10) ||
+      *(short *)(base + _D_00313B24 * 0x18 + 0x10)) result = 1;
+  return result;
+}
+
 void func_000A69E0(void)
 {
   extern undefined4 D_00312C34;
