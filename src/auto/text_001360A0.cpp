@@ -5,6 +5,7 @@
 extern int D_00332738, D_0033273C, D_00332740;
 extern int D_003326AC, D_003323A0, D_0033244C, D_00332340;
 extern void __stdcall RtlEnterCriticalSection(int *);
+extern void __stdcall __imp__RtlEnterCriticalSection(int *);
 extern void __stdcall RtlLeaveCriticalSection(int *);
 int func_001378E0(...);
 int func_00137A20(...);
@@ -15,9 +16,22 @@ int func_0012F310(...);
 int __stdcall func_0014ADB0(int, int *);
 int func_00011CB0(...);
 
-void func_00136440(void)
-{
-  return;
+void func_00136440(void) { return; }
+
+void func_00136450(void) {
+  RtlEnterCriticalSection(&D_003326AC);
+  int value = func_0014B050();
+  func_0014AF40(value);
+  RtlLeaveCriticalSection(&D_003326AC);
+}
+
+void func_00136480(int a, int b) {
+  RtlEnterCriticalSection(&D_003326AC);
+  D_0033244C = a;
+  func_0012F310(&D_003323A0, b);
+  func_0014ADB0(0, &D_003323A0);
+  func_00011CB0(&D_00332340, b);
+  RtlLeaveCriticalSection(&D_003326AC);
 }
 
 void func_00136AE0(void) {
