@@ -62,3 +62,22 @@ void func_0012F250(int a0, int a1, int a2) {
     int __stdcall func_0010F29B(int, int, int);
     func_0010F29B(a0, a1, a2);
 }
+
+void _func_0012F270(int *param_1, int param_2)
+{
+  int _func_0012F160(...);
+  int local[18];
+  int *p = local;
+  _func_0012F160(p + 2, param_1, param_2);
+  param_1[0] = p[2]; param_1[1] = p[3]; param_1[2] = p[4];
+  param_1[4] = p[6]; param_1[5] = p[7]; param_1[6] = p[8];
+  param_1[8] = p[10]; param_1[9] = p[11]; param_1[10] = p[12];
+}
+
+longdouble func_0012FF00(float *param_1)
+{
+  float *new_var;
+  new_var = &param_1[10];
+  return (((((longdouble) param_1[9]) * ((longdouble) param_1[4])) - (((longdouble) param_1[8]) * ((longdouble) param_1[5]))) * ((longdouble) param_1[2])) + ((((((longdouble) param_1[5]) * (*new_var)) - (((longdouble) param_1[9]) * ((longdouble) param_1[6]))) * ((longdouble) (*param_1))) - (((((longdouble) param_1[4]) * ((longdouble) (*new_var))) - (((longdouble) param_1[8]) * ((longdouble) param_1[6]))) * ((longdouble) param_1[1])));
+}
+
