@@ -171,6 +171,10 @@ unsigned char func_000FC510(unsigned int a,unsigned int *p){int func_00103180(..
 
 unsigned char func_000FC530(unsigned int a,int *p){int func_001060A0(...);int func_0013E3F4(float);int func_00106150(...);int x=func_001060A0(**(int**)((char*)p+4));int z=func_0013E3F4(*(float*)((char*)p+0x14));func_00106150(x,*(int*)((char*)p+8),z);return 1;}
 
+unsigned char func_000FC560(unsigned int a,int *p){**(unsigned int**)((char*)p+4)=0x40400000;return 1;}
+
+unsigned char func_000FC590(int *p){extern unsigned int _D_00324840;int func_0009A0D0(...);_D_00324840=*(unsigned int*)((char*)p+0xc);func_0009A0D0(3);return 1;}
+
 unsigned char func_000FC640(unsigned int a, unsigned int *p)
 {
     int func_00101680(int);
