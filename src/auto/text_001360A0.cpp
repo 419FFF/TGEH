@@ -34,9 +34,26 @@ void func_00136480(int a, int b) {
   RtlLeaveCriticalSection(&D_003326AC);
 }
 
+void func_001364D0(int a) {
+  __imp__RtlEnterCriticalSection(&D_003326AC);
+  func_0014ADB0(6, &a);
+  func_00011CB0(&D_003326D0, a);
+  RtlLeaveCriticalSection(&D_003326AC);
+}
+
 void func_00136AE0(void) {
     int func_00137B20(...);
     func_00137B20();
+}
+
+int func_00136AF0(int *param) {
+  extern int D_00332680;
+  extern int D_00332724;
+  int __stdcall func_0010C49A(int,int,int,int);
+  int __stdcall func_001472B7(int);
+  D_00332724 = func_0010C49A(*param, -1, 0, 4);
+  func_001472B7((int)&D_00332680);
+  return D_00332724;
 }
 
 void func_00136B20(void) {
