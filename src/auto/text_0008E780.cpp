@@ -53,10 +53,7 @@ void func_0008EC40(void)
  }
 }
 
-void func_0008F1F0(char a0) {
-    extern char D_00302A14;
-    D_00302A14 = a0;
-}
+void func_0008F1F0(char a0) { extern char D_00302A14; D_00302A14 = a0; }
 
 char func_0008F2E0(void) {
     extern char D_00302A14;
