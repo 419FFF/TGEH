@@ -62,6 +62,14 @@ void func_00136B20(void) {
     MmFreeContiguousMemory(D_00332724);
 }
 
+int func_00136B30(void) {
+  int __stdcall func_001472B7(int);
+  extern int D_0033269C, D_0033268C, D_00332694;
+  int local[8];
+  func_001472B7((int)local);
+  return (((D_0033269C - local[7]) - local[2]) - local[5]) + D_0033268C + D_00332694;
+}
+
 int func_00136B70(void) {
     extern int D_00332340;
     return (int)&D_00332340;
@@ -69,6 +77,16 @@ int func_00136B70(void) {
 
 int func_00136F80(void) {
     return 0;
+}
+
+void func_00136F90(short x, short y) {
+  extern short D_00332320, D_00332318;
+  if (x < -15) x = -15;
+  else if (x > 15) x = 15;
+  if (y < -15) y = -15;
+  else if (y > 15) y = 15;
+  D_00332320 = x;
+  D_00332318 = y;
 }
 
 void func_00137060(undefined4 *param_1, undefined4 *param_2, undefined4 *param_3, undefined4 *param_4)
