@@ -54,6 +54,25 @@ void func_0011C3E0(int *param_1)
   return;
 }
 
+void func_0011C410(unsigned int **param_1, unsigned int *param_2, unsigned int param_3) { *param_2 = **param_1; param_2[1] = param_3; *param_1 = param_2; }
+
+void func_0011C590(unsigned int param_1) {
+  extern unsigned int D_003280B8;
+  extern unsigned int D_003280CC[256];
+  extern unsigned int D_003280D0[256];
+  extern unsigned int D_003278B0[];
+  unsigned int i = D_003280B8;
+  if (param_1 < i) {
+    do {
+      unsigned int *p = (unsigned int *)((char *)D_003278B0 + i * 16);
+      p[2] = p[-2]; p[3] = p[-1]; p[4] = p[0]; p[5] = p[1];
+      D_003280D0[i] = D_003280CC[i];
+      --i; p -= 4;
+    } while (param_1 < i);
+  }
+  D_003280B8++;
+}
+
 undefined4 func_0011CCD0(int param_1)
 {
   undefined4 *puVar1;
@@ -102,10 +121,7 @@ void func_0011CDF0(int param_1)
   return;
 }
 
-void func_0011CE10(int param_1, double param_2)
-{
-  *(float *)(param_1 + 8) = (float)param_2;
-}
+void func_0011CE10(int param_1, float param_2) { double value = param_2; *(float *)(param_1 + 8) = (float)value; }
 
 void func_0011CE20(int param_1, float param_2)
 {
