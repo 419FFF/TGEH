@@ -26,3 +26,11 @@ int _func_0001CB50(void *arg)
     return _func_000688D0(*(void **)((char *)arg + 0x2c));
 }
 
+void func_0001CBF0(int param)
+{
+  void func_001160B0(...);
+  int value = *(int *)(param + 0x110);
+  if (value)
+    func_001160B0(value);
+}
+
