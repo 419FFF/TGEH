@@ -9,6 +9,10 @@ void func_000B50A0(void) {
     D_00313BB0 = -1;
 }
 
+bool func_000B50B0(int param_1, int param_2) { extern char _D_00313BAC[]; int func_0013F2E9(...); int i; for(i=0;i<0x3144;i+=0x106c) if(i!=param_2 && _D_00313BAC[i] && !func_0013F2E9(_D_00313BAC+i,param_1)) return 0; return 1; }
+
+undefined4 *func_000B5100(char *param_1,int param_2,int param_3) { int func_00116A90(...); int func_0006EB60(...); char c; int n; undefined4 *p; unsigned int size; p=(undefined4*)func_00116A90(0x40,1,1); size=(param_3+31)&~63; p[3]=size; p[4]=0; p[5]=0; p[2]=param_2; p[6]=func_00116A90(size*param_2,1,1); p[0]=func_0006EB60(p[3]); p[1]=func_0006EB60(p[3]); *(char*)(p+15)=1; while((c=*param_1)!=0) { ((char*)p)[0x1c+(param_1-(char*)0)]=c; param_1++; } return p; }
+
 void func_000B5180(undefined4 *param_1)
 {
   int func_00116FB0(...);
@@ -19,6 +23,8 @@ void func_000B5180(undefined4 *param_1)
   func_00116FB0(param_1);
   return;
 }
+
+int func_000B51B0(unsigned int *p) { int func_0006E9E0(...); int func_00116A90(...); unsigned int index; unsigned int *bits; if(p[4]<p[3]) { func_0006E9E0(p[0],&index); bits=(unsigned int*)(*(int*)p[0]+(index>>5)*4); *bits |= 1<<(index&31); p[4]++; if(p[4]>p[5]) p[5]=p[4]; return p[2]*index+p[6]; } if(*((char*)p+0x3c)) { p[4]++; if(p[4]>p[5])p[5]=p[4]; return func_00116A90(p[2],1,1); } return 0; }
 
 void func_000B5420(int param_1, undefined1 param_2)
 {
@@ -78,6 +84,8 @@ int func_000B57F0(void) {
     extern int D_00313ED8;
     return D_00313ED8;
 }
+
+bool func_000B5850(void) { extern volatile int _D_00313ED8; return _D_00313ED8 == 0; }
 
 void func_000B5860(void)
 {
