@@ -38,5 +38,5 @@ void func_000486C0(int *param_1)
   return;
 }
 
-int func_00048720(int *p,undefined4 a,undefined4 b,undefined4 c){int func_00116A90(...);int func_00106010(...);int q,r;if(!p[1])p[1]=func_00116A90(0x640,1,1);*(int*)(p[1]+p[0]*8)=c;r=func_00116A90(0x614,1,1);func_00106010(r+4,a,a,c);*(int*)(r+8)=b;*(int*)(r+0x5cc)=-1;*(int*)(r+0x604)=2;*(int*)(p[1]+p[0]*8+4)=r;p[0]++;return r;}
+int func_00048720(int *p,undefined4 a,undefined4 b,undefined4 c){int func_00116A90(...);int func_00106010(...);int r;if(!p[1])p[1]=func_00116A90(0x640,1,1);*(int*)(p[1]+p[0]*8)=c;r=func_00116A90(0x614,1,1);func_00106010(r+4,a,a,c);*(int*)(r+8)=b;*(int*)(r+0x5cc)=-1;*(int*)(r+0x604)=2;*(int*)(p[1]+p[0]*8+4)=r;p[0]++;return r;}
 
