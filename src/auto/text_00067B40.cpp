@@ -46,3 +46,29 @@ void func_000688B0(undefined1 param_1)
 
 void func_000688D0(void) {
 }
+
+undefined4 func_000688E0(int param_1)
+{
+  undefined *new_var2;
+  extern int D_002F82F0;
+  extern undefined D_002F7F08;
+  int iVar1;
+  undefined *new_var;
+  new_var2 = &D_002F7F08;
+  new_var = new_var2;
+  iVar1 = 0;
+  if (0 < D_002F82F0)
+  {
+    do
+    {
+      if (((*((int **) (((undefined *) new_var) + (iVar1 * 4)))) != ((int *) 0x0)) && ((*(*((int **) (((undefined *) new_var2) + (iVar1 * 4))))) == param_1))
+      {
+        return *((undefined4 *) (((undefined *) new_var2) + (iVar1 * 4)));
+      }
+      iVar1 = iVar1 + 1;
+    }
+    while (iVar1 < D_002F82F0);
+  }
+  return 0;
+}
+
