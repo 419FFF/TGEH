@@ -2,6 +2,24 @@
 #include "common.h"
 #include "ghidra.h"
 
+extern int D_00332738, D_0033273C, D_00332740;
+extern int D_003326AC, D_003323A0, D_0033244C, D_00332340;
+extern void __stdcall RtlEnterCriticalSection(int *);
+extern void __stdcall RtlLeaveCriticalSection(int *);
+int func_001378E0(...);
+int func_00137A20(...);
+int func_00137AB0(...);
+int func_0014B050(void);
+int __stdcall func_0014AF40(int);
+int func_0012F310(...);
+int __stdcall func_0014ADB0(int, int *);
+int func_00011CB0(...);
+
+void func_00136440(void)
+{
+  return;
+}
+
 void func_00136AE0(void) {
     int func_00137B20(...);
     func_00137B20();
