@@ -47,7 +47,7 @@ undefined4 func_000957A0(undefined4 param_1)
 
 int func_000959D0(int param_1, undefined4 param_2)
 {
-  int func_0011B4F0(...);
+  int func_0011B4F0(int, undefined4);
   undefined4 *puVar1;
   int iVar2;
   
