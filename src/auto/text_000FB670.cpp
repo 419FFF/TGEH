@@ -140,12 +140,7 @@ undefined1 func_000FC290(void)
 }
 
 extern int D_001D27B8;
-unsigned char func_000FC2E0(unsigned int param_1, unsigned int *param_2)
-{
-  int func_000459A0(...);
-  func_000459A0(*param_2, 1);
-  return 1;
-}
+unsigned char func_000FC2E0(unsigned int param_1, unsigned int *param_2) { int func_000459A0(...); func_000459A0(*param_2,1); return 1; }
 
 unsigned char func_000FC300(unsigned int param_1, unsigned int *param_2)
 {
