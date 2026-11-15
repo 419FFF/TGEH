@@ -22,7 +22,7 @@ long long func_0013E3F4(float in) {
 }
 
 void func_00101690(int a0) {
-    extern int D_00324D6C;
+    int D_00324D6C = 0;
     D_00324D6C = a0;
 }
 
