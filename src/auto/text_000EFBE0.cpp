@@ -9,9 +9,15 @@ extern short _D_00324814;
 extern int _D_00313B6C;
 extern int _D_00324790;
 extern int _D_00324710;
+extern char _D_001DCCB0[];
+extern char _D_001DCC94[];
+extern char _D_001DCC78[];
+extern char _D_001DCC5C[];
+extern char _D_001DCC40[];
+extern char _D_001DCC24[];
 extern void func_0013E469(int, int);
 
 extern volatile int _D_00324700;
 extern volatile int _D_00324708;
 extern volatile int _D_0032470C;
-void func_000EFBE0(char a, int b, int c) { if (a) { _D_00324708++; if (_D_00324708 == 5) _D_00324708 = 0; } else { _D_0032470C++; if (_D_0032470C == 5) _D_0032470C = 0; } if (_D_00324708 == 1) { if (b == 0) _D_00324700--; else if (b == 1) _D_00324700++; else _D_00324700 = c; } if (_D_00324700 > 2) _D_00324700 = 0; if (_D_00324700 < 0) _D_00324700 = 2; }
+void func_000EFBE0(char a, int b, int c) { if (a) { _D_00324818 = _D_00313A78; _D_00324814 = _D_00313A7C; _D_00324810 = _D_00313A7A; switch (_D_00313B6C) { case 0: func_0013E469(0x1DCCB0, _D_00324790); func_0013E469(0x1DCC94, _D_00324710); break; case 1: func_0013E469(0x1DCC78, _D_00324790); func_0013E469(0x1DCC5C, _D_00324710); break; case 2: func_0013E469(0x1DCC40, _D_00324790); func_0013E469(0x1DCC24, _D_00324710); break; case 3: func_0013E469(0x1DCCB0, _D_00324790); func_0013E469(0x1DCC94, _D_00324790); break; case 4: func_0013E469(0x1DCCB0, _D_00324790); func_0013E469(0x1DCC94, _D_00324790); break; } } }
