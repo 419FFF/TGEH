@@ -67,6 +67,16 @@ unsigned char func_000FBD10(unsigned int a,int *p){int func_00012D60(...);*(int*
 
 unsigned char func_000FBD40(unsigned int a,int *p){int func_00012D60(...);*(int*)(*p+0x130)=p[3]+4;func_00012D60(*p,0x48);return 1;}
 
+unsigned char func_000FBD70(unsigned int a,int *p){int func_001060A0(...),func_00012D60(...);int *base=(int*)*p;int y=func_001060A0(*(int*)(p[3]+0x40));base[0x134/4]=y;base[0x138/4]=*(int*)p[5];func_00012D60(*p,13);return 1;}
+
+unsigned char func_000FBDB0(unsigned int a,int *p){int func_001060A0(...),func_00012D60(...);int *base=(int*)*p;int y=func_001060A0(*(int*)(p[3]+0x40));base[0x134/4]=y;base[0x138/4]=*(int*)p[5];func_00012D60(*p,0x2b);return 1;}
+
+unsigned char func_000FBDF0(unsigned int a,int *p){int func_001060A0(...),func_00012D60(...);int *base=(int*)*p;int y=func_001060A0(*(int*)(p[3]+0x40));base[0x134/4]=y;base[0x138/4]=*(int*)p[5];func_00012D60(*p,0x2c);return 1;}
+
+unsigned char func_000FBE30(unsigned int a,int *p){int func_001060A0(...),func_00012D60(...);int *base=(int*)*p;int y=func_001060A0(*(int*)(p[3]+0x40));base[0x134/4]=y;base[0x138/4]=*(int*)p[5];func_00012D60(*p,14);return 1;}
+
+unsigned char func_000FBE70(unsigned int a,int *p){int func_001060A0(...),func_00012D60(...);int *base=(int*)(*p+0x130);base[0]=p[3]+4;int x=func_001060A0(*(int*)(p[5]+0x40));base[1]=x;base[2]=*(int*)p[7];func_00012D60(*p,15);return 1;}
+
 undefined4 func_000FC0F0(undefined4 param_1, undefined4 *param_2)
 {
   int func_00012D60(...);
