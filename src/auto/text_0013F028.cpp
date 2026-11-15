@@ -128,7 +128,15 @@ void _func_0013F9B4(float a0) {
 
 void _func_0013F9BD(void) { }
 
-unsigned int _func_0013FA6B(unsigned int a, unsigned long long b) { volatile unsigned short *v=(volatile unsigned short*)((char*)&b+2); unsigned short x=*v; return (x & 0x7ff0) != 0x7ff0; }
+int func_0013FC97(int param_1) { int func_0013FC5F(...); return func_0013FC5F(param_1); }
+
+int func_0013FCA9(int param_1) { extern int D_002E8EE0; int func_0014167E(...); extern int D_002E8ED8; return 0; }
+
+int func_0013FCD7(int param_1) { extern int D_002E8EE0; int func_0014167E(...); extern int D_002E8ED8; return 0; }
+
+int func_0013FD00(int param_1) { extern int D_002E8EE0; int func_0014167E(...); extern int D_002E8ED8; return 0; }
+
+unsigned int _func_0013FA6B(unsigned int a, unsigned long b) { volatile unsigned short *v=(volatile unsigned short*)((char*)&b+2); unsigned short x=*v; return (x & 0x7ff0) != 0x7ff0; }
 
 int _func_0013FA80(int a, unsigned long long b) { return 1; }
 
