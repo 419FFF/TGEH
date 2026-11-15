@@ -12,12 +12,20 @@ char func_000FC660(void *arg0, void *arg1) {
 unsigned char func_000FC710(unsigned int a, unsigned int *p)
 {
     int func_000AA6E0(...);
-    func_000AA6E0(*(unsigned int *)p[1]);
+    func_000AA6E0(*(unsigned int *)(*(unsigned int *)p + 4));
     return 1;
 }
 
 char func_000FC730(void) {
     return 1;
+}
+
+undefined4 func_000FC820(undefined4 param_1, int *param_2)
+{
+  *(int *)(*param_2 + 0x130) = param_2[3] + 4;
+  int func_00012D60(...);
+  func_00012D60(*param_2,0x1e);
+  return 1;
 }
 
 char func_000FC880(void) {
