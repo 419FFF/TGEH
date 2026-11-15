@@ -86,11 +86,17 @@ unsigned char _func_000FDB50(void *u, void *a) { int _func_0013E3F4(float); int 
 
 unsigned char _func_000FDB70(void *u, void *a) { int _func_0013E3F4(float); int _func_000A2BF0(int,int); int v=_func_0013E3F4(*(float *)((char *)a+4)); _func_000A2BF0(4,v); return 1; }
 
-unsigned char _func_000FDB90(void *u, void *a) { int _func_0013E3F4(float); int _func_000A2BF0(int,int); int v=_func_0013E3F4(*(float *)((char *)a+4)); _func_000A2BF0(5,v); return 1; }
+unsigned char _func_000FDB90(void *unused, void *a) { int _func_0013E3F4(float); int _func_000A2BF0(int,int); int v=_func_0013E3F4(*(float *)((char *)a+4)); _func_000A2BF0(5,v); return 1; }
 
 unsigned char _func_000FDBB0(void *u, void *a) { int _func_0013E3F4(float); int _func_000A2BF0(int,int); int v=_func_0013E3F4(**(float **)((char *)a+4)); _func_000A2BF0(6,v); return 1; }
 
 unsigned char _func_000FDBD0(void *u, void *a) { int _func_00063F60(int,int,int); _func_00063F60(0, **(int **)((char *)a+4), **(int **)((char *)a+0xc)); return 1; }
+
+unsigned char _func_000FDBF0(void *u, void *a) { int _func_0013E3F4(float); int _func_0006E100(int,const char *,const char *); char first[512]; char second[512]; int key=_func_0013E3F4(**(float **)((char *)a+4)); char *p=**(char ***)((char *)a+0xc); char *q=first; do {*q=*p++;} while(*q++); p=**(char ***)((char *)a+0x14); q=second; do {*q=*p++;} while(*q++); _func_0006E100(key,first,second); return 1; }
+
+unsigned char _func_000FDC60(void *u, void *a) { int _func_0013E3F4(float); int _func_0006E180(int,const char *); char buf[512]; int key=_func_0013E3F4(**(float **)((char *)a+4)); char *p=**(char ***)((char *)a+0xc); char *q=buf; do {*q=*p++;} while(*q++); _func_0006E180(key,buf); return 1; }
+
+unsigned char _func_000FDCB0(void *a, void *b) { extern float _D_001D27B8; float v=**(float **)((char *)b+4); if(v != _D_001D27B8) *((unsigned char *)(*(char **)((char *)a+0xc)+0x124))=1; else *((unsigned char *)(*(char **)((char *)a+0xc)+0x124))=0; return 1; }
 
 char func_000FDCF0(void) {
     int func_00100990(...);
@@ -127,6 +133,8 @@ char func_000FDD40(void) {
     func_0009A920(3);
     return 1;
 }
+
+unsigned char _func_000FDD50(void *u,int *a){int _func_000978B0(...);_func_000978B0(*a,**(int**)((char*)a+0x14),**(int**)((char*)a+0xc));return 1;}
 
 char func_000FDD70(void) {
     int func_000B6510(...);
@@ -194,6 +202,10 @@ char func_000FDE10(void) {
     return 1;
 }
 
+unsigned char _func_000FDE20(void *u,int *a){int _func_0013E3F4(...);int _func_000B6510(...);int v=_func_0013E3F4(*(float*)a[1]);_func_000B6510(0xf,v);return 1;}
+
+unsigned char _func_000FDE40(void){extern char D_001DD1B8;int _func_0009C590(...);int _func_00044C90(...);int _func_000B6510(...);int local[3]={0,0,0x42c80000};int v=_func_0009C590(&D_001DD1B8);_func_00044C90(v,local);_func_000B6510(8,0);return 1;}
+
 char func_000FDEC0(void) {
     int func_000B6510(...);
     func_000B6510(11, 0);
@@ -238,10 +250,7 @@ void func_000FDFB0(void) {
 
 extern void _func_000BC460(int);
 extern void __cdecl _func_000BC460(int);
-void _func_000FDFC0(int param_1, int param_2)
-{
-  _func_000BC460(*(int *)(param_2 + 4));
-}
+void _func_000FDFC0(int param_1,int param_2){int _func_000BC460(...);_func_000BC460(*(int*)(param_2+4));}
 
 unsigned char func_000FE100(unsigned int a, unsigned int *p)
 {
