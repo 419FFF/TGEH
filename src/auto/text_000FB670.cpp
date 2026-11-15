@@ -155,7 +155,7 @@ char func_000FC430(void) {
 
 unsigned char func_000FC640(unsigned int a, unsigned int *p)
 {
-    int func_00101680(...);
+    int func_00101680(int);
     func_00101680(*(unsigned int *)(*(unsigned int *)p + 4));
     return 1;
 }
