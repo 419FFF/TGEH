@@ -45,7 +45,7 @@ unsigned char func_000FB9C0(unsigned int a,int *p){int o=*p;if(*(unsigned char*)
 
 unsigned char func_000FB9E0(unsigned int a,int p){extern float D_001D6008;int func_00123170(...);func_00123170(**(float**)(p+0x14)*D_001D6008,**(float**)(p+0xc)*D_001D6008,**(float**)(p+4)*D_001D6008);return 1;}
 
-unsigned char func_000FBA20(unsigned int a,int *p){int func_0013E3F4(...),func_000ACFB0(...);int n=func_0013E3F4(**(float**)((char*)p+4));switch(n){case 0:func_000ACFB0(3,1);break;case 1:func_000ACFB0(4,1);break;case 2:func_000ACFB0(5,1);break;case 3:func_000ACFB0(6,1);break;case 4:func_000ACFB0(7,1);break;case 5:func_000ACFB0(8,1);}return 1;}
+unsigned char func_000FBA20(unsigned int a,int *p){int func_0013E3F4(float);int func_000ACFB0(...);int n=func_0013E3F4(*(float*)((char*)p+4));switch(n){case 0:func_000ACFB0(3,1);break;case 1:func_000ACFB0(4,1);break;case 2:func_000ACFB0(5,1);break;case 3:func_000ACFB0(6,1);break;case 4:func_000ACFB0(7,1);break;case 5:func_000ACFB0(8,1);}return 1;}
 
 void func_000FBC20(int a0, int a1) {
     int func_000FBAB0(...);
