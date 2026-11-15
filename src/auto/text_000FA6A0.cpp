@@ -48,10 +48,7 @@ void _func_000FA700(undefined4 param_1, undefined4 param_2)
   }
 }
 
-void func_000FA740(void) {
-    int func_000FA600(...);
-    func_000FA600();
-}
+void _func_000FA740(void) { int func_000FA600(...); func_000FA600(); }
 
 void _func_000FA8D0(void)
 {
