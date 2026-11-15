@@ -110,6 +110,13 @@ undefined4 func_000FC0F0(undefined4 param_1, undefined4 *param_2)
   return 1;
 }
 
+undefined4 func_000FC190(undefined4 param_1, undefined4 *param_2)
+{
+  int func_00012D60(...);
+  func_00012D60(*param_2,0x41);
+      return 1;
+}
+
 char func_000FC260(void *param_1, int *param_2)
 {
   int func_001313C0(int);
