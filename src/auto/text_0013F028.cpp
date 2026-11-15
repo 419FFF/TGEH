@@ -122,7 +122,7 @@ int _func_0013F980(void) { return 0; }
 void _func_0013F9A0(void) { int _func_00142C28(...); int _func_0013F9BD(...); _func_00142C28(); _func_0013F9BD(); }
 
 void _func_0013F9B4(float a0) {
-    extern void func_00142BE5(float*, float*);
+    extern void __fastcall func_00142BE5(float*, float*);
     func_00142BE5(&a0, &a0);
 }
 
