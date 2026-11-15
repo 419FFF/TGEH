@@ -50,26 +50,11 @@ void _func_000FA700(undefined4 param_1, undefined4 param_2)
 
 void _func_000FA740(void) { int func_000FA600(...); func_000FA600(); }
 
-void _func_000FA8D0(void)
-{
-  int func_00063C40(...);
-  extern undefined4 D_003104B4;
-  extern undefined D_0030C630;
-  int func_000F9C00(...);
-  extern undefined D_001DD164;
-  int func_000FA750(...);
-  int iVar1;
-  int iVar2;
-  
-  func_00063C40();
-  iVar1 = D_003104B4;
-  while (iVar1 = iVar1 + -1, -1 < iVar1) {
-    if ((*(int *)(((undefined *)&D_0030C630) + iVar1 * 4) != 0) &&
-       (iVar2 = func_000F9C00(*(int *)(((undefined *)&D_0030C630) + iVar1 * 4),((undefined *)&D_001DD164)), iVar2 != 0)) {
-      func_000FA750(iVar2);
-    }
-  }
-  return;
+void _func_000FA8D0(void) {
+ int func_00063C40(...); extern int D_003104B4; extern int D_0030C630[]; extern int D_001DD164; int func_000F9C00(...); int func_000FA750(...);
+ func_00063C40();
+ int i = D_003104B4;
+ while ((i -= 1) >= 0) { int v = D_0030C630[i]; if (v) { int x=func_000F9C00(v,&D_001DD164); if(x)func_000FA750(x); } }
 }
 
 undefined4 func_000FACD0(undefined4 param_1, undefined4 *param_2)
