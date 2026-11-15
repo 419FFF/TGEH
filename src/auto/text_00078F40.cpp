@@ -2,6 +2,18 @@
 #include "common.h"
 #include "ghidra.h"
 
+void func_00078F40(void)
+{
+ extern float _D_002FA680,_D_001D4F8C,_D_002FA684;
+ extern int _D_001D64F8;
+ int func_00103210(...),func_00103990(...);
+ _D_002FA680 += _D_001D4F8C;
+ if (_D_002FA680 < _D_002FA684) return;
+ do { _D_002FA680 -= _D_002FA684; } while (_D_002FA680 >= _D_002FA684);
+ _D_002FA680 = _D_002FA684;
+ func_00103990(func_00103210(_D_001D64F8),0);
+}
+
 void func_00078FA0(int *param_1, undefined4 param_2)
 {
   int func_0011CD40(...);
@@ -50,11 +62,7 @@ void func_00078FA0(int *param_1, undefined4 param_2)
   return;
 }
 
-int func_000790E0(int a0) {
-    extern void func_0011DEF0(...);
-    func_0011DEF0(a0);
-    return 0;
-}
+void func_000790E0(int a0) { extern void func_0011DEF0(...); func_0011DEF0(a0); }
 
 extern int _D_001D2F4C;
 extern int __cdecl _func_0011D000(int*, void (*)(void));
@@ -98,6 +106,15 @@ void func_00079470(int param_1, int param_2)
   *(undefined4 *)(param_2 + 0x120) = 5;
   func_0011DED0(param_1);
   return;
+}
+
+void func_000794C0(int a,void *b,int *p)
+{
+ extern float _D_001E461C; extern float _D_001D650C;
+ int func_0011E3D0(...),func_0011CFC0(...);
+ int *o=(int *)((char *)a+0x17c); func_0011E3D0(b); o[5]=o[4];
+ *(float *)(o+4)+=_D_001E461C;
+ if(*(float *)((char *)p+0x34)<_D_001D650C)func_0011CFC0((char *)a+0x54,0);else func_0011CFC0((char *)a+0x54,20.0f);
 }
 
 void func_00079520(void) {
@@ -172,6 +189,22 @@ void func_00079B50(void) {
     extern int D_001D6528;
     int func_0011D0E0(...);
     func_0011D0E0((int)&D_001D6528);
+}
+
+extern void func_0011DEF0(int);
+extern undefined4 D_002FA680;
+extern undefined4 D_001D4F8C;
+extern undefined4 D_002FA684;
+extern undefined D_001D64F8;
+int func_00103210(int);
+int func_00103990(undefined);
+extern undefined4 D_00079D10_arg0;
+void func_00079D10(void *a)
+{
+ extern int func_0011DEF0(...);
+ extern void func_00116FB0(...);
+ func_0011DEF0(a);
+ func_00116FB0(*(int *)((unsigned char *)a+0x17c));
 }
 
 void func_00079DB0(void) {
