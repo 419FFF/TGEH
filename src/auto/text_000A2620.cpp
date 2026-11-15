@@ -266,6 +266,8 @@ void func_000A2D70(void)
   return;
 }
 
+void func_000A2DF0(int param_1) { extern unsigned char D_00312600; extern unsigned char D_00312490; extern int D_00311F74; D_00312600 = param_1 != 0; if (D_00312490 || param_1) { if (D_00311F74 != 1) D_00311F74 = 2; } else if (D_00311F74 != 0) { D_00311F74 = 3; return; } }
+
 void func_000A2E30(char a0) {
     extern char D_003128A0;
     D_003128A0 = a0;
@@ -281,6 +283,12 @@ void func_000A2E40(int a0, int a1, int a2, int a3) {
     D_0031168C = a2;
     D_00311690 = a3;
 }
+
+void func_000A2E70(int *p, int a, int b, int c, int d, int e) { int func_000688D0(...); int func_0011BF40(...); int func_0011BDD0(...); func_000688D0(); *p=func_0011BF40(a,0); p[1]=func_0011BDD0(*p,0); p[2]=b; p[3]=c; p[4]=d; p[5]=e; p[6]=0; p[8]=0x3f800000; p[7]=0; p[9]=0x3f800000; func_000688D0(); }
+
+void func_000A2EE0(int *param_1) { int func_0011B990(...); short *p=*(short **)param_1; --p[0x2a/2]; func_0011B990(p); }
+
+void _func_000A2F00(void *p, volatile float x, int y) { *(volatile float *)((char *)p + 8) = x; *(int *)((char *)p + 12) = y; }
 
 void func_000A3020(undefined4 *param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4, undefined4 param_5, undefined4 param_6, undefined4 param_7, undefined4 param_8)
 {
@@ -304,8 +312,11 @@ void func_000A3150(char a0, int a1) {
     D_00312584 = a0;
     D_00312580 = a1;
 }extern uint D_00312620, D_00312624;extern uint D_00312620, D_00312624;
-void _func_000A2B20(uint *param_1)
+extern uint D_00312620, D_00312624;
+void func_000A2B20(undefined4 *param_1)
 {
-    *(uint*)param_1 = D_00312620;
-    *(uint*)(&param_1[0] + 1) = D_00312624;
+  extern undefined4 D_00312620;
+  extern undefined4 D_00312624;
+  *(float *)param_1 = *(float *)&D_00312620;
+  param_1[1] = D_00312624;
 }
