@@ -35,7 +35,7 @@ void func_00095650(int a0, int a1) {
 undefined4 func_000957A0(undefined4 param_1)
 {
   extern undefined4 D_00307C08;
-  int func_00116E50(...);
+  int func_00116E50(int, int, int, int);
   extern undefined4 D_00307C04;
   if ((D_00307C04 & 0x3f) == 0) {
     D_00307C08 = func_00116E50(D_00307C08,D_00307C04 * 4 + 0x100,1,1);
