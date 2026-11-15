@@ -48,6 +48,8 @@ unsigned char _func_000FD860(unsigned int a, unsigned int *p) { int _func_0002A2
 
 unsigned char _func_000FD8A0(unsigned int a, unsigned int *p) { int _func_0002A1F0(unsigned int); _func_0002A1F0(*p); return 1; }
 
+unsigned char _func_000FD8C0(unsigned int a, unsigned int *p) { int _func_0002A260(unsigned int); _func_0002A260(*p); return 1; }
+
 char func_000FD940(void) { int func_00044E50(...); func_00044E50(); return 1; }
 
 undefined4 func_000FD950(int param_1, int param_2)
