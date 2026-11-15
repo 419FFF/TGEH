@@ -2,6 +2,10 @@
 #include "common.h"
 #include "ghidra.h"
 
+void _func_000934F0(void){extern int _D_00306E60,_D_00306E64; int _func_0011B990(...); _D_00306E60--; if(!_D_00306E60){*(int*)((char*)&_D_00306E60+4)=_D_00306E64; goto target;} return; target:;}
+
+void _func_00093510(void){extern int _D_00306E5C,_D_00306E54,_D_00306E58;int _func_000688D0(...);int _func_000934F0(...);int _func_00110370(...);int local[7];if(!_D_00306E5C){_func_000688D0();local[4]=0;local[3]=(int)_func_000934F0;local[1]=(int)_func_000688D0;local[2]=0;_D_00306E54=_func_00110370(local);_D_00306E58=_func_00110370(&local[0]);}_D_00306E5C++;}
+
 void func_00093570(void)
 {
   extern undefined4 D_00306E5C;
@@ -40,6 +44,8 @@ void func_00093980(void) {
     int func_0011D0E0(...);
     func_0011D0E0((int)&D_001D7174);
 }
+
+void _func_00093B10(int p){extern int _D_00306E68;int _func_00116FB0(...);int _func_000968D0(...);int _func_0011B990(...);int q=*(int*)(p+0x104);_D_00306E68=p;if(q){_func_00116FB0(q);p=_D_00306E68;*(int*)(p+0x104)=0;}_func_000968D0(*(int*)(p+0xf8));_func_00116FB0(*(int*)(_D_00306E68+0x514));_func_00116FB0(*(int*)(_D_00306E68+0x518));int z=*(int*)(_D_00306E68+0x508);if(z){--*(short*)(z+0x2a);_func_0011B990(*(int*)(p+0x508));*(int*)(p+0x508)=0;}}
 
 void func_00093BA0(void)
 {
