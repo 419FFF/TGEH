@@ -32,6 +32,15 @@ void func_0007B110(void)
   return;
 }
 
+void func_0007B1B0(void)
+{
+ int func_0011D0E0(...);
+ extern undefined D_001D65C0;
+ extern undefined D_001D65B8;
+ func_0011D0E0(&D_001D65C0);
+ func_0011D0E0(&D_001D65B8);
+}
+
 void func_0007B3A0(void)
 {
   int func_001160B0(...);
