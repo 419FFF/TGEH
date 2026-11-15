@@ -48,6 +48,16 @@ unsigned char func_000A6910(void)
   return result;
 }
 
+unsigned char __fastcall func_000A6970(int index, int unused)
+{
+  extern void *_D_00312D78;
+  unsigned char *base = *(unsigned char **)((char *)_D_00312D78 + 0x10);
+  unsigned char result = 0;
+  if (*(short *)(base + index * 0x18 + 0x10) != 0)
+    result = 1;
+  return result;
+}
+
 void func_000A69E0(void)
 {
   extern undefined4 D_00312C34;
