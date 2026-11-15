@@ -107,6 +107,8 @@ unsigned char func_000FC190(unsigned int a,unsigned int *p){int func_00012D60(..
 
 unsigned char func_000FC1B0(unsigned int a,unsigned int *p){int func_00012D60(...);func_00012D60(*p,0x42);return 1;}
 
+unsigned char func_000FC1D0(unsigned int a,int *p){int func_00012D60(...);*(int*)(*p+0x130)=p[3]+4;func_00012D60(*p,0x43);return 1;}
+
 char func_000FC260(void *param_1, int *param_2)
 {
   int func_001313C0(int);
