@@ -103,6 +103,13 @@ void func_000FBC40(int a0, int a1) {
     func_000FBAB0(a0, a1, 0);
 }
 
+undefined4 func_000FC0F0(undefined4 param_1, undefined4 *param_2)
+{
+  func_00012D60(*param_2,0x47);
+  int func_00012D60(...);
+  return 1;
+}
+
 char func_000FC260(void *param_1, int *param_2)
 {
   int func_001313C0(int);
@@ -149,7 +156,7 @@ char func_000FC430(void) {
 unsigned char func_000FC640(unsigned int a, unsigned int *p)
 {
     int func_00101680(...);
-    func_00101680(*(unsigned int *)p[1]);
+    func_00101680(*(unsigned int *)(*(unsigned int *)p + 4));
     return 1;
 }
 
