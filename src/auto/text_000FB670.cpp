@@ -111,6 +111,8 @@ unsigned char func_000FC1D0(unsigned int a,int *p){int func_00012D60(...);*(int*
 
 unsigned char func_000FC200(unsigned int a,unsigned int *p){int func_00012D60(...);func_00012D60(*p,0x44);return 1;}
 
+unsigned char func_000FC220(unsigned int a,int *p){int func_001060A0(...);int func_00012D60(...);int *out=(int*)(*p+0x130);out[0]=func_001060A0(*(int*)(p[3]+0x40));out[1]=*(int*)p[5];func_00012D60(*p,0x45);return 1;}
+
 char func_000FC260(void *param_1, int *param_2)
 {
   int func_001313C0(int);
