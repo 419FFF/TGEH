@@ -11,6 +11,17 @@ void func_00099E10(undefined4 param_1)
   return;
 }
 
+void _func_00099E50(void)
+{
+  extern int _D_00307CB0;
+  extern int _D_00307CAC;
+  void _func_000990F0(void);
+  if (_D_00307CB0 == 0) {
+    _D_00307CAC = 1;
+    _func_000990F0();
+  }
+}
+
 void func_00099E70(char *param_1, int param_2, int param_3)
 {
   if ((param_2 != 0) && (param_3 != 0)) {
