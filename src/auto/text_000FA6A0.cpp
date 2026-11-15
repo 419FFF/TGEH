@@ -157,11 +157,7 @@ undefined1 func_000FB5A0(void)
   return 1;
 }
 
-char func_000FB5C0(void) {
-    int func_000688D0(...);
-    func_000688D0();
-    return 1;
-}
+char _func_000FB5C0(void) { int func_000688D0(...); func_000688D0(); return 1; }
 extern void* D_00324B68;
 
 struct D_00324B68_struct {
