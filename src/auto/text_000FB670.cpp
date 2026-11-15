@@ -1,6 +1,8 @@
 /* 63 functions from 0x000FB670 to 0x000FC655, found by Ghidra. */
 #include "common.h"
 #include "ghidra.h"
+extern int _D_0032511C;
+extern float _D_001D27B0;
 
 #pragma optimize("y", off)
 unsigned char func_000FB670(unsigned int a,int *p){extern unsigned int D_00307DF8,D_00307DB4,D_001E3A48;int func_0009DAC0(...),func_000F8F40(...),func_00110060(...),func_001105E0(...),func_00110000(...),func_00110420(...),func_00110480(...),func_000F8FA0(...);int *o=p;int obj=o[0],child=*(int*)((char*)o+8),node=*(int*)(obj+0x2c),r;unsigned char local[68];if(obj==D_00307DF8)D_001E3A48=D_00307DB4;r=func_000F8F40(func_0009DAC0(child));func_00110060(*(int*)(child+0x2c),local);func_001105E0(node,local,0);func_00110000(node);if(*(int*)(node+0x2c))func_00110420(node,**(int**)(node+0x2c));if(r)func_00110480(*(int*)(r+0xe0),node,8);func_000F8FA0(obj);return 1;}
@@ -152,6 +154,10 @@ char func_000FC430(void) {
     func_00099E50();
     return 1;
 }
+
+extern int _D_0032511C;
+extern float _D_001D27B0;
+unsigned char func_000FC460(void *a,int *p){int func_00012D60(...);int *out=(int*)(*p+0x130);out[0]=p[3]+4;out[1]=*(int*)p[5];if(*(float*)p[7]==_D_001D27B0)out[2]=1;else out[2]=0;func_00012D60(*p,0x16);return 1;}
 
 unsigned char func_000FC640(unsigned int a, unsigned int *p)
 {
