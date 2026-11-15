@@ -5,9 +5,15 @@ extern undefined4 D_001D27B8;
 extern undefined4 D_001D290C;
 
 char func_000FC660(void *arg0, void *arg1) {
-    int func_0013E3F4(void);
+    int func_0013E3F4(float);
     int func_00101690(int);
-    *(volatile float *)&arg0 = **(float **)((char *)arg1 + 4);
+    
+    float f = *(float *)(arg1 + 4);
+    func_0013E3F4(f);
+    push(func_0013E3F4());
+    func_00101690((int)func_0013E3F4());
+    return 1;
+}
     func_00101690(func_0013E3F4());
     return 1;
 }
