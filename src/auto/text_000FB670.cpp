@@ -66,7 +66,7 @@ undefined4 func_000FB760(undefined4 param_1, int *param_2)
 
 undefined4 func_000FBA20(void)
 {
-  int func_0013E3F4(...);
+  int func_0013E3F4(void);
   int func_000ACFB0(...);
   undefined4 uVar1;
 
