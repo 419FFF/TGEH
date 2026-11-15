@@ -134,7 +134,7 @@ char func_000FDD40(void) {
     return 1;
 }
 
-unsigned char _func_000FDD50(void *u,int *a){int _func_000978B0(...);_func_000978B0(*a,**(int**)((char*)a+0x14),**(int**)((char*)a+0xc));return 1;}
+unsigned char _func_000FDD50(void*u,int*a){int _func_000978B0(...);_func_000978B0(*a,**(int**)((char*)a+0xc),**(int**)((char*)a+0x14));return 1;}
 
 char func_000FDD70(void) {
     int func_000B6510(...);
@@ -250,7 +250,7 @@ void func_000FDFB0(void) {
 
 extern void _func_000BC460(int);
 extern void __cdecl _func_000BC460(int);
-void _func_000FDFC0(int param_1,int param_2){int _func_000BC460(...);_func_000BC460(*(int*)(param_2+4));}
+void _func_000FDFC0(int param_1,int param_2){int _func_000BC460(int,...);_func_000BC460(*(int*)(param_2+4));}
 
 unsigned char func_000FE100(unsigned int a, unsigned int *p)
 {
