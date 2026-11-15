@@ -942,40 +942,7 @@ s32 _func_000FD0C0(s32 param_1, s32 param_2) {
     *addr1 |= val;
 
     return 1;
-}
 
-// _func_000FD140 - simple function returning 1 after calling another
-s32 _func_000FD140(void) {
-    s32 func_000493C0(...);
-    func_000493C0();
-    return 1;
-}
-
-// _func_000FD160 - simple function returning 1 after calling another  
-s32 _func_000FD160(void) {
-    s32 func_000493C0(...);
-    func_000493C0();
-    return 1;
-}
-
-// _func_000FD170 - simple function returning 1 after calling another
-s32 _func_000FD170(void) {
-    s32 func_000493C0(...);
-    func_000493C0();
-    return 1;
-}
-
-// _func_000FD1B0 - simple function returning 1 after calling another
-s32 _func_000FD1B0(void) {
-    s32 func_000493C0(...);
-    func_000493C0();
-    return 1;
-}
-/* 47 functions from 0x000FC660 to 0x000FD5F2, found by Ghidra. */
-#include "common.h"
-
-extern undefined4 D_001D27B8;
-extern undefined4 D_001D290C;
 
 
 char func_000FC660(void *arg0, void *arg1) {
