@@ -5,18 +5,18 @@
 void _func_000955D0(void)
 {
   extern int D_001D71F8;
-  int _func_0011D000(...);
-  int _func_0011D270(...);
-  int _func_0011D290(...);
-  int _func_0011D2B0(...);
-  int _func_000951D0(...);
-  int _func_0007FC90(...);
-  int _func_00085E20(...);
-  int _func_000688D0(...);
-  _func_0011D000(&D_001D71F8, _func_000951D0);
-  _func_0011D270(&D_001D71F8, _func_0007FC90);
-  _func_0011D290(&D_001D71F8, _func_00085E20);
-  _func_0011D2B0(&D_001D71F8, _func_000688D0);
+  int _func_0011D000(int, int);
+  int _func_0011D270(int, int);
+  int _func_0011D290(int, int);
+  int _func_0011D2B0(int, int);
+  int _func_000951D0(void);
+  int _func_0007FC90(void);
+  int _func_00085E20(void);
+  int _func_000688D0(void);
+  _func_0011D000((int)&D_001D71F8, (int)_func_000951D0);
+  _func_0011D270((int)&D_001D71F8, (int)_func_0007FC90);
+  _func_0011D290((int)&D_001D71F8, (int)_func_00085E20);
+  _func_0011D2B0((int)&D_001D71F8, (int)_func_000688D0);
 }
 
 void func_00095610(void) {
@@ -30,6 +30,19 @@ void func_00095650(int a0, int a1) {
     extern int D_00307BF8;
     D_00307BF0 = a0;
     D_00307BF8 = a1;
+}
+
+undefined4 func_000957A0(undefined4 param_1)
+{
+  extern undefined4 D_00307C08;
+  int func_00116E50(...);
+  extern undefined4 D_00307C04;
+  if ((D_00307C04 & 0x3f) == 0) {
+    D_00307C08 = func_00116E50(D_00307C08,D_00307C04 * 4 + 0x100,1,1);
+  }
+  *(undefined4 *)(((u32)unsigned)D_00307C08 + D_00307C04 * 4) = param_1;
+  D_00307C04 = D_00307C04 + 1;
+  return 1;
 }
 
 int func_000959D0(int param_1, undefined4 param_2)
