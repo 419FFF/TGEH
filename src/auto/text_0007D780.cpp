@@ -44,11 +44,7 @@ void func_0007DFF0(void) {
     func_0011D2F0(func_00083D60, &D_001D66B0);
 }
 
-void func_0007E050(void) {
-    extern int D_001D66B0;
-    int func_0011D0E0(...);
-    func_0011D0E0((int)&D_001D66B0);
-}
+void func_0007E050(void) { extern int D_001D66B0; int func_0011D0E0(...); func_0011D0E0((int)&D_001D66B0); }
 
 void func_0007E1F0(void)
 {
