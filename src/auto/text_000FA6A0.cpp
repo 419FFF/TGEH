@@ -57,6 +57,14 @@ void _func_000FA8D0(void) {
  while ((i -= 1) >= 0) { int v = D_0030C630[i]; if (v) { int x=func_000F9C00(v,&D_001DD164); if(x)func_000FA750(x); } }
 }
 
+unsigned char _func_000FAA50(int p) { extern unsigned short D_00324BA0,D_00324B88; unsigned int i=*(unsigned int*)(p+24); unsigned int n; unsigned int depth=0; unsigned short *tokens; unsigned char *ctx=*(unsigned char**)(p+16); i++; n=*(unsigned short*)(ctx+6); if(i>=n){*(unsigned int*)(p+24)=i;return 1;} tokens=(unsigned short*)(*(unsigned int*)(ctx+40)+i*8); while(i<n){ unsigned int c=tokens[0]; if(c==D_00324BA0)depth++; else if(c==D_00324B88){if(!depth)break;depth--;} i++;tokens+=4; n=*(unsigned short*)(ctx+6); } *(unsigned int*)(p+24)=i;return 1;}
+
+unsigned char _func_000FAAC0(undefined4 a, int p) { unsigned int *src=*(unsigned int**)(p+12); unsigned int *dst=*(unsigned int**)(p+4); dst[0]=src[0]; dst[1]=src[1]; dst[2]=src[2]; dst[3]=src[3]; return 1; }
+
+unsigned char _func_000FAAF0(undefined4 a, int p) { float x=**(float**)(p+12); int op=*(char*)**(int***)(p+20); switch(op){case '+': x+=**(float**)(p+28); break; case '-': x-=**(float**)(p+28); break; case '/': x/=**(float**)(p+28); break; case '*': x*=**(float**)(p+28); break;} **(float**)(p+4)=x; return 1; }
+
+unsigned char _func_000FAC80(undefined4 a, unsigned int *p) { int func_000FA5B0(...); func_000FA5B0(a,p[0],p[1]); return 1; }
+
 undefined4 func_000FACD0(undefined4 param_1, undefined4 *param_2)
 {
   int func_00063C20(...);
@@ -94,12 +102,7 @@ undefined1 func_000FAE20(undefined4 param_1, int *param_2)
   return 1;
 }
 
-undefined4 _func_000FB200(undefined4 param_1, undefined4 *param_2)
-{
-  int func_0001CC10(...);
-  func_0001CC10(*param_2);
-  return 1;
-}
+undefined4 _func_000FB200(undefined4 a, undefined4 *p) { int func_0001CC10(...); func_0001CC10(*p); return (undefined1)1; }
 
 undefined4 func_000FB220(undefined4 param_1, undefined4 *param_2)
 {
