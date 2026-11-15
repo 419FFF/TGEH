@@ -87,6 +87,8 @@ unsigned char func_000FBF50(unsigned int a,int *p){int func_001060A0(...);int fu
 
 unsigned char func_000FBF90(unsigned int a,int *p){int func_001060A0(...);int func_00012D60(...);int *out=(int*)(*p+0x130);out[0]=func_001060A0(*(int*)(p[3]+0x40));out[1]=*(int*)p[5];func_00012D60(*p,0x33);return 1;}
 
+unsigned char func_000FBFD0(unsigned int a,int *p){int func_001060A0(...);int func_00012D60(...);int *out=(int*)(*p+0x130);out[0]=p[3]+4;out[1]=func_001060A0(*(int*)(p[5]+0x40));out[2]=*(int*)p[7];func_00012D60(*p,0x35);return 1;}
+
 undefined4 func_000FC0F0(undefined4 param_1, undefined4 *param_2)
 {
   int func_00012D60(...);
