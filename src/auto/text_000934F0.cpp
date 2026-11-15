@@ -68,6 +68,8 @@ void func_00093C50(undefined4 param_1, int param_2)
   return;
 }
 
+void _func_000942D0(void){extern int _D_00306E70,_D_00306E68,_D_00306E6C; int _func_00093B10(...); int _func_00093E00(...); int _func_00110370(...); int _func_00096E30(...); int local[7]; _D_00306E68=0; if(!_D_00306E70){local[4]=0;local[3]=(int)_func_00093B10;local[1]=(int)_func_00093E00;local[2]=0;_D_00306E6C=_func_00110370(local);_func_00096E30(0);} _D_00306E70++;}
+
 void _func_00094330(void)
 {
   extern int D_001D71A4;
