@@ -2,6 +2,15 @@
 #include "common.h"
 #include "ghidra.h"
 
+void func_0005C500(int *p)
+{
+  void func_0005BFE0(...);
+  *(int *)((char *)p + 0x14) = 0;
+  *(int *)((char *)p + 0x10) = 0;
+  *(char *)((char *)p + 0x18) = 0;
+  func_0005BFE0(p);
+}
+
 void func_0005C5E0(int param_1)
 {
   int func_00116FB0(...);
