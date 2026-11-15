@@ -135,6 +135,8 @@ undefined1 func_000FC290(void)
   return 1;
 }
 
+unsigned char func_000FC2A0(unsigned int a,int *p){int func_00012D60(...);int *out=(int*)(*p+0x130);out[0]=p[3]+4;out[1]=*(int*)p[5];out[2]=*(int*)p[7];func_00012D60(*p,0x13);return 1;}
+
 extern int D_001D27B8;
 unsigned char func_000FC2E0(unsigned int param_1, unsigned int *param_2) { int func_000459A0(...); func_000459A0(*param_2,1); return 1; }
 
