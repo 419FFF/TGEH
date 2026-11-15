@@ -65,6 +65,8 @@ unsigned char func_000FBCF0(unsigned int a,unsigned int *p){int func_00012D60(..
 
 unsigned char func_000FBD10(unsigned int a,int *p){int func_00012D60(...);*(int*)(*p+0x130)=p[3]+4;func_00012D60(*p,12);return 1;}
 
+unsigned char func_000FBD40(unsigned int a,int *p){int func_00012D60(...);*(int*)(*p+0x130)=p[3]+4;func_00012D60(*p,0x48);return 1;}
+
 undefined4 func_000FC0F0(undefined4 param_1, undefined4 *param_2)
 {
   int func_00012D60(...);
