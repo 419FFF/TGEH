@@ -100,6 +100,18 @@ void func_000A69E0(void)
   return;
 }
 
+void func_000A6A40(void)
+{
+  extern int _D_00312C34;
+  switch (_D_00312C34) {
+  case 0: _D_00312C34 = 4; break;
+  case 1: _D_00312C34 = 0; break;
+  case 2: _D_00312C34 = 1; break;
+  case 3: _D_00312C34 = 2; break;
+  case 4: _D_00312C34 = 3; break;
+  }
+}
+
 void func_000A6B90(float x, float y, float w, float h)
 {
   extern float D_001D27EC;
