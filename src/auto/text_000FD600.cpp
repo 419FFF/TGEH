@@ -8,12 +8,7 @@ char func_000FD6C0(void) {
     return 1;
 }
 
-unsigned char func_000FD760(unsigned int param_1, unsigned int *param_2)
-{
-  int func_0002A140(...);
-  func_0002A140(*param_2, 1);
-  return 1;
-}
+unsigned char func_000FD760(unsigned int a,unsigned int*p){int func_0002A140(...);func_0002A140(*p,1);return 1;}
 
 unsigned char func_000FD780(unsigned int param_1, unsigned int *param_2)
 {
