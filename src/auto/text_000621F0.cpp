@@ -55,4 +55,6 @@ void func_00063000(void)
   func_000688D0();
   return;
 }
-
+struct C_00063090 {
+  void func_00063090(float *param_1);
+};
