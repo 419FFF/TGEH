@@ -59,11 +59,17 @@ void _func_000FA8D0(void) {
 
 unsigned char _func_000FAA50(int p) { extern unsigned short D_00324BA0,D_00324B88; unsigned int i=*(unsigned int*)(p+24); unsigned int n; unsigned int depth=0; unsigned short *tokens; unsigned char *ctx=*(unsigned char**)(p+16); i++; n=*(unsigned short*)(ctx+6); if(i>=n){*(unsigned int*)(p+24)=i;return 1;} tokens=(unsigned short*)(*(unsigned int*)(ctx+40)+i*8); while(i<n){ unsigned int c=tokens[0]; if(c==D_00324BA0)depth++; else if(c==D_00324B88){if(!depth)break;depth--;} i++;tokens+=4; n=*(unsigned short*)(ctx+6); } *(unsigned int*)(p+24)=i;return 1;}
 
-unsigned char _func_000FAAC0(undefined4 a, int p) { unsigned int *src=*(unsigned int**)(p+12); unsigned int *dst=*(unsigned int**)(p+4); dst[0]=src[0]; dst[1]=src[1]; dst[2]=src[2]; dst[3]=src[3]; return 1; }
+unsigned char _func_000FAAC0(undefined4 a, int p) { unsigned int *src=*(unsigned int**)(p+12); unsigned int *dst=*(unsigned int**)(p+4); unsigned int x; x=src[0];dst[0]=x;x=src[1];dst[1]=x;x=src[2];dst[2]=x;x=src[3];dst[3]=x;return 1; }
 
 unsigned char _func_000FAAF0(undefined4 a, int p) { float x=**(float**)(p+12); int op=*(char*)**(int***)(p+20); switch(op){case '+': x+=**(float**)(p+28); break; case '-': x-=**(float**)(p+28); break; case '/': x/=**(float**)(p+28); break; case '*': x*=**(float**)(p+28); break;} **(float**)(p+4)=x; return 1; }
 
 unsigned char _func_000FAC80(undefined4 a, unsigned int *p) { int func_000FA5B0(...); func_000FA5B0(a,p[0],p[1]); return 1; }
+
+extern char D_00307E08[];
+extern float D_00307DB4;
+extern float D_001D27B0;
+extern float D_00307DBC;
+unsigned char _func_000FACA0(undefined4 a, int p) { char *src=*(char**)*(int**)(p+4); char *dst=D_00307E08; char c; do { c=*src++; *dst++=c; } while(c); D_00307DBC=D_00307DB4+D_001D27B0; return 1; }
 
 undefined4 func_000FACD0(undefined4 param_1, undefined4 *param_2)
 {
@@ -151,3 +157,7 @@ struct D_00324B68_struct {
   u32 field_8;
   void* next;   // [0x1C = 28]
 };
+extern char D_00307E08[];
+extern float D_00307DB4;
+extern float D_001D27B0;
+extern float D_00307DBC;
