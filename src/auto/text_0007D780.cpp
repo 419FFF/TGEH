@@ -2,7 +2,7 @@
 #include "common.h"
 #include "ghidra.h"
 
-void func_0007DCE0(void) { int func_000688D0(...); int func_0007D780(...); int func_00110370(...); int func_0011BF40(...); extern int D_002FADF4; extern int D_002FADEC; extern int D_001D6694; extern int D_002FADF0; if(D_002FADF4==0){ int local[5]; local[4]=0; local[3]=(int)&func_000688D0; local[1]=(int)&func_0007D780; local[2]=0; D_002FADEC=func_00110370(local); func_000688D0(); D_002FADF0=func_0011BF40(&D_001D6694,0); func_000688D0(); } D_002FADF4++; }
+void func_0007DCE0(void) { int func_000688D0(...); int func_0007D780(...); int func_00110370(...); int func_0011BF40(...); extern int D_002FADF4; extern int D_002FADEC; extern int D_001D6694; extern int D_002FADF0; if(D_002FADF4==0){ int local[7]; local[4]=0; local[3]=(int)&func_000688D0; local[1]=(int)&func_0007D780; local[2]=0; D_002FADEC=func_00110370(local); func_000688D0(); D_002FADF0=func_0011BF40(&D_001D6694,0); func_000688D0(); } D_002FADF4++; }
 
 void func_0007DD50(void) { extern int D_002FADF4; extern int D_002FADF0; extern int D_002FADEC; int func_0011B990(...); int func_001103C0(...); D_002FADF4--; if(D_002FADF4==0){func_0011B990(D_002FADF0);func_001103C0(D_002FADEC);} }
 
