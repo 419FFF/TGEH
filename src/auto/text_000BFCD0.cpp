@@ -1,6 +1,10 @@
 /* 4 functions from 0x000BFCD0 to 0x000C0B88, found by Ghidra. */
 #include "common.h"
+int func_0009C590(int = 0, ...);
+int func_0009D3E0(int = 0, ...);
 #include "ghidra.h"
+
+void _func_000BFCD0(){int a=4;(void)a;}
 
 void func_000C0A50(void)
 {
