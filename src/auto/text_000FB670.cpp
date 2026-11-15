@@ -169,6 +169,8 @@ unsigned char func_000FC4E0(unsigned int a,int *p){int obj=*p;int *q=*(int**)(ob
 
 unsigned char func_000FC510(unsigned int a,unsigned int *p){int func_00103180(...);func_00103180(*p,p[3]);return 1;}
 
+unsigned char func_000FC530(unsigned int a,int *p){int func_001060A0(...);int func_0013E3F4(float);int func_00106150(...);int x=func_001060A0(**(int**)((char*)p+4));int z=func_0013E3F4(*(float*)((char*)p+0x14));func_00106150(x,*(int*)((char*)p+8),z);return 1;}
+
 unsigned char func_000FC640(unsigned int a, unsigned int *p)
 {
     int func_00101680(int);
