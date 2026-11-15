@@ -15,6 +15,17 @@ extern char _D_001DCC78[];
 extern char _D_001DCC5C[];
 extern char _D_001DCC40[];
 extern char _D_001DCC24[];
+extern char _D_001D5298[];
+extern char _D_001D5280[];
+extern int _D_00307D08;
+extern int _D_00313B58;
+extern int _D_00313ABC;
+extern int _D_00324668;
+extern int _D_003246D8;
+extern int _D_00324694;
+extern int _D_003246D4;
+extern int func_00103210(const char *, int);
+extern void func_00103990(int);
 extern void func_0013E469(int, int);
 
 extern volatile int _D_00324700;
