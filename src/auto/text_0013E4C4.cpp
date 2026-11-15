@@ -7,6 +7,12 @@ void __fastcall func_0013E4C4(int x) {
     func_00140FE7(x, &D_002E8B84);
 }
 
+void __fastcall func_0013E4CE(int x) {
+    extern int D_002E8B84;
+    extern void __fastcall func_00140F6C(int, int*);
+    func_00140F6C(x, &D_002E8B84);
+}
+
 long double _func_0013E4D8(long double a, long double b)
 {
   return a - (long long)(a / b) * b;
