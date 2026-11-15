@@ -54,7 +54,7 @@ void func_0011C3E0(int *param_1)
   return;
 }
 
-void func_0011C410(unsigned int **param_1, unsigned int *param_2, unsigned int param_3) { *param_2 = **param_1; param_2[1] = param_3; *param_1 = param_2; }
+void func_0011C410(unsigned int *param_1, unsigned int *param_2, unsigned int param_3) { unsigned int old = *param_1; *param_2 = old; param_2[1] = param_3; *param_1 = (unsigned int)param_2; }
 
 void func_0011C590(unsigned int param_1) {
   extern unsigned int D_003280B8;
