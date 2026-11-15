@@ -54,11 +54,31 @@ unsigned char _func_000FD8C0(unsigned int a, unsigned int *p) { int _func_0002A2
 
 unsigned char _func_000FD8E0(unsigned int a, unsigned int *p) { int _func_00021410(unsigned int); _func_00021410(*p); return 1; }
 
+undefined4 func_000FD900(undefined4 param_1, undefined4 *param_2)
+{
+  int func_00044C90(...);
+  undefined4 local_c;
+  undefined4 local_8;
+  undefined4 local_4;
+  
+  local_c = 0;
+  local_8 = 0;
+  local_4 = 0;
+  func_00044C90(*param_2,&local_c);
+  return 1;
+}
+
 char func_000FD940(void) { int func_00044E50(...); func_00044E50(); return 1; }
 
 unsigned char _func_000FD950(int *p, int *q) { extern int D_003248E8, D_003248EC, D_003248F0; int func_0009C590(...); int func_0009A0D0(...); D_003248E8=p[3]; D_003248EC=func_0009C590(**(int **)(q+1)); D_003248F0=func_0009C590(**(int **)(q+3)); func_0009A0D0(4); return 1; }
 
-unsigned char _func_000FDA60(int *p, int *q) { extern int D_00307DF8, D_00308158; int *x=*(int **)(D_00307DF8+0x110); if (*x != 0x25 && *x != 0x26) { *x=0x25; x[0x104]=**(int **)(q+1); x[0x105]=p[3]==D_00308158 ? 0 : p[3]; } return 1; }
+unsigned char _func_000FDA60(int *p, int *q) { extern int D_00307DF8, D_00308158; int *x=*(int **)(D_00307DF8+0x110); if (*x != 0x25 && *x != 0x26) { *x=0x25; x[0x104]=**(int **)(q+1); x[0x105]=(((p[3] == D_00308158)-1) & p[3]); } return 1; }
+
+unsigned char _func_000FDAB0(void *a) { extern float _D_001D27B8; int _func_0013E3F4(float); int _func_000A3130(int,int); int b = **(float **)((char *)a + 4) != _D_001D27B8; int v = _func_0013E3F4(**(float **)((char *)a + 12)); _func_000A3130(b,v); return 1; }
+
+unsigned char _func_000FDAF0(void *a) { int _func_0013E3F4(float); int _func_000A2BF0(int,int); int v = _func_0013E3F4(*(float *)((char *)a + 4)); _func_000A2BF0(0,v); return 1; }
+
+unsigned char _func_000FDB10(void *a) { int _func_0013E3F4(float); int _func_000A2BF0(int,int); int v = _func_0013E3F4(*(float *)((char *)a + 4)); _func_000A2BF0(1,v); return 1; }
 
 char func_000FDCF0(void) {
     int func_00100990(...);
