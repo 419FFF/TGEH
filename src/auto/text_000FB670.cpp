@@ -61,6 +61,8 @@ unsigned char func_000FBC60(unsigned int a,int p){extern float D_001D2BC0;int fu
 
 unsigned char func_000FBCD0(unsigned int a,unsigned int *p){int func_00012D60(...);func_00012D60(*p,10);return 1;}
 
+unsigned char func_000FBCF0(unsigned int a,unsigned int *p){int func_00012D60(...);func_00012D60(*p,11);return 1;}
+
 undefined4 func_000FC0F0(undefined4 param_1, undefined4 *param_2)
 {
   int func_00012D60(...);
