@@ -75,6 +75,8 @@ void func_000B54C0(void) {
     func_000400C0();
 }
 
+void func_000B54D0(int param_1) { int func_000A1EA0(...); int func_0011A6A0(...); int func_001015F0(...); int func_000400A0(...); int func_000400B0(...); int func_000400C0(...); extern unsigned char D_00313F0E; extern int D_00307DF8; D_00313F0E=(unsigned char)param_1; if(*(int*)(D_00307DF8+0x84))func_000A1EA0(*(int*)(D_00307DF8+0x84),param_1); func_0011A6A0(param_1); func_001015F0(param_1); func_000400A0(param_1); func_000400B0(param_1); func_000400C0(param_1); }
+
 char func_000B5690(void) {
     extern char D_00313F0E;
     return D_00313F0E;
@@ -85,7 +87,7 @@ int func_000B57F0(void) {
     return D_00313ED8;
 }
 
-bool func_000B5850(void) { extern volatile int _D_00313ED8; return _D_00313ED8 == 0; }
+bool func_000B5850(void) { extern int _D_00313ED8; return !(_D_00313ED8 != 0); }
 
 void func_000B5860(void)
 {
