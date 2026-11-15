@@ -102,7 +102,7 @@ undefined1 func_000FAE20(undefined4 param_1, int *param_2)
   return 1;
 }
 
-undefined4 _func_000FB200(undefined4 a, undefined4 *p) { int func_0001CC10(...); func_0001CC10(*p); return (undefined1)1; }
+unsigned char _func_000FB200(undefined4 a, undefined4 *p) { int func_0001CC10(...); func_0001CC10(*p); return (unsigned char)1; }
 
 undefined4 func_000FB220(undefined4 param_1, undefined4 *param_2)
 {
