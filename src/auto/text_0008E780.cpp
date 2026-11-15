@@ -1,6 +1,22 @@
 /* 22 functions from 0x0008E780 to 0x0008F77B, found by Ghidra. */
 #include "common.h"
 
+void func_0008EBB0(int key, unsigned char value, int arg)
+{
+ extern int _D_003028D8, _D_00302998, _D_003028EC;
+ extern unsigned char _D_003028E0;
+ int func_0008D780(...);
+ int *entry=&_D_003028D8;
+ int i=0;
+ if(!key)return;
+ while(*entry!=key) {
+   entry=(int *)((char *)entry+0x18); ++i;
+   if((int)entry >= (int)&_D_00302998)return;
+ }
+ *(&_D_003028E0+i*0x18)=value;
+ func_0008D780(*(int *)((char *)&_D_003028EC+i*0x18),arg);
+}
+
 void func_0008EC00(void)
 {
   extern int D_003028EC;
@@ -16,6 +32,25 @@ void func_0008EC00(void)
     piVar1 += 6;
   } while ((int)piVar1 < (int)&_D_003029AC);
   func_0008ECF0();
+}
+
+void func_0008EC40(void)
+{
+ extern int _D_00302A08,_D_00302A10,_D_001D6F58,_D_003029A4,_D_003029D8,_D_003029DC,_D_003029B0,_D_003029B4,_D_003029E0,_D_003029F8,_D_003029F4,_D_003029FC,_D_00302A00,_D_003029C8,_D_003029B8,_D_00302A0C,_D_003029A8;
+ extern unsigned char _D_00302A14;
+ int func_0011BF40(...),func_0011BDD0(...),func_00116A90(...);
+ if(!_D_00302A08) {
+   int x=func_0011BF40(&_D_001D6F58,0);
+   _D_00302A10=x;
+   int y=func_0011BDD0(x,0);
+   _D_003029A4=y;
+   _D_003029D8=4; _D_003029DC=5;
+   _D_003029B0=2; _D_003029B4=2;
+   _D_003029E0=0; _D_003029F8=0; _D_003029F4=0; _D_003029FC=2; _D_00302A00=0;
+   _D_003029B8=y; _D_003029C8=3;
+   _D_00302A08=func_00116A90(0x150,1,1);
+   _D_00302A0C=0; _D_003029A8=0; _D_00302A14=0;
+ }
 }
 
 void func_0008F1F0(char a0) {
