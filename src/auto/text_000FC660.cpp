@@ -971,17 +971,16 @@ s32 _func_000FD0C0(s32 param_1, s32 param_2) {
 
 // _func_000FD140 - calls func_0002D030(D_00307DF8) then func_0007CED0(), returns 1
 s32 _func_000FD140(void) {
-    extern u16 name;
+    extern u16 D_00307DF8;
     s32 func_0002D030(...);
     s32 func_0007CED0(...);
-    func_0002D030(name);
+    func_0002D030(D_00307DF8);
     func_0007CED0();
     return 1;
 }
 
 // _func_000FD160 - calls func_0007CF70(), returns 1
 s32 _func_000FD160(void) {
-    extern u16 name;
     s32 func_0007CF70(...);
     func_0007CF70();
     return 1;
@@ -989,22 +988,19 @@ s32 _func_000FD160(void) {
 
 // _func_000FD170 - conditional pointer traversal based on D_003080AC
 s32 _func_000FD170(int param_1, undefined4 *param_2) {
-    extern u16 name;
     s32 func_000ECF20(...);
     extern u16 D_003080AC;
-    if (name != 1) {
-        undefined4 *pcVar2 = *(undefined4 **)param_2;
+    if (D_003080AC != 1) {
         char cVar1;
         do {
-            cVar1 = *pcVar2;
-            pcVar2 = pcVar2 + 1;
+            cVar1 = *param_2;
+            param_2++;
         } while (cVar1 != '\0');
     } else {
-        undefined4 *pcVar2 = *(undefined4 **)param_2;
         char cVar1;
         do {
-            cVar1 = *pcVar2;
-            pcVar2 = pcVar2 + 1;
+            cVar1 = *param_2;
+            param_2++;
         } while (cVar1 != '\0');
     }
     return 1;
@@ -1012,7 +1008,6 @@ s32 _func_000FD170(int param_1, undefined4 *param_2) {
 
 // _func_000FD1B0 - complex function with pointer arithmetic and multiple calls
 s32 _func_000FD1B0(unsigned int param_1, undefined4 *param_2) {
-    extern u16 name;
     s32 func_001060A0(...);
     s32 func_00012D60(...);
     int iVar1 = *(int *)param_2;
