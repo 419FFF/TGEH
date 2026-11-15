@@ -14,9 +14,7 @@ char func_000FC660(void *arg0, void *arg1) {
     func_00101690((int)func_0013E3F4());
     return 1;
 }
-    func_00101690(func_0013E3F4());
-    return 1;
-}
+
 
 unsigned char func_000FC710(unsigned int a, unsigned int *p)
 {
