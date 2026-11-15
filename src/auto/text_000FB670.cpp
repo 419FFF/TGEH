@@ -179,6 +179,8 @@ unsigned char func_000FC5B0(unsigned int a,int *p){int func_001060A0(...);int fu
 
 unsigned char func_000FC5F0(unsigned int a,int *p){int func_0013E3F4(...);int func_000ECB20(...);int z=func_0013E3F4(**(int**)((char*)p+0xc),**(int**)((char*)p+0x14));func_000ECB20(z);return 1;}
 
+unsigned char func_000FC620(unsigned int a,int *p){int __fastcall func_0013E3F4(float);int func_000ABE30(...);int z=func_0013E3F4(**(float**)((char*)p+4));func_000ABE30(z);return 1;}
+
 unsigned char func_000FC640(unsigned int a, unsigned int *p)
 {
     int func_00101680(int);
