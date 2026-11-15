@@ -59,11 +59,7 @@ unsigned char func_000FD840(unsigned int param_1, unsigned int *param_2)
   return 1;
 }
 
-char func_000FD940(void) {
-    int func_00044E50(...);
-    func_00044E50();
-    return 1;
-}
+char func_000FD940(void) { int func_00044E50(...); func_00044E50(); return 1; }
 
 undefined4 func_000FD950(int param_1, int param_2)
 {
