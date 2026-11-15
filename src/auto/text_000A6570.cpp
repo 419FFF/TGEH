@@ -58,6 +58,26 @@ unsigned char __fastcall func_000A6970(int index, int unused)
   return result;
 }
 
+int func_000A6990(unsigned limit)
+{
+  extern unsigned _D_00313B00, _D_00312C4C;
+  extern int func_0013B380(unsigned);
+  unsigned value = func_0013B380(_D_00313B00) - _D_00312C4C;
+  if (value > limit) return 1;
+  return 0;
+}
+
+unsigned char __fastcall func_000A69C0(int unused, int unused2)
+{
+  extern int _D_00313ABC;
+  extern void *_D_00312D78;
+  unsigned char *base = *(unsigned char **)((char *)_D_00312D78 + 0x10);
+  unsigned char result = 0;
+  if (*(short *)(base + _D_00313ABC * 0x18 + 0x10) != 0)
+    result = 1;
+  return result;
+}
+
 void func_000A69E0(void)
 {
   extern undefined4 D_00312C34;
@@ -80,15 +100,14 @@ void func_000A69E0(void)
   return;
 }
 
-void func_000A6B90(float a0, float a1, float a2, float a3)
+void func_000A6B90(float x, float y, float w, float h)
 {
   extern float D_001D27EC;
   extern void func_000A6AA0(float, float, float, float);
-  float v0 = a2 * D_001D27EC;
-  float v1 = a3 * D_001D27EC;
-  func_000A6AA0(a0, a1, v0, v1);
-  func_000A6AA0(a0 + v0, a1, v0, v1);
-  func_000A6AA0(a0, a1 + v1, v0, v1);
-  func_000A6AA0(a0 + v0, a1 + v1, v0, v1);
+  float dw = w * D_001D27EC, dh = h * D_001D27EC;
+  func_000A6AA0(x, y, dw, dh);
+  func_000A6AA0(x + dw, y, dw, dh);
+  func_000A6AA0(x, y + dh, dw, dh);
+  func_000A6AA0(x + dw, y + dh, dw, dh);
 }
 
