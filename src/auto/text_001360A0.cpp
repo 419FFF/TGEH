@@ -3,7 +3,7 @@
 #include "ghidra.h"
 
 extern int D_00332738, D_0033273C, D_00332740;
-extern int D_003326AC, D_003323A0, D_0033244C, D_00332340;
+extern int D_003326AC, D_003323A0, D_0033244C, D_00332340, D_003326D0;
 extern void __stdcall RtlEnterCriticalSection(int *);
 extern void __stdcall __imp__RtlEnterCriticalSection(int *);
 extern void __stdcall RtlLeaveCriticalSection(int *);
