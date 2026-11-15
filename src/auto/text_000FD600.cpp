@@ -14,12 +14,7 @@ unsigned char func_000FD780(unsigned int param_1, unsigned int *param_2) { int f
 
 unsigned char func_000FD7A0(unsigned int param_1, unsigned int *param_2) { int func_0002A170(...); func_0002A170(*param_2, 1); return 1; }
 
-unsigned char func_000FD7C0(unsigned int param_1, unsigned int *param_2)
-{
-  int func_0002A170(...);
-  func_0002A170(*param_2, 0);
-  return 1;
-}
+unsigned char func_000FD7C0(unsigned int param_1, unsigned int *param_2) { int func_0002A170(...); func_0002A170(*param_2, 0); return 1; }
 
 unsigned char func_000FD7E0(unsigned int param_1, unsigned int *param_2)
 {
