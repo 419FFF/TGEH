@@ -165,6 +165,8 @@ unsigned char func_000FC460(void *a,int *p){int func_00012D60(...);int *out=(int
 
 unsigned char func_000FC4C0(unsigned int a,int *p){int obj=*p;if(*(int*)(obj+0x11c)!=2){*(unsigned char*)(obj+0x10)|=0x80;return 0;}*(unsigned char*)(obj+0x10)&=0x7f;return 1;}
 
+unsigned char func_000FC4E0(unsigned int a,int *p){int obj=*p;int *q=*(int**)(obj+0x110);if(q[0]==4&&q[0x26]!=0x10){*(unsigned char*)(obj+0x10)|=0x80;return 0;}*(unsigned char*)(obj+0x10)&=0x7f;return 1;}
+
 unsigned char func_000FC640(unsigned int a, unsigned int *p)
 {
     int func_00101680(int);
