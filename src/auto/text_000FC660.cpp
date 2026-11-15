@@ -28,7 +28,7 @@ void func_00101690(int a0) {
 
 char func_000FC660(void *arg0, void *arg1) {
     float f = *(float *)(arg1 + 4);
-    int result = (int)float_to_int(f);
+    int result = float_to_int(f);
     func_00101690(result);
     return 1;
 }
