@@ -70,6 +70,8 @@ char func_00100D90(void) {
 
 void _func_00100DA0(void) { extern int D_00324BD4,D_001DE340,D_001DE330,D_001DE31C; int _func_000688D0(...); int _func_00128C90(...); int _func_0013AE30(...); if(D_00324BD4){_func_000688D0(0xe,&D_001DE340);_func_00128C90(D_00324BD4);_func_000688D0(0xe);} _func_000688D0(0xb,&D_001DE330); _func_0013AE30(); _func_000688D0(0xb); _func_000688D0(0xc,&D_001DE31C); _func_000688D0(); _func_000688D0(0xc); }
 
+void _func_00100E00(unsigned int v) { extern unsigned char D_001E5EC8,D_00324D45; extern int D_00324BE8; int _func_00102E40(...); int _func_00105280(...); int _func_001052A0(...); void _func_00100DA0(...); if(D_001E5EC8){ D_00324D45=(unsigned char)v; _func_00102E40(v); if(D_00324BE8){ if((unsigned char)v)_func_00105280();else _func_001052A0(); } _func_00100DA0(); } }
+
 void func_00100E50(void)
 {
   int func_00068450(...);
