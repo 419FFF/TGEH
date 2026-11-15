@@ -105,8 +105,8 @@ void func_000FBC40(int a0, int a1) {
 
 undefined4 func_000FC0F0(undefined4 param_1, undefined4 *param_2)
 {
-  func_00012D60(*param_2,0x47);
   int func_00012D60(...);
+  func_00012D60(*param_2,0x47);
   return 1;
 }
 
