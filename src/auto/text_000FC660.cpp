@@ -204,3 +204,5 @@ unsigned short func_000FC7E0(unsigned int param_1, int *param_2) {
     func_00012D60(*param_2, 0x1c);
     return 1;
 }
+extern unsigned short func_001060A0(unsigned int);
+extern void func_00012D60(int, uint);
