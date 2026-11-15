@@ -5,13 +5,9 @@ extern undefined4 D_001D27B8;
 extern undefined4 D_001D290C;
 
 char func_000FC660(void *arg0, void *arg1) {
-    int func_0013E3F4(float);
-    int func_00101690(int);
-    
     float f = *(float *)(arg1 + 4);
-    func_0013E3F4(f);
-    push(func_0013E3F4());
-    func_00101690((int)func_0013E3F4());
+    int result = func_0013E3F4(f);
+    func_00101690(result);
     return 1;
 }
 
