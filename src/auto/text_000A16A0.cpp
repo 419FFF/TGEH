@@ -6,7 +6,7 @@ void func_000A1BB0(int param_1,int param_2) { int func_000A18A0(...);extern int 
 
 void func_000A1C00(int param_1) { int func_00115E40(...);int func_0011C3E0(...);int func_00116FB0(...);int esi=param_1;int eax=*(int*)(esi+0x18);if(*(int*)(eax+0x20)==esi)*(int*)(eax+0x20)=0;int edi=0;if(*(unsigned short*)(esi+0xc)>0){do{eax=*(int*)(esi+0x10);eax=*(int*)(eax+edi*8);if(eax)func_00115E40(eax);unsigned int ecx=*(unsigned short*)(esi+0xc);++edi;}while((unsigned int)edi<*(unsigned short*)(esi+0xc));}func_0011C3E0(esi);func_00116FB0(esi);}
 
-void func_000A1C50(int param_1,int param_2) { int func_000A18A0(...);extern int D_001D756C;int a,b;if(*(char*)(param_1+0x30)){a=func_000A18A0(param_1,&D_001D756C,param_2);*(int*)(param_1+0x18)=a;b=func_000A18A0(param_1,&D_001D756C,param_2);*(int*)(param_1+0x1c)=b;}else{extern int D_001D29C7;a=func_000A18A0(param_1,&D_001D29C7,param_2);*(int*)(param_1+0x18)=a;b=func_000A18A0(param_1,&D_001D29C7,param_2);*(int*)(param_1+0x1c)=b;} }
+void func_000A1C50(int param_1,int param_2) { int func_000A18A0(...);extern int D_001D756C,D_001D29C7;int a,b;if(*(char*)(param_1+0x30)){a=func_000A18A0(param_1,&D_001D756C,param_2);*(int*)(param_1+0x18)=a;b=func_000A18A0(param_1,&D_001D756C,param_2);*(int*)(param_1+0x1c)=b;}else{a=func_000A18A0(param_1,&D_001D29C7,param_2);*(int*)(param_1+0x18)=a;b=func_000A18A0(param_1,&D_001D29C7,param_2);*(int*)(param_1+0x1c)=b;}}
 
 void func_000A1EA0(int param_1, int param_2) { int func_00115F60(...); unsigned int i=0; unsigned short n=*(unsigned short*)(param_1+0xc); int * volatile base=(int*)*(int*)(param_1+0x10); if(n==0)return; do { int *p=base+i*2; int value=*p; if(value)func_00115F60(value,param_2); ++i;}while(i<n); }
 
