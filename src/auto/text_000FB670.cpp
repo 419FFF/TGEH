@@ -43,14 +43,7 @@ undefined4 func_000FB670(undefined4 param_1, int *param_2)
 
 unsigned char func_000FB720(unsigned int param_1, int p) { int func_000F91D0(...); int i=func_000F91D0(**(int**)(p+4)); if(*(char*)(i+0x284)) **(unsigned int**)(p+12)=0x3f800000; else **(unsigned int**)(p+12)=0; return 1; }
 
-undefined4 func_000FB760(undefined4 param_1, int *param_2)
-{
-  int func_00124BE0(...);
-  if (*(int *)(*param_2 + 0x60) != 0) {
-    func_00124BE0(*(int *)(*param_2 + 0x60),*(undefined4 *)param_2[3]);
-  }
-  return 1;
-}
+unsigned char func_000FB760(unsigned int param_1,int *p) { int func_00124BE0(...); int a=*p,b=*(int*)(a+0x60); if(b)func_00124BE0(b,*(int*)p[3]); return 1; }
 
 undefined4 func_000FBA20(void)
 {
