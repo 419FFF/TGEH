@@ -28,4 +28,3 @@ int func_00147D10(void)
 }
 
 #pragma optimize("", on)
-void __stdcall _func_00147C34(int, int);
