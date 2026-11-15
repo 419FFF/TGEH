@@ -7,3 +7,12 @@ void func_0005A750(void) {
     D_002EEBE8 = 2;
     D_002EEBC0 = 0;
 }
+
+void func_0005A770(void)
+{
+ extern int D_002EEBE8;
+ extern int D_002EEBC0;
+ D_002EEBE8=2;
+ D_002EEBC0=1;
+}
+
