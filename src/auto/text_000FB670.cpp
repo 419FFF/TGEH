@@ -149,11 +149,15 @@ unsigned char func_000FC300(unsigned int param_1, unsigned int *param_2)
   return 1;
 }
 
+unsigned char func_000FC400(void *a, int *p){int func_00099E10(...);int func_00099E30(...);int x=**(int **)((char*)p+0xc);func_00099E10(**(int **)((char*)p+4));func_00099E30(x);return 1;}
+
 char func_000FC430(void) {
     int func_00099E50(...);
     func_00099E50();
     return 1;
 }
+
+unsigned char func_000FC440(void *a,int *p){int func_00105F80(...);int func_00106B00(...);func_00105F80();func_00106B00(**(int **)((char*)p+4),&_D_0032511C);return 1;}
 
 extern int _D_0032511C;
 extern float _D_001D27B0;
