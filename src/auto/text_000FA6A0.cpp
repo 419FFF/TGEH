@@ -73,6 +73,8 @@ unsigned char _func_000FACA0(undefined4 a, int p) { char *src=*(char**)*(int**)(
 
 unsigned char _func_000FACD0(undefined4 param_1, undefined4 *param_2) { unsigned char func_00063C20(...); void func_00104380(...); if (!func_00063C20(param_1)) func_00104380(*param_2, *(undefined4 *)param_2[3]); return 1; }
 
+unsigned char _func_000FAD00(undefined4 param_1, undefined4 *param_2) { unsigned char func_00063C20(...); void func_001045F0(...); if (!func_00063C20(param_1)) func_001045F0(*param_2); return 1; }
+
 undefined1 func_000FAE20(undefined4 param_1, int *param_2)
 {
   int func_000A2230(...);
