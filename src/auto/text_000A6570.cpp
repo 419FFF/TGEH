@@ -2,6 +2,19 @@
 #include "common.h"
 #include "ghidra.h"
 
+void func_000A6570(void)
+{
+  extern unsigned _D_003080AC;
+  extern void func_000A2C30(int);
+  extern void func_000A42E0(int);
+  if (_D_003080AC == 2 || _D_003080AC == 3) {
+    func_000A2C30(1);
+  } else {
+    func_000A2C30(0);
+  }
+  func_000A42E0(0);
+}
+
 void func_000A6680(int a0) {
     extern int D_00312B00;
     D_00312B00 = a0;
@@ -42,5 +55,17 @@ void func_000A69E0(void)
     D_00312C34 = 0;
   }
   return;
+}
+
+void func_000A6B90(float a0, float a1, float a2, float a3)
+{
+  extern float D_001D27EC;
+  extern void func_000A6AA0(float, float, float, float);
+  float v0 = a2 * D_001D27EC;
+  float v1 = a3 * D_001D27EC;
+  func_000A6AA0(a0, a1, v0, v1);
+  func_000A6AA0(a0 + v0, a1, v0, v1);
+  func_000A6AA0(a0, a1 + v1, v0, v1);
+  func_000A6AA0(a0 + v0, a1 + v1, v0, v1);
 }
 
