@@ -1036,3 +1036,8 @@ s32 _func_000FD1B0(void) {
 
 extern undefined4 D_001D27B8;
 extern undefined4 D_001D290C;
+/* 47 functions from 0x000FC660 to 0x000FD5F2, found by Ghidra. */
+#include "common.h"
+
+extern undefined4 D_001D27B8;
+extern undefined4 D_001D290C;
