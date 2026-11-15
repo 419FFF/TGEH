@@ -1020,45 +1020,6 @@ s32 _func_000FD1B0(unsigned int param_1, undefined4 *param_2) {
 
     
 
-extern undefined4 D_001D27B8;
-extern undefined4 D_001D290C;
-/* 47 functions from 0x000FC660 to 0x000FD5F2, found by Ghidra. */
-#include "common.h"
-
-extern undefined4 D_001D27B8;
-extern undefined4 D_001D290C;
-/* 47 functions from 0x000FC660 to 0x000FD5F2, found by Ghidra. */
-#include "common.h"
-
-extern undefined4 D_001D27B8;
-extern undefined4 D_001D290C;
-/* 47 functions from 0x000FC660 to 0x000FD5F2, found by Ghidra. */
-#include "common.h"
-
-extern undefined4 D_001D27B8;
-extern undefined4 D_001D290C;
-/* 47 functions from 0x000FC660 to 0x000FD5F2, found by Ghidra. */
-#include "common.h"
-
-extern undefined4 D_001D27B8;
-extern undefined4 D_001D290C;
-/* 47 functions from 0x000FC660 to 0x000FD5F2, found by Ghidra. */
-#include "common.h"
-
-extern undefined4 D_001D27B8;
-extern undefined4 D_001D290C;
-/* 47 functions from 0x000FC660 to 0x000FD5F2, found by Ghidra. */
-#include "common.h"
-
-extern undefined4 D_001D27B8;
-extern undefined4 D_001D290C;
-/* 47 functions from 0x000FC660 to 0x000FD5F2, found by Ghidra. */
-#include "common.h"
-
-extern undefined4 D_001D27B8;
-extern undefined4 D_001D290C;
-/* 47 functions from 0x000FC660 to 0x000FD5F2, found by Ghidra. */
-#include "common.h"
 
 extern undefined4 D_001D27B8;
 extern undefined4 D_001D290C;
