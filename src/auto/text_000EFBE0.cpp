@@ -42,6 +42,7 @@ extern float _D_001D29E0;
 extern void func_00100BC0(float);
 extern void func_00100BE0(float);
 extern void func_00100C10(float);
+extern int func_001031A0(int);
 extern int func_00103210(const char *, int);
 extern void func_00103990(int);
 extern void func_0013E469(int, int);
