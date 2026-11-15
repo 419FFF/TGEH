@@ -181,10 +181,5 @@ unsigned char func_000FC5F0(unsigned int a,int *p){int func_0013E3F4(...);int fu
 
 unsigned char func_000FC620(unsigned int a,int *p){int __fastcall func_0013E3F4(float);int func_000ABE30(...);int z=func_0013E3F4(**(float**)((char*)p+4));func_000ABE30(z);return 1;}
 
-unsigned char func_000FC640(unsigned int a, unsigned int *p)
-{
-    int func_00101680(int);
-    func_00101680(*(unsigned int *)(*(unsigned int *)p + 4));
-    return 1;
-}
+unsigned char func_000FC640(unsigned int a,unsigned int *p){int func_00101680(int);func_00101680(*(unsigned int*)p[1]);return 1;}
 
