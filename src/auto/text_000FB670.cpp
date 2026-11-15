@@ -149,7 +149,7 @@ unsigned char func_000FC300(unsigned int param_1, unsigned int *param_2)
   return 1;
 }
 
-unsigned char func_000FC400(void *a, int *p){int func_00099E10(...);int func_00099E30(...);int x=**(int **)((char*)p+0xc);func_00099E10(**(int **)((char*)p+4));func_00099E30(x);return 1;}
+unsigned char func_000FC400(void *a, int *p){int func_00099E10(...);int func_00099E30(...);int x=**(int **)((char*)p+0xc);int y=**(int **)((char*)p+4);func_00099E10(y,x);func_00099E30(x);return 1;}
 
 char func_000FC430(void) {
     int func_00099E50(...);
@@ -162,6 +162,8 @@ unsigned char func_000FC440(void *a,int *p){int func_00105F80(...);int func_0010
 extern int _D_0032511C;
 extern float _D_001D27B0;
 unsigned char func_000FC460(void *a,int *p){int func_00012D60(...);int *out=(int*)(*p+0x130);out[0]=p[3]+4;out[1]=*(int*)p[5];if(*(float*)p[7]==_D_001D27B0)out[2]=1;else out[2]=0;func_00012D60(*p,0x16);return 1;}
+
+unsigned char func_000FC4C0(unsigned int a,int *p){int obj=*p;if(*(int*)(obj+0x11c)!=2){*(unsigned char*)(obj+0x10)|=0x80;return 0;}*(unsigned char*)(obj+0x10)&=0x7f;return 1;}
 
 unsigned char func_000FC640(unsigned int a, unsigned int *p)
 {
