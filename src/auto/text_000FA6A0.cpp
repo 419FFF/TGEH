@@ -75,6 +75,19 @@ void _func_000FA8D0(void)
   return;
 }
 
+undefined4 func_000FACD0(undefined4 param_1, undefined4 *param_2)
+{
+  int func_00063C20(...);
+  int func_00104380(...);
+  register char cVar1;
+  
+  cVar1 = func_00063C20(param_1);
+  if (cVar1 == '\0') {
+    func_00104380(*param_2,*(undefined4 *)param_2[3]);
+  }
+  return 1;
+}
+
 undefined1 func_000FAE20(undefined4 param_1, int *param_2)
 {
   int func_000A2230(...);
@@ -104,6 +117,22 @@ undefined4 _func_000FB200(undefined4 param_1, undefined4 *param_2)
   int func_0001CC10(...);
   func_0001CC10(*param_2);
   return 1;
+}
+
+undefined4 func_000FB220(undefined4 param_1, undefined4 *param_2)
+{
+  int func_00061650(...);
+  char cVar1;
+  int func_00063C20(...);
+  int func_00061600(...);
+  
+  cVar1 = func_00063C20(param_1);
+  if (cVar1 != '\0') {
+    func_00061600();
+    return 1;
+  }
+  func_00061650(param_2[1],*param_2,param_2[2],*(undefined4 *)param_2[5],0);
+      return 1;
 }
 
 unsigned char _func_000FB300(int a, int *p) { int func_0005D3F0(...); func_0005D3F0(p[1]); return 1; }
