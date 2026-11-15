@@ -12,6 +12,8 @@ int func_00100A70(void) {
     return D_001E5ED0;
 }
 
+void _func_00100B90(void) { extern unsigned char D_001E5EC8; int _func_0013ACC0(...); int _func_000688D0(...); int _func_00128830(...); if(D_001E5EC8){ _func_0013ACC0(0x3c23d70a); _func_000688D0(3,0x3e4ccccd,0x40,0x40); _func_00128830(0x19); } }
+
 void func_00100C10(unsigned int param_1) {
     extern unsigned char D_001E5EC8;
     extern unsigned int D_00324D08;
@@ -20,21 +22,7 @@ void func_00100C10(unsigned int param_1) {
     }
 }
 
-void __cdecl _func_00100C30(float value)
-{
-  extern unsigned char D_001E5EC8;
-  extern volatile float D_001D27B8;
-  extern volatile float D_001D27B0;
-  extern volatile float D_00324D14;
-  if (D_001E5EC8) {
-    if (value < D_001D27B8) {
-      D_00324D14 = D_001D27B8;
-      return;
-    }
-    if (D_001D27B0 < value) D_00324D14 = D_001D27B0;
-    else D_00324D14 = value;
-  }
-}
+void _func_00100C30(float value) { extern unsigned char D_001E5EC8; extern float D_001D27B8,D_001D27B0,D_00324D14; if(D_001E5EC8){ if(value<D_001D27B8) D_00324D14=D_001D27B8; else if(value>D_001D27B0) D_00324D14=D_001D27B0; } }
 
 float _func_00100C80(void) {
     extern unsigned char D_001E5EC8;
