@@ -10,10 +10,3 @@ char func_000FC660(void *arg0, void *arg1) {
     _func_00101690(result);
     return 1;
 }
-
-char func_000FC660(void *arg0, void *arg1) {
-    float f = *(float *)(arg1 + 4);
-    int result = _func_0013E3F4(f);
-    _func_00101690(result);
-    return 1;
-}
