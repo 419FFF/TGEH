@@ -103,12 +103,7 @@ unsigned char func_000FC110(unsigned int a,int *p){int func_001060A0(...);int fu
 
 unsigned char func_000FC150(unsigned int a,int *p){int func_001060A0(...);int func_00012D60(...);int *out=(int*)(*p+0x130);out[1]=func_001060A0(*(int*)(p[3]+0x40));out[2]=*(int*)p[5];func_00012D60(*p,0x3c);return 1;}
 
-undefined4 func_000FC190(undefined4 param_1, undefined4 *param_2)
-{
-  int func_00012D60(...);
-  func_00012D60(*param_2,0x41);
-      return 1;
-}
+unsigned char func_000FC190(unsigned int a,unsigned int *p){int func_00012D60(...);func_00012D60(*p,0x41);return 1;}
 
 char func_000FC260(void *param_1, int *param_2)
 {
