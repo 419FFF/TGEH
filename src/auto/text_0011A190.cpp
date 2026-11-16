@@ -83,6 +83,8 @@ void _func_0011A5E0(int p, undefined4 a) { int _func_0011BCA0(...); _func_0011BC
 
 void func_0011A6A0(char on) { extern unsigned char D_003268C4; extern float D_0032923C; extern float D_003268CC; extern float D_003268C8; if(on) { if(D_003268C4==0) { D_003268C4=1; D_003268CC=D_0032923C; D_003268C8=0; return; } } else if(D_003268C4==1) { D_003268C4=0; D_003268C8=D_0032923C-D_003268CC; D_003268CC=0; } }
 
+void _func_0011A8B0(int a,int *p,int *q,int d){extern int _func_00136B70(...),_func_0012E650(...),_func_0012E940(...),_func_00133860(...);extern float D_001E7D20;extern float D_003268C0;float x[6];x[0]=*(float*)((char*)p+0x30);x[1]=*(float*)((char*)p+0x34);x[2]=*(float*)((char*)p+0x38);int z=_func_00136B70(x);x[3]=*(float*)((char*)z+0x30);x[4]=*(float*)((char*)z+0x34);x[5]=*(float*)((char*)z+0x38);_func_0012E650(x,x+3);float y=_func_0012E940(x);D_003268C0=D_001E7D20*y;_func_00133860(*(int*)((char*)q+0x2c),d);D_003268C0=0;}
+
 void func_0011AF30(int param_1, undefined4 param_2)
 {
   *(undefined4 *)(param_1 + 0xe4) = param_2;
@@ -129,4 +131,6 @@ unsigned char _func_0011AFD0(void *p, unsigned int a, unsigned int b, unsigned i
     }
     return result;
 }
+
+unsigned char _func_0011B020(int *p,int a,int b,int c,int d,int e){extern int _func_0011BDD0(...),_func_001108F0(...);unsigned char r=0;int x=_func_0011BDD0(*(int*)((char*)p+0xe0),0);if(x){int y=*(int*)((char*)x+0xc);if(y)r=_func_001108F0(a,b,y,c,d,e);(*(unsigned short*)((char*)*(int*)((char*)p+0xe0)+0x2a))--;}return r;}
 
