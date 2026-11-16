@@ -2,10 +2,16 @@
 #include "common.h"
 #include "ghidra.h"
 
+void func_0013CC50(void) { extern unsigned char D_003351D0; int __stdcall func_001CD404(int,int); int func_0013C9A0(...); int func_0013CA40(...); func_001CD404(0,0); func_0013C9A0(); func_0013CA40(); D_003351D0=1; }
+
 void func_0013CDD0(void) {
     int func_0013CA40(...);
     func_0013CA40();
 }
+
+void func_0013D030(int p,int mode,float value) { extern float D_001D6138; int func_0013CB60(...); float v=value*D_001D6138; if(mode==1) func_0013CB60(0,v); else func_0013CB60(v,v); }
+
+void func_0013D070(int p) { int func_0013CB60(...); volatile int *q=(int*)((char*)p+0x28); int keep=*q; func_0013CB60(0,0); if(keep==-1) return; }
 
 int func_0013D090(void) {
     return 12;
