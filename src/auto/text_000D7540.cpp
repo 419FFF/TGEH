@@ -9,20 +9,21 @@ void func_000D7870(signed char *p){if(p){int i=(((p[1]+p[0]*6)*0x10+p[2])*0xc+p[
 
 int func_000D79D0(signed char *p,signed char *q,int val){int *base=(int*)D_0031E508;int index=(((p[1]+p[0]*6)*0x10+p[2])*0xc+p[3])*3;if(base[index+1]==val)base[index+1]=0;int a=q[0];if(a==1&&q[1]==5&&q[3]==11&&q[2]>=9&&q[2]<=10){*base=1;return a;}index=(((q[1]+a*6)*0x10+q[2])*0xc+q[3])*3;base[index+1]=val;return *base;}
 
-void func_000D7C70(void){extern void func_000688D0(...); extern void func_000D7540(...); int *s=(int*)D_0031E508; signed char r=*(signed char*)((char*)s+0xd805),c=*(signed char*)((char*)s+0xd804); char b=D_001E53A8[c+r*4]; float a[4]={40.0f,30.0f,320.0f,480.0f};func_000688D0();func_000D7540((char*)s+0xdaa4+b*0x14,&a[2],a,1,0,0);}
+void func_000D7C70(void){extern void func_000688D0(...); extern void func_000D7540(...); int *s=(int*)D_0031E508; signed char r=*(signed char*)((char*)s+0xd805),c=*(signed char*)((char*)s+0xd804); char b=D_001E53A8[c+r*4]; int a[4]={0x43a00000,0x43700000,0x44200000,0x43f00000};func_000688D0();func_000D7540((char*)s+0xdaa4+b*0x14,&a[0],&a[2],1,0,0);}
 
 void func_000D7DE0(void)
 {
  extern int D_0031E508;
  int func_000688D0(...),func_000D7540(...);
+ int p=D_0031E508;
  unsigned int local[4];
  local[0]=0x44200000;
  local[1]=0x41f00000;
  local[2]=0x43a00000;
  func_000688D0();
- if(*(unsigned char *)(D_0031E508+0xd805)==0) {
+ if(*(unsigned char *)(p+0xd805)==0) {
   local[3]=0x42520000;
-  func_000D7540(D_0031E508+0xdcc0,&local[2],&local[0],4,5,0);
+  func_000D7540(p+0xdcc0,&local[2],&local[0],4,5,0);
  }
 }
 
