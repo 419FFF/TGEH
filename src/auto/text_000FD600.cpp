@@ -249,7 +249,7 @@ char func_000FDF30(void) {
 
 unsigned char _func_000FDF40(void){extern char _D_001D7248;int _func_0009C590(void*);int _func_000688D0(int);int p=_func_0009C590(&_D_001D7248);_func_000688D0(*(int*)(p+0x2c));return 1;}
 
-unsigned char _func_000FDF60(void* a,int* p){extern int func_0009CBE0(...);extern int func_00110060(...);extern int func_000B6510(...);extern int _D_001D7BE0;int* base=(int*)func_0009CBE0(&_D_001D7BE0);int* obj=(int*)*p;int* slot=(int*)base[0x110/4];int value=**(int**)(obj[0xb/4]+0x2c);slot[0xd90/4]=value;func_00110060(*(int*)(obj[0x2c/4]),(int)((char*)slot+0xd50));func_000B6510(5,0);return 1;}
+unsigned char _func_000FDF60(int a,int b,int* p){extern int func_0009CBE0(...);extern int func_00110060(...);extern int func_000B6510(...);extern int _D_001D7BE0;int base=func_0009CBE0(&_D_001D7BE0);int* c=(int*)*p;int* d=(int*)*(int*)((char*)c+0x2c);int value=**(int**)((char*)d+0x2c);int* slot=*(int**)(base+0x110);slot[0xd90/4]=value;func_00110060(*(int*)((char*)c+0x2c),(int)((char*)slot+0xd50));func_000B6510(5,0);return 1;}
 
 void func_000FDFB0(void) {
     int func_000C1370(...);
@@ -303,7 +303,7 @@ unsigned char _func_000FE210(unsigned int a, unsigned int *p) { int _func_000912
 
 unsigned char _func_000FE230(unsigned int a,unsigned int* p){extern int func_00012D60(...);func_00012D60(*p,0x46);return 1;}
 
-unsigned char func_000FE250(unsigned int a,int *p){int _func_00012D60(...);_func_00012D60(*(int*)((char*)p+0xc),0x46);return 1;}
+unsigned char func_000FE250(int *p){int _func_00012D60(...);_func_00012D60(*(int*)((char*)p+0xc),0x46);return 1;}
 
 unsigned char func_000FE270(void) { extern int *D_00307DF8; int func_00110060(int,void*); int func_0012ECA0(void*,int); int func_001105E0(int,void*,int); int func_00110000(int); __declspec(align(16)) char a[0x40]; __declspec(align(16)) char b[0x40]; int v=D_00307DF8[0x2c/4]; func_00110060(v,a); func_0012ECA0(a,0xbf800000); func_0012ECA0(b,0xbf800000); func_001105E0(v,a,0); func_00110000(v); return 1; }
 
