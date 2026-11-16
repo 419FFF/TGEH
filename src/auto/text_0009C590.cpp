@@ -1,7 +1,7 @@
 /* 21 functions from 0x0009C590 to 0x0009D51A, found by Ghidra. */
 #include "common.h"
 
-int func_0009CAA0(int p,int q) { int func_0009C510(...),func_0009C590(...),func_0011B4F0(...); char x[512]; int *s; int i; func_0009C510(q,x,x+256); if(!p)p=func_0009C590(x); s=*(int **)(p+28); i=0; if((unsigned)s[3]>0) { do { if(!func_0011B4F0(*(int *)((char *)s[4]+i*52),x+268)) return (int)((char *)s[4]+i*52); ++i; } while((unsigned)i<(unsigned)s[3]); } return 0; }
+int func_0009CAA0(int p,int q) { int func_0009C510(...),func_0009C590(...),func_0011B4F0(...); char x[512]; int *s; int i; func_0009C510(q,x,x+256); if(!p)p=func_0009C590(x); s=*(int **)(p+28); i=0; if((unsigned)s[3]>0) { do { if(!func_0011B4F0(*(int *)((char *)s[4]+i*52),x+256)) return (int)((char *)s[4]+i*52); ++i; } while((unsigned)i<(unsigned)s[3]); } return 0; }
 
 int func_0009CB40(int a,int b) { int func_0009C510(...),func_0009C590(...),func_0011B4F0(...); char buf[512]; int p=a,i; int *t; func_0009C510(b,buf+16,buf+272); if(!p)p=func_0009C590(buf+16); t=*(int **)(p+28); for(i=0;i<t[5];i++) if(func_0011B4F0(*(int *)((char *)t[6]+i*52),buf+272)==0) return *(int *)(p+40)+i*64; return 0; }
 
