@@ -2,6 +2,10 @@
 #include "common.h"
 #include "ghidra.h"
 
+void func_0011FE30(int p){extern int D_00329238,D_00329234,D_0032923C;extern float D_001D290C,D_001E7D28;float f;D_00329238=p;if(p>=0)return;f=(float)p;D_0032923C=(f+D_001D290C+D_00329234)/D_001E7D28;}
+
+void func_0011FE60(float p){extern int D_00329238,D_00329234,D_0032923C;extern float D_001D290C,D_001E7D28;float f=(float)D_00329238;D_00329234=*(int*)&p;if(D_00329238<0)f+=D_001D290C;D_0032923C=(f+p)/D_001E7D28;}
+
 void func_0011FEA0(int param_1)
 {
   extern undefined4 D_00329338;
@@ -11,6 +15,8 @@ void func_0011FEA0(int param_1)
   D_00329334 = param_1;
   return;
 }
+
+void func_0011FED0(int p,int q){extern int D_00329238,D_00329234,D_00329330;extern float D_001D27B0;extern int D_00329340;int func_0010FC60(int),func_00011CB0(int,int),func_0012FA20(int,int,float,int,float),func_0012F2E0(int,int);if(*(unsigned char*)(p+0x20)&2)func_0010FC60(p);if(*(int*)(p+0xd4)!=D_00329238)func_00011CB0(q,p+((unsigned char)*(char*)(p+0x23)+1)*64);else {int a=(unsigned char)*(char*)(p+0x23);func_0012FA20(q,p+(2-a)*64,D_001D27B0-*(float*)&D_00329234,p+(a+1)*64,*(float*)&D_00329234);}if(D_00329330)func_0012F2E0(q,(int)&D_00329340);}
 
 void func_00120B60(undefined4 param_1, undefined4 param_2)
 {
@@ -66,6 +72,8 @@ void func_00120BA0(void)
   D_00329254 = 0;
   return;
 }
+
+void func_00120DD0(int p){int func_0011B990(int),func_00116FB0(int);int x=*(int*)(p+0x2590);--*(short*)(x+0x2a);func_0011B990(*(volatile int*)(p+0x2590));func_00116FB0(p);}
 
 void func_00120E00(int param_1)
 {
