@@ -91,4 +91,3 @@ int __stdcall func_0010A3F2(int *result,int *status,int *buffer) {
 }
 
 #pragma optimize("", on)
-extern "C" __declspec(dllimport) int *LaunchDataPage;
