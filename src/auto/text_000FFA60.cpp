@@ -13,6 +13,8 @@ void func_000FFA60(void) {
     D_00324BB4 = 0;
 }
 
+void func_000FFA80(void){extern unsigned int D_00324BA4,D_00324BB0;void func_0011C3E0(unsigned int),func_00116FB0(unsigned int);unsigned int p;while(D_00324BA4){p=*(unsigned int*)(D_00324BA4+8);func_0011C3E0(p);func_00116FB0(p);}while(D_00324BB0){p=*(unsigned int*)(D_00324BB0+8);func_0011C3E0(p);func_00116FB0(p);}}
+
 int func_0012F120(...);
 int func_001100A0(...);
 int func_0012F4C0(...);
