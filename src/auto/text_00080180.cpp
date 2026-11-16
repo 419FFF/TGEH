@@ -2,6 +2,8 @@
 #include "common.h"
 #include "ghidra.h"
 
+void func_00080540(void *p){void func_00110760(...); void func_00116FB0(...); func_00110760(*(int*)((char*)p+0x100)); func_00116FB0(*(int*)((char*)p+0xfc));}
+
 void func_000809C0(void)
 {
   extern undefined4 D_002FBA84;
