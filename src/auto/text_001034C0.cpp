@@ -13,6 +13,8 @@ void func_00103960(int param_1, undefined4 param_2, undefined4 param_3)
   return;
 }
 
+void _func_00103990(int *p) { extern char D_001E5EC9; extern void _func_001034C0(int*); if(D_001E5EC9 && p) { *(int*)((char*)p+0x80)=0; _func_001034C0(p); } }
+
 void func_00103FA0(void)
 {
   extern undefined4 D_00324EB4;
@@ -38,6 +40,8 @@ void func_00104080(void)
   }
   return;
 }
+
+void _func_001040C0(void) { extern int D_00324EB4; extern void _func_000688D0(int); if(D_00324EB4) _func_000688D0(D_00324EB4); D_00324EB4=0; }
 
 void func_001040E0(int param_1, undefined4 param_2)
 {
