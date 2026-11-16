@@ -212,3 +212,4 @@ extern int _D_001D87D8;
 extern int _D_001D87EC;
 extern char _D_001D87F0;
 extern int _D_00307D18;
+extern int D_00307D18;
