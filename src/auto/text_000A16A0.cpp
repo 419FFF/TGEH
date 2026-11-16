@@ -8,39 +8,40 @@ void func_000A1C00(int param_1) { int func_00115E40(...);int func_0011C3E0(...);
 
 void func_000A1C50(int param_1,int param_2) { int func_000A18A0(...);extern int D_001D756C,D_001D29C7;int a,b;if(*(char*)(param_1+0x30)){a=func_000A18A0(param_1,&D_001D756C,param_2);*(int*)(param_1+0x18)=a;b=func_000A18A0(param_1,&D_001D756C,param_2);*(int*)(param_1+0x1c)=b;}else{a=func_000A18A0(param_1,&D_001D29C7,param_2);*(int*)(param_1+0x18)=a;b=func_000A18A0(param_1,&D_001D29C7,param_2);*(int*)(param_1+0x1c)=b;}}
 
-void func_000A1E60(int param_1)
+static void _func_000A1CB0(int param_1,int param_2)
 {
-  int func_001165E0(...);
-  uint i = 0;
-  if (*(ushort *)(param_1 + 0xc)) {
-    do {
-      int value = *(int *)(*(int *)(param_1 + 0x10) + i * 8);
-      if (value) {
-        func_001165E0(value);
-      }
-      i++;
-    } while (i < *(ushort *)(param_1 + 0xc));
+  int func_000A1C00(...);
+  if (!* (int*)(param_1)) {
+    return;
+  }
+  int i=0, v2 = *(int*)(param_1+8);
+  while(i<v2) {
+    void* ptr = (void*)*(int**)param_1;
+    if (*(int*)((char*)ptr + 8)) {
+      func_000A1C00(ptr, 0);
+    }
+    i++;
   }
 }
 
-void func_000A1EA0(int param_1, int param_2) { int func_00115F60(...); unsigned int i; int *p; int value; i=0; while(i<*(unsigned short*)(param_1+0xc)){ p=(int*)(*(int*)(param_1+0x10)+i*8); value=*p; if(value)func_00115F60(value,param_2); i++; } }
+void _func_000A1E60(int p) { int _func_001165E0(int); unsigned int i=0; unsigned short n=*(unsigned short*)(p+0xc); if(n>0){ do { int *base=*(int**)(p+0x10); int x=base[i*2]; if(x)_func_001165E0(x); ++i; } while(i<*(unsigned short*)(p+0xc)); } }
+
+extern int func_00115F60(int, int);
+extern void func_000A1C00(...);
+extern void func_00116FB0(...);
+void func_000A1EA0(int param_1, int param_2) { unsigned int i = 0;while (i < *(unsigned short*)(param_1 + 0xc)) { int base = *(int*)(param_1 + 0x10); int *p = (int*)(base + i * 8); int value = *p;if (value) func_00115F60(value, param_2);i++;} }
 
 longdouble func_000A1EE0(int param_1)
 {
   int func_00116480(...);
-  extern longdouble D_001D27B8;
-  uint i = 0;
-  if (*(ushort *)(param_1 + 0xc)) {
-    int *base = *(int **)(param_1 + 0x10);
-    do {
-      if (*base) {
-        return func_00116480();
-      }
-      i++;
-      base += 2;
-    } while (i < *(ushort *)(param_1 + 0xc));
+  extern longdouble _D_001D27B8;
+  uint count = *(ushort*)(param_1+0xc);
+  void* base = (void*)*(int*)(param_1+0x10);
+  for(uint i=0; i<count; i++) {
+    int val = *(int*)((char*)base + i*8);
+    if(val) return func_00116480();
   }
-  return D_001D27B8;
+  return _D_001D27B8;
 }
 
 undefined4 func_000A1F50(int param_1)
@@ -79,6 +80,8 @@ int func_000A2230(undefined4 *param_1, undefined4 param_2)
   return iVar1;
 }
 
+void _func_000A22B0(int *p) { int _func_000A1D10(int); int x=p[6]; if(x){ int y=p[7]; p[6]=y; p[7]=x; _func_000A1D10(y); } }
+
 void _func_000A22D0(int param_1)
 {
   int func_000A1E60(...);
@@ -105,6 +108,19 @@ void func_000A23B0(int param_1)
   extern void func_000A1F80(...);
   param_1 = *(int *)(param_1 + 0x18);
   if (param_1) func_000A1F80(param_1);
+}
+
+void _func_000A23D0(void *p)
+{
+    unsigned int *node;
+    extern void _func_000A1FC0(unsigned int);
+    extern void _func_001153F0(unsigned int);
+    for (node = *(unsigned int **)p; node != 0; node = (unsigned int *)*node) {
+        _func_000A1FC0(node[2]);
+    }
+    if (*(unsigned int *)((char *)p + 0x34) != 0) {
+        _func_001153F0(*(unsigned int *)((char *)p + 0x34));
+    }
 }
 
 void func_000A2410(undefined4 *param_1, undefined4 param_2)
@@ -159,4 +175,6 @@ void func_000A2500(undefined4 param_1)
   func_00120EA0(1,1,1,0);
   return;
 }
-static int func_000A18A0(unsigned char *param_1,int param_2,unsigned char param_3) { return 0; }
+ void _func_000A16A0(int param_1,int param_2,int param_3) { int func_000A18A0(...);extern int D_003080AC;if((param_3>>5)&1u){volatile int three=3;int eax=three;int v=param_2;func_000A18A0(param_1+0x64,v,eax);return;}int edx=D_003080AC;int eax=(edx!=0)+1;int v=param_2;func_000A18A0(param_1+0x64,v,eax);}
+
+ void _func_000A18A0(unsigned char *param_1,int param_2,unsigned char param_3) { int func_001165E0(...);extern int D_003080AC;if((param_3>>5)&1){int eax=3;func_001165E0(param_1+0x64,param_2,eax);}else{int edx=D_003080AC;int eax=(edx!=0)+1;func_001165E0(param_1+0x64,param_2,eax);}}
