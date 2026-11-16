@@ -77,6 +77,8 @@ void func_00128990(int param_1, char param_2)
   return;
 }
 
+void func_00128BE0(int p) { int func_0013AAC0(...); int q=*(int *)(p+0xf0); if(q) func_0013AAC0(q); }
+
 void func_00128D90(int param_1)
 {
   extern int _D_00331AEC;
