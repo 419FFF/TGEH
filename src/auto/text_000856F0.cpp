@@ -74,6 +74,8 @@ void func_00085F80(void)
   return;
 }
 
+void func_000860B0(void) { extern int D_002FDD9C,D_002FDD98,D_002FDDA4; int func_0011CFC0(...); if(D_002FDD9C==0 && D_002FDD98!=0){ D_002FDD9C=10; func_0011CFC0(D_002FDDA4+0x54,0x3a83126f); } }
+
 void func_00086180(void)
 {
   extern undefined4 D_002FDDC0;
