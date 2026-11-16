@@ -122,10 +122,7 @@ longdouble func_0012E8E0(float *param_1, float *param_2)
          (longdouble)param_1[3] * (longdouble)param_2[3];
 }
 
-void func_0012E910(float *p) {
-    int func_00131220(...);
-    func_00131220((longdouble)p[1] * (longdouble)p[1] + (longdouble)*p * (longdouble)*p);
-}
+void func_0012E910(float *p) { void func_00131220(float); func_00131220(p[1]*p[1]+*p**p); }
 
 void _func_0012E940(float *p){int func_00131220(float);func_00131220((float)((longdouble)p[2]*p[2]+(longdouble)p[1]*p[1]+(longdouble)p[0]*p[0]));}
 
@@ -139,7 +136,7 @@ longdouble func_0012E9B0(float *param_1)
 
 longdouble _func_0012E9D0(float *p){return (longdouble)p[2]*p[2]+(longdouble)p[1]*p[1]+(longdouble)p[0]*p[0];}
 
-void func_0012EA00(float *p) { extern float D_001D27B8; extern float D_001D27B0; float n; int func_00131220(float); n=func_00131220(p[1]*p[1]+p[0]*p[0]); if(n==D_001D27B8){p[0]=0.0f;p[1]=1.0f;}else{n=D_001D27B0/n;p[0]*=n;p[1]*=n;} }
+void func_0012EA00(float *p) { extern float D_001D27B8; extern float D_001D27B0; float n; float func_00131220(float); n=func_00131220(p[1]*p[1]+p[0]*p[0]); if(n==D_001D27B8){p[0]=0.0f;p[1]=1.0f;}else{n=D_001D27B0/n;p[0]*=n;p[1]*=n;} }
 
 void func_0012EA60(float *p) { extern float D_001D27B8; extern float D_001D27B0; float n; int func_00131220(float); n=func_00131220(p[2]*p[2]+p[1]*p[1]+p[0]*p[0]); if(n==D_001D27B8){p[0]=0.0f;p[1]=0.0f;p[2]=1.0f;}else{n=D_001D27B0/n;p[0]*=n;p[1]*=n;p[2]*=n;} }
 
@@ -187,5 +184,12 @@ void _func_0012EDC0(float *a, float *b)
     a[2] = b[1] * a[0] - b[0] * a[1];
     a[0] = b[2] * a[1] - b[1] * a[2];
     a[1] = b[0] * a[2] - b[2] * a[0];
+}
+
+void _func_0012EE00(float *out, float *a, float *b)
+{
+    out[0] = b[2] * a[1] - b[1] * a[2];
+    out[1] = b[0] * a[2] - b[2] * a[0];
+    out[2] = b[1] * a[0] - b[0] * a[1];
 }
 
