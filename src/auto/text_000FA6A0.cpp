@@ -285,3 +285,8 @@ extern int _func_00061600();
 extern int _func_00061650(u16, u16, u16, u16, int);
 extern int _func_00063C20(u16);
 extern int _func_0005CCC0(int);
+extern u16 _D_001D28F0;
+extern u16 _D_001D2E34;
+extern u16 _D_001D2E38;
+extern u16 _D_001D2E30;
+extern u16 _D_001D29C7;
