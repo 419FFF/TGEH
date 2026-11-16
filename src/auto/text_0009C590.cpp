@@ -22,8 +22,11 @@ int func_0009CC90(int param1, int param2)
     param1 = func_0009C590(local);
   int object = *(int *)(param1 + 0x1c);
   unsigned int count = *(unsigned int *)(object + 0x24);
-  unsigned int offset = 0, i = 0;
+  unsigned int offset;
+  unsigned int i;
+  i = 0;
   if (count > 0) {
+    offset = 0;
     do {
       int name = *(int *)(*(int *)(object + 0x28) + offset + 0x40);
       if (func_0011B4F0(name, local2) == 0)
@@ -72,7 +75,7 @@ void func_0009CDE0(int self)
 
 int func_0009CE20(char *param_1, int param_2) { int func_0011B530(...); int func_0013E600(...); extern char D_001D73E4; char *pc=param_1; int n; do { n=*pc++; } while(n); n=(int)pc-(int)(param_1+1); if(!param_2) return 0; if(func_0011B530(*(int *)(param_2+12),param_1,n)) return 0; return func_0013E600(*(int *)(param_2+12)+n,&D_001D73E4)==0; }
 
-void func_0009D080(void){extern int D_00308158,D_003104B4,D_0030BFE0,D_0030C498;extern int D_0030C630[],D_0030BFE8[];extern int func_0009CE80(...),func_0011B990(...),func_00116FB0(...);int i;int *obj=(int*)D_00308158;for(i=D_003104B4-1;i>=0;i--)if(D_0030C630[i])func_0009CE80(D_0030C630[i]);func_0011B990(obj[6]);if(D_0030BFE0){func_00116FB0(D_0030BFE0);D_0030BFE0=0;}for(i=0;i<D_0030C498;i++)func_00116FB0(D_0030BFE8[i]);D_0030C498=0;D_003104B4=0;}
+void func_0009D080(void){extern int D_00308158,D_003104B4,D_0030BFE0,D_0030C498;extern int D_0030C630[],D_0030BFE8[];extern int func_0009CE80(...),func_0011B990(...),func_00116FB0(...);int i;int base=D_00308158;int obj=*(int*)(base+0x18);i=D_003104B4;--i;if(i<0)goto done1;do{int x=D_0030C630[i];if(x)func_0009CE80(x);}while(--i>=0);done1:func_0011B990(obj);if(D_0030BFE0){func_00116FB0(D_0030BFE0);D_0030BFE0=0;}unsigned i2=0;if((unsigned)D_0030C498>0)do{func_00116FB0(D_0030BFE8[i2]);}while(++i2<(unsigned)D_0030C498);D_0030C498=0;D_003104B4=0;}
 
 unsigned char func_0009D110(int a,int p){extern int func_0012F120(...),func_0009C7A0(...);extern void func_0012FE20(int,float,float,float);extern float D_001D2BC0;extern char D_001D2BC4,D_001D2BD8;func_0012F120(p);float*v=(float*)func_0009C7A0(a,&D_001D2BC4,0);if(!v)return 0;float z=(float)((long double)v[2]*(long double)D_001D2BC0);float y=(float)((long double)v[1]*(long double)D_001D2BC0);float x=(float)((long double)v[0]*(long double)D_001D2BC0);func_0012FE20(p,x,y,z);int*w=(int*)func_0009C7A0(a,&D_001D2BD8,0);if(!w)return 0;*(int*)(p+0x30)=w[0];*(int*)(p+0x34)=w[1];*(int*)(p+0x38)=w[2];return 1;}
 
