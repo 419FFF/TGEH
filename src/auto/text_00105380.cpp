@@ -156,53 +156,66 @@ undefined4 func_001060A0(undefined4 param_1)
 
 void func_001060F0(undefined4 param_1) {}
 
-void func_00106210(int *thisPtr, int *param_2, float *param_3)
+void func_00106210(void *thisPtr, void *param_2, void *param_3)
 {
   extern float D_001D27EC;
   int func_0012F7A0(float *local_10, int ptr);
-  float local_10[4];
 
-  float y = (float)*(int *)(thisPtr + 0x18);
-  float p2_0 = (float)*param_2;
-  float p2_1 = (float)*(int *)(param_2 + 4);
+  float stack_0x4;
+  float stack_0x8;
+  float stack_0x10;
+  float stack_0x14;
+  float stack_0x18;
+  float stack_0x1c;
 
-  float stack_0x4 = y + p2_0;
-  float stack_0x8 = (float)*(int *)(thisPtr + 0x1c) + p2_1;
-  float stack_0x10 = 0.0f;
-  float stack_0x14 = (float)*(int *)(thisPtr + 0x14);
-  float stack_0x18 = (float)*(int *)(thisPtr + 0x18);
-  float stack_0x1c = (float)*(int *)(thisPtr + 0x1c);
+  stack_0x4 = (float)(*(int *)((char *)thisPtr + 0x18)) + (float)(*(int *)param_2);
+  stack_0x8 = (float)(*(int *)((char *)thisPtr + 0x1c)) + (float)(*(int *)((char *)param_2 + 0x4));
+  stack_0x10 = 0.0f;
+  stack_0x14 = (float)(*(int *)((char *)thisPtr + 0x14));
+  stack_0x18 = (float)(*(int *)((char *)thisPtr + 0x18));
+  stack_0x1c = (float)(*(int *)((char *)thisPtr + 0x1c));
 
-  // This part is very difficult to match exactly without knowing the x87/MSVC interactions.
-  // The target does several fstps and filds.
-  // Let's try to capture the core of the math.
-  
-  // Based on the assembly, it looks like a sequence of operations involving D_001D27EC.
-  
   float temp1 = stack_0x4 + D_001D27EC;
   float temp2 = stack_0x8 + D_001D27EC;
   
-  // The code seems to do something like:
-  // temp_x = (stack_0x4 + D) ...
-  // temp_y = (stack_0x8 + D) ...
-  // then some division/multiplication.
-  
-  // Let's try to represent the sequence of stores.
-  // The target stores to [esp+0x1c], [esp+0x18], [esp+0x10], [esp+0x10], [esp+0x18], [esp+0x1c].
-  
-  // We'll try a simplified version and see if the diff improves.
-  // If not, I'll have to try to match the x87 math more literally.
-  
-  float result_x = stack_0x4 + D_001D27EC;
-  float result_y = stack_0x8 + D_001D27EC;
-  
-  // Since I can't match x87 perfectly with standard C, I'll try to find any other function 
-  // that does similar math to see if there's a common idiom.
-  
-  func_0012F7A0(local_10, 0);
+  // The target has:
+  // fild st, [esp+0x4] (stack_0x4)
+  // fadd st, [D_001D27EC]
+  // fstp [esp+0x1c] (stack_0x1c)
+  // fild st, [esp+0x8] (stack_0x8)
+  // fadd st, [D_001D27EC]
+  // fstp [esp+0x18] (stack_0x18)
+  // fild st, [esp+0x10] (stack_0x10)
+  // fmul st, [eax-0xc]
+  // fsubr st, [esp+0x10]
+  // fstp [esp+0x10]
+  // fild st, [eax-0x14]
+  // fmul st, [D_001D27EC]
+  // fsubr st, [esp+0x18]
+  // fstp [esp+0x18]
+  // fld st, [esp+0x10]
+  // fmul st, [eax-0xc]
+  // fstp [esp+0x10]
+  // fld st, [esp+0x18]
+  // fmul st, [eax-0xcc]
+  // fstp [esp+0x1c]
 
-  float f_ret_val = (float)*(int *)(thisPtr + 0x30);
-  // ...
+  // This is getting complex. I will try to match the order of stores and loads.
+  // Let's try to guess some values for the multiplications/subtractions.
+  // The assembly has some fsubr and fmul.
+  
+  // I'll just try to get the structure right for now.
+  func_0012F7A0((float *)&stack_0x4, 0);
+
+  // mov eax, [esp+0x30]
+  // fld st, [esp+0x14]
+  // mov ecx, [esp+0x1c]
+  // fstp dword ptr [eax], st
+  // add esp, 0x8
+  // mov [eax+0x4], ecx
+  
+  // This part is very hard to represent in C.
+  // I'll just try to make it compile and see the diff.
 }
 
 void func_001062C0(int *param_1, int param_2, float *param_3)
@@ -243,5 +256,6 @@ extern float D_001D27EC;
 extern float D_001D27EC;
 extern float D_001D27EC;
 int func_0012F7A0(float *local_10, int ptr);
+extern float D_001D27EC;
 extern float D_001D27EC;
 extern float D_001D27EC;
