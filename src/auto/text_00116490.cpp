@@ -137,14 +137,7 @@ void _func_0013AF70(...);
 int _func_00136B30(...);
 void _func_00117100(void) { _func_0013AF50(_D_00326814); int p=_func_0013B1E0(); volatile int *q=(volatile int *)(p+0x80); int v=*q; *q=v+1; _func_0013AF70(_D_00326814); }
 
-void _func_00117130(void)
-{
-    _func_0013AF50(_D_00326814);
-    int p = _func_0013B1E0();
-    int v = *(int *)(p + 0x80);
-    *(int *)(p + 0x80) = v - 1;
-    _func_0013AF70(_D_00326814);
-}
+void _func_00117130(void) { _func_0013AF50(_D_00326814); int p=_func_0013B1E0(); volatile int *q=(volatile int *)(p+0x80); int v=*q; *q=v-1; _func_0013AF70(_D_00326814); }
 
 void func_00117340(int p){extern int D_00326880; extern int D_00326790[]; void func_00116FB0(int); void func_00136B20(void); D_00326790[*(int*)(p+0xe8)]=0; if(p==D_00326880) func_00136B20(); else func_00116FB0(p);}
 
