@@ -199,3 +199,7 @@ extern int D_00313B60;
 extern float D_001D27B0;
 extern float D_001DAE38;
 extern float D_001D5728;
+extern int D_00313B60;
+extern float D_001D27B0;
+extern float D_001DAE38;
+extern float D_001D5728;
