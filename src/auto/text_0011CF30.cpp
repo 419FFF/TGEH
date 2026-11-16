@@ -30,6 +30,8 @@ void func_0011D270(undefined4 param_1, undefined4 param_2)
   return;
 }
 
+void func_0011D290(int param_1, int param_2) { int iVar1 = func_0011D1E0(param_1); *(int *)(iVar1 + 0x13c) = param_2; }
+
 #pragma optimize("y", off)
 undefined4 func_0011D450(float *p, int count, float dt, int *desc, undefined4 arg5)
 {
