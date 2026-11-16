@@ -8,14 +8,21 @@ void func_0011CF80(int param_1, float param_2)
   *(float *)(param_1 + 0x30) = (float)value;
 }
 
-void func_0011CF90(int param_1, int param_2, int param_3, int param_4, int param_5) { int iVar1 = param_1 + param_2 * 0x30; *(int *)(iVar1 + 0x38) = param_3; *(int *)(iVar1 + 0x34) = 1; *(int *)(iVar1 + 0x3c) = param_4; *(int *)(iVar1 + 0x40) = param_5; }
+void func_0011CF90(int param_1, int param_2, int param_3, int param_4, int param_5)
+{
+  int iVar1 = param_1 + (param_2 * 0x30);
+  *((int *) ((param_1 + (param_2 * 0x30)) + 0x38)) = param_3;
+  *((int *) ((param_1 + (param_2 * 0x30)) + 0x34)) = 1;
+  *((int *) (iVar1 + 0x3c)) = param_4;
+  *((int *) (iVar1 + 0x40)) = param_5;
+}
 
 int func_0011D1E0(int);
 extern float D_001D27B8;
 extern float D_001D27B0;
-void func_0011CFC0(int param_1, float param_2) { *(float *)(param_1 + 0xf4) = param_2; if (param_2 > D_001D27B8) *(float *)(param_1 + 0xf8) = D_001D27B0 / param_2; else *(int *)(param_1 + 0xf8) = 0; }
+void func_0011CFC0(int param_1, float param_2) { *(float *)(param_1 + 0xf4) = param_2; if (!(param_2 <= D_001D27B8)) { *(float *)(param_1 + 0xf8) = D_001D27B0 / param_2; return; } *(unsigned int *)(param_1 + 0xf8) = 0; }
 
-int func_0011D1E0(unsigned char *s) { extern unsigned int D_003281E0; extern unsigned int *D_003281D8; int sum=0; for(unsigned char *p=s;*p;p++)sum+=(char)*p; for(unsigned int i=0;i<D_003281E0;i++){unsigned char *p=(unsigned char*)D_003281D8[i];if(p&&sum==*(int*)(p+0x20)){unsigned char *a=p,*b=s;while(*a==*b&&*a){if(a[1]!=b[1])break;a+=2;b+=2;}if(*a==*b&&!*a)return (int)D_003281D8[i];}}return 0;}
+int func_0011D1E0(char *s) { extern unsigned int D_003281E0; extern char **D_003281D8; int sum=0; char *p=s; while(*p){sum+=(signed char)*p; p++;} unsigned int i=0; while(i<D_003281E0){char *entry=D_003281D8[i];if(entry&&sum==*(int*)(entry+0x20)){char *x=entry;char *y=s;while(*x==*y&&*x){if(x[1]!=y[1])break;x+=2;y+=2;}if(*x==*y&&!*x)return (int)entry;}i++;}return 0;}
 
 void func_0011D270(undefined4 param_1, undefined4 param_2)
 {
