@@ -23,3 +23,7 @@ bool func_000400D0(void)
   return **(int **)(D_00307DF8 + 0x110) == 0x20;
 }
 
+bool _func_000400F0(void) { extern undefined4 D_00307DF8; return **(int **)(D_00307DF8 + 0x110) == 0x19; }
+
+void func_00040390(int p) {}
+
