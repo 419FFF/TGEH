@@ -129,7 +129,7 @@ void func_0012E910(float *p) {
 
 void _func_0012E940(float *p){int func_00131220(float);func_00131220((float)((longdouble)p[2]*p[2]+(longdouble)p[1]*p[1]+(longdouble)p[0]*p[0]));}
 
-void _func_0012E970(float *p){int func_00131220(...);func_00131220((longdouble)p[3]*p[3]+(longdouble)p[2]*p[2]+(longdouble)p[1]*p[1]+(longdouble)p[0]*p[0]);}
+void _func_0012E970(float *p){int func_00131220(float);func_00131220((float)((longdouble)p[3]*p[3]+(longdouble)p[2]*p[2]+(longdouble)p[1]*p[1]+(longdouble)p[0]*p[0]));}
 
 longdouble func_0012E9B0(float *param_1)
 {
@@ -154,6 +154,15 @@ void func_0012EB70(float *out,float *v) {
     out[0]=scale*v[0]; out[1]=scale*v[1]; out[2]=scale*v[2];
 }
 
+void func_0012EBF0(float *out,float *v) {
+    extern float __stdcall func_00131220(float);
+    extern float D_001D27B8, D_001D27B0;
+    float len=func_00131220(v[0]*v[0]+v[1]*v[1]+v[2]*v[2]+v[3]*v[3]);
+    if(len==D_001D27B8) { out[0]=0; out[1]=0; out[2]=0; out[3]=1; return; }
+    float scale=D_001D27B0/len;
+    out[0]=scale*v[0]; out[1]=scale*v[1]; out[2]=scale*v[2]; out[3]=scale*v[3];
+}
+
 void _func_0012EC80(float *p, float x) { p[0] *= x; p[1] *= x; }
 
 void func_0012ECA0(float *p, float x) { p[0]=x*p[0]; p[1]=x*p[1]; p[2]=x*p[2]; }
@@ -164,10 +173,19 @@ void _func_0012ED00(float *param_1, float *param_2, float param_3) { param_1[0]=
 
 void func_0012ED20(float *out,float *v,float s) { out[0]=s*v[0]; out[1]=s*v[1]; out[2]=s*v[2]; }
 
+void func_0012ED50(float *out,float *v,float s) { out[0]=s*v[0]; out[1]=s*v[1]; out[2]=s*v[2]; out[3]=s*v[3]; }
+
 void _func_0012ED80(float *out, float *a, float *b, float t)
 {
     out[0] = (b[0] - a[0]) * t + a[0];
     out[1] = (b[1] - a[1]) * t + a[1];
     out[2] = (b[2] - a[2]) * t + a[2];
+}
+
+void _func_0012EDC0(float *a, float *b)
+{
+    a[2] = b[1] * a[0] - b[0] * a[1];
+    a[0] = b[2] * a[1] - b[1] * a[2];
+    a[1] = b[0] * a[2] - b[2] * a[0];
 }
 
