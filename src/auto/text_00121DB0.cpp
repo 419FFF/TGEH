@@ -8,6 +8,8 @@ unsigned short func_00121E60(short*out,float*a,float*b,float scale){extern float
 
 void func_00121F20(int p,int *list){extern int D_0032B710[],D_0032F750;int n=0;D_0032B710[0]=(int)list;int count=1;for(int j=0;j<count;j++){int d=D_0032B710[j];int k=0;for(;k<0x1a;k+=2){short a=*(short*)(p+k),b=*(short*)(d+k);if(a>b)break;if(*(short*)(p+k+2)>*(short*)(d+k+2)){k++;break;}}if(k==0x1a){if(*(char*)(d+0x34))D_0032B710[n++]=d;else {D_0032B710[count++]=*(int*)(d+0x38);D_0032B710[count++]=*(int*)(d+0x38)+0x40;}}}D_0032F750=n;}
 
+void _func_00122470(void) {}
+
 void func_001226B0(char a0) {
     extern char D_0032F754;
     D_0032F754 = a0;
@@ -16,6 +18,14 @@ void func_001226B0(char a0) {
 char func_001226C0(void) {
     extern char D_0032F754;
     return D_0032F754;
+}
+
+void _func_00122780(void* p) {
+ extern int D_0032F904,D_0032F768,D_0032F900;
+ extern int D_0032F76C[],D_0032F770[];
+ extern int _func_0013B380(int);
+ int n;
+ if(p && D_0032F904 && D_0032F768<=0) { n=_func_0013B380(D_0032F904); if(D_0032F900>0) *(int*)((char*)D_0032F76C[D_0032F900]+0x4c)+=n; D_0032F770[D_0032F900]=(int)p; D_0032F900++; *(int*)((char*)p+0x4c)-=n; }
 }
 
 void func_001227E0(unsigned int param_1) {
@@ -67,6 +77,8 @@ int func_00122B80(undefined4 param_1, undefined4 param_2)
   func_0013CC70(iVar1);
   return iVar1;
 }
+
+void _func_00122D00(void* p, unsigned int arg) { extern void _func_00122C80(void*,unsigned int,unsigned int); unsigned int i; for(i=0;i<(unsigned int)((int*)p)[5];i++) _func_00122C80(p,i,arg); }
 
 void func_0013D070(int, int);
 void func_00122D30(int *param_1)
