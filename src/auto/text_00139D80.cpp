@@ -52,7 +52,7 @@ void func_0013A000(void)
 
 int _func_0013A0A0(int param_1,int param_2){extern int _func_00116A90(int,int,int);extern void _func_0012E760(void*);extern void _func_0011C3B0(void*,void*,void*);extern int _D_00334C8C;int* p=(int*)_func_00116A90(0x8c,1,1);p[6]=param_2;p[8]=param_1;*((char*)p+0x1c)=1;_func_0012E760(p+10);_func_0012E760(p+14);_func_0012E760(p+18);p[22]=0;p[23]=0;p[24]=0;p[25]=0;p[26]=*(int*)(param_1+0xc);p[27]=0x3f800000;p[28]=0;p[5]=0;_func_0011C3B0(&_D_00334C8C,p,p);*((char*)p+0x1e)=0;return (int)p;}
 
-void _func_0013A470(int param_1){extern int _D_00334C98,_D_001E8878,_D_00334CA4;extern void _func_0013AF50(int);extern void __stdcall _func_001AF9A1(int);extern void __stdcall _func_001AEB37(int);extern void _func_00139C70(void);extern void _func_0013AF70(int);int* edi=(int*)param_1;int zero=0;if(*((char*)edi+0x1d)==0||edi[5]==0)return;_func_0013AF50(_D_00334C98);_func_001AF9A1(edi[34]);if(*((char*)edi+0x1c)!=0&&_D_001E8878==8){int keep=edi[34];_func_00139C70();}else{_func_001AEB37(edi[34]);--_D_00334CA4;}int global=_D_00334C98;edi[34]=zero;edi[5]=zero;*((char*)edi+0x1d)=zero;_func_0013AF70(global);}
+void _func_0013A470(int p){extern int _D_00334C98,_D_001E8878,_D_00334CA4;extern void _func_0013AF50(int);extern void __stdcall _func_001AF9A1(int);extern void __stdcall _func_001AEB37(int);extern void _func_00139C70(void);extern void _func_0013AF70(int);int* edi=(int*)p;int zero=0;unsigned char flag=*((unsigned char*)edi+0x1d);if(flag==zero||edi[5]==zero)return;_func_0013AF50(_D_00334C98);_func_001AF9A1(edi[34]);if(*((unsigned char*)edi+0x1c)==zero||_D_001E8878!=8){_func_001AEB37(edi[34]);--_D_00334CA4;}else{int hold=edi[34];_func_00139C70();}int val=_D_00334C98;edi[34]=zero;edi[5]=zero;*((unsigned char*)edi+0x1d)=zero;_func_0013AF70(val);}
 
 int __stdcall func_001AF97D(int,int,int,int);
 int __stdcall func_001AF9A1(int);
@@ -77,14 +77,14 @@ void _func_0013ABA0(int p,undefined4 *q){int *d=(int*)p;d[10]=q[0];d[11]=q[1];d[
 
 void _func_0013ABC0(int p,undefined4 *q){int *d=(int*)p;d[18]=q[0];d[19]=q[1];d[20]=q[2];d[4]=d[4]|4;}
 
-void _func_0013ABE0(int param_1, float param_2, int param_3)
+void _func_0013ABE0(int param_1, longdouble param_2, int param_3)
 {
-  *(float *)(param_1 + 0x58) = param_2;
+  *(float *)(param_1 + 0x58) = (float)param_2;
   *(int *)(param_1 + 0x5c) = param_3;
-  *(unsigned int *)(param_1 + 0x10) |= 8;
+  *(unsigned int *)(param_1 + 0x10) = *(unsigned int *)(param_1 + 0x10) | 8;
 }
 
-void _func_0013AC00(void* p,float v){float* f=(float*)((char*)p+0x6c);*f=v;if(*(unsigned char*)((char*)p+0x1c)==0)*(int*)((char*)p+0x10)|=0x40;}
+void _func_0013AC00(void* p,float v){double t=v;*((float*)((char*)p+0x6c))=(float)t;if(!*((char*)p+0x1c))*((int*)((char*)p+0x10))|=0x40;}
 
 void func_0013AC20(int param_1, undefined4 param_2)
 {
