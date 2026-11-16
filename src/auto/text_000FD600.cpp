@@ -202,7 +202,7 @@ char func_000FDE10(void) {
     return 1;
 }
 
-unsigned char _func_000FDE20(void *u,int *a){int _func_0013E3F4(...);int _func_000B6510(...);int v=_func_0013E3F4(*(float*)a[1]);_func_000B6510(0xf,v);return 1;}
+unsigned char _func_000FDE20(void*u,int*a){int _func_0013E3F4(void);int _func_000B6510(...);volatile float value=*(float*)a[1];int v=_func_0013E3F4();_func_000B6510(0xf,v);return 1;}
 
 unsigned char _func_000FDE40(void){extern char D_001DD1B8;int _func_0009C590(...);int _func_00044C90(...);int _func_000B6510(...);int local[3]={0,0,0x42c80000};int v=_func_0009C590(&D_001DD1B8);_func_00044C90(v,local);_func_000B6510(8,0);return 1;}
 
@@ -250,7 +250,9 @@ void func_000FDFB0(void) {
 
 extern void _func_000BC460(int);
 extern void __cdecl _func_000BC460(int);
-void _func_000FDFC0(int param_1,int param_2){int _func_000BC460(int,...);_func_000BC460(*(int*)(param_2+4));}
+void _func_000FDFC0(int param_1,int param_2){int _func_000BC460(...);_func_000BC460(*(int*)(param_2+4));}
+
+unsigned char _func_000FE0A0(unsigned int a,unsigned int*p){int _func_00012D60(unsigned int,unsigned int);_func_00012D60(*p,0x40);return 1;}
 
 unsigned char func_000FE100(unsigned int a, unsigned int *p)
 {
