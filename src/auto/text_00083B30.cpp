@@ -2,6 +2,8 @@
 #include "common.h"
 #include "ghidra.h"
 
+void func_00083CE0(void) { extern unsigned int D_002EAF80, D_001E4774; D_002EAF80=(unsigned int)0L; D_001E4774=(unsigned int)0L; }
+
 void func_00083D00(int param_1, int param_2)
 {
   int func_00116A90(...);
@@ -53,15 +55,72 @@ void func_00083DD0(void) {
     func_0011D0E0((int)&D_001D68D8);
 }
 
+void func_00083FF0(int p) {
+ extern volatile int D_002FBBDC[], D_002FBBE0[], D_002FBBE4[], D_002FBBE8[];
+ int func_00110760(int);
+ int i=*(int*)(p+0xe0), n;
+ if (i != -1) {
+   --D_002FBBDC[i*5];
+   n=D_002FBBDC[i*5];
+   if (!n) {
+     if (i != 4 && i != 0x18) {
+       func_00110760(D_002FBBE0[i*5]);
+       func_00110760(D_002FBBE4[i*5]);
+     }
+     func_00110760(D_002FBBE8[i*5]);
+   }
+ }
+}
+
 undefined4 func_00084080(int param_1)
 {
   extern undefined D_002FBBD8;
   return *(undefined4 *)(((undefined *)&D_002FBBD8) + param_1 * 0x14);
 }
 
+void func_00084090(int id, unsigned int a, unsigned int b, unsigned int c, unsigned int d) {
+ extern int D_002FBBE8[];
+ int func_0011F8D0(int, void*);
+ int obj=D_002FBBE8[id*5];
+ if (obj != 0) {
+   volatile unsigned int local[9];
+   local[0]=0;local[1]=0;local[2]=0;local[3]=0;local[4]=0;local[5]=0;local[6]=0;local[7]=0;local[8]=0;
+   local[0]=0;local[5]=0;
+   local[6]=b;local[2]=c;local[1]=a;local[7]=d;
+   func_0011F8D0(obj,(void*)local);
+ }
+}
+
+void func_000841F0(int id, char* p) {
+ extern int D_002FBBD8[], D_002FBBE8[]; extern float D_001D2B64;
+ int func_0010FB70(int,int,int), func_0011FD20(void), func_0011F920(int);
+ int func_001105E0(int,void*,int), func_00110000(int), func_00095B30(int);
+ int func_001206B0(void), func_0011F960(int), func_00110420(int,int);
+ int index=id*5; int obj=D_002FBBD8[index];
+ if (!obj || id==4 || id==0x18) return;
+ int model=D_002FBBE8[index];
+ func_0010FB70(obj,model,3);
+ func_0011FD20();
+ int token=func_0011F920(obj);
+ float* xy=(float*)(p+0x30);
+ int x=*(int*)&xy[0], y=*(int*)&xy[1];
+ xy[0]=xy[0]-D_001D2B64;
+ xy[1]=xy[1]-D_001D2B64;
+ func_001105E0(obj,p,0);
+ func_00110000(obj);
+ *(int*)&xy[0]=x; *(int*)&xy[1]=y;
+ func_00095B30(obj); func_001206B0(); func_0011F960(token);
+ func_00110420(obj,model);
+}
+
 void func_00084390(void) {
     int func_00136510(...);
     func_00136510(-1082130432, 1065353216, -1082130432, 1065353216);
+}
+
+void func_000843B0(int id, char* p, float a,float b,float c,float d,float e,float f,float g) {
+ extern int D_002FBBD8[]; void func_00084110(float,float,float,float,float,float,float); void func_000841F0(int,char*); void func_000842B0(int,char*);
+ if(D_002FBBD8[id*5]) { func_00084110(a,b,c,d,e,f,g);func_000841F0(id,p);func_000842B0(id,p);int func_00136510(float,float,float,float);func_00136510(-1,1,-1,1); }
 }
 
 void func_000845C0(void)
