@@ -28,8 +28,7 @@ int func_0009CC90(int param1, int param2)
   if (count > 0) {
     offset = 0;
     do {
-      int name = *(int *)(*(int *)(object + 0x28) + offset + 0x40);
-      if (func_0011B4F0(name, local2) == 0)
+      if (func_0011B4F0(*(int *)(*(int *)(object + 0x28) + offset + 0x40), local2) == 0)
         return i * 0x70 + *(int *)(object + 0x28);
       ++i;
       offset += 0x70;
