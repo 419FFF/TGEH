@@ -75,7 +75,7 @@ unsigned char _func_000FACD0(undefined4 param_1, undefined4 *param_2) { unsigned
 
 unsigned char _func_000FAD00(undefined4 param_1, undefined4 *param_2) { unsigned char func_00063C20(...); void func_001045F0(...); if (!func_00063C20(param_1)) func_001045F0(*param_2); return 1; }
 
-extern char D_001D29C7; unsigned char _func_000FAD30(undefined4 param_1, int param_2) { unsigned char func_00063C20(...); void func_00101240(...); int func_000AFD10(...); if (!func_00063C20(param_1)) { char *str=*(char**)*(int**)(param_2+4); int n=0; while(str[n]) n++; if(!n) func_00101240(&D_001D29C7); else { int r=func_000AFD10(str,n); if(r) func_00101240(r); } } return 1; }
+extern char D_001D29C7; unsigned char _func_000FAD30(undefined4 param_1, int param_2) { unsigned char func_00063C20(...); void func_00101240(...); int func_000AFD10(...); if (func_00063C20(param_1)) return 1; char *str=*(char**)*(int**)(param_2+4); char *end=str; volatile int len; do { end++; } while(end[-1]); len=(int)end-(int)(str+1); if(len==0) func_00101240(&D_001D29C7); else { int r=func_000AFD10(str,(int)len); if(r) func_00101240(r); } return 1; }
 
 unsigned char _func_000FAD90(undefined4 param_1) { unsigned char func_00063C20(...); unsigned char func_00100D80(...); unsigned char func_00104600(...); void func_00104190(...); if(func_00063C20(param_1)) {func_00104190(); return 1;} if(func_00100D80() && func_00104600()) return 0; return 1; }
 
@@ -156,3 +156,4 @@ extern char D_00307E08[];
 extern float D_00307DB4;
 extern float D_001D27B0;
 extern float D_00307DBC;
+extern u16 D_0000FFFF;
