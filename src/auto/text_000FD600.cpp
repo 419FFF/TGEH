@@ -264,6 +264,8 @@ unsigned char _func_000FDFE0(unsigned int a,int* p){extern int func_001060A0(...
 
 unsigned char _func_000FE020(unsigned int a,int* p){extern int func_001060A0(...);extern int func_00012D60(...);int* out=(int*)(*p+0x130);out[0]=func_001060A0(*(int*)(p[3]+0x40));out[1]=*(int*)p[5];func_00012D60(*p,0x3e);return 1;}
 
+unsigned char func_000FE060(unsigned int a,int *p){int func_001060A0(...);int _func_00012D60(...);int *out=(int*)(*p+0x130);out[0]=p[3]+4;out[1]=func_001060A0(*(int*)(p[5]+0x40));out[2]=*(int*)p[7];_func_00012D60(*p,0x3f);return 1;}
+
 unsigned char _func_000FE0A0(unsigned int a,unsigned int*p){int _func_00012D60(unsigned int,unsigned int);_func_00012D60(*p,0x40);return 1;}
 
 unsigned char func_000FE100(unsigned int a, unsigned int *p)
@@ -292,6 +294,8 @@ undefined1 func_000FE1C0(void)
 unsigned char _func_000FE210(unsigned int a, unsigned int *p) { int _func_000912B0(unsigned int); _func_000912B0(*p); return 1; }
 
 unsigned char _func_000FE230(unsigned int a,unsigned int* p){extern int func_00012D60(...);func_00012D60(*p,0x46);return 1;}
+
+unsigned char func_000FE250(unsigned int a,int *p){int _func_00012D60(...);_func_00012D60(*(int*)((char*)p+0xc),0x46);return 1;}
 
 unsigned char func_000FE300(int param_1)
 {
