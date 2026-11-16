@@ -285,6 +285,8 @@ undefined1 func_000FE1C0(void)
 
 unsigned char _func_000FE210(unsigned int a, unsigned int *p) { int _func_000912B0(unsigned int); _func_000912B0(*p); return 1; }
 
+unsigned char _func_000FE230(unsigned int a,unsigned int* p){extern int func_00012D60(...);func_00012D60(*p,0x46);return 1;}
+
 unsigned char func_000FE300(int param_1)
 {
   ++*(int *)(param_1 + 0x4e0);
