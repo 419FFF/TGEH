@@ -3,10 +3,9 @@
 #include "ghidra.h"
 
 void _func_0013AD40(void *p,void *arg) {
-void _func_0011C3E0(void*);void _func_0011C3B0(void*,void*,void*);void _func_0013A120(float);extern int _D_001E8878;
-void*old=*(void**)((char*)p+0x78);if(old){_func_0011C3E0((char*)p+0x7c);*(int*)((char*)p+0x78)=0;}
-*(void**)((char*)p+0x78)=arg;if(arg)_func_0011C3B0(arg,(char*)p+0x7c,p);
-if(!*((char*)p+0x1c)){int flags=*(int*)((char*)p+0x10);int mode=_D_001E8878;int updated=flags|0x40;*(int*)((char*)p+0x10)=updated;if(mode==8){void*q=*(void**)((char*)p+0x78);if(q){float factor=*(float*)((char*)p+0x6c);float v=*(float*)((char*)q+0x18)*factor;_func_0013A120(v);}else _func_0013A120(*(float*)((char*)p+0x6c));}}
+void _func_0011C3E0(void*);void _func_0011C3B0(void*,void*,void*);void _func_0013A120(float);extern volatile int _D_001E8878;
+if(*(int*)((char*)p+0x78)){_func_0011C3E0((char*)p+0x7c);*(int*)((char*)p+0x78)=0;}*(void**)((char*)p+0x78)=arg;if(arg)_func_0011C3B0(arg,(char*)p+0x7c,p);
+if(!*((char*)p+0x1c)){register int flags=*(int*)((char*)p+0x10);register int mode=_D_001E8878;flags|=0x40;*(int*)((char*)p+0x10)=flags;if(mode==8){void*q=*(void**)((char*)p+0x78);if(q){float v=*(float*)((char*)q+0x18);v*=*(float*)((char*)p+0x6c);_func_0013A120(v);}else _func_0013A120(*(float*)((char*)p+0x6c));}}
 }
 
 longdouble func_0013ADC0(int param_1)
@@ -40,6 +39,11 @@ void _func_0010BA93(void); extern int _D_00334DC0,_D_00334E10,_D_00334CAC,_D_003
 _D_00334DC0=0; _D_00334E10=1; _func_0010BA93(); _D_00334CAC=0; *(char*)&_D_00334CB8=0; _D_00334D38=0; _D_00334D3C=-1; ((void (__stdcall *)(void*))__imp__RtlInitializeCriticalSection)(&_D_00334E14);
 }
 
+void _func_0013AF00(void) {
+extern unsigned char _D_00334E31; extern void* __imp__RtlInitializeCriticalSection; void* _func_00116A90(int,int,int);
+_D_00334E31=1; void*p=_func_00116A90(0x1c,1,1); ((void (__stdcall *)(void*))__imp__RtlInitializeCriticalSection)(p); _D_00334E31=0;
+}
+
 void _func_0013AF30(void *p) { extern unsigned char _D_00334E31; void _func_00116FB0(void*); _D_00334E31=1; if(p)_func_00116FB0(p); _D_00334E31=0; }
 
 void func_0013AF50(void *param_1)
@@ -59,6 +63,11 @@ void func_0013AF70(void *param_1)
 }
 
 int __stdcall func_0013AF90(int *a0) { ((void (__cdecl *)(int))a0[2])(a0[3]); return 0; }
+
+void _func_0013AFB0(void) {
+extern int _D_00334E14; extern void _func_0013AF50(void*); extern void _func_0013AF70(void*); extern void* _func_00116A90(int,int,int);
+void*p=_func_00116A90(0x118,1,1); _func_0013AF50(&_D_00334E14); _func_0013AF70(&_D_00334E14); (void)p;
+}
 
 int _func_0013B050(void)
 {
@@ -126,7 +135,7 @@ int _func_0013B1E0(void) {
 void* __stdcall _func_00109BBE(unsigned int,unsigned int,unsigned int,unsigned int);
 int _func_00116A90(int,int,int);
 int __stdcall _func_00109BBE(int,int,int,int);
-void* _func_0013B250(void) { int* p=(int*)_func_00116A90(4,1,1); return (void*)_func_00109BBE(0,0,0,(int)p); }
+void* _func_0013B250(void) { int* p=(int*)_func_00116A90(4,1,1); *p=_func_00109BBE(0,0,0,0); return p; }
 
 void func_0013B280(undefined4 *param_1, char param_2)
 {
@@ -160,11 +169,11 @@ void func_0013B300(undefined4 *param_1)
 
 int _func_0013B320(void) {
  void *_func_00116A90(...);int __stdcall _func_00147220(int*);int __stdcall _func_00147231(int*);longdouble _func_0013E3F4(...);
- int *p=(int*)_func_00116A90(0x28,1,1);int a[2];
- _func_00147220(&a[0]);_func_00147231(&a[1]);
- p[6]=0;p[7]=0;p[4]=a[0];p[5]=a[1];
- longdouble t=_func_0013E3F4();
- ((longdouble*)(p+2))[0]=t;
+ int *p=(int*)_func_00116A90(0x28,1,1);int a[2];int b[2];longdouble result;
+ _func_00147220(a);_func_00147231(b);
+ p[6]=0;p[7]=0;p[4]=a[0];p[5]=b[0];
+ result=_func_0013E3F4();
+ *(longdouble*)(p+2)=result;
  return (int)p;
 }
 
@@ -173,30 +182,88 @@ void _func_0013B380(int *p) {
  int a[2];
  if(!*((char*)p+0x20)){
   _func_00147220(a);
-  unsigned int lo=*(unsigned int*)((char*)p+0x10),hi=*(unsigned int*)((char*)p+0x14);
-  unsigned int delta=(unsigned int)a[0]-lo;
-  unsigned int carry=((unsigned int)a[0]<lo);
-  unsigned int sum=*(unsigned int*)((char*)p+0x18)+delta;
-  unsigned int c=(sum<*(unsigned int*)((char*)p+0x18));
+  unsigned int oldlo=*(unsigned int*)((char*)p+0x18);
+  unsigned int oldhi=*(unsigned int*)((char*)p+0x1c);
+  unsigned int newlo=(unsigned int)a[0],newhi=(unsigned int)a[1];
+  unsigned int elapsedlo=newlo-*(unsigned int*)((char*)p+0x10);
+  unsigned int borrow=(newlo<*(unsigned int*)((char*)p+0x10));
+  unsigned int elapsedhi=newhi-*(unsigned int*)((char*)p+0x14)-borrow;
+  unsigned int sum=oldlo+elapsedlo;
+  unsigned int carry=(sum<oldlo);
   *(unsigned int*)((char*)p+0x18)=sum;
-  *(unsigned int*)((char*)p+0x1c)=*(unsigned int*)((char*)p+0x1c)+(unsigned int)a[1]-hi-carry+c;
-  *(unsigned int*)((char*)p+0x10)=a[0];*(unsigned int*)((char*)p+0x14)=a[1];
+  *(unsigned int*)((char*)p+0x1c)=oldhi+elapsedhi+carry;
+  *(unsigned int*)((char*)p+0x10)=newlo;*(unsigned int*)((char*)p+0x14)=newhi;
  }
  _func_0013F4D0(p[3],p[2],p[7],p[6]);
 }
 
 void _func_0013B3F0(int *self, int param_2)
 {
-    void __stdcall _func_00147220(void *);
-    void __stdcall _func_00147231(void *);
+    void __stdcall _func_00147220(int *);
+    void __stdcall _func_00147231(int *);
     longlong __stdcall _func_0013EEB0(int, int, int, int);
-    char first[8];
-    char second[8];
-    _func_00147220(first);
+    int first;
+    int second[3];
+    _func_00147220(&first);
     _func_00147231(second);
-    self[4] = (int)first;
-    self[5] = param_2;
-    *(longlong *)(self + 6) = _func_0013EEB0(self[2], self[3], param_2, 0);
+    self[4]=first;
+    self[5]=second[0];
+    *(longlong *)(self+6)=_func_0013EEB0(self[2],self[3],param_2,0);
+}
+
+void _func_0013B440(int index, int arg2, int arg3) {
+    extern int _D_00334E34;
+    extern int _D_001E8900;
+    extern int _D_001E88FC;
+    extern int _D_001E88F8;
+    int _func_0017E7A8(int, int, int);
+    int _func_0017E591(int, int, int);
+    int _func_001AFA11(int, int);
+    int _func_001B04BC(int, int);
+    _func_0017E7A8(0, arg2, arg3);
+    if (_D_00334E34) {
+        _func_0017E591(0, 0, arg3);
+        _D_001E88FC = (int)&_D_001E8900 + index * 16;
+        _func_001AFA11(0, _D_00334E34);
+        _func_001B04BC(0, _D_001E88F8);
+        (*(void (**)(void))(*(int *)_D_001E88F8 + 4))();
+    }
+}
+
+void _func_0013B4B0(unsigned int index) {
+    extern int _D_001E8938;
+    extern int _D_001E8930;
+    extern int _D_00334E34;
+    extern int _D_001E894C;
+    int _func_0017E575(int, int);
+    int _func_0017E7A8(int, int, int);
+    int _func_0017E591(int, int, int);
+    int _func_001AFA11(int, int);
+    int _func_001B04BC(int, int);
+    int count;
+    int value;
+    _func_0017E575(0, 0);
+    count = index;
+    if (count) {
+        if (count < index)
+            index = 0;
+        _func_0017E7A8(0, 0, 0);
+        if (index) {
+            value = 0;
+            _func_0017E591(0, 0, 0);
+            if (value == 1) {
+                _D_001E8938 = 2;
+                _D_001E8930 = 1;
+            } else {
+                _D_001E8938 = 0;
+                _D_001E8930 = 2;
+            }
+            _D_001E894C = 0;
+            _func_001AFA11(0, _D_00334E34);
+            _func_001B04BC(0, (int)&_D_001E8930);
+            (*(void (**)(void))(*(int *)_D_001E8930 + 4))();
+        }
+    }
 }
 
 void func_0013BB20(void) {
