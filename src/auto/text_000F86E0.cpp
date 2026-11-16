@@ -72,6 +72,30 @@ void func_000F87B0(void)
   }
 }
 
+void func_000F8810(int param_1)
+{
+  extern unsigned int D_003268B0;
+  extern int D_003080AC;
+  int func_0011A5E0(...);
+  int func_000F8810(...);
+  unsigned int *node;
+
+  if ((*(unsigned char *)(param_1 + 0xd0) & 1) == 0) {
+    if (*(unsigned char *)(param_1 + 0x22) == D_003268B0) {
+      if (D_003080AC != 0) {
+        func_0011A5E0(param_1, 1);
+      } else {
+        func_0011A5E0(param_1, 0);
+      }
+    }
+    for (node = *(unsigned int **)(param_1 + 0x28); node != 0; node = (unsigned int *)node[3]) {
+      if ((*(unsigned char *)((char *)node + 6) & 8) == 0) {
+        func_000F8810(*node);
+      }
+    }
+  }
+}
+
 void func_000F8AE0(int param_1)
 {
   int func_0009D9E0(...);
@@ -102,3 +126,15 @@ void func_000F8AE0(int param_1)
   }
   return;
 }
+
+unsigned int func_000F8F40(int *p) {
+ extern unsigned int D_00324AF8;
+ extern int *D_00324968[];
+ unsigned int i;
+ int *q;
+ q = (int *)p[0xb];
+ while (q && !(p[8] & 8)) { p=q; q=(int *)p[0xb]; }
+ for(i=0;i<D_00324AF8;i++) if(D_00324968[i][0x38]==(int)p) return (unsigned int)D_00324968[i];
+ return 0;
+}
+
