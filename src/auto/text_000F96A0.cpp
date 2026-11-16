@@ -27,7 +27,7 @@ void func_000F96A0(int param_1)
   return;
 }
 
-void func_000F9700(void){extern unsigned int D_00324AF8;extern int D_00324968[];int func_000F80F0(...);int func_00110170(...);register unsigned int i=0;if(D_00324AF8)do{if(*(unsigned char*)(D_00324968[i]+0x284)){func_000F96A0(D_00324968[i]);func_000F80F0(1);func_00110170(*(int*)(D_00324968[i]+0xe0));func_000F80F0(0);}i++;}while(i<D_00324AF8);}
+void func_000F9700(void){extern unsigned int D_00324AF8;extern int D_00324968[];int func_000F80F0(...);int func_00110170(...);register unsigned int i=0;if(D_00324AF8<=0)return;do{if(*(unsigned char*)(D_00324968[i]+0x284)){func_000F96A0(D_00324968[i]);func_000F80F0(1);func_00110170(*(int*)(D_00324968[i]+0xe0));func_000F80F0(0);}i++;}while(i<D_00324AF8);}
 
 int func_000F9760(void)
 {
