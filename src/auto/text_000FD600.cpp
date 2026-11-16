@@ -249,6 +249,8 @@ char func_000FDF30(void) {
 
 unsigned char _func_000FDF40(void){extern char _D_001D7248;int _func_0009C590(void*);int _func_000688D0(int);int p=_func_0009C590(&_D_001D7248);_func_000688D0(*(int*)(p+0x2c));return 1;}
 
+unsigned char _func_000FDF60(void* a,int* p){extern int func_0009CBE0(...);extern int func_00110060(...);extern int func_000B6510(...);extern int _D_001D7BE0;int* base=(int*)func_0009CBE0(&_D_001D7BE0);int* obj=(int*)*p;int* slot=(int*)base[0x110/4];int value=**(int**)(obj[0xb/4]+0x2c);slot[0xd90/4]=value;func_00110060(*(int*)(obj[0x2c/4]),(int)((char*)slot+0xd50));func_000B6510(5,0);return 1;}
+
 void func_000FDFB0(void) {
     int func_000C1370(...);
     func_000C1370();
@@ -257,6 +259,8 @@ void func_000FDFB0(void) {
 extern void _func_000BC460(int);
 extern void __cdecl _func_000BC460(int);
 void _func_000FDFC0(int param_1,int param_2){int _func_000BC460(...);_func_000BC460(*(int*)(param_2+4));}
+
+unsigned char _func_000FDFE0(unsigned int a,int* p){extern int func_001060A0(...);extern int func_00012D60(...);int* out=(int*)(*p+0x130);out[0]=func_001060A0(*(int*)(p[3]+0x40));out[1]=*(int*)p[5];func_00012D60(*p,0x3d);return 1;}
 
 unsigned char _func_000FE0A0(unsigned int a,unsigned int*p){int _func_00012D60(unsigned int,unsigned int);_func_00012D60(*p,0x40);return 1;}
 
