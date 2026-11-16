@@ -30,3 +30,21 @@ void func_00036B00(int param_1, int param_2)
   return;
 }
 
+unsigned char func_00037190(int param_1) {
+ int func_0013F2E9(...);
+ extern char D_001D3C58,D_001D3C40,D_001D3C28;
+ unsigned char c;
+ int p=*(int *)(param_1+8);
+ if(p) {
+   c=*(unsigned char *)(p+0x13);
+   if(c=='E') {
+     int t=func_0013F2E9(*(int *)(*(int *)(param_1+4)+0x38),&D_001D3C58);
+     if(t && (t=func_0013F2E9(*(int *)(*(int *)(param_1+4)+0x38),&D_001D3C40),t) &&
+        (t=func_0013F2E9(*(int *)(*(int *)(param_1+4)+0x38),&D_001D3C28),t)) return 0;
+     return 1;
+   }
+   if(c==0x19 || c==0x17 || *(unsigned char *)(p+0x12)==11 || c==0x4f || (c==4 && *(int *)(p+0x118)==0x15)) return 1;
+ }
+ return 0;
+}
+
