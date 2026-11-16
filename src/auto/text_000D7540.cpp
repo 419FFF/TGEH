@@ -2,6 +2,13 @@
 #include "common.h"
 #include "ghidra.h"
 
+extern int D_001E54E8;
+extern int D_0031E508;
+extern unsigned char D_001E53A8[];
+void func_000D7870(signed char *p){if(p){int i=(((p[1]+p[0]*6)*0x10+p[2])*0xc+p[3])*0xc;*(int*)(D_0031E508+i+4)=0;*(int*)(p+8)=1;}}
+
+unsigned char func_000D7FE0(int *p,int *q){int *x=&D_001E54E8;if(q[1]!=20){while(*x!=-1){if(*x++==q[1])goto done;}if(*p==0)return 1;}done:return 0;}
+
 void func_000D8370(void)
 {
   int func_000B5650(...);
