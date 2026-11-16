@@ -2,6 +2,8 @@
 #include "common.h"
 #include "ghidra.h"
 
+void func_00067CD0(void){extern int D_00308158; extern int D_001D573C; extern int D_002F77B4,D_002F77B8,*D_002F77B0; int func_0009C7A0(int,void*,int); int func_0013E3F4(float); int func_00116A90(int,int,int); void func_00067B40(int); D_002F77B4=0;D_002F77B8=0;D_002F77B0=0; int x=func_0009C7A0(D_00308158,&D_001D573C,0); if(x){D_002F77B8=func_0013E3F4(*(float*)x);} int n=D_002F77B8; if(n)D_002F77B0=(int*)func_00116A90(n*12,1,1); func_00067B40(D_00308158);}
+
 void func_00067D50(void)
 {
   extern undefined4 D_002F77B0;
@@ -16,6 +18,12 @@ void func_00067D50(void)
   D_002F77B8 = 0;
   return;
 }
+
+void func_00067D90(void){extern int D_00313B60,D_002F77B4,*D_002F77B0; int func_001100A0(int,int*); int func_000679D0(int,int); int local=0; if(D_00313B60)func_001100A0(D_00313B60,&local); for(unsigned i=0;i<(unsigned)D_002F77B4;i++){int *p=(int*)((char*)D_002F77B0+i*12); if(p[2]==1&&func_000679D0(p[1],local+0x30))*(unsigned char*)(p[0]+6)|=0x10;}}
+
+void func_00067E00(void){extern int D_002F77B4; extern int *D_002F77B0; int n=D_002F77B4; int *p=D_002F77B0; while(n--){if(p[2]==1)*(unsigned char*)(p[0]+6)&=0xef;p+=3;}}
+
+int func_00067E30(void){extern int D_002F7EF0; extern unsigned char D_002F7E50[]; for(int i=0;i<D_002F7EF0;i++)if(!D_002F7E50[i]){D_002F7E50[i]=1;return i;}return 0;}
 
 undefined4 func_00068090(int param_1, int param_2)
 {
