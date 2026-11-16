@@ -62,3 +62,5 @@ void func_0011E830(int param_1, undefined4 param_2)
   return;
 }
 
+void func_0011E950(int p){int func_0011B990(...);int func_00116FB0(...);int func_0013C020(int);func_0011B990(*(int*)(p+0xe4));func_00116FB0(*(int*)(p+0x14c));*(int*)(p+0x14c)=0;func_0013C020(*(int*)(p+0xe0));}
+
