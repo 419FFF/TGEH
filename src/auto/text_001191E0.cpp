@@ -4,6 +4,8 @@
 
 int _func_0013E9DB(int);
 float _func_0013E9E0(int);
+void _func_001191E0(int a, int *b) { if (*(int *)(a + 0xb0)) { *(float *)(*(int *)(a + 0xb0)+0x34) = _func_0013E9E0(b[0]); *(float *)(*(int *)(a + 0xb0)+0x38) = _func_0013E9E0(b[1]); *(float *)(*(int *)(a + 0xb0)+0x3c) = _func_0013E9E0(b[2]); *(float *)(*(int *)(a + 0xb0)+0x40) = _func_0013E9E0(b[3]); } }
+
 void _func_00119CF0(int a, int *b) { if (_func_0013E9DB(*b)) *(unsigned char *)(a + 0xb6) |= 1; }
 
 void func_00119D10(int param_1, undefined4 *param_2)
