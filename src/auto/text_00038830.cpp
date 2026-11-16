@@ -33,6 +33,8 @@ void func_00039100(int param_1, int param_2)
   return;
 }
 
+void func_00039140(int p, undefined4 *out) { int func_000A2370(...); char func_000B5650(...); int func_000451C0(...); int x=func_000A2370(p+100); if(x==0) { if(func_000B5650(5)==0 && func_000B5650(14)==0) func_000451C0(); else { *out=0x20; *(char*)((char*)out+0x1a0)=0; } } }
+
 int func_000ACFB0(int,int);
 int func_00039190(int a,int b) { return func_000ACFB0(2,0); }
 
