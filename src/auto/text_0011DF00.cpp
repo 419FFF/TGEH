@@ -64,3 +64,5 @@ void func_0011E830(int param_1, undefined4 param_2)
 
 void func_0011E950(int p){int func_0011B990(...);int func_00116FB0(...);int func_0013C020(int);func_0011B990(*(int*)(p+0xe4));func_00116FB0(*(int*)(p+0x14c));*(int*)(p+0x14c)=0;func_0013C020(*(int*)(p+0xe0));}
 
+void func_0011E990(void){extern int D_003281F4,D_003281F0;int func_000688D0(...);int func_0011E950(...);int func_0011E690(...);int func_00110370(...);int local[7];if(!D_003281F4){func_000688D0();local[4]=0;local[3]=(int)func_0011E950;local[1]=(int)func_0011E690;local[2]=0;D_003281F0=func_00110370(local);}D_003281F4++;}
+
