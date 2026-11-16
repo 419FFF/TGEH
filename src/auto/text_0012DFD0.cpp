@@ -23,12 +23,7 @@ void _func_0012E280(unsigned int *out, unsigned char *in)
     out[1] = value;
 }
 
-void _func_0012E590(float *a, float *b)
-{
-    a[0] += b[0];
-    a[1] += b[1];
-    a[2] += b[2];
-}
+void _func_0012E590(float *a, float *b) { a[0] += b[0]; a[1] += b[1]; a[2] += b[2]; }
 
 void _func_0012E5C0(float *a, float *b)
 {
