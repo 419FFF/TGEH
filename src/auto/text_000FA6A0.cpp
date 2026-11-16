@@ -353,3 +353,8 @@ extern u16 _D_001D29C7;
 extern float _D_001D27B8;
 extern float _D_00307DB4;
 extern float _D_001D4F8C;
+extern u16 _D_001D28F0;
+extern u16 _D_001D2E34;
+extern u16 _D_001D2E38;
+extern u16 _D_001D2E30;
+extern u16 _D_001D29C7;
