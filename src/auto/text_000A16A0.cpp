@@ -204,6 +204,8 @@ void func_000A2500(undefined4 param_1)
 
 void _func_000A2560(undefined4 p){int func_00120E00(...);int func_00120F60(...);int func_00120F70(...);int func_00120F80(...);int func_00120E70(...);int func_00120ED0(...);int func_00120EA0(...);extern undefined4 D_00313AB8;func_00120E00(D_00313AB8);func_00120F60(p);func_00120F70(p);func_00120F80(p,p);func_00120E70(0x3f800000,0x3f800000,0x3f800000,0x3f800000);func_00120ED0(4,5);func_00120EA0(0,1,1,0);}
 
+void _func_000A25C0(undefined4 p){int func_00120E00(...);int func_00120F60(...);int func_00120F70(...);int func_00120F80(...);int func_00120E70(...);int func_00120ED0(...);int func_00120EA0(...);extern undefined4 D_00313AB8;func_00120E00(D_00313AB8);func_00120F60(p);func_00120F70(p);func_00120F80(p,p);func_00120E70(0x3f800000,0x3f800000,0x3f800000,0x3f800000);func_00120ED0(4,5);func_00120EA0(2,1,1,0);}
+
  void _func_000A16A0(int param_1,int param_2,int param_3) { int func_000A18A0(...);extern int D_003080AC;if((param_3>>5)&1u){volatile int three=3;int eax=three;int v=param_2;func_000A18A0(param_1+0x64,v,eax);return;}int edx=D_003080AC;int eax=(edx!=0)+1;int v=param_2;func_000A18A0(param_1+0x64,v,eax);}
 
  void _func_000A18A0(unsigned char *param_1,int param_2,unsigned char param_3) { int func_001165E0(...);extern int D_003080AC;if((param_3>>5)&1){int eax=3;func_001165E0(param_1+0x64,param_2,eax);}else{int edx=D_003080AC;int eax=(edx!=0)+1;func_001165E0(param_1+0x64,param_2,eax);}}
