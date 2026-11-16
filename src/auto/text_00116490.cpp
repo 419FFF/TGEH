@@ -57,6 +57,13 @@ void _func_001166D0(int* param_1, int* param_2, int param_3) {
   *(int*)(param_3+4) = (int)param_2;
 }
 
+void _func_00116740(int* param_1, int* param_2) {
+  if (param_2[1] != 0) *(int*)param_2[1] = param_2[0];
+  else param_1[0xb8/4] = param_2[0];
+  if (param_2[0] != 0) *(int*)(param_2[0]+4) = param_2[1];
+  else param_1[0xbc/4] = param_2[1];
+}
+
 void _func_00116800(int value) {
   extern int __cdecl _func_0013B1E0(void);
   int* p = (int*)_func_0013B1E0();
