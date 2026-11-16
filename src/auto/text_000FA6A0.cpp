@@ -159,6 +159,28 @@ undefined4 func_000FAFD0(undefined4 param_1, int *param_2)
     return 0;
 }
 
+void func_000FB1A0(undefined4 param_1, int param_2)
+{
+  extern undefined4 D_001D27B8;
+  if (D_001D27B8 < **(float **)(param_2 + 0xc)) {
+    **(undefined2 **)(param_2 + 4) = 1;
+    return;
+  }
+  **(undefined2 **)(param_2 + 4) = 0;
+  return;
+}
+
+void func_000FB1D0(undefined4 param_1, int param_2)
+{
+  extern undefined4 D_001D27B8;
+  if (D_001D27B8 < **(float **)(param_2 + 0xc)) {
+    *(undefined1 *)(*(int *)(param_2 + 4) + 0x60) = 1;
+    return;
+  }
+  *(undefined1 *)(*(int *)(param_2 + 4) + 0x60) = 0;
+  return;
+}
+
 unsigned char _func_000FB200(undefined4 a, undefined4 *p) { int func_0001CC10(...); func_0001CC10(*p); return (unsigned char)1; }
 
 undefined4 func_000FB220(undefined4 param_1, undefined4 *param_2)
@@ -247,3 +269,19 @@ extern u32 _func_0009C7A0(u32, u32, u32);
 extern u32 _func_000A2230(u32, u32);
 extern void _func_00131990(u32*);
 extern u32 _func_000A1BB0(u32, u32);
+extern u16 _D_001D28F0;
+extern u16 _D_001D2E34;
+extern u16 _D_001D2E38;
+extern u16 _D_001D2E30;
+extern u16 _D_001D29C7;
+extern u16 _D_002EEC00;
+extern u16 _D_002EECA0;
+
+extern int _func_0009C7A0(u16, u16, int);
+extern int _func_000A2230(u16, u16);
+extern int _func_00131990(u16);
+extern int _func_000A1BB0(u16, u16);
+extern int _func_00061600();
+extern int _func_00061650(u16, u16, u16, u16, int);
+extern int _func_00063C20(u16);
+extern int _func_0005CCC0(int);
