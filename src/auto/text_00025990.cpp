@@ -4,9 +4,9 @@
 
 void _func_00025990(int a){extern int D_00307D10;int _func_000487A0(...);int _func_000A1C00(...);int _func_00116FB0(...);int*s=*(int**)(a+0x110);_func_000487A0(D_00307D10,s[0x6c/4]);_func_000A1C00(s[0x25c/4]);_func_00116FB0((int)s);}
 
-void _func_000259D0(int a){int*p=(int*)(a+0x17c);p[0]=0;p[1]=0x3f800000;p[2]=0;p[3]=0;p[4]=0x3f800000;p[5]=0;p[6]=0;p[7]=0;p[8]=0x3f800000;p[9]=0;}
+void __fastcall _func_000259D0(int a){int*p=(int*)(a+0x17c);p[0]=0;p[1]=0x3f800000;p[2]=0;p[3]=0;p[4]=0x3f800000;p[5]=0;p[6]=0;p[7]=0;p[8]=0x3f800000;p[9]=0;}
 
-void _func_00025A20(int a){int*p=(int*)(a+0x17c);p[0]=0;p[1]=0x3f800000;p[2]=0x3f800000;p[3]=0x3f800000;p[4]=0x3f800000;p[5]=0;p[6]=0x3f800000;p[7]=0x3f800000;p[8]=0x3f800000;p[9]=0;}
+void __fastcall _func_00025A20(int a){int*p=(int*)(a+0x17c);p[0]=0;p[1]=0x3f800000;p[2]=0x3f800000;p[3]=0x3f800000;p[4]=0x3f800000;p[5]=0;p[6]=0x3f800000;p[7]=0x3f800000;p[8]=0x3f800000;p[9]=0;}
 
 void func_00025C00(int param_1)
 {
@@ -329,6 +329,8 @@ LAB_00002a09:
 }
 
 void _func_000264A0(int a){extern int D_00307D10;int _func_000487A0(...);int _func_000A1C00(...);int _func_00116FB0(...);int*s=*(int**)(a+0x110);_func_000487A0(D_00307D10,s[0x6c/4]);_func_000A1C00(s[0x268/4]);_func_000A1C00(s[0x25c/4]);_func_000A1C00(s[0x264/4]);_func_000A1C00(s[0x260/4]);if(s[0x258/4])_func_000A1C00(s[0x258/4]);_func_00116FB0((int)s);}
+
+unsigned char *func_00026910(unsigned char *p) { extern void *func_00116A90(...); if((*p%2)==0) ++*p; unsigned char *r=(unsigned char *)func_00116A90(0x10,1,1); int n=*p; void *q=func_00116A90(n*n*4,1,1); *(void **)(r+4)=q; r[0]=*p; unsigned char c=*p; r[8]=c>>1; return r; }
 
 void func_00026970(int param_1)
 {
