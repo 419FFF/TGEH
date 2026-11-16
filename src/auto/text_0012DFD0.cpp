@@ -72,12 +72,7 @@ void func_0012E760(undefined4 *param_1)
 
 void func_0012E780(float *p,float *q) { void func_00131220(float); float y=p[1]-q[1], x=*p-*q; func_00131220(y*y+x*x); }
 
-void func_0012E7B0(float *p, float *q) {
-    int func_00131220(...);
-    func_00131220(((longdouble)p[2] - (longdouble)q[2]) * ((longdouble)p[2] - (longdouble)q[2]) +
-                  ((longdouble)p[1] - (longdouble)q[1]) * ((longdouble)p[1] - (longdouble)q[1]) +
-                  ((longdouble)*p - (longdouble)*q) * ((longdouble)*p - (longdouble)*q));
-}
+void func_0012E7B0(float *p,float *q) { void func_00131220(float); float z=p[2]-q[2], y=p[1]-q[1], x=*p-*q; func_00131220(z*z+y*y+x*x); }
 
 void func_0012E7F0(float *p, float *q) {
     int func_00131220(...);
@@ -136,7 +131,7 @@ void func_0012EA00(float *p) { extern float D_001D27B8; extern float D_001D27B0;
 
 void func_0012EA60(float *p) { extern float D_001D27B8; extern float D_001D27B0; float n; float func_00131220(float); n=func_00131220(p[2]*p[2]+p[1]*p[1]+p[0]*p[0]); if(n==D_001D27B8){p[0]=0.0f;p[1]=0.0f;p[2]=1.0f;}else{n=D_001D27B0/n;p[0]*=n;p[1]*=n;p[2]*=n;} }
 
-void func_0012EAE0(float *p) { extern float D_001D27B8; extern float D_001D27B0; float n; int func_00131220(float); n=func_00131220(p[3]*p[3]+p[2]*p[2]+p[1]*p[1]+p[0]*p[0]); if(n==D_001D27B8){p[0]=0.0f;p[1]=0.0f;p[2]=0.0f;p[3]=1.0f;}else{n=D_001D27B0/n;p[0]*=n;p[1]*=n;p[2]*=n;p[3]*=n;} }
+void func_0012EAE0(float *p) { extern float D_001D27B8; extern float D_001D27B0; float n; float func_00131220(float); n=func_00131220(p[3]*p[3]+p[2]*p[2]+p[1]*p[1]+p[0]*p[0]); if(n==D_001D27B8){p[0]=0.0f;p[1]=0.0f;p[2]=0.0f;p[3]=1.0f;}else{n=D_001D27B0/n;p[0]*=n;p[1]*=n;p[2]*=n;p[3]*=n;} }
 
 void func_0012EB70(float *out,float *v) {
     extern float __stdcall func_00131220(float);
@@ -177,9 +172,12 @@ void _func_0012ED80(float *out, float *a, float *b, float t)
 
 void _func_0012EDC0(float *a, float *b)
 {
-    a[2] = b[1] * a[0] - b[0] * a[1];
-    a[0] = b[2] * a[1] - b[1] * a[2];
-    a[1] = b[0] * a[2] - b[2] * a[0];
+    float x = b[2] * a[1] - b[1] * a[2];
+    float y = b[0] * a[2] - b[2] * a[0];
+    float z = b[1] * a[0] - b[0] * a[1];
+    a[2] = x;
+    a[0] = y;
+    a[1] = z;
 }
 
 void _func_0012EE00(float *out, float *a, float *b)
