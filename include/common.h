@@ -25,4 +25,6 @@ typedef int BOOL;
 #define NULL 0
 #endif
 
+typedef unsigned int undefined4;
+
 #endif
