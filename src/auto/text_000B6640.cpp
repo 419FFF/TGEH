@@ -18,10 +18,10 @@ void func_000B6D90(void) {
   int func_000B58C0(int, int);
   __declspec(align(16)) char local[0x40];
   func_0011FED0(D_00313B60, local);
-  func_00136480(D_00313B60, local + 8);
-  func_00136510(1.0f, -1.0f, 1.0f, -1.0f);
-  func_0012F120(local + 0x20);
-  func_001364D0(local + 0x24);
+  func_00136480(D_00313B60, local);
+  func_00136510(-1.0f, 1.0f, -1.0f, 1.0f);
+  func_0012F120(local);
+  func_001364D0(local);
   func_000B58C0(D_00313ED8, 4);
 }
 
