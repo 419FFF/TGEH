@@ -147,3 +147,7 @@ int _func_000F91D0(int param_1) {
  return 0;
 }
 
+int _func_000F9280(int p){extern int _D_00324AFC,_D_00324AF8,_D_00324968[]; int _func_000F9220(...); char a[200]={0}; if(_D_00324AFC){unsigned i=0; if(*(int*)(_D_00324AFC+0xe4)) do{int v=_func_000F9220(*(int*)(_D_00324AFC+0xe8+i*8),p); if(v)return v; a[*(int*)(*(int*)(_D_00324AFC+0xe8+i*8)+0x30c)]=1; ++i;}while(i<(unsigned)*(int*)(_D_00324AFC+0xe4));} for(unsigned i=0;i<(unsigned)_D_00324AF8;i++)if(!a[i]){int v=_func_000F9220(_D_00324968[i],p);if(v)return v;} return 0;}
+
+void _func_000F9330(int p){extern int _D_00324AF8,_D_00324968[]; int _func_000F7FB0(...),_func_0011CCD0(...); for(unsigned i=0;i<(unsigned)_D_00324AF8;i++)if(*(int*)(_D_00324968[i]+0xe0)==p)return; int x=_func_000F7FB0(p);*(char*)(x+0x284)=0;*(char*)(x+0x28c)=0; for(int* n=*(int**)(p+0x30);n;n=(int*)n[3])if(!(*(unsigned char*)(*n+0x20)&0x10))_func_000F9330(_func_0011CCD0(*n));}
+
