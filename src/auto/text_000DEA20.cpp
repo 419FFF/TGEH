@@ -2,13 +2,89 @@
 #include "common.h"
 #include "ghidra.h"
 
-void func_000DEB50(void) { int func_000B54C0(...); int func_000DD930(...); int func_000DEA20(...); int func_000DCC40(...); int func_000DD050(...); extern undefined D_0031EC00; extern undefined D_0031E6C0; int func_000DCFC0(...); int func_000DCE40(...); int func_000DD390(...); char func_000D5120(...); char func_000DD0D0(...); int func_000B6C80(...); int func_000B6BE0(...); undefined *p; int i; func_000B54C0(1);func_000DD930();func_000DEA20();func_000DCC40();func_000DD050();p=(undefined *)&D_0031EC00;for(i=0;i<5;i++){func_000DCFC0(p,p+0x10);p+=0x310;}func_000DCE40();func_000DD390();if(!func_000D5120()&&!D_0031E6C0){if(func_000DD0D0()) {D_0031E6C0=0;func_000B6C80();return;}}else{D_0031E6C0=1;func_000B6BE0();}}
+void func_000DEB50(void)
+{
+  int func_000B54C0(...);
+  int func_000DD930(...);
+  int func_000DEA20(...);
+  int func_000DCC40(...);
+  int func_000DD050(...);
+  extern undefined D_0031EC00;
+  int func_000DCFC0(...);
+  int func_000DCE40(...);
+  int func_000DD390(...);
+  int func_000D5120(...);
+  extern undefined D_0031E6C0;
+  int func_000DD0D0(...);
+  int func_000B6C80(...);
+  int func_000B6BE0(...);
+  char cVar1;
+  undefined *puVar2;
+  int iVar3;
+  
+  func_000B54C0(1);
+  func_000DD930();
+  func_000DEA20();
+  func_000DCC40();
+  func_000DD050();
+  puVar2 = ((undefined *)&D_0031EC00);
+  iVar3 = 5;
+  do {
+    func_000DCFC0(puVar2,puVar2 + 0x10);
+    puVar2 = puVar2 + 0x310;
+    iVar3 = iVar3 + -1;
+  } while (iVar3 != 0);
+  func_000DCE40();
+  func_000DD390();
+  cVar1 = func_000D5120();
+  if ((cVar1 == '\0') && (D_0031E6C0 == '\0')) {
+    cVar1 = func_000DD0D0();
+    if (cVar1 != '\0') {
+      D_0031E6C0 = 0;
+      func_000B6C80();
+      return;
+    }
+    return;
+  }
+  D_0031E6C0 = 1;
+  func_000B6BE0();
+  return;
+}
 
-void func_000DEBE0(int param_1, char param_2) {
- extern undefined D_0031FDE8; extern undefined D_0031FD18; extern undefined4 D_0031FD48;
- int v=*(int *)(((undefined *)&D_0031FDE8)+param_1*4);
- if(param_2) { if(v==0){*(int *)(((undefined *)&D_0031FDE8)+param_1*4)=1;if(param_1!=12)*(undefined4 *)(((undefined *)&D_0031FD18)+param_1*4)=0;else D_0031FD48=0x3ed70a3d;} }
- else if(v==2){*(int *)(((undefined *)&D_0031FDE8)+param_1*4)=3;if(param_1!=12)*(undefined4 *)(((undefined *)&D_0031FD18)+param_1*4)=0x3f000000;else D_0031FD48=0x3f6b851f;}
+void func_000DEBE0(int param_1, char param_2)
+{
+  extern undefined D_0031FDE8;
+  extern undefined D_0031FD18;
+  extern undefined4 D_0031FD48;
+  int v = *((int *) (((undefined *) (&D_0031FDE8)) + (param_1 * 4)));
+  if (param_2)
+  {
+    if (v == 0)
+    {
+      *((int *) (((undefined *) (&D_0031FDE8)) + (param_1 * 4))) = 1;
+      if (param_1 != 12)
+      {
+        *((undefined4 *) (((undefined *) (&D_0031FD18)) + (param_1 * 4))) = 0;
+      }
+      else
+      {
+        D_0031FD48 = 0x3ed70a3d;
+      }
+    }
+  }
+  else
+    if ((*((int *) (((undefined *) (&D_0031FDE8)) + (param_1 * 4)))) == 2)
+  {
+    *((int *) (((undefined *) (&D_0031FDE8)) + (param_1 * 4))) = 3;
+    if (param_1 != 12)
+    {
+      *((undefined4 *) (((undefined *) (&D_0031FD18)) + (param_1 * 4))) = 0x3f000000;
+    }
+    else
+    {
+      D_0031FD48 = 0x3f6b851f;
+    }
+  }
 }
 
 void func_000DEC50(int a,int b,int c,int d) { extern undefined4 D_0031FD00; extern undefined D_0031FCEC; extern undefined D_0031FDE8; extern undefined D_0031FD18; extern undefined4 D_0031FD48; int state=*(int *)(((undefined *)&D_0031FD00)+a*4); if(state==0){func_000DEBE0(b,((undefined *)&D_0031FCEC)[d]);if(*(int *)(((undefined *)&D_0031FDE8)+d*4)==2){*(int *)(((undefined *)&D_0031FDE8)+d*4)=3;if(d==12)D_0031FD48=0x3f6b851f;else *(undefined4 *)(((undefined *)&D_0031FD18)+d*4)=0x3f000000;}}if(state==1){if(*(int *)(((undefined *)&D_0031FDE8)+c*4)==2){*(int *)(((undefined *)&D_0031FDE8)+c*4)=3;if(c==12)D_0031FD48=0x3f6b851f;else *(undefined4 *)(((undefined *)&D_0031FD18)+c*4)=0x3f000000;}func_000DEBE0(d,((undefined *)&D_0031FCEC)[b]);}}
@@ -286,4 +362,14 @@ LAB_000028e3:
 }
 
 void func_000DF3D0(void){int func_001160B0(...);extern undefined D_0031FDB4;extern undefined D_0031FDE8;undefined4*p=(undefined4*)&D_0031FDB4;do{func_001160B0(*p);p++;}while((int)p<(int)&D_0031FDE8);}
+
+void func_000DF3F0(void)
+{
+  extern unsigned char D_0031FCFE,D_0031FCFD,D_0031FCFC,D_0031FCFB,D_0031FCFA,D_0031FCF9;
+  extern int D_0031FE18,D_0031FD48;
+  if ((D_0031FCFE|D_0031FCFD|D_0031FCFC|D_0031FCFB|D_0031FCFA|D_0031FCF9)==0) {
+    if (D_0031FE18==0) { D_0031FE18=1; D_0031FD48=0x3ed70a3d; }
+    else if (D_0031FE18==2) { D_0031FE18=3; D_0031FD48=0x3f6b851f; }
+  }
+}
 
