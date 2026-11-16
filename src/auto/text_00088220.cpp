@@ -88,6 +88,8 @@ void func_00088700(void)
   return;
 }
 
+void func_000887F0(void){extern unsigned char D_001D6D08;extern unsigned int D_002FDF4C;int func_000B5100(...);void func_000B5420(...);D_002FDF4C=func_000B5100(&D_001D6D08,0x64,0x280);if(D_002FDF4C)func_000B5420(D_002FDF4C,0);}
+
 void func_00088820(void)
 {
   extern undefined4 D_002FDF4C;
