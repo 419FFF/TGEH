@@ -1,6 +1,7 @@
 /* 23 functions from 0x00088220 to 0x0008921F, found by Ghidra. */
 #include "common.h"
 #include "ghidra.h"
+struct Copy100 { int x[25]; };
 
 void func_00088520(unsigned int p){extern unsigned int D_00308158,D_002FDDC0,D_002FDDB8,D_00307C94,D_00307C58,D_003041F0,D_003041EC,D_00306E70,D_00306E6C;void func_00110170(unsigned int),func_00086B70(unsigned int),func_00096F70(unsigned int),func_000688D0(unsigned int),func_00093CA0(unsigned int);func_00110170(*(unsigned int*)(D_00308158+0x2c));if(!D_002FDDC0)goto b;if(*(unsigned char*)(*(unsigned int*)(p+0x2c)+0x22)==D_002FDDB8){func_00086B70(p);return;}b: if(!D_00307C94)goto c;if(*(unsigned char*)(*(unsigned int*)(p+0x2c)+0x22)==D_00307C58){func_00096F70(p);return;}c: if(!D_003041F0)goto d;if(*(unsigned char*)(*(unsigned int*)(p+0x2c)+0x22)==D_003041EC){func_000688D0(p);return;}d: if(!D_00306E70)return;if(*(unsigned char*)(*(unsigned int*)(p+0x2c)+0x22)==D_00306E6C)func_00093CA0(p);}
 
