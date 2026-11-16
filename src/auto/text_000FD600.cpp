@@ -262,6 +262,8 @@ void _func_000FDFC0(int param_1,int param_2){int _func_000BC460(...);_func_000BC
 
 unsigned char _func_000FDFE0(unsigned int a,int* p){extern int func_001060A0(...);extern int func_00012D60(...);int* out=(int*)(*p+0x130);out[0]=func_001060A0(*(int*)(p[3]+0x40));out[1]=*(int*)p[5];func_00012D60(*p,0x3d);return 1;}
 
+unsigned char _func_000FE020(unsigned int a,int* p){extern int func_001060A0(...);extern int func_00012D60(...);int* out=(int*)(*p+0x130);out[0]=func_001060A0(*(int*)(p[3]+0x40));out[1]=*(int*)p[5];func_00012D60(*p,0x3e);return 1;}
+
 unsigned char _func_000FE0A0(unsigned int a,unsigned int*p){int _func_00012D60(unsigned int,unsigned int);_func_00012D60(*p,0x40);return 1;}
 
 unsigned char func_000FE100(unsigned int a, unsigned int *p)
