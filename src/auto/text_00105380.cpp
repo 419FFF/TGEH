@@ -52,6 +52,23 @@ void func_001054B0(int a0) {
     D_003250E4 = a0;
 }
 
+void func_001054C0(int param_1, unsigned int *param_2, unsigned char param_3, unsigned int param_4)
+{
+  extern char D_0032509C;
+  extern char D_003250A0;
+  extern char D_003250A4;
+  extern char D_003250A8;
+  extern char D_00325098;
+  extern char D_003250AC;
+  int offset = param_1 * 24;
+  *(unsigned int *)((char *)&D_0032509C + offset) = param_2[0];
+  *(unsigned int *)((char *)&D_003250A0 + offset) = param_2[1];
+  *(unsigned int *)((char *)&D_003250A4 + offset) = param_2[2];
+  *(unsigned int *)((char *)&D_003250A8 + offset) = param_2[3];
+  *((unsigned char *)&D_00325098 + offset) = param_3;
+  *(unsigned int *)((char *)&D_003250AC + offset) = param_4;
+}
+
 void func_00105CC0(void)
 {
   extern undefined4 D_00313B54;
@@ -68,6 +85,22 @@ void func_00105CC0(void)
   func_00110760(D_003250FC);
   func_000845C0();
   return;
+}
+
+void func_00105D10(char *param_1)
+{
+  extern float D_003250F4;
+  extern float D_003250F0;
+  extern float D_003250E0;
+  extern char D_00324F90;
+  int offset = (int)&D_00324F90 - (int)param_1;
+  char c;
+  do {
+    c = *param_1;
+    param_1[offset] = c;
+    param_1++;
+  } while (c != 0);
+  D_003250F4 = D_003250F0 + D_003250E0;
 }
 
 int _func_00106060(int *p) { int _func_00026970(...); return _func_00026970(p[9]); }
