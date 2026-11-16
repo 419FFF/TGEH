@@ -138,5 +138,6 @@ void func_000DD240(void)
 int func_000DD4A0(int a,int b,int c,int *out){extern int D_0031FC34,D_003268B0,D_001DB670,D_001DB660;int func_0011B4F0(...);int n=0;int node=*(int*)(*(int*)(D_0031FC34+0x2c)+0x28);while(node){if(((*(unsigned char*)(node+6)&0x18)==0)&&*(unsigned char*)(*(int*)node+0x22)==D_003268B0&&func_0011B4F0(&D_001DB670,*(int*)(*(int*)node+0x38))&&func_0011B4F0(&D_001DB660,*(int*)(*(int*)node+0x38)))out[n++]=*(int*)node;node=*(int*)(node+0xc);}return n;}
 void func_000DD510(void) { extern int D_003080AC; extern float D_0031E9C0,D_001D27B8,D_0031E9C4; int func_000A2780(...); if(D_003080AC!=2){ long double v=(long double)D_0031E9C0; if(v<(long double)D_001D27B8)v=D_001D27B8; func_000A2780(0x39,1,(float)(v/D_0031E9C4)); } }
 
-void func_000DD770(int p,int q){int func_0012E6D0(...);int func_0012E5F0(...);int func_000D5170(...);int func_000DCB30(...);volatile double d=(double)*(float*)(p+0x214)-(double)*(float*)(p+0x44)-(double)*(float*)(*(int*)(p+0x1d4)+0x14);float f=(float)-d;int local[3]={0};*(float*)&local[1]=f;int t[3],u[3];func_0012E6D0(local,q+0x254,q+0x40);func_0012E5F0(t,q+0x40,local);func_0012E5F0(u,p+0x40,t);func_000D5170(p+0x10,*(int*)(p+4));func_000DCB30();}
-
+#pragma optimize("y", on)
+void func_000DD770(int p,int q){int func_0012E6D0(...);int func_0012E5F0(...);int func_000D5170(...);int func_000DCB30(...);int local[3];int t[3],u[3];*(float*)&local[1]=(float)(-((double)*(float*)(p+0x214)-(double)*(float*)(p+0x44)-(double)*(float*)(*(int*)(p+0x1d4)+0x14)));local[0]=0;local[2]=0;func_0012E6D0(local,q+0x254,q+0x40);func_0012E5F0(t,q+0x40,local);func_0012E5F0(u,p+0x40,t);func_000D5170(p+0x10,*(int*)(p+4));func_000DCB30();}
+#pragma optimize("", on)
