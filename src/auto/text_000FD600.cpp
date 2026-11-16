@@ -214,7 +214,7 @@ char func_000FDEC0(void) {
     return 1;
 }
 
-unsigned char _func_000FDED0(void){int _func_000B5650(int);int _func_000B6510(int,int);if(!_func_000B5650(0x11))_func_000B6510(0x11,0);return 1;}
+unsigned char _func_000FDED0(void){unsigned char _func_000B5650(int);int _func_000B6510(int,int);if(_func_000B5650(0x11))return 1;_func_000B6510(0x11,0);return 1;}
 
 undefined1 func_000FDEF0(void)
 {
