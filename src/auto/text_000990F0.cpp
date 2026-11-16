@@ -2,6 +2,8 @@
 #include "common.h"
 #include "ghidra.h"
 
+void __cdecl _func_000996B0(void) { volatile int local; local = 0; }
+
 void func_00099E10(undefined4 param_1)
 {
   extern undefined4 D_00307CB0;
@@ -10,6 +12,8 @@ void func_00099E10(undefined4 param_1)
   }
   return;
 }
+
+void func_00099E30(int x){extern int D_00307CB0;if(D_00307CB0)*(int*)(D_00307CB0+0xa0)=x;}
 
 void _func_00099E50(void)
 {
