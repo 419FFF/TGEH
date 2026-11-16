@@ -123,18 +123,14 @@ char func_000F8610(int p)
 }
 
 void func_000F8680(int param_1) {
-  extern unsigned char D_003268B0;
-  extern int D_003080AC;
-  void func_0011A5A0(...);
-  void func_0011A5C0(...);
-  void *p;
+  extern int D_003268B0, D_003080AC;
+  void func_0011A5A0(...); void func_0011A5C0(...);
   if ((*(unsigned char *)(param_1+0xd0)&1)==0) {
     if (*(unsigned char *)(param_1+0x22)==D_003268B0) {
-      if (D_003080AC) func_0011A5C0(param_1,3);
-      else func_0011A5A0(param_1);
+      if (D_003080AC) func_0011A5C0(param_1,3); else func_0011A5A0(param_1);
     }
-    for (p=*(void **)(param_1+0x28); p; p=*(void **)((char*)p+0xc))
-      if ((*(unsigned char *)((char*)p+6)&8)==0) func_000F8680(*(int*)p);
+    for (int p=*(int*)(param_1+0x28); p; p=*(int*)(p+0xc))
+      if ((*(unsigned char *)(p+6)&8)==0) func_000F8680(*(int*)p);
   }
 }
 
