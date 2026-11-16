@@ -2,7 +2,7 @@
 #include "common.h"
 #include "ghidra.h"
 
-void func_00124A10(void){extern unsigned int D_00331518,D_00331508,D_00331500,D_00331178,D_00331370[],D_00331520; extern float D_001E7D60,D_001D27FC; int func_0013E3F4(void); void func_001383B0(void); void func_00138440(int); void func_00138490(int); void func_0012F120(void*); void func_001364D0(void*); void func_00136FF0(int); void func_00123F90(int); void func_00137030(void); unsigned char temp[64]; if(D_00331518){func_001383B0();func_00138440(0);func_00138490(0);func_0012F120(temp);func_001364D0(temp);} D_00331500=D_00331518;D_00331178=D_00331508; func_00136FF0(func_0013E3F4()); for(unsigned i=0;i<D_00331518;i++){int p=D_00331370[i];func_00123F90(p);*(unsigned*)(p+8)=D_00331520;}func_00137030();D_00331520++;}
+void func_00124A10(void){extern unsigned int D_00331518,D_00331508,D_00331500,D_00331178,D_00331370[],D_00331520; extern float D_001E7D60,D_001D27FC; int func_0013E3F4(void); void func_001383B0(void); void func_00138440(int); void func_00138490(int); void func_0012F120(void*); void func_001364D0(void*); void func_00136FF0(int); void func_00123F90(int); void func_00137030(void); unsigned char temp[76]; if(D_00331518){func_001383B0();func_00138440(0);func_00138490(0);func_0012F120(temp);func_001364D0(temp);} D_00331500=D_00331518;D_00331178=D_00331508; func_00136FF0(func_0013E3F4()); for(unsigned i=0;i<D_00331518;i++){int p=D_00331370[i];func_00123F90(p);*(unsigned*)(p+8)=D_00331520;}func_00137030(); D_00331520=D_00331520+1;}
 
 void func_00124AD0(void){extern unsigned D_00331508,D_00331518; extern int D_003311D8[]; void func_00133BB0(int); void func_00116FB0(int); for(unsigned i=0;i<D_00331508;i++){int p=D_003311D8[i];if(*(int*)(p+0x70))func_00116FB0(*(int*)(p+0x70));func_00133BB0(*(int*)(p+0xc));*(int*)(p+0xc)=0;func_00116FB0(p);}D_00331508=0;D_00331518=0;}
 
@@ -63,7 +63,7 @@ int func_00124F20(undefined4 param_1, undefined4 param_2, undefined4 param_3)
   return iVar1;
 }
 
-unsigned char _func_00124F50(int p) { int _func_0011BDD0(...); int obj=*(int *)(p+0x30); if (_func_0011BDD0(obj,0)) { --*(short *)(obj+0x2a); return 1; } return 0; }
+unsigned char _func_00124F50(int p) { int _func_0011BDD0(...); int esi=p; int eax=*(int *)(esi+0x30); if(_func_0011BDD0(eax,0)){eax=*(int *)(esi+0x30); --*(short *)(eax+0x2a);return 1;}return 0;}
 
 unsigned char _func_00124F80(int p1,int p2) { int _func_0011BDD0(...); int _func_00116490(...); unsigned char local[16]; int owner=*(int *)(*(int *)(p1+4)+8); int item=_func_0011BDD0(*(int *)(owner+0x30),0); if(!item)return 0; int n=*(int *)(item+4); if(!n){int o=*(int *)(owner+0x30); --*(short *)(o+0x2a);return 0;} _func_00116490(owner, n, local); unsigned int i=0,count=*(unsigned int *)item; int *arr=*(int **)(item+8); float *out=*(float **)(p2+0xf8); while(i<count){out[i]=*(float *)(local+8)**(float *)(*(int *)(arr[*(int *)local]+i*4))+*(float *)(local+12)**(float *)(*(int *)(arr[*(int *)(local+4)]+i*4));++i;} int o=*(int *)(owner+0x30); --*(short *)(o+0x2a);return 1;}
 
@@ -74,6 +74,8 @@ void *_func_00125030(int *p){extern int _func_0011BDD0(...);extern unsigned shor
 int *_func_00125120(int *p){extern void _func_00117100(void),_func_00117130(void);extern int _func_00116A90(int,int,int);_func_00117100();int *a=(int*)_func_00116A90(0xc,1,1);_func_00117130();int b=_func_00116A90(0xc,1,1);*a=b;*p=b;return a;}
 
 void _func_00125250(int *p,undefined4 *q){int func_0013E9DB(...);int func_00116A90(...);int func_00117100(...);int func_00117130(...);p[1]=func_0013E9DB(q[0]);func_00117100();p[2]=func_00116A90(p[1]<<6,1,1);func_00117130();*(short*)(*p+2)=(short)p[1];*(int*)(*p+8)=func_00116A90(p[1],1,1);}
+
+void _func_001252B0(int p,undefined4 *q){int func_0013E9DB(...);longdouble func_0013E9E0(...);int i=func_0013E9DB(q[0])<<6;float *dst=(float*)(i+*(int*)(p+8));q++;for(int outer=0;outer<4;outer++){int inner=4;do{*dst++=(float)func_0013E9E0(*q++);--inner;}while(inner);}}
 
 void _func_00125310(int *p,undefined4 *q){int func_0013E9DB(...);int a=func_0013E9DB(q[0]);int b=func_0013E9DB(q[1]);int idx=*(int*)(*p+8);*(unsigned char*)(a+idx)=b?0:1;}
 
@@ -94,6 +96,8 @@ void func_00125470(void) {
     int func_00115DE0(...);
     func_00115DE0(D_00331530, 32);
 }
+
+int _func_00125490(int p,undefined4 q,int mode){int func_00115E10(...);int func_0011B820(...);int func_0011BF40(...);int obj=func_00115E10(p,0x34);if(mode==1)*(int*)(obj+0x30)=func_0011BF40(q,0);else if(mode==2)*(int*)(obj+0x30)=func_0011BF40(q,1);else if(mode==3){*(int*)(obj+0x30)=func_0011B820(q);*(unsigned int*)(obj+0x14)|=1;}return obj;}
 
 void func_00125500(int p) { int func_0011BAE0(...); int func_0011B990(...); if (*(unsigned char *)(p+0x14)&1) func_0011BAE0(*(int *)(p+0x30)); else func_0011B990(*(int *)(p+0x30)); }
 
