@@ -20,6 +20,8 @@ char func_001226C0(void) {
     return D_0032F754;
 }
 
+void _func_00122710(int key) { extern unsigned int D_0032F900; extern int D_0032F770[],D_0032F774[]; extern void _func_0013EB10(int*,int*,unsigned); extern void _func_0011C3E0(int); extern void _func_00116FB0(int); unsigned i; for(i=0;i<D_0032F900;i++)if(D_0032F770[i]==key){_func_0013EB10(&D_0032F770[i],&D_0032F774[i],D_0032F900-i);i--;D_0032F900--;} _func_0011C3E0(key);_func_00116FB0(key);}
+
 void _func_00122780(void* p) { extern unsigned int D_0032F904,D_0032F768,D_0032F900; extern int D_0032F76C[],D_0032F770[]; extern int _func_0013B380(unsigned); unsigned n; if(p&&D_0032F904&&D_0032F768<=0){n=_func_0013B380(D_0032F904);if(D_0032F900>0)*(int*)((char*)D_0032F76C[D_0032F900]+0x4c)+=n;D_0032F770[D_0032F900]=(int)p;D_0032F900++;*(int*)((char*)p+0x4c)-=n;}}
 
 void func_001227E0(unsigned int param_1) {
