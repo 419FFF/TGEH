@@ -81,3 +81,6 @@ void func_00108500(undefined4 param_1)
   }
   return;
 }
+
+void _func_00108530(void *p) { extern int _D_00307DF8; char _func_001074C0(int,void *); void _func_00107BF0(...); int *q=*(int **)(_D_00307DF8+0x110); if (*q!=0x40 && *q!=0x3f && _func_001074C0(_D_00307DF8,p)) _func_00107BF0(p,0); }
+
