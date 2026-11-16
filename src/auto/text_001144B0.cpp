@@ -13,3 +13,5 @@ void func_00115410(int p,int q){int func_0011BCA0(...);char *x=(char*)p;func_001
 
 unsigned char func_00115430(int p){int func_0011BDD0(...);int x=func_0011BDD0(*(int*)(p+0x1c),0);if(x){(*(short*)(*(int*)(p+0x1c)+0x2a))--;return 1;}return 0;}
 
+void func_00115460(int p){int func_00116FB0(...);void func_0011BAE0(int),func_0011B990(int);if(*(int*)(p+0x20))func_00116FB0(*(int*)(p+0x20));if(*(unsigned char*)(p+2)&1)return func_0011BAE0(*(int*)(p+0x1c));return func_0011B990(*(int*)(p+0x1c));}
+
