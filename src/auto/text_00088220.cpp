@@ -2,6 +2,8 @@
 #include "common.h"
 #include "ghidra.h"
 
+void func_00088520(unsigned int p){extern unsigned int D_00308158,D_002FDDC0,D_002FDDB8,D_00307C94,D_00307C58,D_003041F0,D_003041EC,D_00306E70,D_00306E6C;void func_00110170(unsigned int),func_00086B70(unsigned int),func_00096F70(unsigned int),func_000688D0(unsigned int),func_00093CA0(unsigned int);func_00110170(*(unsigned int*)(D_00308158+0x2c));unsigned char c=*(unsigned char*)(*(unsigned int*)(p+0x2c)+0x22);if(D_002FDDC0&&c==D_002FDDB8){func_00086B70(p);return;}if(D_00307C94&&c==D_00307C58){func_00096F70(p);return;}if(D_003041F0&&c==D_003041EC){func_000688D0(p);return;}if(D_00306E70&&c==D_00306E6C)func_00093CA0(p);}
+
 void func_000885C0(void){void func_00097190(void),func_00093D80(void),func_000862D0(void),func_00083CE0(void),func_000688D0(void),func_0008D540(void);func_00097190();func_00093D80();func_000862D0();func_00083CE0();func_000688D0();func_000688D0();func_0008D540();}
 
 void func_000885F0(void)
@@ -29,6 +31,8 @@ void func_00088610(void)
   func_00097900();
   return;
 }
+
+void func_00088630(void){void func_000688D0(void),func_000996B0(void),func_00080CB0(void),func_00081BD0(void),func_00094CB0(void),func_0008FC60(void),func_0007F220(void),func_0007BE40(void),func_0008D3A0(void),func_0008E780(void),func_0008D870(void),func_0008F070(void),func_0006F990(void);func_000688D0();func_000688D0();func_000996B0();func_00080CB0();func_00081BD0();func_00094CB0();func_0008FC60();func_0007F220();func_0007BE40();func_0008D3A0();func_000688D0();func_0008E780();func_0008D870();func_0008F070();func_0006F990();}
 
 void func_00088680(void)
 {
