@@ -17,6 +17,13 @@ void _func_00148540(char *obj)
     }
 }
 
+int _func_00148590(...);
+unsigned int _func_0013AF50(...);
+void _func_0013AF70(...);
+void* _func_00116A90(...);
+int _func_00131EB0(...);
+unsigned char _func_001486F0(void* a, void* b) { return _func_00148590(a,b) != 0; }
+
 uint func_00148710(undefined4 param_1, undefined4 param_2)
 {
   int func_00148590(...);
