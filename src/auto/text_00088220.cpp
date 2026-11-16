@@ -105,15 +105,21 @@ void *memcpy(void *,const void *,unsigned int);
 void _func_00088840(int p) {
  int func_0011BDD0(...),func_000B5240(...); extern int D_002FDF4C;
  int s;
- if(!D_002FDF4C)return;
+ if(D_002FDF4C==0)return;
  s=func_0011BDD0(*(int*)(p+0xe0),0);
  if(s){
   unsigned short n=*(unsigned short*)(s+4);
-  if(n && !*(int*)(p+0x128)){
-   int d=func_000B5240(D_002FDF4C,n);*(int*)(p+0x12c)=d;
-   if(d){unsigned int count=*(unsigned short*)(s+4);*(int*)(p+0x128)=count;
-    for(unsigned int i=0;i<count;i++)
-     memcpy((char*)d+i*0x64,(char*)*(int*)(s+8)+0x28+i*0x30,100);
+  if(n && *(int*)(p+0x128)==0){
+   int d=func_000B5240(D_002FDF4C,(unsigned int)n);*(int*)(p+0x12c)=d;
+   if(d){
+    unsigned int count=*(unsigned short*)(s+4);*(int*)(p+0x128)=count;
+    int i=0;
+    while(i<count){
+     int *src=(int*)(*(int*)(s+8)+0x28+i*0x30);
+     int *dst=(int*)(d+i*0x64);
+     for(int j=0;j<25;j++)dst[j]=src[j];
+     ++i;
+    }
    }
   }
   --*(short*)(*(int*)(p+0xe0)+0x2a);
@@ -173,4 +179,3 @@ void func_00088F00(void) {
     int func_0011D0E0(...);
     func_0011D0E0((int)&D_001D6D24);
 }
-struct Copy100 { int x[25]; };
