@@ -27,6 +27,8 @@ void func_000F96A0(int param_1)
   return;
 }
 
+void func_000F9700(void){extern unsigned int D_00324AF8;extern int D_00324968[];int func_000F80F0(...);int func_00110170(...);register unsigned int i=0;if(D_00324AF8)do{if(*(unsigned char*)(D_00324968[i]+0x284)){func_000F96A0(D_00324968[i]);func_000F80F0(1);func_00110170(*(int*)(D_00324968[i]+0xe0));func_000F80F0(0);}i++;}while(i<D_00324AF8);}
+
 int func_000F9760(void)
 {
   extern undefined4 D_00324B80;
@@ -36,6 +38,10 @@ int func_000F9760(void)
   D_00324B84 = D_00324B84 + 1;
   return D_00324B80 + -0x48 + D_00324B84 * 0x48;
 }
+
+int func_000F9BB0(int a,int b){extern int D_00324B74,D_00324B68;int func_0011C3E0(...);int func_0011C3B0(...);int p=D_00324B74;func_0011C3E0(p);for(int i=0;i<0x13a;i++)((int*)p)[i]=0;*(int*)(p+0xc)=a;*(int*)(p+0x18)=0;*(char*)(p+0x15)=0;*(int*)(p+0x10)=b;func_0011C3B0(p,&D_00324B68,p);return p;}
+
+int func_000F9C00(int a,int b){extern int D_00324B74,D_00324B68;int func_0009C510(...);int func_0009C590(...);int func_0009CAA0(...);int func_0011C3E0(...);int func_0011C3B0(...);char x[128],y[128];func_0009C510(b,x,y);if(!a)a=func_0009C590(x);int z=func_0009CAA0(a,y);if(z){int p=D_00324B74;func_0011C3E0(p);for(int i=0;i<0x13a;i++)((int*)p)[i]=0;*(int*)(p+0xc)=a;*(int*)(p+0x18)=0;*(char*)(p+0x15)=0;*(int*)(p+0x10)=z;func_0011C3B0(p,&D_00324B68,p);return p;}return 0;}
 
 void func_000F9F10(int *param_1, void *param_2, int *param_3)
 {
@@ -187,6 +193,8 @@ void func_000FA2E0(int param_1, undefined4 param_2, undefined4 *param_3)
 
 unsigned char func_000FA580(void){extern int D_00324B68;unsigned char r=0;int p=D_00324B68;while(p){int d=*(int*)(p+8);p=*(int*)p;if(*(unsigned int*)(d+0x18)<*(unsigned short*)(*(int*)(d+0x10)+6))r|=*(unsigned char*)(d+0x15);}return r;}
 
+void func_000FA5B0(int param_1,int param_2,int param_3) { extern int D_00324B68; int p=D_00324B68;while(p){int node=*(int*)(p+8);p=*(int*)p;if(node!=param_1&&*(int*)(node+0xc)==param_2&&*(int*)(node+0x10)==param_3)*(unsigned int*)(node+0x18)=*(unsigned short*)(*(int*)(node+0x10)+6);}}
+
 void func_000FA640(int param_1, char param_2)
 {
   if (param_2 != '\0') {
@@ -196,3 +204,6 @@ void func_000FA640(int param_1, char param_2)
   *(char *)(param_1 + 0x14) = *(char *)(param_1 + 0x14) + -1;
   return;
 }
+
+void func_000FA660(int param_1,char param_2) { extern int D_00324B68; int p=D_00324B68;while(p){int node=*(int*)(p+8);p=*(int*)p;if(node!=param_1){char v=*(char*)(node+0x14);if(param_2)v++;else v--;*(char*)(node+0x14)=v;}}}
+
