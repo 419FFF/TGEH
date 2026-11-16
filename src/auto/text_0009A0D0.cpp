@@ -187,6 +187,10 @@ void func_0009A610(void)
   return;
 }
 
+unsigned int func_0009A880(void){extern unsigned int D_003080A4; extern int D_00269EC3; D_003080A4=D_003080A4*0x343fd+(unsigned int)&D_00269EC3; return (D_003080A4>>16)&0x7fff;}
+
+float func_0009A8A0(void){extern unsigned int D_003080A4; extern unsigned char D_00269EC3; extern float D_001D72C0; D_003080A4=D_003080A4*0x343fd+D_00269EC3; return (float)((D_003080A4>>16)&0x7fff)*D_001D72C0;}
+
 void func_0009A920(int a0) {
     extern int D_00308154;
     D_00308154 = a0;
