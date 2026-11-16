@@ -15,7 +15,7 @@ void func_00103960(int param_1, undefined4 param_2, undefined4 param_3)
 
 void _func_00103990(int *p) { extern char D_001E5EC9; extern void _func_001034C0(int*); if(D_001E5EC9 && p) { *(int*)((char*)p+0x80)=0; _func_001034C0(p); } }
 
-void _func_00103F20(int *p, char flag) { extern char D_001E5EC9; extern int _func_00128C50(int); extern void _func_001034C0(int*,int); extern void _func_00102E80(int*); if(p) { if(flag) { if(D_001E5EC9) { int a=*(int*)((char*)p+0xb8); if(a && !_func_00128C50(a)) { if(D_001E5EC9) { *(int*)((char*)p+0x80)=0; _func_001034C0(p,1); } } } } else if(D_001E5EC9) { int a=*(int*)((char*)p+0xb8); if(a && _func_00128C50(a)) _func_00102E80(p); } } }
+void _func_00103F20(int *p, char flag) { extern char D_001E5EC9; extern int _func_00128C50(int); extern void _func_001034C0(int*,int); extern void _func_00102E80(int*); if(!p) return; if(flag) { if(!D_001E5EC9) return; int a=*(int*)((char*)p+0xb8); if(a && _func_00128C50(a)) return; if(D_001E5EC9) { *(int*)((char*)p+0x80)=0; _func_001034C0(p,1); } return; } if(D_001E5EC9) { int a=*(int*)((char*)p+0xb8); if(a && _func_00128C50(a)) _func_00102E80(p); } }
 
 void func_00103FA0(void)
 {
