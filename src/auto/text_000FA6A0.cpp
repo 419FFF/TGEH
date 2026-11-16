@@ -136,24 +136,7 @@ undefined4 func_000FAFA0(undefined4 param_1, int *param_2)
     return 1;
 }
 
-unsigned char _func_000FAFD0(unsigned int a, int *p)
-{
-    unsigned char func_00063C20(unsigned int);
-    int func_000A1F50(unsigned int);
-    int x = func_00063C20(a);
-    if (x) return 1;
-    x = *p;
-    if (!*(int *)(x + 0x84)) return 1;
-    if ((*(unsigned char *)(x + 0x10) & 8) == 0) {
-        if (*(unsigned char *)(x + 0x15) == 10)
-            *(unsigned char *)(x + 0x11) |= 8;
-        if (func_000A1F50(*(unsigned int *)(*p + 0x84)) == 0) {
-            *(unsigned char *)(*p + 0x11) &= 0xf7;
-            return 1;
-        }
-    }
-    return 0;
-}
+unsigned char _func_000FAFD0(unsigned int a,int*p){ unsigned char func_00063C20(unsigned int); int func_000A1F50(unsigned int); if(func_00063C20(a))return 1; int x=*p;if(!*(int*)(x+0x84))return 1;if((*(unsigned char*)(x+0x10)&8)==0){if(*(unsigned char*)(x+0x15)==10)*(unsigned char*)(x+0x11)|=8;if(func_000A1F50(*(unsigned int*)(*p+0x84))==0){*(unsigned char*)(*p+0x11)&=0xf7;return 1;}}return 0;}
 
 void func_000FB1A0(undefined4 param_1, int param_2)
 {
@@ -230,15 +213,21 @@ unsigned char _func_000FB360(int a, int *p)
     return 1;
 }
 
-unsigned char _func_000FB380(int a, int *p)
+unsigned char _func_000FB380(int a,int*p){int func_001313C0(unsigned int);int func_0009A8D0(int,int);extern float D_001D290C;int x=func_001313C0(*(unsigned int*)p[1]);int y=func_001313C0(*(unsigned int*)p[3]);int z=func_0009A8D0(y,x);*(float*)p[1]=(unsigned int)z;return 1;}
+
+unsigned char _func_000FB450(int a,int*p)
 {
-    int func_001313C0(unsigned int);
-    int func_0009A8D0(int, int);
-    extern float D_001D290C;
-    int x = func_001313C0(*(unsigned int *)p[1]);
-    int y = func_001313C0(*(unsigned int *)p[3]);
-    int z = func_0009A8D0(x, y);
-    *(float *)p[1] = (float)z + (z < 0 ? D_001D290C : 0.0f);
+ extern float D_001D27B8; void func_0009D3E0(int); void func_0009D280(int);
+ if(*p) { if (*(float*)p[3] > D_001D27B8) func_0009D280(*p); else func_0009D3E0(*p); } return 1;
+}
+
+unsigned char _func_000FB490(int a, int *p)
+{
+    extern float D_001D27B8;
+    if (*(float *)p[3] < D_001D27B8)
+        *(unsigned char *)(*p + 0x11) |= 8;
+    else
+        *(unsigned char *)(*p + 0x11) &= 0xf7;
     return 1;
 }
 
