@@ -40,7 +40,7 @@ void func_00124E00(int p, unsigned int *v) { int func_0013E9DB(...); int func_00
 
 void func_00124E30(unsigned int *p, unsigned int *v) { int func_00116A90(...); float func_0013E9E0(...); int q=func_00116A90(*p<<2,1,1); *(int *)(p[2]+p[1]*4)=q; for(unsigned int i=0;i<*p;i++) { float x=func_0013E9E0(v[i]); *(float *)(*(int *)(p[2]+p[1]*4)+i*4)=x; } p[1]++; }
 
-unsigned int _func_00124E90(unsigned int param_1) { int _func_00131A10(...); int _func_00125E80(...); unsigned int local; if (!_func_00131A10(param_1)) return 0; _func_00125E80(param_1,&local); return local; }
+unsigned int _func_00124E90(unsigned int param_1) { unsigned char _func_00131A10(...); int _func_00125E80(...); unsigned int local; if (!_func_00131A10(param_1)) return 0; _func_00125E80(param_1,&local); return local; }
 
 void _func_00124EC0(int unused, int p) { int _func_00116FB0(...); unsigned int i=0; unsigned int n=*(unsigned int *)(p+4); int *arr=*(int **)(p+8); while(i<n){_func_00116FB0(arr[i]); ++i;} _func_00116FB0(arr); _func_00116FB0(p); }
 
