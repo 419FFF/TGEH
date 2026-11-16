@@ -136,18 +136,14 @@ void func_00110000(int p)
  }
 }
 
-void func_00110060(int p, unsigned int *out)
+void func_00110060(int p, struct CopyBlock *out)
 {
  int func_0010FC60(...);
- unsigned int *src;
- if (!p) return;
- if (!out) return;
- if (*(unsigned char *)(p+0x20)&2) func_0010FC60(p);
- src=(unsigned int *)(p+((*(unsigned char *)(p+0x23)+1)*0x40));
- {
-  int i;
-  for(i=0;i<16;i++) out[i]=src[i];
- }
+ struct CopyBlock *src;
+ if (!p || !out) return;
+ if ((*(unsigned char *)(p+0x20)&2)!=0) func_0010FC60(p);
+ src=(struct CopyBlock *)(p+((*(unsigned char *)(p+0x23)+1)*64));
+ *out=*src;
 }
 
 void func_001100A0(int param_1, int *param_2)
