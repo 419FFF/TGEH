@@ -63,6 +63,21 @@ void func_0008B630(void) {
     func_0011D0E0((int)&D_001D3C7C);
 }
 
+void func_0008B810(int p, int flag)
+{
+    if(flag) {
+      *(int *)(*(int *)(*(int *)(*(int *)(p+0x50)+0x2c)+0x14)+0)=0x3f800000;
+      *(int *)(*(int *)(*(int *)(*(int *)(p+0x50)+0x2c)+0x14)+4)=0x3f800000;
+      *(int *)(*(int *)(*(int *)(*(int *)(p+0x50)+0x2c)+0x14)+8)=0x3f800000;
+      *(int *)(*(int *)(*(int *)(*(int *)(p+0x50)+0x2c)+0x14)+12)=0x3f800000;
+    } else {
+      *(int *)(*(int *)(*(int *)(*(int *)(p+0x50)+0x2c)+0x14)+0)=0x3e99999a;
+      *(int *)(*(int *)(*(int *)(*(int *)(p+0x50)+0x2c)+0x14)+4)=0x3f800000;
+      *(int *)(*(int *)(*(int *)(*(int *)(p+0x50)+0x2c)+0x14)+8)=0;
+      *(int *)(*(int *)(*(int *)(*(int *)(p+0x50)+0x2c)+0x14)+12)=0x3f800000;
+    }
+}
+
 void func_0008B890(void)
 {
   extern int D_001D6E98;
