@@ -2,6 +2,9 @@
 #include "common.h"
 #include "ghidra.h"
 extern "C" __declspec(dllimport) int *LaunchDataPage;
+extern "C" __declspec(dllimport) int __stdcall NtOpenSymbolicLinkObject(int *, unsigned int, void *);
+extern "C" __declspec(dllimport) int __stdcall NtQuerySymbolicLinkObject(int, void *, unsigned int *);
+extern "C" __declspec(dllimport) int __stdcall NtClose(int);
 
 void _func_001095A0(void) { int func_001160B0(...); int func_0011D0E0(...); int func_00110760(...); extern unsigned int D_003252A8; extern unsigned int D_00325228[]; extern unsigned int D_00325268[]; unsigned int i=0; if(D_003252A8>0) do { func_001160B0(D_00325228[i]); func_0011D0E0(*(unsigned int*)((char*)D_00325268[i]+0x38)); func_00110760(D_00325268[i]); i++; } while(i<D_003252A8); D_003252A8=0; }
 
@@ -68,17 +71,11 @@ extern "C" __declspec(dllimport) int __stdcall RtlInitAnsiString(void*, const ch
 extern "C" __declspec(dllimport) int __stdcall NtOpenFile(int*, unsigned int, void*, void*, unsigned int, unsigned int);
 extern "C" __declspec(dllimport) int __stdcall NtQueryVolumeInformationFile(int, void*, void*, unsigned int, unsigned int);
 extern "C" __declspec(dllimport) int __stdcall NtClose(int);
-int __stdcall func_0010A157(int path) { int __stdcall func_0010AAD1(int); int func_0010AA7B(void); int __stdcall func_0010AAA3(int); char name[8]; int iosb[2]; int oa[8]; char info[16]; int r; RtlInitAnsiString(name,(const char*)path); oa[1]=(int)name;oa[0]=-3;oa[2]=0x40; r=NtOpenFile(&path,0x100001,oa,iosb,3,0x800021); if(r<0){func_0010AAD1(r);if(func_0010AA7B()==2)func_0010AAA3(3);return 0;} r=NtQueryVolumeInformationFile(path,iosb,info,0x18,3);NtClose(path);if(r<0){func_0010AAD1(r);return 0;}return *(int*)(info+8)**(int*)(info+4); }
+int __stdcall func_0010A157(int path) { int __stdcall func_0010AAD1(int);int func_0010AA7B(void);int __stdcall func_0010AAA3(int);char name[8];int io[2];int oa[4];int info[24];int r;RtlInitAnsiString(name,(char*)path);oa[0]=-3;oa[1]=(int)name;oa[2]=0x40;r=NtOpenFile(&path,0x100001,oa,io,3,0x800021);if(r<0){func_0010AAD1(r);if(func_0010AA7B()==2)func_0010AAA3(3);return 0;}r=NtQueryVolumeInformationFile(path,io,info,0x18,3);NtClose(path);if(r<0){func_0010AAD1(r);return 0;}return info[4]*info[5];}
 
-int _func_0010A1F6(void) { extern void _func_0010B733(void);extern void _func_0010B1BB(void);extern void _func_0010B6A6(void);extern void _func_0010B64E(void);extern void _func_001099A0(int,int,int);extern int __stdcall _func_0010B145(int,int,int);extern unsigned int D_003252D4; extern char* __stdcall NtCurrentTeb(void);_func_0010B733();_func_0010B1BB();char* t=NtCurrentTeb();char*p=*(char**)(*(int*)(t+0x20)+0x250);char*q=p?*(char**)(p+0x24):0;if(q){int d=*(int*)(*(int*)(t+4)+D_003252D4*4)-*(int*)(t+0x50);*q=1;*(int*)(q+4)=d+8;}_func_0010B6A6();_func_0010B64E();_func_001099A0(0,0,0);_func_0010B145(1,1,0);return 0;}
+int _func_0010A1F6(void) { extern void _func_0010B733(void);extern void _func_0010B1BB(void);extern void _func_0010B6A6(void);extern void _func_0010B64E(void);extern void _func_001099A0(int,int,int);extern int __stdcall _func_0010B145(int,int,int);extern unsigned int D_003252D4;extern char* __stdcall NtCurrentTeb(void);_func_0010B733();_func_0010B1BB();char*t=NtCurrentTeb();int* p=*(int**)(*(int*)(t+0x20)+0x250);char*q=p?*(char**)((char*)p+0x24):0;if(q){int d=*(int*)(*(int*)(t+4)+D_003252D4*4)-*(int*)(t+0x50);*q=1;*(int*)(q+4)=d+8;}_func_0010B6A6();_func_0010B64E();_func_001099A0(0,0,0);_func_0010B145(1,1,0);return 0;}
 
-void _func_0010A26A(void) {
- extern int *D_00010118; extern int D_00010108,D_00010000,D_001DEF50,D_001DEF40,D_001DEF44,D_0037C07C; extern int *D_001DEF48;
- extern int _func_0010A1F6(void); extern int __stdcall _func_0010BA25(int,int,int,void*,int,int); extern int __stdcall _func_0010B145(int,int,int); extern int __stdcall _func_0010B7F8(int);
- int *p=D_00010118; int a=D_00010108-(int)p+(int)&D_00010000; if(a<*p)*p=a;
- int n=(((D_001DEF50-D_001DEF40)+D_001DEF44+15)&0xfffffff0)+4; D_0037C07C=n; *D_001DEF48=n/-4;
- int zero=0; int r=_func_0010BA25(zero,zero,zero,_func_0010A1F6,zero,zero); if(!r)_func_0010B145(1,1,zero); _func_0010B7F8(r);
-}
+void _func_0010A26A(void) { extern int *D_00010118;extern int D_00010108,D_00010000,D_001DEF50,D_001DEF40,D_001DEF44,D_0037C07C;extern int *D_001DEF48;extern int _func_0010A1F6(void);extern int __stdcall _func_0010BA25(int,int,int,void*,int,int);extern int __stdcall _func_0010B145(int,int,int);extern int __stdcall _func_0010B7F8(int);int*p=D_00010118;int a=D_00010108-(int)p+(int)&D_00010000;if(a<*p)*p=a;int n=(((D_001DEF50-D_001DEF40)+D_001DEF44+15)&0xfffffff0)+4;D_0037C07C=n;*D_001DEF48=n/-4;int zero=0;int r=_func_0010BA25(zero,zero,zero,_func_0010A1F6,zero,zero);if(!r)_func_0010B145(1,1,zero);_func_0010B7F8(r);}
 
 int __stdcall func_0010A3F2(int *result,int *status,int *buffer) {
  extern int* __declspec(dllimport) LaunchDataPage;
@@ -89,6 +86,30 @@ int __stdcall func_0010A3F2(int *result,int *status,int *buffer) {
  }
  if(*status!=-1){int *src=p?(int*)((char*)p+0x400):status;int i;for(i=0;i<0x300;i++)buffer[i]=src[i];}
  return active;
+}
+
+int __stdcall func_0010A456(char *out,unsigned int capacity) {
+ extern int __stdcall NtOpenSymbolicLinkObject(...); extern int __stdcall NtQuerySymbolicLinkObject(...); extern int __stdcall NtClose(...); extern int __stdcall func_0010AA16(...); extern int D_001E62C8,D_001DED54;
+ char data[528]; int handle=0; int attr[7]; unsigned short str[2]; int result;
+ *out=0;attr[2]=(int)&D_001E62C8;attr[3]=0x40;
+ result=NtOpenSymbolicLinkObject(&handle,0x40,attr);
+ if(result>=0){str[0]=0;str[1]=0x208;*(char**)(str+2)=data;result=NtQuerySymbolicLinkObject(handle,str,0);NtClose(handle);if(result>=0&&capacity>=str[0]/2+1)return func_0010AA16(out,data,str[0]/2+1);}
+ return func_0010AA16(out,(char*)&D_001DED54,capacity);
+}
+
+void __stdcall func_0010A4E8(char *a,char *b) {
+ int *page=(int*)*LaunchDataPage; char *p=a,*q=b; char c; int la,lb; int first;
+ do { c=*p++; } while(c); la=(int)(p-(a+1));
+ do { c=*q++; } while(c); lb=(int)(q-(b+1));
+ if(la+lb+8>=0x1ec)return;
+ *(unsigned short*)((char*)page+0x214)=1;
+ *(unsigned short*)((char*)page+0x216)=(unsigned short)la;
+ first=page[0]; *(int*)((char*)page+0x218)=first;
+ if(first==-1)page[0]=0;
+ char *base=(char*)page+0x21c; int off=(int)base-(int)a;
+ p=a; do { c=*p; *(p+off)=c; ++p; } while(c);
+ off=(int)(base+la+1)-(int)b;
+ q=b; do { c=*q; *(q+off)=c; ++q; } while(c);
 }
 
 #pragma optimize("", on)
