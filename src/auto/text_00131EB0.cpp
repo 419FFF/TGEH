@@ -6,6 +6,14 @@ struct C_001321C0 {
 };
 
 
+int func_00131FB0(int p)
+{
+ int func_00148AE0(...);
+ int v=*(int *)(p+8);
+ if(v) return func_00148AE0(v);
+ return *(int *)(p+0x14);
+}
+
 void func_00132190(void)
 {
   extern undefined4 D_00331B80;
