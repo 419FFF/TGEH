@@ -101,14 +101,23 @@ void func_00088820(void)
   return;
 }
 
+void *memcpy(void *,const void *,unsigned int);
 void _func_00088840(int p) {
  int func_0011BDD0(...),func_000B5240(...); extern int D_002FDF4C;
- int s=func_0011BDD0(*(int*)(p+0xe0),0);
- if(D_002FDF4C && s && *(short*)(s+4) && !*(int*)(p+0x128)){
-  int n=*(unsigned short*)(s+4); int d=func_000B5240(D_002FDF4C,n);*(int*)(p+0x12c)=d;
-  if(d){*(int*)(p+0x128)=n;for(int i=0;i<n;i++) for(int j=0;j<25;j++) ((int*)(d+i*100))[j]=((int*)(*(int*)(s+8)+i*48+0x28))[j];}
+ int s;
+ if(!D_002FDF4C)return;
+ s=func_0011BDD0(*(int*)(p+0xe0),0);
+ if(s){
+  unsigned short n=*(unsigned short*)(s+4);
+  if(n && !*(int*)(p+0x128)){
+   int d=func_000B5240(D_002FDF4C,n);*(int*)(p+0x12c)=d;
+   if(d){unsigned int count=*(unsigned short*)(s+4);*(int*)(p+0x128)=count;
+    for(unsigned int i=0;i<count;i++)
+     memcpy((char*)d+i*0x64,(char*)*(int*)(s+8)+0x28+i*0x30,100);
+   }
+  }
+  --*(short*)(*(int*)(p+0xe0)+0x2a);
  }
- if(D_002FDF4C && s) --*(short*)(*(int*)(p+0xe0)+0x2a);
 }
 
 void _func_00088900(int p) {
@@ -133,10 +142,10 @@ void func_00088940(int param_1, undefined4 param_2)
   return;
 }
 
-void _func_00088990(int p,unsigned char a,int b,int c) {
+void _func_00088990(int p,unsigned int a,int b,unsigned char c) {
  extern int D_003268B0; int func_0011BDD0(...),func_00088840(...);
  if(*(unsigned char*)(p+0x22)==D_003268B0 && func_0011BDD0(*(int*)(p+0xe0),1)){
-  if(!*(int*)(p+0x128)){func_00088840(p);for(int i=0;i<*(int*)(p+0x128);i++){*(int*)(*(int*)(p+0x12c)+i*100+0x54)=a;*(int*)(*(int*)(p+0x12c)+i*100+0x58)=b;}}
+  if(!*(int*)(p+0x128)){func_00088840(p);for(unsigned int i=0;i<(unsigned int)*(int*)(p+0x128);i++){*(int*)(*(int*)(p+0x12c)+i*100+0x54)=(unsigned char)a;*(int*)(*(int*)(p+0x12c)+i*100+0x58)=b;}}
   --*(short*)(*(int*)(p+0xe0)+0x2a);
  }
  int q=*(int*)(p+0x28);while(q&&c){int f=*(int*)q;_func_00088990(f,a,b,c);q=*(int*)(q+0xc);}
