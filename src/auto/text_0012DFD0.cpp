@@ -29,7 +29,7 @@ void _func_0012E5C0(float *a, float *b) { a[0] += b[0]; a[1] += b[1]; a[2] += b[
 
 void _func_0012E5F0(float *o,float *a,float *b){ double t=(double)a[0]+b[0]; o[0]=(float)t; t=(double)a[1]+b[1]; o[1]=(float)t; t=(double)a[2]+b[2]; o[2]=(float)t; }
 
-void _func_0012E620(float *param_1, float *param_2, float *param_3) { param_1[0]=param_2[0]+param_3[0]; param_1[1]=param_2[1]+param_3[1]; param_1[2]=param_2[2]+param_3[2]; param_1[3]=param_2[3]+param_3[3]; }
+void _func_0012E620(float *param_1,float *param_2,float *param_3){param_1[0]=param_2[0]+param_3[0];param_1[1]=param_2[1]+param_3[1];param_1[2]=param_2[2]+param_3[2];param_1[3]=param_2[3]+param_3[3];}
 
 void _func_0012E650(float *param_1, float *param_2) { param_1[0]=param_1[0]-param_2[0]; param_1[1]=param_1[1]-param_2[1]; param_1[2]=param_1[2]-param_2[2]; }
 
@@ -126,6 +126,8 @@ void func_0012E910(float *p) {
     int func_00131220(...);
     func_00131220((longdouble)p[1] * (longdouble)p[1] + (longdouble)*p * (longdouble)*p);
 }
+
+void _func_0012E940(float *p){int func_00131220(...);func_00131220((longdouble)p[2]*p[2]+(longdouble)p[1]*p[1]+(longdouble)p[0]*p[0]);}
 
 longdouble func_0012E9B0(float *param_1)
 {
