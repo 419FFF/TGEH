@@ -50,6 +50,43 @@ void func_000D5130(undefined4 param_1, undefined4 *param_2)
   return;
 }
 
+void __fastcall func_000D4130(int);
+void func_000D5170(int param1, int param2)
+{
+  int func_00011CB0(...), func_0012ED20(...), func_0012F7A0(...), func_001105E0(...);
+  int local20[3];
+  char local50[48];
+  int local60[3];
+  func_00011CB0(local50, param1);
+  func_0012ED20(local60, param2, 0xbf800000);
+  func_0012F7A0(local60, param1);
+  local20[0] = local60[0]; local20[1] = local60[1]; local20[2] = local60[2];
+  func_001105E0(param2, local50, 0);
+}
+
+void func_000D51E0(int param1, int param2)
+{
+  int func_00011CB0(...), func_0012ED20(...), func_0012F7A0(...), func_001105E0(...);
+  int local20[3];
+  char local50[48];
+  int local60[3];
+  func_00011CB0(local50, param1);
+  func_0012ED20(local60, param2 + 0x40, 0xbf800000);
+  func_0012F7A0(local60, param1);
+  local20[0] = local60[0]; local20[1] = local60[1]; local20[2] = local60[2];
+  func_001105E0(*(int *)(param2 + 0x2c), local50, 0);
+}
+#pragma optimize("", on)
+void func_000D5250(int param_1,int param_2)
+{
+ int func_00110060(...); int func_0012F730(...);
+ int temp[4];
+ func_00110060(param_1,param_2);
+ func_0012F730(temp,param_1,param_2);
+ *(int *)(param_2+0x30)=temp[0]; *(int *)(param_2+0x34)=temp[1]; *(int *)(param_2+0x38)=temp[2];
+}
+
+#pragma optimize("", on)
 void func_000D5290(int param_1)
 {
   int func_00011CB0(...);
@@ -57,5 +94,27 @@ void func_000D5290(int param_1)
   func_00011CB0(param_1 + 0x10,param_1 + 0x50);
   func_000D5170(param_1 + 0x10,*(undefined4 *)(param_1 + 4));
   return;
+}
+
+void func_000D52C0(int *param_1,unsigned int param_2,int param_3)
+{
+ int func_00110300(...); int func_00110060(...); int func_0012F730(...); int func_00011CB0(...); int func_0013E469(...);
+ extern char D_001DAE24; int storage[80];
+ int obj=func_00110300(*(int *)(*param_1+0x2c),param_2,0x18);
+ if(obj) { int scratch[4]; *(int *)(param_3+4)=obj; func_00110060(obj,storage); func_00110060(obj,param_3+0x10); func_0012F730(scratch,obj,param_3+0x10); *(int *)(param_3+0x40)=scratch[0]; *(int *)(param_3+0x44)=scratch[1]; *(int *)(param_3+0x48)=scratch[2]; func_00011CB0(param_3+0x50,param_3+0x10); }
+ else { char error[268]; func_0013E469(error,&D_001DAE24,param_2); }
+}
+
+void func_000D5360(int *param_1,unsigned int param_2,int param_3)
+{
+ int func_00110300(...); int func_00110060(...); int func_00011CB0(...); int func_0013E469(...); extern char D_001DAE24;
+ int obj=func_00110300(*(int *)(*param_1+0x2c),param_2,0); if(obj) { int local[16]; *(int *)(param_3+4)=obj; func_00110060(obj,local); for(int i=0;i<16;i++) ((int *)(param_3+0x10))[i]=local[i]; func_00011CB0(param_3+0x50,param_3+0x10); } else { char error[268]; func_0013E469(error,&D_001DAE24,param_2); }
+}
+
+int func_000D53E0(int *param_1,unsigned int param_2,int param_3)
+{
+ int func_00110300(...); int func_00110060(...); int func_00011CB0(...);
+ int obj=func_00110300(*(int *)(*param_1+0x2c),param_2,0); if(!obj)return 0;
+ int local[16]; *(int *)(param_3+4)=obj; func_00110060(obj,local); for(int i=0;i<16;i++) ((int *)(param_3+0x10))[i]=local[i]; func_00011CB0(param_3+0x50,param_3+0x10); return 1;
 }
 
