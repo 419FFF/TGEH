@@ -65,9 +65,15 @@ int func_00124F20(undefined4 param_1, undefined4 param_2, undefined4 param_3)
 
 unsigned char _func_00124F50(int p) { int _func_0011BDD0(...); int obj=*(int *)(p+0x30); if (_func_0011BDD0(obj,0)) { --*(short *)(obj+0x2a); return 1; } return 0; }
 
+unsigned char _func_00124F80(int p1,int p2) { int _func_0011BDD0(...); int _func_00116490(...); unsigned char local[16]; int owner=*(int *)(*(int *)(p1+4)+8); int item=_func_0011BDD0(*(int *)(owner+0x30),0); if(!item)return 0; int n=*(int *)(item+4); if(!n){int o=*(int *)(owner+0x30); --*(short *)(o+0x2a);return 0;} _func_00116490(owner, n, local); unsigned int i=0,count=*(unsigned int *)item; int *arr=*(int **)(item+8); float *out=*(float **)(p2+0xf8); while(i<count){out[i]=*(float *)(local+8)**(float *)(*(int *)(arr[*(int *)local]+i*4))+*(float *)(local+12)**(float *)(*(int *)(arr[*(int *)(local+4)]+i*4));++i;} int o=*(int *)(owner+0x30); --*(short *)(o+0x2a);return 1;}
+
 int func_0011B990(int); void func_00125020(int *a0) { func_0011B990(a0[12]); }
 
 void *_func_00125030(int *p){extern int _func_0011BDD0(...);extern unsigned short D_0000FFFF;int x=_func_0011BDD0(*(int*)((char*)p+0x30),0);if(x){unsigned v=*(unsigned*)((char*)x+4);(*(unsigned short*)((char*)*(int*)((char*)p+0x30)+0x2a))--;return (void*)(v-1);}return &D_0000FFFF;}
+
+void _func_00125250(int *p,undefined4 *q){int func_0013E9DB(...);int func_00116A90(...);int func_00117100(...);int func_00117130(...);p[1]=func_0013E9DB(q[0]);func_00117100();p[2]=func_00116A90(p[1]<<6,1,1);func_00117130();*(short*)(*p+2)=(short)p[1];*(int*)(*p+8)=func_00116A90(p[1],1,1);}
+
+void _func_00125310(int *p,undefined4 *q){int func_0013E9DB(...);int a=func_0013E9DB(q[0]);int b=func_0013E9DB(q[1]);int idx=*(int*)(*p+8);*(unsigned char*)(a+idx)=b?0:1;}
 
 void func_00125440(undefined4 param_1, short *param_2)
 {
