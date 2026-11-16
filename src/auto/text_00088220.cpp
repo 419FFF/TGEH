@@ -2,6 +2,8 @@
 #include "common.h"
 #include "ghidra.h"
 
+void func_000885C0(void){void func_00097190(void),func_00093D80(void),func_000862D0(void),func_00083CE0(void),func_000688D0(void),func_0008D540(void);func_00097190();func_00093D80();func_000862D0();func_00083CE0();func_000688D0();func_000688D0();func_0008D540();}
+
 void func_000885F0(void)
 {
   int func_00095670(...);
