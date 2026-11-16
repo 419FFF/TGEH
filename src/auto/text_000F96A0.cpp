@@ -47,7 +47,7 @@ unsigned int func_000F9CA0(int a,int value){extern int D_00324B84,D_00324B80;int
 
 unsigned short func_000F9D00(int a){extern int D_00324B84,D_00324B80;int func_0011B4F0(...);unsigned int i=0;for(;i<(unsigned int)D_00324B84;i++){if(!func_0011B4F0(D_00324B80+i*0x48,a))return (unsigned short)i;}return 0xffff;}
 
-void func_000F9E50(int *a,void *b,int *out){char func_000F9D50(...);int func_0009C510(...),func_0009C6A0(...),func_0009C590(...),func_0009C7A0(...);char x[128],y[128],z[128];int v;if(func_000F9D50(a,b,z)){func_0009C510(b,x,y);v=func_0009C6A0(a[3],x);out[0]=v;out[1]=func_0009C7A0(v,b,0);}else{func_0009C510(z,x,y);v=func_0009C590(x);out[0]=v;out[1]=func_0009C7A0(v,y,0);}}
+void func_000F9E50(int *a,void *b,int *out){char func_000F9D50(int *, void *, char *);int func_0009C510(...),func_0009C6A0(...),func_0009C590(...),func_0009C7A0(...);char x[128],y[128],z[128];int v;if(func_000F9D50(a,b,z)){func_0009C510(b,x,y);v=func_0009C6A0(a[3],x);out[0]=v;out[1]=func_0009C7A0(v,b,0);}else{func_0009C510(z,x,y);v=func_0009C590(x);out[0]=v;out[1]=func_0009C7A0(v,y,0);}}
 
 void func_000F9F10(int *param_1, void *param_2, int *param_3)
 {
