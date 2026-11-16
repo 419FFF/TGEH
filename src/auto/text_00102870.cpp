@@ -6,7 +6,7 @@ void _func_00102A20(int p) { int func_00110060(...); int func_001105E0(...); __d
 
 void _func_00102C50(int p) { int func_00131230(...); extern int D_00324D2C; extern float D_001DE730,D_001D27B0; int edx=*(int*)(p+0xe0); int ecx=*(int*)(p+0x78); int delta=D_00324D2C-edx; float t=func_00131230((float)delta * *(float*)(ecx+0x7c) * D_001DE730); *(float*)(p+0x9c)=t**(float*)(ecx+0x80)+D_001D27B0; *(float*)(p+0xac)=t**(float*)(ecx+0x84)+D_001D27B0; }
 
-void _func_00102DB0(int p,char flag) { extern char D_001E5EC9; int func_00128C50(...); int func_00128BE0(...); int obj; unsigned short bits; if(!D_001E5EC9)return; obj=*(int*)(p+0xb8); if(obj==0)return; bits=*(unsigned short*)(p+0xb6); if((bits&0x20)!=0)return; if((bits&0x10)!=0)return; if(*(unsigned char*)(p+0xb4)==0)return; if(flag){if(func_00128C50(obj)==2)func_00128BE0(obj,1);}else if(func_00128C50(obj)==1)func_00128BE0(obj,0); }
+void _func_00102DB0(int p,char flag) { extern char D_001E5EC9; int func_00128C50(...); int func_00128BE0(...); if(!D_001E5EC9)return; int obj=*(int*)(p+0xb8); if(!obj)return; unsigned short bits=*(unsigned short*)(p+0xb6); unsigned char a=(unsigned char)bits; unsigned char d=a; d>>=5; if(d&1)return; a>>=4; if(a&1)return; if(!*(unsigned char*)(p+0xb4))return; if(flag){if(func_00128C50(obj)==2)func_00128BE0(obj,1);}else if(func_00128C50(obj)==1)func_00128BE0(obj,0); }
 
 void _func_00102E40(void *arg) {
 extern void *_D_00324BCC; void _func_00102DB0(void*,void*);
@@ -60,6 +60,23 @@ int _func_0013F2E9(int, int);
 int _func_0009C590(char *);
 int _func_000F8F40(int);
 int _func_00103320(int p) { int x=*(int*)((char*)p+0x7c); if(x==D_00308158)return *(int*)((char*)p+0x84); return _func_000F8F40(*(int*)(x+0x2c)); }
+
+void _func_00103350(int p) {
+    extern int _D_00308158;
+    extern int _D_00324BD8;
+    extern int _D_00324BC8;
+    extern int _D_00324D34;
+    int _func_000F8F40(int);
+    int value = *(int *)(p + 0x7c);
+
+    if (value == _D_00308158)
+        return;
+    if (value == _D_00324BD8 || value == _D_00324BC8) {
+        *(int *)(p + 0x84) = _D_00324D34;
+        return;
+    }
+    *(int *)(p + 0x84) = _func_000F8F40(*(int *)(value + 0x2c));
+}
 
 void func_001033A0(int a0) {
     extern int D_00324EA8;
@@ -115,6 +132,15 @@ void func_00103440(int param_1, char param_2)
   }
   func_0013AA30(*(undefined4 *)(param_1 + 4),0);
   return;
+}
+
+void _func_00103480(int p, char enable) {
+    if (p) {
+        if (enable)
+            *(unsigned char *)(p + 0xb6) |= 8;
+        else
+            *(unsigned char *)(p + 0xb6) &= 0xf7;
+    }
 }
 
 undefined4 func_001034A0(int param_1)
