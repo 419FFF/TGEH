@@ -2,6 +2,20 @@
 #include "common.h"
 #include "ghidra.h"
 
+void func_000EC3C0(int param_1, undefined4 *param_2)
+{
+  int func_0013E9E0(...);
+  longdouble lVar1;
+  
+  lVar1 = (longdouble)func_0013E9E0(*param_2);
+  *(float *)(param_1 + 0x60) = (float)lVar1;
+  lVar1 = (longdouble)func_0013E9E0(param_2[1]);
+  *(float *)(param_1 + 100) = (float)lVar1;
+  lVar1 = (longdouble)func_0013E9E0(param_2[2]);
+  *(float *)(param_1 + 0x68) = (float)lVar1;
+  return;
+}
+
 void func_000EC4C0(int param_1, int *param_2)
 {
   if (*param_2 != 0) {
@@ -126,6 +140,12 @@ void func_000ECB60(void) {
     extern int D_00307D08;
     int func_00122D30(...);
     func_00122D30(D_00307D08);
+}
+
+void func_000ECB70(unsigned int param_1)
+{
+ int func_00122D00(...); extern int D_00307D08;
+ func_00122D00(D_00307D08,param_1);
 }
 
 void func_000ECEE0(undefined4 param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
