@@ -28,6 +28,13 @@ void func_000832B0(void)
   return;
 }
 
+int _func_000832D0(const char *param_1)
+{
+  extern const char _D_001D6838[];
+  int memcmp(const void *, const void *, unsigned int);
+  return !memcmp(param_1, _D_001D6838, 7) - 1;
+}
+
 void func_00083550(int param_1)
 {
   int func_0011CFC0(...);
@@ -93,4 +100,6 @@ void func_000837F0(void)
   } while (uVar1 < 0x50);
   return;
 }
+
+void *_func_00083820(int a,int *b){int _func_00110420(...);int _func_0012F120(...);int _func_001105E0(...);int _func_00110000(...);int _func_00110550(...);int _func_0011DED0(...);int _func_00083650(...);extern unsigned int _D_002FBB40[20],_D_002FBB88;extern int _D_002FBB38[20],_D_002FBB44[20],_D_002FBB3C[20],_D_002FBB50,_D_002FBB60,_D_002FBB70,_D_002FBB80;register unsigned int v=0xffffffffu,slot=0,t=_D_002FBB40[0];if(t<=v){v=t;slot=0;}t=_D_002FBB40[4];if(t<=v){v=t;slot=1;}t=_D_002FBB40[8];if(t<=v){v=t;slot=2;}t=_D_002FBB40[12];if(t<=v){v=t;slot=3;}t=_D_002FBB40[16];if(t<=(int)v)slot=4;int *p=&_D_002FBB38[slot*4];int *o=*(int**)(p[0]+0x2c);_func_00110420(*o,p[0]);_D_002FBB44[slot*4]=0;__declspec(align(16)) char local[64];_func_0012F120(local);*(int*)(local+48)=b[0];*(int*)(local+52)=b[1];*(int*)(local+56)=b[2];_func_001105E0(p[0],local,0);_func_00110000(p[0]);_func_00110550(a,p[0],8);_D_002FBB44[slot*4]=1;_func_0011DED0(_D_002FBB3C[slot*4]);_D_002FBB40[slot*4]=_D_002FBB88;++_D_002FBB88;_func_00083650(p[0]);return p;}
 
