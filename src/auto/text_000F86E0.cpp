@@ -49,6 +49,29 @@ void func_000F86E0(int param_1)
   return;
 }
 
+void func_000F87B0(void)
+{
+  int func_000F86E0(...);
+  int func_0009D640(...);
+  extern unsigned int D_00324AF8;
+  extern unsigned int D_00324968[];
+  extern unsigned int D_00324884;
+  extern unsigned int D_0032485C;
+  extern unsigned int D_00324888;
+  unsigned int i;
+  unsigned int p;
+
+  for (i = 0; i < D_00324AF8; i++) {
+    func_000F86E0(D_00324968[i]);
+  }
+  p = D_00324884;
+  if ((*(unsigned char *)(p + 0x10) & 8) == 0) {
+    func_0009D640(p);
+    func_0009D640(D_0032485C);
+    func_0009D640(D_00324888);
+  }
+}
+
 void func_000F8AE0(int param_1)
 {
   int func_0009D9E0(...);
