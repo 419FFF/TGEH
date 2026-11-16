@@ -11,3 +11,6 @@ void func_000B7810(void)
   *(undefined4 *)(D_00314240 + 0x19e4) = 0x40a00000;
   return;
 }
+
+extern int D_00314240,D_003142E0; extern void func_00110330(...); extern void func_00102E80(...); void func_000B7AB0(void){ int p=D_00314240; *(char*)(p+0x1a81)=0; func_00110330(*(int*)(p+0x19f4),0); func_00102E80(D_003142E0); }
+
