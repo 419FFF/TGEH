@@ -53,7 +53,21 @@ int _func_001068B0(int,int,int,int,int);
 int _func_00106AC0(int,int,int *);
 int _func_00106070(int,int *);
 int _func_00026990(int,int,int);
-void _func_00045C20(unsigned char *p,int a,int b) { int r0,r1; _func_001068B0((int)(p+4),(int)(p+0x110),(int)(p+0x108),a,b); _func_00106AC0((int)(p+4),(int)(p+0xfc),&r0); p[0]=0; if(r0>=0 && r0<*(int *)(p+0xc) && r1>=0 && r1<*(int *)(p+0xc)) { int x=_func_00106070(*(int *)(p+0xc),&r0); if (*(unsigned char *)(*(int *)(*(int *)(p+0x28)+4)+x*4+2)&0x10) { _func_00026990(*(int *)(p+0x28),r0,r1); p[0]=1; } } }
+void _func_00045C20(unsigned char *p, int a, int b)
+{
+  int new_var[2];
+ _func_001068B0((int) (p + 4), (int) (p + 0x110), (int) (p + 0x108), a, b); _func_00106AC0((int) (p + 4), (int) (p + 0xfc), &new_var[0]);
+  p[0] = 0;
+  if ((((new_var[0] >= 0) && (new_var[0] < (*((int *) (p + 0xc))))) && (new_var[1] >= 0)) && (new_var[1] < (*((int *) (p + 0xc)))))
+  {
+    int x = _func_00106070(*((int *) (p + 0xc)), &new_var[0]);
+    if ((*((unsigned char *) (((*((int *) ((*((int *) (p + 0x28))) + 4))) + (x * 4)) + 2))) & 0x10)
+    {
+      _func_00026990(*((int *) (p + 0x28)), new_var[0], new_var[1]);
+      p[0] = 1;
+    }
+  }
+}
 
 void _func_00045CC0(int a,int* b){int _func_00106410(...);*(int*)(a+0xf0)=b[0];*(int*)(a+0xf4)=b[1];*(int*)(a+0xf8)=b[2];_func_00106410(*(int*)(a+8),b,a+0x110);}
 
