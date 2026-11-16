@@ -226,3 +226,4 @@ extern float D_001D27EC;
 extern float D_001D27EC;
 extern float D_001D27EC;
 extern float D_001D27EC;
+extern float D_001D27EC;
