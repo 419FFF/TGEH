@@ -2,6 +2,15 @@
 #include "common.h"
 #include "ghidra.h"
 
+void func_0007CE20(int param_1) {
+    extern void func_0011E3D0(...);
+    extern void func_000E8390(...);
+    extern void func_0011CFC0(...);
+    func_0011E3D0(param_1);
+    func_000E8390();
+    func_0011CFC0(param_1 + 0x54, 0);
+}
+
 void func_0007CE50(void) {
     extern int D_001D667C;
     extern void func_0007CC50(void);
@@ -37,9 +46,56 @@ void func_0007CEC0(void) {
     D_002FAC90 = 0;
 }
 
+void func_0007CED0(void) {
+    extern int D_00307DF8;
+    extern int D_001D44F8;
+    extern float D_001D2888;
+    extern int D_001D3BC4;
+    extern int D_002FAC8C, D_002FAC90, D_002FAC80, D_002FAC88;
+    extern int func_001031C0(...), func_00102E80(...), func_00110060(...), func_001105E0(...), func_00110000(...), func_00110300(...);
+    unsigned char local_50[52];
+    float local_1c;
+    int base = D_00307DF8;
+    int esi = *(int *)(base + 0x2c);
+    int *edi = (int *)(base + 0x2c);
+    func_00102E80(func_001031C0(base, &D_001D44F8));
+    func_00110060(esi, local_50);
+    local_1c += D_001D2888;
+    func_001105E0(esi, &local_50[12], 0);
+    func_00110000(esi);
+    D_002FAC8C = 1; D_002FAC90 = 0; D_002FAC80 = 0; D_002FAC88 = 0xbf800000;
+    int result = func_00110300(*edi, &D_001D3BC4, 0);
+    *(unsigned short *)(result + 0x20) |= 1;
+}
+
+void func_0007CF70(void) {
+    extern int D_00307DF8;
+    extern float D_001D2888;
+    extern unsigned char D_00308151;
+    extern int D_002FAC8C, D_002FAC90;
+    extern int func_00110060(...), func_001105E0(...), func_00110000(...), func_0005A750(...);
+    unsigned char local_50[52];
+    float local_1c;
+    int esi = *(int *)(D_00307DF8 + 0x2c);
+    func_00110060(esi, local_50);
+    local_1c -= D_001D2888;
+    func_001105E0(esi, &local_50[12], 0);
+    func_00110000(esi);
+    D_002FAC8C = 0; D_002FAC90 = 0;
+    if (!D_00308151) func_0005A750();
+}
+
 void func_0007D500(void) {
     extern int D_002FADE8;
     D_002FADE8 = 0;
+}
+
+void func_0007D510(void) {
+    extern unsigned int D_002FADE8;
+    extern unsigned int D_002FACD8[];
+    extern void func_00129C90(...);
+    unsigned int i = 0;
+    if (D_002FADE8 > 0) do { func_00129C90(D_002FACD8[i]); i++; } while (i < D_002FADE8);
 }
 
 void func_0007D540(int param_1, float param_2, float param_3)
