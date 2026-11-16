@@ -17,6 +17,8 @@ void func_0013ADD0(int param_1)
   return;
 }
 
+void _func_0013AF30(void *p) { extern unsigned char _D_00334E31; void _func_00116FB0(void*); _D_00334E31=1; if(p)_func_00116FB0(p); _D_00334E31=0; }
+
 void func_0013AF50(void *param_1)
 {
   extern unsigned char D_00334E31;
