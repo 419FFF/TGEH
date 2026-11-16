@@ -286,6 +286,8 @@ unsigned char func_000FE120(unsigned int a, unsigned int *p)
 
 unsigned char func_000FE140(unsigned int a,int p){extern float _D_001D27B8;int _func_000FA660(...);if(**(float**)(p+4)==_D_001D27B8)_func_000FA660(a,0);else _func_000FA660(a,1);return 1;}
 
+unsigned char func_000FE180(void *ignored, int *p) { int func_000667A0(int,int,int,int,int); int func_0005CCC0(int); func_000667A0(p[1], **(int **)((char*)p+0xc), **(int **)((char*)p+0x14), **(int **)((char*)p+0x1c), **(int **)((char*)p+0x24)); func_0005CCC0(0x18); return 1; }
+
 undefined1 func_000FE1C0(void)
 {
   int func_0005F310(...);
