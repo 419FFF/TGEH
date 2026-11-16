@@ -2,6 +2,10 @@
 #include "common.h"
 #include "ghidra.h"
 
+int _func_0013E9DB(int);
+float _func_0013E9E0(int);
+void _func_00119CF0(int a, int *b) { if (_func_0013E9DB(*b)) *(unsigned char *)(a + 0xb6) |= 1; }
+
 void func_00119D10(int param_1, undefined4 *param_2)
 {
   int func_0013E9DB(...);
