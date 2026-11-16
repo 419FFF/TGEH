@@ -16,7 +16,7 @@ void _func_00138490(unsigned char a){extern unsigned char _D_00332AA8;extern int
 
 void func_001384D0(void){extern int D_003326AC;extern void __stdcall RtlEnterCriticalSection(void*);extern void __stdcall RtlLeaveCriticalSection(void*);void func_00137EF0(...);int func_00116FB0(...);RtlEnterCriticalSection(&D_003326AC);func_00137EF0(0,0,0);RtlLeaveCriticalSection(&D_003326AC);func_00116FB0(0);}
 
-int func_00138510(int a,int b,int c){int __stdcall func_0010EF64(int),__stdcall func_0010EF78(int,int,int),__stdcall func_0010EFC6(int,int);int esi=func_0010EF64(0);if(esi==-1)return 0;if(!func_0010EF78(esi,b,a))return 0;if(!func_0010EFC6(esi,c))return 0;return 1;}
+int func_00138510(int a,int b,int c){int __stdcall func_0010EF64(int),__stdcall func_0010EF78(int,int,int),__stdcall func_0010EFC6(int,int);int s=func_0010EF64(0);if(s==-1)return 0;int edi=1;if(func_0010EF78(s,a,b))edi=0;if(func_0010EFC6(s,c))edi=0;return edi;}
 
 int func_001387C0(void) {
     return -1;
@@ -26,11 +26,11 @@ extern "C" __declspec(dllimport) void __stdcall RtlEnterCriticalSection(void*);
 extern "C" __declspec(dllimport) void __stdcall RtlLeaveCriticalSection(void*);
 int _func_001387D0(int unused, int *a, int *b){extern int _D_00332ABC;*a=(int)&_D_00332ABC;*b=4;return 0;}
 
-int func_00138910(int a,int b){extern int D_001D89C0;int __stdcall func_00147ADC(int,int,int,int,int,int),func_001478B6(...);unsigned char buf[0x20c];func_00147ADC(0,0,b,-1,(int)&buf[4],0x104);return func_001478B6(&D_001D89C0,buf)!=0;}
+int func_00138910(int a,int b){extern int D_001D89C0;int __stdcall func_00147ADC(int,int,int,int,int,int),func_001478B6(...);unsigned char buf[0x20c];func_00147ADC(0,0,b,-1,(int)buf,0x104);return func_001478B6(&D_001D89C0,buf)!=0;}
 
 int func_00138D60(int p){int __stdcall func_0010B7F8(int);int func_00116FB0(...);if(p){int x=*(int*)(p+0x1f4);if(x!=-1)func_0010B7F8(x);func_00116FB0(p);}return 0;}
 
-unsigned int func_00138D90(unsigned int p,unsigned int*out){if(p==0)return 1;unsigned int *base=(unsigned int*)p;base=base+126;unsigned int a=base[0];out[0]=a;unsigned int b=base[1];out[1]=b;unsigned int c=base[2];out[2]=c;return 0;}
+unsigned int func_00138D90(unsigned int p,unsigned int*out){if(!p)return 1;unsigned int *base=(unsigned int*)p;unsigned int *src=(unsigned int*)((char*)base+0x1f8);unsigned int *dst=out;unsigned int a=src[0];dst[0]=a;unsigned int b=src[1];dst[1]=b;unsigned int c=src[2];dst[2]=c;return 0;}
 
-int func_00138DC0(void){extern int _func_0010A157(...);extern int __stdcall _func_00109D13(...);return 0;}
+int func_00138DC0(unsigned int *out,int flag,unsigned int count){extern int D_001D89C0;int __stdcall func_0010A157(int*);int __stdcall func_00109D13(int*,unsigned long long*,int,int);unsigned long long value=0;func_0010A157(&D_001D89C0);func_00109D13(&D_001D89C0,&value,0,0);unsigned int first=(unsigned int)((value+0x3fff)>>14);if(!out)return 0;if(flag){out[0]=first;int a=func_0010A157(&D_001D89C0);unsigned int second=(unsigned int)(((unsigned long long)(count*2+0x4018+a)+0x3fff)>>14);out[1]=second;if(flag&&count){int b=func_0010A157(&D_001D89C0);unsigned int third=(unsigned int)(((unsigned long long)(count*2+0x4018+b)+0x3fff)>>14);if(third>first)return 10;}}return 0;}
 
