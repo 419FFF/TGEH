@@ -215,10 +215,18 @@ unsigned char _func_000FB360(int a, int *p)
 
 unsigned char _func_000FB380(int a,int*p){int func_001313C0(unsigned int);int func_0009A8D0(int,int);extern float D_001D290C;int x=func_001313C0(*(unsigned int*)p[1]);int y=func_001313C0(*(unsigned int*)p[3]);int z=func_0009A8D0(y,x);*(float*)p[1]=(unsigned int)z;return 1;}
 
-unsigned char _func_000FB450(int a,int*p)
+unsigned char _func_000FB450(int a, int *p)
 {
- extern float D_001D27B8; void func_0009D3E0(int); void func_0009D280(int);
- if(*p) { if (*(float*)p[3] > D_001D27B8) func_0009D280(*p); else func_0009D3E0(*p); } return 1;
+    extern float D_001D27B8;
+    void func_0009D3E0(int);
+    void func_0009D280(int);
+    if (*p) {
+        if (*(float *)p[3] < D_001D27B8)
+            func_0009D3E0(*p);
+        else
+            func_0009D280(*p);
+    }
+    return 1;
 }
 
 unsigned char _func_000FB490(int a, int *p)
@@ -245,6 +253,15 @@ undefined1 func_000FB5A0(void)
 }
 
 char _func_000FB5C0(void) { int func_000688D0(...); func_000688D0(); return 1; }
+
+extern int _func_00061540(int, int);
+extern int _func_00061570(int, int, int);
+unsigned char _func_000FB620(void *unused, int *p)
+{
+    _func_00061540(p[0], *(int *)p[3]);
+    return 1;
+}
+
 extern void* D_00324B68;
 
 struct D_00324B68_struct {
