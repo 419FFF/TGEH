@@ -94,6 +94,8 @@ void func_000930A0(void) {
     func_0011D0E0((int)&D_001D2F30);
 }
 
+void _func_00093430(void){extern int D_001D2F28;void _func_000930B0(void),_func_000927D0(void),_func_00079D10(void),_func_00092810(void),_func_00083D60(void);void _func_0011D000(...),_func_0011D270(...),_func_0011D290(...),_func_0011D2B0(...),_func_0011D2D0(...),_func_0011D2F0(...);_func_0011D000(_func_000930B0,&D_001D2F28);_func_0011D270(_func_000927D0,&D_001D2F28);_func_0011D290(_func_00079D10,&D_001D2F28);_func_0011D2B0(&D_001D2F28,0x93330);_func_0011D2D0(_func_00092810,&D_001D2F28);_func_0011D2F0(_func_00083D60,&D_001D2F28);}
+
 void func_00093490(void) {
     extern int D_001D2F28;
     int func_0011D0E0(...);
