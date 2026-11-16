@@ -34,6 +34,10 @@ void func_00124DE0(undefined4 *param_1, undefined4 *param_2)
   return;
 }
 
+void func_00124E00(int p, unsigned int *v) { int func_0013E9DB(...); int func_00116A90(...); int n=func_0013E9DB(*v); int q=func_00116A90(n*4,1,1); *(int *)(p+8)=q; *(int *)(p+4)=0; }
+
+unsigned int _func_00124E90(unsigned int param_1) { int _func_00131A10(...); int _func_00125E80(...); unsigned int local; if (!_func_00131A10(param_1)) return 0; _func_00125E80(param_1,&local); return local; }
+
 void func_00124F00(void) {
     extern int D_00331528;
     int func_00115DE0(...);
@@ -76,4 +80,6 @@ void func_00125470(void) {
 }
 
 void func_00125500(int *p) { int func_0011BAE0(...); int func_0011B990(...); if (*(unsigned char *)(p+5)&1) func_0011BAE0(*(int *)(p+0x30)); else func_0011B990(*(int *)(p+0x30)); }
+
+void *_func_00125530(int *p){extern int _func_0011BDD0(...);extern unsigned short D_0000FFFF;int x=_func_0011BDD0(*(int*)((char*)p+0x30),0);if(x){unsigned short v=*(unsigned short*)((char*)x+2);(*(unsigned short*)((char*)*(int*)((char*)p+0x30)+0x2a))--;return (void*)(unsigned)(v-1);}return &D_0000FFFF;}
 
