@@ -178,6 +178,8 @@ void func_000A2410(undefined4 *param_1, undefined4 param_2)
   return;
 }
 
+unsigned char func_000A24B0(unsigned int *p){int func_000A21A0(int);int func_00115430(int);unsigned int *node=(unsigned int*)p[0];while(node){unsigned int x=node[2];if(*(unsigned char*)(x+0x1c)){unsigned char ok=func_000A21A0(x);if(!ok)return 0;}node=(unsigned int*)node[0];}if(p[0xd]){unsigned char ok=func_00115430(p[0xd]);if(!ok)return 0;}return 1;}
+
 void func_000A2500(undefined4 param_1)
 {
   int func_00120E00(...);
