@@ -206,11 +206,15 @@ unsigned char _func_000FDE20(void*u,int*a){int _func_0013E3F4(void);int _func_00
 
 unsigned char _func_000FDE40(void){extern char D_001DD1B8;int _func_0009C590(...);int _func_00044C90(...);int _func_000B6510(...);int local[3]={0,0,0x42c80000};int v=_func_0009C590(&D_001DD1B8);_func_00044C90(v,local);_func_000B6510(8,0);return 1;}
 
+unsigned char _func_000FDE80(void){extern char _D_001DD1B8;int _func_0009C590(void*);int _func_00044C90(int,int*);int _func_000B6510(int,int);int v[3]={0,0,0x42c80000};int p=_func_0009C590(&_D_001DD1B8);_func_00044C90(p,v);_func_000B6510(8,1);return 1;}
+
 char func_000FDEC0(void) {
     int func_000B6510(...);
     func_000B6510(11, 0);
     return 1;
 }
+
+unsigned char _func_000FDED0(void){int _func_000B5650(int);int _func_000B6510(int,int);if(!_func_000B5650(0x11))_func_000B6510(0x11,0);return 1;}
 
 undefined1 func_000FDEF0(void)
 {
@@ -242,6 +246,8 @@ char func_000FDF30(void) {
     func_000B6510(16, 0);
     return 1;
 }
+
+unsigned char _func_000FDF40(void){extern char _D_001D7248;int _func_0009C590(void*);int _func_000688D0(int);int p=_func_0009C590(&_D_001D7248);_func_000688D0(*(int*)(p+0x2c));return 1;}
 
 void func_000FDFB0(void) {
     int func_000C1370(...);
