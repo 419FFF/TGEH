@@ -16,6 +16,15 @@ void func_00125B00(void) {
  } ++D_00331538;
 }
 
+int func_00125BC0(int param_1,char *param_2,int param_3,int param_4) {
+ extern int D_0033153C; int func_00116A90(...),func_00116E50(...); int iVar2=func_00116A90(0x5c,1,1);
+ if(param_1==0) { if(D_0033153C==0) {D_0033153C=func_00116A90(0x5c,1,1);*(int*)(D_0033153C+0x40)=0;*(int*)(D_0033153C+0x44)=0;*(int*)(D_0033153C+0x50)=0;*(int*)(D_0033153C+0x54)=0;*(int*)(D_0033153C+0x48)=0;*(int*)(D_0033153C+0x4c)=0;*(int*)(D_0033153C+0x58)=0;} param_1=D_0033153C; }
+ if((*(unsigned int*)(param_1+0x48)&15)==0) *(int*)(param_1+0x4c)=func_00116E50(*(int*)(param_1+0x4c),*(unsigned int*)(param_1+0x48)*4+0x40,1,1);
+ *(int*)(*(int*)(param_1+0x4c)+*(int*)(param_1+0x48)*4)=iVar2;*(int*)(param_1+0x48)=*(int*)(param_1+0x48)+1;
+ int diff=iVar2-(int)param_2;char c;do{c=*param_2;param_2[diff]=c;param_2++;}while(c);
+ *(int*)(iVar2+0x50)=0;*(int*)(iVar2+0x54)=0;*(int*)(iVar2+0x48)=0;*(int*)(iVar2+0x4c)=0;*(int*)(iVar2+0x58)=param_1;*(int*)(iVar2+0x40)=param_3;*(int*)(iVar2+0x44)=param_4;return iVar2;
+}
+
 undefined4 func_00125CA0(int param_1, undefined4 param_2)
 {
   int func_0011B4F0(...);
