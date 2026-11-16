@@ -2,6 +2,13 @@
 #include "common.h"
 #include "ghidra.h"
 
+void _func_0013AD40(void *p,void *arg) {
+void _func_0011C3E0(void*);void _func_0011C3B0(void*,void*,void*);void _func_0013A120(float);extern int _D_001E8878;
+if(*(void**)((char*)p+0x78)){_func_0011C3E0((char*)p+0x7c);*(int*)((char*)p+0x78)=0;}
+*(void**)((char*)p+0x78)=arg;if(arg)_func_0011C3B0(arg,(char*)p+0x7c,p);
+if(!*((char*)p+0x1c)){*(int*)((char*)p+0x10)|=0x40;if(_D_001E8878==8){void*q=*(void**)((char*)p+0x78);if(q)_func_0013A120(*(float*)((char*)q+0x18)**(float*)((char*)p+0x6c));else _func_0013A120(*(float*)((char*)p+0x6c));}}
+}
+
 longdouble func_0013ADC0(int param_1)
 {
   return (longdouble)*(float *)(param_1 + 0x18);
@@ -15,6 +22,12 @@ void func_0013ADD0(int param_1)
   }
   D_001E8878 = param_1;
   return;
+}
+
+void _func_0013ADF0(void *p) {
+void _func_0013AB30(void*);void _func_0011C3E0(void*);void _func_00116FB0(void*);
+if(*(int*)((char*)p+0x14))_func_0013AB30(p);
+_func_0011C3E0(p);if(*(int*)((char*)p+0x78))_func_0011C3E0((char*)p+0x7c);_func_00116FB0(p);
 }
 
 void _func_0013AF30(void *p) { extern unsigned char _D_00334E31; void _func_00116FB0(void*); _D_00334E31=1; if(p)_func_00116FB0(p); _D_00334E31=0; }
