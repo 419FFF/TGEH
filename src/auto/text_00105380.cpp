@@ -225,3 +225,4 @@ void func_001062C0(int *param_1, int param_2, float *param_3)
 extern float D_001D27EC;
 extern float D_001D27EC;
 extern float D_001D27EC;
+extern float D_001D27EC;
