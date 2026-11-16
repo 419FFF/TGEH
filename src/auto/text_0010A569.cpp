@@ -9,7 +9,7 @@ int _func_0010AA7B(void){extern int D_003252D4;int fs;int *tls=*(int**)((char*)&
 void __stdcall func_0010AAA3(int value) { extern int D_003252D4; int fs; int *tls=*(int**)((char*)&fs+4); *(int*)(tls[D_003252D4]+8)=value; }
 
 extern "C" __declspec(dllimport) int __stdcall RtlNtStatusToDosError(int);
-extern void __stdcall RtlInitAnsiString(void*, const char*);
+extern "C" __declspec(dllimport) void __stdcall RtlInitAnsiString(void*, const char*);
 extern int func_00109CF3(int, int);
 void __stdcall func_0010AAA3(int);
 int __stdcall func_0010AAD1(int);
