@@ -10,12 +10,22 @@ void func_000EC3C0(int param_1,int *param_2)
  *(float *)(param_1+0x68)=func_0013E9E0(param_2[2]);
 }
 
-void func_000EC400(int *param_1,char **param_2)
+void func_000EC400(int *out,char **in)
 {
  int func_001053E0(...); extern int D_00324588;
- char *s=*param_2; char *base=s; int i=0; char c;
- do { c=s[i]; if(c==':'||c=='/'||c=='\\') base=s+i+1; ++i; } while(c!=0);
- *param_1=func_001053E0(D_00324588,base);
+ char *s=*in; char *last=s; int index=0; int len=0; char c;
+ char *p=s;
+ do { c=*p; ++p; } while(c);
+ len=(int)(p-(s+1));
+ if(len>0) {
+   do {
+     c=s[index];
+     if(c==':'||c=='/'||c=='\\') last=s+index+1;
+     ++index;
+     p=s; do { c=*p; ++p; } while(c);
+   } while(index < (int)(p-(s+1)));
+ }
+ *out=func_001053E0(D_00324588,last);
 }
 
 void func_000EC470(int param_1,int *param_2)
@@ -75,6 +85,8 @@ void func_000EC640(undefined4 *param_1, undefined4 *param_2)
   *param_1 = uVar1;
   return;
 }
+
+void func_000EC760(int p, unsigned int *a){int func_0013E9DB(...);int func_00116A90(...);int n=func_0013E9DB(*a);int*q=(int*)func_00116A90(n<<4,1,1);*(int*)(p+0x78)=(int)q;*(int*)(p+0x64)=0;}
 
 void func_000EC970(void)
 {
