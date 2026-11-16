@@ -4,7 +4,7 @@
 int func_00133F30(...);
 int func_001378E0(...);
 int func_0011E4A0(...);
-void func_000688D0(void);
+int func_000688D0(...);
 int func_00103440(...);
 int func_00103400(...);
 int func_00136450(...);
@@ -27,6 +27,8 @@ void func_00070370(void) {
 void func_00070380(int x,int *p) { int a[22]={0}; float b[4]={0,0,1,1}; a[11]=4;a[12]=5;a[20]=6;a[21]=2;func_00133F30(a);func_0011E4A0(p[0],p[1],p[2],p[3],a,b+2,x,1.0f);func_000688D0(); }
 
 int func_000705A0(void) { extern int D_002FA2EC; int x=D_002FA2EC-1; if(x==0) return 2; else return 1; }
+
+void func_000706B0(int p) { extern int D_002FA30C,D_002FA2F8,D_002FA300,D_002FA2E4; extern int D_002FA2D8[3]; if(!D_002FA30C)return; switch(p){case 1:func_00103440(D_002FA2E4,0);break;case 2:func_00103440(D_002FA300,0);return;case 3:{int n=D_002FA2F8;func_00103440(D_002FA2D8[n],0);D_002FA2F8=n+1;if(D_002FA2F8==3){D_002FA2F8=0;return;}break;}}}
 
 void func_000708B0(void) {
     extern int D_002FA310;
