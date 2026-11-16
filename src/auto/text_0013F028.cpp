@@ -80,9 +80,10 @@ void func_0013F58E(void)
 
 void __stdcall func_0013F5A2(void *target,void *frame) { ((void (*)(void))target)(); }
 
-void __stdcall func_0013F5CD(int a,int b) { int x; }
-
-void func_0013F5D2(void) { int x; }
+#pragma optimize("y", off)
+extern void helper(void); void __stdcall _func_0013F5CD(int a,int b) { register int x=a; helper(); if(x) return; }
+#pragma optimize("", on)
+void __stdcall func_0013F5D2(void) {}
 
 void __stdcall func_0013F5D9(void *a, int *b) { }
 
@@ -90,6 +91,16 @@ extern int _D_002E8F08;
 extern int func_001427DE(...);
 extern int func_00142880(void);
 int _func_0013F661(void*a,void*b,int c){int x=*(int*)((char*)b+8);if(x!=_D_002E8F08){*(int*)((char*)a+4)|=8;return 1;}return func_001427DE(a,*(int*)((char*)b+16),c,0,*(int*)((char*)b+12),*(int*)((char*)b+20),b,0);}
+
+extern unsigned int D_002E8F08;
+extern int func_00142880(...);
+unsigned int func_0013F69C(unsigned int a, unsigned int *out, unsigned int c,
+ unsigned int d, unsigned int e, unsigned int f, unsigned int g) {
+ if (a==0x123) { *out=0x2707; return 1; }
+ struct { unsigned int a,b,c,d,e; } x;
+ x.a=0x3f00; x.b=D_002E8F08; x.c=e; x.d=(unsigned int)out; x.e=f;
+ return 0;
+}
 
 int _func_0013F763(int *a, int *b, int c) {
  if (*(int*)((char*)b+8) != _D_002E8F08) { *(int*)((char*)a+4) |= 8; return 1; }
@@ -119,22 +130,35 @@ int _func_0013F924(int a, int b, int c, int d, int e) {
 
 int _func_0013F980(void) { return 0; }
 
-void _func_0013F9A0(void) { int _func_00142C28(...); int _func_0013F9BD(...); _func_00142C28(); _func_0013F9BD(); }
+void _func_00142C28(...); void _func_0013F9BD(void); void _func_0013F9A0(void) { volatile double v; _func_00142C28(v); _func_0013F9BD(); }
 
-void _func_0013F9B4(float a0) {
-    extern void __fastcall func_00142BE5(float*, float*);
-    func_00142BE5(&a0, &a0);
-}
+__declspec(noreturn) void __fastcall _func_0013F9B4(void* self, float a0) { extern void __fastcall func_00142BE5(void*, float*); func_00142BE5(self, &a0); }
 
 void _func_0013F9BD(void) { }
 
 int func_0013FC97(int param_1) { int func_0013FC5F(...); return func_0013FC5F(param_1); }
 
-int func_0013FCA9(int param_1) { extern int D_002E8EE0; int func_0014167E(...); extern int D_002E8ED8; return 0; }
+int func_0013FCA9(int param_1) { extern int D_002E8EE0; int func_0014167E(int,int); extern unsigned short *D_002E8ED8; if (D_002E8EE0 > 1) return func_0014167E(param_1,0x103); return D_002E8ED8[param_1] & 0x103; }
 
-int func_0013FCD7(int param_1) { extern int D_002E8EE0; int func_0014167E(...); extern int D_002E8ED8; return 0; }
+int func_0013FCD7(int param_1) { extern int D_002E8EE0; int func_0014167E(int,int); extern unsigned char *D_002E8ED8; if (D_002E8EE0 > 1) return func_0014167E(param_1,4); return D_002E8ED8[param_1*2] & 4; }
 
-int func_0013FD00(int param_1) { extern int D_002E8EE0; int func_0014167E(...); extern int D_002E8ED8; return 0; }
+int func_0013FD00(int param_1) { extern int D_002E8EE0; int func_0014167E(int,int); extern unsigned char *D_002E8ED8; if (D_002E8EE0 > 1) { int v=func_0014167E(param_1,8); return v; } return D_002E8ED8[param_1*2] & 8; }
+
+int func_0013FD29(int param_1) { extern int D_002E8EE0; int func_0014167E(int,int); extern unsigned short *D_002E8ED8; if (D_002E8EE0 > 1) { return func_0014167E(param_1,0x107); } else { return D_002E8ED8[param_1] & 0x107; } }
+
+void func_0013FD57(char *s,int n) { int func_00143A55(...); struct {char *p; int n; int flag; char x[16];} l; char *p=s; l.flag=0x49; l.p=s; while(*p++){} l.n=(int)(p-s-1); func_00143A55(&l,n,&n+1); }
+
+void __fastcall func_0013FD91(char *self,int edx,unsigned int value,unsigned int base,int negative) {
+ if(base==0)return;
+ if(negative){*self++='-';value=-value;}
+ char *end=self;
+ do { unsigned int rem=value%base; value/=base; if(rem>9) rem+=0x57; else rem+=0x30; *end++=(char)rem; } while(value>0);
+ *end=0;
+ --end;
+ do { char a=*self; char b=*end; *self=b; --end; *end=a; ++self; } while(self<end);
+}
+
+int _func_0013FDCF(int value,char *out,int base) { extern void __fastcall func_0013FD91(char*,int,unsigned int,int); int neg=0; if(base==10 && value<0) { neg=1; base=10; } func_0013FD91(out,neg,(unsigned int)value,base); return (int)out; }
 
 unsigned int _func_0013FA6B(unsigned int a, unsigned long b) { volatile unsigned short *v=(volatile unsigned short*)((char*)&b+2); unsigned short x=*v; return (x & 0x7ff0) != 0x7ff0; }
 
@@ -160,3 +184,4 @@ void _func_0013FC5F(int arg) { extern int _D_001E1AE8; extern void _func_0013EEE
 #pragma optimize("", on)
 void func_0013FC91(void) { extern void (__cdecl *volatile f)(void); f=0; }
 #pragma optimize("t", on)
+struct S_0013F69C { unsigned int a,b,c,d,e,f,g; };
