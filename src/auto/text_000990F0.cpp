@@ -8,7 +8,7 @@ void __cdecl _func_000996B0(void) { volatile int local; local = 0; }
 
 void func_00099D40(int a,int b,int c,int d){extern int D_00307CB0;register int x=D_00307CB0;if(x){*(int*)(x+0x54)=a;*(int*)(x+0x58)=b;*(int*)(x+0x5c)=c;*(int*)(x+0x60)=d;}}
 
-void func_00099D70(int a,int b,int c,int d){extern int D_00307CB0;if(D_00307CB0){*(int*)(D_00307CB0+0x64)=a;*(int*)(D_00307CB0+0x68)=b;*(int*)(D_00307CB0+0x6c)=c;*(int*)(D_00307CB0+0x70)=d;}}
+void func_00099D70(int a,int b,int c,int d){extern int D_00307CB0;register int x=D_00307CB0;if(x){*(int*)(x+0x64)=a;*(int*)(x+0x68)=b;*(int*)(x+0x6c)=c;*(int*)(x+0x70)=d;}}
 
 void func_00099E10(undefined4 param_1)
 {
