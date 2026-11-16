@@ -125,4 +125,37 @@ int func_000D53E0(int *param_1,unsigned int param_2,int *out)
  if(obj==0)return 0;
  out[1]=obj; func_00110060(obj,local); for(int i=0;i<16;i++)out[4+i]=local[i]; func_00011CB0(out+20,out+4);return 1;
 }
+extern int D_0031B914;
+extern int D_0031B9A0;
+extern int D_0031B9B0;
+extern float D_001D290C;
+extern int func_0009C7A0(int, int, int);
+extern void func_000A22B0(int, int, int, int, int, int);
+extern float func_000A2310(int);
 
+extern int D_00313B60;
+extern float D_001D27B0;
+extern float D_001DAE38;
+extern float D_001D5728;
+extern void func_00110060(int, char*);
+extern void func_0012F310(char*, char*);
+extern void func_0012F730(float*, int, char*);
+
+extern int D_0031E4E0;
+extern int D_0031D530;
+extern int D_001E5380;
+extern int D_0031BD00;
+extern int D_0031BBC0;
+extern void func_0012E700(char*, int, int);
+extern void func_0012E620(int, char*, int);
+extern void func_000D5170(int, int);
+extern void func_00110000(int);
+
+extern int D_00307D08;
+extern int D_00313AD0;
+extern int D_0031B9D0;
+extern float D_001DAE60;
+extern float D_001DAE54;
+extern int D_0031BCA0;
+extern void func_001031C0(int, float, int);
+extern void func_00103990(int);
