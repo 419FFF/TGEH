@@ -1,2 +1,112 @@
 /* 4 functions from 0x000A0780 to 0x000A1698, found by Ghidra. */
 #include "common.h"
+
+#pragma optimize("", on)
+#pragma optimize("y", off)
+void _func_000A0780(void) {
+extern int D_00311548,D_003115C0,D_00307DF8,D_00311554,D_002EEC00,D_002EF478,D_00313B60,D_00307D08,D_00313B4C,D_001E4618,D_00311530,D_003115AC,D_00311534,D_003115D0,D_00311544,D_002EB02D,D_001E4630,D_002EF4AC,D_002EF4B0,D_002EF4B4,D_002EF4B8;
+extern float D_003115DC,D_001E4638,D_001E4634,D_001D27D0,D_001D2800,D_001D27B8,D_001D290C,D_001D27B0,D_001D2D4C,D_003115CC,D_0031154C,D_00307DB4;
+extern int func_0009F820(void),func_00083200(int),func_0009F990(void),func_00110060(int,void*),func_00011CB0(void*,void*),func_00063090(void*),func_0009F890(float,float,void*),func_0012ECA0(void*,int),func_0012F7A0(void*,void*),func_000A05D0(int),func_0009F8F0(void*,void*,int);
+
+int z=0;
+float a[38];
+int q[3];
+unsigned char m[76];
+int *p;
+
+D_00311548=z;
+if(!(func_0009F820()&0x40)){
+    if(D_003115C0<0) D_003115C0=z;
+    else if(D_003115C0<0xaf) D_003115C0+=2;
+    else D_003115C0=0xaf;
+    return;
+}
+
+p=*(int**)(D_00307DF8+0x110);
+if(*p!=0x58){
+    if(!func_00083200(D_00311554)||D_002EEC00!=4||D_002EF478!=1){
+        func_0009F990();
+        return;
+    }
+}else if(p[0xc4]!=1){
+    func_0009F990();
+    return;
+}
+
+func_00110060(D_00313B60,m);
+func_00011CB0(a+4,m);
+
+a[9]=1.0f;
+a[12]=D_003115DC*a[8]+a[28];
+a[13]=D_003115DC*a[1]+a[29];
+a[14]=D_003115DC*a[2]+a[30];
+a[30]=a[14];
+
+a[28]=D_001E4638*a[8]+a[12];
+a[29]=D_001E4638*a[5]+a[13];
+a[30]=D_001E4638*a[6]+a[14];
+
+a[30]=D_001E4634*a[10]+a[30];
+a[29]=D_001E4634*a[11]+a[29];
+a[28]=D_001E4634*a[12]+D_001E4638*a[7]+D_003115DC*a[3]+a[30];
+
+if(!D_002EF4AC){
+    func_00063090(q);
+    func_0009F890((float)q[0]+D_001D2800,(float)q[1]+D_001D27D0,q);
+    func_0012ECA0(q,0x459c4000);
+    func_0012F7A0(q,m);
+}else{
+    q[0]=D_002EF4B0;
+    q[1]=D_002EF4B4;
+    q[2]=D_002EF4B8;
+}
+
+float f=*(float*)(*(int*)(D_00307D08+16)+D_00313B4C*24);
+func_000A05D0(f!=D_001D27B8&&D_001E4630);
+
+if(f==D_001D27B8||!D_001E4630){
+    D_003115CC=0;
+    D_00311530=z;
+    func_0009F990();
+}else{
+    float st=1.0f/(D_001E4618+(D_001E4618<0?D_001D290C:0));
+    D_003115AC=D_00311534;
+    D_003115D0=D_00311544;
+    D_00311534-=st*2;
+    if(D_003115AC<D_001D2D4C){
+        D_003115AC=0;
+        D_00311534=-st*2;
+    }
+    D_00311544-=st;
+    if(D_003115D0<D_001D2D4C){
+        D_003115D0=0;
+        D_00311544=-st;
+    }
+
+    if(!D_002EB02D&&D_003115C0>44){
+        if(--D_00311530<=0){
+            D_003115CC-=st*2;
+            if(D_003115CC<D_001D27B8) D_003115CC=0;
+        }
+    }else D_00311530=5;
+    D_003115CC+=st*2;
+    if(D_003115CC>D_001D27B0) D_003115CC=1;
+
+    if(D_003115C0>40){
+        func_0009F8F0(q,q+1,*p!=0x58);
+        --D_003115C0;
+    }else if(D_003115C0>0&&((D_003115C0<45&&(D_003115C0&3)==3)||(D_003115C0>=45&&(D_003115C0&1)))){
+        func_0009F8F0(q,q+1,*p!=0x58);
+        --D_003115C0;
+    }
+}
+
+if(D_0031154C<D_00307DB4) D_00311548=z;
+}
+
+#pragma optimize("y", on)
+void _func_000A1480(int param_1, int param_2)
+{
+  int _func_00116A90(...);
+  *(int *)(param_1 + 0x14) = _func_00116A90(param_2 * 0x18, 1, 1);
+}
