@@ -26,6 +26,8 @@ void func_001137E0(int param_1, undefined4 *param_2)
 float func_0013E9E0(...);
 void func_00113800(float *out,int *in) { int i=0; float *dst=(float*)((char*)out+0x40); for(int outer=0;outer<4;outer++){int inner=4; do { *dst++=func_0013E9E0(in[i++]); inner--; }while(inner); } }
 
+void func_00113850(float *out,int *in) { int i=0; float *dst=(float*)((char*)out+0x80); for(int outer=0;outer<4;outer++){int inner=4; do { *dst++=func_0013E9E0(in[i++]); inner--; }while(inner); } }
+
 void func_00113980(undefined4 param_1, char *param_2)
 {
   int func_00116FB0(...);
@@ -54,6 +56,18 @@ void func_00113B10(int param_1)
 {
   *(undefined1 *)(param_1 + 0xd) = 0;
   return;
+}
+
+int func_0013E9DB(int);
+double func_0013E9E0(int);
+int func_00116A90(int,int,int);
+void func_00117100(void);
+void func_00117130(void);
+void func_00113C70(int out, int *in)
+{
+    int value=func_0013E9DB(*in);
+    if(value==0) *(unsigned char *)(out+0xc)=0;
+    else if(value==1) *(unsigned char *)(out+0xc)=1;
 }
 
 void func_00113CA0(int param_1)
