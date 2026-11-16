@@ -2,7 +2,7 @@
 #include "common.h"
 #include "ghidra.h"
 
-void func_00124A10(void){extern unsigned int D_00331518,D_00331508,D_00331500,D_00331178,D_00331370[],D_00331520; extern float D_001E7D60,D_001D27FC; int func_0013E3F4(void); void func_001383B0(void); void func_00138440(int); void func_00138490(int); void func_0012F120(void*); void func_001364D0(void*); void func_00136FF0(int); void func_00123F90(int); void func_00137030(void); unsigned char temp[76]; if(D_00331518){func_001383B0();func_00138440(0);func_00138490(0);func_0012F120(temp);func_001364D0(temp);} D_00331500=D_00331518;D_00331178=D_00331508; func_00136FF0(func_0013E3F4()); for(unsigned i=0;i<D_00331518;i++){int p=D_00331370[i];func_00123F90(p);*(unsigned*)(p+8)=D_00331520;}func_00137030(); D_00331520=D_00331520+1;}
+void func_00124A10(void){extern unsigned int D_00331518,D_00331508,D_00331500,D_00331178,D_00331370[],D_00331520; extern float D_001E7D60,D_001D27FC; int func_0013E3F4(void); void func_001383B0(void); void func_00138440(int); void func_00138490(int); void func_0012F120(void*); void func_001364D0(void*); void func_00136FF0(int); void func_00123F90(int); void func_00137030(void); volatile unsigned char buf[0x40]; if(D_00331518){func_001383B0();func_00138440(0);func_00138490(0);func_0012F120((void*)&buf[0x10]);func_001364D0((void*)&buf[0x14]);} D_00331500=D_00331518;D_00331178=D_00331508;func_00136FF0(func_0013E3F4()); for(unsigned i=0;i<D_00331518;++i){int p=D_00331370[i];func_00123F90(p);*(int*)(p+8)=D_00331520;}func_00137030(); unsigned value=D_00331520; value++; D_00331520=value;}
 
 void func_00124AD0(void){extern unsigned D_00331508,D_00331518; extern int D_003311D8[]; void func_00133BB0(int); void func_00116FB0(int); for(unsigned i=0;i<D_00331508;i++){int p=D_003311D8[i];if(*(int*)(p+0x70))func_00116FB0(*(int*)(p+0x70));func_00133BB0(*(int*)(p+0xc));*(int*)(p+0xc)=0;func_00116FB0(p);}D_00331508=0;D_00331518=0;}
 
@@ -67,7 +67,7 @@ int func_00124F20(undefined4 param_1, undefined4 param_2, undefined4 param_3)
 
 unsigned char _func_00124F50(int p) { int _func_0011BDD0(...); int esi=p; int eax=*(int *)(esi+0x30); if(_func_0011BDD0(eax,0)){eax=*(int *)(esi+0x30); --*(short *)(eax+0x2a);return 1;}return 0;}
 
-unsigned char _func_00124F80(int p1,int p2) { int _func_0011BDD0(...); int _func_00116490(...); unsigned int local[4]; int owner=*(int *)(*(int *)(p1+4)+8); int item=_func_0011BDD0(*(int *)(owner+0x30),0); if(!item)return 0; if(!*(int *)(item+4)){int o=*(int *)(owner+0x30); --*(short *)(o+0x2a);return 0;} _func_00116490(owner,*(int *)(item+4),local); unsigned int i=0,count=*(unsigned int *)item; int *arr=*(int **)(item+8); float *out=*(float **)(p2+0xf8); while(i<count){out[i]=*(float *)&local[2] * *(float *)(*(int *)(arr[local[0]] )+i*4) + *(float *)&local[3] * *(float *)(*(int *)(arr[local[1]])+i*4); ++i;} int o=*(int *)(owner+0x30); --*(short *)(o+0x2a);return 1;}
+unsigned char _func_00124F80(int p1,int p2) { int _func_0011BDD0(...); int _func_00116490(...); unsigned char local[16]; int owner=*(int *)(*(int *)(p1+4)+8); int item=_func_0011BDD0(*(int *)(owner+0x30),0); if(!item)return 0; int n=*(int *)(item+4); if(!n){int o=*(int *)(owner+0x30); --*(short *)(o+0x2a);return 0;} _func_00116490(owner,n,local); unsigned int i=0,count=*(unsigned int *)item; int *arr=*(int **)(item+8); float *out=*(float **)(p2+0xf8); while(i<count){out[i]=*(float *)(local+8) * *(float *)(*(int *)(arr[*(int *)local])+i*4) + *(float *)(local+12) * *(float *)(*(int *)(arr[*(int *)(local+4)])+i*4); ++i;} int o=*(int *)(owner+0x30); --*(short *)(o+0x2a);return 1;}
 
 int func_0011B990(int); void func_00125020(int *a0) { func_0011B990(a0[12]); }
 
@@ -79,7 +79,7 @@ void _func_00125250(int *p,undefined4 *q){int func_0013E9DB(...);int func_00116A
 
 void _func_001252B0(int p,undefined4 *q){int func_0013E9DB(...);longdouble func_0013E9E0(...);int i=func_0013E9DB(q[0])<<6;float *dst=(float*)(i+*(int*)(p+8));q++;for(int outer=0;outer<4;outer++){int inner=4;do{*dst++=(float)func_0013E9E0(*q++);--inner;}while(inner);}}
 
-void _func_00125310(int *p,undefined4 *q){int func_0013E9DB(...);int a=func_0013E9DB(q[0]);int b=func_0013E9DB(q[1]);int idx=*(int*)(*p+8);*(unsigned char*)(a+idx)=b?0:1;}
+void _func_00125310(int *p,undefined4 *q){int func_0013E9DB(...);int a=func_0013E9DB(q[0]);int b=func_0013E9DB(q[1]);int *node=(int*)*p;int idx=node[2];*(unsigned char*)(a+idx)=b?0:1;}
 
 void func_00125440(undefined4 param_1, short *param_2)
 {
@@ -103,5 +103,5 @@ int _func_00125490(int p,undefined4 q,int mode){int func_00115E10(...);int func_
 
 void func_00125500(int p) { int func_0011BAE0(...); int func_0011B990(...); if (*(unsigned char *)(p+0x14)&1) func_0011BAE0(*(int *)(p+0x30)); else func_0011B990(*(int *)(p+0x30)); }
 
-unsigned int _func_00125530(int *p){extern int _func_0011BDD0(...);extern unsigned int D_0000FFFF;unsigned int r=(unsigned int)&D_0000FFFF;int x=_func_0011BDD0(*(int*)((char*)p+0x30),0);if(x){r=*(unsigned short*)((char*)x+2);r--;(*(unsigned short*)((char*)*(int*)((char*)p+0x30)+0x2a))--;}return r;}
+unsigned int _func_00125530(int *p){extern int _func_0011BDD0(...);extern unsigned int D_0000FFFF;unsigned int fallback=(unsigned int)&D_0000FFFF;int x=_func_0011BDD0(*(int*)((char*)p+0x30),0);unsigned int r=fallback;if(x){r=*(unsigned short*)((char*)x+2);r--;(*(unsigned short*)((char*)*(int*)((char*)p+0x30)+0x2a))--;}return r;}
 
