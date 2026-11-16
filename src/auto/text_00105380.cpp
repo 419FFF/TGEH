@@ -232,3 +232,4 @@ int func_0012F7A0(float *local_10, int ptr);
 extern float D_001D27EC;
 extern float D_001D27EC;
 int func_0012F7A0(float *local_10, int ptr);
+extern float D_001D27EC;
