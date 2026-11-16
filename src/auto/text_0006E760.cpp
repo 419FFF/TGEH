@@ -25,7 +25,7 @@ void func_0006E960(void) { extern float D_002FA010,D_002FA008,D_001D27B8,D_001D2
 
 void _func_0006E9B0(void){extern int _D_002FA008,_D_002FA010;extern unsigned char _D_002FA00C,_D_002FA00D;_D_002FA008=0xbf800000;_D_002FA010=0xbf800000;_D_002FA00C=0;_D_002FA00D=0;}
 
-int _func_0006E9E0(unsigned int *p,unsigned int *out){unsigned int i,j,n=p[1]>>2,*a=(unsigned int*)p[0];for(i=0;i<n;i++,a++){unsigned int x=*a;if(x!=0xffffffff){for(j=0;j<32;j++){if((x&(1u<<j))==0){*out=(i<<5)+j;return 1;}}}}return 0;}
+unsigned char _func_0006E9E0(unsigned int *p,unsigned int *out){unsigned int count=p[1]>>2,index=0;unsigned int *words=(unsigned int*)p[0];while(index<count){unsigned int value=*words;if(value!=0xffffffff){unsigned int bit=0;do{if(!(value&(1u<<bit))){*out=index*32+bit;return 1;}bit++;}while(bit<32);}index++;words++;}return 0;}
 
 void func_0006EB40(undefined4 *param_1)
 {
@@ -52,11 +52,11 @@ void func_0006EC20(float x) { extern float D_002FA014; extern int D_002FA020,D_0
 
 void _func_0006F3F0(void){extern int _D_001E3CD0,_D_002FA048,_D_002FA04C;_D_001E3CD0=1;_D_002FA048=0;_D_002FA04C=0;}
 
-void func_0006F410(void) { extern int D_001E3CD0; extern float D_0032923C,D_002FA048,D_001D31C8,D_001D27B0,D_002FA04C,D_001D2868,D_001D290C,D_001D4F28,D_001D2C00; extern float D_002FA024[8]; float func_00131230(float); int i; if(D_001E3CD0) D_001E3CD0=0; else { float f=(D_0032923C-D_002FA048)*D_001D31C8; if(f<D_001D27B0) D_002FA04C += D_001D27B0; } D_002FA048=D_0032923C; if(D_002FA04C>D_001D2868) D_002FA04C-=D_001D2868; for(i=0;i<8;i++) D_002FA024[i]=func_00131230((float)i*D_001D4F28+D_002FA04C)*D_001D2C00; }
+void func_0006F410(void) { extern int D_001E3CD0; extern float D_0032923C,D_002FA048,D_001D31C8,D_001D27B0,D_002FA04C,D_001D2868,D_001D290C,D_001D4F28,D_001D2C00; extern float D_002FA024[8]; float func_00131230(float); int i; if(D_001E3CD0) D_001E3CD0=0; else { float t=(D_0032923C-D_002FA048)*D_001D31C8; if(t <= D_001D27B0) { D_002FA04C += D_001D27B0; } } D_002FA048=D_0032923C; if(D_002FA04C > D_001D2868) D_002FA04C-=D_001D2868; for(i=0;i<8;i++) D_002FA024[i]=func_00131230((float)i*D_001D4F28+D_002FA04C)*D_001D2C00; }
 
-void func_0006F4D0(unsigned int param_1) { extern int D_0032B70C; switch(param_1) { case 0: case 1: case 2: case 3: D_0032B70C=0; break; } }
+void func_0006F4D0(unsigned int p) { extern int D_0032B70C; void func_0006EF70(void); void func_0006F1F0(void); void func_0006ED30(void); switch(p) { case 0: D_0032B70C=0; return; case 1: D_0032B70C=(int)func_0006EF70; return; case 2: D_0032B70C=(int)func_0006F1F0; return; case 3: D_0032B70C=(int)func_0006ED30; return; } }
 
-void func_0006F520(void) { extern int D_002FA080; extern int D_001E3CD8; extern char D_002FA05C; D_002FA080=0; D_001E3CD8=3; D_002FA05C=0; }
+void func_0006F520(void) { extern int D_002FA080; extern int D_001E3CD8; extern unsigned char D_002FA05C; D_002FA05C=0; D_001E3CD8=3; D_002FA080=0; }
 
 void func_0006F670(void)
 {
