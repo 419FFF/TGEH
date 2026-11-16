@@ -16,3 +16,10 @@ void func_000F33B0(int a0) {
     extern int D_001E59A4;
     D_001E59A4 = a0;
 }
+
+extern int D_003246F4, D_003246CC, D_003246E8, D_003246D0, D_001E59A4;
+extern int D_00324620[1024];
+int func_0009D3E0(int);
+int func_00110420(int, int);
+void _func_000F3890(void) { volatile int x=0; (void)x; }
+
