@@ -22,6 +22,18 @@ void func_00119D10(int param_1, undefined4 *param_2)
   return;
 }
 
+void _func_00117100(void);
+void _func_00117130(void);
+int _func_00116A90(int, int, int);
+void _func_0012EA60(float *);
+void _func_00119D70(int param_1, int *param_2)
+{
+    int value = _func_0013E9DB(*param_2);
+    _func_00117100();
+    *(int *)(*(int *)param_1 + 0xc) = value;
+    _func_00117130();
+}
+
 void func_00119DA0(int param_1, undefined4 *param_2)
 {
   int func_0011B4F0(...);
