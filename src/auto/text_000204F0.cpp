@@ -2,6 +2,8 @@
 #include "common.h"
 #include "ghidra.h"
 
+void func_00020650(void) { volatile int marker = 27; (void)marker; }
+
 void func_00020CE0(int param_1)
 {
   int func_000487A0(...);
@@ -45,5 +47,13 @@ void _func_000210D0(char *a)
             _func_00116FB0(b);
         }
     }
+}
+
+void func_00021410(int param_1)
+{
+ int func_00020DC0(...);
+ *(undefined4 *)(*(int *)(param_1+0x110)+4)=1;
+ *(undefined1 *)(param_1+0x14)=0;
+ func_00020DC0(param_1);
 }
 
