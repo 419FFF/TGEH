@@ -11,6 +11,11 @@ void _func_00116590(void *p, unsigned int value)
     _func_00115FC0(p, f);
 }
 
+void _func_001165C0(void *p)
+{
+    ((void (*)(void *, int))_func_001161D0)(*(void **)((char *)*(void **)((char *)p + 4) + 8), 0);
+}
+
 void _func_001165E0(void *p)
 {
     if (*(int *)((char *)p + 0x10) != 0) {
@@ -26,6 +31,30 @@ void _func_00116610(void *p)
         *(float *)((char *)q + 0x20) = _func_001161D0(q, 0);
         *(int *)((char *)q + 0x10) = 0;
     }
+}
+
+void _func_001166D0(int* param_1, int* param_2, int param_3) {
+  if (param_3 == 0) {
+    param_2[1] = param_1[0xbc/4];
+    param_2[0] = 0;
+    if (param_1[0xbc/4] != 0) {
+      *(int*)param_1[0xbc/4] = (int)param_2;
+      param_1[0xbc/4] = (int)param_2;
+      return;
+    }
+    param_1[0xb8/4] = (int)param_2;
+    param_1[0xbc/4] = (int)param_2;
+    return;
+  }
+  param_2[0] = param_3;
+  param_2[1] = *(int*)(param_3+4);
+  if (*(int*)(param_3+4) != 0) {
+    *(int*)*(int*)(param_3+4) = (int)param_2;
+    *(int*)(param_3+4) = (int)param_2;
+    return;
+  }
+  param_1[0xb8/4] = (int)param_2;
+  *(int*)(param_3+4) = (int)param_2;
 }
 
 void _func_00116800(int value) {
