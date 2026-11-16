@@ -16,7 +16,7 @@ void func_0003EAF0(undefined4 param_1, int param_2)
   return;
 }
 
-void _func_0003EB30(int unused, int object) { extern int func_000A1F50(int); extern void func_00110330(int, int); extern void func_000A1D10(int, int, int, int, int, int); int state = *(int*)(object + 0x314); if (state != 0) { if (state == 1 && func_000A1F50(*(int*)(object + 0x260)) == 0) *(int*)object = *(int*)(object + 0x318); return; } if (func_000A1F50(*(int*)(object + 0x260)) != 0) return; func_00110330(*(int*)(object + 0x210), 0); { int* p = *(int**)(object + 0x308); func_000A1D10(*(int*)(object + 0x260), 1, p[0], p[1], p[2], 0); } *(int*)(object + 0x314) = 1; }
+void _func_0003EB30(int unused, int object) { extern int func_000A1F50(int); extern void func_00110330(int, int); extern void func_000A1D10(int, int, int, int, int, int); switch (*(int*)(object + 0x314)) { case 0: if (func_000A1F50(*(int*)(object + 0x260)) == 0) { func_00110330(*(int*)(object + 0x210), 0); int* p = *(int**)(object + 0x308); func_000A1D10(*(int*)(object + 0x260), 1, p[0], p[1], p[2], 0); *(int*)(object + 0x314) = 1; } break; case 1: if (func_000A1F50(*(int*)(object + 0x260)) == 0) *(int*)object = *(int*)(object + 0x318); break; } }
 
 void _func_0003EBB0(int unused, int object) { extern int D_0000FFFF; extern unsigned char D_002EF4DD; extern void func_000A1D10(int, int, int, void*, int, int); func_000A1D10(*(int*)(object + 0x2b4), 1, 0, &D_0000FFFF, 0x41c00000, 0x3e4ccccd); *(int*)(object + 0x310) = 0; *(int*)(object + 0x314) = 0; *(int*)(object + 0x318) = 0; D_002EF4DD = 0; }
 
