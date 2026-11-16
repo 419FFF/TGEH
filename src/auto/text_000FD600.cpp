@@ -351,3 +351,5 @@ char func_000FE3C0(void) {
     return 1;
 }
 
+unsigned char _func_000FE3F0(void){extern int D_003080FC,D_00307DD8;return D_003080FC!=0||D_00307DD8!=0;}
+
