@@ -70,7 +70,7 @@ void _func_00116740(int* param_1, int* param_2) {
 
 void func_00116780(unsigned char p){extern int D_00326814,D_00326810; extern unsigned char D_00326818[],D_0032687C; void func_0013AF50(int); void func_0013AF70(int); int i; unsigned char c; func_0013AF50(D_00326814); i=D_00326810; c=p; i++; D_00326818[i]=c; D_0032687C=c; {int x=D_00326814; D_00326810=i; func_0013AF70(x);}}
 
-void func_001167C0(void){extern int D_00326814,D_00326810; extern unsigned char D_00326817[],D_0032687C; void func_0013AF50(int); void func_0013AF70(int); func_0013AF50(D_00326814); D_0032687C=D_00326817[D_00326810]; D_00326810--; func_0013AF70(D_00326814);}
+void func_001167C0(void){extern int D_00326814,D_00326810; extern unsigned char D_00326817[],D_0032687C; void func_0013AF50(int); void func_0013AF70(int); func_0013AF50(D_00326814); D_00326810--; D_0032687C=D_00326817[D_00326810+1]; func_0013AF70(D_00326814);}
 
 void _func_00116800(int value) {
   extern int __cdecl _func_0013B1E0(void);
@@ -96,7 +96,7 @@ int _func_00116960(int *piVar1, undefined4 D_00326814, undefined D_00326790, int
   return 0;
 }
 
-void func_00116FB0(int p){extern int D_00326814,D_00326790[]; void func_0013AF50(int); void func_0013AF70(int); void func_00116CC0(int,int); if(p){int q=*(int*)(p-4); func_0013AF50(D_00326814); func_00116CC0(D_00326790[*(unsigned char*)(q+0x13)],q); *(int*)(p-4)=0; func_0013AF70(D_00326814);}}
+void func_00116FB0(int p){extern int D_00326814,D_00326790[]; void func_0013AF50(int); void func_0013AF70(int); void func_00116CC0(int,int); if(p){func_0013AF50(D_00326814); int q=*(int*)(p-4); func_00116CC0(D_00326790[*(unsigned char*)(q+0x13)],q); *(int*)(p-4)=0; func_0013AF70(D_00326814);}}
 
 int _func_00117000(char param_1)
 {
@@ -164,5 +164,5 @@ void _func_00117100(void) { _func_0013AF50(_D_00326814); int p=_func_0013B1E0();
 
 void _func_00117130(void) { _func_0013AF50(_D_00326814); int p=_func_0013B1E0(); volatile int *q=(volatile int *)(p+0x80); int v=*q; *q=v-1; _func_0013AF70(_D_00326814); }
 
-void func_00117340(int p){extern int D_00326880; extern int D_00326790[]; void func_00116FB0(int); void func_00136B20(void); D_00326790[*(int*)(p+0xe8)]=0; if(p==D_00326880) func_00136B20(); else func_00116FB0(p);}
+void func_00117340(int p){extern int D_00326880; extern int D_00326790[]; void func_00116FB0(int); void func_00136B20(void); D_00326790[*(int*)(p+0xe8)]=0; if(p!=D_00326880){func_00116FB0(p);return;} func_00136B20();}
 
