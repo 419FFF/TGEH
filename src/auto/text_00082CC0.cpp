@@ -2,6 +2,8 @@
 #include "common.h"
 #include "ghidra.h"
 
+int func_00083190(void *a, void *b) { extern int D_002FBB28,D_002FBB30,D_002FBB34; int func_0010F750(...); int func_000832D0(...); int *p=(int*)func_0010F750(a,D_002FBB28,0xf0); int x=func_000832D0(*(int*)((char*)b+0xc)); *(int*)((char*)p+0xe0)=x; if(x!=-1){((int*)&D_002FBB30)[x*2]= (int)p; ((int*)&D_002FBB34)[x*2]++;} return (int)p; }
+
 void func_000831E0(int param_1)
 {
   extern undefined D_002FBB34;
@@ -16,6 +18,8 @@ undefined4 func_00083200(int param_1)
   return *(undefined4 *)(((undefined *)&D_002FBB30) + param_1 * 8);
 }
 
+void func_00083210(int a, int b) { extern int D_002FBB30,D_00308158; int func_0011FD20(...); int func_0011F920(...); int func_001105E0(...); int func_00095A30(...); int func_001206B0(...); int func_0011F960(...); int p=((int*)&D_002FBB30)[a*2]; if(p){func_0011FD20(); int q=func_0011F920(*(int*)(D_00308158+0x2c)); func_001105E0(p,b,0);func_00095A30(p);func_001206B0();func_0011F960(q);} }
+
 void func_000832B0(void)
 {
   extern undefined4 D_002FBB2C;
@@ -28,12 +32,7 @@ void func_000832B0(void)
   return;
 }
 
-int _func_000832D0(const char *param_1)
-{
-  extern const char _D_001D6838[];
-  int memcmp(const void *, const void *, unsigned int);
-  return !memcmp(param_1, _D_001D6838, 7) - 1;
-}
+int func_000832D0(const char *s) { extern const char D_001D6838[]; int i; for(i=0;i<7;i++) if(s[i]!=D_001D6838[i]) return 0; return -1; }
 
 void func_00083550(int param_1)
 {
