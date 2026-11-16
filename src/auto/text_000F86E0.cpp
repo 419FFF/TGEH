@@ -132,9 +132,18 @@ unsigned int func_000F8F40(int *p) {
  extern int *D_00324968[];
  unsigned int i;
  int *q;
- q = (int *)p[0xb];
- while (q && !(p[8] & 8)) { p=q; q=(int *)p[0xb]; }
- for(i=0;i<D_00324AF8;i++) if(D_00324968[i][0x38]==(int)p) return (unsigned int)D_00324968[i];
+ q = (int *)p[11];
+ while (q && !(p[8] & 8)) { p=*(int **)q; q=(int *)p[11]; }
+ for(i=0;i<D_00324AF8;i++) if(D_00324968[i][56]==(int)p) return (unsigned int)D_00324968[i];
+ return 0;
+}
+
+int _func_000F91D0(int param_1) {
+ extern int _D_00324AF8;
+ extern int _D_00324968[];
+ int _func_0011B4F0(...);
+ unsigned int i=0;
+ if (_D_00324AF8 != 0) do { int v=_func_0011B4F0(*((int*)_D_00324968[i]+0x38),param_1); if(!v)return _D_00324968[i]; ++i; } while(i<(unsigned)_D_00324AF8);
  return 0;
 }
 
