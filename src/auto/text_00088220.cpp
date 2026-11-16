@@ -2,7 +2,7 @@
 #include "common.h"
 #include "ghidra.h"
 
-void func_00088520(unsigned int p){extern unsigned int D_00308158,D_002FDDC0,D_002FDDB8,D_00307C94,D_00307C58,D_003041F0,D_003041EC,D_00306E70,D_00306E6C;void func_00110170(unsigned int),func_00086B70(unsigned int),func_00096F70(unsigned int),func_000688D0(unsigned int),func_00093CA0(unsigned int);func_00110170(*(unsigned int*)(D_00308158+0x2c));unsigned char c=*(unsigned char*)(*(unsigned int*)(p+0x2c)+0x22);if(D_002FDDC0&&c==D_002FDDB8){func_00086B70(p);return;}if(D_00307C94&&c==D_00307C58){func_00096F70(p);return;}if(D_003041F0&&c==D_003041EC){func_000688D0(p);return;}if(D_00306E70&&c==D_00306E6C)func_00093CA0(p);}
+void func_00088520(volatile unsigned int p){extern unsigned int D_00308158,D_002FDDC0,D_002FDDB8,D_00307C94,D_00307C58,D_003041F0,D_003041EC,D_00306E70,D_00306E6C;void func_00110170(unsigned int),func_00086B70(unsigned int),func_00096F70(unsigned int),func_000688D0(unsigned int),func_00093CA0(unsigned int);func_00110170(*(unsigned int*)(D_00308158+0x2c));if(D_002FDDC0&&*(unsigned char*)(*(unsigned int*)(p+0x2c)+0x22)==D_002FDDB8){func_00086B70(p);return;}if(D_00307C94&&*(unsigned char*)(*(unsigned int*)(p+0x2c)+0x22)==D_00307C58){func_00096F70(p);return;}if(D_003041F0&&*(unsigned char*)(*(unsigned int*)(p+0x2c)+0x22)==D_003041EC){func_000688D0(p);return;}if(D_00306E70&&*(unsigned char*)(*(unsigned int*)(p+0x2c)+0x22)==D_00306E6C)func_00093CA0(p);}
 
 void func_000885C0(void){void func_00097190(void),func_00093D80(void),func_000862D0(void),func_00083CE0(void),func_000688D0(void),func_0008D540(void);func_00097190();func_00093D80();func_000862D0();func_00083CE0();func_000688D0();func_000688D0();func_0008D540();}
 
@@ -99,6 +99,11 @@ void func_00088820(void)
   }
   D_002FDF4C = 0;
   return;
+}
+
+void _func_00088900(int p) {
+ int func_000B5350(...); extern int D_002FDF4C;
+ if(*(int*)(p+0x128)){func_000B5350(D_002FDF4C,*(int*)(p+0x12c),*(int*)(p+0x128));*(int*)(p+0x128)=0;*(int*)(p+0x12c)=0;}
 }
 
 void func_00088940(int param_1, undefined4 param_2)
