@@ -82,3 +82,13 @@ void func_000D73E0(undefined1 param_1, undefined1 param_2, undefined1 param_3, u
   } while (uVar2 < 0x96);
   return;
 }
+
+unsigned char func_000D74D0(int *p)
+{
+ extern int _D_001E54E8;
+ int *q = &_D_001E54E8;
+ if (*q == -1) return 0;
+ do { if (*q++ == *(int *)((char *)p + 4)) return 1; } while (*q != -1);
+ return 0;
+}
+
