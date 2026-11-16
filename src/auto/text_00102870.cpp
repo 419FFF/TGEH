@@ -42,6 +42,28 @@ void func_00103180(int param_1, undefined4 param_2)
 
 void _func_001031A0(void *p,int value) { extern char _D_001E5EC9; if(_D_001E5EC9 && p) *(int*)((char*)p+0x94)=value; }
 
+extern "C" unsigned char D_001E5EC9;
+extern "C" int D_00324BCC;
+extern "C" int D_00308158;
+extern "C" int func_00128C50(int);
+extern "C" int func_0013F2E9(int, int);
+extern "C" int func_0009C590(const char *);
+extern "C" int func_001031C0(int, int);
+int func_001031C0(int key, int value)
+{
+    int node = D_00324BCC;
+    while (node) {
+        int item = *(int *)(node + 4);
+        if (*(int *)(item + 0x7c) == key) {
+            int sub = *(int *)(item + 0x78);
+            if (sub && func_0013F2E9(*(int *)(sub + 0x14), value) == 0)
+                return item;
+        }
+        node = *(int *)node;
+    }
+    return 0;
+}
+
 void _func_001032A0(void) { extern int D_00324EA8,D_00324EA0,D_00324E9C,D_00324E98,D_00324BEC,D_00324BCC,D_00324BF4,D_00324BDC; D_00324EA8=0; D_00324EA0=0; D_00324E9C=0; D_00324E98=0; D_00324BEC=0; D_00324BCC=0; D_00324BF4=0; D_00324BDC=0; }
 
 void _func_001032D0(void) {
