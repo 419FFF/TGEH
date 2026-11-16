@@ -44,22 +44,9 @@ longdouble func_000A1EE0(int param_1)
   return _D_001D27B8;
 }
 
-undefined4 func_000A1F50(int param_1)
-{
-  int func_001163C0(...);
-  uint i = 0;
-  if (*(ushort *)(param_1 + 0xc)) {
-    int *base = *(int **)(param_1 + 0x10);
-    do {
-      if (*base) {
-        return func_001163C0();
-      }
-      i++;
-      base += 2;
-    } while (i < *(ushort *)(param_1 + 0xc));
-  }
-  return 0;
-}
+undefined4 func_000A1F50(int p){int func_001163C0(int); unsigned int n=*(unsigned short*)(p+0xc); int *a=*(int**)(p+0x10); unsigned int i=0; while(i<n){if(a[0]) return func_001163C0(a[0]); ++i;a+=2;} return 0;}
+
+void func_000A1FC0(int p){int func_00116480(int); int func_001163C0(int); int func_0013E3F4(...);int func_00115E40(int); extern float _D_001D27B8; if(p==*(int*)(*(int*)(p+0x18)+0x20)){unsigned int n=*(unsigned short*)(p+0xc),i=0;int *a=*(int**)(p+0x10);while(i<n){if(a[0]){func_00116480(a[0]);break;}i++;a+=2;} unsigned short x=func_0013E3F4(_D_001D27B8);*(unsigned short*)(*(int*)(p+0x18)+0x28)=x;i=0;a=*(int**)(p+0x10);while(i<n){if(a[0]){x=func_001163C0(a[0]);goto setx;}i++;a+=2;}x=0;setx:*(unsigned short*)(*(int*)(p+0x18)+0x2a)=x;} unsigned int i=0,n=*(unsigned short*)(p+0xc);int *a=*(int**)(p+0x10);while(i<n){if(a[i*2])func_00115E40(a[i*2]);a[i*2]=0;i++;}}
 
 int func_000A2230(undefined4 *param_1, undefined4 param_2)
 {
@@ -80,6 +67,22 @@ int func_000A2230(undefined4 *param_1, undefined4 param_2)
   return iVar1;
 }
 
+int _func_000A2270(undefined4 *param_1, undefined4 param_2)
+{
+  int func_0011B4F0(...);
+  undefined4 *esi = (undefined4 *)*param_1;
+  undefined4 *edi;
+  int ebx = param_2;
+  while (esi != 0) {
+    edi = (undefined4 *)esi[2];
+    if (*(short *)((char *)edi + 0xe) != 0 &&
+        func_0011B4F0((char *)edi + 0x1c, ebx) == 0)
+      return (int)edi;
+    esi = (undefined4 *)*esi;
+  }
+  return 0;
+}
+
 void _func_000A22B0(int *p) { int _func_000A1D10(int); int x=p[6]; if(x){ int y=p[7]; p[6]=y; p[7]=x; _func_000A1D10(y); } }
 
 void _func_000A22D0(int param_1)
@@ -94,6 +97,25 @@ void func_000A22F0(int param_1)
   extern void func_000A1EA0(...);
   param_1 = *(int *)(param_1 + 0x18);
   if (param_1) func_000A1EA0(param_1);
+}
+
+extern float _D_001D27B8;
+extern float _func_00116480(int);
+float _func_000A2310(void *arg0)
+{
+    void *obj = *(void **)((char *)arg0 + 0x18);
+    unsigned int i = 0;
+    unsigned int count;
+    int *entry;
+    if (obj == 0) return _D_001D27B8;
+    count = *(unsigned short *)((char *)obj + 0x0c);
+    entry = *(int **)((char *)obj + 0x10);
+    while (i < count) {
+        if (*entry != 0) return _func_00116480(*entry);
+        ++i;
+        entry += 2;
+    }
+    return _D_001D27B8;
 }
 
 void _func_000A2350(int param_1)
