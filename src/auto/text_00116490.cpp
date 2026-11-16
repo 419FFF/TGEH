@@ -135,14 +135,7 @@ int _func_0013AF50(...);
 int _func_0013B1E0(...);
 void _func_0013AF70(...);
 int _func_00136B30(...);
-void _func_00117100(void)
-{
-    _func_0013AF50(_D_00326814);
-    int p = _func_0013B1E0();
-    int v = *(int *)(p + 0x80);
-    *(int *)(p + 0x80) = v + 1;
-    _func_0013AF70(_D_00326814);
-}
+void _func_00117100(void) { _func_0013AF50(_D_00326814); int p=_func_0013B1E0(); volatile int *q=(volatile int *)(p+0x80); int v=*q; *q=v+1; _func_0013AF70(_D_00326814); }
 
 void _func_00117130(void)
 {
