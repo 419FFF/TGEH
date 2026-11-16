@@ -79,3 +79,26 @@ void _func_00105340(int a, int b) {
  func_001278C0(D_00324BE8,a,b);
 }
 
+extern int D_00324F70;
+extern int D_00324F1C;
+extern int D_00324F2C;
+extern int D_00324F20;
+extern int D_00324EB8;
+extern int D_00324F0C;
+extern int D_00324EBC;
+extern int D_00324F00;
+extern int D_00324F04;
+extern int D_00324F08;
+extern int D_00324F10;
+extern int D_00324F14;
+extern int D_00324F18;
+extern int D_00324F74;
+void func_00110760(...);
+void func_00128BE0(...);
+void func_001393E0(...);
+void func_00115F60(...);
+int func_00124F00(...);
+int func_00136F80(...);
+void func_00104980(char);
+void func_00105360(int param_1){ int value=*(int*)(param_1+0x2c); if(value) func_00110760(value); }
+
