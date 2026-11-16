@@ -32,14 +32,12 @@ unsigned int func_00125CE0(int param_1,unsigned int param_2) {
 }
 
 void func_00125D20(int p,char *name,int arg) {
- int func_00116E50(...); int func_00116A90(...);
- if((*(unsigned int*)(p+0x50)&0xf)==0)
- *(int*)(p+0x54)=func_00116E50(*(int*)(p+0x54),*(unsigned int*)(p+0x50)*4+0x40,1,1);
- int s=func_00116A90(0x44,1,1);
- *(int*)(*(int*)(p+0x54)+*(int*)(p+0x50)*4)=s;
- int delta=s-(int)name;
- do { char c=*name; name++; *(char*)(delta+(int)name-1)=c; } while(*name);
- *(int*)(s+0x40)=arg; ++*(int*)(p+0x50);
+ int func_00116E50(...),func_00116A90(...);
+ unsigned int n=*(unsigned int*)(p+0x50);
+ if((n&15)==0) *(int*)(p+0x54)=func_00116E50(*(int*)(p+0x54),n*4+0x40,1,1);
+ int s=func_00116A90(0x44,1,1); *(int*)(*(int*)(p+0x54)+n*4)=s;
+ int d=s-(int)name; char c; do { c=*name; *(char*)(d+(int)name)=c; name++; } while(c);
+ *(int*)(s+0x40)=arg; *(int*)(p+0x50)=n+1;
 }
 
 undefined4 * func_00126120(undefined4 param_1)
@@ -75,15 +73,11 @@ void func_00126170(int param_1, undefined4 param_2)
 int func_00126180(int *p) {
  int func_00131D60(...),func_00116FB0(...),func_00117100(...),func_00117130(...),func_00116A90(...);
  int result=0;
- if(p[2]==0) {
- func_00131D60(p[0],&p[1],4); func_00131D60(p[0],&p[3],4); func_00117100();
- p[2]=func_00116A90(p[1]<<2,1,0); func_00131D60(p[0],p[2],p[1]<<2); func_00117130();
- p[4]=func_00116A90(p[3],1,0); func_00131D60(p[0],p[4],p[3]);
- }
- int ecx=*(int*)(p[2]+p[5]*4); int edi=0;
+ if(p[2]==0) { func_00131D60(p[0],&p[1],4); func_00131D60(p[0],&p[3],4); func_00117100(); p[2]=func_00116A90(p[1]<<2,1,0); func_00131D60(p[0],p[2],p[1]<<2); func_00117130(); p[4]=func_00116A90(p[3],1,0); func_00131D60(p[0],p[4],p[3]); }
+ unsigned int ecx=*(unsigned int*)(p[2]+p[5]*4); int edi=0;
  if(ecx>0) edi=p[6]+p[4];
- int ebx=p[6]+ecx; int eax=p[5]+1; p[6]=ebx; p[5]=eax;
- if(eax==p[1]) { func_00116FB0(p[2]); p[2]=0;p[5]=0;p[6]=0;p[3]=0;p[1]=0; }
+ unsigned int eax=p[5]+1; p[6]+=ecx; p[5]=eax;
+ if(eax==(unsigned int)p[1]) { func_00116FB0(p[2]); p[2]=0;p[5]=0;p[6]=0;p[3]=0;p[1]=0; }
  return edi;
 }
 
