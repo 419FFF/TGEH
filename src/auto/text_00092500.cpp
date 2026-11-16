@@ -64,6 +64,8 @@ void func_00092BA0(void) {
     func_0011D0E0((int)&D_001D2F38);
 }
 
+void _func_00092E20(int p){int _func_0011CFC0(...),_func_0011DED0(...),_func_00116A90(...);int v;_func_0011CFC0(p+0x54,0);_func_0011DED0(p);v=_func_00116A90(0x10,1,0);*(int*)(p+0x17c)=v;*(int*)(v+4)=0;*(int*)(v+8)=0;}
+
 void func_00093040(void) {
     extern int D_001D2F30;
     extern void func_00092BB0(void);
