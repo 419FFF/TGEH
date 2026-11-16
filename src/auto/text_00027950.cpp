@@ -25,3 +25,20 @@ void func_00027A20(int param_1)
   D_002ED3D8 = D_002ED3D8 + 1;
   return;
 }
+
+void _func_00027C80(int param_1)
+{
+  int _func_0005C5E0(...);
+  int _func_00012D60(...);
+  int _func_0009D3E0(...);
+  extern int _D_002ED3D8;
+  int iVar1 = *(int *)(param_1 + 0x114);
+  if (iVar1 != 4) {
+    _D_002ED3D8 = _D_002ED3D8 - 1;
+    if (iVar1 == 6 || iVar1 == 7 || iVar1 == 8) _func_0005C5E0(param_1 + 0x140);
+    *(int *)(param_1 + 0x114) = 4;
+    _func_00012D60(param_1, 0);
+    _func_0009D3E0(param_1);
+  }
+}
+
