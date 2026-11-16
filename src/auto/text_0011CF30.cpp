@@ -33,6 +33,8 @@ void func_0011D2B0(void *a,int b) { int func_0011D1E0(...); int p=func_0011D1E0(
 
 void func_0011D2D0(void *a,int b) { int func_0011D1E0(...); int p=func_0011D1E0(a); *(int*)(p+0x144)=b; }
 
+void func_0011D2F0(void *a,int b) { int func_0011D1E0(...); int p=func_0011D1E0(a); *(int*)(p+0x148)=b; }
+
 #pragma optimize("y", off)
 undefined4 func_0011D450(float *p, int count, float dt, int *desc, undefined4 arg5)
 {
