@@ -2,7 +2,7 @@
 #include "common.h"
 #include "ghidra.h"
 
-void func_00088520(volatile unsigned int p){extern unsigned int D_00308158,D_002FDDC0,D_002FDDB8,D_00307C94,D_00307C58,D_003041F0,D_003041EC,D_00306E70,D_00306E6C;void func_00110170(unsigned int),func_00086B70(unsigned int),func_00096F70(unsigned int),func_000688D0(unsigned int),func_00093CA0(unsigned int);func_00110170(*(unsigned int*)(D_00308158+0x2c));if(D_002FDDC0&&*(unsigned char*)(*(unsigned int*)(p+0x2c)+0x22)==D_002FDDB8){func_00086B70(p);return;}if(D_00307C94&&*(unsigned char*)(*(unsigned int*)(p+0x2c)+0x22)==D_00307C58){func_00096F70(p);return;}if(D_003041F0&&*(unsigned char*)(*(unsigned int*)(p+0x2c)+0x22)==D_003041EC){func_000688D0(p);return;}if(D_00306E70&&*(unsigned char*)(*(unsigned int*)(p+0x2c)+0x22)==D_00306E6C)func_00093CA0(p);}
+void func_00088520(unsigned int p){extern unsigned int D_00308158,D_002FDDC0,D_002FDDB8,D_00307C94,D_00307C58,D_003041F0,D_003041EC,D_00306E70,D_00306E6C;void func_00110170(unsigned int),func_00086B70(unsigned int),func_00096F70(unsigned int),func_000688D0(unsigned int),func_00093CA0(unsigned int);func_00110170(*(unsigned int*)(D_00308158+0x2c));if(!D_002FDDC0)goto b;if(*(unsigned char*)(*(unsigned int*)(p+0x2c)+0x22)==D_002FDDB8){func_00086B70(p);return;}b: if(!D_00307C94)goto c;if(*(unsigned char*)(*(unsigned int*)(p+0x2c)+0x22)==D_00307C58){func_00096F70(p);return;}c: if(!D_003041F0)goto d;if(*(unsigned char*)(*(unsigned int*)(p+0x2c)+0x22)==D_003041EC){func_000688D0(p);return;}d: if(!D_00306E70)return;if(*(unsigned char*)(*(unsigned int*)(p+0x2c)+0x22)==D_00306E6C)func_00093CA0(p);}
 
 void func_000885C0(void){void func_00097190(void),func_00093D80(void),func_000862D0(void),func_00083CE0(void),func_000688D0(void),func_0008D540(void);func_00097190();func_00093D80();func_000862D0();func_00083CE0();func_000688D0();func_000688D0();func_0008D540();}
 
@@ -101,6 +101,16 @@ void func_00088820(void)
   return;
 }
 
+void _func_00088840(int p) {
+ int func_0011BDD0(...),func_000B5240(...); extern int D_002FDF4C;
+ int s=func_0011BDD0(*(int*)(p+0xe0),0);
+ if(D_002FDF4C && s && *(short*)(s+4) && !*(int*)(p+0x128)){
+  int n=*(unsigned short*)(s+4); int d=func_000B5240(D_002FDF4C,n);*(int*)(p+0x12c)=d;
+  if(d){*(int*)(p+0x128)=n;for(int i=0;i<n;i++) for(int j=0;j<25;j++) ((int*)(d+i*100))[j]=((int*)(*(int*)(s+8)+i*48+0x28))[j];}
+ }
+ if(D_002FDF4C && s) --*(short*)(*(int*)(p+0xe0)+0x2a);
+}
+
 void _func_00088900(int p) {
  int func_000B5350(...); extern int D_002FDF4C;
  if(*(int*)(p+0x128)){func_000B5350(D_002FDF4C,*(int*)(p+0x12c),*(int*)(p+0x128));*(int*)(p+0x128)=0;*(int*)(p+0x12c)=0;}
@@ -121,6 +131,15 @@ void func_00088940(int param_1, undefined4 param_2)
     puVar1 = (undefined4 *)puVar1[3];
   }
   return;
+}
+
+void _func_00088990(int p,unsigned char a,int b,int c) {
+ extern int D_003268B0; int func_0011BDD0(...),func_00088840(...);
+ if(*(unsigned char*)(p+0x22)==D_003268B0 && func_0011BDD0(*(int*)(p+0xe0),1)){
+  if(!*(int*)(p+0x128)){func_00088840(p);for(int i=0;i<*(int*)(p+0x128);i++){*(int*)(*(int*)(p+0x12c)+i*100+0x54)=a;*(int*)(*(int*)(p+0x12c)+i*100+0x58)=b;}}
+  --*(short*)(*(int*)(p+0xe0)+0x2a);
+ }
+ int q=*(int*)(p+0x28);while(q&&c){int f=*(int*)q;_func_00088990(f,a,b,c);q=*(int*)(q+0xc);}
 }
 
 void _func_00088EC0(void)
