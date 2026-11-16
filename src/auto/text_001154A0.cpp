@@ -2,6 +2,12 @@
 #include "common.h"
 #include "ghidra.h"
 
+void func_001154A0(int param_1,int param_2,int param_3) { int func_00115E10(...); int func_0011BF40(...); int func_0011B820(...); int s=func_00115E10(param_1,0x40); switch(param_3){case 3:*(int*)(s+0x30)=func_0011B820(param_2);*(int*)(s+0x14)|=1;break;case 2:*(int*)(s+0x30)=func_0011BF40(param_2,1);break;case 1:*(int*)(s+0x30)=func_0011BF40(param_2,0);break;} }
+
+int func_00115510(int param_1) { int func_0011BDD0(...); extern int D_0000FFFF; int ebx=param_1; int edi=func_0011BDD0(*(int*)(ebx+0x30),0); int result=(int)&D_0000FFFF; if(edi){unsigned short n=*(unsigned short*)(edi+2);if(n){int *p=*(int**)(edi+0xc);unsigned int i=0;if(n){do{if(*p)break;i++;p++;}while(i<n);}if(i==n){short *s=(short*)(*(int*)(ebx+0x30)+0x2a);--*s;return result;}result=*(unsigned short*)(edi+6)-1;}short *s=(short*)(*(int*)(ebx+0x30)+0x2a);--*s;}return result;}
+
+void func_00115570(int param_1) { int func_0013AF50(...);int func_0013AF70(...);int func_0011C3E0(...);int func_0011BAE0(...);int func_0011B990(...);extern int _D_0032615C;func_0013AF50(_D_0032615C);int edi=param_1;int eax=*(int*)(edi+0x34);if(eax){int esi;do{esi=*(int*)(eax+8);if(*(int*)(esi+0x28)){func_0011C3E0((char*)esi+0x1c);*(int*)(esi+0x28)=0;}eax=*(int*)(edi+0x34);}while(eax);func_0013AF70(_D_0032615C);}unsigned char f=*(unsigned char*)(edi+0x14);if(f&1)func_0011BAE0(*(int*)(edi+0x30));else func_0011B990(*(int*)(edi+0x30));}
+
 void func_001156D0(int param_1)
 {
   int func_00116FB0(...);
@@ -24,6 +30,16 @@ void func_00115AB0(undefined4 param_1, undefined4 param_2)
   return;
 }
 
+static int D_0032678A;
+static int D_0032678B;
+void _func_00115AD0(void) {
+    D_0032678A = 0;
+}
+
+void _func_00115D60(void) {
+    D_0032678B = 0;
+}
+
 void func_00115DD0(int param_1)
 {
   extern undefined D_00326188;
@@ -41,6 +57,14 @@ void func_00115DE0(undefined2 param_1, undefined4 param_2)
   *(undefined2 **)(puVar1 + 2) = puVar1 + 8;
   *(undefined2 **)(puVar1 + 10) = puVar1 + 2;
   return;
+}
+
+void _func_00115E10(int param_1, unsigned int param_2, void *param_3, unsigned int param_4) {
+    extern void func_00116A90(...);
+    extern void func_0011C3B0(...);
+    
+    *(unsigned int *)(param_1 + 0x10) = param_2;
+    func_00116A90(param_3, param_4);
 }
 
 unsigned char __cdecl _func_00115E70(unsigned short *arg)
@@ -102,6 +126,14 @@ void func_001160E0(int param_1, undefined4 param_2, undefined4 param_3, undefine
 
 void _func_00116110(void *obj, int flag) { int _func_00115F60(...); _func_00115F60(*(void **)(*(char **) ((char *)obj + 4) + 8), flag); }
 
+void _func_00116130(void *obj) { 
+    int func_00115FC0(...);
+    int a = *(int *)((char*)obj + 4);
+    int b = *(int *)(a + 8);
+    *(int *)obj = b;
+    func_00115FC0(obj);
+}
+
 void func_00116150(void) {
     extern int D_00326788;
     D_00326788 = 0;
@@ -111,4 +143,8 @@ void func_00116480(int a0) {
     int func_001161D0(...);
     func_001161D0(a0, 0);
 }
-
+extern int D_0032615C;
+extern int D_00326198;
+extern float D_001D27B8;
+extern float D_0032923C;
+extern int D_0000FFFF;
