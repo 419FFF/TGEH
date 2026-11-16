@@ -68,12 +68,16 @@ void func_000EC520(int param_1, int *param_2)
   return;
 }
 
+void func_000EC540(int p,unsigned int*a){float func_0013E9E0(unsigned int);unsigned char*o=(unsigned char*)p; *(float*)(o+0x6c)=func_0013E9E0(a[0]); *(float*)(o+0x70)=func_0013E9E0(a[1]); *(float*)(o+0x74)=func_0013E9E0(a[2]); *(float*)(o+0x78)=func_0013E9E0(a[3]); *(float*)(o+0x7c)=func_0013E9E0(a[4]); *(float*)(o+0x80)=func_0013E9E0(a[5]); *(float*)(o+0x84)=func_0013E9E0(a[6]); *(volatile unsigned char*)(o+0x9d)|=4;}
+
 void func_000EC5C0(undefined4 param_1, undefined4 *param_2)
 {
   int func_0013E9DB(...);
   func_0013E9DB(*param_2);
   return;
 }
+
+void func_000EC5D0(int p,unsigned int*a){int func_0013E9DB(...);if(*a){int v=func_0013E9DB(*a);if(v==1)*(unsigned char*)(p+0x9e)|=2;else *(unsigned char*)(p+0x9e)&=0xfd;}}
 
 void func_000EC640(undefined4 *param_1, undefined4 *param_2)
 {
@@ -87,6 +91,16 @@ void func_000EC640(undefined4 *param_1, undefined4 *param_2)
 }
 
 void func_000EC760(int p, unsigned int *a){int func_0013E9DB(...);int func_00116A90(...);int n=func_0013E9DB(*a);int*q=(int*)func_00116A90(n<<4,1,1);*(int*)(p+0x78)=(int)q;*(int*)(p+0x64)=0;}
+
+void _func_000EC790(int p, int *v)
+{
+ long double _func_0013E9E0(...);
+ float *out=(float *)(*(int *)(p+0x78)+(*(int *)(p+0x64)<<4));
+ *out=(float)_func_0013E9E0((char *)v[0]);
+ out[1]=(float)_func_0013E9E0((char *)v[1]);
+ out[2]=(float)_func_0013E9E0((char *)v[2]);
+ ++*(int *)(p+0x64);
+}
 
 void func_000EC970(void)
 {
@@ -158,6 +172,15 @@ void func_000EC970(void)
   return;
 }
 
+void _func_000ECB20(int a, int b, int c)
+{
+ char _func_000FC730(...); int _func_00122BB0(...);
+ extern unsigned char _D_00311518; extern int _D_00313B0C; extern int _D_00307D08;
+ if(!(_D_00311518 & 1)) return;
+ if(!_func_000FC730(_D_00313B0C)) return;
+ _func_00122BB0(_D_00307D08,a,b,c);
+}
+
 void func_000ECB60(void) {
     extern int D_00307D08;
     int func_00122D30(...);
@@ -168,6 +191,38 @@ void func_000ECB70(unsigned int param_1)
 {
  int func_00122D00(...); extern int D_00307D08;
  func_00122D00(D_00307D08,param_1);
+}
+
+void _func_000ECDB0(int unused, int *v)
+{
+ long double _func_0013E9E0(...);
+ extern int _D_00324598; extern char *_D_0032459C; extern float _D_001D27B8;
+ int i=_D_00324598; char *dst=_D_0032459C+i*40; char *src=(char *)v[0]; char ch;
+ do { ch=*src++; *dst++=ch; } while(ch);
+ float *entry=(float *)(_D_0032459C+i*40);
+ entry[8]=(float)_func_0013E9E0((char *)v[1]);
+ long double value=_func_0013E9E0((char *)v[2]);
+ entry[9]=(float)value;
+ if(value < _D_001D27B8) entry[9]=10000.0f;
+ entry[9]=entry[8]+entry[9];
+ _D_00324598=i+1;
+}
+
+void _func_000ECE40(int p)
+{
+ char _func_00131A10(...); int _func_00125BC0(...); int _func_00125D20(...);
+ int _func_00125E80(...); int _func_00125D90(...); int _func_00105D10(...);
+ extern int _D_00324598,_D_00324594,_D_003245A0,_D_0032459C;
+ extern char _D_001DC8D0; extern char _D_001D29C7; extern void _func_000ECDB0(...);
+ _D_00324598=0; _D_00324594=0; _D_003245A0=(int)0xbf800000;
+ if(_func_00131A10(p)) {
+  int a=_func_00125BC0(0,&_D_001DC8D0,0,0);
+  _func_00125D20(a,&_D_001DC8D0,_func_000ECDB0);
+  _func_00125E80(p,0); _func_00125D90(a);
+ }
+ int *e=(int *)(_D_0032459C+_D_00324598*40);
+ e[8]=0x47c35000; e[9]=0;
+ _func_00105D10(&_D_001D29C7);
 }
 
 void func_000ECEE0(undefined4 param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
