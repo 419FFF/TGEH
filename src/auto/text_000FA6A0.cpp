@@ -157,3 +157,5 @@ extern float D_00307DB4;
 extern float D_001D27B0;
 extern float D_00307DBC;
 extern u16 D_0000FFFF;
+extern int func_000A22B0(int, int, int*, int, int, int);
+extern int func_000A2230(int, int*);
