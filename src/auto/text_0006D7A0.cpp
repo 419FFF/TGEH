@@ -381,6 +381,6 @@ extern int D_001D30FC;
 extern int D_00325314;
 extern int D_003268B0;
 
-extern int func_0011B4F0(int a, int b);
-extern int func_00110300(int a, int b, int c);
-extern int func_0011BDD0(int a, int b);
+extern int D_00325314;
+extern int D_003268B0;
+extern int func_0011BDD0(int, int);
