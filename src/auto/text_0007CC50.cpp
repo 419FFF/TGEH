@@ -42,6 +42,38 @@ void func_0007D500(void) {
     D_002FADE8 = 0;
 }
 
+void func_0007D540(int param_1, float param_2, float param_3)
+{
+  extern int D_002FADE8;
+  extern float D_002FAD28[];
+  extern int D_002FADA8[];
+  extern float D_002FAC98[];
+  extern float D_002FAD68[];
+  extern int D_002FACD8[];
+  int func_00131760(...);
+  int func_0013BB30(...);
+  int i = D_002FADE8;
+  D_002FAD28[i] = param_2;
+  D_002FADA8[i] = param_1;
+  D_002FAC98[i] = param_3;
+  D_002FAD68[i] = (param_2 + param_3) * func_00131760();
+  D_002FACD8[i] = func_0013BB30(0);
+  D_002FADE8 = i + 1;
+}
+
+unsigned char func_0007D5B0(int param_1)
+{
+  extern int D_002FADE8;
+  extern int D_002FADA8[];
+  extern unsigned char D_002FAD18[];
+  unsigned int i = 0;
+  while (i < (unsigned int)D_002FADE8) {
+    if (param_1 == D_002FADA8[i]) return D_002FAD18[i] != 0;
+    ++i;
+  }
+  return 0;
+}
+
 void func_0007D750(undefined4 param_1)
 {
   int func_0010F750(...);
