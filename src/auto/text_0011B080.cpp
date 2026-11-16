@@ -35,19 +35,21 @@ void func_0011B610(undefined4 param_1)
 
 int _func_0011B690(char *s)
 {
- int _func_0011B4F0(...);
- extern int *_D_003268DC;
- char *p=s;
- while (*p++) {}
- int n=(int)p-(int)(s+1);
- char *end=s+n-1;
- while(n!=0 && *end!=0 && *end!='.') { --n; --end; }
- int *node=_D_003268DC;
- int result;
- while(node!=0) {
-   result=node[2];
-   if(!_func_0011B4F0(*(int *)(result+0xc),end+1)) return result;
-   node=(int *)*node;
+ int _func_0011B4F0(...); extern int *_D_003268DC;
+ char *p=s; char *q=s+1;
+ while(*p++) {}
+ int len=(int)p-(int)q;
+ char *end=s+len-1;
+ if(len==0) end=s;
+ while(len!=0 && *end!=0 && *end!='.') { --len; --end; }
+ int *head=_D_003268DC;
+ if(head) {
+  int *item;
+  do {
+   item=(int *)head[2];
+   if(_func_0011B4F0((int)(item+3),end+1)==0) return (int)item;
+   head=(int *)*head;
+  } while(head);
  }
  return 0;
 }
@@ -118,17 +120,16 @@ void _func_0011BC10(int p, char arg)
 {
  int _func_0011B690(...); int _func_0013AF50(...); int _func_0013AF70(...); int _func_0011C3B0(...);
  extern int _D_003278A8; extern char _D_003268F0;
- _func_0011B690(*(int *)(p+0x1c));
- _func_0013AF50(_D_003278A8);
- int state=*(unsigned char *)(p+0x18);
- if(state==2) {
+ _func_0011B690(*(int *)(p+0x1c)); _func_0013AF50(_D_003278A8);
+ switch(*(unsigned char *)(p+0x18)) {
+ case 2:
    ++*(short *)(p+0x2c);
    if(*(short *)(p+0x2c)==*(short *)(p+0x28)) {
-     *(char *)(p+0x18)=4; *(char *)(p+0x19)=arg;
-     _func_0011C3B0(&_D_003268F0,p+0xc,p);
-     _func_0013AF70(_D_003278A8); return;
-   }
- } else if(state==1) {
+    *(char *)(p+0x18)=4; *(char *)(p+0x19)=arg;
+    _func_0011C3B0(&_D_003268F0,p+0xc,p);
+    _func_0013AF70(_D_003278A8); return;
+   } break;
+ case 1:
    ++*(short *)(p+0x2c);
    if(*(short *)(p+0x2c)==*(short *)(p+0x28)) *(char *)(p+0x18)=3;
  }
@@ -145,6 +146,28 @@ int _func_0011BDD0(int p, char flag)
  if(*(char *)(p+0x18)!=2) return 0;
  ++*(short *)(p+0x2a);
  return *(int *)(p+0x24);
+}
+
+bool _func_0011BE30(void)
+{
+ int _func_0013AF50(...); int _func_0013AF70(...); int _func_0011B690(...); int _func_0011C3E0(...);
+ extern int _D_003278A8; extern int *_D_003268F0;
+ _func_0013AF50(_D_003278A8);
+ int *node=_D_003268F0;
+ while(node) {
+  int *next=(int *)*node; int p=node[2];
+  if(*(unsigned char *)(p+0x19)>0) --*(unsigned char *)(p+0x19);
+  if(*(unsigned char *)(p+0x19)==0) {
+   int obj=_func_0011B690(*(int *)(p+0x1c));
+   ((void (__cdecl *)(int,int))(*(int *)(obj+0x14)))(*(int *)(p+0x1c),*(int *)(p+0x24));
+   *(int *)(obj+0x18)-=*(int *)(p+0x34);
+   *(int *)(p+0x34)=0; *(int *)(p+0x24)=0; *(char *)(p+0x18)=3;
+   _func_0011C3E0(node);
+  }
+  node=next;
+ }
+ _func_0013AF70(_D_003278A8);
+ return _D_003268F0?true:false;
 }
 
 void func_0011BED0(void)
