@@ -25,6 +25,25 @@ void func_00087560(void) {
     func_0011D0E0((int)&D_001D6C20);
 }
 
+extern void func_00087AF0(void);
+extern void func_00079D10(void);
+extern void func_00087D00(void);
+extern void func_00092810(void);
+extern void func_00083D60(void);
+extern void func_0011D000(void (*)(void), int *);
+extern void func_0011D270(void (*)(void), int *);
+extern void func_0011D290(void (*)(void), int *);
+extern void func_0011D2B0(void (*)(void), int *);
+extern void func_0011D2D0(void (*)(void), int *);
+extern void func_0011D2F0(void (*)(void), int *);
+extern float D_001D6160, D_001D6C2C, D_001D27EC, D_001D2A1C;
+extern unsigned char D_002FDE6C[12][8];
+extern float D_002FDE68[12][2];
+extern unsigned char D_002FDE6D[12][8];
+extern float func_00131760(void);
+extern unsigned char func_0013E3F4(void);
+void func_00087570(void) { for(int i=0;i<12;i++){ float a=func_00131760(); a*=D_001D6160; unsigned char b=func_0013E3F4(); D_002FDE6C[i][0]=b; D_002FDE68[i][0]=i*D_001D6C2C-D_001D27EC; D_002FDE68[i][0]*=D_001D2A1C; float c=func_00131760(); D_002FDE6D[i][0]=(c>=D_001D27EC)?1:0xFF; } }
+
 void func_00087D00(int param_1)
 {
   int func_0011E3D0(...);
@@ -40,6 +59,18 @@ void func_00087D00(int param_1)
   }
   func_0011CFC0(param_1 + 0x54,0);
   return;
+}
+
+void func_00087D40(void) {
+extern int D_001D6C5C;
+extern void func_00087AF0(void),func_00079D10(void),func_00087D00(void),func_00092810(void),func_00083D60(void);
+extern void func_0011D000(...),func_0011D270(...),func_0011D290(...),func_0011D2B0(...),func_0011D2D0(...),func_0011D2F0(...);
+func_0011D000(&D_001D6C5C,func_00087AF0);
+func_0011D270(&D_001D6C5C,0x87cc0);
+func_0011D290(&D_001D6C5C,func_00079D10);
+func_0011D2B0(&D_001D6C5C,func_00087D00);
+func_0011D2D0(&D_001D6C5C,func_00092810);
+func_0011D2F0(&D_001D6C5C,func_00083D60);
 }
 
 void func_00087DA0(void) {
