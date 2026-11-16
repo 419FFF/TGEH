@@ -25,13 +25,7 @@ void _func_0012E280(unsigned int *out, unsigned char *in)
 
 void _func_0012E590(float *a, float *b) { a[0] += b[0]; a[1] += b[1]; a[2] += b[2]; }
 
-void _func_0012E5C0(float *a, float *b)
-{
-    a[0] += b[0];
-    a[1] += b[1];
-    a[2] += b[2];
-    a[3] += b[3];
-}
+void _func_0012E5C0(float *a, float *b) { a[0] += b[0]; a[1] += b[1]; a[2] += b[2]; a[3] += b[3]; }
 
 void _func_0012E5F0(float *param_1, float *param_2, float *param_3) { param_1[0]=param_2[0]+param_3[0]; param_1[1]=param_2[1]+param_3[1]; param_1[2]=param_2[2]+param_3[2]; }
 
