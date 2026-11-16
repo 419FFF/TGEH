@@ -205,4 +205,10 @@ void func_000AEAE0(int param_1, undefined4 *param_2)
   *(undefined1 *)(param_1 + 0x60) = 1;
   return;
 }
-
+extern int _D_001D87E8;
+extern int _D_001D87E4;
+extern int _D_001D87E0;
+extern int _D_001D87D8;
+extern int _D_001D87EC;
+extern char _D_001D87F0;
+extern int _D_00307D18;
