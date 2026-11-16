@@ -105,11 +105,7 @@ longdouble func_0012E9B0(float *param_1)
          (longdouble)*param_1 * (longdouble)*param_1;
 }
 
-void _func_0012EC80(float *p, float x)
-{
-    p[0] *= x;
-    p[1] *= x;
-}
+void _func_0012EC80(float *p, float x) { p[0] *= x; p[1] *= x; }
 
 void _func_0012ED00(float *param_1, float *param_2, float param_3) { param_1[0]=param_3*param_2[0]; param_1[1]=param_3*param_2[1]; }
 
