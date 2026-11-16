@@ -51,6 +51,8 @@ void func_000687F0(void) {
     D_002F7F00 = 0;
 }
 
+void func_00068800(char a){extern unsigned char D_002F7F01,D_002F7EF9,D_002F7EF8;extern int D_002F7B10,D_002F7B00,D_002F7EE8,D_002F7EFC,D_002F77D0,D_001E3CC8;int func_00067EF0(...);D_002F7F01=a;D_002F7EF9=a;if(a){func_00067EF0(D_002F7B10,0);func_00067EF0(D_002F7B00,0);if(D_002F7EF8){func_00067EF0(D_002F7B10,1);func_00067EF0(D_002F7B00,1);}D_002F7EE8=D_002F7EFC=D_002F77D0;int p=D_002F7B10;if(p){*(int*)(p+0x2c)=D_001E3CC8;*(int*)(p+0x30)=D_001E3CC8;}p=D_002F7B00;if(p){*(int*)(p+0x2c)=D_001E3CC8;*(int*)(p+0x30)=D_001E3CC8;}}}
+
 void func_000688B0(undefined1 param_1)
 {
   extern undefined D_001E5ECA;
