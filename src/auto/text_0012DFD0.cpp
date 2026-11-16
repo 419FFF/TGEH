@@ -147,6 +147,8 @@ void _func_0012EC80(float *p, float x) { p[0] *= x; p[1] *= x; }
 
 void func_0012ECA0(float *p, float x) { p[0]=x*p[0]; p[1]=x*p[1]; p[2]=x*p[2]; }
 
+void _func_0012ECD0(float *p, float x) { p[0] *= x; p[1] *= x; p[2] *= x; p[3] *= x; }
+
 void _func_0012ED00(float *param_1, float *param_2, float param_3) { param_1[0]=param_3*param_2[0]; param_1[1]=param_3*param_2[1]; }
 
 void func_0012ED20(float *out,float *v,float s) { out[0]=s*v[0]; out[1]=s*v[1]; out[2]=s*v[2]; }
