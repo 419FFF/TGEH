@@ -11,11 +11,21 @@ void func_0011A190(int *p, unsigned int *v)
  a=func_0013E9E0(v[1]); *(float *)(*(int *)(*p+0x28)+p[0x2b]*8+4)=a;
 }
 
+void func_0011A200(int *p, int *v)
+{
+ int func_00117100(...); int func_00116A90(...); int func_00117130(...); float func_0013E9E0(...);
+ int x; int i; float a;
+ if (p[0x2b]==0) { func_00117100(); x=func_00116A90(*(int *)(*p+0x2c)* *(int *)(*p+0xc)*4,1,1); *(int *)(*p+0x30)=x; func_00117130(); }
+ for(i=0;i<*(int *)(*p+0x2c);i++) { if (!v[i]) return; a=func_0013E9E0(v[i]); *(float *)(*(int *)(*p+0x30)+(*(int *)(*p+0x2c)*p[0x2b]+i)*4)=a; }
+}
+
 void func_0011A290(int *param_1)
 {
   *(undefined4 *)(*param_1 + 0x34) = 0;
   return;
 }
+
+void func_0011A2A0(int *p, unsigned int *v) { int func_0013E9DB(...); int a,b,c; unsigned short x; a=*v; x=(unsigned short)func_0013E9DB(a); b=*p; *(unsigned short *)(*(int *)(b+0x38)+*(int *)(b+0x34)*2)=x; a=v[1]; x=(unsigned short)func_0013E9DB(a); b=*p; *(unsigned short *)(*(int *)(b+0x38)+*(int *)(b+0x34)*2+2)=x; a=v[2]; x=(unsigned short)func_0013E9DB(a); b=*p; *(unsigned short *)(*(int *)(b+0x38)+*(int *)(b+0x34)*2+4)=x; c=*p; *(int *)(c+0x34)=*(int *)(c+0x34)+3; }
 
 void func_0011A300(undefined4 param_1, undefined4 *param_2)
 {
@@ -42,6 +52,14 @@ void func_0011A330(int param_1, undefined4 *param_2)
   return;
 }
 
+int func_0013E9DB(int);
+float func_0013E9E0(int);
+int func_0010F750(int, int, int);
+int func_0011B820(int);
+int func_0011BF40(int, int);
+extern int D_003268B0;
+void func_0011A350(int a, int *b) { if (func_0013E9DB(*b)) *(unsigned int *)(a + 0x14) |= 4; }
+
 void func_0011A450(int param_1)
 {
   *(undefined4 *)(param_1 + 0xc) = 0;
@@ -49,12 +67,7 @@ void func_0011A450(int param_1)
   return;
 }
 
-void func_0011A5A0(int *p)
-{
- int func_0011BB00(...);
- func_0011BB00(*(int *)((char *)p+0xe0));
- *(unsigned char *)((char *)p+0x21) |= 0x40;
-}
+void func_0011A5A0(volatile unsigned char *p) { int func_0011BB00(...); func_0011BB00(*(int *)((char *)p+0xe0)); p[0x21] |= 0x40; }
 
 void func_0011AF30(int param_1, undefined4 param_2)
 {
