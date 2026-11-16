@@ -71,6 +71,11 @@ void func_00094BF0(void) {
     func_0011D0E0((int)&D_001D71D0);
 }
 
+void _func_00094C00(void) { extern int D_00306EC0,D_00306EC4,D_00306EC8; D_00306EC0=0; D_00306EC4=0; D_00306EC8=0; }
+
+#pragma intrinsic(memset)
+extern "C" void *memset(void *,int,unsigned int);
+void _func_00094C20(void) { extern int D_00307BC4,D_00307BE4,D_00307BE8,D_00307B58; extern unsigned int D_00307B60[25]; extern char D_001D29C7,D_001D71DC; void _func_000688D0(void); int _func_00131990(const char *); int _func_0011BF40(const char *,int); int _func_0011BDD0(int,int); D_00307BC4=0; D_00307BE4=-1; memset(D_00307B60,0,100); _func_000688D0(); _func_00131990(&D_001D29C7); D_00307BE8=_func_0011BF40(&D_001D71DC,0); _func_00131990(&D_001D29C7); D_00307B58=_func_0011BDD0(D_00307BE8,0); _func_000688D0(); }
 void func_00094C90(void)
 {
   extern undefined4 D_00307BE8;
