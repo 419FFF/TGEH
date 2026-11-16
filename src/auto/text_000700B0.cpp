@@ -30,6 +30,8 @@ int func_000705A0(void) { extern int D_002FA2EC; int x=D_002FA2EC-1; if(x==0) re
 
 void func_000706B0(int p) { extern int D_002FA30C,D_002FA2F8,D_002FA300,D_002FA2E4; extern int D_002FA2D8[3]; if(!D_002FA30C)return; switch(p){case 1:func_00103440(D_002FA2E4,0);break;case 2:func_00103440(D_002FA300,0);return;case 3:{int n=D_002FA2F8;func_00103440(D_002FA2D8[n],0);D_002FA2F8=n+1;if(D_002FA2F8==3){D_002FA2F8=0;return;}break;}}}
 
+void func_00070720(void) { extern int D_002FA2EC,D_002FA2E4,D_002FA300,D_002FA2D8,D_002FA2DC,D_002FA2E0,D_002FA30C; extern int D_001E3F04; extern char D_001D29C7,D_001D5CDC; int (*callback)(void); func_00136450(); callback=*(int (**)(void))((char*)&D_001E3F04+D_002FA2EC*16); if(callback)callback();func_00103400(D_002FA2E4);func_00103400(D_002FA300);func_00103400(D_002FA2D8);func_00103400(D_002FA2DC);func_00103400(D_002FA2E0);func_00100E50();D_002FA30C=0;func_001317D0(&D_001D29C7);func_000688D0(1,&D_001D5CDC,0x19c);func_001167C0(); }
+
 void func_000708B0(void) {
     extern int D_002FA310;
     int func_00122C10(...);
