@@ -68,6 +68,9 @@ undefined4 func_00137C40(int param_1)
 
 void func_00137C50(void){void __stdcall func_0014AF00(int);void func_00088F10(...);unsigned int a[17]={0};for(int i=0;i<17;i++)a[i]=0;a[4]=0x3f800000;a[5]=a[6]=a[7]=0x3f800000;a[0]=a[1]=a[2]=a[3]=0x3f800000;a[8]=a[9]=a[10]=0x3f000000;func_0014AF00((int)a);func_00088F10(0x66);}
 
+extern "C" void *memcpy(void*,const void*,unsigned int);
+void func_00137CF0(int *p){int func_00116A90(...);int *d=(int*)func_00116A90(0x28,1,1);memcpy(d,p,36);d[9]=-1;}
+
 void *memcpy(void *, const void *, unsigned int);
 void __movsd(unsigned int *, const unsigned int *, unsigned int);
 void func_00137D20(unsigned int *dst, const unsigned int *src) { memcpy(dst,src,36); }
