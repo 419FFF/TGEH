@@ -6,6 +6,8 @@ void func_00124A10(void){extern unsigned int D_00331518,D_00331508,D_00331500,D_
 
 void func_00124AD0(void){extern unsigned D_00331508,D_00331518; extern int D_003311D8[]; void func_00133BB0(int); void func_00116FB0(int); for(unsigned i=0;i<D_00331508;i++){int p=D_003311D8[i];if(*(int*)(p+0x70))func_00116FB0(*(int*)(p+0x70));func_00133BB0(*(int*)(p+0xc));*(int*)(p+0xc)=0;func_00116FB0(p);}D_00331508=0;D_00331518=0;}
 
+void func_00124B30(int a,int b,int c,unsigned short d){int func_00116A90(int,int,int); unsigned char *p=(unsigned char*)func_00116A90(0x38,1,1);*(int*)p=a;*(int*)(p+4)=b;*(int*)(p+8)=c;*(unsigned short*)(p+0x10)=d;*(unsigned*)(p+0xc)=0x3f800000; p[0x13]=4;*(unsigned*)(p+0x34)=0xbf800000;}
+
 void func_00124B70(int p) { extern unsigned int D_00331508; extern int D_003311D8[]; int func_00116FB0(...); unsigned int i; int q; for(i=0;i<D_00331508;i++){ q=D_003311D8[i]; if(*(int *)(q+0x54)==p) *(int *)(q+0x54)=0; } func_00116FB0(p); }
 
 void func_00124BE0(int param_1, float param_2)
