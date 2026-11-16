@@ -22,3 +22,10 @@ void func_0003E840(undefined4 param_1, int param_2) {
  *(undefined4*)(param_2+0x314)=0;
 }
 
+void func_0003EA20(undefined4 param_1, int param_2) {
+ int func_000A1D10(...); undefined4 *p;
+ p=*(undefined4 **)(param_2+0x2fc);
+ func_000A1D10(*(undefined4*)(param_2+0x25c),1,p[0],p[1],p[2],0);
+ *(undefined4*)(param_2+0x310)=0;
+}
+
