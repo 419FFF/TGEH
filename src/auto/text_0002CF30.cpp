@@ -2,6 +2,8 @@
 #include "common.h"
 #include "ghidra.h"
 
+short func_0002D0F0(int a,int b,int c,float radius) { float func_0012E870(...); float d[3]; d[0]=func_0012E870(a,b); d[1]=func_0012E870(b,c); d[2]=func_0012E870(c,a); if(d[1]<d[0])d[0]=d[1]; if(d[2]<d[0])d[0]=d[2]; return d[0] < radius*radius; }
+
 void func_0002D3E0(int param_1) { extern int D_00307DF8; int func_001031C0(...); int func_00103990(...); int r=func_001031C0(D_00307DF8,param_1); if(r) func_00103990(r); }
 
 void func_0002D410(undefined4 param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
@@ -18,6 +20,8 @@ void func_0002D410(undefined4 param_1, undefined4 param_2, undefined4 param_3, u
   }
   return;
 }
+
+void func_0002D450(int param_1) { extern int D_00307DF8; extern char D_001D3BCC; int func_0013E469(...); int func_00103210(...); int func_00102E80(...); char buf[256]; func_0013E469(buf,&D_001D3BCC,*(int *)((char *)D_00307DF8+0xc),param_1); int r=func_00103210(buf); if(r)func_00102E80(r); }
 
 void func_0002D4A0(void)
 {
