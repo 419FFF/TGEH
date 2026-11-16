@@ -10,6 +10,13 @@ void func_00099D40(int a,int b,int c,int d){extern int D_00307CB0;register int x
 
 void func_00099D70(int a,int b,int c,int d){extern int D_00307CB0;register int x=D_00307CB0;if(x){*(int*)(x+0x64)=a;*(int*)(x+0x68)=b;*(int*)(x+0x6c)=c;*(int*)(x+0x70)=d;}}
 
+void func_00099DA0(int a,int b,int c,int d)
+{
+ extern int D_00307CB0;
+ register int x=D_00307CB0;
+ if(x){*(int*)(x+0x74)=a;*(int*)(x+0x78)=b;*(int*)(x+0x7c)=c;*(int*)(x+0x80)=d;}
+}
+
 void func_00099E10(undefined4 param_1)
 {
   extern undefined4 D_00307CB0;
@@ -50,3 +57,34 @@ void func_00099EB0(int param_1)
   *(byte *)(param_1 + 3) = *(byte *)(param_1 + 3) | 5;
   return;
 }
+
+extern int D_00324AFC;
+int func_00110330(int,int);
+void func_0009A030(void)
+{
+    int base=D_00324AFC;
+    int count=*(int *)(base+0xe4);
+    int index=0;
+    int offset=0xe8;
+    if(count) {
+        do {
+            int *node=*(int **)(base+offset);
+            while(node) {
+                int obj=*(int *)(node+2);
+                char kind=*(char *)(obj+0x12);
+                int check=0;
+                if(kind==1) check=obj+0x170;
+                else if(kind==11) check=obj+0x120;
+                if(*(char *)(obj+0x13)=='4') check=*(int *)(obj+0x15c);
+                if(check && ((*(unsigned char *)(check+3)&1)!=0) && ((*(unsigned char *)(check+3)&8)==0))
+                    func_00110330(*(int *)(obj+0x2c),1);
+                node=*(int **)node;
+            }
+            base=D_00324AFC;
+            count=*(int *)(base+0xe4);
+            ++index;
+            offset+=8;
+        } while(index!=count);
+    }
+}
+
