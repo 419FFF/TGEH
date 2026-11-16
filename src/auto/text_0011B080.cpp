@@ -35,19 +35,21 @@ void func_0011B610(undefined4 param_1)
 
 int _func_0011B690(char *s)
 {
-    int _func_0011B4F0(...);
-    extern int *_D_003268DC;
-    int len = 0;
-    while (s[len]) ++len;
-    int n = len;
-    char *end = s + len - 1;
-    while (n != 0 && *end != 0 && *end != '.') { --n; --end; }
-    for (int *node = _D_003268DC; node; node = (int *)*node) {
-        int result = node[2];
-        if (_func_0011B4F0(*(int *)(result + 0xc), end + 1) == 0)
-            return result;
-    }
-    return 0;
+ int _func_0011B4F0(...);
+ extern int *_D_003268DC;
+ char *p=s;
+ while (*p++) {}
+ int n=(int)p-(int)(s+1);
+ char *end=s+n-1;
+ while(n!=0 && *end!=0 && *end!='.') { --n; --end; }
+ int *node=_D_003268DC;
+ int result;
+ while(node!=0) {
+   result=node[2];
+   if(!_func_0011B4F0(*(int *)(result+0xc),end+1)) return result;
+   node=(int *)*node;
+ }
+ return 0;
 }
 
 int func_0011B700(int param_1, undefined4 param_2)
@@ -112,21 +114,37 @@ void func_0011BAE0(int param_1)
   func_0011B990(param_1);
 }
 
+void _func_0011BC10(int p, char arg)
+{
+ int _func_0011B690(...); int _func_0013AF50(...); int _func_0013AF70(...); int _func_0011C3B0(...);
+ extern int _D_003278A8; extern char _D_003268F0;
+ _func_0011B690(*(int *)(p+0x1c));
+ _func_0013AF50(_D_003278A8);
+ int state=*(unsigned char *)(p+0x18);
+ if(state==2) {
+   ++*(short *)(p+0x2c);
+   if(*(short *)(p+0x2c)==*(short *)(p+0x28)) {
+     *(char *)(p+0x18)=4; *(char *)(p+0x19)=arg;
+     _func_0011C3B0(&_D_003268F0,p+0xc,p);
+     _func_0013AF70(_D_003278A8); return;
+   }
+ } else if(state==1) {
+   ++*(short *)(p+0x2c);
+   if(*(short *)(p+0x2c)==*(short *)(p+0x28)) *(char *)(p+0x18)=3;
+ }
+ _func_0013AF70(_D_003278A8);
+}
+
 int _func_0011BDD0(int p, char flag)
 {
-    int _func_0013B2B0(...);
-    int _func_0013B280(...);
-    extern int _D_003278A0;
-    if (flag) {
-        while (*(char *)(p + 0x18) == 1)
-            _func_0013B2B0(_D_003278A0, -1.0f);
-        _func_0013B280(_D_003278A0, 1);
-    }
-    if (*(char *)(p + 0x18) == 2) {
-        ++*(short *)(p + 0x2a);
-        return *(int *)(p + 0x24);
-    }
-    return 0;
+ int _func_0013B2B0(...); int _func_0013B280(...); extern int _D_003278A0;
+ if(flag) {
+   while(*(char *)(p+0x18)==1) _func_0013B2B0(_D_003278A0,0xbf800000);
+   _func_0013B280(_D_003278A0,1);
+ }
+ if(*(char *)(p+0x18)!=2) return 0;
+ ++*(short *)(p+0x2a);
+ return *(int *)(p+0x24);
 }
 
 void func_0011BED0(void)
