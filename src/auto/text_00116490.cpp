@@ -2,6 +2,15 @@
 #include "common.h"
 #include "ghidra.h"
 
+extern float _func_001161D0(void *, int);
+extern void _func_00115FC0(void *, float);
+void _func_00116590(void *p, unsigned int value)
+{
+    float f = _func_001161D0(p, 0);
+    *(unsigned int *)((char *)p + 0x1c) = value;
+    _func_00115FC0(p, f);
+}
+
 void func_00116820(void)
 {
   int func_0013B1E0(...);
@@ -10,6 +19,12 @@ void func_00116820(void)
   iVar1 = func_0013B1E0();
   *(int *)(iVar1 + 0x84) = *(int *)(iVar1 + 0x84) + -1;
   return;
+}
+
+int _func_00116960(int *piVar1, undefined4 D_00326814, undefined D_00326790, int func_0013AF50, int func_0013AF70)
+{
+  // Implementation for this function
+  return 0;
 }
 
 void func_001170B0(void)
