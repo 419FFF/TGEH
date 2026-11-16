@@ -10,6 +10,22 @@ void func_000EC3C0(int param_1,int *param_2)
  *(float *)(param_1+0x68)=func_0013E9E0(param_2[2]);
 }
 
+void func_000EC400(int *param_1,char **param_2)
+{
+ int func_001053E0(...); extern int D_00324588;
+ char *s=*param_2; char *base=s; int i=0; char c;
+ do { c=s[i]; if(c==':'||c=='/'||c=='\\') base=s+i+1; ++i; } while(c!=0);
+ *param_1=func_001053E0(D_00324588,base);
+}
+
+void func_000EC470(int param_1,int *param_2)
+{
+ int func_0013E9DB(...); unsigned int i=0;
+ for(;i<0x100;i++) { int v=param_2[i]; if(!v) break; *(unsigned char *)(param_1+0x89+i)=func_0013E9DB(v); }
+ *(unsigned char *)(param_1+0x88)=i;
+ int p=*(int *)(param_1+0xa0); ++*(int *)(p+0x10);
+}
+
 void func_000EC4C0(int param_1, int *param_2)
 {
   if (*param_2 != 0) {
