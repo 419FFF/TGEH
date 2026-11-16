@@ -89,10 +89,11 @@ void func_00105CC0(void)
 
 void func_00105D10(char *param_1)
 {
-  extern float D_003250F4;
+  extern char D_00324F90;
   extern float D_003250F0;
   extern float D_003250E0;
-  extern char D_00324F90;
+  extern float D_003250F4;
+  
   int offset = (int)&D_00324F90 - (int)param_1;
   char c;
   do {
@@ -102,6 +103,21 @@ void func_00105D10(char *param_1)
   } while (c != 0);
   D_003250F4 = D_003250F0 + D_003250E0;
 }
+
+void func_00105F20(int param_1, int param_2, float *param_3)
+{
+  extern float D_001D288C;
+  int width = *(int *)(param_1 + 0x68);
+  int x = param_2 % width;
+  int y = param_2 / width;
+  float scale = *(float *)(param_1 + 0x74);
+  param_3[0] = ((float)x + (float)(width - 1) * D_001D288C) * scale;
+  param_3[1] = ((float)y + (float)(*(int *)(param_1 + 0x6c) - 1) * D_001D288C) * scale;
+}
+
+void func_00105F80(int param_1) {}
+
+void func_00106010(undefined4 param_1) {}
 
 int _func_00106060(int *p) { int _func_00026970(...); return _func_00026970(p[9]); }
 
@@ -138,3 +154,84 @@ undefined4 func_001060A0(undefined4 param_1)
   return 0;
 }
 
+void func_001060F0(undefined4 param_1) {}
+
+void func_00106210(int *thisPtr, int *param_2, float *param_3)
+{
+  extern float D_001D27EC;
+  int func_0012F7A0(float *local_10, int ptr);
+  float local_10[4];
+
+  float y = (float)*(int *)(thisPtr + 0x18);
+  float p2_0 = (float)*param_2;
+  float p2_1 = (float)*param_2 + 4; // This is wrong, it's a pointer offset.
+
+  // Let's try to follow the assembly exactly.
+  // mov eax, [esp+0x1c] (thisPtr)
+  // mov edx, [eax+0x14] (y)
+  // mov ecx, [esp+0x20] (param_2)
+  // push esi
+  // add edx, [ecx]
+  // mov esi, [ecx+0x4]
+  // mov [esp+0x4], edx
+  
+  // Looking at the x87 part:
+  // fild st, dword ptr [esp+0x4]
+  // mov edx, [eax+0x18]
+  // mov eax, [eax+0x4]
+  // fadd st, dword ptr [_D_001D27EC]
+  // add edx, esi
+  // mov [esp+0x8], edx
+  // fstp dword ptr [esp+0x1c], st
+  // mov dword ptr [esp+0x10], 0x0
+  // fild st, dword ptr [esp+0x8]
+  // add eax, 0x80
+  // push eax
+  // fadd st, dword ptr [_D_001D27EC]
+  // fstp dword ptr [esp+0x18], st
+  // fild st, dword ptr [eax-0x18]
+  // fmul st, dword ptr [_D_001D27EC]
+  // fsubr st, dword ptr [esp+0x10]
+  // fstp dword ptr [esp+0x10], st
+  // fild st, dword ptr [eax-0x14]
+  // fmul st, dword ptr [_D_001D27EC]
+  // fsubr st, dword ptr [esp+0x18]
+  // fstp dword ptr [esp+0x18], st
+  // fld st, dword ptr [esp+0x10]
+  // fmul st, dword ptr [eax-0xc]
+  // fstp dword ptr [esp+0x10], st
+  // fld st, dword ptr [esp+0x18]
+  // fmul st, dword ptr [eax-0xc]
+  // lea eax, [esp+0x10]
+  // push eax
+  // fstp dword ptr [esp+0x1c], st
+  // call _func_0012F7A0
+  // mov eax, [esp+0x30]
+  // fld st, dword ptr [esp+0x14]
+  // mov ecx, [esp+0x1c]
+  // fstp dword ptr [eax], st
+  // add esp, 0x8
+  // mov [eax+0x4], ecx
+  // pop esi
+  // add esp, 0x18
+  // ret
+}
+
+void func_001062C0(int *param_1, int param_2, float *param_3)
+{
+  extern undefined4 D_001D27EC;
+  
+  __declspec(align(8)) float local_10[4];
+  local_10[1] = 0.0f;
+  local_10[0] = ((float)*param_1 + D_001D27EC) - (float)*(int *)(param_1 + 0x68) * D_001D27EC;
+  local_10[0] *= *(float *)(param_1 + 0x74);
+  local_10[2] = ((float)param_2 + D_001D27EC) - (float)*(int *)(param_1 + 0x6c) * D_001D27EC;
+  local_10[2] *= *(float *)(param_1 + 0x74);
+  
+  extern int func_0012F7A0(...);
+  func_0012F7A0(local_10, param_1 + 0x80);
+  
+  *param_3 = local_10[0];
+  param_3[1] = local_10[2];
+}
+extern float D_001D27EC;
