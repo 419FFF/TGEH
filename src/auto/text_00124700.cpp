@@ -4,6 +4,8 @@
 
 void func_00124A10(void){extern unsigned int D_00331518,D_00331508,D_00331500,D_00331178,D_00331370[],D_00331520; extern float D_001E7D60,D_001D27FC; int func_0013E3F4(void); void func_001383B0(void); void func_00138440(int); void func_00138490(int); void func_0012F120(void*); void func_001364D0(void*); void func_00136FF0(int); void func_00123F90(int); void func_00137030(void); unsigned char temp[64]; if(D_00331518){func_001383B0();func_00138440(0);func_00138490(0);func_0012F120(temp);func_001364D0(temp);} D_00331500=D_00331518;D_00331178=D_00331508; func_00136FF0(func_0013E3F4()); for(unsigned i=0;i<D_00331518;i++){int p=D_00331370[i];func_00123F90(p);*(unsigned*)(p+8)=D_00331520;}func_00137030();D_00331520++;}
 
+void func_00124AD0(void){extern unsigned D_00331508,D_00331518; extern int D_003311D8[]; void func_00133BB0(int); void func_00116FB0(int); for(unsigned i=0;i<D_00331508;i++){int p=D_003311D8[i];if(*(int*)(p+0x70))func_00116FB0(*(int*)(p+0x70));func_00133BB0(*(int*)(p+0xc));*(int*)(p+0xc)=0;func_00116FB0(p);}D_00331508=0;D_00331518=0;}
+
 void func_00124B70(int p) { extern unsigned int D_00331508; extern int D_003311D8[]; int func_00116FB0(...); unsigned int i; int q; for(i=0;i<D_00331508;i++){ q=D_003311D8[i]; if(*(int *)(q+0x54)==p) *(int *)(q+0x54)=0; } func_00116FB0(p); }
 
 void func_00124BE0(int param_1, float param_2)
