@@ -49,28 +49,7 @@ void func_0007E1F0(void)
   return;
 }
 
-void *_func_0007E220(int a, int *b)
-{
-  int _func_00110420(...); int _func_0012F120(...); int _func_001105E0(...); int _func_00110000(...); int _func_00110550(...); int _func_0011DED0(...); int _func_00083650(...);
-  extern unsigned int _D_002FAE00[20],_D_002FAE48;
-  extern int _D_002FADF8[20]; extern int _D_002FAE04[20]; extern int _D_002FADFC[20];
-  register unsigned int v=0xffffffffu, slot=0, t=_D_002FAE00[0];
-  if (t <= v) { v=t; slot=0; }
-  t=_D_002FAE00[4]; if (t <= v) { v=t; slot=1; }
-  t=_D_002FAE00[8]; if (t <= v) { v=t; slot=2; }
-  t=_D_002FAE00[12]; if (t <= v) { v=t; slot=3; }
-  t=_D_002FAE00[16]; if (t <= (int)v) slot=4;
-  int *p=&_D_002FADF8[slot*4];
-  int *o=*(int **)(p[0]+0x2c); _func_00110420(*o,p[0]);
-  _D_002FAE04[slot*4]=0;
-  __declspec(align(16)) char local[52]; _func_0012F120(local);
-  *(int *)(local+0)=b[0]; *(int *)(local+4)=b[1]; *(unsigned short *)(local+8)=b[2];
-  _func_001105E0(p[0],local,0);
-  _func_00110000(p[0]); _func_00110550(a,p[0],8);
-  _D_002FAE04[slot*4]=1; _func_0011DED0(_D_002FADFC[slot*4]);
-  _D_002FAE00[slot*4]=_D_002FAE48; ++_D_002FAE48; _func_00083650(p[0]);
-  return p;
-}
+void *_func_0007E220(int a,int *b){int _func_00110420(...);int _func_0012F120(...);int _func_001105E0(...);int _func_00110000(...);int _func_00110550(...);int _func_0011DED0(...);int _func_00083650(...);extern unsigned int _D_002FAE00[20],_D_002FAE48;extern int _D_002FADF8[20],_D_002FAE04[20],_D_002FADFC[20];register unsigned int v=0xffffffffu,slot=0,t=_D_002FAE00[0];if(t<=v){v=t;slot=0;}t=_D_002FAE00[4];if(t<=v){v=t;slot=1;}t=_D_002FAE00[8];if(t<=v){v=t;slot=2;}t=_D_002FAE00[12];if(t<=v){v=t;slot=3;}t=_D_002FAE00[16];if(t<=(int)v)slot=4;int *p=&_D_002FADF8[slot*4];int *o=*(int**)(p[0]+0x2c);_func_00110420(*o,p[0]);_D_002FAE04[slot*4]=0;__declspec(align(16)) char local[64];_func_0012F120(local);*(int*)(local+48)=b[0];*(int*)(local+52)=b[1];*(int*)(local+56)=b[2];_func_001105E0(p[0],local,0);_func_00110000(p[0]);_func_00110550(a,p[0],8);_D_002FAE04[slot*4]=1;_func_0011DED0(_D_002FADFC[slot*4]);_D_002FAE00[slot*4]=_D_002FAE48;++_D_002FAE48;_func_00083650(p[0]);return p;}
 
 void func_0007E570(int param_1)
 {
