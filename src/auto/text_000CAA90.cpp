@@ -1,2 +1,40 @@
 /* 15 functions from 0x000CAA90 to 0x000CBA10, found by Ghidra. */
 #include "common.h"
+
+void func_000CAB50(void)
+{
+ extern int D_0031A9D0,D_0031A9D8,D_0031A9C8,D_0031A9CC,D_0031A9F0,D_00318D10,D_0031A9EC;
+ extern char D_001DA9F8;
+ int func_00110300(...),func_00100400(...),func_001160E0(...),func_00116110(...),func_0011AF60(...);
+ D_0031A9D0=0; D_0031A9D8=0; D_0031A9C8=0; D_0031A9CC=0;
+ D_0031A9F0=func_00110300(*(int *)(D_00318D10+0x2c),&D_001DA9F8,0);
+ D_0031A9EC=func_00100400(0,1,0);
+ func_001160E0(D_0031A9EC,1,0,100,0x42700000);
+ func_00116110(D_0031A9EC,1);
+ func_0011AF60(D_0031A9F0,D_0031A9EC);
+}
+
+void func_000CABE0(void)
+{
+ extern float D_001D27F4,D_0031A9D8,D_001D27B8,D_001D27B0,D_001D27FC;
+ extern int D_0031A9EC;
+ int func_00116130(...);
+ float x=D_001D27F4-D_0031A9D8;
+ if(x<D_001D27B8) x=D_001D27B8;
+ if(x>D_001D27B0) x=D_001D27B0;
+ func_00116130(D_0031A9EC,x*D_001D27FC);
+}
+
+void func_000CB500(void)
+{
+ int func_0009A880(...), func_000CB3E0(...);
+ unsigned int first, first_rem, second, second_rem, i=100;
+ do {
+  first=(unsigned int)func_0009A880();
+  first_rem=first%36;
+  do { second=(unsigned int)func_0009A880(); second_rem=second%36; }
+  while(first_rem==second_rem);
+  func_000CB3E0(first_rem,second_rem);
+  --i;
+ } while(i);
+}
