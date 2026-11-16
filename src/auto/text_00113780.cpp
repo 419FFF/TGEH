@@ -23,6 +23,9 @@ void func_001137E0(int param_1, undefined4 *param_2)
   return;
 }
 
+float func_0013E9E0(...);
+void func_00113800(float *out,int *in) { int i=0; float *dst=(float*)((char*)out+0x40); for(int outer=0;outer<4;outer++){int inner=4; do { *dst++=func_0013E9E0(in[i++]); inner--; }while(inner); } }
+
 void func_00113980(undefined4 param_1, char *param_2)
 {
   int func_00116FB0(...);
