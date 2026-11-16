@@ -28,6 +28,14 @@ void _func_00116610(void *p)
     }
 }
 
+void _func_00116800(int value) {
+  extern int __cdecl _func_0013B1E0(void);
+  int* p = (int*)_func_0013B1E0();
+  int index = p[0x84 / 4] + 1;
+  p[0x84 / 4] = index;
+  p[index + 0x88 / 4] = value;
+}
+
 void func_00116820(void)
 {
   int func_0013B1E0(...);
