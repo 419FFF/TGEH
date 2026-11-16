@@ -10,15 +10,7 @@ void func_00078730(undefined4 param_1, int param_2)
   return;
 }
 
-void _func_00078760(void) {
-    int func_0011D0E0(...);
-    extern undefined D_001D64BC;
-    func_0011D0E0((int)&D_001D64BC);
-    int func_0011D270(...);
-    func_0011D270(((undefined *)&D_001D64BC), &func_0011D270);
-    int func_0011D290(...);
-    func_0011D290(((undefined *)&D_001D64BC), &func_0011D290);
-}
+void _func_00078760(void){extern void _func_0011D000(...);extern void _func_0011D270(...);extern void _func_0011D290(...);extern int D_001D64BC;extern void _func_00078540(void);extern void _func_00078730(void);extern void _func_00085E20(void);_func_0011D000(_func_00078540,&D_001D64BC);_func_0011D270(_func_00078730,&D_001D64BC);_func_0011D290(_func_00085E20,&D_001D64BC);}
 
 void func_000787A0(void) {
     extern int D_001D64BC;
