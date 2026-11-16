@@ -185,6 +185,8 @@ void func_000FA2E0(int param_1, undefined4 param_2, undefined4 *param_3)
   return;
 }
 
+unsigned char func_000FA580(void){extern int D_00324B68;unsigned char r=0;int p=D_00324B68;while(p){int d=*(int*)(p+8);p=*(int*)p;if(*(unsigned int*)(d+0x18)<*(unsigned short*)(*(int*)(d+0x10)+6))r|=*(unsigned char*)(d+0x15);}return r;}
+
 void func_000FA640(int param_1, char param_2)
 {
   if (param_2 != '\0') {
