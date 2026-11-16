@@ -2,6 +2,8 @@
 #include "common.h"
 #include "ghidra.h"
 
+struct CopyBlock { unsigned int word[16]; };
+
 unsigned int *func_0010F750(char *s,unsigned char type,int extra)
 {
  int func_00116A90(...);int func_0012F120(...);unsigned int *p;char *q;int len;int offset;char c;
@@ -33,13 +35,9 @@ void func_0010F7F0(int obj,int *node)
 
 int func_0010F8A0(void)
 {
- extern int *D_00326124; extern int D_0032531C[]; int func_00116FB0(...);
- int *prev=0,*p=D_00326124,*next,*owner; unsigned int type; int fn;
- while(p){next=(int*)p[3];if((short)p[1])*(short*)(p+1)=(short)p[1]-1;
- if((short)p[1]==0){owner=(int*)*p;if(prev)prev[3]=(int)next;else D_00326124=next;
- func_00116FB0(*(int*)((char*)owner+0x28));type=*(unsigned char*)((char*)owner+0x22);fn=*(int*)((char*)D_0032531C+type*0x1c);if(fn)((void(*)(int))fn)((int)owner);func_00116FB0((int)owner);
- }else prev=p;p=next;}
- return D_00326124!=0;
+ extern int *D_00326124;extern int D_0032531C[];int func_00116FB0(...);int *prev=0,*p=D_00326124,*next,*owner;unsigned int type;int fn;
+ while(p){next=(int*)p[3];if((short)p[1])*(short*)(p+1)=(short)p[1]-1;if((short)p[1]==0){owner=(int*)*p;if(prev)prev[3]=(int)next;else D_00326124=next;func_00116FB0(*(int*)((char*)owner+0x28));type=*(unsigned char*)((char*)owner+0x22);fn=*(int*)((char*)D_0032531C+type*0x1c);if(fn)((void(*)(int))fn)((int)owner);func_00116FB0((int)owner);}else prev=p;p=next;}
+ if(D_00326124!=0)return 1;else return 0;
 }
 
 void func_0010F930(int param_1)
@@ -218,13 +216,10 @@ void func_00110300(int param_1,int param_2,int param_3)
  if(param_1){func_00110290(param_1,param_2,param_3);n=D_003291C0;n++;D_003291C0=n;}
 }
 
-void func_00110330(int param_1,unsigned char flag)
+void func_00110330(int p,unsigned char flag)
 {
- int p;
- if(flag) *(unsigned char *)(param_1+0x20) &= 0xfe;
- else *(unsigned char *)(param_1+0x20) |= 1;
- for(p=*(int *)(param_1+0x28);p!=0;p=*(int *)(p+0xc)) {
-   if(flag) *(unsigned char *)(p+6) &= 0xef;
-   else *(unsigned short *)(p+6) |= 0x10;
- }
+ int node;
+ if(flag) *(unsigned char *)(p+0x20) &= 0xfe; else *(unsigned char *)(p+0x20) |= 1;
+ node=*(int *)(p+0x28);
+ while(node) { if(flag) *(unsigned char *)(node+6) &= 0xef; else *(unsigned short *)(node+6) |= 0x10; node=*(int *)(node+0xc); }
 }
