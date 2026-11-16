@@ -36,10 +36,26 @@ uint func_00148710(undefined4 param_1, undefined4 param_2)
   return 0;
 }
 
+void* _func_00148740(unsigned int* p, void* q) {
+ _func_0013AF50(p[0x20b]);
+ int* d=(int*)_func_00148590(p,q);
+ if (!d) { _func_00148590(p,q); _func_0013AF70(p[0x20b]); return 0; }
+ int* r=(int*)_func_00116A90(0x14,1,1);
+ r[0]=(int)d; r[1]=(int)p; r[3]=0;
+ unsigned int n=d[3];
+ if ((int)n<0) { n &= 0x7fffffff; if(n>0x20000)n=0x20000; r[2]=(int)_func_00116A90(n,1,1); }
+ _func_00131EB0(p[0],d[2],0);
+ r[4]=d[2];
+ _func_0013AF70(p[0x20b]);
+ return r;
+}
+
 undefined4 func_00148AE0(int param_1)
 {
   return *(undefined4 *)(param_1 + 0xc);
 }
+
+unsigned char _func_00148AF0(unsigned int* p) { return p[3] >= (*(unsigned int*)(p[0]+12)&0x7fffffff); }
 
 void func_00148B10(int param_1)
 {
