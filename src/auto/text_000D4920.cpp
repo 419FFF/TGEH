@@ -187,3 +187,11 @@ extern int D_0031B9D0;
 extern float D_001DAE60;
 extern float D_001DAE54;
 extern int D_0031BCA0;
+extern int D_00313B60;
+extern float D_001D27B0;
+extern float D_001DAE38;
+extern float D_001D5728;
+
+void func_00110060(int obj, void *data);
+void func_0012F310(void *data1, void *data2);
+void func_0012F730(float *out, int input1, void *data);
