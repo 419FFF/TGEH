@@ -62,7 +62,7 @@ void _func_00108120(char *p) { extern float _D_00307DB4; extern int _D_00307DF8;
 void _func_001081B0(char *p){extern float _D_00307DB4;extern int _D_00307DF8,_D_003251CC;extern char *_D_0032519C;int *slot;if(*(float *)(p+0x14)<_D_00307DB4){if(*(short *)p&&!(*(unsigned char *)(*(int *)(*(int *)(p+4)+0x2c)+0x20)&1)){slot=(int *)(_D_0032519C+_D_003251CC*36);++_D_003251CC;slot[0]=(int)p;slot[1]=*(int *)(p+4);slot[3]=_D_00307DF8;}*(float *)(p+0x14)=_D_00307DB4+*(float *)(p+0x20);}}
 
 int _func_001074C0(...);
-void _func_00108440(char *p) { extern float _D_00307DB4; char _func_001074C0(int,char *); void _func_00107BF0(...); if (*(float *)(p+0x1c) >= _D_00307DB4) return; if (_func_001074C0(*(int *)(p+4),p)) _func_00107BF0(p,0); *(float *)(p+0x1c)=_D_00307DB4+*(float *)(p+0x30); }
+void _func_00108440(char *p) { extern float _D_00307DB4; char _func_001074C0(int,char *); void _func_00107BF0(...); long double a=*(float *)(p+0x1c), b=_D_00307DB4; if (a < b) { if (_func_001074C0(*(int *)(p+4),p)) _func_00107BF0(p,0); *(float *)(p+0x1c)=(float)((long double)*(float *)(p+0x30)+(long double)_D_00307DB4); } }
 
 void _func_00108480(char *p) { char _func_001074C0(int,char *); void _func_00107BF0(...); unsigned char now; now=_func_001074C0(*(int *)(p+4),p); if (!*(unsigned char *)(p+0x18) && now) _func_00107BF0(p,0); *(unsigned char *)(p+0x18)=now; }
 
@@ -83,4 +83,6 @@ void func_00108500(undefined4 param_1)
 }
 
 void _func_00108530(void *p) { extern int _D_00307DF8; char _func_001074C0(int,void *); void _func_00107BF0(...); int *q=*(int **)(_D_00307DF8+0x110); if (*q!=0x40 && *q!=0x3f && _func_001074C0(_D_00307DF8,p)) _func_00107BF0(p,0); }
+
+void func_00108570(short *p) { extern int D_00307DF0,D_003251CC; extern char *D_0032519C; int *slot; int obj=*(int*)((char*)p+4); if(D_00307DF0!=obj) return; if(*p && !(*(unsigned char*)(*(int*)(obj+0x2c)+0x20)&1)){slot=(int*)(D_0032519C+D_003251CC*36);++D_003251CC;slot[0]=(int)p;slot[1]=*(int*)((char*)p+4);slot[3]=0;} *p=0; D_00307DF0=0; }
 
