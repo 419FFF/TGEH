@@ -175,47 +175,82 @@ void func_00106210(void *thisPtr, void *param_2, void *param_3)
   stack_0x18 = (float)(*(int *)((char *)thisPtr + 0x18));
   stack_0x1c = (float)(*(int *)((char *)thisPtr + 0x1c));
 
-  float temp1 = stack_0x4 + D_001D27EC;
-  float temp2 = stack_0x8 + D_001D27EC;
-  
-  // The target has:
-  // fild st, [esp+0x4] (stack_0x4)
+  // Match the fild/fadd/fstp sequence
+  // fild st, [esp+0x4]  -> stack_0x4
   // fadd st, [D_001D27EC]
-  // fstp [esp+0x1c] (stack_0x1c)
-  // fild st, [esp+0x8] (stack_0x8)
+  // fstp [esp+0x1c]     -> stack_0x1c
+  // fild st, [esp+0x8]  -> stack_0x8
   // fadd st, [D_001D27EC]
-  // fstp [esp+0x18] (stack_0x18)
-  // fild st, [esp+0x10] (stack_0x10)
-  // fmul st, [eax-0xc]
-  // fsubr st, [esp+0x10]
-  // fstp [esp+0x10]
-  // fild st, [eax-0x14]
+  // fstp [esp+0x18]     -> stack_0x18
+  // fild st, [esp+0x10] -> stack_0x10
+  // fmul st, [eax-0xc]  -> eax is [esp+0x1c] which is stack_0x1c? no, eax was [esp+0x1c] then [eax-0x18]
+  // fsubr st, [esp+0x10] -> stack_0x10
+  // fstp [esp+0x10]     -> stack_0x10
+  // fild st, [eax-0x14] -> ...
   // fmul st, [D_001D27EC]
-  // fsubr st, [esp+0x18]
-  // fstp [esp+0x18]
-  // fld st, [esp+0x10]
-  // fmul st, [eax-0xc]
-  // fstp [esp+0x10]
-  // fld st, [esp+0x18]
-  // fmul st, [eax-0xcc]
+  // fsubr st, [esp+0x18] -> stack_0x18
+  // fstp [esp+0x18]     -> stack_0x18
+  // fld st, [esp+0x10]  -> stack_0x10
+  // fmul st, [eax-0xc]  -> ...
+  // fstp [esp+0x10]     -> stack_0x10
+  // fld st, [esp+0x18]  -> stack_0x18
+  // fmul st, [eax-0xcc] -> ...
+  // fstp [esp+0x1c]     -> stack_0x1c
+
+  // Let's try to simplify the math first.
+  // The target uses eax = [esp+0x1c] (which is stack_0x1c)
+  // Then it does some math involving stack_0x1c, stack_0x10, stack_0x18
+  // It calls func_0012F7A0 with some arguments.
+  
+  // Based on the assembly:
+  // eax = [esp+0x1c]
+  // edx = [eax+0x14]
+  // ecx = [esp+0x20]
+  // esi = [ecx+0x4]
+  // edx += [ecx]
+  // [esp+0x4] = edx
+  // fild [esp+0x4]
+  // edx = [eax+0x18]
+  // eax = [eax+0x4]
+  // fadd [D_001D27EC]
+  // edx += esi
+  // [esp+0x8] = edx
   // fstp [esp+0x1c]
-
-  // This is getting complex. I will try to match the order of stores and loads.
-  // Let's try to guess some values for the multiplications/subtractions.
-  // The assembly has some fsubr and fmul.
   
-  // I'll just try to get the structure right for now.
+  // This looks like it's doing some complex mixing of values from the struct
+  // and some local stack values.
+
+  // I'll try to implement the logic more literally.
+  int *ptr_eax = (int *)((char *)thisPtr + 0x1c);
+  int *ptr_ecx = (int *)((char *)thisPtr + 0x20);
+  int *ptr_esi = (int *)((char *)ptr_ecx + 0x4);
+  
+  int val_edx = *(ptr_eax + 0x14);
+  val_edx += *(ptr_ecx);
+  *( (int *)((char *)thisPtr + 0x4) ) = val_edx;
+  
+  float f_edx = (float)val_edx;
+  // fild [esp+0x4] -> f_edx
+  // fadd [D_001D27EC]
+  // fstp [esp+0x1c] -> stack_0x1c = f_edx + D_001D27EC;
+  stack_0x1c = f_edx + D_001D27EC;
+  
+  val_edx = *(ptr_eax + 0x18);
+  val_edx += *ptr_esi;
+  *( (int *)((char *)thisPtr + 0x8) ) = val_edx;
+  // fstp [esp+0x18] -> stack_0x18 = val_edx + D_001D27EC;
+  stack_0x18 = (float)val_edx + D_001D27EC;
+  
+  // stack_0x10 = 0.0f;
+  // fild [esp+0x10] -> 0.0f
+  // fmul [eax-0xc] -> ...
+  // fsubr [esp+0x10] -> ...
+  // fstp [esp+0x10] -> ...
+  
+  // It's hard to get the exact float math without knowing the exact constants.
+  // Let's try a simpler version and see what it says.
+
   func_0012F7A0((float *)&stack_0x4, 0);
-
-  // mov eax, [esp+0x30]
-  // fld st, [esp+0x14]
-  // mov ecx, [esp+0x1c]
-  // fstp dword ptr [eax], st
-  // add esp, 0x8
-  // mov [eax+0x4], ecx
-  
-  // This part is very hard to represent in C.
-  // I'll just try to make it compile and see the diff.
 }
 
 void func_001062C0(int *param_1, int param_2, float *param_3)
@@ -268,5 +303,7 @@ extern float D_001D27EC;
 extern float D_001D27EC;
 extern float D_001D27EC;
 extern float D_001D27EC;
+extern float D_001D27EC;
+int func_0012F7A0(float *local_10, int ptr);
 extern float D_001D27EC;
 int func_0012F7A0(float *local_10, int ptr);
