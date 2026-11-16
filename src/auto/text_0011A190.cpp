@@ -113,6 +113,8 @@ void func_0011AF70(int param_1, undefined4 param_2)
   return;
 }
 
+unsigned char _func_0011AF80(int *p,int a,int b,int c){extern int _func_0011BDD0(...);extern int _func_00110920(...);unsigned char r=0;int x=_func_0011BDD0(*(int*)((char*)p+0xe0),0);if(x){int y=*(int*)((char*)x+0xc);if(y)r=_func_00110920(a,y,b,c);(*(unsigned short*)((char*)*(int*)((char*)p+0xe0)+0x2a))--;}return r;}
+
 extern int _func_0011BDD0(void *, int);
 extern unsigned char _func_00110930(unsigned int, unsigned int, void *, unsigned int);
 unsigned char _func_0011AFD0(void *p, unsigned int a, unsigned int b, unsigned int c)
