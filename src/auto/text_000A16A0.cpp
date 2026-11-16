@@ -2,13 +2,63 @@
 #include "common.h"
 #include "ghidra.h"
 
-void func_000A1BB0(int param_1,int param_2) { int func_000A18A0(...);extern int _D_003080AC; unsigned char *ecx=(unsigned char*)param_1;if(ecx[0x10]&8){int eax=3;int v=param_2;func_000A18A0(ecx+0x64,v,eax);return;}int edx=_D_003080AC;int eax=0;eax=(edx!=0);eax++;int v=param_2;func_000A18A0(ecx+0x64,v,eax);}
+void func_000A1BB0(int param_1,int param_2) { int func_000A18A0(...);extern int _D_003080AC; int mode; unsigned char *ecx=(unsigned char*)param_1;if(ecx[0x10]&8){volatile int three=3;int eax=three;int v=param_2;func_000A18A0(ecx+0x64,v,eax);return;}int edx=_D_003080AC;int eax=(edx!=0)+1;int v=param_2;func_000A18A0(ecx+0x64,v,eax); }
 
 void func_000A1C00(int param_1) { int func_00115E40(...);int func_0011C3E0(...);int func_00116FB0(...);int esi=param_1;int eax=*(int*)(esi+0x18);if(*(int*)(eax+0x20)==esi)*(int*)(eax+0x20)=0;int edi=0;if(*(unsigned short*)(esi+0xc)>0){do{eax=*(int*)(esi+0x10);eax=*(int*)(eax+edi*8);if(eax)func_00115E40(eax);unsigned int ecx=*(unsigned short*)(esi+0xc);++edi;}while((unsigned int)edi<*(unsigned short*)(esi+0xc));}func_0011C3E0(esi);func_00116FB0(esi);}
 
 void func_000A1C50(int param_1,int param_2) { int func_000A18A0(...);extern int D_001D756C,D_001D29C7;int a,b;if(*(char*)(param_1+0x30)){a=func_000A18A0(param_1,&D_001D756C,param_2);*(int*)(param_1+0x18)=a;b=func_000A18A0(param_1,&D_001D756C,param_2);*(int*)(param_1+0x1c)=b;}else{a=func_000A18A0(param_1,&D_001D29C7,param_2);*(int*)(param_1+0x18)=a;b=func_000A18A0(param_1,&D_001D29C7,param_2);*(int*)(param_1+0x1c)=b;}}
 
-void func_000A1EA0(int param_1, int param_2) { int func_00115F60(...); unsigned int i=0; unsigned short n=*(unsigned short*)(param_1+0xc); int * volatile base=(int*)*(int*)(param_1+0x10); if(n==0)return; do { int *p=base+i*2; int value=*p; if(value)func_00115F60(value,param_2); ++i;}while(i<n); }
+void func_000A1E60(int param_1)
+{
+  int func_001165E0(...);
+  uint i = 0;
+  if (*(ushort *)(param_1 + 0xc)) {
+    do {
+      int value = *(int *)(*(int *)(param_1 + 0x10) + i * 8);
+      if (value) {
+        func_001165E0(value);
+      }
+      i++;
+    } while (i < *(ushort *)(param_1 + 0xc));
+  }
+}
+
+void func_000A1EA0(int param_1, int param_2) { int func_00115F60(...); unsigned int i; int *p; int value; i=0; while(i<*(unsigned short*)(param_1+0xc)){ p=(int*)(*(int*)(param_1+0x10)+i*8); value=*p; if(value)func_00115F60(value,param_2); i++; } }
+
+longdouble func_000A1EE0(int param_1)
+{
+  int func_00116480(...);
+  extern longdouble D_001D27B8;
+  uint i = 0;
+  if (*(ushort *)(param_1 + 0xc)) {
+    int *base = *(int **)(param_1 + 0x10);
+    do {
+      if (*base) {
+        return func_00116480();
+      }
+      i++;
+      base += 2;
+    } while (i < *(ushort *)(param_1 + 0xc));
+  }
+  return D_001D27B8;
+}
+
+undefined4 func_000A1F50(int param_1)
+{
+  int func_001163C0(...);
+  uint i = 0;
+  if (*(ushort *)(param_1 + 0xc)) {
+    int *base = *(int **)(param_1 + 0x10);
+    do {
+      if (*base) {
+        return func_001163C0();
+      }
+      i++;
+      base += 2;
+    } while (i < *(ushort *)(param_1 + 0xc));
+  }
+  return 0;
+}
 
 int func_000A2230(undefined4 *param_1, undefined4 param_2)
 {
@@ -109,4 +159,4 @@ void func_000A2500(undefined4 param_1)
   func_00120EA0(1,1,1,0);
   return;
 }
-
+static int func_000A18A0(unsigned char *param_1,int param_2,unsigned char param_3) { return 0; }
