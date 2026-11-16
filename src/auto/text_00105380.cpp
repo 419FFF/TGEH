@@ -164,57 +164,45 @@ void func_00106210(int *thisPtr, int *param_2, float *param_3)
 
   float y = (float)*(int *)(thisPtr + 0x18);
   float p2_0 = (float)*param_2;
-  float p2_1 = (float)*param_2 + 4; // This is wrong, it's a pointer offset.
+  float p2_1 = (float)*(int *)(param_2 + 4);
 
-  // Let's try to follow the assembly exactly.
-  // mov eax, [esp+0x1c] (thisPtr)
-  // mov edx, [eax+0x14] (y)
-  // mov ecx, [esp+0x20] (param_2)
-  // push esi
-  // add edx, [ecx]
-  // mov esi, [ecx+0x4]
-  // mov [esp+0x4], edx
+  float stack_0x4 = y + p2_0;
+  float stack_0x8 = (float)*(int *)(thisPtr + 0x1c) + p2_1;
+  float stack_0x10 = 0.0f;
+  float stack_0x14 = (float)*(int *)(thisPtr + 0x14);
+  float stack_0x18 = (float)*(int *)(thisPtr + 0x18);
+  float stack_0x1c = (float)*(int *)(thisPtr + 0x1c);
+
+  // This part is very difficult to match exactly without knowing the x87/MSVC interactions.
+  // The target does several fstps and filds.
+  // Let's try to capture the core of the math.
   
-  // Looking at the x87 part:
-  // fild st, dword ptr [esp+0x4]
-  // mov edx, [eax+0x18]
-  // mov eax, [eax+0x4]
-  // fadd st, dword ptr [_D_001D27EC]
-  // add edx, esi
-  // mov [esp+0x8], edx
-  // fstp dword ptr [esp+0x1c], st
-  // mov dword ptr [esp+0x10], 0x0
-  // fild st, dword ptr [esp+0x8]
-  // add eax, 0x80
-  // push eax
-  // fadd st, dword ptr [_D_001D27EC]
-  // fstp dword ptr [esp+0x18], st
-  // fild st, dword ptr [eax-0x18]
-  // fmul st, dword ptr [_D_001D27EC]
-  // fsubr st, dword ptr [esp+0x10]
-  // fstp dword ptr [esp+0x10], st
-  // fild st, dword ptr [eax-0x14]
-  // fmul st, dword ptr [_D_001D27EC]
-  // fsubr st, dword ptr [esp+0x18]
-  // fstp dword ptr [esp+0x18], st
-  // fld st, dword ptr [esp+0x10]
-  // fmul st, dword ptr [eax-0xc]
-  // fstp dword ptr [esp+0x10], st
-  // fld st, dword ptr [esp+0x18]
-  // fmul st, dword ptr [eax-0xc]
-  // lea eax, [esp+0x10]
-  // push eax
-  // fstp dword ptr [esp+0x1c], st
-  // call _func_0012F7A0
-  // mov eax, [esp+0x30]
-  // fld st, dword ptr [esp+0x14]
-  // mov ecx, [esp+0x1c]
-  // fstp dword ptr [eax], st
-  // add esp, 0x8
-  // mov [eax+0x4], ecx
-  // pop esi
-  // add esp, 0x18
-  // ret
+  // Based on the assembly, it looks like a sequence of operations involving D_001D27EC.
+  
+  float temp1 = stack_0x4 + D_001D27EC;
+  float temp2 = stack_0x8 + D_001D27EC;
+  
+  // The code seems to do something like:
+  // temp_x = (stack_0x4 + D) ...
+  // temp_y = (stack_0x8 + D) ...
+  // then some division/multiplication.
+  
+  // Let's try to represent the sequence of stores.
+  // The target stores to [esp+0x1c], [esp+0x18], [esp+0x10], [esp+0x10], [esp+0x18], [esp+0x1c].
+  
+  // We'll try a simplified version and see if the diff improves.
+  // If not, I'll have to try to match the x87 math more literally.
+  
+  float result_x = stack_0x4 + D_001D27EC;
+  float result_y = stack_0x8 + D_001D27EC;
+  
+  // Since I can't match x87 perfectly with standard C, I'll try to find any other function 
+  // that does similar math to see if there's a common idiom.
+  
+  func_0012F7A0(local_10, 0);
+
+  float f_ret_val = (float)*(int *)(thisPtr + 0x30);
+  // ...
 }
 
 void func_001062C0(int *param_1, int param_2, float *param_3)
@@ -234,4 +222,5 @@ void func_001062C0(int *param_1, int param_2, float *param_3)
   *param_3 = local_10[0];
   param_3[1] = local_10[2];
 }
+extern float D_001D27EC;
 extern float D_001D27EC;
