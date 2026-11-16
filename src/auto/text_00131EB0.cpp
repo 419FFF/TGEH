@@ -36,14 +36,18 @@ int func_00132010(int p,int *out)
  return alloc;
 }
 
-int func_001320D0(int p)
+int func_001320D0(int p,int *out)
 {
  int func_00131C80(...); int __stdcall func_0010BF0E(int,int); int func_00116A90(...); int func_00131D60(...); int func_00131D10(...);
- int obj=func_00131C80(p,0); if(!obj)return 0;
- int v=func_0010BF0E(*(int *)(obj+4),0); if(!v)return 0;
- int alloc=func_00116A90(v,1,1); if(!alloc)return 0;
+ int obj=func_00131C80(p,0);
+ if(!obj)return 0;
+ int v=func_0010BF0E(*(int *)(obj+4),0);
+ if(!v)return 0;
+ int alloc=func_00116A90(v,1,1);
+ if(!alloc)return 0;
  if(func_00131D60(obj,alloc,v)!=v)return 0;
  func_00131D10(obj);
+ if(out)*out=v;
  return alloc;
 }
 
@@ -109,9 +113,7 @@ int C_001321C0::func_001321C0(void)
   return iVar1;
 }
 
-int func_00132210(void) {
- return 0;
-}
+int func_00132210(void) { return 0; }
 
 void func_00132280(float *param) { (void)param; }
 
