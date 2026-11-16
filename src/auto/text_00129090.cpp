@@ -25,6 +25,12 @@ undefined1 * func_001295D0(undefined4 param_1)
   return puVar1;
 }
 
+void _func_00116FB0(int);
+void _func_00129590(int);
+void _func_00129620(int p) {
+ if (*(unsigned char *)(p+0x34)==0) { _func_00129590(*(int *)(p+0x38)); _func_00129590(*(int *)(p+0x38)+0x40); _func_00116FB0(*(int *)(p+0x38)); }
+}
+
 void func_00129C50(undefined4 param_1)
 {
   int func_00116A90(...);
