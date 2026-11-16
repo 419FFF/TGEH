@@ -195,7 +195,12 @@ unsigned int func_0009A880(void){extern unsigned int D_003080A4; extern int D_00
 
 float func_0009A8A0(void){extern unsigned int D_003080A4; extern unsigned char D_00269EC3; extern float D_001D72C0; D_003080A4=D_003080A4*0x343fd+D_00269EC3; return (float)((D_003080A4>>16)&0x7fff)*D_001D72C0;}
 
+unsigned int func_0009A8D0(unsigned int max,unsigned int avoid){extern unsigned int D_003080A4; extern int D_00269EC3; if(max<=1)return 0; unsigned int x; do {unsigned int n=D_003080A4*0x343fd+(unsigned int)&D_00269EC3; D_003080A4=n; x=((n>>16)&0x7fff)%max;}while(x==avoid); return x;}
+
 void func_0009A920(int a0) {
     extern int D_00308154;
     D_00308154 = a0;
 }
+
+void func_0009A930(void){extern int D_00308154,D_00307DF8; extern int D_001D72D0,D_001D72C8,D_001D72C4; int func_0009A0D0(...); int func_000F49D0(...); int func_0009D8D0(...); int func_0009BF40(...); int func_0009A160(...); if(D_00308154){func_0009A0D0(2); if(D_00308154==1)func_000F49D0(&D_001D72D0,1); if(D_00308154==2)func_000F49D0(&D_001D72C8,1); if(D_00308154==3)func_000F49D0(&D_001D72C4,1); func_0009D8D0(D_00307DF8); func_0009BF40(D_00307DF8); D_00308154=0; func_0009A160();}}
+
