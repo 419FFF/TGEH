@@ -11,6 +11,10 @@ int _func_00116070(...);
 int _func_00116A90(...);
 extern int _D_00331AD0;
 
+int _func_00127A10(unsigned int n,void *src){int b=_func_00116070(_D_00331AD0,0x54);*(unsigned int*)(b+0x4c)=n;void *d=(void*)_func_00116A90(n,1,1);*(void**)(b+0x50)=d;memcpy(d,src,n);return b;}
+
+int _func_00127A60(int p){return _func_00116FB0(*(int*)(p+0x50));}
+
 void func_00127C30(int param_1)
 {
   int func_00116FB0(...);
