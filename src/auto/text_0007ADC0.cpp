@@ -121,19 +121,20 @@ void func_0007BA90(void)
   return;
 }
 
-void* func_0007BAC0(void* param_1,void* param_2) {
+int* func_0007BAC0(int param_1,int param_2) {
  extern int _D_002FA6F4[],_D_002FA6E4[],_D_002FA6E8[],_D_002FA6F8[],_D_0030809C;
  int _func_00110420(...); void _func_0012F120(...); void _func_001105E0(...);
  void _func_00110000(...); void _func_00110550(...); void _func_0011DED0(...);
- char local[72]; int i=0;
- while(i<2 && _D_002FA6F4[i*6]) ++i;
- if(i>=2) return 0;
- int* p=&_D_002FA6E4[i*6];
- _func_00110420(_D_0030809C,p[0]); _func_0012F120(local);
- _func_001105E0(p[0],local,0); _func_00110000(p[0]);
- _func_00110550(param_1,p[0],8); _func_00110000(p[0]);
+ __declspec(align(16)) char local[64]; int i=0; unsigned int offset=0;
+ do { if (*(int*)((char*)_D_002FA6F4+offset)==0) goto found; offset+=0x18; ++i; } while(offset<0x30);
+ return 0;
+ found:
+ { int* p=&_D_002FA6E4[i*6];
+ _func_00110420(_D_0030809C,*p); _func_0012F120(local);
+ _func_001105E0(*p,local,0); _func_00110000(*p);
+ _func_00110550(param_1,*p,8); _func_00110000(*p);
  _func_0011DED0(_D_002FA6E8[i*6]);
- _D_002FA6F4[i*6]=1; _D_002FA6F8[i*6]=(int)param_2;
- return p;
+ _D_002FA6F4[i*6]=1; _D_002FA6F8[i*6]=param_2;
+ return p; }
 }
 
