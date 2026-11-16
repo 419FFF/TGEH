@@ -56,3 +56,9 @@ void func_001052A0(void)
   return;
 }
 
+void _func_00105340(int a, int b) {
+ extern int D_00324BE8;
+ int func_001278C0(...);
+ func_001278C0(D_00324BE8,a,b);
+}
+
