@@ -29,6 +29,16 @@ void func_00104B30(void)
   return;
 }
 
+void _func_001051F0(void) {
+ extern int D_00313B54, D_00324F80, D_00324F78;
+ extern unsigned char D_001E6231,D_001E6232,D_001E6233,D_001E6234;
+ int x=D_00313B54;
+ D_00324F80=0; D_00324F78=0;
+ if(x==3 || x==4) { D_001E6231=0; D_001E6232=1; D_001E6233=2; D_001E6234=3; return; }
+ if(x==5) { D_001E6231=255; D_001E6232=255; D_001E6233=255; D_001E6234=255; return; }
+ D_001E6231=10; D_001E6232=11; D_001E6233=12; D_001E6234=13;
+}
+
 void func_00105270(void) {
     extern int D_00324F80;
     D_00324F80 = 0;
@@ -54,6 +64,13 @@ void func_001052A0(void)
     func_00127930(D_00324BE8);
   }
   return;
+}
+
+void _func_001052C0(void) {
+ extern unsigned char D_001E5ECB;
+ extern int D_00324BE8;
+ int func_00127310(...);
+ if(D_001E5ECB) { func_00127310(D_00324BE8); D_00324BE8=0; }
 }
 
 void _func_00105340(int a, int b) {
