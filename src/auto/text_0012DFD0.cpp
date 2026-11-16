@@ -74,13 +74,7 @@ void func_0012E780(float *p,float *q) { void func_00131220(float); float y=p[1]-
 
 void func_0012E7B0(float *p,float *q) { void func_00131220(float); float z=p[2]-q[2], y=p[1]-q[1], x=*p-*q; func_00131220(z*z+y*y+x*x); }
 
-void func_0012E7F0(float *p, float *q) {
-    int func_00131220(...);
-    func_00131220(((longdouble)p[3] - (longdouble)q[3]) * ((longdouble)p[3] - (longdouble)q[3]) +
-                  ((longdouble)p[2] - (longdouble)q[2]) * ((longdouble)p[2] - (longdouble)q[2]) +
-                  ((longdouble)p[1] - (longdouble)q[1]) * ((longdouble)p[1] - (longdouble)q[1]) +
-                  ((longdouble)*p - (longdouble)*q) * ((longdouble)*p - (longdouble)*q));
-}
+void func_0012E7F0(float *p,float *q) { void func_00131220(float); float w=p[3]-q[3], z=p[2]-q[2], y=p[1]-q[1], x=*p-*q; func_00131220(w*w+z*z+y*y+x*x); }
 
 longdouble func_0012E840(float *param_1, float *param_2)
 {
