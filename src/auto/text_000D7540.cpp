@@ -11,6 +11,39 @@ int func_000D79D0(signed char *p,signed char *q,int val){int i=(((p[1]+p[0]*6)*0
 
 void func_000D7C70(void){extern void func_000688D0(...); extern void func_000D7540(...); int *s=(int*)D_0031E508; char b=D_001E53A8[(signed char)s[0xd805/4]*4+(signed char)s[0xd804/4]]; int a[4]={0x44200000,0x43f00000,0x43a00000,0x43700000};func_000688D0();func_000D7540((char*)s+0xdaa4+b*0x14,&a[2],a,1,0,0);}
 
+void func_000D7DE0(void)
+{
+ extern int D_0031E508;
+ int func_000688D0(...),func_000D7540(...);
+ int p=D_0031E508;
+ float a=32.0f,b=30.0f,c=320.0f,d=0.0f;
+ func_000688D0(&a);
+ if(*(unsigned char *)(p+0xd805)==0) {
+  d=52.5f;
+  func_000D7540(p+0xdcc0,&c,&a,4,5,0);
+ }
+}
+
+void func_000D7E40(void)
+{
+ extern int D_0031E508;
+ extern float D_001D313C;
+ int func_000688D0(...),func_000D7540(...);
+ int p=D_0031E508;
+ float vals[4];
+ int i=0;
+ vals[0]=40.0f;
+ vals[1]=56.0f;
+ vals[2]=*(float *)(p+0xefe4)*D_001D313C;
+ vals[3]=*(float *)(p+0xefe8)*D_001D313C;
+ func_000688D0(&vals);
+ while(i<*(int *)(p+0xdaa0)) {
+  func_000D7540(p+0xd80c,vals,vals+2,4,5,0);
+  vals[0]+=D_001D313C;
+  ++i;
+ }
+}
+
 unsigned char func_000D7FE0(int *p,int *q){int *x=&D_001E54E8;if(q[1]!=20){while(*x!=-1){if(*x++==q[1])goto done;}if(*p==0)return 1;}done:return 0;}
 
 void func_000D8370(void)
