@@ -290,9 +290,5 @@ void func_00018200(int param_1)
   return;
 }
 
-void func_00018880(int param_1) {
- int func_000A1C00(...),func_00116FB0(...); extern undefined4 D_002EB5B8,D_002EB5B0,D_002EB5B4; int p=*(int*)(param_1+0x110);
- func_000A1C00(*(undefined4*)(p+8));func_000A1C00(*(undefined4*)(p+0x10));func_000A1C00(*(undefined4*)(p+0xc));func_00116FB0(p);
- D_002EB5B8--; if(D_002EB5B8==0){func_00116FB0(D_002EB5B0);D_002EB5B0=0;D_002EB5B4=0;}
-}
-
+void func_00018880(int param_1) { int func_000A1C00(...),func_00116FB0(...); extern undefined4 D_002EB5B8,D_002EB5B0,D_002EB5B4; int p=*(int*)(param_1+0x110);func_000A1C00(*(undefined4*)(p+8));func_000A1C00(*(undefined4*)(p+0x10));func_000A1C00(*(undefined4*)(p+0xc));func_00116FB0(p);D_002EB5B8--;if(D_002EB5B8==0){func_00116FB0(D_002EB5B0);D_002EB5B0=0;D_002EB5B4=0;} }
+#pragma optimize("", on)
