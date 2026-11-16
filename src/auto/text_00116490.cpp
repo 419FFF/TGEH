@@ -98,6 +98,31 @@ int _func_00116960(int *piVar1, undefined4 D_00326814, undefined D_00326790, int
 
 void func_00116FB0(int p){extern int D_00326814,D_00326790[]; void func_0013AF50(int); void func_0013AF70(int); void func_00116CC0(int,int); if(p){int q=*(int*)(p-4); func_0013AF50(D_00326814); func_00116CC0(D_00326790[*(unsigned char*)(q+0x13)],q); *(int*)(p-4)=0; func_0013AF70(D_00326814);}}
 
+int _func_00117000(char param_1)
+{
+    extern int _D_00326814;
+    extern int _D_00326880;
+    extern int _D_00326790;
+    int _func_0013AF50(...);
+    void _func_0013AF70(...);
+    int _func_00136B30(...);
+    int sum = 0;
+    _func_0013AF50(_D_00326814);
+    for (unsigned int i = 0; i < 0x80; i += 0x10) {
+        int *p = *(int **)((char *)&_D_00326790 + i);
+        if (p != 0) { sum += p[0x32]; if (p != (int *)_D_00326880) sum -= *p; }
+        p = *(int **)((char *)&_D_00326790 + i + 4);
+        if (p != 0) { sum += p[0x32]; if (p != (int *)_D_00326880) sum -= *p; }
+        p = *(int **)((char *)&_D_00326790 + i + 8);
+        if (p != 0) { sum += p[0x32]; if (p != (int *)_D_00326880) sum -= *p; }
+        p = *(int **)((char *)&_D_00326790 + i + 12);
+        if (p != 0) { sum += p[0x32]; if (p != (int *)_D_00326880) sum -= *p; }
+    }
+    if (param_1) sum += _func_00136B30();
+    _func_0013AF70(_D_00326814);
+    return sum;
+}
+
 void func_001170B0(void)
 {
   int func_0013AF50(...);
