@@ -369,3 +369,5 @@ typedef struct {
     unsigned char pad3[0xE0];
     void* ptr4;
 } S_D_0006E360_arg0;
+extern int func_0011B4F0(int, int);
+extern int func_00110300(int, int, int);
