@@ -2,6 +2,8 @@
 #include "common.h"
 #include "ghidra.h"
 
+#pragma optimize("y", on)
+unsigned char func_000B8850(void) { extern int D_00314240,D_00313F28; extern unsigned int func_0009A880(void); unsigned char indices[4]; signed char n=0; signed char i=0; D_00313F28=0xbf800000; for(;i<4;i++) if(*(unsigned char *)(D_00314240+0x16b4+i*0xa0)) indices[n++]=i; if(n>0) return indices[func_0009A880()%n]; return 0xff; }
 void func_000B8C30(void) {
     extern int D_00308158;
     extern int D_001D9058;
