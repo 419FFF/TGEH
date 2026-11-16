@@ -93,7 +93,7 @@ void func_00125470(void) {
     func_00115DE0(D_00331530, 32);
 }
 
-void func_00125500(int *p) { int func_0011BAE0(...); int func_0011B990(...); if (*(unsigned char *)(p+5)&1) func_0011BAE0(*(int *)(p+0x30)); else func_0011B990(*(int *)(p+0x30)); }
+void func_00125500(int p) { int func_0011BAE0(...); int func_0011B990(...); if (*(unsigned char *)(p+0x14)&1) func_0011BAE0(*(int *)(p+0x30)); else func_0011B990(*(int *)(p+0x30)); }
 
 void *_func_00125530(int *p){extern int _func_0011BDD0(...);extern unsigned short D_0000FFFF;int x=_func_0011BDD0(*(int*)((char*)p+0x30),0);if(x){unsigned short v=*(unsigned short*)((char*)x+2);(*(unsigned short*)((char*)*(int*)((char*)p+0x30)+0x2a))--;return (void*)(unsigned)(v-1);}return &D_0000FFFF;}
 
