@@ -11,6 +11,14 @@ void _func_00116590(void *p, unsigned int value)
     _func_00115FC0(p, f);
 }
 
+void _func_001165E0(void *p)
+{
+    if (*(int *)((char *)p + 0x10) != 0) {
+        *(float *)((char *)p + 0x20) = _func_001161D0(p, 0);
+        *(int *)((char *)p + 0x10) = 0;
+    }
+}
+
 void func_00116820(void)
 {
   int func_0013B1E0(...);
