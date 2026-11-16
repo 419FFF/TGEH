@@ -2,6 +2,8 @@
 #include "common.h"
 #include "ghidra.h"
 
+void func_00090850(int param_1,float *param_2) { float func_00131760(void); extern float D_001D27EC,D_001D2C00,D_001D2B64; int func_0011CFC0(...); int root=*(int*)(*(int*)(param_1+0x50)+0x2c); float x=param_2[0],y=param_2[2]; int i=0; do {float v=func_00131760();*(float*)(*(int*)(root+0xc)+i)=((v-D_001D27EC)*D_001D2C00+x)*D_001D2B64;v=func_00131760();*(float*)(*(int*)(root+0xc)+i+4)=v+v;v=func_00131760();i+=0xc;*(float*)(*(int*)(root+0xc)+i-4)=((v-D_001D27EC)*D_001D2C00+y)*D_001D2B64;}while(i<0x3c);func_0011CFC0(param_1+0x54,0x42700000); }
+
 void func_000908F0(void)
 {
   extern int D_001D6FB0;
@@ -30,6 +32,8 @@ void func_00090A70(void)
   func_00110760(D_0030414C);
 }
 
+void func_00090A90(int param_1,int param_2) { extern int D_0030414C,D_00304150,D_00304154; int func_0012F120(...),func_00110420(...),func_001105E0(...),func_00110000(...),func_000F8F40(...),func_00110480(...),func_0011E3A0(...),func_0011DED0(...); __declspec(align(16)) char local[0x4c]; func_0012F120(local+0xc); int root=D_0030414C; int q=*(int*)(root+0x2c); if(q)func_00110420(root,*(int*)q);func_001105E0(root,local+0xc,0);func_00110000(root); int r=func_000F8F40(*(int*)(param_1+0x2c));func_00110480(*(int*)(r+0xe0),D_0030414C,8);D_00304154=param_1;func_0011E3A0(D_00304150,param_2);func_0011DED0(D_00304150); }
+
 void _func_00090ED0(void)
 {
   extern int D_001D6FE0;
@@ -51,6 +55,27 @@ void func_00090F10(void) {
     extern int D_001D6FE0;
     int func_0011D0E0(...);
     func_0011D0E0((int)&D_001D6FE0);
+}
+
+void func_00091050(void) { extern int D_00304158,D_003041BC; int func_001160B0(...),func_00110760(...); int *p=&D_00304158; do {func_001160B0(p[1]);func_00110760(p[0]);p+=5;}while((int)p<(int)&D_003041BC); }
+
+void func_00091080(void) { extern int D_003041E0,D_003041E4; extern int D_003041BC; extern float D_001D4210,D_001D27AC,D_001D2B64,D_001D27D4; int func_00131230(...),func_001313C0(...),func_0013E3F4(...); if(D_003041E0){for(int i=0;i<8;i++){float x=(float)*(int*)((char*)&D_003041BC+i*4)*D_001D4210*D_001D27AC;float y=func_00131230(x)*D_001D2B64;func_001313C0(y);D_003041E4=(D_003041E4&~(0xff<<(i*8)))|(func_0013E3F4()<<(i*8));int *p=(int*)&D_003041BC;p[i]++;if(p[i]>0x28)p[i]=0;}}D_003041E0=0;}
+
+void func_000912B0(int param_1)
+{
+  extern undefined D_00304168;
+  int func_0011CFC0(...);
+  undefined4 *puVar1;
+  
+  puVar1 = (undefined4 *)((undefined *)&D_00304168);
+  do {
+    if (puVar1[-2] == param_1) {
+      func_0011CFC0(puVar1[-3] + 0x54,0x3a83126f);
+      *puVar1 = 1;
+    }
+    puVar1 = puVar1 + 5;
+  } while ((int)puVar1 < 0x4078);
+  return;
 }
 
 void func_000912F0(void)
