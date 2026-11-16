@@ -2,6 +2,33 @@
 #include "common.h"
 #include "ghidra.h"
 
+void _func_00102A20(int p) { int func_00110060(...); int func_001105E0(...); __declspec(align(16)) unsigned char b[0x5c]; int obj=*(int*)(p+0xb8); if(obj){func_00110060(obj,b+0x10); *(int*)(b+0x48)=*(int*)(p+0xe4); *(int*)(b+0x50)=*(int*)(p+0xe8); *(int*)(b+0x5c)=*(int*)(p+0xec); func_001105E0(obj,b+0x1c,0);} }
+
+void _func_00102C50(int p) { int func_00131230(...); extern int D_00324D2C; extern float D_001DE730,D_001D27B0; int edx=*(int*)(p+0xe0); int ecx=*(int*)(p+0x78); int n=D_00324D2C-edx; float t=func_00131230((float)n * *(float*)(ecx+0x7c) * D_001DE730); float r=t**(float*)(ecx+0x84)+D_001D27B0; *(float*)(p+0xac)=r; r=t**(float*)(ecx+0x80)+D_001D27B0; *(float*)(p+0x9c)=r; }
+
+void _func_00102DB0(int p,char flag) { extern char D_001E5EC9; int func_00128C50(...); int func_00128BE0(...); if(!D_001E5EC9)return; int obj=*(int*)(p+0xb8); if(!obj)return; unsigned short v=*(unsigned short*)(p+0xb6); unsigned char dl=(unsigned char)v; dl>>=5; if(dl&1)return; unsigned char al=(unsigned char)v; al>>=4; if(al&1)return; if(!*(unsigned char*)(p+0xb4))return; int state; if(flag)state=func_00128C50(obj); else state=func_00128C50(obj); if(flag){if(state==2)func_00128BE0(obj,1);}else if(state==1)func_00128BE0(obj,0); }
+
+void _func_00102E40(void *arg) {
+extern void *_D_00324BCC; void _func_00102DB0(void*,void*);
+void *it=_D_00324BCC;
+while(it){void *obj=((void**)it)[1];void *v=*(void**)((char*)obj+0x78);if(!v || ((*(unsigned char*)((char*)v+0x32)>>5)&1)==0)_func_00102DB0(*(void**)((char*)it+4),arg);it=*(void**)it;}
+}
+
+void _func_00102E80(void *p) {
+extern char _D_001E5EC9;void _func_0011C3E0(void*);void _func_00128C00(void*);
+if(!_D_001E5EC9||!p)return;
+int a=*(int*)((char*)p+0x88);int b=*(int*)((char*)p+0x8c);
+if(a){*(int*)((char*)p+0x8c)=0;}else if(b){_func_0011C3E0((char*)p+0x88);*(int*)((char*)p+0x8c)=0;}
+void*q=*(void**)((char*)p+0xb8);*(int*)((char*)p+0x88)=0;if(q)_func_00128C00(q);
+}
+
+void _func_00102EE0(void *p) {
+char __cdecl _func_00102810(void*);
+extern volatile float _D_001D2B60,_D_001D27B0,_D_001D27B8;
+if(_func_00102810(p)){float f=*(float*)((char*)p+0xa0)+_D_001D2B60;*(float*)((char*)p+0xa0)=f;if(_D_001D27B0<=f)*(int*)((char*)p+0xa0)=0x3f800000;}
+else{float f=*(float*)((char*)p+0xa0)-_D_001D2B60;*(float*)((char*)p+0xa0)=f;if(f<=_D_001D27B8)*(int*)((char*)p+0xa0)=0;}
+}
+
 void _func_00103160(int p,int value) { extern char D_001E5EC9; if(D_001E5EC9 && p) *(int*)(p+0x98)=value; }
 
 void func_00103180(int param_1, undefined4 param_2)
@@ -14,6 +41,16 @@ void func_00103180(int param_1, undefined4 param_2)
 }
 
 void _func_001031A0(void *p,int value) { extern char _D_001E5EC9; if(_D_001E5EC9 && p) *(int*)((char*)p+0x94)=value; }
+
+extern int D_00308158;
+extern unsigned char D_001E5EC9;
+extern int D_00324BCC;
+int _func_000F8F40(...);
+int _func_00128C50(int);
+int _func_0013F2E9(int, int);
+int _func_0009C590(char *);
+int _func_000F8F40(int);
+int _func_00103320(int p) { int x=*(int*)((char*)p+0x7c); if(x==D_00308158)return *(int*)((char*)p+0x84); return _func_000F8F40(*(int*)(x+0x2c)); }
 
 void func_001033A0(int a0) {
     extern int D_00324EA8;
