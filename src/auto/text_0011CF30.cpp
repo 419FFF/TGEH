@@ -8,17 +8,12 @@ void func_0011CF80(int param_1, float param_2)
   *(float *)(param_1 + 0x30) = (float)value;
 }
 
+void func_0011CF90(int param_1, int param_2, int param_3, int param_4, int param_5) { int iVar1 = param_1 + param_2 * 0x30; *(int *)(iVar1 + 0x38) = param_3; *(int *)(iVar1 + 0x34) = 1; *(int *)(iVar1 + 0x3c) = param_4; *(int *)(iVar1 + 0x40) = param_5; }
+
 int func_0011D1E0(int);
 extern float D_001D27B8;
 extern float D_001D27B0;
-void func_0011CFC0(int param_1, float param_2)
-{
-  *(float *)(param_1 + 0xf4) = param_2;
-  if (param_2 > D_001D27B8)
-    *(float *)(param_1 + 0xf8) = D_001D27B0 / param_2;
-  else
-    *(int *)(param_1 + 0xf8) = 0;
-}
+void func_0011CFC0(int param_1, float param_2) { *(float *)(param_1 + 0xf4) = param_2; if (param_2 > D_001D27B8) *(float *)(param_1 + 0xf8) = D_001D27B0 / param_2; else *(int *)(param_1 + 0xf8) = 0; }
 
 void func_0011D270(undefined4 param_1, undefined4 param_2)
 {
@@ -31,6 +26,8 @@ void func_0011D270(undefined4 param_1, undefined4 param_2)
 }
 
 void func_0011D290(int param_1, int param_2) { int iVar1 = func_0011D1E0(param_1); *(int *)(iVar1 + 0x13c) = param_2; }
+
+void func_0011D2B0(void *a,int b) { int func_0011D1E0(...); int p=func_0011D1E0(a); *(int*)(p+0x140)=b; }
 
 #pragma optimize("y", off)
 undefined4 func_0011D450(float *p, int count, float dt, int *desc, undefined4 arg5)
