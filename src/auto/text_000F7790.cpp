@@ -70,10 +70,14 @@ void func_000F7DE0(int p)
   int obj=*node;
   if ((*(unsigned char *)(obj+0x20)&0x10)==0) {
    int id=func_0011CCD0(obj);
-   unsigned int i;
-   for(i=0;i<D_00324AF8;i++) {
-    int q=D_00324968[i];
-    if (*(int *)(q+0xe0)==id) { func_000F7D70(p,q,1); break; }
+   unsigned int i=0;
+   while(1) {
+    if(i>=D_00324AF8) break;
+    if(*(int *)(D_00324968[i]+0xe0)==id) {
+     func_000F7D70(p,D_00324968[i],1);
+     break;
+    }
+    ++i;
    }
   }
   node=(int *)node[3];
@@ -83,9 +87,9 @@ void func_000F7DE0(int p)
 void func_000F7E60(int a, int p, int mode)
 {
  extern unsigned int D_00324AF8, D_00324968[];
- int func_000F7D70(...), func_0011CCD0(...);
- unsigned int i;
- for(i=0;i<D_00324AF8;i++) if (*(int *)(D_00324968[i]+0xe0)==p) break;
+ int func_000F7D70(...), func_000F7DE0(...), func_0011CCD0(...);
+ unsigned int i=0;
+ while(i<D_00324AF8 && *(int *)(D_00324968[i]+0xe0)!=p) ++i;
  if(i>=D_00324AF8) return;
  func_000F7D70(a,D_00324968[i],mode);
  if(mode==2) return;
@@ -95,7 +99,7 @@ void func_000F7E60(int a, int p, int mode)
    int obj=*node;
    if ((*(unsigned char *)(obj+0x20)&0x10)==0) {
     int id=func_0011CCD0(obj,mode+1);
-    func_000F7E60(a,id,mode+1);
+    func_000F7DE0(a,id,mode+1);
    }
    node=(int *)node[3];
   }
