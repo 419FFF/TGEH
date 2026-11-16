@@ -33,6 +33,21 @@ void func_000EBA20(int a, int *p) {
  func_00116FB0((int)p);
 }
 
+void func_000EBA80(int n) {
+ extern int D_00324580, D_00324588, D_00324578, D_0032457C;
+ extern char D_001DC7EC;
+ void func_00117100(void);
+ int func_00105380(int);
+ void func_0011B5C0(void *, void *, void *);
+ void *func_00116A90(int, int, int);
+ void func_000EB6A0(void);
+ void func_000EBA20(int, int *);
+ void func_00117130(void);
+ D_00324580=n; func_00117100(); D_00324588=func_00105380(0x800);
+ func_0011B5C0(&D_001DC7EC,func_000EB6A0,func_000EBA20);
+ D_00324578=(int)func_00116A90(n*0xb0,1,1); D_0032457C=0; func_00117130();
+}
+
 void func_000EBAE0(void) {
   _func_0011B610(&_D_001DC7EC);
   _func_001053A0(_D_00324588);
