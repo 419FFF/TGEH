@@ -173,4 +173,4 @@ void func_00088F00(void) {
     int func_0011D0E0(...);
     func_0011D0E0((int)&D_001D6D24);
 }
-
+struct Copy100 { int x[25]; };
