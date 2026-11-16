@@ -16,6 +16,13 @@ void func_0007BDB0(void)
   return;
 }
 
+int func_0011E3D0(...);
+int func_000E8390(...);
+int func_0011CFC0(...);
+void func_0007BDD0(void) { extern int D_002FA71C; extern char D_002FA900; extern float D_001D27B8; struct E { int a[3]; float x,y; int z[2]; }; struct E *e=(struct E*)&D_002FA900; int n=D_002FA71C; int i=0; while(i<n) { e[i].y-=e[i].x; if(e[i].y<D_001D27B8) { --D_002FA71C; for(int j=i;j<D_002FA71C;j++) e[j]=e[j+1]; --i; } ++i; } }
+
+void func_0007C4C0(int p) { extern int D_002FA71C; extern char D_002FA900; extern int D_002FA918; extern int D_001E4618; extern float D_001D290C; extern float D_001D27B0; int i=0; char *q=&D_002FA900; while(i<D_002FA71C) { if(D_002FA918==p) { float f=(float)D_001E4618; if(D_001E4618<0) f+=D_001D290C; *(float*)(q+0xc)=D_001D27B0/f+D_001D27B0/f; return; } ++i; q+=0x1c; } }
+
 void _func_0007C710(void)
 {
   extern int D_001D6654;
@@ -56,6 +63,9 @@ void func_0007C8E0(int param_1, int param_2)
   func_0011DED0(param_1);
   return;
 }
+
+int func_0011CFC0(int, int);
+void func_0007C940(int p) { int n; func_0011E3D0(p); n=func_000E8390(); if(n!=-1 && n>0 && n<=2) func_0011CFC0(p+0x54,0x42200000); else func_0011CFC0(p+0x54,0); }
 
 void func_0007C990(void) {
     extern int D_001D6660;
