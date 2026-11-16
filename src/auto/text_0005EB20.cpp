@@ -24,9 +24,9 @@ void func_0005F8B0(void) {
     D_002EEE80 = 0;
     func_000A2DF0(0);
 }
-int func_00110420(int, ...);
-int func_001100A0(int, ...);
-int func_0012E5F0(int, ...);
-int func_0012E6D0(int, ...);
-int func_0012E590(int, ...);
-int func_00110480(int, ...);
+int func_00110420(...);
+int func_001100A0(...);
+int func_0012E5F0(...);
+int func_0012E6D0(...);
+int func_0012E590(...);
+int func_00110480(...);
