@@ -79,4 +79,5 @@ void func_00122D30(int *param_1)
         }
     }
 }
-
+extern float D_0032923C;
+extern int D_0032F90C, D_0032F908;
