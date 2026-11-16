@@ -50,6 +50,8 @@ void func_0013A000(void)
   return;
 }
 
+int _func_0013A0A0(int param_1,int param_2){extern int _func_00116A90(int,int,int);extern void _func_0012E760(void*);extern void _func_0011C3B0(void*,void*,void*);extern int _D_00334C8C;int* p=(int*)_func_00116A90(0x8c,1,1);p[6]=param_2;p[8]=param_1;*((char*)p+0x1c)=1;_func_0012E760(p+10);_func_0012E760(p+14);_func_0012E760(p+18);p[25]=0;p[24]=0;p[23]=0;p[22]=0;p[26]=*(int*)(param_1+0xc);p[27]=0x3f800000;p[28]=0;p[5]=0;_func_0011C3B0(&_D_00334C8C,p,p);*((char*)p+0x1e)=0;return (int)p;}
+
 void _func_0013A470(int p){extern int _D_00334C98,_D_001E8878,_D_00334CA4;extern void _func_0013AF50(int);extern void __stdcall _func_001AF9A1(int);extern void __stdcall _func_001AEB37(int);extern void _func_00139C70(int);extern void _func_0013AF70(int);unsigned char* q=(unsigned char*)p;if(q[0x1d]&&*(int*)(q+0x14)){_func_0013AF50(_D_00334C98);_func_001AF9A1(*(int*)(q+0x88));if(q[0x1c]&&_D_001E8878==8)_func_00139C70(*(int*)(q+0x88));else{_func_001AEB37(*(int*)(q+0x88));--_D_00334CA4;}*(int*)(q+0x88)=0;*(int*)(q+0x14)=0;q[0x1d]=0;_func_0013AF70(_D_00334C98);}}
 
 int __stdcall func_001AF97D(int,int,int,int);
@@ -69,7 +71,7 @@ void func_0013AAC0(int p, char arg) { int state=*(int *)(p+0x14); if(state==2 &&
 
 void func_0013AB30(int p) { if (*(int *)(p+0x14)) { func_0013AF50(D_00334C98); func_0013A470(p); func_0011C3E0(p); func_0011C3B0((int)&D_00334C8C,p,p); *(char *)(p+0x1e)=0; *(int *)(p+0x14)=0; func_0013AF70(D_00334C98); } }
 
-void _func_0013AB80(int p,undefined4 *q){int *d=(int*)p;int a=q[0];d[14]=a;int b=q[1];d[15]=b;int c=q[2];d[16]=c;d[4]|=2;}
+void _func_0013AB80(int p,undefined4 *q){int *d=(int*)p;d[14]=q[0];d[15]=q[1];d[16]=q[2];d[4]=d[4]|2;}
 
 void _func_0013ABA0(int p,undefined4 *q){int *d=(int*)p;int a=q[0];d[10]=a;int b=q[1];d[11]=b;int c=q[2];d[12]=c;d[4]|=1;}
 
@@ -112,6 +114,8 @@ void _func_0013AC60(int param_1, char param_2)
 }
 
 int _func_0013ACA0(int p){int x=*(int*)(p+0x14);if(x==1)return 1;int y=*(char*)(p+0x1e);return (y<<31)>>30;}
+
+void _func_0013ACC0(unsigned int p){extern unsigned int D_001E8878,D_00332B18,D_00332B10;if(D_001E8878==8){D_00332B18=p;return;}unsigned int x=D_00332B10;x|=0x100;D_00332B18=p;D_00332B10=x;}
 
 void func_0013ACF0(undefined4 param_1)
 {
