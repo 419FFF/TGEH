@@ -70,3 +70,6 @@ void func_000E70D0(void)
   func_000451C0();
   return;
 }
+
+void func_000E70F0(void){int func_0009CBE0(...);int func_0009D3E0(...);int func_0009D640(...);int func_000B54D0(...);extern char D_001D7BE0;int p=func_0009CBE0(&D_001D7BE0);func_0009D3E0(p);func_0009D640(p);func_000B54D0(0);}
+
