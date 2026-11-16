@@ -1,6 +1,8 @@
 /* 33 functions from 0x001464F0 to 0x001473F4, found by Ghidra. */
 #include "common.h"
 
+struct C_00147245 { unsigned int func_00147245(void); };
+struct C_0014726E { unsigned int func_0014726E(void); };
 extern unsigned int _D_0037C2E0;
 extern unsigned int _D_0037C300[];
 extern int func_001414C5(...);
@@ -30,9 +32,8 @@ void _func_001469C9(void) { int f(...); f(0); }
 
 void _func_001469D1(unsigned int n) {
     extern int _D_001E2720;
-    int func_0013EEE4(...), func_001467B0(...), func_0010AA7B(...);
-    int func_0010BEA9(...), func_001460D6(...), func_001460DF(...), func_0013EF1F(...);
-    int func_00146A6F(...), func_00146A77(...);
+    int func_0013EEE4(...), func_001467B0(...), func_0010BEA9(...), func_0010AA7B(...);
+    int func_001460D6(...), func_001460DF(...), func_00146A6F(...), func_00146A77(...), func_0013EF1F(...);
     void func_001467F1(...);
     int *entry;
     int result;
@@ -52,7 +53,7 @@ void _func_001469D1(unsigned int n) {
         result = func_001467B0(n);
         if (func_0010BEA9(result) == 0) result = func_0010AA7B();
         else result = 0;
-        if (result) {
+        if (result != 0) {
             *(int *)func_001460DF() = result;
             *(int *)func_001460D6() = 9;
             func_00146A6F();
@@ -64,11 +65,8 @@ void _func_001469D1(unsigned int n) {
 int _func_00146A77(void) {
     int func_001460D6(...);
     int func_0013EF1F(...);
-    int *p = (int *)func_001460D6();
-    *p = 9;
-    int result = -1;
-    func_0013EF1F();
-    return result;
+    *(int *)func_001460D6() = 9;
+    return func_0013EF1F() | -1;
 }
 
 extern void func_00146A8B(unsigned short *, const unsigned short *);
@@ -100,6 +98,11 @@ void _func_00146CAD(unsigned short *out, int value, int mode) {
     }
 }
 
+int func_001470CD(unsigned int esi){int _func_001467B0(...);int _func_0010B7F8(...);int _func_0010AA7B(...);int _func_00146767(...);int _func_001460E8(...);extern unsigned int _D_0037C300[];int a,b,edi=0; if(_func_001467B0(esi)==-1)goto end;if(esi==1)goto end;if(esi==2){a=_func_001467B0(2);b=_func_001467B0(1);if(a==b)goto end;}a=_func_001467B0(esi);if(_func_0010B7F8(a))goto end;edi=_func_0010AA7B();end:_func_00146767(esi);unsigned int i=esi;unsigned char *ptr=(unsigned char*)_D_0037C300[i>>5];ptr+=(i&31)*40+4;*ptr=0;if(edi){_func_001460E8(edi);return -1;}return 0;}
+
+void func_001471E9(unsigned int *p){int _func_001436BF(...);if((p[3]&0x83)&&(p[3]&8)){_func_001436BF(p[2]);*(unsigned short*)(p+3)&=0xfbf7;*p=0;p[2]=0;p[1]=0;}}
+#pragma optimize("", on)
+
 extern unsigned __int64 __rdtsc(void);
 #pragma intrinsic(__rdtsc)
 unsigned int __stdcall func_00147220(unsigned int *p) {
@@ -109,20 +112,14 @@ unsigned int __stdcall func_00147220(unsigned int *p) {
     p[1] = (unsigned int)(t >> 32);
     return ++result;
 }
-int __stdcall func_00147231(int *p)
-{
-  p[1] &= (p[0] ^ p[0]);
-  p[0] = 0x2bb5c755;
-  return ++p[1];
-}
+#pragma optimize("y", on)
+int __stdcall func_00147231(int *p){p[1]&=0;p[0]=0x2bb5c755;return (int)(char)1;}
+extern int __stdcall _ExQueryNonVolatileSetting(unsigned int, void*, void*, unsigned int, unsigned int);
+extern void __stdcall MmQueryStatistics(void*);
+#pragma optimize("y", on)
+int __stdcall func_00147306(int value) { if (value <= 9) { value += 0x30; } else { value += 0x37; } return value; }
 
-int __stdcall func_00147306(int value)
-{
-  if (value <= 9) {
-    value += 0x30;
-  } else {
-    value += 0x37;
-  }
-  return value;
-}
+ void __stdcall func_0014731A(void* a,int b,int c){(void)a;(void)b;(void)c;}
+
+int __stdcall func_001473AC(int a,int b){extern int __stdcall func_0010BCE7(int,int,int,int);extern int __stdcall func_0010BAA0(int,short*,int,int*,int);int local=0;short* ch=(short*)((char*)&b+2);int ok=0;if(b)func_0010BCE7(a,0,0,0);ok=func_0010BAA0(a,ch,2,&local,0);if(ok&&local==2&&*ch!=(short)0xfeff)return 1;return 0;}
 
