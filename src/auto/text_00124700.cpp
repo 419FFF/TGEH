@@ -71,6 +71,8 @@ int func_0011B990(int); void func_00125020(int *a0) { func_0011B990(a0[12]); }
 
 void *_func_00125030(int *p){extern int _func_0011BDD0(...);extern unsigned short D_0000FFFF;int x=_func_0011BDD0(*(int*)((char*)p+0x30),0);if(x){unsigned v=*(unsigned*)((char*)x+4);(*(unsigned short*)((char*)*(int*)((char*)p+0x30)+0x2a))--;return (void*)(v-1);}return &D_0000FFFF;}
 
+int *_func_00125120(int *p){extern void _func_00117100(void),_func_00117130(void);extern int _func_00116A90(int,int,int);_func_00117100();int *a=(int*)_func_00116A90(0xc,1,1);_func_00117130();int b=_func_00116A90(0xc,1,1);*a=b;*p=b;return a;}
+
 void _func_00125250(int *p,undefined4 *q){int func_0013E9DB(...);int func_00116A90(...);int func_00117100(...);int func_00117130(...);p[1]=func_0013E9DB(q[0]);func_00117100();p[2]=func_00116A90(p[1]<<6,1,1);func_00117130();*(short*)(*p+2)=(short)p[1];*(int*)(*p+8)=func_00116A90(p[1],1,1);}
 
 void _func_00125310(int *p,undefined4 *q){int func_0013E9DB(...);int a=func_0013E9DB(q[0]);int b=func_0013E9DB(q[1]);int idx=*(int*)(*p+8);*(unsigned char*)(a+idx)=b?0:1;}
