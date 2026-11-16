@@ -99,6 +99,8 @@ longdouble func_0012E840(float *param_1, float *param_2)
          ((longdouble)*param_1 - (longdouble)*param_2);
 }
 
+longdouble _func_0012E870(float *a,float *b){longdouble x=(longdouble)a[2]-b[2],y=(longdouble)a[1]-b[1],z=(longdouble)a[0]-b[0];return x*x+y*y+z*z;}
+
 longdouble func_0012E8A0(float *param_1, float *param_2)
 {
   return (longdouble)*param_1 * (longdouble)*param_2 +
