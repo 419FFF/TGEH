@@ -70,6 +70,27 @@ void func_0012E760(undefined4 *param_1)
   return;
 }
 
+void func_0012E780(float *p, float *q) {
+    int func_00131220(...);
+    func_00131220(((longdouble)p[1] - (longdouble)q[1]) * ((longdouble)p[1] - (longdouble)q[1]) +
+                  ((longdouble)*p - (longdouble)*q) * ((longdouble)*p - (longdouble)*q));
+}
+
+void func_0012E7B0(float *p, float *q) {
+    int func_00131220(...);
+    func_00131220(((longdouble)p[2] - (longdouble)q[2]) * ((longdouble)p[2] - (longdouble)q[2]) +
+                  ((longdouble)p[1] - (longdouble)q[1]) * ((longdouble)p[1] - (longdouble)q[1]) +
+                  ((longdouble)*p - (longdouble)*q) * ((longdouble)*p - (longdouble)*q));
+}
+
+void func_0012E7F0(float *p, float *q) {
+    int func_00131220(...);
+    func_00131220(((longdouble)p[3] - (longdouble)q[3]) * ((longdouble)p[3] - (longdouble)q[3]) +
+                  ((longdouble)p[2] - (longdouble)q[2]) * ((longdouble)p[2] - (longdouble)q[2]) +
+                  ((longdouble)p[1] - (longdouble)q[1]) * ((longdouble)p[1] - (longdouble)q[1]) +
+                  ((longdouble)*p - (longdouble)*q) * ((longdouble)*p - (longdouble)*q));
+}
+
 longdouble func_0012E840(float *param_1, float *param_2)
 {
   return ((longdouble)param_1[1] - (longdouble)param_2[1]) *
@@ -109,6 +130,8 @@ longdouble func_0012E9B0(float *param_1)
   return (longdouble)param_1[1] * (longdouble)param_1[1] +
          (longdouble)*param_1 * (longdouble)*param_1;
 }
+
+longdouble _func_0012E9D0(float *p){return (longdouble)p[2]*p[2]+(longdouble)p[1]*p[1]+(longdouble)p[0]*p[0];}
 
 void _func_0012EC80(float *p, float x) { p[0] *= x; p[1] *= x; }
 
