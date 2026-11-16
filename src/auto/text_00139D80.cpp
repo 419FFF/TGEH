@@ -93,7 +93,7 @@ void func_0013AC20(int param_1, undefined4 param_2)
   return;
 }
 
-void func_0013AC30(int p, unsigned int bits) { *(unsigned int *)(p+0x70)=bits; if (*(char *)(p+0x1c)==0) *(unsigned int *)(p+0x10)|=0x80; }
+void func_0013AC30(void *p, float value) { double promoted=value; *(float *)((char *)p+0x70)=(float)promoted; if (!*((char *)p+0x1c)) *(int *)((char *)p+0x10)|=0x80; }
 
 void _func_0013AC50(char *param_1, float param_2)
 {
