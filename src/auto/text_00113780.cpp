@@ -2,6 +2,8 @@
 #include "common.h"
 #include "ghidra.h"
 
+int func_001137C0(int *p) { int x=++p[0]; return x*0x110 + p[1] - 0x110; }
+
 void func_001137E0(int param_1, undefined4 *param_2)
 {
   char cVar1;
