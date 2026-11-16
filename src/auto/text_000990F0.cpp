@@ -17,6 +17,13 @@ void func_00099DA0(int a,int b,int c,int d)
  if(x){*(int*)(x+0x74)=a;*(int*)(x+0x78)=b;*(int*)(x+0x7c)=c;*(int*)(x+0x80)=d;}
 }
 
+void func_00099DD0(int a,int b,int c,int d)
+{
+ extern int D_00307CB0;
+ register int x=D_00307CB0;
+ if(x){*(int*)(x+0x84)=a;*(int*)(x+0x88)=b;*(int*)(x+0x8c)=c;*(int*)(x+0x90)=d;}
+}
+
 void func_00099E10(undefined4 param_1)
 {
   extern undefined4 D_00307CB0;
