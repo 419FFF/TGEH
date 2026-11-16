@@ -4,7 +4,7 @@
 
 void _func_00102A20(int p) { int func_00110060(...); int func_001105E0(...); __declspec(align(16)) unsigned char b[0x5c]; int obj=*(int*)(p+0xb8); if(obj){func_00110060(obj,b+0x10); *(int*)(b+0x48)=*(int*)(p+0xe4); *(int*)(b+0x50)=*(int*)(p+0xe8); *(int*)(b+0x5c)=*(int*)(p+0xec); func_001105E0(obj,b+0x1c,0);} }
 
-void _func_00102C50(int p) { int func_00131230(...); extern int D_00324D2C; extern float D_001DE730,D_001D27B0; int edx=*(int*)(p+0xe0); int ecx=*(int*)(p+0x78); int n=D_00324D2C-edx; float t=func_00131230((float)n * *(float*)(ecx+0x7c) * D_001DE730); float r=t**(float*)(ecx+0x84)+D_001D27B0; *(float*)(p+0xac)=r; r=t**(float*)(ecx+0x80)+D_001D27B0; *(float*)(p+0x9c)=r; }
+void _func_00102C50(int p) { int func_00131230(...); extern int D_00324D2C; extern float D_001DE730,D_001D27B0; int edx=*(int*)(p+0xe0); int ecx=*(int*)(p+0x78); int delta=D_00324D2C-edx; float t=func_00131230((float)delta * *(float*)(ecx+0x7c) * D_001DE730); *(float*)(p+0x9c)=t**(float*)(ecx+0x80)+D_001D27B0; *(float*)(p+0xac)=t**(float*)(ecx+0x84)+D_001D27B0; }
 
 void _func_00102DB0(int p,char flag) { extern char D_001E5EC9; int func_00128C50(...); int func_00128BE0(...); if(!D_001E5EC9)return; int obj=*(int*)(p+0xb8); if(!obj)return; unsigned short v=*(unsigned short*)(p+0xb6); unsigned char dl=(unsigned char)v; dl>>=5; if(dl&1)return; unsigned char al=(unsigned char)v; al>>=4; if(al&1)return; if(!*(unsigned char*)(p+0xb4))return; int state; if(flag)state=func_00128C50(obj); else state=func_00128C50(obj); if(flag){if(state==2)func_00128BE0(obj,1);}else if(state==1)func_00128BE0(obj,0); }
 
@@ -41,6 +41,8 @@ void func_00103180(int param_1, undefined4 param_2)
 }
 
 void _func_001031A0(void *p,int value) { extern char _D_001E5EC9; if(_D_001E5EC9 && p) *(int*)((char*)p+0x94)=value; }
+
+void _func_001032A0(void) { extern int D_00324EA8,D_00324EA0,D_00324E9C,D_00324E98,D_00324BEC,D_00324BCC,D_00324BF4,D_00324BDC; D_00324EA8=0; D_00324EA0=0; D_00324E9C=0; D_00324E98=0; D_00324BEC=0; D_00324BCC=0; D_00324BF4=0; D_00324BDC=0; }
 
 extern int D_00308158;
 extern unsigned char D_001E5EC9;
