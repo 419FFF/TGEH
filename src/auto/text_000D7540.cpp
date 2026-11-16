@@ -7,6 +7,10 @@ extern int D_0031E508;
 extern unsigned char D_001E53A8[];
 void func_000D7870(signed char *p){if(p){int i=(((p[1]+p[0]*6)*0x10+p[2])*0xc+p[3])*0xc;*(int*)(D_0031E508+i+4)=0;*(int*)(p+8)=1;}}
 
+int func_000D79D0(signed char *p,signed char *q,int val){int i=(((p[1]+p[0]*6)*0x10+p[2])*0xc+p[3])*0xc;int *table=(int*)D_0031E508;if(table[i/4+1]==val)table[i/4+1]=0;if(q[0]==1&&q[1]==5&&q[3]==11&&q[2]>=9&&q[2]<=10){*table=1;return 1;}i=(((q[1]+q[0]*6)*0x10+q[2])*0xc+q[3])*0xc;*(int*)(D_0031E508+i+4)=val;return 0;}
+
+void func_000D7C70(void){extern void func_000688D0(...); extern void func_000D7540(...); int *s=(int*)D_0031E508; char b=D_001E53A8[(signed char)s[0xd805/4]*4+(signed char)s[0xd804/4]]; int a[4]={0x44200000,0x43f00000,0x43a00000,0x43700000};func_000688D0();func_000D7540((char*)s+0xdaa4+b*0x14,&a[2],a,1,0,0);}
+
 unsigned char func_000D7FE0(int *p,int *q){int *x=&D_001E54E8;if(q[1]!=20){while(*x!=-1){if(*x++==q[1])goto done;}if(*p==0)return 1;}done:return 0;}
 
 void func_000D8370(void)
@@ -49,3 +53,14 @@ void func_000D83B0(void)
   }
   return;
 }
+
+void func_000D83C0(unsigned int *p)
+{
+ int func_000D72B0(...),func_000D79D0(...);
+ if(p[2]==4) func_000D72B0(p,p+1,0xffffffff,0);
+ else if(p[2]==5) func_000D72B0(p,p+1,1,0);
+ func_000D79D0(p,p+1,1);
+ p[0]=p[1];
+ p[2]=2;
+}
+
