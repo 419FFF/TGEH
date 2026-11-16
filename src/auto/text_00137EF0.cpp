@@ -11,3 +11,6 @@ bool func_00138480(void)
 int func_001387C0(void) {
     return -1;
 }
+
+int _func_001387D0(int unused, int *a, int *b){extern int _D_00332ABC;*a=(int)&_D_00332ABC;*b=4;return 0;}
+
