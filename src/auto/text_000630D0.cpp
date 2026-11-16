@@ -94,7 +94,7 @@ float _func_00063490(void *self, void *a, void *b) { return 0; }
 
 void _func_00063530(float value) { }
 
-void _func_00063780(int p){int _func_00116A90(...),_func_00068920(...),_func_00068AC0(...),_func_0012EAE0(...);extern int _D_002F7308;extern char _D_002EF508,_D_002EF5FC;int *o=(int*)_func_00116A90(0x40,1,1);_func_00068920(p);o[14]=0x3f800000;o[15]=0x3f800000;int *b=o+5;int z=0;o[0]=p;o[9]=z;o[10]=z;o[11]=0x44160000;o[12]=0x40a00000;o[13]=z;_func_00068AC0(p,z,o+1,b);_func_0012EAE0(b);*(int**)((char*)&_D_002EF508+_D_002F7308*0x1f8)=o;*(int*)((char*)&_D_002EF5FC+_D_002F7308*0x1f8)=z;_D_002F7308++;}
+void _func_00063780(int p){int _func_00116A90(...),_func_00068920(...),_func_00068AC0(...);float _func_0012EAE0(...);extern int _D_002F7308;extern char _D_002EF508,_D_002EF5FC;int *o=(int*)_func_00116A90(0x40,1,1);_func_00068920(p);o[14]=0x3f800000;o[15]=0x3f800000;int *b=o+5;int z=0;o[0]=p;o[9]=z;o[10]=z;o[11]=0x44160000;o[12]=0x40a00000;o[13]=z;_func_00068AC0(p,z,o+1,b);(void)_func_0012EAE0(b);*(int**)((char*)&_D_002EF508+_D_002F7308*0x1f8)=o;*(int*)((char*)&_D_002EF5FC+_D_002F7308*0x1f8)=z;_D_002F7308++;}
 
 void _func_00063810(void){extern int _D_002F7310,_D_002F730C,_D_002EF508,_D_002EF4E4,_D_002EF4F4,_D_00313B60;int _func_000635B0(...),_func_0005D480(...),_func_001105E0(...),_func_00066290(...),_func_00064210(...);char local[76];if(_D_002F7310!=-1){_D_002F730C=_D_002F7310;_D_002F7310=-1;}int i=_D_002F730C;int *o=*(int**)((char*)&_D_002EF508+i*0x1f8);if(o[13]==0)_func_000635B0(o);_func_0005D480(local,&_D_002EF4E4,&_D_002EF4F4);_func_001105E0(_D_00313B60,local,1);_func_00066290(**(int**)o);_func_00064210(**(int**)o);}
 
