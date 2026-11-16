@@ -262,6 +262,12 @@ unsigned char _func_000FB620(void *unused, int *p)
     return 1;
 }
 
+unsigned char _func_000FB640(void *unused, int p)
+{
+    _func_00061570(**(int **)(p + 4), **(int **)(p + 0xc), **(int **)(p + 0x14));
+    return 1;
+}
+
 extern void* D_00324B68;
 
 struct D_00324B68_struct {
