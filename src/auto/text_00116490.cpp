@@ -19,6 +19,15 @@ void _func_001165E0(void *p)
     }
 }
 
+void _func_00116610(void *p)
+{
+    void *q = *(void **)((char *)*(void **)((char *)p + 4) + 8);
+    if (*(int *)((char *)q + 0x10) != 0) {
+        *(float *)((char *)q + 0x20) = _func_001161D0(q, 0);
+        *(int *)((char *)q + 0x10) = 0;
+    }
+}
+
 void func_00116820(void)
 {
   int func_0013B1E0(...);
