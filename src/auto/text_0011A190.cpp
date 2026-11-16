@@ -69,7 +69,13 @@ void func_0011A450(int param_1)
 
 void func_0011A4A0(int a, int *b) { int n=func_0013E9DB(*b); float *p=(float *)(a+n*12); p[0]=func_0013E9E0(b[1]); p[1]=func_0013E9E0(b[2]); p[2]=func_0013E9E0(b[3]); }
 
+int func_0011A4F0(int a, int b, int c) { int p=func_0010F750(a,D_003268B0,0x140); if(c==1) *(int *)(p+0xe0)=func_0011BF40(b,0); else if(c==2) *(int *)(p+0xe0)=func_0011BF40(b,1); else if(c==3) { *(char *)(p+0x21)|=0x40; *(int *)(p+0xe0)=func_0011B820(b); } return p; }
+
+void _func_0011A570(int p) { int _func_0011BAE0(...); int _func_0011B990(...); if (*(unsigned char *)(p+0x21)&0x40) _func_0011BAE0(*(int *)(p+0xe0)); else _func_0011B990(*(int *)(p+0xe0)); }
+
 void func_0011A5A0(volatile unsigned char *p) { int func_0011BB00(...); func_0011BB00(*(int *)((char *)p+0xe0)); p[0x21] |= 0x40; }
+
+void _func_0011A5C0(int p, undefined4 a) { int _func_0011BC10(...); _func_0011BC10(*(undefined4 *)(p+0xe0),a); *(unsigned char *)(p+0x21) |= 0x40; }
 
 void func_0011AF30(int param_1, undefined4 param_2)
 {
