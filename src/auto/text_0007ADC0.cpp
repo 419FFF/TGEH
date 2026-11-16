@@ -2,6 +2,20 @@
 #include "common.h"
 #include "ghidra.h"
 
+void func_0007B080(int param_1) {
+ int func_00110060(...); extern int D_002FA6D0;
+ float func_00131760(void); extern float D_001D27EC,D_001D3E00,D_001D65B4;
+ int iVar1=*(int*)(*(int*)(param_1+0x50)+0x2c);
+ __declspec(align(16)) struct { float first; char pad[4]; float second; char rest[48]; } local;
+ func_00110060(*(int*)(D_002FA6D0+0x2c),&local.first);
+ int i=0; do {
+ float v=func_00131760();
+ *(float*)(*(int*)(iVar1+0xc)+i)=((v-D_001D27EC)*D_001D3E00+local.first)*D_001D65B4;
+ v=func_00131760(); i+=0xc;
+ *(float*)(*(int*)(iVar1+0xc)+i-4)=((v-D_001D27EC)*D_001D3E00+local.second)*D_001D65B4;
+ } while(i<0x3c);
+}
+
 void func_0007B110(void)
 {
   int func_0011D000(...);
@@ -105,5 +119,21 @@ void func_0007BA90(void)
     uVar1 = uVar1 + 0x18;
   } while (uVar1 < 0x30);
   return;
+}
+
+void* func_0007BAC0(void* param_1,void* param_2) {
+ extern int _D_002FA6F4[],_D_002FA6E4[],_D_002FA6E8[],_D_002FA6F8[],_D_0030809C;
+ int _func_00110420(...); void _func_0012F120(...); void _func_001105E0(...);
+ void _func_00110000(...); void _func_00110550(...); void _func_0011DED0(...);
+ char local[72]; int i=0;
+ while(i<2 && _D_002FA6F4[i*6]) ++i;
+ if(i>=2) return 0;
+ int* p=&_D_002FA6E4[i*6];
+ _func_00110420(_D_0030809C,p[0]); _func_0012F120(local);
+ _func_001105E0(p[0],local,0); _func_00110000(p[0]);
+ _func_00110550(param_1,p[0],8); _func_00110000(p[0]);
+ _func_0011DED0(_D_002FA6E8[i*6]);
+ _D_002FA6F4[i*6]=1; _D_002FA6F8[i*6]=(int)param_2;
+ return p;
 }
 
