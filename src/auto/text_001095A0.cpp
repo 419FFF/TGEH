@@ -4,7 +4,7 @@
 
 void _func_001095A0(void) { int func_001160B0(...); int func_0011D0E0(...); int func_00110760(...); extern unsigned int D_003252A8; extern unsigned int D_00325228[]; extern unsigned int D_00325268[]; unsigned int i=0; if(D_003252A8>0) do { func_001160B0(D_00325228[i]); func_0011D0E0(*(unsigned int*)((char*)D_00325268[i]+0x38)); func_00110760(D_00325268[i]); i++; } while(i<D_003252A8); D_003252A8=0; }
 
-void _func_00109600(void) { }
+void _func_00109600(void) { extern unsigned int D_003252C4,D_003252B8,D_003252B4,D_003252C8,D_003252C0; extern int D_001DEBA4; int func_000688D0(...); int func_0011BF40(...); D_003252C4=0; D_003252B8=1065353216; D_003252B4=1065353216; D_003252C8=0; func_000688D0(); D_003252C0=func_0011BF40(&D_001DEBA4,0); func_000688D0(); }
 
 void func_00109650(void)
 {
@@ -22,11 +22,32 @@ extern undefined4 D_003252B8;
 extern undefined4 D_003252B4;
 extern undefined4 D_003252C8;
 extern undefined4 D_001DEBA4;
-void _func_00109670(void) { }
+#pragma optimize("y", on)
+void _func_00109670(unsigned int a, unsigned int b) { int func_0013F2E9(...); extern int D_001D4D38; extern unsigned int D_003252BC,D_003252B8,D_003252B4,D_001E3A48,D_00307DB4; if(func_0013F2E9(a,&D_001D4D38)==0){ D_003252BC=0; D_003252B4=b; D_001E3A48=D_00307DB4; D_003252B8=0x3f800000; } }
 
 #pragma optimize("y", on)
+void _func_001096B0(unsigned int a, unsigned int b) { int func_0013F2E9(...); extern int D_001D4D38; extern unsigned int D_003252BC,D_003252B8,D_003252B4,D_001E3A48,D_00307DB4; if(func_0013F2E9(a,&D_001D4D38)) return; D_003252BC=0; D_003252B8=0xbf800000; D_003252B4=b; D_001E3A48=D_00307DB4; }
+#pragma optimize("", on)
+
+unsigned int _func_001096F0(void) { extern double D_003252C4,D_001D27B8,D_001D27B0; if(D_003252C4==D_001D27B8)return 0; if(D_003252C4==D_001D27B0)return 2; return 1; }
+
+#pragma optimize("y", on)
+void _func_001099A0(void) { extern unsigned int D_00313A70,D_00332730; int func_000B0730(...); int func_000B09A0(...); unsigned int x[27]={0}; x[4]=2;x[5]=2;x[6]=1;D_00313A70=1;x[1]=0x280;x[2]=0x1e0;x[3]=0x20;x[7]=0x2800000;x[8]=30000;x[9]=0x20;x[16]=0x400000;x[12]=8;D_00332730=0;func_000B0730(x);for(;;)func_000B09A0(); }
+
+void __stdcall func_00109A27(unsigned int a,unsigned int b) { extern unsigned int D_001E3604,D_001E3608; int __stdcall _func_0010A6EB(unsigned int,unsigned int,int,int); unsigned int* p=&D_001E3604; while(p<&D_001E3608) { if(*p) { ((void (__cdecl *)(unsigned int,unsigned int,int,int))*p)(a,b,1,0); return; } p++; } _func_0010A6EB(a,b,0,0); }
+
+unsigned int _func_00109B91(void) { unsigned int a=0,b=0; int _ExQueryNonVolatileSetting(...); int r=_ExQueryNonVolatileSetting(7,&a,&b,4,0); if(r<0)return 0; if(a>9)return 1; return 0; }
+
+int __stdcall func_00109BBE(int a,int b,int c,int d) { int __stdcall NtCreateEvent(...); int __stdcall f(int,int*,int*); int x=0,y=0,z=0; if(d) z=f(d,&x,&y); int r=NtCreateEvent(&d,z,b==0,c,0); return r<0?0:d; }
+
+int __stdcall func_00109C1F(int a) { extern int __declspec(dllimport) __stdcall NtSetEvent(int,int); int __stdcall func_0010AAD1(int); int r=NtSetEvent(a,0); if(r<0) { func_0010AAD1(r); return 0; } else { return 1; } }
+
+#pragma optimize("", on)
 extern "C" __declspec(dllimport) int __stdcall NtClearEvent(int);
+#pragma optimize("y", on)
 int __stdcall func_00109C3F(int event) { int result=NtClearEvent(event); if(result>=0) return 1; extern int __stdcall func_0010AAD1(int); func_0010AAD1(result); return 0; }
+#pragma optimize("", on)
+int __stdcall func_00109CA1(int a,int b) { int _func_0010AB75(...); int __stdcall KeDelayExecutionThread(...); int x=a,y=a; int r=(int)_func_0010AB75(a,&x); if(!r){x &= r; y=0x80000000;} do { r=KeDelayExecutionThread(1,a,b,&x); } while(b && r==0x101); if(r==0xc0)return 0xc0; else return 0; }
 
 extern void __stdcall _func_00109C5D(int, int, int);
 void __stdcall func_00109CF3(int a0, int a1)
@@ -42,4 +63,32 @@ void __stdcall func_00109D05(int a0)
   func_00109CA1(value, 0);
 }
 
+extern "C" __declspec(dllimport) int __stdcall RtlInitAnsiString(void*, const char*);
+extern "C" __declspec(dllimport) int __stdcall NtOpenFile(int*, unsigned int, void*, void*, unsigned int, unsigned int);
+extern "C" __declspec(dllimport) int __stdcall NtQueryVolumeInformationFile(int, void*, void*, unsigned int, unsigned int);
+extern "C" __declspec(dllimport) int __stdcall NtClose(int);
+int __stdcall func_0010A157(int path) { int __stdcall func_0010AAD1(int); int func_0010AA7B(void); int __stdcall func_0010AAA3(int); char name[8]; int iosb[2]; int oa[8]; char info[16]; int r; RtlInitAnsiString(name,(const char*)path); oa[1]=(int)name;oa[0]=-3;oa[2]=0x40; r=NtOpenFile(&path,0x100001,oa,iosb,3,0x800021); if(r<0){func_0010AAD1(r);if(func_0010AA7B()==2)func_0010AAA3(3);return 0;} r=NtQueryVolumeInformationFile(path,iosb,info,0x18,3);NtClose(path);if(r<0){func_0010AAD1(r);return 0;}return *(int*)(info+8)**(int*)(info+4); }
+
+int _func_0010A1F6(void) { extern void _func_0010B733(void);extern void _func_0010B1BB(void);extern void _func_0010B6A6(void);extern void _func_0010B64E(void);extern void _func_001099A0(int,int,int);extern int __stdcall _func_0010B145(int,int,int);extern unsigned int D_003252D4; extern char* __stdcall NtCurrentTeb(void);_func_0010B733();_func_0010B1BB();char* t=NtCurrentTeb();char*p=*(char**)(*(int*)(t+0x20)+0x250);char*q=p?*(char**)(p+0x24):0;if(q){int d=*(int*)(*(int*)(t+4)+D_003252D4*4)-*(int*)(t+0x50);*q=1;*(int*)(q+4)=d+8;}_func_0010B6A6();_func_0010B64E();_func_001099A0(0,0,0);_func_0010B145(1,1,0);return 0;}
+
+void _func_0010A26A(void) {
+ extern int *D_00010118; extern int D_00010108,D_00010000,D_001DEF50,D_001DEF40,D_001DEF44,D_0037C07C; extern int *D_001DEF48;
+ extern int _func_0010A1F6(void); extern int __stdcall _func_0010BA25(int,int,int,void*,int,int); extern int __stdcall _func_0010B145(int,int,int); extern int __stdcall _func_0010B7F8(int);
+ int *p=D_00010118; int a=D_00010108-(int)p+(int)&D_00010000; if(a<*p)*p=a;
+ int n=(((D_001DEF50-D_001DEF40)+D_001DEF44+15)&0xfffffff0)+4; D_0037C07C=n; *D_001DEF48=n/-4;
+ int zero=0; int r=_func_0010BA25(zero,zero,zero,_func_0010A1F6,zero,zero); if(!r)_func_0010B145(1,1,zero); _func_0010B7F8(r);
+}
+
+int __stdcall func_0010A3F2(int *result,int *status,int *buffer) {
+ extern int* __declspec(dllimport) LaunchDataPage;
+ int *p=0; int active=0; *status=-1; *result=0;
+ if(LaunchDataPage && (p=(int*)*LaunchDataPage)!=0) {
+  if((*((unsigned char*)p+0x214)&1)){*status=p[0x86];*result=(int)&p[0x87];active=1;}
+  else *status=*p;
+ }
+ if(*status!=-1){int *src=p?(int*)((char*)p+0x400):status;int i;for(i=0;i<0x300;i++)buffer[i]=src[i];}
+ return active;
+}
+
 #pragma optimize("", on)
+extern "C" __declspec(dllimport) int *LaunchDataPage;
