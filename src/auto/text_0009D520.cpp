@@ -51,6 +51,7 @@ void _func_000F4390(...);
 extern char _D_001D7474, _D_001D7424, _D_001D7468;
 void _func_0009DF20(int p, int a)
 {
+    int spare;
     int x[4];
     int y[4];
     int *q=(int*)_func_0009C7A0(p,&_D_001D7474,0);
@@ -82,16 +83,17 @@ int _func_00081A90(...);
 extern char _D_001D7474;
 int _func_0009E050(int p, int a)
 {
+    int values[4];
     int *x=(int*)_func_0009C7A0(p,&_D_001D7474,0);
-    int v0=x[0];
+    values[0]=x[0];
     x=(int*)_func_0009C7A0(p,&_D_001D7474,0);
-    int v1=x[1];
+    values[1]=x[1];
     x=(int*)_func_0009C7A0(p,&_D_001D7474,0);
-    int v2=x[2];
-    int v3=0;
+    values[2]=x[2];
+    values[3]=0;
     int *q=(int*)_func_0009DD00(p);
-    int *other=(int*)(*(int*)(*(int*)(p+0x2c)+0x2c));
-    _func_00081A90(p,*(int*)((char*)q+0x2c),*(int*)(a+0x2c),&v0);
+    int *other=*(int**)(*(int*)(p+0x2c)+0x2c);
+    _func_00081A90(p,*(int*)((char*)q+0x2c),*(int*)(a+0x2c),values);
     return (int)q;
 }
 
