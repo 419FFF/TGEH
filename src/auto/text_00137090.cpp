@@ -52,7 +52,7 @@ void func_00137A90(int a0, int a1) {
     func_0014DC90(9, a0, a1, 0, 1065353216);
 }
 
-void func_00137AB0(void){extern unsigned char D_00332734;extern int D_00332740,D_0033273C,D_00332738,D_00332744,D_003323A0,D_003326D0,D_003321C0;void __stdcall func_0014DC90(int,int,int,int,int);void func_0014DD80(void);void __stdcall func_0014ADB0(int,int);if(!D_00332734)func_0014DC90(-1,D_00332738,D_0033273C,D_00332740,0x3f800000);else D_00332734=0;func_0014DD80();if(D_00332744>5){func_0014ADB0(0,(int)&D_003323A0);func_0014ADB0(6,(int)&D_003326D0);func_0014ADB0(1,(int)&D_003321C0);}}
+void func_00137AB0(void){extern unsigned char D_00332734;extern int D_00332740,D_0033273C,D_00332738,D_00332744,D_003323A0,D_003326D0,D_003321C0;void __stdcall func_0014DC90(int,int,int,int,int);void func_0014DD80(void);void __stdcall func_0014ADB0(int,int);if(!D_00332734)func_0014DC90(-1,D_00332738,D_0033273C,D_00332740,0x3f800000);else D_00332734=0;func_0014DD80();if(D_00332744>=5){func_0014ADB0(0,(int)&D_003323A0);func_0014ADB0(6,(int)&D_003326D0);func_0014ADB0(1,(int)&D_003321C0);}}
 
 undefined * func_00137C30(int param_1)
 {
