@@ -26,16 +26,37 @@ void func_001103D0(void)
  D_00326134++;
 }
 
-void func_00110420(int a,int b)
+void func_00110420(int param_1, int param_2)
 {
- int func_0010FC60(...);int func_0010F7F0(...);int *bucket;int *node;int n=4;
- func_0010FC60(a);func_0010FC60(b);bucket=(int *)(a+0x28);
- do {node=(int *)*bucket;while(node){int *next=(int *)node[3];if(node[0]==b)func_0010F7F0(a,node);node=next;}bucket++;n--;}while(n);
+  int func_0010FC60(...);
+  int func_0010F7F0(...);
+  int *piVar1;
+  int *piVar2;
+  undefined4 *puVar3;
+  int local_4;
+  
+  func_0010FC60(param_1);
+  func_0010FC60(param_2);
+  puVar3 = (undefined4 *)(param_1 + 0x28);
+  local_4 = 4;
+  do {
+    piVar1 = (int *)*puVar3;
+    while (piVar2 = piVar1, piVar2 != (int *)0x0) {
+      piVar1 = (int *)piVar2[3];
+      if (*piVar2 == param_2) {
+        func_0010F7F0(param_1,piVar2);
+      }
+    }
+    puVar3 = puVar3 + 1;
+    local_4 = local_4 + -1;
+  } while (local_4 != 0);
+  return;
 }
 
 void *memcpy(void *dst,const void *src,unsigned int n);
-#pragma intrinsic(memcpy)
-void func_00110480(int a,int b,int c){int func_0010FC60(...);int func_0012F4C0(...);extern int D_00329238;int func_0010F970(...);int func_0010F930(...);unsigned char local[0x40];unsigned char local2[0x40];func_0010FC60(b);func_0010FC60(a);unsigned x=*(unsigned char *)(a+0x23),y=*(unsigned char *)(b+0x23);func_0012F4C0(local2,(y+1)*64+b,(x+1)*64+a);if(*(int *)(b+0xd4)==D_00329238)y=1-y;if(*(int *)(a+0xd4)==D_00329238)x=1-x;func_0012F4C0(local,(y+1)*64+b,(x+1)*64+a);func_0010F970(a,b,0,c,1,c,local2,local);*(unsigned char *)(b+0x20)|=2;func_0010F930(b);}
+typedef struct { unsigned char pad[0x20]; unsigned char bit0:1; unsigned char bit1:1; } S_00110480_flags;
+void func_00110480(int a,int b,int c){int func_0010FC60(...);int func_0012F4C0(...);extern int D_00329238;int func_0010F970(...);int func_0010F930(...);__declspec(align(16)) unsigned char local[0x40];__declspec(align(16)) unsigned char local2[0x40];unsigned char pad[4];func_0010FC60(b);func_0010FC60(a);unsigned x=*(unsigned char *)(a+0x23),y=*(unsigned char *)(b+0x23);func_0012F4C0(local2,(y+1)*64+b,(x+1)*64+a);if(*(int *)(b+0xd4)==D_00329238)y=1-y;if(*(int *)(a+0xd4)==D_00329238)x=1-x;func_0012F4C0(local,(y+1)*64+b,(x+1)*64+a);func_0010F970(a,b,0,c,1,c,local2,local);*(volatile unsigned char *)(b+0x20)|=2;func_0010F930(b);}
+#pragma optimize("", on)
 void func_00110760(int param_1)
 {
   int func_00110420(...);
