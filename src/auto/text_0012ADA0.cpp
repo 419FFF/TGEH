@@ -80,4 +80,8 @@ void func_0012BCF0(int param_1)
   *(byte *)(param_1 + 2) = *(byte *)(param_1 + 2) | 2;
   return;
 }
-
+extern float _D_001DF724;
+extern float _D_001D557C;
+float _func_00131230(float);
+float _func_00131210(float);
+int _func_0013E3F4(void);
