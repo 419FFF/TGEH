@@ -67,6 +67,8 @@ void func_0011A450(int param_1)
   return;
 }
 
+void func_0011A4A0(int a, int *b) { int n=func_0013E9DB(*b); float *p=(float *)(a+n*12); p[0]=func_0013E9E0(b[1]); p[1]=func_0013E9E0(b[2]); p[2]=func_0013E9E0(b[3]); }
+
 void func_0011A5A0(volatile unsigned char *p) { int func_0011BB00(...); func_0011BB00(*(int *)((char *)p+0xe0)); p[0x21] |= 0x40; }
 
 void func_0011AF30(int param_1, undefined4 param_2)
