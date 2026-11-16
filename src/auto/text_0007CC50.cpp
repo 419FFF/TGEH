@@ -3,9 +3,9 @@
 #include "ghidra.h"
 
 void func_0007CE20(int param_1) {
-    extern void func_0011E3D0(...);
-    extern void func_000E8390(...);
-    extern void func_0011CFC0(...);
+    extern void func_0011E3D0(int);
+    extern void func_000E8390(void);
+    extern void func_0011CFC0(int, int);
     func_0011E3D0(param_1);
     func_000E8390();
     func_0011CFC0(param_1 + 0x54, 0);
@@ -73,13 +73,13 @@ void func_0007CF70(void) {
     extern float D_001D2888;
     extern unsigned char D_00308151;
     extern int D_002FAC8C, D_002FAC90;
-    extern int func_00110060(...), func_001105E0(...), func_00110000(...), func_0005A750(...);
-    unsigned char local_50[52];
-    float local_1c;
+    extern int func_00110060(int, void*), func_001105E0(int, void*, int), func_00110000(int), func_0005A750(void);
+    volatile unsigned char local_50[52];
+    volatile float local_1c;
     int esi = *(int *)(D_00307DF8 + 0x2c);
-    func_00110060(esi, local_50);
+    func_00110060(esi, (void*)local_50);
     local_1c -= D_001D2888;
-    func_001105E0(esi, &local_50[12], 0);
+    func_001105E0(esi, (void*)&local_50[12], 0);
     func_00110000(esi);
     D_002FAC8C = 0; D_002FAC90 = 0;
     if (!D_00308151) func_0005A750();
@@ -106,15 +106,14 @@ void func_0007D540(int param_1, float param_2, float param_3)
   extern float D_002FAC98[];
   extern float D_002FAD68[];
   extern int D_002FACD8[];
-  int func_00131760(...);
+  float func_00131760(...);
   int func_0013BB30(...);
-  int i = D_002FADE8;
-  D_002FAD28[i] = param_2;
-  D_002FADA8[i] = param_1;
-  D_002FAC98[i] = param_3;
-  D_002FAD68[i] = (param_2 + param_3) * func_00131760();
-  D_002FACD8[i] = func_0013BB30(0);
-  D_002FADE8 = i + 1;
+  D_002FAD28[D_002FADE8] = param_2;
+  D_002FADA8[D_002FADE8] = param_1;
+  D_002FAC98[D_002FADE8] = param_3;
+  D_002FAD68[D_002FADE8] = (param_2 + param_3) * func_00131760();
+  D_002FACD8[D_002FADE8] = func_0013BB30(0);
+  ++D_002FADE8;
 }
 
 unsigned char func_0007D5B0(int param_1)
