@@ -111,6 +111,8 @@ void func_000FFAE0(void)
     }
 }
 
+int func_00100230(int key){extern int* D_00324BA4;extern int* D_00324BB0;int *p=D_00324BA4;while(p){int *v=(int*)p[2];if(v[3]==key)return (int)v;p=(int*)p[0];}p=D_00324BB0;while(p){int *v=(int*)p[2];if(v[3]==key)return (int)v;p=(int*)p[0];}return 0;}
+
 void func_00100400(undefined4 param_1, undefined2 param_2, undefined2 param_3)
 {
   int func_00116070(...);
