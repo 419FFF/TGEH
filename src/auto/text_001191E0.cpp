@@ -6,6 +6,10 @@ int _func_0013E9DB(int);
 float _func_0013E9E0(int);
 void _func_001191E0(int a, int *b) { if (*(int *)(a + 0xb0)) { *(float *)(*(int *)(a + 0xb0)+0x34) = _func_0013E9E0(b[0]); *(float *)(*(int *)(a + 0xb0)+0x38) = _func_0013E9E0(b[1]); *(float *)(*(int *)(a + 0xb0)+0x3c) = _func_0013E9E0(b[2]); *(float *)(*(int *)(a + 0xb0)+0x40) = _func_0013E9E0(b[3]); } }
 
+void _func_00119A80(int a, int *b) { if (*(int *)(a+0xb0)) { unsigned int i=0x18; do { if (b[0]==0) return; if (!_func_0013E9DB(b[0])) *(unsigned int *)(*(int *)(a+0xb0)+i) |= 1; if (!_func_0013E9DB(b[1])) *(unsigned int *)(*(int *)(a+0xb0)+i) |= 2; i+=4; b+=2; } while(i<0x28); } }
+
+void _func_00119B00(int a, int *b) { if (*(int *)(a+0xb0)) { unsigned int i=0; float *p=(float *)(a+0x8c); do { if (!b[i*2]) return; p[-1]=_func_0013E9E0(b[i*2]); p[0]=_func_0013E9E0(b[i*2+1]); ++i; p+=2; } while(i<4); } }
+
 void _func_00119CF0(int a, int *b) { if (_func_0013E9DB(*b)) *(unsigned char *)(a + 0xb6) |= 1; }
 
 void func_00119D10(int param_1, undefined4 *param_2)
