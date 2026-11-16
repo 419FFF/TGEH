@@ -25,3 +25,8 @@ void func_0004CBF0(int param_1)
 {
   *(int *)(param_1 + 0x110) = 2;
 }
+
+void _func_0004CF70(int p) { extern float _func_00131760(void); float v=_func_00131760(); *(float*)(p+0x110)=v; int q=*(int*)(p+0x2c); *(unsigned char*)(q+0x20)&=0xfb; }
+
+void __cdecl _func_0004D320(void *obj) { volatile int local[29]; volatile int a=1,b=0,c=0; local[0]=a; local[1]=b; local[2]=c; }
+
