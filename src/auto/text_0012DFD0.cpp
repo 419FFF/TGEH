@@ -109,7 +109,7 @@ longdouble func_0012E8E0(float *param_1, float *param_2)
 
 void func_0012E910(float *p) { void func_00131220(float); func_00131220(p[1]*p[1]+*p**p); }
 
-void _func_0012E940(float *p){int func_00131220(float);func_00131220((float)((longdouble)p[2]*p[2]+(longdouble)p[1]*p[1]+(longdouble)p[0]*p[0]));}
+void _func_0012E940(float *p){int func_00131220(float);func_00131220((float)(p[2]*p[2]+p[1]*p[1]+p[0]*p[0]));}
 
 void _func_0012E970(float *p){int func_00131220(float);func_00131220((float)((longdouble)p[3]*p[3]+(longdouble)p[2]*p[2]+(longdouble)p[1]*p[1]+(longdouble)p[0]*p[0]));}
 
