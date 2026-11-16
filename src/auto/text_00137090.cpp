@@ -21,13 +21,20 @@ void *func_001373A0(void)
  return D_00332298;
 }
 
+extern "C" void *memcpy(void *, const void *, unsigned int);
 unsigned int func_00137870(float a,float b,float c,float d)
 {
  extern float D_001D66D8;
- int x=(int)(a*D_001D66D8), y=(int)(b*D_001D66D8), z=(int)(c*D_001D66D8), w=(int)(d*D_001D66D8);
- return ((x&255)<<24)|((y&255)<<16)|((z&255)<<8)|(w&255);
+ int x=(int)(a*D_001D66D8);
+ int y=(int)(b*D_001D66D8);
+ int z=(int)(c*D_001D66D8);
+ int w=(int)(d*D_001D66D8);
+ return ((x&255)<<24)|((w&255)<<16)|((y&255)<<8)|(z&255);
 }
 
+void func_00137A20(void){extern unsigned char D_00332734;extern int D_00332740,D_0033273C,D_00332738;void __stdcall func_0014DC90(int,int,int,int,int);if(!D_00332734)func_0014DC90(-1,D_00332738,D_0033273C,D_00332740,0x3f800000);else D_00332734=0;}
+
+#pragma optimize("", on)
 void func_00137A60(int a0) {
     int __stdcall func_0014DCF0(int, int);
     func_0014DCF0(3, a0);
@@ -55,5 +62,12 @@ undefined4 func_00137C40(int param_1)
 {
   extern undefined D_00332A88;
   return *(undefined4 *)(((undefined *)&D_00332A88) + param_1 * 4);
+}
+
+void *memcpy(void *, const void *, unsigned int);
+void __movsd(unsigned int *, const unsigned int *, unsigned int);
+void func_00137D20(unsigned int *dst, const unsigned int *src)
+{
+  __movsd(dst,src,9);
 }
 
