@@ -50,6 +50,12 @@ void func_001286B0(int a0, int a1) {
     func_0013A000(a1);
 }
 
+int func_001286C0(int p) { int func_0010F750(...),func_0011C3B0(...); extern int D_00331ADC,D_00331AE0; int x=func_0010F750(p,D_00331ADC,0x120); *(int *)(x+0xf0)=0; *(int *)(x+0x100)=0x3f800000; *(int *)(x+0x104)=-1; func_0011C3B0(&D_00331AE0,x+0xe0,x); return x; }
+
+void func_00128710(int base,int idx,unsigned int *d) { int func_0011BF40(...),func_0011BDD0(...),func_00148AE0(...); int v=func_0011BF40(d[0],0); int p=base+idx*20; *(int *)(p+0xec)=v; *(int *)(p+0xf8)=d[2]; *(int *)(p+0xfc)=d[3]; *(int *)(p+0xf4)=d[1]; int x=func_0011BDD0(v,0); if(x) *(int *)(base+0x104)=func_00148AE0(x); --*(short *)(*(int *)(p+0xec)+0x2a); }
+
+void func_00128780(int base,int idx,unsigned int *d) { int func_0011B820(...); int p=base+idx*20; *(int *)(p+0xec)=func_0011B820(d[0]); *(int *)(p+0xf8)=d[2]; *(int *)(p+0xfc)=d[3]; *(int *)(p+0xf4)=d[1]; *(unsigned char *)(base+0x21)|=0x40; }
+
 void func_00128830(int a0) {
     extern int D_00331B04;
     D_00331B04 = a0;
