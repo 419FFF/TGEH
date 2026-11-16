@@ -306,6 +306,14 @@ LAB_000026f2:
   return;
 }
 
+int func_0006DEA0(void){extern int D_002F9C04;int func_0013F2E9(...);int* p=(int*)D_002F9C04;while(p!=0){int object=p[2];int pointer=*(int*)(object+0xc);int match=func_0013F2E9(pointer,0);if(match==0)return p[0];p=(int*)p[4];}return 0;}
+
+unsigned int func_0006DEE0(void){extern unsigned int D_002F9C10;extern int D_002F8300;int func_0013F2E9(...);unsigned int i=0;while(i<D_002F9C10){int* entry=(int*)(D_002F8300+i*0x40);if(func_0013F2E9(entry,0)==0)break;++i;}return i;}
+
+unsigned int func_0006DF20(void){extern unsigned int D_002F9C10;extern char D_002F8300;int func_0013F2E9(...);unsigned int count=0;while(count<D_002F9C10){if(func_0013F2E9((char*)&D_002F8300+count*0x40,0)==0)break;++count;}return count;}
+
+void func_0006E060(void) { extern int D_002F9C04,D_00313B54,D_002F9C1C,D_002F9C18;int func_0009D280(...),func_0009D3E0(...);int *p=(int*)D_002F9C04;while(p){int idx=(D_00313B54*9-0x1b+*p)*8;int item=p[2];if(p[1]==*(int*)((char*)&D_002F9C1C+idx)&&*(int*)((char*)&D_002F9C18+idx)==1){if(item)func_0009D280(item);}else if(item)func_0009D3E0(item);p=(int*)p[4];}}
+
 void func_0006E0C0(void)
 {
   extern undefined4 D_002F9C04;
@@ -332,9 +340,20 @@ void func_0006E160(int a0, int a1) {
     D_002F9C0C = a1;
 }
 
+void func_0006E240(void) { int func_0006DEA0(...); extern int D_00313B54; extern int D_002F9C18; extern unsigned short D_00310776; int i=func_0006DEA0();int row=D_00313B54-3;*(int*)((char*)&D_002F9C18+(i+row*9)*8)=2;unsigned short mask=(unsigned short)(1<<i);*(unsigned short*)((char*)&D_00310776+row*0x2b4)|=mask;}
+
 void func_0006E280(void){extern int D_002F9C08,D_002F9C0C;int func_0006E180(...);int value=D_002F9C08;if(value!=-1){func_0006E180(value,D_002F9C0C);D_002F9C08=-1;}}
 
 void func_0006E2B0(void) {
     extern int D_002FA004;
     D_002FA004 = 0;
 }
+extern int D_002FA004;
+extern int D_001D46D8;
+extern int D_001D57D4;
+extern int D_001D57C8;
+extern int D_002F9E10;
+extern int D_002F9FA0;
+extern int D_001D30FC;
+extern int D_00325314;
+extern int D_003268B0;
