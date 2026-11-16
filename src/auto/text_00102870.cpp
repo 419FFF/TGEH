@@ -13,6 +13,8 @@ void func_00103180(int param_1, undefined4 param_2)
   return;
 }
 
+void _func_001031A0(void *p,int value) { extern char _D_001E5EC9; if(_D_001E5EC9 && p) *(int*)((char*)p+0x94)=value; }
+
 void func_001033A0(int a0) {
     extern int D_00324EA8;
     D_00324EA8 = a0;
