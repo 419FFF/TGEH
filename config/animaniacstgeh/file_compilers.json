@@ -1,6 +1,8 @@
 {
+  "src/auto/text_00014A30.cpp": "7.0",
   "src/auto/text_00015F30.cpp": "7.0",
   "src/auto/text_00016B70.cpp": "7.0",
+  "src/auto/text_0001E550.cpp": "7.0",
   "src/auto/text_00024910.cpp": "7.0",
   "src/auto/text_00025990.cpp": "7.0",
   "src/auto/text_00028DB0.cpp": "7.0",
@@ -14,9 +16,11 @@
   "src/auto/text_00064F40.cpp": "7.0",
   "src/auto/text_0008C970.cpp": "7.0",
   "src/auto/text_0009FB60.cpp": "7.0",
+  "src/auto/text_000A16A0.cpp": "7.0",
   "src/auto/text_000AA9D0.cpp": "7.0",
   "src/auto/text_000C3BE0.cpp": "7.0",
   "src/auto/text_000DF450.cpp": "7.0",
   "src/auto/text_000E2080.cpp": "7.0",
-  "src/auto/text_00124700.cpp": "7.0"
+  "src/auto/text_00124700.cpp": "7.0",
+  "src/auto/text_0012DFD0.cpp": "7.0"
 }
