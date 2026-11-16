@@ -47,6 +47,8 @@ unsigned int func_000F9CA0(int a,int value){extern int D_00324B84,D_00324B80;int
 
 unsigned int func_000F9D00(int a){extern int D_00324B84,D_00324B80;int func_0011B4F0(...);unsigned int i=0;for(;i<(unsigned int)D_00324B84;i++){if(!func_0011B4F0(D_00324B80+i*0x48,a))return i;}return 0xffff;}
 
+void func_000F9E50(int *a,void *b,int *out){int func_000F9D50(...),func_0009C510(...),func_0009C6A0(...),func_0009C590(...),func_0009C7A0(...);char x[0x80],y[0x80],z[0x80];int v;if(func_000F9D50(a,b,z)){func_0009C510(b,x,y);v=func_0009C6A0(a[3],x);out[0]=v;out[1]=func_0009C7A0(v,b,0);}else{func_0009C510(z,x,y);v=func_0009C590(x);out[0]=v;out[1]=func_0009C7A0(v,y,0);}}
+
 void func_000F9F10(int *param_1, void *param_2, int *param_3)
 {
   extern char func_000F9D50(...);
@@ -209,5 +211,5 @@ void func_000FA640(int param_1, char param_2)
   return;
 }
 
-void func_000FA660(int param_1,char param_2) { extern int D_00324B68; int p=D_00324B68;while(p){int node=*(int*)(p+8);p=*(int*)p;if(node!=param_1){char v=*(char*)(node+0x14);if(param_2)v++;else v--;*(char*)(node+0x14)=v;}}}
+void func_000FA660(int param_1,char param_2) { extern int D_00324B68; int p=D_00324B68;while(p!=0){int node=*(int*)(p+8);int next=*(int*)p;if(node!=param_1){char *field=(char*)(node+0x14);if(param_2)*field=*field+1;else *field=*field-1;}p=next;}}
 
