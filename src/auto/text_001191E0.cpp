@@ -89,3 +89,12 @@ void func_0011A0B0(int *p, unsigned int *v)
  a=func_0013E9E0(v[1]); *(float *)(*(int *)(*p+0x20)+p[0x2b]*8+4)=a;
 }
 
+void func_0011A120(int *p, unsigned int *v)
+{
+ int func_00117100(...); int func_00116A90(...); int func_00117130(...); float func_0013E9E0(...);
+ int x; float a;
+ if (p[0x2b]==0) { func_00117100(); x=func_00116A90(*(int *)(*p+0xc)<<3,1,1); *(int *)(*p+0x24)=x; func_00117130(); }
+ a=func_0013E9E0(v[0]); *(float *)(*(int *)(*p+0x24)+p[0x2b]*8)=a;
+ a=func_0013E9E0(v[1]); *(float *)(*(int *)(*p+0x24)+p[0x2b]*8+4)=a;
+}
+
