@@ -357,3 +357,11 @@ extern int D_002F9FA0;
 extern int D_001D30FC;
 extern int D_00325314;
 extern int D_003268B0;
+
+typedef struct {
+    unsigned char pad[0xC];
+    int val1;
+    unsigned char pad2[0x10];
+    unsigned char pad3[0x10];
+    void* ptr;
+} S_D_0006E2C0_arg0;
