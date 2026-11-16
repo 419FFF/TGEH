@@ -319,6 +319,8 @@ unsigned char func_000FE310(int p) { int func_00063C40(...); int *v=(int *)(p+0x
 
 unsigned char _func_000FE330(int p,int q){int func_00109670(...);func_00109670(**(int**)(q+4),**(int**)(q+0xc));return 1;}
 
+unsigned char _func_000FE350(int p,int q){int func_001096B0(...);int func_001096F0(...);func_001096B0(**(int**)(q+4),**(int**)(q+0xc));return func_001096F0()==2;}
+
 char func_000FE380(void) {
     int func_000B7080(...);
     func_000B7080(21);
