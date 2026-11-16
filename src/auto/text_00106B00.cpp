@@ -11,6 +11,8 @@ void func_001073A0(void) {
     D_003251D0 = 0;
 }
 
+int _func_001073B0(void){extern int D_003251FC,D_003251D0;int _func_00116E50(...);D_003251D0=_func_00116E50(D_003251D0,(D_003251FC*3+3)*16,1,1);D_003251FC++;return D_003251D0+D_003251FC*0x30-0x30;}
+
 void func_001073F0(char *param_1, undefined4 *param_2)
 {
   char cVar1;
