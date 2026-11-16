@@ -111,6 +111,8 @@ void func_001317D0(char *name) { extern int *D_00331B64; extern int func_0011C3E
 
 int *_func_00131850(void *name){extern int *D_00331B64;extern int _func_0013F294(...),_func_001486F0(...),_func_0011C3E0(...),_func_0011C3B0(...);int *p=D_00331B64;int zero=0;if(!p)return 0;do{char *s=(char*)p+0xc;char *t=s;while(*t)t++;int n=(int)(t-(s+1));if(n>=0&&_func_0013F294(name,s,n)==0&&_func_001486F0(p[0x23],name)){_func_0011C3E0(p);_func_0011C3B0(&D_00331B64,p,p);return p;}p=(int*)*p;}while(p);return 0;}
 
+void _func_001318D0(unsigned int a,char*p){int func_0013B1E0(unsigned int);int func_0013E469(void*,int,int);extern int _D_001DED74;int x=func_0013B1E0(a);func_0013E469(p,(int)&_D_001DED74,x);while(*p){char c=*p;if(c=='\\')*p='/';else if(c>='A'&&c<='Z')*p=c+32;p++;}}
+
 void _func_00131990(char *src){extern char *_func_0013B1E0(void);char *dst=_func_0013B1E0();char c;do{c=*src++;*dst++=c;}while(c);}
 
 void _func_001319B0(char *out,unsigned int size){extern char *_func_0013B1E0(void);char *src=_func_0013B1E0();unsigned int n=0;while(src[n])n++;if(size<=n){unsigned int i;for(i=0;i<size-1;i++)out[i]=src[i];out[size-1]=0;}else {int off=(int)out-(int)src;do{char c=*src;src[off]=c;src++;}while(src[-1]);}}
