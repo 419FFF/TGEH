@@ -103,6 +103,11 @@ undefined1 func_000FAE20(undefined4 param_1, int *param_2)
   return 1;
 }
 
+int _func_000FAE80(int a, int b)
+{
+    return a + b;
+}
+
 unsigned char _func_000FB200(undefined4 a, undefined4 *p) { int func_0001CC10(...); func_0001CC10(*p); return (unsigned char)1; }
 
 undefined4 func_000FB220(undefined4 param_1, undefined4 *param_2)
@@ -122,6 +127,13 @@ undefined4 func_000FB220(undefined4 param_1, undefined4 *param_2)
 }
 
 unsigned char _func_000FB300(int a, int *p) { int func_0005D3F0(...); func_0005D3F0(p[1]); return 1; }
+
+undefined4 func_000FB320(undefined4 param_1, int param_2)
+{
+  int func_0005D400(...);
+  func_0005D400(*(undefined4 *)(param_2 + 4),*(undefined4 *)(param_2 + 0xc));
+  return 1;
+}
 
 int _func_0005DA70(...);
 unsigned char _func_000FB340(unsigned int a, unsigned int *p)
@@ -159,3 +171,6 @@ extern float D_00307DBC;
 extern u16 D_0000FFFF;
 extern int func_000A22B0(int, int, int*, int, int, int);
 extern int func_000A2230(int, int*);
+extern int _func_0009C7A0(int, u16, int);
+extern void _func_00131990(void*);
+extern int _func_000A1BB0(int*, u16);
