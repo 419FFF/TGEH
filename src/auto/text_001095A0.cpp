@@ -1,6 +1,7 @@
 /* 31 functions from 0x001095A0 to 0x0010A569, found by Ghidra. */
 #include "common.h"
 #include "ghidra.h"
+extern "C" __declspec(dllimport) int *LaunchDataPage;
 
 void _func_001095A0(void) { int func_001160B0(...); int func_0011D0E0(...); int func_00110760(...); extern unsigned int D_003252A8; extern unsigned int D_00325228[]; extern unsigned int D_00325268[]; unsigned int i=0; if(D_003252A8>0) do { func_001160B0(D_00325228[i]); func_0011D0E0(*(unsigned int*)((char*)D_00325268[i]+0x38)); func_00110760(D_00325268[i]); i++; } while(i<D_003252A8); D_003252A8=0; }
 
