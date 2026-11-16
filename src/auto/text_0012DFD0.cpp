@@ -4,11 +4,23 @@
 
 void _func_0012E280(unsigned int *out, unsigned char *in)
 {
+    unsigned int value;
+
     out[0] = 0;
-    out[2] = *(unsigned int *)(in + 4);
-    out[4] = *(unsigned short *)(in + 14);
-    if (*(unsigned short *)in == 1) out[0] = 1;
-    out[1] = *(unsigned short *)(in + 2);
+    value = in[7];
+    value = (value << 8) | in[6];
+    value = (value << 8) | in[5];
+    value = (value << 8) | in[4];
+    out[2] = value;
+    value = in[15];
+    value = (value << 8) | in[14];
+    out[4] = value;
+    value = in[1];
+    value = (value << 8) | in[0];
+    if (value == 1) out[0] = value;
+    value = in[3];
+    value = (value << 8) | in[2];
+    out[1] = value;
 }
 
 void _func_0012E590(float *a, float *b)
