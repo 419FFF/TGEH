@@ -41,3 +41,11 @@ void func_00058040(int p) {
  int q=*(int*)(p+0x110); func_000487A0(D_00307D10,*(int*)(q+0x68)); func_00116FB0(q); *(int*)(p+0x110)=0;
 }
 
+void func_000584D0(int p) {
+ int func_000A1C00(...),func_00116FB0(...);
+ int s=*(int*)(p+0x110);
+ func_000A1C00(*(int*)(s+0x14)); func_000A1C00(*(int*)(s+0x10));
+ func_000A1C00(*(int*)(s+8)); func_000A1C00(*(int*)(s+0xc));
+ func_00116FB0(s);
+}
+
