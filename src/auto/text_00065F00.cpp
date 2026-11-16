@@ -18,6 +18,21 @@ void func_00065F00(void)
   ++D_002F7738;
 }
 
+void func_00066200(void)
+{
+  extern int D_002F773C, D_002F7748, D_002F7754, D_002F7760;
+  int func_00110300(...);
+  extern int D_00308158;
+  extern char D_001D55DC, D_001D55D4, D_001D55CC, D_001D55C4;
+  extern char D_002F7744, D_002F7774;
+  D_002F773C = func_00110300(*(int *)(D_00308158 + 0x2c), &D_001D55DC, 0);
+  D_002F7748 = func_00110300(*(int *)(D_00308158 + 0x2c), &D_001D55D4, 0);
+  D_002F7754 = func_00110300(*(int *)(D_00308158 + 0x2c), &D_001D55CC, 0);
+  D_002F7760 = func_00110300(*(int *)(D_00308158 + 0x2c), &D_001D55C4, 0);
+  int p = (int)&D_002F7744;
+  do { *(int *)(p - 4) = 0x3f800000; *(char *)p = 0; p += 12; } while (p < (int)&D_002F7774);
+}
+
 void func_000667A0(int a0, int a1, int a2, int a3, int a4) {
     extern int D_002F776C;
     extern int D_002F7770;
