@@ -129,6 +129,7 @@ extern int D_0031B914;
 extern int D_0031B9A0;
 extern int D_0031B9B0;
 extern float D_001D290C;
+
 extern int func_0009C7A0(int, int, int);
 extern void func_000A22B0(int, int, int, int, int, int);
 extern float func_000A2310(int);
@@ -159,3 +160,9 @@ extern float D_001DAE54;
 extern int D_0031BCA0;
 extern void func_001031C0(int, float, int);
 extern void func_00103990(int);
+
+struct Object_000D5450 {
+    int base;
+    int* vtbl;
+    int data[3];
+};
