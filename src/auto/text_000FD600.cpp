@@ -305,6 +305,8 @@ unsigned char _func_000FE230(unsigned int a,unsigned int* p){extern int func_000
 
 unsigned char func_000FE250(unsigned int a,int *p){int _func_00012D60(...);_func_00012D60(*(int*)((char*)p+0xc),0x46);return 1;}
 
+unsigned char func_000FE270(void) { extern int *D_00307DF8; int func_00110060(int,void*); int func_0012ECA0(void*,int); int func_001105E0(int,void*,int); int func_00110000(int); __declspec(align(16)) char a[0x40]; __declspec(align(16)) char b[0x40]; int v=D_00307DF8[0x2c/4]; func_00110060(v,a); func_0012ECA0(a,0xbf800000); func_0012ECA0(b,0xbf800000); func_001105E0(v,a,0); func_00110000(v); return 1; }
+
 unsigned char func_000FE300(int param_1)
 {
   ++*(int *)(param_1 + 0x4e0);
@@ -312,6 +314,8 @@ unsigned char func_000FE300(int param_1)
 }
 
 unsigned char func_000FE310(int p) { int func_00063C40(...); int *v=(int *)(p+0x4e0); --*v; if (*v==0) func_00063C40(); return 1; }
+
+unsigned char _func_000FE330(int p,int q){int func_00109670(...);func_00109670(**(int**)(q+4),**(int**)(q+0xc));return 1;}
 
 char func_000FE380(void) {
     int func_000B7080(...);
