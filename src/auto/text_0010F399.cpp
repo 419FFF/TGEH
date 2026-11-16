@@ -2,13 +2,12 @@
 #include "common.h"
 #include "ghidra.h"
 
-unsigned int *func_0010F750(char *name,unsigned char type,int extra)
+unsigned int *func_0010F750(char *s,unsigned char type,int extra)
 {
- int func_00116A90(...);int func_0012F120(...);unsigned int *p;char *q;int len=0;int offset;unsigned char v;
- if(name){q=name;do{q++;}while(q[-1]);len=(int)(q-name);p=(unsigned int*)func_00116A90(len+extra+1,1,1);p[14]=(int)p+extra;offset=(int)p+extra-(int)name;do{v=*name;name[offset]=v;name++;}while(v);}
+ int func_00116A90(...);int func_0012F120(...);unsigned int *p;char *q;int len;int offset;char c;
+ if(s){q=s;do{c=*q;q++;}while(c);len=(int)q-(int)(s+1);p=(unsigned int*)func_00116A90(len+extra+1,1,1);q=(char*)p+extra;*(char **)(p+14)=q;offset=(int)q-(int)s;do{c=*s;*(char *)((int)s+offset)=c;s++;}while(c);}
  else p=(unsigned int*)func_00116A90(extra,1,1);
- *(unsigned char*)((char*)p+0x22)=type;
- func_0012F120(p+0x10/4);func_0012F120(p+0x20/4);
+ *(unsigned char*)((char*)p+0x22)=type;func_0012F120((char*)p+0x40);func_0012F120((char*)p+0x80);
  p[4]=0;p[5]=0;p[6]=0;p[7]=0x3f800000;p[3]=0x3f800000;p[0]=0;p[1]=0;p[2]=0;return p;
 }
 
@@ -97,7 +96,7 @@ void func_0010FC10(void)
    int c=*child;
    if ((*(unsigned char *)(c+0x20)&2)==0) {
     *(unsigned short *)(c+0x20)|=2;
-    func_0010F930(c);
+    func_0010F930(*child);
    }
    child=(int *)child[3];
   }
@@ -129,12 +128,14 @@ void func_0010FF70(int p, unsigned int *data)
 
 void func_00110000(int p)
 {
- int func_0010F930(...); if(!p)return;
- int child=*(int *)(p+0x2c); int *src,*dst;
- if(child) { int n=*(int *)(child+0x18); src=(int *)(child+n*64+0x20); dst=(int *)(child-n*64+0x60); }
- else { int n=*(unsigned char *)(p+0x23); src=(int *)(p+(n+1)*64); dst=(int *)(p+(2-n)*64); }
- for(int i=0;i<16;i++)dst[i]=src[i];
- *(unsigned char *)(p+0x20)|=2; func_0010F930(p);
+ int func_0010F930(...);
+ if(p) {
+   int child=*(int *)(p+0x2c), *src, *dst;
+   if(child) { int n=*(int *)(child+0x18); src=(int *)(child+n*64+32); dst=(int *)(child-n*64+96); }
+   else { int n=*(unsigned char *)(p+0x23); src=(int *)(p+(n+1)*64); dst=(int *)(p+(2-n)*64); }
+   for(int i=16;i>0;--i) *dst++=*src++;
+   *(unsigned char *)(p+0x20)|=2; func_0010F930(p);
+ }
 }
 
 void func_00110060(int p, unsigned int *out)
@@ -213,15 +214,17 @@ int func_00110290(int param_1, undefined4 param_2, uint param_3)
 
 void func_00110300(int param_1,int param_2,int param_3)
 {
- extern int D_003291C0; int func_00110290(...);
- if(param_1!=0){func_00110290(param_1,param_2,param_3);D_003291C0=D_003291C0+1;}
+ extern int D_003291C0; int func_00110290(...); int n;
+ if(param_1){func_00110290(param_1,param_2,param_3);n=D_003291C0;n++;D_003291C0=n;}
 }
 
-void func_00110330(int p,unsigned char flag)
+void func_00110330(int param_1,unsigned char flag)
 {
- int node;
- if(flag) *(unsigned char *)(p+0x20) &= 0xfe; else *(unsigned char *)(p+0x20) |= 1;
- node=*(int *)(p+0x28);
- while(node) { if(flag) *(unsigned char *)(node+6) &= 0xef; else *(unsigned short *)(node+6) |= 0x10; node=*(int *)(node+0xc); }
+ int p;
+ if(flag) *(unsigned char *)(param_1+0x20) &= 0xfe;
+ else *(unsigned char *)(param_1+0x20) |= 1;
+ for(p=*(int *)(param_1+0x28);p!=0;p=*(int *)(p+0xc)) {
+   if(flag) *(unsigned char *)(p+6) &= 0xef;
+   else *(unsigned short *)(p+6) |= 0x10;
+ }
 }
-struct CopyBlock { unsigned int word[16]; };
