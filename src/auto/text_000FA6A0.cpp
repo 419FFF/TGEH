@@ -239,6 +239,12 @@ unsigned char _func_000FB490(int a, int *p)
     return 1;
 }
 
+unsigned char _func_000FB4C0(int p,undefined4 *q){int func_00100D80(...);int func_00103990(...);extern float _D_001D27B8;if(func_00100D80()){int yes=*(float*)q[3]==_D_001D27B8;func_00103990(*q,yes?0:1);}return 1;}
+
+unsigned char _func_000FB510(int p,int q){int func_00100D80(...);int func_00103210(...);int func_00103960(...);extern float _D_001D27B8;if(func_00100D80()){int mode=**(float**)(q+0xc)==_D_001D27B8;int x=func_00103210(**(int**)(q+4),*(int*)(p+0xc),mode?0:1);func_00103960(x);}return 1;}
+
+unsigned char _func_000FB580(int p,undefined4 *q){unsigned char func_00100D80(...);int func_00102E80(...);if(func_00100D80())func_00102E80(*q);return 1;}
+
 undefined1 func_000FB5A0(void)
 {
   int func_00100D80(...);
@@ -253,6 +259,8 @@ undefined1 func_000FB5A0(void)
 }
 
 char _func_000FB5C0(void) { int func_000688D0(...); func_000688D0(); return 1; }
+
+unsigned char _func_000FB5D0(int a,int *p){int func_00110300(...);int func_00110330(...);extern float _D_001D27B8;int x=func_00110300(*(int*)(p[0]+0x2c),*(int*)p[3],0);int mode=*(float*)p[5]==_D_001D27B8;func_00110330(x,mode?0:1);return 1;}
 
 extern int _func_00061540(int, int);
 extern int _func_00061570(int, int, int);
