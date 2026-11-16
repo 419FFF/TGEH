@@ -79,6 +79,16 @@ extern char D_001D29C7; unsigned char _func_000FAD30(undefined4 param_1, int par
 
 unsigned char _func_000FAD90(undefined4 param_1) { unsigned char func_00063C20(...); unsigned char func_00100D80(...); unsigned char func_00104600(...); void func_00104190(...); if(func_00063C20(param_1)) {func_00104190(); return 1;} if(func_00100D80() && func_00104600()) return 0; return 1; }
 
+undefined4 func_000FADF0(undefined4 param_1, int *param_2)
+{
+  int func_000A22B0(...);
+  undefined4 *puVar1;
+  
+  puVar1 = (undefined4 *)param_2[3];
+  func_000A22B0(*param_2 + 100,2,*puVar1,puVar1[1],puVar1[2],*(undefined4 *)param_2[5]);
+  return 1;
+}
+
 undefined1 func_000FAE20(undefined4 param_1, int *param_2)
 {
   int func_000A2230(...);
@@ -106,6 +116,47 @@ undefined1 func_000FAE20(undefined4 param_1, int *param_2)
 int _func_000FAE80(int a, int b)
 {
     return a + b;
+}
+
+undefined4 func_000FAFA0(undefined4 param_1, int *param_2)
+{
+    int func_000A2270(...);
+    int func_000A1C00(...);
+    int iVar1;
+    
+    iVar1 = func_000A2270(*param_2 + 100, *(undefined4 *)param_2[3]);
+    if (iVar1 != 0) {
+        func_000A1C00(iVar1);
+    }
+    return 1;
+}
+
+undefined4 func_000FAFD0(undefined4 param_1, int *param_2)
+{
+    int func_00063C20(undefined4);
+    int func_000A1F50(undefined4);
+    char cVar1;
+    int iVar2;
+    
+    cVar1 = func_00063C20(param_1);
+    if (cVar1 != '\0') {
+        return 1;
+    }
+    iVar2 = *param_2;
+    if (*(int *)(iVar2 + 0x84) == 0) {
+        return 1;
+    }
+    if ((*(byte *)(iVar2 + 0x10) & 8) == 0) {
+        if (*(char *)(iVar2 + 0x15) == '\n') {
+            *(byte *)(iVar2 + 0x11) = *(byte *)(iVar2 + 0x11) | 8;
+        }
+        iVar2 = func_000A1F50(*(undefined4 *)(*param_2 + 0x84));
+        if (iVar2 == 0) {
+            *(byte *)(*param_2 + 0x11) = *(byte *)(*param_2 + 0x11) & 0xf7;
+            return 1;
+        }
+    }
+    return 0;
 }
 
 unsigned char _func_000FB200(undefined4 a, undefined4 *p) { int func_0001CC10(...); func_0001CC10(*p); return (unsigned char)1; }
@@ -186,3 +237,18 @@ extern u16 _D_001D2E34;
 extern u16 _D_001D2E38;
 extern u16 _D_001D2E30;
 extern u16 _D_001D29C7;
+typedef struct {
+    u32 arg0;
+    u32 arg1;
+} S_D_000FAEE0_arg1;
+
+extern u16 _D_001D28F0;
+extern u16 _D_001D2E34;
+extern u16 _D_001D2E38;
+extern u16 _D_001D2E30;
+extern u16 _D_001D29C7;
+
+extern u32 _func_0009C7A0(u32, u32, u32);
+extern u32 _func_000A2230(u32, u32);
+extern void _func_00131990(u32*);
+extern u32 _func_000A1BB0(u32, u32);
