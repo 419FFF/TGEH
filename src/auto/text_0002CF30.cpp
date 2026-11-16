@@ -2,6 +2,8 @@
 #include "common.h"
 #include "ghidra.h"
 
+void func_0002D3E0(int param_1) { extern int D_00307DF8; int func_001031C0(...); int func_00103990(...); int r=func_001031C0(D_00307DF8,param_1); if(r) func_00103990(r); }
+
 void func_0002D410(undefined4 param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
 {
   int func_00103210(...);
