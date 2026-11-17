@@ -2,7 +2,7 @@
 #include "common.h"
 
 extern int func_000A1F50(int);
-extern int func_000120B0(int, unsigned int, int, int);
+extern int func_000120B0(int *, unsigned int, int, int);
 extern int func_0012ED20(int *, int *, float);
 
 float func_00131220(float);
