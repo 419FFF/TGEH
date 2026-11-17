@@ -34,6 +34,74 @@ void _func_000BCAB0(float *out, float *a, float *b, float t)
 
     *(M *)out = m;
 }
+
+extern int D_00314CF4;
+extern int D_00314CF0;
+extern float D_00314CF8;
+extern const float D_001D314C;
+extern const float D_001D27EC;
+extern const float D_001D27B0;
+extern const float D_001D27B8;
+extern const float D_001D286C;
+extern const float D_001D2BC0;
+extern int *D_00314BB8[];
+extern float D_00314CE0[];
+extern float D_002EEC10[];
+extern float D_00314CD8;
+extern float D_00314CD4;
+extern float D_00314CDC;
+extern float D_00314C7C[][3];
+extern float D_00314CA0[];
+extern float D_00314CB8[];
+extern void func_00110060(int, float *);
+extern void _func_000BCAB0(float *, float *, float *, float);
+extern float func_00131230(float);
+extern void func_00011E30(float *, float *, float *);
+extern float D_00314C80[][3];
+extern float D_00314C84[][3];
+#pragma optimize("y", on)
+void func_000BCBB0(void)
+{
+    float f;
+    float v[3];
+    __declspec(align(16)) float m[16];
+    __declspec(align(16)) float x[16];
+    float s;
+    int from, to;
+
+    if (D_00314CF4 == 2) {
+        D_00314CF8 -= D_001D314C;
+        if (D_00314CF8 < D_001D27EC)
+            D_00314CF8 = 0.5f;
+        func_00110060(D_00314BB8[D_00314CF0 * 12][0x2c / 4], x);
+        _func_000BCAB0(D_002EEC10, D_00314CE0, &x[12], D_00314CF8);
+        return;
+    }
+    if (D_00314CD8 < D_00314CD4) {
+        D_00314CD8 = D_00314CDC + D_00314CD8;
+        if (D_00314CD8 > D_001D27B0)
+            D_00314CD8 = 1.0f;
+    }
+    if (D_00314CD8 > D_00314CD4) {
+        D_00314CD8 = D_00314CD8 - D_00314CDC;
+        if (D_00314CD8 < D_001D27B8)
+            D_00314CD8 = 0.0f;
+    }
+    f = D_00314CD8;
+    func_0012F120((unsigned *)m);
+    s = (func_00131230((f - D_001D27EC) * D_001D286C) + D_001D27B0) * D_001D27EC;
+    from = D_00314CF0;
+    to = D_00314CF4;
+    v[2] = 4.88692191f;
+    m[12] = (D_00314C7C[to][0] - D_00314C7C[from][0]) * s + D_00314C7C[from][0];
+    m[13] = (D_00314C80[to][0] - D_00314C80[from][0]) * s + D_00314C80[from][0];
+    m[14] = (D_00314C84[to][0] - D_00314C84[from][0]) * s + D_00314C84[from][0];
+    v[0] = (D_00314CA0[to] - D_00314CA0[from]) * s + D_00314CA0[from];
+    v[1] = ((D_00314CB8[to] - D_00314CB8[from]) * s * f + D_00314CB8[from]) * D_001D2BC0;
+    func_00011E30(m, D_002EEC10, v);
+}
+#pragma optimize("", on)
+
 extern void func_0011F270(int, int, float *, float *);
 extern float func_00131610(float, float);
 extern void func_0012FCF0(float *, float);
