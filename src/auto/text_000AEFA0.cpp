@@ -2,6 +2,26 @@
 #include "common.h"
 #include "ghidra.h"
 
+int func_00133F30(int *);
+int func_0011E4A0(int,int,int,int,int *,int *,int,int);
+int func_000688D0(void);
+extern unsigned char D_00313958;
+extern unsigned char D_00313960[256];
+extern int D_00313B6C;
+int func_001266F0(void *);
+int func_00109B91(void);
+int func_0013EA50(unsigned char *,int);
+int func_000B06A0(void);
+void func_000AF3C0(int param_1)
+{
+    int local[21] = {0};
+    local[10]=4; local[11]=5; local[18]=6; local[19]=2;
+    func_00133F30(local);
+    int vals[4] = {0,0,0x3f800000,0x3f800000};
+    func_0011E4A0(0,0,0x44200000,0x43f00000,vals,&vals[2],param_1,0x3f800000);
+    func_000688D0();
+}
+
 void func_000AF470(int ignored)
 {
   extern undefined4 D_00313B00;
@@ -93,6 +113,18 @@ void func_000AF540(void)
   return;
 }
 
+void func_000AFB10(void)
+{
+    int value = func_00109B91();
+    switch (value) {
+    case 1: case 2: case 7: case 8: case 9: D_00313B6C=0; break;
+    case 3: D_00313B6C=2; return;
+    case 4: D_00313B6C=1; return;
+    case 5: D_00313B6C=3; return;
+    case 6: D_00313B6C=4; return;
+    }
+}
+
 void func_000AFB80(void)
 {
   int func_000AFB10(...);
@@ -105,6 +137,40 @@ void func_000AFB80(void)
 void func_000AFD00(void) {
     int func_001266B0(...);
     func_001266B0();
+}
+
+char *func_000AFD10(char *param_1)
+{
+    char *s=(char *)func_001266F0(param_1);
+    if (!s) return param_1;
+    if (D_00313958) {
+        char *p=s;
+        do { char c=*p++; if (!c) break; } while (1);
+        unsigned int n=(unsigned int)(p-s-1);
+        for(unsigned int i=0;i<n;i++) s[i]=(char)((-(int)(i&1))&0x1f)+0x21;
+    }
+    return s;
+}
+
+int func_000AFDF0(int param)
+{
+  extern char D_001D89C0;
+  int func_001266F0(...), func_0013EA50(...);
+  void __stdcall func_00109D13(char*, unsigned long long*, int, int);
+  unsigned long long value;
+  int obj = func_001266F0(param);
+
+  if (obj) {
+    func_00109D13(&D_001D89C0, &value, 0, 0);
+    int count = 4 - (int)(value >> 14);
+    if (count <= 0 || count > 4)
+      count = 4;
+    char *p = (char *)func_0013EA50(obj, 0x34);
+    if (p)
+      *p = (char)(count + 0x34);
+    return obj;
+  }
+  return param;
 }
 
 unsigned char _func_000AFE70(void *value)
