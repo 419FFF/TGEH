@@ -170,73 +170,96 @@ extern int func_001031C0(int, char *);
 extern void func_00103990(int, int);
 void func_000BD440(int *p)
 {
-    float d;
-
-    switch (p[1]) {
+  int **new_var;
+  int new_var2;
+  float d;
+  switch (p[1])
+  {
     case 0:
-        func_000A1D10(p[6], 2, 0, &D_0000FFFF, 24.0f, 0);
-        p[1] = 5;
-        return;
+      func_000A1D10(p[6], 2, 0, &D_0000FFFF, 24.0f, 0);
+      p[1] = 5;
+      return;
+
     case 1:
-        if (D_00314CC4 > D_00314CD0) {
-            func_000A1D10(p[4], 1, 0, &D_0000FFFF, 24.0f, 0);
-            p[1] = 2;
-        }
-        return;
-    case 2:
-        if (D_00314CC4 > D_00314CCC)
-            p[1] = 3;
-        return;
-    case 3:
-        if (D_00314CC4 > D_00314CC8) {
-            p[1] = 7;
-            ((int *)D_00314BB8)[D_00314C74 * 12 + 2] = 5;
-            func_000BC990(D_00314BB8[D_00314C74 * 12], D_001D95F4);
-            func_000A1D10(p[8], 1, 0, &D_0000FFFF, 24.0f, 0);
-            func_000A1D10(D_00314BE4[D_00314C74 * 12], 1, 9, &D_0000FFFF, 24.0f, 0);
-            return;
-        }
-        d = func_000A2310(D_00307DF8 + 100);
-        if (d > D_001D605C && d < D_001D95F0) {
-            p[1] = 4;
-            func_00103990(func_001031C0(p[0], D_001D95E4), 0);
-            func_000A1D10(p[5], 1, 0, &D_0000FFFF, 24.0f, 0);
-        }
-        return;
-    case 4:
-        if (func_000A1F50(p[5]) == 0) {
-            D_00314C78 = 0;
-            p[1] = 6;
-            func_000A1D10(p[7], 1, 0, &D_0000FFFF, 24.0f, 0);
-        }
-        return;
-    case 6:
-        if (func_000A1F50(p[7]) == 0) {
-            D_00314C78 = 0;
-            p[1] = 5;
-            func_000A1D10(p[6], 2, 0, &D_0000FFFF, 24.0f, 0);
-        }
-        return;
-    case 7:
-        if (func_000A1F50(p[8]) == 0) {
-            D_00314C78 = 0;
-            D_00314BB4 = 3;
-            func_001007B0(0);
-            goto done;
-        }
-        return;
-    case 8:
-        if (func_000A1F50(p[9]) == 0) {
-            D_00314BB4 = 3;
-        done:
-            D_00314BB0 = 0;
-            p[1] = 9;
-            D_00314BC0[0] = 9;
-            D_00314BF0 = 9;
-            D_00314C20 = 9;
-        }
-        return;
+      if (D_00314CC4 > D_00314CD0)
+    {
+      func_000A1D10(p[4], 1, 0, &D_0000FFFF, 24.0f, 0);
+      p[1] = 2;
     }
+      return;
+
+    case 2:
+      if (D_00314CC4 > D_00314CCC)
+    {
+      p[1] = 3;
+    }
+      return;
+
+    case 3:
+      if (D_00314CC4 > D_00314CC8)
+    {
+      p[1] = 7;
+      new_var = D_00314BB8;
+      ((int *) new_var)[(D_00314C74 * 12) + 2] = 5;
+      func_000BC990(D_00314BB8[D_00314C74 * 12], D_001D95F4);
+      func_000A1D10(p[8], 1, 0, &D_0000FFFF, 24.0f, 0);
+      func_000A1D10(D_00314BE4[D_00314C74 * 12], 1, 9, &D_0000FFFF, 24.0f, 0);
+      return;
+    }
+      new_var2 = D_00307DF8 + 100;
+      d = func_000A2310(new_var2);
+      if (((d > D_001D605C) && (d < D_001D95F0)) != 0)
+    {
+      p[1] = 4;
+      func_00103990(func_001031C0(p[0], D_001D95E4), 0);
+      func_000A1D10(p[5], 1, 0, &D_0000FFFF, 24.0f, 0);
+    }
+      return;
+
+    case 4:
+      if (func_000A1F50(p[5]) == 0)
+    {
+      D_00314C78 = 0;
+      p[1] = 6;
+      func_000A1D10(p[7], 1, 0, &D_0000FFFF, 24.0f, 0);
+    }
+      return;
+
+    case 6:
+      if (func_000A1F50(p[7]) == 0)
+    {
+      D_00314C78 = 0;
+      p[1] = 5;
+      func_000A1D10(p[6], 2, 0, &D_0000FFFF, 24.0f, 0);
+    }
+      return;
+
+    case 7:
+      if (func_000A1F50(p[8]) == 0)
+    {
+      D_00314C78 = 0;
+      D_00314BB4 = 3;
+      func_001007B0(0);
+      goto done;
+    }
+      return;
+
+    case 8:
+      if (func_000A1F50(p[9]) == 0)
+    {
+      D_00314BB4 = 3;
+      done:
+      D_00314BB0 = 0;
+
+      p[1] = 9;
+      D_00314BC0[0] = 9;
+      D_00314BF0 = 9;
+      D_00314C20 = 9;
+    }
+      return;
+
+  }
+
 }
 
 extern const float D_001E461C;
