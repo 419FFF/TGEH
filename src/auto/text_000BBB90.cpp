@@ -21,6 +21,31 @@ extern int D_003251A8;
 #pragma optimize("y", on)
 void func_000BBB90(void) {}
 
+int _func_001031C0(int a, int b);
+int func_00102E80(int);
+int func_0009C590(int);
+void func_000687F0();
+void func_00068800(int);
+void func_00136450();
+int func_000F91D0(int);
+int func_000F86E0(int);
+void func_00110420(int, int*);
+void func_00110480(int*, int, int);
+void func_00124AD0();
+void func_00110760(int);
+int func_0008F610(int);
+int func_0008F740(int);
+int func_0005CCC0(int);
+void func_0002DF20(int);
+int func_0009D3E0(int);
+int func_0009D640(int);
+void func_0010F8A0();
+void func_0011BE30();
+int func_000F8B60(int, int);
+void func_000F9700();
+void func_000F9610(int*);
+void func_00107C40(int, int, int);
+
 int _func_000BC340(int a, int b, int c, int *p) { extern int D_00314B30; *p = D_00314B30; return 1; }
 void func_000BC450(void) {
     int func_000B6510(...);
