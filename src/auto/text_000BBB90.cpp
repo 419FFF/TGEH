@@ -15,6 +15,7 @@ unsigned char func_000BC460(int *out) {
     if (D_00314B28 != 2) return 0;
     if (D_00314B24 == 0) {
         D_00314B28 = 0;
+        return 0;
     } else {
         *out = 0x3f800000;
         return 1;
