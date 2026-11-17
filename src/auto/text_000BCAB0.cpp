@@ -1,22 +1,10 @@
 /* 6 functions from 0x000BCAB0 to 0x000BD9CC, found by Ghidra. */
 #include "common.h"
 
-extern int func_0011F270(...);
-extern float func_00131610(...);
-extern void func_0012FCF0(...);
-extern void func_001105E0(...);
-void func_0012F120(...);
-void func_0012E6D0(...);
-float func_0012EA60(...);
-void func_0012EE00(...);
 extern void func_0012F120(unsigned*);
 extern void func_0012E6D0(unsigned*, float*, float*);
 extern float func_0012EA60(unsigned*);
 extern void func_0012EE00(unsigned*, unsigned*, unsigned*);
-void func_0012F120(unsigned*);
-void func_0012E6D0(unsigned*, float*, float*);
-float func_0012EA60(unsigned*);
-void func_0012EE00(unsigned*, unsigned*, unsigned*);
 #pragma optimize("y", on)
 void _func_000BCAB0(float *out, float *a, float *b, float t)
 {
