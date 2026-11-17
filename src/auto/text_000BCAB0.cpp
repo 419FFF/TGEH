@@ -1,7 +1,6 @@
 /* 6 functions from 0x000BCAB0 to 0x000BD9CC, found by Ghidra. */
 #include "common.h"
 
-#pragma optimize("y", off)
 extern int func_0011F270(...);
 extern float func_00131610(...);
 extern void func_0012FCF0(...);
