@@ -1,6 +1,8 @@
 /* 6 functions from 0x000BCAB0 to 0x000BD9CC, found by Ghidra. */
 #include "common.h"
 
+static inline bool float_equal(float a, float b) { return a == b; }
+
 struct S_BD6E0 {
     int a0;
     int a4;
@@ -236,5 +238,80 @@ void func_000BD440(int *p)
         return;
     }
 }
+
+extern const float D_001E461C;
+extern float D_001E47FC[];
+extern int D_001E47E4[];
+extern const float D_001D2B64;
+extern const float D_001D2B60;
+extern const float D_001D9608;
+extern const float D_001D31C8;
+extern const float D_001D31CC;
+extern const float D_001D3F8C;
+extern void func_000BC9D0(float);
+extern void func_000F8FA0(int);
+#pragma optimize("y", on)
+void func_000BD6E0(S_BD6E0 *p)
+{
+    __declspec(align(16)) float m[16];
+
+    switch (p->state) {
+    case 0:
+        func_000A1D10(p->h20, 2, 0, &D_0000FFFF, 24.0f, 0);
+        p->state = 1;
+        func_000BC9D0(0.0f);
+        break;
+    case 2:
+        p->f0c = D_001E461C + p->f0c;
+        if (p->f0c > D_001D27B0) {
+            p->state = 3;
+            p->f0c = 0.0f;
+            p->f10 = 0.0f;
+            func_000A1D10(p->h1c, 2, 0, &D_0000FFFF, 24.0f, 0);
+        }
+        break;
+    case 3:
+        p->f0c = D_001E461C + p->f0c;
+        if (p->f0c > D_001E47FC[D_00314C74]) {
+            p->state = 4;
+            p->f0c = 0.0f;
+            func_000A1D10(p->h24, 2, 0, &D_0000FFFF, 24.0f, 0);
+            D_00314CC8 = D_001D2B64 / p->f14 * D_001D2B60;
+            D_00314CCC = D_00314CC8 - (float)D_001E47E4[D_00314C74];
+            D_00314CD0 = D_00314CCC - D_001D9608;
+        }
+        break;
+    case 4:
+        D_00314CC4 = D_00314CC4 + D_001D27B0;
+        if ((D_001D2B64 == D_00314CC4) != 0)
+            func_000BC9D0(1.0f);
+        p->f10 = D_001E461C * p->f14 + p->f10;
+        if (p->f10 > D_001D31C8)
+            p->state = 7;
+        if (D_00314CC8 + D_001D27B0 < D_00314CC4 && D_00314CF4 != 2) {
+            func_000BC9D0(2.0f);
+            D_00314C78 = 0;
+        }
+        if (D_00314CCC - D_001D3F8C < D_00314CC4 && D_00314CC4 < D_00314CCC)
+            D_00314C78 = 1;
+        break;
+    case 7:
+        p->f14 = p->f14 - (D_001E461C + D_001E461C);
+        if (p->f14 < D_001D27B0)
+            p->f14 = 1.0f;
+        p->f10 = D_001E461C * p->f14 + p->f10;
+        if (p->f10 > D_001D31CC) {
+            func_00110060(D_00314BB8[D_00314C74 * 12][0x2c / 4], m);
+            func_001105E0(D_00314BB8[D_00314C74 * 12][0x2c / 4], m, 1);
+            func_000F8FA0(p->a0);
+            p->state = 8;
+            func_000A1D10(p->h18, 2, 0, &D_0000FFFF, 24.0f, 0);
+        }
+        break;
+    }
+    if (p->state != 5 && p->state != 6)
+        func_000BD3B0(p->a0, p->a4, *(int *)&p->f10);
+}
+#pragma optimize("", on)
 
 #pragma optimize("", on)
