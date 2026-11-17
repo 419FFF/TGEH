@@ -1,7 +1,7 @@
 /* 10 functions from 0x000BBB90 to 0x000BCAA4, found by Ghidra. */
 #include "common.h"
 
-extern int D_00314414;
+extern int* D_00314414;
 extern int D_001D9210;
 extern int D_003251A8;
 extern int D_00314BD4;
