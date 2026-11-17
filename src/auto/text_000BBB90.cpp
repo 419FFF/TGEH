@@ -1,6 +1,23 @@
 /* 10 functions from 0x000BBB90 to 0x000BCAA4, found by Ghidra. */
 #include "common.h"
 
+extern int D_00314414;
+extern int D_001D9210;
+extern int D_00314BD4;
+extern int D_001D918C;
+extern int D_001D8484;
+extern int D_001D84D4;
+extern int D_00313B60;
+extern int D_00314300;
+extern int D_00324AFC;
+extern int D_0033116C;
+extern int D_00314B38;
+extern int D_00307DF8;
+extern int D_00314B28;
+extern int D_00314B24;
+extern int D_00308158;
+extern int D_003251A8;
+
 #pragma optimize("y", on)
 void func_000BBB90(void) {}
 
@@ -10,15 +27,25 @@ void func_000BC450(void) {
     func_000B6510(16, 0);
 }
 
-unsigned char func_000BC460(int *out) {
-    extern int D_00314B28, D_00314B24;
-    if (D_00314B28 != 2) return 0;
-    if (D_00314B24 == 0) {
-        D_00314B28 = 0;
-    } else {
-        *out = 0x3f800000;
-        return 1;
+unsigned char func_000BC460(int *out)
+{
+  unsigned char new_var;
+  extern int D_00314B28;
+  extern int D_00314B24;
+  if (D_00314B28 == 2)
+  {
+    int value = D_00314B24;
+    new_var = 0x3f800000;
+    D_00314B28 = 0;
+    if (value)
+    {
+      *out = 0;
+      return 1;
     }
+    *out = new_var;
+    return 1;
+  }
+  return 0;
 }
 
 void func_000BC990(int a, int b) {
