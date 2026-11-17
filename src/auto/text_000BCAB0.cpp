@@ -1,6 +1,19 @@
 /* 6 functions from 0x000BCAB0 to 0x000BD9CC, found by Ghidra. */
 #include "common.h"
 
+struct S_BD6E0 {
+    int a0;
+    int a4;
+    int state;
+    float f0c;
+    float f10;
+    float f14;
+    int h18;
+    int h1c;
+    int h20;
+    int h24;
+};
+
 extern void func_0012F120(unsigned*);
 extern void func_0012E6D0(unsigned*, float*, float*);
 extern float func_0012EA60(unsigned*);
@@ -123,4 +136,105 @@ void func_000BD3B0(int param_1, int param_2, int param_3)
     m[14] = pos[2];
     func_001105E0(*(int *)(param_1 + 0x2c), m, 1);
 }
+
+extern float D_00314CC4;
+extern float D_00314CC8;
+extern float D_00314CCC;
+extern float D_00314CD0;
+extern int D_00314C74;
+extern int D_00314BC0[];
+extern int D_00314BE4[];
+extern int D_00314BF0;
+extern int D_00314C20;
+extern int D_00314BB4;
+extern int D_00314BB0;
+extern char D_00314C78;
+extern int D_00307DF8;
+extern const float D_001D605C;
+extern const float D_001D95F0;
+extern char D_001D95F4[];
+extern char D_001D95E4[];
+extern void func_000A1D10(int, int, int, int, float, int);
+extern int func_000A1F50(int);
+extern float func_000A2310(int);
+extern void func_000BC990(int *, char *);
+extern int func_001031C0(int, char *, int);
+extern void func_00103990(int);
+extern void func_001007B0(int);
+extern char D_0000FFFF;
+extern void func_000A1D10(int, int, int, void *, float, int);
+extern void func_000BC990(int, char *);
+extern int func_001031C0(int, char *);
+extern void func_00103990(int, int);
+void func_000BD440(int *p)
+{
+    float d;
+
+    switch (p[1]) {
+    case 0:
+        func_000A1D10(p[6], 2, 0, &D_0000FFFF, 24.0f, 0);
+        p[1] = 5;
+        return;
+    case 1:
+        if (D_00314CC4 > D_00314CD0) {
+            func_000A1D10(p[4], 1, 0, &D_0000FFFF, 24.0f, 0);
+            p[1] = 2;
+        }
+        return;
+    case 2:
+        if (D_00314CC4 > D_00314CCC)
+            p[1] = 3;
+        return;
+    case 3:
+        if (D_00314CC4 > D_00314CC8) {
+            p[1] = 7;
+            ((int *)D_00314BB8)[D_00314C74 * 12 + 2] = 5;
+            func_000BC990(D_00314BB8[D_00314C74 * 12], D_001D95F4);
+            func_000A1D10(p[8], 1, 0, &D_0000FFFF, 24.0f, 0);
+            func_000A1D10(D_00314BE4[D_00314C74 * 12], 1, 9, &D_0000FFFF, 24.0f, 0);
+            return;
+        }
+        d = func_000A2310(D_00307DF8 + 100);
+        if (d > D_001D605C && d < D_001D95F0) {
+            p[1] = 4;
+            func_00103990(func_001031C0(p[0], D_001D95E4), 0);
+            func_000A1D10(p[5], 1, 0, &D_0000FFFF, 24.0f, 0);
+        }
+        return;
+    case 4:
+        if (func_000A1F50(p[5]) == 0) {
+            D_00314C78 = 0;
+            p[1] = 6;
+            func_000A1D10(p[7], 1, 0, &D_0000FFFF, 24.0f, 0);
+        }
+        return;
+    case 6:
+        if (func_000A1F50(p[7]) == 0) {
+            D_00314C78 = 0;
+            p[1] = 5;
+            func_000A1D10(p[6], 2, 0, &D_0000FFFF, 24.0f, 0);
+        }
+        return;
+    case 7:
+        if (func_000A1F50(p[8]) == 0) {
+            D_00314C78 = 0;
+            D_00314BB4 = 3;
+            func_001007B0(0);
+            goto done;
+        }
+        return;
+    case 8:
+        if (func_000A1F50(p[9]) == 0) {
+            D_00314BB4 = 3;
+        done:
+            D_00314BB0 = 0;
+            p[1] = 9;
+            D_00314BC0[0] = 9;
+            D_00314BF0 = 9;
+            D_00314C20 = 9;
+        }
+        return;
+    }
+}
+
 #pragma optimize("", on)
