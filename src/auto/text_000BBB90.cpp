@@ -12,13 +12,12 @@ void func_000BC450(void) {
 
 unsigned char func_000BC460(int *out) {
     extern int D_00314B28, D_00314B24;
-    if (D_00314B28 == 2) {
-        if (D_00314B24 == 0) {
-            D_00314B28 = 0;
-        } else {
-            *out = 0x3f800000;
-            return 1;
-        }
+    if (D_00314B28 != 2) return 0;
+    if (D_00314B24 == 0) {
+        D_00314B28 = 0;
+    } else {
+        *out = 0x3f800000;
+        return 1;
     }
 }
 
