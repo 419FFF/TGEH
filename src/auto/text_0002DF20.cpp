@@ -7,6 +7,37 @@ extern char _D_002EDBF4, _D_002EDBF5, _D_00307D6C;
 extern int _D_002EDBE0, _D_002EDBE4, _D_002EDBE8, _D_002EDBF0;
 
 #pragma optimize("y", on)
+extern void __cdecl _func_0009C1F0(int, int);
+extern void __cdecl _func_00110330(int, int);
+extern void __cdecl _func_00099EB0(int);
+extern void __cdecl _func_00088A50(int, float, int);
+extern void __cdecl _func_000A22B0(int, int, int, int, int, int);
+extern void __cdecl _func_000A2350(int, int);
+void __cdecl _func_0002DF20(int param_1)
+{
+  int *piVar1 = *(int **)(param_1 + 0x110);
+  if (*(char *)(param_1 + 0x15) == 0x15 && *piVar1 == 0x43) {
+    Blk2DF20 *dst;
+    _func_0009C1F0(*(int *)(param_1 + 0x2c), piVar1[0xc5]);
+    _func_00110330(*(int *)(param_1 + 0x2c), 1);
+    *(char *)(param_1 + 0x175) = 0;
+    *(char *)(param_1 + 0x14) = 2;
+    _func_00099EB0(param_1 + 0x170);
+    _func_00088A50(*(int *)(param_1 + 0x2c), 1.0f, 1);
+    dst = *(Blk2DF20 **)(param_1 + 0x110);
+    *dst = _D_002ED780;
+    if (_D_002EDBF4 != 0)
+      _func_000A22B0(param_1 + 100, 2, _D_002EDBE0, _D_002EDBE4, _D_002EDBE8, 0);
+    else
+      _func_000A22B0(param_1 + 100, 1, _D_002EDBE0, _D_002EDBE4, _D_002EDBE8, 0);
+    _func_000A2350(param_1 + 100, _D_002EDBF0);
+    _D_00307D6C = 0;
+    if (_D_002EDBF5 != 0) {
+      *piVar1 = 0x4e;
+    }
+  }
+}
+
 void func_0002E000(int p, int *a, int *b, int q, char flag) { *(int *)(p+0x1e4)=q; *(int *)(p+0x1e0)=0; *(int *)(p+0x134)=a[0]; *(int *)(p+0x138)=a[1]; *(int *)(p+0x13c)=a[2]; *(int *)(p+0x140)=b[0]; *(int *)(p+0x144)=b[1]; *(int *)(p+0x148)=b[2]; *(char *)(p+0x1ae)=flag; if(flag) *(char *)(p+0x1ad)=1; }
 
 void __cdecl _func_0002E300(int param_1) { volatile int local; local = 11; }
