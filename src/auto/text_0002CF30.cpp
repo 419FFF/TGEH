@@ -2,9 +2,65 @@
 #include "common.h"
 #include "ghidra.h"
 
+void func_0002CF30(undefined4 param_1)
+{
+  int func_0009C6A0(...);
+  int func_0009D3E0(...);
+  extern undefined D_001D3B8C;
+  extern undefined D_001D2B20;
+  extern undefined D_001D3B84;
+  extern undefined D_001D3B74;
+  extern undefined D_001D3B64;
+  extern undefined D_001D3B54;
+  extern undefined D_001D3B44;
+  extern undefined D_001D3B3C;
+  extern undefined D_001D3B34;
+  int func_000B5860(...);
+  int iVar1;
+  
+  iVar1 = func_0009C6A0(param_1,((undefined *)&D_001D3B8C));
+  if (iVar1 != 0) {
+    func_0009D3E0(iVar1);
+  }
+  iVar1 = func_0009C6A0(param_1,((undefined *)&D_001D2B20));
+  if (iVar1 != 0) {
+    func_0009D3E0(iVar1);
+  }
+  iVar1 = func_0009C6A0(param_1,((undefined *)&D_001D3B84));
+  if (iVar1 != 0) {
+    func_0009D3E0(iVar1);
+  }
+  iVar1 = func_0009C6A0(param_1,((undefined *)&D_001D3B74));
+  if (iVar1 != 0) {
+    func_0009D3E0(iVar1);
+  }
+  iVar1 = func_0009C6A0(param_1,((undefined *)&D_001D3B64));
+  if (iVar1 != 0) {
+    func_0009D3E0(iVar1);
+  }
+  iVar1 = func_0009C6A0(param_1,((undefined *)&D_001D3B54));
+  if (iVar1 != 0) {
+    func_0009D3E0(iVar1);
+  }
+  iVar1 = func_0009C6A0(param_1,((undefined *)&D_001D3B44));
+  if (iVar1 != 0) {
+    func_0009D3E0(iVar1);
+  }
+  iVar1 = func_0009C6A0(param_1,((undefined *)&D_001D3B3C));
+  if (iVar1 != 0) {
+    func_0009D3E0(iVar1);
+  }
+  iVar1 = func_0009C6A0(param_1,((undefined *)&D_001D3B34));
+  if (iVar1 != 0) {
+    func_0009D3E0(iVar1);
+  }
+  func_000B5860();
+  return;
+}
+
 void func_0002D030(int *param_1) { int func_00110300(...); int func_00110330(...); extern char D_001D3BC4,D_001D3BBC,D_001D3BB0,D_001D3BA4,D_001D3B94; int r; r=func_00110300(param_1[11],&D_001D3BC4,0); if(r)func_00110330(r,0); r=func_00110300(param_1[11],&D_001D3BBC,0); if(r)func_00110330(r,0); r=func_00110300(param_1[11],&D_001D3BB0,0); if(r)func_00110330(r,0); r=func_00110300(param_1[11],&D_001D3BA4,0); if(r)func_00110330(r,0); r=func_00110300(param_1[11],&D_001D3B94,0); if(r)func_00110330(r,0); }
 
-short func_0002D0F0(int a,int b,int c,float radius) { float func_0012E870(...); float d[3]; d[0]=func_0012E870(a,b); d[1]=func_0012E870(b,c); d[2]=func_0012E870(c,a); if(d[1]<d[0])d[0]=d[1]; if(d[2]<d[0])d[0]=d[2]; return d[0] < radius*radius; }
+unsigned char func_0002D0F0(int a,int b,int c,float radius) { float func_0012E870(...); float d[3]; d[0]=func_0012E870(a,b); d[1]=func_0012E870(b,c); d[2]=func_0012E870(c,a); int ecx=1; do { if (!(d[0] <= d[ecx])) d[0]=d[ecx]; ++ecx; } while(ecx != 3); radius*=radius; return d[0] < radius; }
 
 void func_0002D3E0(int param_1) { extern int D_00307DF8; int func_001031C0(...); int func_00103990(...); int r=func_001031C0(D_00307DF8,param_1); if(r) func_00103990(r); }
 
