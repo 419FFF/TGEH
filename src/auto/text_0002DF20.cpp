@@ -7,10 +7,6 @@ void func_0002E000(int p, int *a, int *b, int q, char flag) { *(int *)(p+0x1e4)=
 void __cdecl _func_0002E300(int param_1) { volatile int local; local = 11; }
 
 typedef unsigned int u32;
-struct Blk2DF20 { int d[0x118]; };
-extern Blk2DF20 _D_002ED780;
-extern char _D_002EDBF4, _D_002EDBF5, _D_00307D6C;
-extern int _D_002EDBE0, _D_002EDBE4, _D_002EDBE8, _D_002EDBF0;
 extern int func_00110060(...),func_0012F7A0(...),func_0012F4C0(...),func_00112250(...);
 bool func_0002EB20(int a,int b,int *p) { extern int func_00110060(...),func_0012F7A0(...),func_0012F4C0(...),func_00112250(...); __declspec(align(16)) char local_90[0x30]; unsigned int v[3]; char local_50[0x4c]; char pad[0x10]; func_00110060(p[11],local_90); v[0]=p[16];v[1]=p[17];v[2]=p[18];func_0012F7A0(v,local_90); func_0012F4C0(local_50,a,local_90); return (bool)func_00112250(p+12,local_50,b); }
 
