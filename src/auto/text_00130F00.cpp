@@ -29,8 +29,9 @@ float func_00131250(float x) {
     return (float)cos((double)x);
 }
 
-int func_00131260(float a0) {
-    return (int)(__int64)a0;
+float func_00131260(float a0) {
+    float r = (float)acos(a0);
+    return r;
 }
 
 #pragma intrinsic(sin)
