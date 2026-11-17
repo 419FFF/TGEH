@@ -34,6 +34,25 @@ void _func_000BCAB0(float *out, float *a, float *b, float t)
 
     *(M *)out = m;
 }
-#pragma optimize("", on)
-extern int func_0011F270(...); extern float func_00131610(...); extern void func_0012F120(...); extern void func_0012FCF0(...); extern void func_001105E0(...); void func_000BD3B0(int param_1,int param_2,int param_3) { int local_70,local_6c,local_68,local_60[2],local_58; char local_50[48]; int local_20,local_1c,local_18; func_0011F270(param_2+4,param_3,&local_70,local_60); float f=func_00131610(local_60[0],local_58); func_0012F120(local_50); func_0012FCF0(local_50,f); local_20=local_70; local_1c=local_6c; local_18=local_68; func_001105E0(*(int*)(param_1+0x2c),local_50,1); }
+extern void func_0011F270(int, int, float *, float *);
+extern float func_00131610(float, float);
+extern void func_0012FCF0(float *, float);
+extern void func_001105E0(int, float *, int);
+#pragma optimize("y", on)
+void func_000BD3B0(int param_1, int param_2, int param_3)
+{
+    float f;
+    __declspec(align(16)) float pos[4];
+    __declspec(align(16)) float dir[4];
+    __declspec(align(16)) float m[16];
+
+    func_0011F270(param_2 + 4, param_3, pos, dir);
+    f = func_00131610(dir[0], dir[2]);
+    func_0012F120((unsigned *)m);
+    func_0012FCF0(m, f);
+    m[12] = pos[0];
+    m[13] = pos[1];
+    m[14] = pos[2];
+    func_001105E0(*(int *)(param_1 + 0x2c), m, 1);
+}
 #pragma optimize("", on)
