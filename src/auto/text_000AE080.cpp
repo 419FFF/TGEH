@@ -192,11 +192,7 @@ int func_000AE9B0(int param_1)
   return iVar1 * 0x10 + -0x10 + *(int *)(param_1 + 0x20);
 }
 
-void func_000AE9F0(int param_1)
-{
-  *(undefined1 *)(param_1 + 0xc) = 1;
-  return;
-}
+void _func_000AE9F0(int p) { *(unsigned char *)(p+0xc)=1; }
 
 void func_000AEAE0(int param_1, undefined4 *param_2)
 {
