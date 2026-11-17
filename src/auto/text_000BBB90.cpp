@@ -3,6 +3,7 @@
 
 extern int D_00314414;
 extern int D_001D9210;
+extern int D_003251A8;
 extern int D_00314BD4;
 extern int D_001D918C;
 extern int D_001D8484;
