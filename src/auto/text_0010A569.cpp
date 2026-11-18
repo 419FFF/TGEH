@@ -11,12 +11,32 @@ void __stdcall func_0010AAA3(int value) { extern int D_003252D4; int fs; int *tl
 extern "C" __declspec(dllimport) int __stdcall RtlNtStatusToDosError(int);
 extern "C" __declspec(dllimport) void __stdcall RtlInitAnsiString(void*, const char*);
 extern int func_00109CF3(int, int);
+extern "C" __declspec(dllimport) int __stdcall NtCreateFile(void*, unsigned int, void*, void*, void*, unsigned int, unsigned int, unsigned int, unsigned int);
+extern "C" __declspec(dllimport) int __stdcall NtQueryInformationFile(void*, void*, void*, unsigned int, unsigned int);
+extern "C" __declspec(dllimport) int __stdcall NtWriteFile(void*, void*, void*, void*, void*, void*, unsigned int, void*);
+extern "C" __declspec(dllimport) int __stdcall NtClose(void*);
+unsigned char __stdcall func_0010AA16(char*, char*, int);
+void *__stdcall func_0010C577(int);
+unsigned int __stdcall func_0010C5B6(int);
+void __stdcall func_0010C598(int);
 void __stdcall func_0010AAA3(int);
 int __stdcall func_0010AAD1(int);
 int __stdcall func_0010AAD1(int s) { int e=RtlNtStatusToDosError(s); func_0010AAA3(e); return e; }
 
 int __stdcall func_0010AAE8(int a0, int *a1, int *out, int a3) { int e; if(a1[0]==0x103){ if(a3==0) e=0x102; else { e=a1[4]; if(!e)e=a0; e=func_00109CF3(e,-1); } if(e==0x102){func_0010AAA3(0x3e4);return 0;} if(e!=0)return 0; } *out=a1[1]; if(a1[0]<0){func_0010AAD1(a1[0]);return 0;} return 1; }
 
-void __stdcall func_0010AB4D(void *a0, void *a1, const char *a2) { RtlInitAnsiString(a1,a2); ((int*)a0)[1]=(int)a1; ((int*)a0)[0]=-4; ((int*)a0)[2]=0x80; }
+void __stdcall func_0010AB4D(int *a0, const char *a1, void *a2) { RtlInitAnsiString(a2,a1); a0[1]=(int)a2; a0[0]=-4; a0[2]=0x80; }
+
+long long * __stdcall func_0010AB75(long long *out, unsigned int n) { unsigned long long x; if(n==0xffffffff) return 0; x=(unsigned long long)n*10000; *out=-(long long)x; return out; }
+
+void *__stdcall func_0010ABA3(unsigned int size,int flags){extern unsigned int D_001E62B8[4];void *__stdcall func_0010C4DD(unsigned int,unsigned int,unsigned int,unsigned int,unsigned int);void *__stdcall func_0010C49A(unsigned int,unsigned int,unsigned int,unsigned int);void *__stdcall func_0010C45F(unsigned int,unsigned int);unsigned int t,prot;void*r;if(flags<0){if(!(flags&0xf000000))flags=(flags&0xfcffffff)|0xc000000;t=((unsigned int)flags>>24)&15;prot=D_001E62B8[((unsigned int)flags>>28)&3];if(t==1)r=func_0010C4DD(size,0,0xffffff,0x1000,prot);else r=func_0010C49A(size,0xffffffff,1<<t,prot);if(r&&(flags&0x40000000)){unsigned int i;for(i=0;i<size;i++)((unsigned char*)r)[i]=0;}}else r=func_0010C45F(size,((unsigned int)flags>>24)&0x40);return r;}
+
+#pragma optimize("y", off)
+void __stdcall func_0010AC43(void*p,unsigned int f){extern void __stdcall MmFreeContiguousMemory(void*);void __stdcall func_0010C47C(void*);if(f&0x80000000)MmFreeContiguousMemory(p);else func_0010C47C(p);}
+int __stdcall func_0010AC5D(void *file,unsigned int expected) { extern int __stdcall NtOpenFile(void*,unsigned int,void*,void*,unsigned int,unsigned int); extern int __stdcall NtQueryVolumeInformationFile(void*,void*,void*,unsigned int,unsigned int); extern int __stdcall NtClose(void*); unsigned char oa[12],iosb[8],info[16]; unsigned int attr=0x40; int status; status=NtOpenFile(&file,0x100001,&attr,oa,3,0x800021); if(status<0) return status; status=NtQueryVolumeInformationFile(file,iosb,info,0x18,3); NtClose(file); if(status>=0&&*(unsigned int*)(info+0x10)**(unsigned int*)(info+0x0c)!=expected) status=0xc000014f; return status; }
+
+void __stdcall func_0010B0F0(unsigned int a,unsigned int b){extern char D_001DED38;extern char D_001E62E0,D_001E62E8,D_001E62F0,D_001E62F8;void func_0013E469(void*,void*,unsigned int);int __stdcall func_0010ADBC(void*,void*,void*,unsigned int,unsigned int,unsigned int);char tmp[12];func_0013E469(tmp,&D_001DED38,a);if(func_0010ADBC(&D_001E62E0,&D_001E62E8,tmp,1,0,0)>=0)func_0010ADBC(&D_001E62F0,&D_001E62F8,tmp,1,b,0);}
+
+extern "C" __declspec(dllimport) void __stdcall HalReturnToFirmware(unsigned long); void __stdcall func_0010B145(int a,int b,int c){extern int D_00010118; int __stdcall func_00109A27(int,int*); if(*(int*)(D_00010118+8)!=-131072){int local[768]={0};local[0]=a;local[1]=0;local[2]=b;local[3]=c;func_00109A27(0,local);return;} HalReturnToFirmware(4);__debugbreak();__assume(0);}
 
 void __stdcall func_0010B1AA(int a0){int __stdcall func_0010AC5D(int,int);func_0010AC5D(a0,0x4000);}
