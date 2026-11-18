@@ -363,6 +363,24 @@ void func_0006E2B0(void) {
     extern int D_002FA004;
     D_002FA004 = 0;
 }
+
+void func_0006E2C0(int p)
+{
+  if (D_002FA004 != 100) {
+    if (func_0011B4F0((int)&D_001D46D8, *(int *)(p + 0xc)) &&
+        func_0011B4F0((int)&D_001D57D4, *(int *)(p + 0xc)) &&
+        func_0011B4F0((int)&D_001D57C8, *(int *)(p + 0xc))) {
+      ((int *)&D_002F9E10)[D_002FA004] = *(int *)(p + 0x2c);
+      ((char *)&D_002F9FA0)[D_002FA004] = 0;
+      D_002FA004++;
+      return;
+    }
+    ((int *)&D_002F9E10)[D_002FA004] = func_00110300(*(int *)(p + 0x2c), (int)&D_001D30FC, 0);
+    ((char *)&D_002F9FA0)[D_002FA004] = 2;
+    D_002FA004++;
+  }
+}
+
 extern int D_002FA004;
 extern int D_001D46D8;
 extern int D_001D57D4;
