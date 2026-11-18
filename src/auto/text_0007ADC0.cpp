@@ -138,3 +138,31 @@ int* func_0007BAC0(int param_1,int param_2) {
  return p; }
 }
 
+void func_0007BB70(int param_1, int param_2)
+{
+  extern int D_002FA6F8[], D_002FA6E4[], D_002FA6E8[], D_002FA6F4[], D_0030809C;
+  int func_00110420(...); int func_00110480(...); int func_0011DF00(...); int func_0011D310(...);
+  int i = 0; unsigned int off = 0;
+  do {
+    if (*(int*)((char*)D_002FA6F8 + off) == param_2) {
+      int o = i * 0x18;
+      func_00110420(param_1, *(int*)((char*)D_002FA6E4 + o));
+      func_00110480(D_0030809C, *(int*)((char*)D_002FA6E4 + o), 8);
+      func_0011DF00(*(int*)((char*)D_002FA6E8 + o));
+      int p = *(int*)((char*)D_002FA6E8 + o);
+      unsigned int j = 0;
+      if (*(unsigned int*)(p + 0x15c) > 0) {
+        do {
+          func_0011D310(*(int*)(p + 0x160) + i * 0x58, *(int*)(*(int*)(p + 0x50) + 0x2c), p + 0x54);
+          *(int*)(*(int*)(p + 0x160) + 0x20 + i * 0x58) = 0;
+          j++;
+        } while (j < *(unsigned int*)(p + 0x15c));
+      }
+      *(int*)((char*)D_002FA6F4 + o) = 0;
+      *(int*)((char*)D_002FA6F8 + o) = 0;
+      return;
+    }
+    off += 0x18; i++;
+  } while (off < 0x30);
+}
+
