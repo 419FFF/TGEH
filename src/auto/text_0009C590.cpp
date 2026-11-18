@@ -41,19 +41,23 @@ int func_0009CC90(int param1, int param2)
 int func_0009CD40(int param1, int param2)
 {
   int func_0009C510(...), func_0009C590(...), func_0011B4F0(...);
-  char local[0x100];
-  char local2[0x100];
+  char local[0x100], local2[0x100];
   func_0009C510(param2, local, local2);
   if (param1 == 0) param1 = func_0009C590(local);
   int object = *(int *)(param1 + 0x1c);
-  int count = *(int *)(object + 0x24);
-  int i = 0, offset = 0;
-  while (i < count) {
-    int name = *(int *)(*(int *)(object + 0x28) + offset + 0x40);
-    if (func_0011B4F0(name, local2) == 0)
-      return i * 0x70 + *(int *)(object + 0x28);
-    ++i;
-    offset += 0x70;
+  unsigned int count = *(unsigned int *)(object + 0x24);
+  unsigned int offset;
+  unsigned int i;
+  i = 0;
+  if (count > 0) {
+    offset = 0;
+    do {
+      if (func_0011B4F0(*(int *)(*(int *)(object + 0x28) + offset + 0x40), local2) == 0)
+        return i * 0x70 + *(int *)(object + 0x28);
+      ++i;
+      offset += 0x70;
+      count = *(unsigned int *)(object + 0x24);
+    } while (i < count);
   }
   return 0;
 }
@@ -72,7 +76,32 @@ void func_0009CDE0(int self)
   func_00110760(self);
 }
 
-int func_0009CE20(char *param_1, int param_2) { int func_0011B530(...); int func_0013E600(...); extern char D_001D73E4; char *pc=param_1; int n; do { n=*pc++; } while(n); n=(int)pc-(int)(param_1+1); if(!param_2) return 0; if(func_0011B530(*(int *)(param_2+12),param_1,n)) return 0; return func_0013E600(*(int *)(param_2+12)+n,&D_001D73E4)==0; }
+int func_0009CE20(char *str, int obj)
+{
+  // Function body based on previous best attempt structure
+  int func_0011B530(...), func_0013E600(...); 
+  extern char D_001D73E4; // Assuming this is correctly declared globally
+  char *p = str;
+  char *start = p + 1;
+  char c = '\0';
+  int n = 0;
+
+  // Calculate string length 'n'
+  do {
+    c = *p;
+    ++p;
+  } while (c != '\0');
+  n = (int)p - (int)start;
+
+  if (obj != 0) { // Check for non-zero object pointer, matching the assembly test edi, edi
+    // Call func_0011B530
+    if (!func_0011B530(*(int *)(obj + 0xc), str, n)) {
+      // Return result of func_0013E600 if the first call failed
+      return (func_0013E600(*(int *)(obj + 0xc) + n, &D_001D73E4) == 0);
+    }
+  }
+  return 0;
+}
 
 void func_0009D080(void){extern int D_00308158,D_003104B4,D_0030BFE0,D_0030C498;extern int D_0030C630[],D_0030BFE8[];extern int func_0009CE80(...),func_0011B990(...),func_00116FB0(...);int i;int base=D_00308158;int obj=*(int*)(base+0x18);i=D_003104B4;--i;if(i<0)goto done1;do{int x=D_0030C630[i];if(x)func_0009CE80(x);}while(--i>=0);done1:func_0011B990(obj);if(D_0030BFE0){func_00116FB0(D_0030BFE0);D_0030BFE0=0;}unsigned i2=0;if((unsigned)D_0030C498>0)do{func_00116FB0(D_0030BFE8[i2]);}while(++i2<(unsigned)D_0030C498);D_0030C498=0;D_003104B4=0;}
 
@@ -88,6 +117,32 @@ void func_0009D3E0(int p)
     flags |= 2;
     *(unsigned short *)(p + 0x10) = flags;
     func_0009D2B0(p);
+  }
+}
+
+extern "C" char *strcpy(char *, const char *);
+extern "C" char *strcat(char *, const char *);
+extern "C" unsigned int strlen(const char *);
+void func_0009D400(int p)
+{
+  extern unsigned int D_003104B4;
+  extern int D_0030C630[];
+  int func_0011B530(...), func_0013E600(...);
+  char buf[256];
+  unsigned int i;
+  strcpy(buf, *(char **)(p + 0xc));
+  strcat(buf, ".");
+  for (i = *(unsigned short *)(p + 0x54) + 1; i < D_003104B4; i++) {
+    int e = D_0030C630[i];
+    if (e) {
+      int n = strlen(buf);
+      if (!func_0011B530(*(int *)(e + 0xc), buf, n) && !func_0013E600(*(int *)(e + 0xc) + n, ".")) {
+        func_0009D400(D_0030C630[i]);
+        *(unsigned short *)(D_0030C630[i] + 0x10) |= 0x40;
+      } else if (func_0011B530(*(int *)(D_0030C630[i] + 0xc), buf, strlen(buf))) {
+        return;
+      }
+    }
   }
 }
 
