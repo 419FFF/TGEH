@@ -9,7 +9,7 @@ static inline int inl_strlen(const char *s)
     do {
         c = *s++;
     } while (c != 0);
-    return (int)(s - e);
+    return (int)((unsigned)s - (unsigned)e);
 }
 
 int _func_00128450(char *param_1)
@@ -26,7 +26,7 @@ int _func_00128450(char *param_1)
     int func_00135280(...);
     void func_00116FB0(...);
     char buf[256];
-    char *p, *d, *e;
+    char *p, *d;
     char c;
     int iVar7, uVar5, uVar6;
     p = param_1;
@@ -35,12 +35,7 @@ int _func_00128450(char *param_1)
         p[buf - param_1] = c;
         p++;
     } while (c != 0);
-    p = buf;
-    e = p + 1;
-    do {
-        c = *p++;
-    } while (c != 0);
-    buf[(p - e) - 3] = c;
+    buf[inl_strlen(buf) - 3] = 0;
     d = buf - 1;
     do {
         c = *++d;
