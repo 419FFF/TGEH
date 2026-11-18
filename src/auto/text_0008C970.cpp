@@ -1,6 +1,6 @@
 /* 13 functions from 0x0008C970 to 0x0008D866, found by Ghidra. */
 #include "common.h"
-struct S_002FE120 { int active; float t; float limit; float k0; float k1; char pad[0x40c]; struct { unsigned char c; unsigned char pad; unsigned short age; } p[100]; char pad2[0x600 - 0x422 - 0x190 + 2 - 2]; };
+struct S_002FE120 { int active; float t; float limit; float k0; float k1; char pad[0x40c]; struct { unsigned char pad; unsigned char c; unsigned short age; } p[100]; char pad2[0x50]; };
 #include "ghidra.h"
 
 extern float _D_001D27B0, _D_00329234, _D_001D27B8, _D_001D6F38;
