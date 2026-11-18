@@ -2,6 +2,8 @@
 #include "common.h"
 #include "ghidra.h"
 
+extern "C" unsigned int strlen(const char *);
+#pragma intrinsic(strlen)
 struct S_125350 { short a; short pad; int b; int c; };
 extern unsigned int D_001DF6B8;
 extern unsigned char D_001DF6BC;
@@ -87,6 +89,41 @@ void _func_00125250(int *p,undefined4 *q){int func_0013E9DB(...);int func_00116A
 void _func_001252B0(int p,undefined4 *q){int func_0013E9DB(...);longdouble func_0013E9E0(...);int i=func_0013E9DB(q[0])<<6;float *dst=(float*)(i+*(int*)(p+8));q++;for(int outer=0;outer<4;outer++){int inner=4;do{*dst++=(float)func_0013E9E0(*q++);--inner;}while(inner);}}
 
 void _func_00125310(int *p,undefined4 *q){int func_0013E9DB(...);int a=func_0013E9DB(q[0]);int b=func_0013E9DB(q[1]);int *node=(int*)*p;int idx=node[2];*(unsigned char*)(a+idx)=b?0:1;}
+
+S_125350* _func_00125350(char *name)
+{
+  unsigned char _func_00131A10(...); int _func_00126120(...); S_125350* _func_00126180(...); int _func_0012ADA0(...); int _func_00126300(...); int _func_00125E80(...);
+  S_125350 *r;
+  char buf[0x100];
+  char *p;
+  char *q;
+  int len;
+  int i = 0;
+  do { buf[i] = name[i]; } while (name[i++]);
+  p = buf;
+  q = p + 1;
+  do { } while (*p++);
+  len = p - q;
+  buf[len + 1] = 0;
+  p = buf + 3;
+  do { p++; } while (*p);
+  *(unsigned int*)p = D_001DF6B8;
+  p[4] = D_001DF6BC;
+  if (_func_00131A10(buf)) {
+    int h = _func_00126120(buf);
+    r = _func_00126180(h);
+    r->c = (int)_func_00126180(h);
+    r->b = _func_0012ADA0(h, 1);
+    _func_00126300(h);
+    r->a = 1;
+    return r;
+  }
+  if (_func_00131A10(name)) {
+    _func_00125E80(name, &r);
+    return r;
+  }
+  return 0;
+}
 
 void func_00125440(undefined4 param_1, short *param_2)
 {
