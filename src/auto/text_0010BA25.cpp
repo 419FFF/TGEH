@@ -44,6 +44,39 @@ int __stdcall func_0010BF0E(void *h,int *out){int __stdcall func_0010BED0(void*,
 
 void __stdcall func_0010C0D4(int a,int b){extern unsigned char __imp__XboxHDKey[];extern void __stdcall XcHMAC(void*,unsigned int,void*,unsigned int,unsigned int,unsigned int,int);XcHMAC(__imp__XboxHDKey,0x10,&a,4,0,0,b);}
 
+#pragma optimize("sy", off)
+#pragma optimize("gs", on)
+int __stdcall func_0010C0F3(int hFile, int p2, unsigned int *p3, int p4) {
+    void __stdcall func_0010C0D4(int, void*);
+    void __stdcall func_0010EC79(void*, int, void*);
+    void func_0010ECDB(void*, void*, unsigned int);
+    void __stdcall func_0010ECE0(void*, void*, int, int);
+    void __stdcall func_0010AAD1(int);
+    extern int (__stdcall *_imp__NtReadFile)(int,int,int,int,void*,void*,unsigned int,int);
+    unsigned char tmp[20], hdr[0x74], buf[512]; int io[2];
+    unsigned int n, total, chunk;
+    if (p2 == 0) p2 = p3[9];
+    func_0010C0D4(p2, tmp);
+    n = 0x88;
+    if (p3[6] < n) n = p3[6];
+    func_0010EC79(tmp, 0x14, hdr);
+    func_0010ECDB(hdr, p3 + 5, n - 0x14);
+    if (hFile != 0 && p3[6] > 0x88) {
+        total = p3[6] - 0x88;
+        while (total != 0) {
+            int st;
+            chunk = 0x200;
+            if (total < chunk) chunk = total;
+            st = _imp__NtReadFile(hFile, 0, 0, 0, io, buf, chunk, 0);
+            if (st < 0) { func_0010AAD1(st); return 0; }
+            if (io[1] != chunk) { func_0010AAD1(0xc0000011); return 0; }
+            func_0010ECDB(hdr, buf, chunk);
+            total -= chunk;
+        }
+    }
+    func_0010ECE0(hdr, tmp, 0x14, p4);
+    return 1;
+}
 typedef long (__stdcall *NtReadFn)(void*, void*, void*, void*, void*, void*, unsigned long, void*);
 extern NtReadFn __imp__NtReadFile;
 extern void __stdcall func_0010AAD1(long);
@@ -51,13 +84,13 @@ extern void __stdcall func_0010AAA3(long);
 extern int __stdcall func_0010C0F3(int, int, int *, int *);
 #pragma optimize("y", off)
 int __stdcall func_0010C1D8(int h, int b, int check, int *buf) {
-    NtReadFn rd = __imp__NtReadFile;
-    int zero = 0;
-    long r;
-    unsigned int size;
-    int io[2];
-    int off[2];
     int tmp[5];
+    int off[2];
+    int io[2];
+    unsigned int size;
+    long r;
+    int zero = 0;
+    NtReadFn rd = __imp__NtReadFile;
     off[0] = zero;
     off[1] = zero;
     r = rd((void*)h, (void*)zero, (void*)zero, (void*)zero, io, buf, 0x1c, off);
@@ -97,7 +130,12 @@ int func_0010C459(void) {
 
 int __stdcall func_0010C45F(unsigned int a, unsigned int b) { extern int D_0037C074; int __stdcall func_0010DA9F(int, int, int); unsigned int x = a; return func_0010DA9F(D_0037C074, (x >> 3) & 8, b); }
 
-unsigned int __stdcall func_0010C47C(unsigned int p){extern int __stdcall func_0010E21A(int,int,int);extern int _D_0037C074;return (func_0010E21A(_D_0037C074,0,p)!=0)?0:p;}
+unsigned int __stdcall func_0010C47C(unsigned int p)
+{
+  extern int __stdcall func_0010E21A(int, int, int);
+  extern int _D_0037C074;
+  return (((unsigned char) func_0010E21A(_D_0037C074, 0, p)) != 0) ? (0) : (p);
+}
 
 void *__stdcall func_0010C49A(unsigned int a,unsigned int b,unsigned int c,unsigned int d) { extern void *__stdcall __imp__MmAllocateContiguousMemoryEx(unsigned int,unsigned int,unsigned int,unsigned int,unsigned int); void __stdcall func_0010AAA3(int); unsigned int lo,hi; void*p; if(b==0xffffffff){lo=0;hi=0xffffffff;}else{lo=b;hi=a+b-1;c=0;}p=__imp__MmAllocateContiguousMemoryEx(a,lo,hi,c,d);if(!p)func_0010AAA3(8);return p;}
 
