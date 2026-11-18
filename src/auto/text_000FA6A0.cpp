@@ -6,7 +6,7 @@
 
 extern void* D_00324B68;
 
-struct S_000FAFD0 { char pad0[0x10]; unsigned char f10; unsigned char f11; char pad12[3]; unsigned char f15; char pad16[0x6e]; unsigned int h84; };
+struct S_000FAFD0 { char pad0[0x10]; unsigned char f10_lo:3; unsigned char f10_b3:1; unsigned char f10_hi:4; unsigned char f11_lo:3; unsigned char f11_b3:1; unsigned char f11_hi:4; char pad12[3]; unsigned char f15; char pad16[0x6e]; unsigned int h84; };
 struct P_000FAFD0 { S_000FAFD0 *s; };
 
 extern void* _func_0001CC10(void* param_1);
