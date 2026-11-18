@@ -46,3 +46,25 @@ extern float D_001D37D0;
 extern float D_0031B834;
 extern float D_001D2808;
 extern float D_0031B838;
+// Structs
+struct S_D_000D35B0_arg0 { float f32; };
+struct S_D_000D35B0_arg1 { float f32; };
+struct S_D_000D35B0_arg2 { float f32; };
+
+// Extern Globals/Constants (assuming undefined4 for addresses)
+extern undefined4 _D_0031ACB4;
+extern undefined4 _D_001DAC3C;
+extern undefined4 _D_0031ACAC;
+extern undefined4 _D_001D27B8;
+extern undefined4 _D_001E461C;
+extern undefined4 _D_0031AD9C; // Used as a byte comparison, maybe char or u8? Let's stick to undefined4 for now.
+extern undefined4 _D_0031ADC8;
+extern undefined4 _D_0031ADC4;
+extern undefined4 _D_0031ADC0;
+extern undefined4 _D_0031B7D8;
+
+// Function prototypes (placeholders for now)
+void func_0009C6A0(undefined4 a, undefined4 b);
+int func_000ECB20(undefined4 a, undefined4 b, undefined4 c);
+void func_001031A0(int a, int b);
+void func_000ECB60();
