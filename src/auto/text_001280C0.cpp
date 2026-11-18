@@ -28,14 +28,19 @@ int _func_00128450(char *param_1)
     char buf[256];
     char *p, *d;
     char c;
-    int iVar7, uVar5, uVar6;
+    int len, iVar7, uVar5, uVar6;
     p = param_1;
     do {
         c = *p;
         p[buf - param_1] = c;
         p++;
     } while (c != 0);
-    buf[inl_strlen(buf) - 3] = 0;
+    p = buf;
+    do {
+        c = *p++;
+    } while (c != 0);
+    len = p - (buf + 1);
+    buf[len - 3] = 0;
     d = buf - 1;
     do {
         c = *++d;
@@ -158,6 +163,55 @@ void func_00128990(int param_1, char param_2)
 }
 
 void func_00128BE0(int p) { int func_0013AAC0(...); int q=*(int *)(p+0xf0); if(q) func_0013AAC0(q); }
+
+void func_00128C90(char *obj)
+{
+    int func_001100A0(...);
+    extern int D_00329238;
+    int func_0012E6D0(...);
+    int func_0012ECA0(...);
+    extern int D_001E7D28;
+    int func_0012E750(...);
+    int func_0013ACF0(...);
+    int func_0013AD10(...);
+    extern int *D_00331AF4;
+    extern int D_00331AE0;
+    int func_0013ACA0(...);
+    int func_001289C0(...);
+    int func_0013ADF0(...);
+    int func_0011C3E0(...);
+    int func_0011C3B0(...);
+    char *self = obj;
+    int *node;
+    int *next;
+    char *e;
+    unsigned char m[12];
+
+    func_001100A0(obj, &obj);
+    if (*(int *)(self + 0xd4) == D_00329238) {
+        unsigned int k = *(unsigned char *)(self + 0x23) & 1;
+        func_0012E6D0(m, self - k * 0x40 + 0xb0, self + k * 0x40 + 0x70);
+        func_0012ECA0(m, D_001E7D28);
+    } else {
+        func_0012E750(m);
+    }
+    func_0013ACF0(obj);
+    func_0013AD10(m);
+    for (node = D_00331AF4; node != 0; node = next) {
+        e = (char *)node[2];
+        next = (int *)node[0];
+        if (*(int *)(e + 0xf0) != 0) {
+            if (func_0013ACA0(*(int *)(e + 0xf0)) != 0) {
+                func_001289C0(e, 0);
+                continue;
+            }
+            func_0013ADF0(*(int *)(e + 0xf0));
+            *(int *)(e + 0xf0) = 0;
+        }
+        func_0011C3E0(e + 0xe0);
+        func_0011C3B0(&D_00331AE0, e + 0xe0, e);
+    }
+}
 
 void func_00128D90(int param_1)
 {
