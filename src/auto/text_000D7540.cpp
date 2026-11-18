@@ -19,14 +19,15 @@ void func_000D7CF0(void) {
     char *g = (char *)D_0031E508;
     bool done = false;
     int h = func_001031C0(*(int *)(g + 0xefec), &D_001DB1F4);
-    unsigned int sz[2]; float pos[2];
+    unsigned int sz[2]; float pos[2]; volatile int t;
     func_000688D0();
     if (D_001E5488[0].a != 0xff) {
         E_001E5488 *e = D_001E5488;
         do {
             if ((unsigned char)g[0xd804] == e->a && (unsigned char)g[0xd805] == e->b) {
                 sz[0] = 0x43a00000; sz[1] = 0x43a00000;
-                pos[0] = (double)e->x; pos[1] = (double)e->y;
+                t = e->x; pos[0] = (float)t;
+                t = e->y; pos[1] = (float)t;
                 func_000D7540(g + 0xe8a0, pos, sz, 4, 5, e->z);
                 if ((char)func_00103130(h)) func_00103990(h, 1);
                 done = true;
@@ -127,5 +128,43 @@ void func_000D83C0(unsigned int *p)
  func_000D79D0(p,p+1,1);
  p[0]=p[1];
  p[2]=2;
+}
+
+char _func_000D8410(char *param_1, char param_2)
+{
+    int *func_000D72B0(...);
+    char func_000D74D0(...);
+    int func_000D7340(...);
+    void func_000D83C0(...);
+    char a[4];
+    int *piVar2;
+    int iVar3;
+    a[0] = param_1[0]; a[1] = param_1[1]; a[2] = param_1[2]; a[3] = param_1[3];
+    if (param_2 == 2) {
+        piVar2 = func_000D72B0(a, &param_2, -1, 0);
+        if (piVar2[1] != 0x14) {
+            if (func_000D74D0(piVar2) == 0 && *piVar2 == 0) {
+                iVar3 = func_000D7340(a);
+                if (iVar3 != 0) {
+                    *(int *)(iVar3 + 8) = 4;
+                    func_000D83C0(iVar3);
+                    return 1;
+                }
+            }
+        }
+    } else if (param_2 == 3) {
+        piVar2 = func_000D72B0(a, &param_2, 1, 0);
+        if (piVar2[1] != 0x14) {
+            if (func_000D74D0(piVar2) == 0 && *piVar2 == 0) {
+                iVar3 = func_000D7340(a);
+                if (iVar3 != 0) {
+                    *(int *)(iVar3 + 8) = 5;
+                    func_000D83C0(iVar3);
+                    return 1;
+                }
+            }
+        }
+    }
+    return 0;
 }
 
