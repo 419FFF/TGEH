@@ -106,6 +106,7 @@ int _func_0014616E(int a,int b) { extern int _D_001E26D0; extern int D_0037BCB4;
 
 int _func_001461CF(int value) { extern int D_0037BCB8; int f=D_0037BCB8; if(f==0)return 0; int result=((int (__cdecl *)(int))f)(value); if(result==0) return 0; return 1; }
 
+#pragma optimize("s", on)
 int _func_001461EA(F92 *f)
 {
   int _func_0014546B(...);
@@ -124,7 +125,7 @@ int _func_001461EA(F92 *f)
     _func_0014546B(f);
   else
     f->_ptr = f->_base;
-  n = _func_00147022(f->_file, f->_base, *(int *)((char *)f + 0x18));
+  n = _func_00147022(f->_file, f->_base, f->_bufsiz);
   f->_cnt = n;
   if (n == 0 || n == -1) {
     f->_flag |= ((n != 0) ? 0x10 : 0) + 0x10;
@@ -133,18 +134,18 @@ int _func_001461EA(F92 *f)
   }
   if ((f->_flag & 0x82) == 0) {
     int fh = f->_file;
-    IO92 *p = (fh == -1) ? &D_002E92A0 : (IO92 *)((char *)D_0037C300[fh >> 5] + (fh & 0x1f) * 0x28);
+    IO92 *p = (fh != -1) ? (IO92 *)((char *)D_0037C300[fh >> 5] + (fh & 0x1f) * 0x28) : &D_002E92A0;
     if ((p->osfile & 0x82) == 0x82)
       f->_flag |= 0x2000;
   }
-  if (*(int *)((char *)f + 0x18) == 0x200 && (f->_flag & 8) != 0 && (f->_flag & 0x400) == 0)
-    *(int *)((char *)f + 0x18) = 0x1000;
+  if (f->_bufsiz == 0x200 && (f->_flag & 8) != 0 && (f->_flag & 0x400) == 0)
+    f->_bufsiz = 0x1000;
   f->_cnt = n - 1;
   return (unsigned char)*f->_ptr++;
 fail:
   return -1;
 }
-
+#pragma optimize("", on)
 int _func_0014546B(...); unsigned int _func_001462CB(unsigned int value,int *p) { int flags; char *q; if(value==0xffffffff)goto fail; flags=p[3]; if((flags&1)||flags>=0||(flags&2))goto fail; if(p[2]==0)_func_0014546B(p); if(p[0]==p[2]){if(p[1]!=0)goto fail;++p[0];} --p[0]; q=(char*)p[0]; if(flags&0x40){if(*q!=(char)value){p[0]=(int)(q+1);goto fail;}}else *q=(char)value; ++p[1]; p[3]=(p[3]&0xffffffef)|1; return value&0xff; fail:return 0xffffffff; }
 
 long double _func_00146337(double value) { return (long double)(int)value; }
