@@ -1,6 +1,7 @@
 /* 19 functions from 0x000856F0 to 0x000863DB, found by Ghidra. */
 #include "common.h"
 #include "ghidra.h"
+static undefined4 D_002FDDA0;
 
 void func_00085870(undefined4 param_1, int param_2)
 {
@@ -63,6 +64,45 @@ void func_00085E70(void) {
     func_0011D0E0((int)&D_001D6BA8);
 }
 
+extern "C" char *strcpy(char *, const char *);
+extern "C" void *memset(void *, int, unsigned int);
+void func_00085E80(void)
+{
+    extern char D_001D6BB4;
+    extern int D_001D6BA8;
+    extern int D_002FDDA4, D_002FDD9C, D_002FDD98, D_0030809C;
+    extern undefined4 D_002FDDA0;
+    char *func_0011E840(...);
+    int func_0011DD60(...);
+    int func_0011E830(...);
+    int func_0011DEF0(...);
+    int func_00110480(...);
+    __declspec(align(8)) int s[0x3d];
+    char *r;
+    int x;
+    memset(s, 0, sizeof(s));
+    s[0x2e] = 1;
+    s[0x2f] = 1;
+    s[0x24] = 2;
+    s[0x25] = 0;
+    s[0x2a] = 3;
+    s[0x36] = 0;
+    s[0x37] = 0;
+    s[0x3c] = 10;
+    s[0x39] = 0x1e;
+    strcpy((char *)s, "sprites/trail_grey.tga");
+    s[0x3b] = 0x58;
+    r = func_0011E840(&D_001D6BB4, s);
+    x = *(int *)(r + 0x14c);
+    D_002FDDA0 = (undefined4)r;
+    D_002FDDA4 = func_0011DD60(&D_001D6BA8, 0x1e, r, x);
+    func_0011E830(D_002FDDA0, D_002FDDA4);
+    func_0011DEF0(D_002FDDA4);
+    func_00110480(D_0030809C, D_002FDDA0, 8);
+    D_002FDD9C = 0;
+    D_002FDD98 = 0;
+}
+
 void func_00085F80(void)
 {
   int func_001160B0(...);
@@ -89,6 +129,8 @@ void func_00086180(void)
   }
   return;
 }
+
+void func_000861A0(void) { extern int D_002FDDBC; extern float D_001D333C; int func_00116A90(...); int ecx=D_002FDDBC; int *esi=(int*)(ecx+0x10c); int eax=*(int*)(ecx+0xf8); int count=*(int*)(eax+0xc); *esi=func_00116A90(count<<3,1,0); ecx=D_002FDDBC; int edx=*(int*)(ecx+0xf8); int edi=*(int*)(edx+0xc); int eax2=0; if(edi>0){ int off=0; do { edx=*(int*)(ecx+0xf8); float *src=(float*)(*(int*)(edx+0x14)+off); float *dst=(float*)*esi; dst[eax2*2]=src[0]*D_001D333C; eax2++; off+=0xc; edx=*(int*)(ecx+0xf8); src=(float*)(*(int*)(edx+0x14)+off-4); dst=(float*)*esi; dst[eax2*2-1]=*src*D_001D333C; } while(eax2<*(int*)(*(int*)(ecx+0xf8)+0xc)); } }
 
 void func_00086230(int a,int p) { extern int D_002FDDB8; int func_0010F750(...); int r=func_0010F750(*(int*)(p+0xc),D_002FDDB8,0x120); *(int*)(r+0xf4)=p; *(int*)(r+0xe0)=1; *(int*)(r+0xe4)=0; *(int*)(r+0xe8)=1; *(int*)(r+0xec)=0; *(int*)(r+0xf0)=0; }
 
