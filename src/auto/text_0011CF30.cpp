@@ -22,6 +22,72 @@ extern float D_001D27B8;
 extern float D_001D27B0;
 void func_0011CFC0(int param_1, float param_2) { *(float *)(param_1 + 0xf4) = param_2; if (!(param_2 <= D_001D27B8)) { *(float *)(param_1 + 0xf8) = D_001D27B0 / param_2; return; } *(unsigned int *)(param_1 + 0xf8) = 0; }
 
+void func_0011D000(char *param_1, undefined4 param_2)
+{
+  extern undefined4 D_003281E0;
+  extern undefined4 D_003281D8;
+  int func_00116A90(...);
+  int func_00116E50(...);
+  char *pcVar1;
+  char cVar2;
+  int iVar3;
+  char *pcVar4;
+  uint uVar5;
+  int iVar6;
+  
+  do {
+    uVar5 = 0;
+    if (D_003281E0 != 0) {
+      do {
+        // Check if slot is empty. Using the pattern from the target assembly's comparison logic.
+        if (*(int *)(D_003281D8 + uVar5 * 4) == 0) {
+          if (uVar5 != 0xffffffff) {
+            // Allocate space for the string using func_00116A90.
+            pcVar4 = (char *)func_00116A90(0x14c, 1, 1);
+            iVar3 = D_003281D8;
+            *(char **)(D_003281D8 + uVar5 * 4) = pcVar4;
+
+            // Copy string from param_1 to allocated buffer (pcVar4).
+            do {
+              cVar2 = *param_1;
+              param_1++;
+              *pcVar4++ = cVar2;
+            } while (cVar2 != '\0');
+
+            // Calculate length and sum.
+            pcVar4 = *(char **)(iVar3 + uVar5 * 4);
+            iVar6 = 0;
+            cVar2 = *pcVar4;
+            while (cVar2 != '\0') {
+              iVar6 += cVar2; // Sum of characters
+              pcVar1 = pcVar4 + 1;
+              pcVar4++;
+              cVar2 = *pcVar1;
+            }
+
+            // Write results back to the structure, using explicit offsets.
+            *(int *)(*(int *)(iVar3 + uVar5 * 4) + 0x20) = iVar6;
+            *(undefined4 *)(*(int *)(iVar3 + uVar5 * 4) + 0x24) = param_2;
+            *(undefined4 *)(*(int *)(iVar3 + uVar5 * 4) + 0x138) = 0;
+            *(undefined4 *)(*(int *)(iVar3 + uVar5 * 4) + 0x13c) = 0;
+            *(undefined4 *)(*(int *)(iVar3 + uVar5 * 4) + 0x140) = 0;
+            *(undefined4 *)(*(int *)(iVar3 + uVar5 * 4) + 0x144) = 0;
+            *(undefined4 *)(*(int *)(iVar3 + uVar5 * 4) + 0x148) = 0;
+            *(undefined4 *)(*(int *)(iVar3 + uVar5 * 4) + 0x28) = 0;
+            return;
+          }
+          // If slot is not empty, we break (as per original logic).
+          break;
+        }
+        uVar5++;
+      } while (uVar5 < D_003281E0);
+    }
+    // Update global pointers/counters.
+    D_003281D8 = func_00116E50(D_003281D8, D_003281E0 * 4 + 0x28, 1, 1);
+    D_003281E0 += 10;
+  } while (true);
+}
+
 int func_0011D1E0(char *s) { extern unsigned int D_003281E0; extern char **D_003281D8; int sum=0; char *p=s; while(*p){sum+=(signed char)*p; p++;} unsigned int i=0; while(i<D_003281E0){char *entry=D_003281D8[i];if(entry&&sum==*(int*)(entry+0x20)){char *x=entry;char *y=s;while(*x==*y&&*x){if(x[1]!=y[1])break;x+=2;y+=2;}if(*x==*y&&!*x)return (int)entry;}i++;}return 0;}
 
 void func_0011D270(undefined4 param_1, undefined4 param_2)
@@ -80,3 +146,6 @@ void func_0011DEF0(int param_1)
 }
 extern float D_001D27B8;
 extern float D_001D27B0;
+extern undefined4 D_003281E0;
+extern undefined4 D_003281D8;
+int func_00116FB0(undefined4);
