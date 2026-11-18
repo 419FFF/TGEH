@@ -265,3 +265,29 @@ typedef struct {
 
 // The first argument (param_1) is a buffer of floats.
 // We don't need to declare it globally, just use its type in the signature.
+struct S_D_000EC660_arg0 {
+    float data[32]; // Covers offsets 0x10 through 0x4c (32 bytes / 4 bytes per float)
+};
+
+struct S_D_000EC660_arg1 {
+    int field_0;     // +0x0
+    int field_1;     // +0x4
+    int field_2;     // +0x8
+    int field_3;     // +0xc
+    int field_4;     // +0x10
+    int field_5;     // +0x14
+    int field_6;     // +0x18
+    int field_7;     // +0x1c
+    // ... assuming 16 fields of int/pointer size based on offsets up to 0x4c
+    int field_8;     // +0x20
+    int field_9;     // +0x24
+    int field_a;     // +0x28
+    int field_b;     // +0x2c
+    int field_c;     // +0x30
+    int field_d;     // +0x34
+    int field_e;     // +0x38
+    int field_f;     // +0x3c
+    int field_g;     // +0x40 (This is the 17th element, up to 0x4C)
+};
+
+extern float D_001DC7F0;
