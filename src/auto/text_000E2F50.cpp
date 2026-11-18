@@ -62,3 +62,6 @@ struct S_D_000E34A0_arg0 {
     float f32_b7c;
     int s32_b80;
 };
+// Prototypes
+int func_000E34A0(int param_1, undefined4 *param_2);
+int func_00110000(undefined4 *param_1);
