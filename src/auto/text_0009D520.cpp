@@ -6,7 +6,7 @@
 struct B9E { unsigned int v[68]; };
 extern int _D_003104B4;
 extern int _D_0030C630[];
-struct Flags9D520 { char pad[0x10]; unsigned char lo : 6; unsigned char dirty : 1; unsigned char hi : 1; };
+struct Flags9D520 { char pad[0x10]; unsigned int lo : 6; unsigned int dirty : 1; unsigned int hi : 25; };
 int _func_0011B530(char *, char *, int);
 int _func_0013E600(char *, const char *);
 
@@ -26,7 +26,7 @@ void _func_0009D520(int p)
             if (_func_0011B530(*(char **)(q + 0xc), buf, n) == 0 &&
                 _func_0013E600(*(char **)(q + 0xc) + n, ".") == 0) {
                 _func_0009D520(_D_0030C630[i]);
-                *(char *)(_D_0030C630[i] + 0x10) &= ~0x40;
+                *(unsigned int *)(_D_0030C630[i] + 0x10) &= ~0x40;
             } else if (_func_0011B530(*(char **)(_D_0030C630[i] + 0xc), buf, strlen(buf)) != 0) {
                 return;
             }
