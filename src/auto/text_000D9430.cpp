@@ -1,6 +1,7 @@
 /* 9 functions from 0x000D9430 to 0x000DA36F, found by Ghidra. */
 #include "common.h"
 struct D9FB0_Obj { char pad0[2]; char flag; char pad3; float f4; char pad8[0x28]; float f30, f34, f38; };
+struct D9FB0_Mat { float f[16]; };
 struct D9FB0_Ent { int d; D9FB0_Obj *obj; float vx, vy, vz; int a, b, c; };
 
 void func_000D9430(void) { volatile int x[66]; x[0] = 0; x[1] = 0; }
