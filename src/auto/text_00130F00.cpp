@@ -136,6 +136,40 @@ void func_00131990(char *param_1)
 
 void _func_001319B0(char *out,unsigned int size){extern char *_func_0013B1E0(void);char *src=_func_0013B1E0();char *end=src;while(*end)end++;unsigned int n=(unsigned int)(end-src-1);if(size<=n){unsigned int i=0;while(i<size-1){out[i]=src[i];i++;}out[size-1]=0;return;}int off=(int)out-(int)src;do{char c=*src;*(char*)((int)src+off)=c;src++;}while(src[-1]);}
 
+extern volatile int D_00331B70;
+extern char *D_00331B74;
+extern void _func_001318D0(unsigned int, char *);
+extern int _func_00131850(char *);
+extern void _func_00131920(unsigned int, char *);
+extern "C" int __stdcall func_0010BF49(char *, int, int, int, int, int, int);
+extern int _func_0010AA7B(void);
+extern void _func_00137400(int);
+extern "C" void __stdcall func_0010B7F8(int);
+bool _func_00131A10(unsigned int a) {
+    char buf[128];
+    int h;
+    int code;
+    while (D_00331B70 != 0) {}
+    _func_001318D0(a, buf);
+    if (_func_00131850(buf) == 0) {
+        _func_00131920(a, buf);
+        D_00331B70 = 0;
+        h = func_0010BF49(buf, 0, 0, 0, 3, 0x28000000, 0);
+        while (h == -1) {
+            code = _func_0010AA7B();
+            if (code == 2 || code == 3) return false;
+            D_00331B70 = 5;
+            D_00331B74 = buf;
+            _func_00137400(5);
+            h = func_0010BF49(buf, 0, 0, 0, 3, 0x28000000, 0);
+        }
+        D_00331B70 = 0;
+        D_00331B74 = 0;
+        func_0010B7F8(h);
+    }
+    return true;
+}
+
 void *_func_00131B00(unsigned int a){void _func_001318D0(unsigned int,char*);int _func_00131850(char*);int _func_00148740(int,char*);void _func_00117100(void);void *_func_00116A90(int,int,int);void _func_00117130(void);char b[128];_func_001318D0(a,b);int x=_func_00131850(b);if(x==0)return 0;int y=_func_00148740(*(int*)(x+0x8c),b);if(y==0)return 0;_func_00117100();void*p=_func_00116A90(0x2c,1,1);*(int*)((char*)p+8)=y;*(char*)p=0;_func_00117130();return p;}
 
 void _func_00131C80(unsigned int a){extern int _D_00331B70,_D_003291C8;void _func_00131920(unsigned int,char*);int __stdcall _func_0010BF49(int,int,int,int,int,int,int);void __stdcall _func_0010B7F8(int);void _func_00131B80(unsigned int);void *_func_00131B00(unsigned int);volatile char b[128];if(_D_00331B70)return;if(_D_003291C8&2){_func_00131920(a,(char*)b);int x=_func_0010BF49((int)b,0,0,0,3,0x28000000,0);if(x!=-1){_func_0010B7F8(x);_func_00131B80(a);return;}}if(!_func_00131B00(a))_func_00131B80(a);}
