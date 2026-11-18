@@ -163,4 +163,5 @@ undefined4 func_0011FD80(undefined4 *param_1)
 }
 
 void func_0011FDF0(float p){extern int D_00329238,D_001E7D28;extern float D_001D290C,D_00329234,D_0032923C;float x=(float)D_00329238;D_001E7D28=*(int*)&p;if(D_00329238<0)x=x+D_001D290C;D_0032923C=(x+D_00329234)/p;}
-
+extern unsigned short D_001D290C;
+extern unsigned short D_001D2D4C;
