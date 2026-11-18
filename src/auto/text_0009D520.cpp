@@ -155,10 +155,10 @@ B9E *func_0009E3B0(B9E *p)
   int func_00116A90(...);
   void func_0009DAF0(...);
   int func_00110300(int, void *, int);
-  void func_00100270(int, int, float *, float, int);
+  void func_00100270(int, int, void *, float, int);
   void func_00110330(int, int);
   extern char D_001D460C, D_001D7494;
-  float local[3];
+  float local[4];
   B9E *b = (B9E *)func_00116A90(0x110, 1, 1);
   *b = *p;
   *((char *)b + 0x12) = 0;
@@ -168,4 +168,15 @@ B9E *func_0009E3B0(B9E *p)
   func_00110330(func_00110300(*(int *)((char *)b + 0x2c), &D_001D7494, 0x18), 0);
   return b;
 }
+// Struct definitions
+struct S_D_0009D9E0_arg0 {
+    char **p_str; // offset 0xc (pointer to char*)
+    unsigned char flag_byte; // offset 0x11 (s8)
+    int value_int; // offset 0x2c (s32)
+    ushort u16_val; // offset 0x54 (u16)
+};
 
+// Global declarations based on usage:
+extern unsigned short _D_001D73E4;
+extern int _D_003104B4;
+extern int _D_0030C630[]; // Assuming an array of integers/pointers
