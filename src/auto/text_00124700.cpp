@@ -95,13 +95,11 @@ void func_00125160(int *param_1)
   unsigned int i = 0;
   unsigned char done = 0;
   if (i < (unsigned int)param_1[1]) {
-    int off = 0;
     do {
-      if (func_00131210(func_0012E8C0((char *)(param_1[2] + off), (char *)(param_1[2] + off + 0x10))) > D_001D314C) break;
-      if (func_00131210(func_0012E8C0((char *)(param_1[2] + off) + 0x10, (char *)(param_1[2] + off) + 0x20)) > D_001D314C) break;
-      if (func_00131210(func_0012E8C0((char *)(param_1[2] + off) + 0x20, (char *)(param_1[2] + off))) > D_001D314C) break;
+      if (func_00131210(func_0012E8C0(((Tri64 *)param_1[2])[i].v, ((Tri64 *)param_1[2])[i].v + 0x10)) > D_001D314C) break;
+      if (func_00131210(func_0012E8C0(((Tri64 *)param_1[2])[i].v + 0x10, ((Tri64 *)param_1[2])[i].v + 0x20)) > D_001D314C) break;
+      if (func_00131210(func_0012E8C0(((Tri64 *)param_1[2])[i].v + 0x20, ((Tri64 *)param_1[2])[i].v)) > D_001D314C) break;
       i++;
-      off += 0x40;
     } while (i < (unsigned int)param_1[1]);
   }
   if (i >= (unsigned int)param_1[1]) done = 1;
