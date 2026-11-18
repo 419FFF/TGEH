@@ -40,7 +40,35 @@ void __fastcall _func_0008C970(void *self, float rate, float threshold, char mod
     t+=rate; n=(struct N*)n->next;
   }
 }
+
 #pragma optimize("", on)
+void func_0008D540(void)
+{
+  extern char D_002FE120[];
+  extern float D_00307DB4, D_001D5444, D_001D6138;
+  extern int D_002EED14;
+  int func_00131310(void);
+  unsigned int off;
+  int j;
+  for (off = 0; off < 0x4800; off += 0x600) {
+    S_002FE120 *e = (S_002FE120 *)(D_002FE120 + off);
+    if (e->active) {
+      unsigned int v = (unsigned int)((D_00307DB4 - e->t) * D_001D5444);
+      e->t = (float)v * D_001D6138 + e->t;
+      if (D_002EED14) v = 1;
+      for (j = 0; j < 100; j++) {
+        e->p[j].age += (unsigned short)v;
+        if (e->limit < ((float)e->p[j].c * e->k1 + e->k0) * (float)e->p[j].age * D_001D6138) {
+          int c;
+          e->p[j].age = 0;
+          c = func_00131310() & 0xff;
+          if (c == 0) c = 1;
+          e->p[j].c = (unsigned char)c;
+        }
+      }
+    }
+  }
+}
 void func_0008D740(int param_1)
 {
   extern undefined D_002FE120;
