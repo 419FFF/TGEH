@@ -4,6 +4,7 @@ extern "C" __declspec(dllimport) int __stdcall XeLoadSection(int);
 extern "C" __declspec(dllimport) int __stdcall XeUnloadSection(int);
 
 #include <string.h>
+struct XHdr { int a[5]; int magic; unsigned int size; int rest[26]; };
 #pragma intrinsic(memset, memcmp)
 unsigned int __readfsdword(unsigned long);
 #pragma intrinsic(__readfsdword)
@@ -43,6 +44,52 @@ int __stdcall func_0010BF0E(void *h,int *out){int __stdcall func_0010BED0(void*,
 
 void __stdcall func_0010C0D4(int a,int b){extern unsigned char __imp__XboxHDKey[];extern void __stdcall XcHMAC(void*,unsigned int,void*,unsigned int,unsigned int,unsigned int,int);XcHMAC(__imp__XboxHDKey,0x10,&a,4,0,0,b);}
 
+typedef long (__stdcall *NtReadFn)(void*, void*, void*, void*, void*, void*, unsigned long, void*);
+extern NtReadFn __imp__NtReadFile;
+extern void __stdcall func_0010AAD1(long);
+extern void __stdcall func_0010AAA3(long);
+extern int __stdcall func_0010C0F3(int, int, int *, int *);
+#pragma optimize("y", off)
+int __stdcall func_0010C1D8(int h, int b, int check, int *buf) {
+    NtReadFn rd = __imp__NtReadFile;
+    int zero = 0;
+    long r;
+    unsigned int size;
+    int io[2];
+    int off[2];
+    int tmp[5];
+    off[0] = zero;
+    off[1] = zero;
+    r = rd((void*)h, (void*)zero, (void*)zero, (void*)zero, io, buf, 0x1c, off);
+    if (r < 0) goto fail;
+    if (io[1] != 0x1c) goto bad;
+    size = buf[6];
+    if (size > 0x88) size = 0x88;
+    r = rd((void*)h, (void*)zero, (void*)zero, (void*)zero, io, buf + 7, size - 0x1c, (void*)zero);
+    if (r < 0) goto fail;
+    if (io[1] != size - 0x1c) {
+bad:
+        r = 0xc0000010;
+fail:
+        func_0010AAD1(r);
+        return 0;
+    }
+    if (buf[5] != 0x46534358) {
+        func_0010AAA3(0xd);
+        return 0;
+    }
+    if (size < 0x88)
+        memset((char*)buf + size, 0, 0x88 - size);
+    if (check != zero) {
+        if (!func_0010C0F3(h, b, buf, tmp)) return 0;
+        if (memcmp(tmp, buf, 20) != 0) {
+            func_0010AAA3(5);
+            return 0;
+        }
+    }
+    return 1;
+}
+#pragma optimize("y", on)
 int func_0010C459(void) {
     extern int D_0037C074;
     return D_0037C074;
