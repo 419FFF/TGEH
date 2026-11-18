@@ -2,12 +2,13 @@
 #include "common.h"
 #include "ghidra.h"
 
+struct E_001E5488 { unsigned char a, b; short x, y; unsigned char z, pad, flag, pad2; };
 extern int D_001E54E8;
 extern int D_0031E508;
 extern unsigned char D_001E53A8[];
 void func_000D7870(signed char *p){if(p){int i=(((p[1]+p[0]*6)*0x10+p[2])*0xc+p[3])*0xc;*(int*)(D_0031E508+i+4)=0;*(int*)(p+8)=1;}}
 
-int func_000D79D0(signed char *p,signed char *q,int val){int *base=(int*)D_0031E508;int index=(((p[1]+p[0]*6)*0x10+p[2])*0xc+p[3])*3;if(base[index+1]==val)base[index+1]=0;int a=q[0];if(a==1&&q[1]==5&&q[3]==11&&q[2]>=9&&q[2]<=10){*base=1;return a;}index=(((q[1]+a*6)*0x10+q[2])*0xc+q[3])*3;base[index+1]=val;return *base;}
+int func_000D79D0(signed char *a,signed char *b,int value){int x=(int)a[0];int y=(int)a[1];int z=(int)a[2];int w=(int)a[3];int i=(((y+x*6)*16+z)*12+w)*12;int *base=(int*)D_0031E508;int *slot=(int*)((char*)base+i+4);if(*slot==value)*slot=0;if(b[0]==1&&b[1]==5&&b[3]==11&&b[2]>=9&&b[2]<=10){*(char*)base=1;return 1;}x=(int)b[0];y=(int)b[1];z=(int)b[2];w=(int)b[3];i=(((y+x*6)*16+z)*12+w)*12;*(int*)((char*)base+i+4)=value;return *(char*)base;}
 
 void func_000D7C70(void){extern void func_000688D0(...); extern void func_000D7540(...); int *s=(int*)D_0031E508; signed char r=*(signed char*)((char*)s+0xd805),c=*(signed char*)((char*)s+0xd804); char b=D_001E53A8[c+r*4]; int a[4]={0x43a00000,0x43700000,0x44200000,0x43f00000};func_000688D0();func_000D7540((char*)s+0xdaa4+b*0x14,&a[0],&a[2],1,0,0);}
 
@@ -27,26 +28,29 @@ void func_000D7DE0(void)
  }
 }
 
+#pragma optimize("y", off)
 void func_000D7E40(void)
 {
- extern int D_0031E508;
- extern float D_001D313C;
- int func_000688D0(...),func_000D7540(...);
- int p=D_0031E508;
- float vals[4];
- int i=0;
- vals[0]=40.0f;
- vals[1]=56.0f;
- vals[2]=*(float *)(p+0xefe4)*D_001D313C;
- vals[3]=*(float *)(p+0xefe8)*D_001D313C;
- func_000688D0(&vals);
- while(i<*(int *)(p+0xdaa0)) {
-  func_000D7540(p+0xd80c,vals,vals+2,4,5,0);
-  vals[0]+=D_001D313C;
-  ++i;
- }
+    extern int D_0031E508;
+    extern float D_001D313C;
+    int func_000688D0(...);
+    int func_000D7540(...);
+    int object = D_0031E508;
+    float coords[4];
+    int i;
+    coords[0] = 40;
+    coords[1] = 56;
+    coords[2] = *(float *)(object + 0xefe4) * D_001D313C;
+    coords[3] = *(float *)(object + 0xefe8) * D_001D313C;
+    func_000688D0();
+    i = 0;
+    while (i < *(int *)(object + 0xdaa0)) {
+        func_000D7540(object + 0xd80c, coords + 2, coords, 4, 5, 0);
+        coords[0] = coords[0] + D_001D313C;
+        i = i + 1;
+    }
 }
-
+#pragma optimize("", on)
 unsigned char func_000D7FE0(int *p,int *q){int *x=&D_001E54E8;if(q[1]!=20){while(*x!=-1){if(*x++==q[1])goto done;}if(*p==0)return 1;}done:return 0;}
 
 void func_000D8370(void)
