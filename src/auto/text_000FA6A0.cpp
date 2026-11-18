@@ -1,6 +1,7 @@
 /* 49 functions from 0x000FA6A0 to 0x000FB661, found by Ghidra. */
 #include "common.h"
 #include "ghidra.h"
+#include <string.h>
 
 
 extern void* D_00324B68;
@@ -63,6 +64,57 @@ unsigned char _func_000FAAC0(undefined4 a, int p) { unsigned int *dst=*(unsigned
 
 unsigned char _func_000FAAF0(undefined4 a, int p) { double x=(double)**(float**)(p+12); int op=*(char*)**(int***)(p+20); switch(op){case '+': x+=(double)**(float**)(p+28); break; case '-': x-=(double)**(float**)(p+28); break; case '/': x/=(double)**(float**)(p+28); break; case '*': x*=(double)**(float**)(p+28); break;} **(float**)(p+4)=(float)x; return 1; }
 
+undefined4 func_000FAB60(int param_1, undefined4 *param_2)
+{
+  int func_000F9BB0(...);
+  int func_000FA350(...);
+  extern undefined4 D_00324B90;
+  int func_000FA640(...);
+  ushort *puVar1;
+  int iVar2;
+  int *piVar3;
+  int iVar4;
+  int *piVar5;
+  int *piVar6;
+  int iVar7;
+  uint local_8;
+  
+  iVar4 = func_000F9BB0(*param_2,param_2[1]);
+  puVar1 = (ushort *)(*(int *)(*(int *)(param_1 + 0x10) + 0x28) + *(int *)(param_1 + 0x18) * 8);
+  local_8 = 0;
+  if (*(short *)(*(int *)(iVar4 + 0x10) + 4) != 0) {
+    param_2 = (undefined4 *)(iVar4 + 0xdc);
+    iVar7 = 8;
+    piVar5 = (int *)(iVar4 + 0x20);
+    piVar6 = (int *)(iVar4 + 0x5c);
+    do {
+      *piVar5 = (int)piVar6;
+      *piVar6 = (int)param_2;
+      func_000FA350(param_1,*(undefined4 *)(iVar7 + -4 + *(int *)(puVar1 + 2)),
+                     *(undefined4 *)(iVar7 + *(int *)(iVar4 + 0x10)),piVar5 + -1);
+      iVar2 = *(int *)(iVar7 + *(int *)(iVar4 + 0x10));
+      if ((((iVar2 == 0) || (iVar2 == 1)) || (iVar2 == 2)) || (iVar2 == 3)) {
+        piVar3 = (int *)*piVar5;
+        *piVar6 = *piVar3;
+        piVar6[1] = piVar3[1];
+        piVar6[2] = piVar3[2];
+        piVar6[3] = piVar3[3];
+        *piVar5 = (int)piVar6;
+      }
+      param_2 = (undefined4 *)((int)param_2 + 0x80);
+      local_8 = local_8 + 1;
+      piVar5 = piVar5 + 2;
+      iVar7 = iVar7 + 4;
+      piVar6 = piVar6 + 4;
+    } while (local_8 < *(ushort *)(*(int *)(iVar4 + 0x10) + 4));
+  }
+  if (*puVar1 == D_00324B90) {
+    *(int *)(iVar4 + 0x4e4) = param_1;
+    func_000FA640(param_1,1);
+  }
+  return 1;
+}
+
 unsigned char _func_000FAC80(undefined4 a, unsigned int *p) { int func_000FA5B0(...); func_000FA5B0(a,p[0],p[1]); return 1; }
 
 extern char D_00307E08[];
@@ -118,9 +170,26 @@ int _func_000FAE80(int a, int b)
     return a + b;
 }
 
-void _func_000FAEE0(void* arg0) {
-    uint* p1 = (uint*)arg0;
-    p1[12] = 0;
+unsigned char _func_000FAEE0(undefined4 param_1, int *param_2)
+{
+  extern char D_001D28F0, D_001D29C7;
+  int func_0009C7A0(...);
+  int func_000A2230(...);
+  int func_00131990(...);
+  int func_000A1BB0(...);
+  char *strcat(char *, const char *);
+  char buf[0x38] = "1234567";
+  char *name = *(char **)func_0009C7A0(*param_2, &D_001D28F0, 0);
+  strcat(buf, name);
+  strcat(buf, "x");
+  func_000A2230(*param_2 + 100, *(int *)param_2[3]);
+  func_00131990(buf);
+  short *r = (short *)func_000A1BB0(*param_2, *(int *)param_2[3]);
+  if (r) {
+    r[7] = 1;
+    func_00131990(&D_001D29C7);
+  }
+  return 1;
 }
 
 undefined4 func_000FAFA0(undefined4 param_1, int *param_2)
