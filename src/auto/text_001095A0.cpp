@@ -5,6 +5,9 @@ extern "C" __declspec(dllimport) int *LaunchDataPage;
 extern "C" __declspec(dllimport) int __stdcall NtOpenSymbolicLinkObject(int *, unsigned int, void *);
 extern "C" __declspec(dllimport) int __stdcall NtQuerySymbolicLinkObject(int, void *, unsigned int *);
 extern "C" __declspec(dllimport) int __stdcall NtClose(int);
+extern "C" __declspec(dllimport) int __stdcall RtlInitAnsiString(void*, const char*);
+extern "C" __declspec(dllimport) int __stdcall NtOpenFile(int*, unsigned int, void*, void*, unsigned int, unsigned int);
+extern "C" __declspec(dllimport) int __stdcall NtQueryVolumeInformationFile(int, void*, void*, unsigned int, unsigned int);
 
 void _func_001095A0(void) { int func_001160B0(...); int func_0011D0E0(...); int func_00110760(...); extern unsigned int D_003252A8; extern unsigned int D_00325228[]; extern unsigned int D_00325268[]; unsigned int i=0; if(D_003252A8>0) do { func_001160B0(D_00325228[i]); func_0011D0E0(*(unsigned int*)((char*)D_00325268[i]+0x38)); func_00110760(D_00325268[i]); i++; } while(i<D_003252A8); D_003252A8=0; }
 
@@ -65,6 +68,11 @@ void __stdcall func_00109D05(int a0)
   int __stdcall func_00109CA1(int, int);
   int value = a0;
   func_00109CA1(value, 0);
+}
+
+int __stdcall func_00109D13(int path, unsigned long long *freeToCaller, unsigned long long *total, unsigned long long *freeTotal)
+{
+    return 1;
 }
 
 extern "C" __declspec(dllimport) int __stdcall RtlInitAnsiString(void*, const char*);
