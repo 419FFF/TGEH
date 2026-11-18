@@ -85,4 +85,11 @@ void func_00108500(undefined4 param_1)
 void _func_00108530(void *p) { extern int _D_00307DF8; char _func_001074C0(int,void *); void _func_00107BF0(...); int *q=*(int **)(_D_00307DF8+0x110); if (*q!=0x40 && *q!=0x3f && _func_001074C0(_D_00307DF8,p)) _func_00107BF0(p,0); }
 
 void func_00108570(short *p) { extern int D_00307DF0,D_003251CC; extern char *D_0032519C; int *slot; int obj=*(int*)((char*)p+4); if(D_00307DF0!=obj) return; if(*p && !(*(unsigned char*)(*(int*)(obj+0x2c)+0x20)&1)){slot=(int*)(D_0032519C+D_003251CC*36);++D_003251CC;slot[0]=(int)p;slot[1]=*(int*)((char*)p+4);slot[3]=0;} *p=0; D_00307DF0=0; }
+extern undefined4 D_00308158;
+extern undefined4 D_00324AFC;
+extern undefined4 D_003251CC;
+extern undefined4 D_0032519C;
 
+// Prototypes needed for the function body
+void func_00107DC0(undefined4 arg1);
+int func_000F9BB0(undefined4 arg1, undefined4 arg2);
