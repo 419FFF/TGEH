@@ -77,3 +77,10 @@ extern char D_001E2854[];
 extern char D_001E274C[];
 extern char D_001E2854[];
 extern char D_001E274C[];
+extern char D_001E2854[];
+extern char D_001E274C[];
+
+// Function declarations for calls found in assembly
+void func_0014731A_12();
+void func_00147577_8();
+void __imp__RtlNtStatusToDosError();
