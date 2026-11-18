@@ -77,12 +77,11 @@ char func_000FD990(int param_1, int param_2)
 {
   extern int D_00307DF8, D_00308158;
   char func_00011D20(...); int func_00110060(...); int func_0012F730(...);
-  int v[3];
-  char m[0x30];
+  int v[4];
+  __declspec(align(16)) char m[0x40];
   if (func_00011D20(D_00307DF8) == 0) {
     int *p = (int*)(D_00307DF8 + 0x150);
-    int i;
-    for (i = 0; i < 11; i++) p[i] = 0;
+    memset(p, 0, 0x2c);
     *(char*)((int)p + 0x24) = 1;
     int q = *(int*)(param_1 + 0xc);
     if (q == 0 || q == D_00308158) p[4] = 0; else p[4] = q;
