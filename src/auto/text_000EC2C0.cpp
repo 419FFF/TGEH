@@ -68,7 +68,7 @@ void func_000EC520(int param_1, int *param_2)
   return;
 }
 
-void func_000EC540(int p,unsigned int*a){float func_0013E9E0(unsigned int);unsigned char*o=(unsigned char*)p; *(float*)(o+0x6c)=func_0013E9E0(a[0]);*(float*)(o+0x70)=func_0013E9E0(a[1]);*(float*)(o+0x74)=func_0013E9E0(a[2]);*(float*)(o+0x78)=func_0013E9E0(a[3]);*(float*)(o+0x7c)=func_0013E9E0(a[4]);*(float*)(o+0x80)=func_0013E9E0(a[5]);*(float*)(o+0x84)=func_0013E9E0(a[6]);*(volatile unsigned char*)(o+0x9d)|=4;}
+void func_000EC540(int p,unsigned int*a){float func_0013E9E0(unsigned int);unsigned char*o=(unsigned char*)p; *(float*)(o+0x6c)=func_0013E9E0(a[0]); *(float*)(o+0x70)=func_0013E9E0(a[1]); *(float*)(o+0x74)=func_0013E9E0(a[2]); *(float*)(o+0x78)=func_0013E9E0(a[3]); *(float*)(o+0x7c)=func_0013E9E0(a[4]); *(float*)(o+0x80)=func_0013E9E0(a[5]); *(float*)(o+0x84)=func_0013E9E0(a[6]); *(volatile unsigned char*)(o+0x9d)|=4;}
 
 void func_000EC5C0(undefined4 param_1, undefined4 *param_2)
 {
@@ -78,6 +78,18 @@ void func_000EC5C0(undefined4 param_1, undefined4 *param_2)
 }
 
 void func_000EC5D0(int p,unsigned int*a){int func_0013E9DB(...);if(*a){int v=func_0013E9DB(*a);if(v==1)*(unsigned char*)(p+0x9e)|=2;else *(unsigned char*)(p+0x9e)&=0xfd;}}
+
+void func_000EC600(int param_1)
+{
+  int func_00116E50(...);
+  int iVar1;
+  
+  iVar1 = func_00116E50(*(undefined4 *)(param_1 + 0xc),(*(int *)(param_1 + 8) + 1) * 0x80,1,1);
+  *(int *)(param_1 + 0xc) = iVar1;
+  *(undefined1 *)(*(int *)(param_1 + 8) * 0x80 + iVar1 + 0x50) = 0;
+  *(int *)(param_1 + 8) = *(int *)(param_1 + 8) + 1;
+  return;
+}
 
 void func_000EC640(undefined4 *param_1, undefined4 *param_2)
 {
@@ -195,19 +207,20 @@ void func_000ECB70(unsigned int param_1)
  func_00122D00(D_00307D08,param_1);
 }
 
-void _func_000ECDB0(int unused, int *v)
+void _func_000ECDB0(int unused, int *arg)
 {
  long double _func_0013E9E0(...);
  extern int _D_00324598; extern char *_D_0032459C; extern float _D_001D27B8;
- int i=_D_00324598;
- char *src=(char *)v[0]; char *dst=_D_0032459C+i*0x28; char c;
- do { c=*src++; *dst++=c; } while(c);
- *(float *)(_D_0032459C+i*0x28+0x20)=(float)_func_0013E9E0((char *)v[1]);
- *(float *)(_D_0032459C+i*0x28+0x24)=(float)_func_0013E9E0((char *)v[2]);
- if(*(float *)(_D_0032459C+i*0x28+0x24) < _D_001D27B8)
-  *(int *)(_D_0032459C+i*0x28+0x24)=0x461c4000;
- *(float *)(_D_0032459C+i*0x28+0x24)=*(float *)(_D_0032459C+i*0x28+0x20)+*(float *)(_D_0032459C+i*0x28+0x24);
- _D_00324598=i+1;
+ int index=_D_00324598;
+ int *entry=(int *)(_D_0032459C+index*0x28);
+ char *s=(char *)arg[0]; char *d=(char *)entry; char c;
+ do { c=*s; *d=c; s++; d++; } while(c);
+ *(float *)(entry+8)=(float)_func_0013E9E0((char *)arg[1]);
+ long double value=_func_0013E9E0((char *)arg[2]);
+ *(float *)(entry+9)=(float)value;
+ if(value < _D_001D27B8) *(int *)(entry+9)=0x461c4000;
+ *(float *)(entry+9)=*(float *)(entry+8)+*(float *)(entry+9);
+ _D_00324598++;
 }
 
 void _func_000ECE40(int p)
@@ -238,4 +251,17 @@ void func_000ECEE0(undefined4 param_1, undefined4 param_2, undefined4 param_3, u
   func_00131990(((undefined *)&D_001D29C7));
   return;
 }
+// Prototypes
+extern int func_0013E9E0(int arg);
+extern void func_0012FF00(float* buffer);
 
+// External data
+extern float D_001DC7F0;
+
+// Struct definitions based on offsets (assuming 4-byte alignment for simplicity)
+typedef struct {
+    int f32[16]; // Used by the function to read 16 values from param_2
+} S_D_000EC2C0_arg2;
+
+// The first argument (param_1) is a buffer of floats.
+// We don't need to declare it globally, just use its type in the signature.
