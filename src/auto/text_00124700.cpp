@@ -1,5 +1,6 @@
 /* 32 functions from 0x00124700 to 0x0012555E, found by Ghidra. */
 #include "common.h"
+struct Tri64 { char v[0x40]; };
 #include "ghidra.h"
 
 extern "C" unsigned int strlen(const char *);
@@ -84,6 +85,31 @@ void _func_00125060(void){extern int D_0033152C,D_00331524,D_00331528;extern int
 
 int *_func_00125120(int *p){extern void _func_00117100(void),_func_00117130(void);extern int _func_00116A90(int,int,int);_func_00117100();int *a=(int*)_func_00116A90(0xc,1,1);_func_00117130();int b=_func_00116A90(0xc,1,1);*a=b;*p=b;return a;}
 
+extern float D_001D314C;
+float func_0012E8C0(char *a, char *b);
+float func_00131210(float x);
+int func_00129CA0(unsigned int n, int p, unsigned char f);
+void func_00125160(int *param_1)
+{
+  int func_00116FB0(...);
+  unsigned int i = 0;
+  unsigned char done = 0;
+  if (i < (unsigned int)param_1[1]) {
+    int off = 0;
+    do {
+      if (func_00131210(func_0012E8C0((char *)(param_1[2] + off), (char *)(param_1[2] + off + 0x10))) > D_001D314C) break;
+      if (func_00131210(func_0012E8C0((char *)(param_1[2] + off) + 0x10, (char *)(param_1[2] + off) + 0x20)) > D_001D314C) break;
+      if (func_00131210(func_0012E8C0((char *)(param_1[2] + off) + 0x20, (char *)(param_1[2] + off))) > D_001D314C) break;
+      i++;
+      off += 0x40;
+    } while (i < (unsigned int)param_1[1]);
+  }
+  if (i >= (unsigned int)param_1[1]) done = 1;
+  *(int *)(*param_1 + 4) = func_00129CA0(param_1[1], param_1[2], done);
+  func_00116FB0(param_1[2]);
+  func_00116FB0(param_1);
+}
+
 void _func_00125250(int *p,undefined4 *q){int func_0013E9DB(...);int func_00116A90(...);int func_00117100(...);int func_00117130(...);p[1]=func_0013E9DB(q[0]);func_00117100();p[2]=func_00116A90(p[1]<<6,1,1);func_00117130();*(short*)(*p+2)=(short)p[1];*(int*)(*p+8)=func_00116A90(p[1],1,1);}
 
 void _func_001252B0(int p,undefined4 *q){int func_0013E9DB(...);longdouble func_0013E9E0(...);int i=func_0013E9DB(q[0])<<6;float *dst=(float*)(i+*(int*)(p+8));q++;for(int outer=0;outer<4;outer++){int inner=4;do{*dst++=(float)func_0013E9E0(*q++);--inner;}while(inner);}}
@@ -96,15 +122,9 @@ S_125350* _func_00125350(char *name)
   S_125350 *r;
   char buf[0x100];
   char *p;
-  char *q;
-  int len;
   int i = 0;
   do { buf[i] = name[i]; } while (name[i++]);
-  p = buf;
-  q = p + 1;
-  do { } while (*p++);
-  len = p - q;
-  buf[len + 1] = 0;
+  buf[strlen(buf) + 1] = 0;
   p = buf + 3;
   do { p++; } while (*p);
   *(unsigned int*)p = D_001DF6B8;
