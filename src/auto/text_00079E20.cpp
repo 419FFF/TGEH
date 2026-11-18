@@ -1,6 +1,8 @@
 /* 19 functions from 0x00079E20 to 0x0007ADBD, found by Ghidra. */
 #include "common.h"
 #include "ghidra.h"
+struct E5C0 { int a; unsigned char *b; int c; int d; };
+extern E5C0 _D_002FA688[4];
 
 void _func_0007A040(void)
 {
