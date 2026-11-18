@@ -1,6 +1,6 @@
 /* 13 functions from 0x000C3BE0 to 0x000C4AB2, found by Ghidra. */
 #include "common.h"
-struct P_000C48B0 { float x, y, z, w; char on; char pad[3]; };
+struct P_000C48B0 { float a0, a1, x, y, z, w; char on; char pad[3]; };
 
 void func_000C3E40(void) {
  extern unsigned char D_00315718;extern float D_00314F60,D_001D2B98,D_00314F64,D_00314F68,D_001D4EB0,D_0031601C;extern int D_00315CC8,D_00315998,D_00315F88;float fabsf(float);int func_00103990(...),func_00110330(...);float *p=(float *)&D_00315718;
@@ -24,5 +24,29 @@ void func_000C40A0(void) {
  unsigned int v=func_00131310();D_00315FA4=D_001E4908[v&7];func_000A4010(D_0031151C-1);
  if((unsigned char)D_0031151C>0){D_003159A0=0x4b;D_00314FC4=D_00314FB4;D_00314FC8=D_00314FB8;return;}
  func_00103990(D_00315CAC,0);D_00314F00=11;D_00314F04=0;D_00315C90=0;
+}
+
+void func_000C48B0(void)
+{
+  extern P_000C48B0 D_00315CF0[32];
+  extern char *D_002FBA90;
+  extern float D_001D27B0, D_001D5050, D_00315C80, D_001D2A1C, D_00315C84, D_001D9CD8, D_00315C88, D_001D341C, D_001D27F8, D_001D2C00;
+  float func_00131760(void);
+  int i;
+  for (i = 0; i < 32; i++) {
+    P_000C48B0 *p = &D_00315CF0[i];
+    char *q;
+    p->x = (func_00131760() * 2 - D_001D27B0) * D_001D5050 + D_00315C80;
+    p->y = (func_00131760() * 2 - D_001D27B0) * D_001D2A1C + D_00315C84;
+    p->z = func_00131760() * D_001D9CD8 + D_00315C88;
+    *(float *)(D_002FBA90 + i * 0x30) = p->x;
+    *(float *)(D_002FBA90 + i * 0x30 + 8) = p->z;
+    *(float *)(D_002FBA90 + i * 0x30 + 4) = p->y;
+    p->on = 1;
+    p->w = func_00131760() * D_001D341C + D_001D2A1C;
+    *(float *)(D_002FBA90 + i * 0x30 + 0x20) = (func_00131760() + D_001D27B0) * D_001D27F8;
+    q = D_002FBA90 + i * 0x30;
+    *(float *)(q + 0x24) = (func_00131760() + D_001D27B0) * D_001D2C00 * *(float *)(q + 0x20);
+  }
 }
 
