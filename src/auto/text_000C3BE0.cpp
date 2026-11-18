@@ -1,6 +1,6 @@
 /* 13 functions from 0x000C3BE0 to 0x000C4AB2, found by Ghidra. */
 #include "common.h"
-struct P_000C48B0 { float x, y, z, w; char on; char pad[3]; };
+struct P_000C48B0 { float w; char on; char pad[3]; float x, y, z; };
 
 void func_000C3E40(void) {
  extern unsigned char D_00315718;extern float D_00314F60,D_001D2B98,D_00314F64,D_00314F68,D_001D4EB0,D_0031601C;extern int D_00315CC8,D_00315998,D_00315F88;float fabsf(float);int func_00103990(...),func_00110330(...);float *p=(float *)&D_00315718;
@@ -46,7 +46,7 @@ void func_000C48B0(void)
     p->w = func_00131760() * D_001D341C + D_001D2A1C;
     *(float *)(D_002FBA90 + i * 0x30 + 0x20) = (func_00131760() + D_001D27B0) * D_001D27F8;
     q = D_002FBA90 + i * 0x30;
-    *(float *)(q + 0x24) = (func_00131760() + D_001D27B0) * D_001D2C00 * *(float *)(q + 0x20);
+    *(float *)(q + 0x24) = *(float *)(q + 0x20) * ((func_00131760() + D_001D27B0) * D_001D2C00);
   }
 }
 
