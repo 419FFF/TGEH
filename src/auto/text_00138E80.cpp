@@ -2,13 +2,30 @@
 #include "common.h"
 
 void _func_00139170(void *p) {
-extern int _D_00332AC0; extern void __stdcall MmFreeContiguousMemory(void*);
-void _func_00131D10(void*);void _func_00116FB0(void*);void _func_0011C3E0(void*);void _func_0011C3B0(int,void*,void*);
-if(!*(int*)((char*)p+0x90))return;
-void*q=*(void**)((char*)p+0x9c);if(q){(*(void(**)(void*))(*(char**)q+4))(q);*(void**)((char*)p+0x9c)=0;for(int i=0;i<3;i++){void**slot=(void**)((char*)p+0xa0+i*4);MmFreeContiguousMemory(*slot);*slot=0;}}
-void*q2=*(void**)((char*)p+0x94);if(q2){_func_00131D10(q2);*(void**)((char*)p+0x94)=0;}
-q2=*(void**)((char*)p+0xc);if(q2){_func_00116FB0(q2);*(void**)((char*)p+0xc)=0;}
+extern int _D_00332AC0;extern void __stdcall MmFreeContiguousMemory(void*);void _func_00131D10(void*);void _func_00116FB0(void*);void _func_0011C3E0(void*);void _func_0011C3B0(int,void*,void*);
+if(!*(int*)((char*)p+0x90))return;void*q=*(void**)((char*)p+0x9c);
+if(q){(*(void(**)(void*))(*(char**)q+4))(q);*(void**)((char*)p+0x9c)=0;int n=3;void**m=(void**)((char*)p+0xa0);while(n--){void*z=*m;MmFreeContiguousMemory(z);*m=0;m++;}}
+int x=*(int*)((char*)p+0x94);if(x){_func_00131D10((void*)x);*(int*)((char*)p+0x94)=0;}
+x=*(int*)((char*)p+0xc);if(x){_func_00116FB0((void*)x);*(int*)((char*)p+0xc)=0;}
 _func_0011C3E0(p);_func_0011C3B0(_D_00332AC0,p,p);*(int*)((char*)p+0x90)=0;
+}
+
+void func_00139200(char *self)
+{
+  int func_001AEBB6(...);
+  int func_0010C49A(...);
+  int func_001B1540(...);
+  int D_001AFA16(...);
+  int D_001AFA1B(...);
+  int a[4] = {0,0,0,0};
+  short s = 0;
+  int b[3] = {0,0,0};
+  func_001AEBB6(1, *(int*)(*(int*)(self + 0xc) + 8), a);
+  for (int i = 0; i < 3; i++)
+    *(int*)(self + 0xa0 + i * 4) = func_0010C49A(0x12000, -1, 0, 0x204);
+  func_001B1540(b, self + 0x9c);
+  D_001AFA16(*(int*)(self + 0x9c), 0x258);
+  D_001AFA1B(*(int*)(self + 0x9c), 1);
 }
 
 void func_001392D0(void) {
@@ -46,20 +63,16 @@ void func_001393E0(int self, char flag)
   extern int D_00332AD8;
   int func_0013AF50(...), func_0013AF70(...);
   void __stdcall _D_001AFA1B(int, int);
-  if (!self) return;
-  func_0013AF50(D_00332AD8);
-  int state = *(int *)(self + 0x90);
-  if (state == 4) goto done;
-  if (state == 3) {
-    int value = *(int *)(self + 0x9c);
-    if (flag) {
-      _D_001AFA1B(value, 1);
-    } else {
-      _D_001AFA1B(value, 0);
+  if (self) {
+    func_0013AF50(D_00332AD8);
+    int state = *(int *)(self + 0x90);
+    if (state != 4 && state == 3) {
+      int value = *(int *)(self + 0x9c);
+      if (flag) _D_001AFA1B(value, 1);
+      else _D_001AFA1B(value, 0);
     }
+    func_0013AF70(D_00332AD8);
   }
-done:
-  func_0013AF70(D_00332AD8);
 }
 
 float _func_00139440(void *p) {
@@ -114,11 +127,29 @@ void func_00139B10(int p){extern int D_00332AD8,D_00332ACC;extern int func_0013A
 void func_00139C70(void) { extern int D_00334CA0,D_00332B88[64],D_00332B84[64]; unsigned i=0; while(i<(unsigned)D_00334CA0 && D_00332B88[i])i++; if(i<(unsigned)D_00334CA0){D_00332B88[i]=D_00332B84[D_00334CA0];D_00334CA0--;D_00332B88[D_00334CA0]=0;} }
 
 void _func_00139CD0(char enabled) {
-extern int _D_00332B84; extern int _D_00332B88[64];
-int __stdcall _func_001B12C7(int,int*,void*,int);
-struct T { int a,b; unsigned short c; unsigned short d; int e,f,g,h; unsigned short i; unsigned short j; int k,l,m; } t;
-t.a=t.b=t.c=t.d=t.e=t.f=t.g=t.h=t.i=t.j=t.k=t.l=t.m=0;
-t.a=1;t.b=1;t.d=0x10;t.e=0x18;t.f=0x2b2a;t.g=2;t.h=0x5654;
-if(enabled){int *items=_D_00332B88;for(int i=0;i<64;i++,items++)_func_001B12C7(_D_00332B84,items,&t,0);}
+extern int _D_00332B84; extern int _D_00332B88[64]; int __stdcall _func_001B12C7(int,int*,void*,int);
+int zero=0; int a[11]; for(int j=0;j<11;j++)a[j]=0;
+unsigned short *u=(unsigned short*)a; u[0]=1;u[1]=1;u[7]=0x10; a[6]=0x18;a[1]=0x2b2a;u[6]=2;a[2]=0x5654;a[8]=0;a[9]=0;a[10]=0;
+void* ref=a; ((void**)a)[8]=ref;
+if(enabled){int *it=_D_00332B88;int n=64;do{_func_001B12C7(_D_00332B84,it, a,0);it++;n--;}while(n);}
 }
+// Struct definitions
+struct S_D_00139370_arg0 {
+    int field_90; // +0x90 s32 (5 functions)
+    int field_94; // +0x94 s32 (1)
+    int field_9c; // +0x9C s32 (2)
+    unsigned char field_b8; // +0xB8 s8 (1)
+    float field_bc; // +0xBC f32 (1)
+};
 
+// Global data symbols
+extern unsigned int _D_00332AD8;
+extern unsigned int _D_00332AE0;
+extern unsigned int _D_00332ACC;
+
+// Literal constants/addresses used in the assembly
+const unsigned int L00139BB1 = 0x00000000; // Placeholder for $L00139BB1
+const unsigned int L00139C04 = 0x00000000; // Placeholder for $L00139C04
+const unsigned int L00139C1B = 0x00000000; // Placeholder for $L00139C1B
+const unsigned int L00139C45 = 0x00000000; // Placeholder for $L00139C45
+const unsigned int L00139C30 = 0x00000000; // Placeholder for $L00139C30
