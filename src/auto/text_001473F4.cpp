@@ -58,3 +58,6 @@ void RtlNtStatusToDosError();
 #ifdef __cplusplus
 }
 #endif
+extern char D_001E2854[];
+extern char D_001E274C[];
+void __imp__RtlNtStatusToDosError();
