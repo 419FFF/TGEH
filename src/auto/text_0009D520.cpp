@@ -125,6 +125,31 @@ B9E *func_0009E0D0(B9E *p)
   return b;
 }
 
+B9E *func_0009E190(B9E *p)
+{
+  int func_00116A90(...);
+  int func_00088220(...);
+  int func_0009C7A0(...);
+  void func_0009DAF0(...);
+  int func_0010F750(...);
+  void func_00012D60(...);
+  extern char D_001D28F0, D_001D748C;
+  extern int D_00326110;
+  B9E *b = (B9E *)func_00116A90(0x1b0, 1, 1);
+  *b = *p;
+  *((char *)b + 0x12) = 1;
+  *(int *)((char *)b + 0x2c) = func_00088220(b);
+  if (func_0009C7A0(b, &D_001D28F0, 0)) func_0009DAF0(b);
+  if (*(int *)((char *)b + 0x2c) == 0)
+    *(int *)((char *)b + 0x2c) = func_0010F750(&D_001D748C, D_00326110, 0xe0);
+  switch (*((unsigned char *)b + 0x13)) {
+  case 0xe: func_00012D60(b, 5); break;
+  case 0x10: func_00012D60(b, 6); break;
+  case 0x3c: func_00012D60(b, 0x21); break;
+  }
+  return b;
+}
+
 B9E *func_0009E3B0(B9E *p)
 {
   int func_00116A90(...);
