@@ -66,7 +66,7 @@ undefined4 func_00137C40(int param_1)
   return *(undefined4 *)(((undefined *)&D_00332A88) + param_1 * 4);
 }
 
-void func_00137C50(void){void __stdcall func_0014AF00(int);void func_00088F10(...);unsigned int a[17]={0};for(int i=0;i<17;i++)a[i]=0;a[4]=0x3f800000;a[5]=a[6]=a[7]=0x3f800000;a[0]=a[1]=a[2]=a[3]=0x3f800000;a[8]=a[9]=a[10]=0x3f000000;func_0014AF00((int)a);func_00088F10(0x66);}
+void func_00137C50(void){void __stdcall func_0014AF00(int);void func_00088F10(...);volatile unsigned int a[16];for(int i=0;i<16;i++)a[i]=0;for(int i=0;i<8;i++)a[i]=0x3f800000;a[8]=a[9]=a[10]=0x3f000000;func_0014AF00((int)a);func_00088F10(0x66);}
 
 extern "C" void *memcpy(void*,const void*,unsigned int);
 void func_00137CF0(int *p){int func_00116A90(...);int *d=(int*)func_00116A90(0x28,1,1);memcpy(d,p,36);d[9]=-1;}
@@ -74,4 +74,55 @@ void func_00137CF0(int *p){int func_00116A90(...);int *d=(int*)func_00116A90(0x2
 void *memcpy(void *, const void *, unsigned int);
 void __movsd(unsigned int *, const unsigned int *, unsigned int);
 void func_00137D20(unsigned int *dst, const unsigned int *src) { memcpy(dst,src,36); }
+
+extern float D_001D6008;
+extern float D_001D27B0;
+extern float D_001D27B8;
+void func_00137D40(float *param_1)
+{
+  extern int D_00332AAC, D_00332AB0, D_00332AB4, D_00332AB8;
+  *param_1 = *(float *)&D_00332AAC * D_001D6008;
+  param_1[1] = *(float *)&D_00332AB0 * D_001D6008;
+  param_1[2] = *(float *)&D_00332AB4 * D_001D6008;
+  param_1[3] = *(float *)&D_00332AB8 * D_001D6008;
+  if (*param_1 > D_001D27B0) {
+    *param_1 = 1.0f;
+  } else if (*param_1 < D_001D27B8) {
+    *param_1 = 0.0f;
+  }
+  if (param_1[1] > D_001D27B0) {
+    param_1[1] = 1.0f;
+  }
+  if (param_1[1] < D_001D27B8) {
+    param_1[1] = 0.0f;
+  }
+  if (param_1[2] > D_001D27B0) {
+    param_1[2] = 1.0f;
+  }
+  if (param_1[2] < D_001D27B8) {
+    param_1[2] = 0.0f;
+  }
+  if (param_1[3] > D_001D27B0) {
+    param_1[3] = 1.0f;
+  }
+  if (param_1[3] < D_001D27B8) {
+    param_1[3] = 0.0f;
+  }
+}
+
+extern int D_00332AAC, D_00332AB0, D_00332AB4, D_00332AB8, D_003326AC;
+extern int func_00131460(...);
+extern void func_00088F10(int);
+extern void __stdcall RtlEnterCriticalSection(int *);
+extern void __stdcall RtlLeaveCriticalSection(int *);
+void func_00137E30(void) {
+ int a,b,c,d;
+ a=func_00131460(D_00332AAC); b=func_00131460(D_00332AB0);
+ c=func_00131460(D_00332AB4); d=func_00131460(D_00332AB8);
+ if((unsigned)a>255)a=255; if((unsigned)b>255)b=255;
+ if((unsigned)c>255)c=255; if((unsigned)d>255)d=255;
+ RtlEnterCriticalSection(&D_003326AC);
+ func_00088F10((a&255)<<24 | (d&255)<<16 | (b&255)<<8 | (c&255));
+ RtlLeaveCriticalSection(&D_003326AC);
+}
 
