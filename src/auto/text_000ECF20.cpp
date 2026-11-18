@@ -3,6 +3,55 @@
 #include "ghidra.h"
 #include <string.h>
 
+void __fastcall func_000ED300(int self, int unused, float x, float y, float w, float h)
+{
+  void func_00133F30(int *);
+  void func_0011E4A0(float, float, float, float, float *, float *, float *, float);
+  void func_000688D0(void);
+  float a[2], b[2], c[4];
+  int d[21];
+  d[0] = 2; d[1] = 2; d[2] = self; d[6] = 3; d[10] = 1; d[11] = 1; d[12] = 0; d[17] = 0; d[18] = 6; d[19] = 2;
+  c[0] = c[1] = c[2] = c[3] = 1.0f;
+  a[0] = 0.0f; a[1] = 0.0f;
+  b[0] = 1.0f; b[1] = 1.0f;
+  func_00133F30(d);
+  func_0011E4A0(x, y, x + w, y + h, a, b, c, 1.0f);
+  func_000688D0();
+}
+
+void func_000ED480(void)
+{
+  extern char D_001D29C7, D_001D5CC4, D_001D788C, D_001DC9E4, D_001DC9CC, D_001DC9B4, D_001DC99C, D_001DC984;
+  extern int D_003245F0, D_003245CC, D_003245AC, D_003245D0, D_003245B0, D_003245D4, D_003245B4, D_003245D8, D_003245B8;
+  extern int D_003245A8, D_003245EC, D_00313B00, D_003245A4;
+  int func_000688D0(...), func_00131780(...), func_00131990(...), func_00120BF0(...);
+  int func_0011BF40(...), func_0011BDD0(...), func_0013B380(...), func_0006E860(...), func_0006E9B0(...);
+  func_000688D0();
+  func_00131780(&D_001D5CC4, &D_001D29C7);
+  func_000688D0();
+  func_000688D0();
+  func_00131990(&D_001D788C);
+  D_003245F0 = func_00120BF0(&D_001DC9E4);
+  func_00131990(&D_001D29C7);
+  func_000688D0();
+  func_000688D0();
+  D_003245CC = func_0011BF40(&D_001DC9CC, 0);
+  D_003245AC = func_0011BDD0(D_003245CC, 0);
+  D_003245D0 = func_0011BF40(&D_001DC9B4, 0);
+  D_003245B0 = func_0011BDD0(D_003245D0, 0);
+  D_003245D4 = func_0011BF40(&D_001DC99C, 0);
+  D_003245B4 = func_0011BDD0(D_003245D4, 0);
+  D_003245D8 = func_0011BF40(&D_001DC984, 0);
+  D_003245B8 = func_0011BDD0(D_003245D8, 0);
+  func_000688D0();
+  D_003245A8 = 0;
+  D_003245EC = func_0013B380(D_00313B00);
+  D_003245A4 = 0;
+  func_0006E860();
+  func_0006E9B0();
+  func_0006E860();
+}
+
 void func_000ED590(void)
 {
   int func_000688D0(...);
@@ -33,6 +82,32 @@ void func_000ED590(void)
   func_001317D0(((undefined *)&D_001D29C7));
   func_000688D0();
   return;
+}
+
+void _func_000ED830(int a, int b, int c, int d, int e, int g)
+{
+  extern int D_0032464C, D_00324648;
+  extern char *D_00324650;
+  extern float D_00324654, D_0032465C, D_001D2800, D_001D27B0, D_001D27B8;
+  float func_001219C0(char *);
+  float func_00131210(float);
+  int func_00137870(int, int, int, float);
+  int func_00105510(int, int, int, int, int, int);
+  char buf[0x400];
+  int n;
+  long double v;
+  if (D_0032464C < 1)
+    D_0032464C = D_00324648;
+  n = D_0032464C - 1;
+  memcpy(buf, D_00324650, n);
+  buf[D_0032464C - 1] = 0;
+  D_0032464C = n;
+  v = func_001219C0(buf);
+  v = func_00131210((float)(((long double)D_001D2800 - (v + (long double)D_00324654)) / (long double)D_0032465C));
+  v = (long double)D_001D27B0 - v;
+  if (v < (long double)D_001D27B8 || (long double)D_001D27B0 < v)
+    v = (long double)D_001D27B8;
+  func_00105510(a, b, c, func_00137870(0x3f800000, 0x3f800000, 0x3f800000, (float)((long double)D_001D27B0 - ((long double)D_001D27B0 - v) * ((long double)D_001D27B0 - v))), e, g);
 }
 
 void func_000EDA30(void)
