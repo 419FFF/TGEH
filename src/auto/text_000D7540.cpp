@@ -2,7 +2,7 @@
 #include "common.h"
 #include "ghidra.h"
 
-struct E_001E5488 { unsigned char a, b; short x, y; unsigned char z, pad, flag, pad2; };
+struct E_001E5488 { unsigned char a, b; short x, y; unsigned char z, pad; };
 extern int D_001E54E8;
 extern int D_0031E508;
 extern unsigned char D_001E53A8[];
@@ -11,6 +11,31 @@ void func_000D7870(signed char *p){if(p){int i=(((p[1]+p[0]*6)*0x10+p[2])*0xc+p[
 int func_000D79D0(signed char *a,signed char *b,int value){int x=(int)a[0];int y=(int)a[1];int z=(int)a[2];int w=(int)a[3];int i=(((y+x*6)*16+z)*12+w)*12;int *base=(int*)D_0031E508;int *slot=(int*)((char*)base+i+4);if(*slot==value)*slot=0;if(b[0]==1&&b[1]==5&&b[3]==11&&b[2]>=9&&b[2]<=10){*(char*)base=1;return 1;}x=(int)b[0];y=(int)b[1];z=(int)b[2];w=(int)b[3];i=(((y+x*6)*16+z)*12+w)*12;*(int*)((char*)base+i+4)=value;return *(char*)base;}
 
 void func_000D7C70(void){extern void func_000688D0(...); extern void func_000D7540(...); int *s=(int*)D_0031E508; signed char r=*(signed char*)((char*)s+0xd805),c=*(signed char*)((char*)s+0xd804); char b=D_001E53A8[c+r*4]; int a[4]={0x43a00000,0x43700000,0x44200000,0x43f00000};func_000688D0();func_000D7540((char*)s+0xdaa4+b*0x14,&a[0],&a[2],1,0,0);}
+
+void func_000D7CF0(void) {
+    extern E_001E5488 D_001E5488[]; extern char D_001DB1F4;
+    int func_001031C0(...); int func_000688D0(...); int func_00103130(...); int func_00103990(...); int func_00102E80(...);
+    void func_000D7540(...);
+    char *g = (char *)D_0031E508;
+    bool done = false;
+    int h = func_001031C0(*(int *)(g + 0xefec), &D_001DB1F4);
+    unsigned int sz[2]; float pos[2];
+    func_000688D0();
+    if (D_001E5488[0].a != 0xff) {
+        E_001E5488 *e = D_001E5488;
+        do {
+            if ((unsigned char)g[0xd804] == e->a && (unsigned char)g[0xd805] == e->b) {
+                sz[0] = 0x43a00000; sz[1] = 0x43a00000;
+                pos[0] = (double)e->x; pos[1] = (double)e->y;
+                func_000D7540(g + 0xe8a0, pos, sz, 4, 5, e->z);
+                if ((char)func_00103130(h)) func_00103990(h, 1);
+                done = true;
+            }
+        } while ((++e)->a != 0xff);
+        if (done) return;
+    }
+    func_00102E80(h);
+}
 
 void func_000D7DE0(void)
 {
