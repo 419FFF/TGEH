@@ -4,6 +4,10 @@
 #include <string.h>
 
 struct B9E { unsigned int v[68]; };
+extern int _D_003104B4;
+extern int _D_0030C630[];
+int _func_0011B530(char *, char *, int);
+int _func_0013E600(char *, const char *);
 
 void _func_0009D520(int);
 void _func_0009D520(int p)
