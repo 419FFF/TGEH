@@ -1,8 +1,46 @@
 /* 11 functions from 0x000727F0 to 0x000737EF, found by Ghidra. */
 #include "common.h"
 #include "ghidra.h"
+extern "C" void *memset(void *, int, unsigned int);
+#pragma intrinsic(memset)
 
 void func_000727F0(void){volatile char local[0x200]; local[0]=0;}
+
+bool func_000730B0(void)
+{
+    struct Axis { char pad[0x10]; short value; char pad2[6]; };
+    struct Pad { char pad[0x10]; Axis *axes; };
+    extern int D_00313A94, D_00313ABC, D_00313B58, D_00313B24, D_002FA36C;
+    void func_0009A1E0(void);
+    Pad *func_000B06B0(void);
+    void func_00133F30(int *);
+    void func_0011E4A0(float, float, float, float, int *, int *, int, float);
+    int scale[2];
+    int pos[2];
+    int state[21];
+    Axis *axes;
+    int i;
+    pos[0] = 0;
+    pos[1] = 0;
+    scale[0] = 0x3f800000;
+    scale[1] = 0x3f800000;
+    func_0009A1E0();
+    axes = func_000B06B0()->axes;
+    if (axes[D_00313A94].value != 0 || axes[D_00313ABC].value != 0 ||
+        axes[D_00313B58].value != 0 || axes[D_00313B24].value != 0)
+        return true;
+    for (i = 0; i < 21; i++)
+        state[i] = 0;
+    state[0] = 1;
+    state[1] = 1;
+    state[10] = 4;
+    state[11] = 5;
+    state[2] = D_002FA36C;
+    state[19] = 6;
+    func_00133F30(state);
+    func_0011E4A0(352.0f, 0.0f, 608.0f, 256.0f, pos, scale, 0, 0.5f);
+    return false;
+}
 
 void func_000731B0(void)
 {
