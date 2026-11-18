@@ -56,6 +56,20 @@ void func_00128710(int base,int idx,unsigned int *d) { int func_0011BF40(...),fu
 
 void func_00128780(int base,int idx,unsigned int *d) { int func_0011B820(...); int p=base+idx*20; *(int *)(p+0xec)=func_0011B820(d[0]); *(int *)(p+0xf8)=d[2]; *(int *)(p+0xfc)=d[3]; *(int *)(p+0xf4)=d[1]; *(unsigned char *)(base+0x21)|=0x40; }
 
+void func_001287D0(int param_1, int param_2, int param_3)
+{
+  int func_0011BCA0(...);
+  func_0011BCA0(*(int *)(param_1 + 0xec + param_2 * 0x14), param_3);
+  *(unsigned char *)(param_1 + 0x21) &= 0xbf;
+}
+
+void func_00128800(int param_1, int param_2)
+{
+  int func_0011BB00(...);
+  func_0011BB00(*(int *)(param_1 + 0xec + param_2 * 0x14));
+  *(unsigned char *)(param_1 + 0x21) |= 0x40;
+}
+
 void func_00128830(int a0) {
     extern int D_00331B04;
     D_00331B04 = a0;
@@ -97,4 +111,16 @@ void func_00128DB0(int a0) {
     extern int D_00331B08;
     D_00331B08 = a0;
 }
+// Prototypes
+char* _func_00131A10(char *s);
+char* _func_00126120(char *s);
+void __cdecl _func_00126300(char *s);
+void __cdecl _func_00117100();
+int _func_0012E2E0(char *param);
+char* _func_00139F00(int param);
+void __cdecl _func_00116FB0(void *arg);
 
+// Global data definitions
+extern undefined4 D_001DF6FC;
+extern undefined4 D_001DF700;
+extern char* D_00331AF0;
