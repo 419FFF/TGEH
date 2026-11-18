@@ -151,3 +151,17 @@ void func_00136510(unsigned int a, unsigned int b, unsigned int c, unsigned int 
 int func_0011BDD0(u16* p1, int val);
 void func_00133F30(int* p);
 void func_0011E4A0(unsigned int a, unsigned int b, unsigned int c, unsigned int d, void* e, unsigned int f, unsigned int g, unsigned int h);
+struct S_D_00109D13_arg1 {
+    int field1; // +0x0
+    int field2; // +0x4
+};
+
+struct S_D_00109D13_arg2 {
+    int field1; // +0x0
+    int field2; // +0x4
+};
+
+struct S_D_00109D13_arg3 {
+    int field1; // +0x0
+    int field2; // +0x4
+};
