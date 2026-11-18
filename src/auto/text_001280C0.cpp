@@ -2,6 +2,71 @@
 #include "common.h"
 #include "ghidra.h"
 
+static inline int inl_strlen(const char *s)
+{
+    const char *e = s + 1;
+    char c;
+    do {
+        c = *s++;
+    } while (c != 0);
+    return (int)(s - e);
+}
+
+int _func_00128450(char *param_1)
+{
+    extern char D_001DF6F4[5];
+    char func_00131A10(...);
+    int func_00126120(...);
+    int func_001356B0(...);
+    void func_00126300(...);
+    void func_00117100(...);
+    int func_00126EC0(...);
+    void func_00117130(...);
+    void func_001280C0(...);
+    int func_00135280(...);
+    void func_00116FB0(...);
+    char buf[256];
+    char *p, *d, *e;
+    char c;
+    int iVar7, uVar5, uVar6;
+    p = param_1;
+    do {
+        c = *p;
+        p[buf - param_1] = c;
+        p++;
+    } while (c != 0);
+    p = buf;
+    e = p + 1;
+    do {
+        c = *p++;
+    } while (c != 0);
+    buf[(p - e) - 3] = c;
+    d = buf - 1;
+    do {
+        c = *++d;
+    } while (c != 0);
+    *(int *)d = *(int *)D_001DF6F4;
+    d[4] = D_001DF6F4[4];
+    if (func_00131A10(buf)) {
+        uVar5 = func_00126120(buf);
+        uVar6 = func_001356B0(uVar5);
+        func_00126300(uVar5);
+        return uVar6;
+    }
+    func_00117100();
+    iVar7 = func_00126EC0(param_1);
+    if (iVar7 == 0) {
+        func_00117130();
+        return 0;
+    }
+    func_001280C0(iVar7, 1, 1, 0x20);
+    func_00117130();
+    uVar5 = func_00135280(iVar7);
+    func_00116FB0(*(int *)(iVar7 + 0x30));
+    func_00116FB0(iVar7);
+    return uVar5;
+}
+
 undefined4 func_00128540(undefined4 param_1)
 {
   int func_00117100(...);
