@@ -4,6 +4,7 @@
 struct F92 { char *_ptr; int _cnt; char *_base; int _flag; int _file; };
 struct IO92 { int h; char osfile; char pad[35]; };
 extern IO92 *D_0037C300[]; extern IO92 D_002E92A0;
+int func_001454D9(...); int func_0014063B(...); int func_00146D23(...); int func_001460D6(void);
 
 extern int _D_001E2320; extern int _D_0037C414; extern int *_D_0037C410; int _func_0013EEE4(...); int _func_00143691(...); int _func_00146980(...); int _func_001436BF(...); void _func_001456A9(void); int _func_0013EF1F(...); void _func_0014562E(void) { int count; int i; count=0; _func_0013EEE4(&_D_001E2320,16); _func_00143691(1); for(i=3;i<_D_0037C414;i++){int *slot=&_D_0037C410[i]; int p=*slot; if(p){ if((*(unsigned char*)(p+12)&0x83) && _func_00146980(p)!=-1) count++; if(i>=20){_func_001436BF(p);*slot=0;} }} _func_001456A9(); _func_0013EF1F(count); }
 
