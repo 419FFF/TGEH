@@ -74,6 +74,51 @@ void func_0007A4A0(void)
   return;
 }
 
+int *_func_0007A4D0(int param_1, int param_2)
+{
+    extern int D_002FA688[], D_002FA68C[], D_002FA690[], D_002FA694[], D_0030809C, D_001D6598;
+    int func_00103210(...);
+    void func_00103480(...);
+    void func_00103960(...);
+    void func_00110060(...);
+    void func_00110420(...);
+    void func_001105E0(...);
+    void func_00110000(...);
+    int func_000F8F40(...);
+    void func_00110480(...);
+    void func_0011E3A0(...);
+    void func_0011DED0(...);
+    __declspec(align(16)) char local[64];
+    unsigned int i;
+    int iVar = func_00103210(&D_001D6598);
+    if (iVar != 0) {
+        func_00103480(iVar, 1);
+        func_00103960(iVar, param_1, 0);
+    }
+    i = 0;
+    int *piVar = D_002FA690;
+    do {
+        if (*piVar == 0) {
+            func_00110060(*(int *)(param_1 + 0x2c), local);
+            int off = i * 0x10;
+            int *p = (int *)((char *)D_002FA688 + off);
+            func_00110420(D_0030809C, *(int *)((char *)D_002FA688 + off));
+            func_001105E0(*p, local, 0);
+            func_00110000(*p);
+            iVar = func_000F8F40(*(int *)(param_1 + 0x2c));
+            func_00110480(*(int *)(iVar + 0xe0), *p, 8);
+            func_0011E3A0(*(int *)((char *)D_002FA68C + off), param_1);
+            func_0011DED0(*(int *)((char *)D_002FA68C + off));
+            *(int *)((char *)D_002FA694 + off) = param_2;
+            *(int *)((char *)D_002FA690 + off) = 1;
+            return p;
+        }
+        i++;
+        piVar += 4;
+    } while (i < 4);
+    return 0;
+}
+
 int _func_000F8F40(...);
 int _func_00110420(...);
 int _func_00110480(...);
