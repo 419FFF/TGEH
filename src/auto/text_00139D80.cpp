@@ -2,6 +2,8 @@
 #include "common.h"
 #include "ghidra.h"
 
+struct S960 { char pad0[0x10]; unsigned int flags; char pad14[8]; char a; char b; char pad1e[6]; int c; char pad28[0x40]; unsigned int d; float e; char pad70[8]; char *f; char pad7c[0xc]; int g; };
+extern int _D_001E8878;
 int _func_00139F00(...);
 int _func_00126180(...);
 int _func_00116A90(...);
