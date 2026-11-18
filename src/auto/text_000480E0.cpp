@@ -4,11 +4,18 @@
 
 void func_00048240(undefined4 a, int b, int c, int d, float e) { int func_00106410(...); int func_00106340(...); int x,y; double z; char q,local[4]; func_00106410(d,c,&x); if(x>=0&&x<*(int*)(d+0x68)&&y>=0&&y<*(int*)(d+0x6c)){q=func_00106340(d,&x,local);if(q){z=(double)*(float*)(d+0x74)+(double)e;*(float*)(b+0x34)=(float)z;*(float*)(c+4)=(float)z;}} }
 
-int func_000482B0(unsigned int *p, void *ctx) { void func_0012E6D0(...); float func_0012E9D0(...); unsigned char local[12]; unsigned int best=0,i=1; float v,min; func_0012E6D0(local,ctx,p[1]); min=func_0012E9D0(local); if(p[0]<2)return 0; for(;i<p[0];++i){func_0012E6D0(local,ctx,p[1]+i*16);v=func_0012E9D0(local);if(v<min){min=v;best=i;}}return best;}
+int func_000482B0(unsigned int *p, void *ctx) {
+  void func_0012E6D0(...); float func_0012E9D0(...);
+  unsigned char local[12]; unsigned int best=0, i=1; float v, min;
+  func_0012E6D0(local,ctx,p[1]); min=func_0012E9D0(local);
+  if(p[0]<2) return 0;
+  for (;i<p[0];++i) { func_0012E6D0(local,ctx,p[1]+i*16); v=func_0012E9D0(local); if(v<min){min=v;best=i;} }
+  return best;
+}
 
-void func_00048430(undefined4 a,undefined4 b,undefined4 c,undefined4 d,float e,int n){extern float D_001D27B8;void func_00048350(...);if(e<=D_001D27B8)n=1;for(;n!=0;--n)func_00048350(a,b,c,d,e/(float)n);}
+void _func_00048350(...); void _func_00048430(unsigned int a,unsigned int b,unsigned int c,unsigned int d,float e,int n) { extern float D_001D27B8; volatile long double v=e; if (v <= D_001D27B8) n=1; for(; n; --n) _func_00048350(a,b,c,d,(float)(v/n)); }
 
-void func_000484A0(undefined4 a,undefined4 b,undefined4 c,undefined4 d,float e,int n){extern float D_001D27B8;void func_00048350(...);if(e<=D_001D27B8)n=1;for(;n!=0;--n)func_00048350(a,b,c,d,-(e/(float)n));}
+void func_000484A0(undefined4 a,undefined4 b,undefined4 c,undefined4 d,float e,int n){extern float D_001D27B8;void func_00048350(...);if(!(e>D_001D27B8))n=1;while(n){func_00048350(a,b,c,d,-e/n);--n;}}
 
 void func_000486B0(void) {
     int func_00116A90(...);
@@ -40,3 +47,11 @@ void func_000486C0(int *param_1)
 
 int func_00048720(int *p,undefined4 a,undefined4 b,undefined4 c){int func_00116A90(...);int func_00106010(...);int r;if(!p[1])p[1]=func_00116A90(0x640,1,1);*(int*)(p[1]+p[0]*8)=c;r=func_00116A90(0x614,1,1);func_00106010(r+4,a,a,c);*(int*)(r+8)=b;*(int*)(r+0x5cc)=-1;*(int*)(r+0x604)=2;*(int*)(p[1]+p[0]*8+4)=r;p[0]++;return r;}
 
+void func_000487A0(int *p,int key){int func_00106060(...);int func_00116FB0(...);int i=0;if(p[0]){int *q=(int*)(p[1]+4);while(*q!=key){i++;q+=2;if(i==p[0])return;}func_00106060(*(int*)(p[1]+4+i*8)+4);func_00116FB0(*(int*)(p[1]+4+i*8));*(int*)(p[1]+4+i*8)=*(int*)(p[1]-4+p[0]*8);*(int*)(p[1]+i*8)=*(int*)(p[1]-8+p[0]*8);p[0]--;}}
+
+longdouble func_00048A60(float *p,undefined4 *q,float v){int func_00047510(...);int func_00012070(...);longdouble a=func_00047510(q[0],q[2]);longdouble b=func_00012070(*p,(float)a);if((longdouble)v<b){*p=(float)((longdouble)*p+v);return v;}if((longdouble)(float)b<-(longdouble)v){*p=(float)((longdouble)*p-v);return -v;}*p=(float)a;return b;}
+extern float D_001D27B8;
+extern float D_001D2D4C;
+extern float D_001D27B0;
+extern float D_001E461C;
+extern float D_001D290C;
