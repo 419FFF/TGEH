@@ -6,6 +6,9 @@
 
 extern void* D_00324B68;
 
+struct S_000FAFD0 { char pad0[0x10]; unsigned char f10; unsigned char f11; char pad12[3]; unsigned char f15; char pad16[0x6e]; unsigned int h84; };
+struct P_000FAFD0 { S_000FAFD0 *s; };
+
 extern void* _func_0001CC10(void* param_1);
 
 extern int func_000F9C00(int param_1);
@@ -173,13 +176,13 @@ int _func_000FAE80(int a, int b)
 unsigned char _func_000FAEE0(undefined4 param_1, int *param_2)
 {
   extern char D_001D28F0, D_001D29C7;
-  int func_0009C7A0(...);
-  int func_000A2230(...);
-  int func_00131990(...);
-  int func_000A1BB0(...);
-  char *strcat(char *, const char *);
-  char buf[0x38] = "1234567";
+  int func_0009C7A0(int, char *, int);
+  int func_000A2230(int, int);
+  void func_00131990(char *);
+  int func_000A1BB0(int, int);
+  char buf[0x40];
   char *name = *(char **)func_0009C7A0(*param_2, &D_001D28F0, 0);
+  strcpy(buf, "1234567");
   strcat(buf, name);
   strcat(buf, "x");
   func_000A2230(*param_2 + 100, *(int *)param_2[3]);
