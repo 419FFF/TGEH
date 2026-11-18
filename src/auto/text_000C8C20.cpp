@@ -5,7 +5,7 @@ extern char D_00316850;
 struct Unk316850 { float x0; float y0; int u8; int uc; int s; float v; char on; char pad[3]; };
 extern Unk316850 D_0031683C[];
 #pragma optimize("y", on)
-extern float D_001D27EC;
+extern const float D_001D27EC;
 extern char D_001DA8BC;
 extern char D_001DA8B4;
 extern int D_00316258;
@@ -22,16 +22,18 @@ void func_000C9270(void)
   extern int D_00316930;
   if (D_003080AC != 2) {
     func_000A2500(1.7f);
-    int *p = (int*)&D_00316850;
+    char *q = &D_00316850;
     do {
-      if (*(char*)(p + 1) != 0) {
-        float f = *(float*)p + D_001D27EC;
+      Unk316850 *p = (Unk316850*)(q - 0x14);
+      if (p->on != 0) {
+        float f = p->v;
+        f += D_001D27EC;
         func_00120E70(f, f, f, f);
-        func_00120E50(*(float*)(p - 5), *(float*)(p - 4));
-        func_00121990(&D_001DA8BC, p[-1]);
+        func_00120E50(p->x0, p->y0);
+        func_00121990(&D_001DA8BC, p->s);
       }
-      p += 7;
-    } while ((int)p < (int)&D_00316930);
+      q += 0x1c;
+    } while ((int)q < (int)&D_00316930);
     func_00120E70(1.0f, 1.0f, 1.0f, 1.0f);
     func_00120E50(320.0f, 70.0f);
     func_00121990(func_000AFD10(&D_001DA8B4));
