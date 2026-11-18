@@ -61,6 +61,7 @@ void func_0008C310(void) {
  *(int **)(p+0x28)=base+i*0x18+1;
 }
 
+#pragma auto_inline(off)
 int __fastcall func_0008C600(int a,int d) {
  int *table=(int *)(*(int *)(d+0x1c)+a*0x28);
  short *idx=(short *)table;
@@ -79,6 +80,48 @@ int __fastcall func_0008C600(int a,int d) {
  return 0;
 }
 
+#pragma auto_inline(off)
+char func_0008C660(int param_1, int *param_2, int param_3, int param_4, int param_5, int param_6)
+{
+  int iVar1;
+  int iVar2;
+  int iVar3;
+
+  iVar1 = *(int *)(param_1 + 0x1c) + param_4 * 0x28;
+  iVar3 = func_0008C600(param_4, param_1);
+  iVar2 = *(int *)(iVar1 + 0x1c);
+  if (iVar2 == 0 || iVar2 == iVar3) {
+    *(int *)(iVar1 + 0x1c) = iVar3;
+    *(int *)(iVar3 + 0x24) = 0;
+    *(int *)(iVar1 + 0x20) = iVar3;
+  }
+  else {
+    *(int *)(iVar3 + 0x20) = iVar2;
+    *(int *)(*(int *)(iVar1 + 0x1c) + 0x24) = iVar3;
+    *(int *)(iVar1 + 0x1c) = iVar3;
+  }
+  if (iVar2 == 0) {
+    *(int *)(iVar3 + 8) = param_2[0];
+    *(int *)(iVar3 + 0xc) = param_2[1];
+    *(int *)(iVar3 + 0x10) = param_2[2];
+  }
+  else {
+    *(int *)(iVar2 + 8) = *(int *)(iVar1 + 8);
+    *(int *)(iVar2 + 0xc) = *(int *)(iVar1 + 0xc);
+    *(int *)(iVar2 + 0x10) = *(int *)(iVar1 + 0x10);
+    *(int *)(iVar3 + 8) = *(int *)(iVar1 + 8);
+    *(int *)(iVar3 + 0xc) = *(int *)(iVar1 + 0xc);
+    *(int *)(iVar3 + 0x10) = *(int *)(iVar1 + 0x10);
+  }
+  *(int *)(iVar3 + 0x1c) = param_6;
+  *(int *)(iVar3 + 0x14) = param_3;
+  *(int *)(iVar3 + 0x18) = param_5;
+  *(int *)(iVar3 + 4) = *(int *)(param_1 + 0x18);
+  *(int *)(iVar1 + 8) = param_2[0];
+  *(int *)(iVar1 + 0xc) = param_2[1];
+  *(int *)(iVar1 + 0x10) = param_2[2];
+  return 1;
+}
 void func_0008C710(int param_1, undefined1 param_2, undefined1 param_3, undefined1 param_4, int param_5)
 {
   int iVar1;
