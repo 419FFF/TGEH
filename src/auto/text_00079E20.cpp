@@ -74,6 +74,34 @@ void func_0007A4A0(void)
   return;
 }
 
+int _func_000F8F40(...);
+int _func_00110420(...);
+int _func_00110480(...);
+int _func_0011DEF0(...);
+int _func_0011D310(...);
+extern int _D_0030809C;
+void _func_0007A5C0(int p1, int p2)
+{
+    unsigned int i;
+    for (i = 0; i < 4; i++) {
+        if (_D_002FA688[i].d == p2) {
+            int r = _func_000F8F40(p1);
+            _func_00110420(*(int *)(r + 0xe0), _D_002FA688[i].a);
+            _func_00110480(_D_0030809C, _D_002FA688[i].a, 8);
+            _func_0011DEF0(_D_002FA688[i].b);
+            unsigned char *e = _D_002FA688[i].b;
+            unsigned int j;
+            for (j = 0; j < *(unsigned int *)(e + 0x15c); j++) {
+                _func_0011D310(*(int *)(e + 0x160) + j * 0x58, *(int *)(*(int *)(e + 0x50) + 0x2c), e + 0x54);
+                *(int *)(*(int *)(e + 0x160) + j * 0x58 + 0x20) = 0;
+            }
+            _D_002FA688[i].c = 0;
+            _D_002FA688[i].d = 0;
+            return;
+        }
+    }
+}
+
 void func_0007A850(int param_1)
 {
   int func_00131310(...); float func_00131760(...);
