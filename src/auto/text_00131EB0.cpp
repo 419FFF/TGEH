@@ -1,6 +1,7 @@
 /* 20 functions from 0x00131EB0 to 0x00132E0C, found by Ghidra. */
 #include "common.h"
 #include "ghidra.h"
+struct S_00132C60 { char pad0[0x18]; unsigned int flags; int pad1c, pad20; void *f24; unsigned short n; char pad2a[0x1a]; char *f44; int pad48; unsigned int cnt; char *f50; };
 extern "C" __declspec(dllimport) void __stdcall RtlEnterCriticalSection(void*);
 extern "C" __declspec(dllimport) void __stdcall RtlLeaveCriticalSection(void*);
 struct C_001321C0 {
@@ -191,6 +192,43 @@ undefined4 func_00132B80(undefined4 param_1, undefined4 param_2)
   uVar2 = func_001329E0(local_c0);
   func_00116FB0(iVar1);
   return uVar2;
+}
+
+void func_00132C60(char *p)
+{
+    extern char D_003326AC[]; extern int D_00332248[16]; extern int D_00332200[16]; extern int D_00331D64;
+    void __stdcall func_0014CD60(unsigned int,int,int);
+    void __stdcall func_0014E090(void*);
+    void func_00116FB0(void*);
+    void func_0013E310(void);
+    unsigned int i;
+    int off = 0;
+    if (p != 0) {
+        RtlEnterCriticalSection(D_003326AC);
+        i = 0;
+        do {
+            if (D_00332248[i] || D_00332200[i]) {
+                D_00332248[i] = 0;
+                D_00332200[i] = 0;
+                func_0014CD60(i, 0, 0);
+            }
+            i++;
+        } while (i < 16);
+        RtlLeaveCriticalSection(D_003326AC);
+        if (*(int*)(p + 0x44)) {
+            for (i = 0; i < *(unsigned short*)(p + 0x28); i++, off += 0xc)
+                func_0014E090((void*)(*(int*)(p + 0x44) + off));
+        }
+        if (*(unsigned int*)(p + 0x18) & 0x20000) func_00116FB0(*(void**)(p + 0x24));
+        i = (*(unsigned int*)(p + 0x18) & 0x40000) ? 3 : 0;
+        if (i < *(unsigned int*)(p + 0x4c)) {
+            off = i << 4;
+            for (; i < *(unsigned int*)(p + 0x4c); i++, off += 0x10)
+                func_0014E090((void*)(*(int*)(p + 0x50) + off));
+        }
+        func_00116FB0(p);
+        if (--D_00331D64 == 0) func_0013E310();
+    }
 }
 
 void func_00132D50(int a,int b) {
