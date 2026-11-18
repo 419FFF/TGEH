@@ -264,4 +264,11 @@ void func_00100A40(undefined4 param_1)
   }
   return;
 }
-
+extern int _func_00116800(unsigned int);
+extern int _func_00116A90(unsigned int, int, int);
+extern void _func_001100D0(int, unsigned int);
+extern void _func_00116820();
+extern void _func_0011C3E0(int);
+extern int _func_0012E6D0(unsigned int, unsigned int, unsigned int);
+extern void _func_0012EA60(unsigned int);
+extern void _func_0012ECA0(unsigned int, int);
