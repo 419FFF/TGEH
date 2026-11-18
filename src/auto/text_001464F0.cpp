@@ -141,11 +141,11 @@ int __stdcall func_00147306(int value) { if (value <= 9) { value += 0x30; } else
 void __stdcall func_0014731A(unsigned short* text, char* out, int unused) {
     // Declarations for external dependencies and globals (assuming they are handled by edit_file later)
     extern int __stdcall func_0013EEB0(int a, int b, int c, int d);
-    extern long long __stdcall func_00148B50(int a, long b, int c, int d);
-    extern int __cdecl func_00148B30(int a, long b, int c);
-    extern int __stdcall func_00147306(int n);
-    extern int _D_00010000; // Global/Data
-    extern int _D_0000FFFF; // Global/Data
+extern long long __stdcall func_00148B50(int a, long b, int c, int d);
+extern int __cdecl func_00148B30(int a, long b, int c);
+extern int __stdcall func_00147306(int n);
+extern int _D_00010000; // Global/Data
+extern int _D_0000FFFF; // Global/Data
 
     long long v = 0;
     unsigned short* t_ptr = text;
