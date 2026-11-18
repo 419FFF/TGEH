@@ -3,6 +3,64 @@
 #include "ghidra.h"
 struct Copy100 { int x[25]; };
 
+void _func_00088430(void)
+{
+  extern int D_00308158;
+  extern char D_001D6CD4, D_001D6768;
+  int func_0011B530(...);
+  int func_00080180(...);
+  int func_000959D0(...);
+  int func_00110550(...);
+  int func_0006F540(...);
+  char cVar1;
+  int iVar2;
+  char *pcVar3;
+  unsigned int uVar4;
+  int uVar5;
+  char *pcVar6;
+  unsigned int uVar7;
+  int iVar8;
+  char local_20[32];
+
+  iVar2 = *(int *)(D_00308158 + 0x1c);
+  uVar7 = 0;
+  if (uVar7 < *(unsigned int *)(iVar2 + 0x24)) {
+    iVar8 = 0;
+    do {
+      iVar2 = func_0011B530(*(int *)(*(int *)(iVar2 + 0x28) + 0x40 + iVar8), &D_001D6CD4, 6);
+      if (iVar2 == 0) {
+        pcVar3 = (char *)(*(int *)(*(int *)(*(int *)(D_00308158 + 0x1c) + 0x28) + 0x40 + iVar8) + 6);
+        pcVar6 = local_20;
+        do {
+          cVar1 = *pcVar3;
+          pcVar3 = pcVar3 + 1;
+          *pcVar6 = cVar1;
+          pcVar6 = pcVar6 + 1;
+        } while (cVar1 != '\0');
+        uVar4 = 0;
+        do {
+          if (local_20[uVar4] == '\0') break;
+          if (local_20[uVar4] == '_') {
+            local_20[uVar4] = '\0';
+            break;
+          }
+          uVar4 = uVar4 + 1;
+        } while (uVar4 < 0x20);
+        iVar2 = *(int *)(*(int *)(D_00308158 + 0x1c) + 0x28) + iVar8;
+        uVar5 = func_00080180(&D_001D6768, iVar2 + 0x48, iVar2 + 0x54);
+        iVar2 = func_000959D0(*(int *)(D_00308158 + 0x2c), local_20);
+        if (iVar2 != 0) {
+          func_00110550(iVar2, uVar5, 8);
+        }
+      }
+      iVar2 = *(int *)(D_00308158 + 0x1c);
+      uVar7 = uVar7 + 1;
+      iVar8 = iVar8 + 0x70;
+    } while (uVar7 < *(unsigned int *)(iVar2 + 0x24));
+  }
+  func_0006F540();
+}
+
 void func_00088520(unsigned int p){extern unsigned int D_00308158,D_002FDDC0,D_002FDDB8,D_00307C94,D_00307C58,D_003041F0,D_003041EC,D_00306E70,D_00306E6C;void func_00110170(unsigned int),func_00086B70(unsigned int),func_00096F70(unsigned int),func_000688D0(unsigned int),func_00093CA0(unsigned int);func_00110170(*(unsigned int*)(D_00308158+0x2c));if(!D_002FDDC0)goto b;if(*(unsigned char*)(*(unsigned int*)(p+0x2c)+0x22)==D_002FDDB8){func_00086B70(p);return;}b: if(!D_00307C94)goto c;if(*(unsigned char*)(*(unsigned int*)(p+0x2c)+0x22)==D_00307C58){func_00096F70(p);return;}c: if(!D_003041F0)goto d;if(*(unsigned char*)(*(unsigned int*)(p+0x2c)+0x22)==D_003041EC){func_000688D0(p);return;}d: if(!D_00306E70)return;if(*(unsigned char*)(*(unsigned int*)(p+0x2c)+0x22)==D_00306E6C)func_00093CA0(p);}
 
 void func_000885C0(void){void func_00097190(void),func_00093D80(void),func_000862D0(void),func_00083CE0(void),func_000688D0(void),func_0008D540(void);func_00097190();func_00093D80();func_000862D0();func_00083CE0();func_000688D0();func_000688D0();func_0008D540();}
@@ -89,6 +147,45 @@ void func_00088700(void)
   return;
 }
 
+void __cdecl _func_00088710(void)
+{
+  extern int _D_002FDECC, _D_002FDED0, _D_002FDED4, _D_002FDED8, _D_002FDEDC, _D_002FDEE0, _D_002FDEE4, _D_002FDEE8, _D_002FDEEC, _D_002FDEF0, _D_002FDEF4, _D_002FDEF8;
+  extern float _D_002FDEFC, _D_002FDF00, _D_002FDF04, _D_002FDF08, _D_002FDF0C, _D_002FDF10, _D_002FDF14, _D_002FDF18, _D_002FDF1C, _D_002FDF20;
+  extern int _D_002FDF24, _D_002FDF28, _D_002FDF2C, _D_002FDF30, _D_002FDF34, _D_002FDF38, _D_002FDF3C, _D_002FDF40, _D_002FDF44, _D_002FDF48;
+  _D_002FDECC = 0;
+  _D_002FDED4 = 0;
+  _D_002FDED8 = 0;
+  _D_002FDEDC = 0;
+  _D_002FDEE0 = 0;
+  _D_002FDEE4 = 0;
+  _D_002FDEE8 = 0;
+  _D_002FDEEC = 0;
+  _D_002FDEF0 = 0;
+  _D_002FDEF4 = 0;
+  _D_002FDEF8 = 0;
+  _D_002FDEFC = 1.0f;
+  _D_002FDF00 = 1.0f;
+  _D_002FDF04 = 1.0f;
+  _D_002FDF08 = 1.0f;
+  _D_002FDF0C = 1.0f;
+  _D_002FDF10 = 1.0f;
+  _D_002FDF14 = 1.0f;
+  _D_002FDF18 = 1.0f;
+  _D_002FDF1C = 1.0f;
+  _D_002FDF20 = 1.0f;
+  _D_002FDF24 = 0;
+  _D_002FDF28 = 0;
+  _D_002FDF2C = 0;
+  _D_002FDF30 = 0;
+  _D_002FDF34 = 0;
+  _D_002FDF38 = 0;
+  _D_002FDF3C = 0;
+  _D_002FDF40 = 0;
+  _D_002FDF44 = 0;
+  _D_002FDF48 = 0;
+  _D_002FDED0 = 0;
+}
+
 void func_000887F0(void){extern unsigned char D_001D6D08;extern unsigned int D_002FDF4C;int func_000B5100(...);void func_000B5420(...);D_002FDF4C=func_000B5100(&D_001D6D08,0x64,0x280);if(D_002FDF4C)func_000B5420(D_002FDF4C,0);}
 
 void func_00088820(void)
@@ -103,27 +200,26 @@ void func_00088820(void)
 }
 
 void *memcpy(void *,const void *,unsigned int);
-void _func_00088840(int p) {
+void _func_00088840(unsigned int p) {
  int func_0011BDD0(...),func_000B5240(...); extern int D_002FDF4C;
  int s;
  if(D_002FDF4C==0)return;
- s=func_0011BDD0(*(int*)(p+0xe0),0);
+ s=func_0011BDD0(*(unsigned int*)(p+0xe0),0);
  if(s){
   unsigned short n=*(unsigned short*)(s+4);
   if(n && *(int*)(p+0x128)==0){
-   int d=func_000B5240(D_002FDF4C,(unsigned int)n);*(int*)(p+0x12c)=d;
-   if(d){
-    unsigned int count=*(unsigned short*)(s+4);*(int*)(p+0x128)=count;
-    int i=0;
-    while(i<count){
-     int *src=(int*)(*(int*)(s+8)+0x28+i*0x30);
-     int *dst=(int*)(d+i*0x64);
-     for(int j=0;j<25;j++)dst[j]=src[j];
-     ++i;
-    }
+   int d=func_000B5240(D_002FDF4C,n);*(int*)(p+0x12c)=d;
+   if(d){unsigned int count=*(unsigned short*)(s+4);*(int*)(p+0x128)=count;
+    unsigned int i=0;
+    do {
+     struct Copy100 *src=(struct Copy100*)(*(unsigned int*)(s+8)+0x28+i*0x30);
+     struct Copy100 *dst=(struct Copy100*)(d+i*0x64);
+     *dst=*src;
+     i++;
+    } while(i<count);
    }
   }
-  --*(short*)(*(int*)(p+0xe0)+0x2a);
+  --*(short*)(*(unsigned int*)(p+0xe0)+0x2a);
  }
 }
 
