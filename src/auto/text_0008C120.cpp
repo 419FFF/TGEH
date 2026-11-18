@@ -79,6 +79,7 @@ int __fastcall func_0008C600(int a,int d) {
  ++*idx;
  return 0;
 }
+#pragma auto_inline(on)
 
 #pragma auto_inline(off)
 char func_0008C660(int param_1, int *param_2, int param_3, int param_4, int param_5, int param_6)
