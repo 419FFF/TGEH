@@ -77,6 +77,38 @@ int _func_0010A1F6(void) { extern void _func_0010B733(void);extern void _func_00
 
 void _func_0010A26A(void) { extern int *D_00010118;extern int D_00010108,D_00010000,D_001DEF50,D_001DEF40,D_001DEF44,D_0037C07C;extern int *D_001DEF48;extern int _func_0010A1F6(void);extern int __stdcall _func_0010BA25(int,int,int,void*,int,int);extern int __stdcall _func_0010B145(int,int,int);extern int __stdcall _func_0010B7F8(int);int*p=D_00010118;int a=D_00010108-(int)p+(int)&D_00010000;if(a<*p)*p=a;int n=(((D_001DEF50-D_001DEF40)+D_001DEF44+15)&0xfffffff0)+4;D_0037C07C=n;*D_001DEF48=n/-4;int zero=0;int r=_func_0010BA25(zero,zero,zero,_func_0010A1F6,zero,zero);if(!r)_func_0010B145(1,1,zero);_func_0010B7F8(r);}
 
+int __stdcall _func_0010BF49(int, int, int, int, int, int, int);
+int __stdcall _func_0010BAA0(int, void *, int, unsigned int *, int);
+int __stdcall _func_0010BCE7(int, unsigned int, int, int);
+void __stdcall _func_0010AAA3(int);
+int _func_0010AA7B(...);
+int __stdcall _func_0010B7F8(int);
+unsigned int __stdcall func_0010A326(int path, void *dst)
+{
+    unsigned char buf[0x184];
+    unsigned int result = 0;
+    int h = _func_0010BF49(path, 0x80000000, 0, 0, 3, 0x8000080, 0);
+    if (h != -1) {
+        if (_func_0010BAA0(h, buf, 0x178, (unsigned int *)&path, 0)) {
+            if (path == 0x178 && *(unsigned int *)(buf + 0x118) >= *(unsigned int *)(buf + 0x104)) {
+                path = *(unsigned int *)(buf + 0x118) - *(unsigned int *)(buf + 0x104);
+                if (!_func_0010BCE7(h, path, 0, 0)) goto fail;
+                if (!_func_0010BAA0(h, dst, 0x1d0, (unsigned int *)&path, 0)) goto fail;
+                if (path == 0x1d0) goto done;
+            }
+            _func_0010AAA3(0xd);
+        }
+    }
+fail:
+    if (_func_0010AA7B() > 0)
+        result = (_func_0010AA7B() & 0xffff) | 0x80070000;
+    else
+        result = _func_0010AA7B();
+done:
+    if (h != -1) _func_0010B7F8(h);
+    return result;
+}
+
 int __stdcall func_0010A3F2(int *result,int *status,int *buffer) {
  extern int* __declspec(dllimport) LaunchDataPage;
  int *p=0; int active=0; *status=-1; *result=0;
@@ -89,27 +121,28 @@ int __stdcall func_0010A3F2(int *result,int *status,int *buffer) {
 }
 
 int __stdcall func_0010A456(char *out,unsigned int capacity) {
- extern int __stdcall NtOpenSymbolicLinkObject(...); extern int __stdcall NtQuerySymbolicLinkObject(...); extern int __stdcall NtClose(...); extern int __stdcall func_0010AA16(...); extern int D_001E62C8,D_001DED54;
- char data[528]; int handle=0; int attr[7]; unsigned short str[2]; int result;
- *out=0;attr[2]=(int)&D_001E62C8;attr[3]=0x40;
- result=NtOpenSymbolicLinkObject(&handle,0x40,attr);
- if(result>=0){str[0]=0;str[1]=0x208;*(char**)(str+2)=data;result=NtQuerySymbolicLinkObject(handle,str,0);NtClose(handle);if(result>=0&&capacity>=str[0]/2+1)return func_0010AA16(out,data,str[0]/2+1);}
+ extern int __stdcall func_0010AA16(char*,char*,unsigned int);extern int D_001E62C8,D_001DED54;
+ union {char data[0x210];struct{unsigned short len,max;char*buf;} us;} u;
+ struct OA{int length;int name;int attrs;} oa;int result;
+ out[0]=0;oa.length=0;oa.name=(int)&D_001E62C8;oa.attrs=0x40;
+ result=NtOpenSymbolicLinkObject((int*)&out,0x40,&oa);
+ if(result>=0){u.us.len&=0;u.us.max=0x208;u.us.buf=u.data;result=NtQuerySymbolicLinkObject(*(int*)&out,&u.us,0);NtClose(*(int*)&out);if(result>=0){unsigned int n=u.us.len+1;if(capacity>=n)return func_0010AA16(out,u.data,n);}}
  return func_0010AA16(out,(char*)&D_001DED54,capacity);
 }
 
 void __stdcall func_0010A4E8(char *a,char *b) {
- int *page=(int*)*LaunchDataPage; char *p=a,*q=b; char c; int la,lb; int first;
- do { c=*p++; } while(c); la=(int)(p-(a+1));
- do { c=*q++; } while(c); lb=(int)(q-(b+1));
- if(la+lb+8>=0x1ec)return;
- *(unsigned short*)((char*)page+0x214)=1;
- *(unsigned short*)((char*)page+0x216)=(unsigned short)la;
- first=page[0]; *(int*)((char*)page+0x218)=first;
- if(first==-1)page[0]=0;
- char *base=(char*)page+0x21c; int off=(int)base-(int)a;
- p=a; do { c=*p; *(p+off)=c; ++p; } while(c);
- off=(int)(base+la+1)-(int)b;
- q=b; do { c=*q; *(q+off)=c; ++q; } while(c);
+ int *page=(int*)*LaunchDataPage; int n1,n2; char c; char *p;
+ p=a+1; do { c=*a++; } while(c); n1=(int)(a-p);
+ p=b+1; do { c=*b++; } while(c); n2=(int)(b-p);
+ if(n1+n2+8>=0x1ec) return;
+ char *x=(char*)page+0x214; *(unsigned short*)x=1; x++; x++; *(unsigned short*)x=(unsigned short)n1;
+ int v=page[0]; x++; x++; *(int*)x=v; x+=8; if(v==-1) page[0]=0;
+ p=a-n1-1; int d=(int)x-(int)p; do { c=*p; *(p+d)=c; ++p; } while(c);
+ p=b-n2-1; d=(int)(x+n1)-(int)p; do { c=*p; *(p+d)=c; ++p; } while(c);
 }
 
 #pragma optimize("", on)
+extern undefined4 *__imp__LaunchDataPage;
+extern void* __imp__MmAllocateContiguousMemory();
+extern void __imp__MmPersistContiguousMemory();
+extern undefined4 _D_001DEBC4;
