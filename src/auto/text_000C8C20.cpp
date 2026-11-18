@@ -20,21 +20,26 @@ void func_000C91C0(void){int func_001031C0(...);extern int D_00316928;extern cha
 void func_000C9270(void)
 {
   extern int D_00316930;
-  if (D_003080AC != 2) {
+  float new_var;
+  if (D_003080AC != 2)
+  {
     func_000A2500(1.7f);
     char *q = &D_00316850;
-    do {
-      Unk316850 *p = (Unk316850*)(q - 0x14);
-      if (p->on != 0) {
-        float f = p->v;
-        f += D_001D27EC;
+    new_var = 1.0f;
+    do
+    {
+      Unk316850 *p = (Unk316850 *) (q - 0x14);
+      if (p->on != 0)
+      {
+        float f = D_001D27EC + (p->v * new_var);
         func_00120E70(f, f, f, f);
         func_00120E50(p->x0, p->y0);
         func_00121990(&D_001DA8BC, p->s);
       }
       q += 0x1c;
-    } while ((int)q < (int)&D_00316930);
-    func_00120E70(1.0f, 1.0f, 1.0f, 1.0f);
+    }
+    while (((int) q) < ((int) (&D_00316930)));
+    func_00120E70(new_var, new_var, 1.0f, new_var);
     func_00120E50(320.0f, 70.0f);
     func_00121990(func_000AFD10(&D_001DA8B4));
     func_00120E50(320.0f, 110.0f);
