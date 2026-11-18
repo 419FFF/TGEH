@@ -14,11 +14,12 @@ int *_func_00139F00(unsigned char *p)
 {
     int _func_0013AF50(...); void _func_0013AF70(...); int _func_00116A90(...);
     _func_0013AF50(_D_00334C98);
-    unsigned int size=*(unsigned int *)(p+0x20);
+    int size=*(int *)(p+0x20);
     int *out=(int *)_func_00116A90(size+0x40,0x20,1);
     out[2]=size; out[0]=(int)(out+0x10); out[3]=*(int *)(p+8); out[0xc]=0;
-    unsigned char *dst=(unsigned char *)(out+0x10); unsigned char *src=*(unsigned char **)(p+0x24);
-    for(unsigned int i=0;i<size;i++) dst[i]=src[i];
+    unsigned char *dst=(unsigned char *)(out+0x10);
+    unsigned char *src=*(unsigned char **)(p+0x24);
+    for (int i=0; i<size; ++i) dst[i]=src[i];
     if ((*p&2)!=0) { *(unsigned char *)(out+1)=1; out[0xe]=*(int *)(p+0x14); out[0xf]=*(int *)(p+0x18); }
     else { *(unsigned char *)(out+1)=0; if (*(int *)(p+0x18)==0) { out[0xe]=0; out[0xf]=(size+1)&~1; } else { out[0xe]=(*(int *)(p+0x14)* *(int *)(p+0x10)* *(int *)(p+4))>>3; out[0xf]=(*(int *)(p+0x18)* *(int *)(p+0x10)* *(int *)(p+4))>>3; } }
     _func_0013AF70(_D_00334C98); return out;
@@ -83,7 +84,7 @@ void func_0013AA30(int p, int arg) { if (*(int *)(p+0x14)!=0) { if (*(char *)(p+
 
 void func_0013AAC0(int p, char arg) { int state=*(int *)(p+0x14); if(state==2 && arg && *(char *)(p+0x1d)) { func_001AF9A1(*(int *)(p+0x88)); *(int *)(p+0x14)=1; } else if(state==1 && !arg && *(char *)(p+0x1d)) { int x=*(int *)(p+0x24); func_001AF97D(*(int *)(p+0x88),0,0,x==1); *(int *)(p+0x14)=2; } }
 
-void func_0013AB30(int p) { if (*(int *)(p+0x14)) { func_0013AF50(D_00334C98); func_0013A470(p); func_0011C3E0(p); func_0011C3B0((int)&D_00334C8C,p,p); register int x=D_00334C98; *(char *)(p+0x1e)=0; *(int *)(p+0x14)=0; func_0013AF70(x); } }
+void func_0013AB30(int p) { if (*(int *)(p+0x14)) { func_0013AF50(D_00334C98); func_0013A470(p); func_0011C3E0(p); func_0011C3B0((int)&D_00334C8C,p,p); int x=D_00334C98; *(char *)(p+0x1e)=0; *(int *)(p+0x14)=0; func_0013AF70(x); } }
 
 void _func_0013AB80(int p,undefined4 *q){int *d=(int*)p;d[14]=q[0];d[15]=q[1];d[16]=q[2];d[4]=d[4]|2;}
 
@@ -146,4 +147,4 @@ void func_0013ACF0(undefined4 param_1)
 }
 
 void _func_0013AD10(unsigned int *p){extern unsigned int D_00332B70,D_00332B74,D_00332B78,D_00332B10;D_00332B70=p[0];D_00332B74=p[1];D_00332B78=p[2];D_00332B10|=4;}
-
+struct S960 { char pad0[0x10]; unsigned int flags; char pad14[8]; char a; char b; char pad1e[6]; int c; char pad28[0x40]; unsigned int d; float e; char pad70[8]; char *f; char pad7c[0xc]; int g; };
