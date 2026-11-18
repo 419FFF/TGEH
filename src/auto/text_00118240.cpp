@@ -2,6 +2,7 @@
 #include "common.h"
 #include "ghidra.h"
 
+struct Grp118 { unsigned int n; int a; char pad[0x20]; int *c; int d; };
 struct Ent118 { int obj; int flags; char pad[0xb0]; };
 extern int D_001DF278;
 extern char D_001DF27C;
@@ -17,7 +18,34 @@ char* func_00118240(char *arg) {
     while ((*d++=*s++) != 0) {}
     return arg;
 }
-#pragma optimize("", on)
+
+#pragma optimize("y", on)
+void _func_00118A80(int unused, unsigned char *p)
+{
+  int _func_00132C60(...); int _func_00129C90(...); int _func_0011B990(...); int _func_00116FB0(...); int _func_001296A0(...);
+  unsigned int i = 0;
+  unsigned int j;
+  int k;
+  if (i < *(unsigned short*)(p + 4)) {
+    int off = 0;
+    do {
+      _func_00132C60(*(int*)(*(int*)(p + 8) + off + 0x2c));
+      _func_00129C90(*(int*)(*(int*)(p + 8) + off + 4));
+      for (j = 0; j < *(unsigned int*)(*(int*)(p + 8) + off); j++) {
+        for (k = 0; k < 4; k++) {
+          int v = *(int*)(*(int*)(*(int*)(p + 8) + off + 0x28) + j * 0x64 + k * 4);
+          if (v) _func_0011B990(v);
+        }
+      }
+      if (*(int*)(*(int*)(p + 8) + off + 0x28)) _func_00116FB0(*(int*)(*(int*)(p + 8) + off + 0x28));
+      i++;
+      off += 0x30;
+    } while (i < *(unsigned short*)(p + 4));
+  }
+  _func_00116FB0(*(int*)(p + 8));
+  if (*(int*)(p + 0xc)) _func_001296A0(*(int*)(p + 0xc));
+  _func_00116FB0(p);
+}
 undefined4 func_00118B70(undefined4 *param_1)
 {
   int func_00117100(...);
@@ -45,8 +73,8 @@ void __cdecl _func_00118CB0(int *param_1, unsigned int *param_2)
   _func_00117100();
   param_1[4] = _func_00116A90(n * 0xb8, 1, 1);
   for (; n > 0; n--) {
-    *(int *)(off + param_1[4]) = _func_00116A90(0x4c, 1, 1);
-    *(int *)(off + 4 + param_1[4]) = 0x11;
+    *(int *)(param_1[4] + off) = _func_00116A90(0x4c, 1, 1);
+    ((int *)(param_1[4] + off))[1] = 0x11;
     off += 0xb8;
   }
   _func_00117130();
