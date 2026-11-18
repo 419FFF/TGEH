@@ -92,30 +92,17 @@ void func_00063360(int param_1, undefined4 param_2)
 
 float _func_00063490(void *self, void *a, void *b) { return 0.0f; }
 
-void _func_00063530(float value) { }
+void _func_00063530(float value);
 
 void _func_00063690(int *self) {
  extern int D_00313B60,D_002EF4F4,D_002EF4F8,D_002EF4FC,D_002EF500;
  int func_00110060(...);float func_00068CF0(...);
  void _func_00063530(float);
-
- // Target assembly suggests a stack allocation of 0x4C (76 bytes).
- __declspec(align(16)) int v[32]; // Increased size to cover the required stack space.
-
- // Simulate saving ESI and EAX registers as per target prologue:
- // push esi; mov esi, eax
- int original_esi = 0; // Placeholder for saved ESI
- int original_eax = 0; // Placeholder for saved EAX
-
+ __declspec(align(16)) int v[19];
  func_00110060(D_00313B60,&v[16]);
-
  D_002EF4F4=v[12];D_002EF4F8=v[13];D_002EF4FC=v[14];D_002EF500=v[15];
-
- // Simulate the stack setup and function call sequence:
  float f=func_00068CF0(*self,&D_002EF4F4,10);
  _func_00063530(f);
-
- // The target assembly ends with a cleanup that restores registers/stack.
 }
 
 void _func_00063700(void) {
