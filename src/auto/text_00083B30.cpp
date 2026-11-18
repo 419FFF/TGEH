@@ -92,25 +92,24 @@ void func_00084090(int id, unsigned int a, unsigned int b, unsigned int c, unsig
 }
 
 void func_000841F0(int id, char* p) {
- extern int D_002FBBD8[], D_002FBBE8[]; extern float D_001D2B64;
+ extern int D_002FBBD8[], D_002FBBE8[];
+ extern float D_001D2B64;
  int func_0010FB70(int,int,int), func_0011FD20(void), func_0011F920(int);
  int func_001105E0(int,void*,int), func_00110000(int), func_00095B30(int);
  int func_001206B0(void), func_0011F960(int), func_00110420(int,int);
- int index=id*5; int obj=D_002FBBD8[index];
- if (!obj || id==4 || id==0x18) return;
- int model=D_002FBBE8[index];
- func_0010FB70(obj,model,3);
- func_0011FD20();
- int token=func_0011F920(obj);
- float* xy=(float*)(p+0x30);
- int x=*(int*)&xy[0], y=*(int*)&xy[1];
- xy[0]=xy[0]-D_001D2B64;
- xy[1]=xy[1]-D_001D2B64;
- func_001105E0(obj,p,0);
- func_00110000(obj);
- *(int*)&xy[0]=x; *(int*)&xy[1]=y;
- func_00095B30(obj); func_001206B0(); func_0011F960(token);
- func_00110420(obj,model);
+ int ix=id*5, obj=D_002FBBD8[ix];
+ if (obj && id!=4 && id!=0x18) {
+   int model=D_002FBBE8[ix];
+   func_0010FB70(obj,model,3); func_0011FD20();
+   int token=func_0011F920(obj);
+   int x=*(int*)(p+0x30), y=*(int*)(p+0x34);
+   *(float*)(p+0x30)=*(float*)(p+0x30)-D_001D2B64;
+   *(float*)(p+0x34)=*(float*)(p+0x34)-D_001D2B64;
+   func_001105E0(obj,p,0); func_00110000(obj);
+   *(int*)(p+0x30)=x; *(int*)(p+0x34)=y;
+   func_00095B30(obj); func_001206B0(); func_0011F960(token);
+   func_00110420(obj,model);
+ }
 }
 
 void func_00084390(void) {
@@ -122,6 +121,8 @@ void func_000843B0(int id, char* p, float a,float b,float c,float d,float e,floa
  extern int D_002FBBD8[]; void func_00084110(float,float,float,float,float,float,float); void func_000841F0(int,char*); void func_000842B0(int,char*);
  if(D_002FBBD8[id*5]) { func_00084110(a,b,c,d,e,f,g);func_000841F0(id,p);func_000842B0(id,p);int func_00136510(float,float,float,float);func_00136510(-1,1,-1,1); }
 }
+
+int func_00084420(int obj,float *out1,float *out2) { extern float D_001D68F0; extern int D_002FBBD8; int func_00110170(...); int local=0; int id=*(int*)(obj+0xe0); if(id==-1)return 1; int table=*(int*)(D_002FBBD8+id*20); int *node=*(int**)(table+0x28); while(node){func_00110170(*node);if(id==0x16||id==0x17)*(float*)(*node+0xd8)*=D_001D68F0; if(local<*(float*)(*node+0xd8))local=*(float*)(*node+0xd8);node=(int*)node[3];} float x=*(float*)&local;out1[0]=out1[1]=out1[2]=-x;out2[0]=out2[1]=out2[2]=x;return 1;}
 
 void func_000845C0(void)
 {
@@ -140,7 +141,24 @@ void func_000845C0(void)
   return;
 }
 
+void func_000845F0(int a,int b,int c,int d,int e,int f,int g,int h,int *src,int j) { extern unsigned int D_002FDD60; extern int D_002FC160; if(D_002FDD60<0x40){int *p=(int*)((char*)&D_002FC160+D_002FDD60*0x70);p[0]=a;p[1]=b;p[2]=c;p[3]=d;p[4]=e;p[5]=f;p[6]=g;p[7]=h;for(int i=0;i<16;i++)p[8+i]=src[i];p[24]=j;D_002FDD60++;}}
+
 void func_00084740(void) {
     extern int D_002FDD60;
     D_002FDD60 = 0;
 }
+// Prototypes
+void func_00110370(undefined1 local_1c[4]);
+void func_00122A70();
+void func_001229B0(undefined *ptr);
+void func_0012F120(undefined *ptr);
+
+// Globals
+extern undefined D_001D68F4;
+extern undefined D_002FBBD4;
+extern undefined D_002FC150;
+extern undefined D_002FBBD8;
+extern undefined D_002FBBDC;
+extern undefined D_002FBBD0;
+extern undefined D_002FBB90;
+extern undefined D_002FBBB8;
