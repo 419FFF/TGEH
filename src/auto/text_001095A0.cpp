@@ -70,11 +70,48 @@ void __stdcall func_00109D05(int a0)
   func_00109CA1(value, 0);
 }
 
+#pragma optimize("s", on)
 int __stdcall func_00109D13(int path, unsigned long long *freeToCaller, unsigned long long *total, unsigned long long *freeTotal)
 {
+    int __stdcall func_0010AAD1(int);
+    int func_0010AA7B(void);
+    int __stdcall func_0010AAA3(int);
+    unsigned long long __stdcall func_0013EEB0(unsigned long long, unsigned long long);
+    unsigned long long info[3];
+    int oa[3];
+    int io[2];
+    int r;
+    {
+        char name[8];
+        RtlInitAnsiString(name, (char*)path);
+        oa[1] = (int)name;
+        oa[0] = -3;
+        oa[2] = 0x40;
+        r = NtOpenFile(&path, 0x100001, oa, io, 3, 0x800021);
+    }
+    if (r < 0) {
+        func_0010AAD1(r);
+        if (func_0010AA7B() == 2)
+            func_0010AAA3(3);
+        return 0;
+    }
+    r = NtQueryVolumeInformationFile(path, io, info, 0x18, 3);
+    NtClose(path);
+    if (r < 0) {
+        func_0010AAD1(r);
+        return 0;
+    }
+    {
+        unsigned int unit = ((unsigned int*)info)[5] * ((unsigned int*)info)[4];
+        unsigned long long freeBytes = func_0013EEB0(info[1], unit);
+        unsigned long long totalBytes = func_0013EEB0(info[0], unit);
+        if (freeToCaller) *freeToCaller = freeBytes;
+        if (total) *total = totalBytes;
+        if (freeTotal) *freeTotal = freeBytes;
+    }
     return 1;
 }
-
+#pragma optimize("", on)
 extern "C" __declspec(dllimport) int __stdcall RtlInitAnsiString(void*, const char*);
 extern "C" __declspec(dllimport) int __stdcall NtOpenFile(int*, unsigned int, void*, void*, unsigned int, unsigned int);
 extern "C" __declspec(dllimport) int __stdcall NtQueryVolumeInformationFile(int, void*, void*, unsigned int, unsigned int);
