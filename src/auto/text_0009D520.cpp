@@ -6,6 +6,13 @@
 struct B9E { unsigned int v[68]; };
 
 void _func_0009D520(int);
+void _func_0009D520(int p)
+{
+    char buf[256];
+    strcpy(buf, *(char **)(p + 0xc));
+    strcat(buf, ".");
+}
+
 void _func_0009D620(int p)
 {
     unsigned char *flags=(unsigned char *)(p+0x10);
@@ -169,15 +176,4 @@ B9E *func_0009E3B0(B9E *p)
   func_00110330(func_00110300(*(int *)((char *)b + 0x2c), &D_001D7494, 0x18), 0);
   return b;
 }
-// Struct definitions
-struct S_D_0009D9E0_arg0 {
-    char **p_str; // offset 0xc (pointer to char*)
-    unsigned char flag_byte; // offset 0x11 (s8)
-    int value_int; // offset 0x2c (s32)
-    ushort u16_val; // offset 0x54 (u16)
-};
 
-// Global declarations based on usage:
-extern unsigned short _D_001D73E4;
-extern int _D_003104B4;
-extern int _D_0030C630[]; // Assuming an array of integers/pointers
