@@ -1,6 +1,7 @@
 /* 91 functions from 0x000FD600 to 0x000FE408, found by Ghidra. */
 #include "common.h"
 #include "ghidra.h"
+#include <string.h>
 
 char func_000FD6C0(void) {
     int func_000A8A90(...);
@@ -71,6 +72,30 @@ undefined4 func_000FD900(undefined4 param_1, undefined4 *param_2)
 char func_000FD940(void) { int func_00044E50(...); func_00044E50(); return 1; }
 
 unsigned char _func_000FD950(int *p, int *q) { extern int D_003248E8, D_003248EC, D_003248F0; int func_0009C590(...); int func_0009A0D0(...); D_003248E8=p[3]; D_003248EC=func_0009C590(**(int **)(q+1)); D_003248F0=func_0009C590(**(int **)(q+3)); func_0009A0D0(4); return 1; }
+
+char func_000FD990(int param_1, int param_2)
+{
+  extern int D_00307DF8, D_00308158;
+  char func_00011D20(...); int func_00110060(...); int func_0012F730(...);
+  int v[3];
+  char m[0x30];
+  if (func_00011D20(D_00307DF8) == 0) {
+    int *p = (int*)(D_00307DF8 + 0x150);
+    int i;
+    for (i = 0; i < 11; i++) p[i] = 0;
+    *(char*)((int)p + 0x24) = 1;
+    int q = *(int*)(param_1 + 0xc);
+    if (q == 0 || q == D_00308158) p[4] = 0; else p[4] = q;
+    if (*(int*)(param_1 + 0xc) == 0 || *(char*)(*(int*)(param_1 + 0xc) + 0x13) != 0x19) p[10] = 1; else p[10] = 0;
+    v[0] = *(int*)(D_00307DF8 + 0xe8);
+    v[1] = *(int*)(D_00307DF8 + 0xec);
+    v[2] = *(int*)(D_00307DF8 + 0xf0);
+    func_00110060(*(int*)(D_00307DF8 + 0x2c), m);
+    func_0012F730(p, v, m);
+    p[7] = **(int**)(param_2 + 4);
+  }
+  return 1;
+}
 
 unsigned char _func_000FDA60(int *p, int *q) { extern int D_00307DF8, D_00308158; int *x=*(int **)(D_00307DF8+0x110); if (*x != 0x25 && *x != 0x26) { *x=0x25; x[0x104]=**(int **)(q+1); x[0x105]=(((p[3] == D_00308158)-1) & p[3]); } return 1; }
 
@@ -249,7 +274,7 @@ char func_000FDF30(void) {
 
 unsigned char _func_000FDF40(void){extern char _D_001D7248;int _func_0009C590(void*);int _func_000688D0(int);int p=_func_0009C590(&_D_001D7248);_func_000688D0(*(int*)(p+0x2c));return 1;}
 
-unsigned char _func_000FDF60(int a,int b,int* p){extern int func_0009CBE0(...);extern int func_00110060(...);extern int func_000B6510(...);extern int _D_001D7BE0;int base=func_0009CBE0(&_D_001D7BE0);int* c=(int*)*p;int* d=(int*)*(int*)((char*)c+0x2c);int value=**(int**)((char*)d+0x2c);int* slot=*(int**)(base+0x110);slot[0xd90/4]=value;func_00110060(*(int*)((char*)c+0x2c),(int)((char*)slot+0xd50));func_000B6510(5,0);return 1;}
+unsigned char _func_000FDF60(int x,int y,int* p){extern int func_0009CBE0(...);extern int func_00110060(...);extern int func_000B6510(...);extern int _D_001D7BE0;int result=func_0009CBE0(&_D_001D7BE0);int* c=(int*)*p;int* d=(int*)*(int*)((char*)c+0x2c);int value=**(int**)((char*)d+0x2c);int* slot=(int*)(result+0x110);int* base=(int*)*slot;*(int*)((char*)base+0xd90)=value;func_00110060(*(int*)((char*)c+0x2c),(int)((char*)base+0xd50));func_000B6510(5,0);return 1;}
 
 void func_000FDFB0(void) {
     int func_000C1370(...);
