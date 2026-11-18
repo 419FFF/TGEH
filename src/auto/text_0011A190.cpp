@@ -100,9 +100,9 @@ void _func_0011A570(int p) { int _func_0011BAE0(...); int _func_0011B990(...); i
 
 void func_0011A5A0(int *p) { int func_0011BB00(...); func_0011BB00(*(int *)((char *)p+0xe0)); *(unsigned char *)((char *)p+0x21) = *(unsigned char *)((char *)p+0x21) | 0x40; }
 
-void _func_0011A5C0(int p, undefined4 a) { int _func_0011BC10(...); _func_0011BC10(*(undefined4 *)(p+0xe0),a); *(unsigned char *)(p+0x21) = (unsigned char)(*(unsigned char *)(p+0x21) | 0x40); }
+void _func_0011A5C0(int p, unsigned int a) { int _func_0011BC10(...); _func_0011BC10(*(unsigned int *)(p+0xe0),a); *(volatile unsigned char*)(p+0x21) |= 0x40; }
 
-void _func_0011A5E0(int p, undefined4 a) { int _func_0011BCA0(...); _func_0011BCA0(*(undefined4 *)(p+0xe0),a); *(unsigned char *)(p+0x21) = (unsigned char)(*(unsigned char *)(p+0x21) & 0xbf); }
+void _func_0011A5E0(int p, unsigned int a) { int _func_0011BCA0(...); _func_0011BCA0(*(unsigned int *)(p+0xe0),a); ((FlagByteAt21*)p)->bit6 &= 0; }
 
 #pragma optimize("y", off)
 void _func_0011A600(undefined4 param_1)
@@ -129,6 +129,43 @@ void func_0011A6A0(char on) { extern unsigned char D_003268C4; extern float D_00
 void _func_0011A700(float *p,int q){extern char D_003268C4;extern float D_003268CC,D_0032923C,D_003268C8;extern void _func_0012F120(void*);extern int _func_001313C0(float);extern void _func_0013BB50(...);long double f;float v[12],x,y;int a,b;if(D_003268C4)f=D_003268CC;else f=(long double)D_0032923C-D_003268C8;_func_0012F120(v);x=(float)(f*p[0]);y=(float)(f*p[1]);a=_func_001313C0(x);x-=(float)a;b=_func_001313C0(y);y-=(float)b;v[0]=x;v[1]=y;_func_0013BB50(q,v);}
 
 void _func_0011A8B0(int a,int *p,int *q,int d){extern int _func_00136B70(...),_func_0012E650(...);extern float _func_0012E940(...);extern void _func_00133860(...);extern float D_001E7D20;extern float D_003268C0;int x[6];x[0]=p[12];x[1]=p[13];x[2]=p[14];int z=_func_00136B70(x);x[3]=*(int*)((char*)z+0x30);x[4]=*(int*)((char*)z+0x34);x[5]=*(int*)((char*)z+0x38);_func_0012E650(x,x+3);float y=_func_0012E940(x);D_003268C0=D_001E7D20*y;_func_00133860(*(int*)((char*)q+0x2c),d);D_003268C0=0;}
+
+bool func_0011A930(char *obj, float *pos, unsigned int n, unsigned int *counts, float *pts)
+{
+    void func_001151F0(int, int, float *);
+    void func_0012F730(float *, char *, float *);
+    void func_0012F7A0(float *, float *);
+    void func_0012F890(float *, int *);
+    float func_0012E8E0(float *, float *);
+    extern int D_003292F0;
+    unsigned int i, j, k;
+    float v[4];
+    __declspec(align(16)) float m[16];
+
+    if (*(int *)(obj + 0xe4) != 0) {
+        func_001151F0(*(int *)(obj + 0xe4), 0, m);
+        func_0012F730(v, obj, m);
+        func_0012F7A0(v, pos);
+    } else {
+        func_0012F730(v, obj, pos);
+    }
+    func_0012F890(v, &D_003292F0);
+    i = 0;
+    k = 0;
+    while (i < n) {
+        for (j = 0; j < *counts; j++, k++) {
+            if (func_0012E8E0(v, pts + k * 4) > *(float *)(obj + 0xd8))
+                break;
+        }
+        if (j >= *counts)
+            break;
+        i++;
+        counts++;
+    }
+    if (i >= n)
+        return false;
+    return true;
+}
 
 void func_0011AF30(int param_1, undefined4 param_2)
 {
