@@ -54,6 +54,27 @@ void func_000824A0(void)
   return;
 }
 
+void func_000824C0(int p)
+{
+  int func_00110060(...), func_00110420(...), func_001105E0(...), func_00110000(...);
+  int func_000F8F40(...), func_00110480(...), func_0011E3A0(...), func_0011DED0(...);
+  extern char D_002FBB04;
+  extern int D_002FBB08, D_002FBB0C;
+  __declspec(align(16)) char local[64];
+  if (!D_002FBB04) {
+    func_00110060(*(int *)(p + 0x2c), local);
+    if (*(int **)(D_002FBB08 + 0x2c))
+      func_00110420(D_002FBB08, **(int **)(D_002FBB08 + 0x2c));
+    func_001105E0(D_002FBB08, local, 0);
+    func_00110000(D_002FBB08);
+    int r = func_000F8F40(*(int *)(p + 0x2c));
+    func_00110480(*(int *)(r + 0xe0), D_002FBB08, 8);
+    func_0011E3A0(D_002FBB0C, p);
+    func_0011DED0(D_002FBB0C);
+    D_002FBB04 = 1;
+  }
+}
+
 void func_00082B20(void)
 {
   extern int D_001D681C;
