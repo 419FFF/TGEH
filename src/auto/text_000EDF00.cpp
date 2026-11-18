@@ -48,3 +48,53 @@ void func_000EDF00(void)
   func_00110000(*(undefined4 *)(*(int *)(((undefined *)&D_00324620) + D_003246E8 * 4) + 0x2c));
   return;
 }
+
+extern int _D_003246CC, _D_003246D0;
+extern int _D_00324620[];
+extern void __cdecl _func_0009D280(int);
+extern void __cdecl _func_00110480(int, int, int);
+extern float D_003246DC;
+extern float D_003246D4;
+extern float D_001DCA80;
+extern int D_003246CC;
+extern int D_00324620[];
+extern int D_003246F4;
+extern int D_003246E8;
+
+extern void __cdecl _func_0012F120(float *);
+extern void __cdecl _func_0012FE20(float *, float, int, int);
+extern void __cdecl _func_0012F250(float *, float *, float *);
+extern void __cdecl _func_0012E590(float *, float *);
+extern void __cdecl _func_001105E0(int, float *, int);
+extern void __cdecl _func_0012F120(void *);
+extern void __cdecl _func_0012FE20(void *, int, int, int);
+extern void __cdecl _func_0012F250(void *, void *, void *);
+extern void __cdecl _func_0012E590(void *, void *);
+extern void __cdecl _func_001105E0(int, void *, int);
+#pragma optimize("y", on)
+void __cdecl _func_000EE040(void)
+{
+  int v[3];
+  __declspec(align(16)) int m90[15];
+  __declspec(align(16)) int md0[15];
+  __declspec(align(16)) int m50[12];
+  int m20[7];
+
+  _func_0009D280(_D_00324620[_D_003246CC]);
+  _func_00110480(_D_003246D0, *(int *)(_D_00324620[_D_003246CC] + 0x2c), 8);
+
+  v[0] = 0;
+  v[1] = 0x437a0000;
+  v[2] = 0;
+
+  _func_0012F120(m90);
+  m90[13] = 0x437a0000;
+  _func_0012F120(md0);
+
+  _func_0012FE20(md0, 0xbfc90fd0, 0, 0);
+
+  _func_0012F250(m50, m90, md0);
+  _func_0012E590(m20, v);
+
+  _func_001105E0(*(int *)(_D_00324620[_D_003246CC] + 0x2c), m50, 0);
+}
