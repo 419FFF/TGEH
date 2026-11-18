@@ -3,6 +3,8 @@
 #include "ghidra.h"
 #include <math.h>
 
+void func_000D31E0(int a, float t) { extern int D_0031ADBC,D_0031B900,D_0031B9B0; extern float D_0031AD44,D_0031ADA0,D_0031ADA4,D_001D27B8; if(D_0031ADBC!=3){ if(D_0031AD44<t){D_0031B900=7;D_0031B9B0=10;return;} float x=(float)fabs(D_0031ADA0),y=(float)fabs(D_0031ADA4); float s=x+y; if(D_001D27B8==s){D_0031B900=6;return;} if(x>y){ if(D_0031ADA0<D_001D27B8){D_0031B900=3;return;} D_0031B900=2;return;} D_0031B900=4; if(!(D_0031ADA4>D_001D27B8))D_0031B900=5; } }
+
 unsigned char func_000D32B0(void) { extern int D_0031B900,D_0031B864,D_0031B8F0; extern float D_001D290C; float func_000A2310(...); if(D_0031B900==7) { float result=func_000A2310(D_0031B864+100); int *p=(int *)(D_0031B8F0+4); float bound=(float)*p; if(*p<0)bound+=D_001D290C; if(result<bound)return 1; } return 0; }
 
 void func_000D3550(void) { extern char D_0031B130,D_0031AF24,D_0031B3C4,D_0031B460,D_0031B7C4; int func_0012E750(...); int *p=(int *)&D_0031B130; do { ((char *)p)[0x34]=0;*p=0;p[-4]=0;p+=0x44;}while((int)p<(int)&D_0031B460); char *b=&D_0031AF24,*a=&D_0031B3C4; do{func_0012E750(a+0x10);*a=0;*b=0;a+=0x40;b+=0x18;}while((int)a<(int)&D_0031B7C4); }
@@ -32,3 +34,15 @@ void func_000D3A20(void)
   func_00102E80(uVar1);
   return;
 }
+extern void __cdecl _func_00110060(void* arg1, undefined* arg2);
+extern void __cdecl _func_001105E0(void* arg1, undefined* arg2, int arg3);
+
+// Global float values used in calculations (assuming they are floats based on fld/fsub/fmul)
+extern float D_0031ACB0; // Assuming this is the actual symbol name for the address _D_0031ACB0
+extern float D_001D3418; 
+extern float D_0031B7E8; 
+extern float D_0031B830;
+extern float D_001D37D0;
+extern float D_0031B834;
+extern float D_001D2808;
+extern float D_0031B838;
