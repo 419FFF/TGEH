@@ -65,3 +65,7 @@ struct S_D_000E34A0_arg0 {
 // Prototypes
 int func_000E34A0(int param_1, undefined4 *param_2);
 int func_00110000(undefined4 *param_1);
+extern unsigned int D_00322820;
+extern unsigned int D_00307DF8;
+extern float D_001D35F8; // Used in comparison (ABS(float - float) < float)
+extern unsigned int D_0032280C;
