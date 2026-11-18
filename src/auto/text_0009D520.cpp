@@ -2,6 +2,8 @@
 #include "common.h"
 #include "ghidra.h"
 
+struct B9E { unsigned int v[68]; };
+
 void _func_0009D520(int);
 void _func_0009D620(int p)
 {
@@ -51,31 +53,32 @@ void _func_000F4390(...);
 extern char _D_001D7474, _D_001D7424, _D_001D7468;
 void _func_0009DF20(int p, int a)
 {
-    int spare;
     int x[4];
     int y[4];
+    int z;
     int *q=(int*)_func_0009C7A0(p,&_D_001D7474,0);
     x[0]=q[0]; x[1]=q[1]; x[2]=q[2]; x[3]=q[3];
     q=(int*)_func_0009C7A0(p,&_D_001D7424,0);
     y[0]=q[0]; y[1]=q[1]; y[2]=q[2]; y[3]=q[3];
     q=(int*)_func_0009C7A0(p,&_D_001D7468,0);
-    _func_000F4390(a,x,y,q[0]);
+    z=q[0];
+    _func_000F4390(a,x,y,z);
 }
 
 void _func_00080A70(...);
 extern char _D_001D7474, _D_001D7484, _D_001D7424;
 void _func_0009DFB0(int p)
 {
-    int a[4];
-    int b[4];
     int c[4];
+    int b[4];
+    int a[4];
     int *x=(int*)_func_0009C7A0(p,&_D_001D7474,0);
-    a[0]=x[0]; a[1]=x[1]; a[2]=x[2]; a[3]=x[3];
+    c[0]=x[0]; c[1]=x[1]; c[2]=x[2]; c[3]=x[3];
     int *y=(int*)_func_0009C7A0(p,&_D_001D7484,0);
     b[0]=y[0]; b[1]=y[1]; b[2]=y[2]; b[3]=y[3];
     int *z=(int*)_func_0009C7A0(p,&_D_001D7424,0);
-    c[0]=z[0]; c[1]=z[1]; c[2]=z[2]; c[3]=z[3];
-    _func_00080A70(c,b,a);
+    a[0]=z[0]; a[1]=z[1]; a[2]=z[2]; a[3]=z[3];
+    _func_00080A70(a,b,c);
 }
 
 int _func_0009DD00(...);
