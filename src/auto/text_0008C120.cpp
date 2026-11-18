@@ -76,6 +76,7 @@ int __fastcall func_0008C600(int a,int d) {
   *(char *)entry=1; *(int *)((char *)entry+0x20)=0; *(int *)((char *)entry+0x24)=0;
  }
  ++*idx;
+ return 0;
 }
 
 void func_0008C710(int param_1, undefined1 param_2, undefined1 param_3, undefined1 param_4, int param_5)
