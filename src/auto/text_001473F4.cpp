@@ -61,3 +61,15 @@ void RtlNtStatusToDosError();
 extern char D_001E2854[];
 extern char D_001E274C[];
 void __imp__RtlNtStatusToDosError();
+#include <string.h>
+#include <stddef.h>
+
+// External Data Declarations
+extern char D_001E2854[];
+extern char D_001E274C[];
+
+// External Function Prototypes (from assembly calls)
+void _func_0014731A_12(void);
+void _func_00147577_8(void);
+void _func_0010F188_8(void);
+extern void __imp__RtlNtStatusToDosError(void);
