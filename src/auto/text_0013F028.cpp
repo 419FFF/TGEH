@@ -81,9 +81,9 @@ void func_0013F58E(void)
 void __stdcall func_0013F5A2(void *target,void *frame) { ((void (*)(void))target)(); }
 
 #pragma optimize("y", off)
-extern void helper(void); void __stdcall _func_0013F5CD(int a,int b) { register int x=a; helper(); if(x) return; }
+extern void helper(void); void __stdcall func_0013F5CD(int a,int b) { register int x=a; helper(); if(x) return; }
 #pragma optimize("", on)
-void __stdcall func_0013F5D2(void) {}
+void __stdcall _func_0013F5D2(void) {}
 
 void __stdcall func_0013F5D9(void *a, int *b) { }
 
@@ -132,7 +132,8 @@ int _func_0013F980(void) { return 0; }
 
 void _func_00142C28(...); void _func_0013F9BD(void); void _func_0013F9A0(void) { volatile double v; _func_00142C28(v); _func_0013F9BD(); }
 
-__declspec(noreturn) void __fastcall _func_0013F9B4(void* self, float a0) { extern void __fastcall func_00142BE5(void*, float*); func_00142BE5(self, &a0); }
+extern __declspec(noreturn) void __fastcall func_00142BE5(void*, float*);
+__declspec(noreturn) void __fastcall _func_0013F9B4(void* self, float a0) { func_00142BE5(self, &a0); }
 
 void _func_0013F9BD(void) { }
 
