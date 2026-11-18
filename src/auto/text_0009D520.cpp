@@ -26,7 +26,7 @@ void _func_0009D520(int p)
             if (_func_0011B530(*(char **)(q + 0xc), buf, n) == 0 &&
                 _func_0013E600(*(char **)(q + 0xc) + n, ".") == 0) {
                 _func_0009D520(_D_0030C630[i]);
-                *(unsigned int *)(_D_0030C630[i] + 0x10) &= ~0x40;
+                *(unsigned short *)(_D_0030C630[i] + 0x10) &= ~0x40;
             } else if (_func_0011B530(*(char **)(_D_0030C630[i] + 0xc), buf, strlen(buf)) != 0) {
                 return;
             }
