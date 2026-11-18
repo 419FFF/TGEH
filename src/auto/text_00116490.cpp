@@ -166,3 +166,17 @@ void _func_00117130(void) { _func_0013AF50(_D_00326814); int p=_func_0013B1E0();
 
 void func_00117340(int p){extern int D_00326880; extern int D_00326790[]; void func_00116FB0(int); void func_00136B20(void); D_00326790[*(int*)(p+0xe8)]=0; if(p!=D_00326880){func_00116FB0(p);return;} func_00136B20();}
 
+void _func_00117370(int p)
+{
+  extern int D_00326790[32]; extern int D_00326810, D_00326814, D_00326880; extern unsigned char D_00326818[100]; extern char D_0032687C, D_00326884;
+  int _func_00117160(...); int _func_0013AF00(...);
+  int i;
+  for (i = 0; i < 32; i++) D_00326790[i] = 0;
+  D_00326880 = _func_00117160(*(int*)(p + 0x1c), *(int*)(p + 0x24), *(int*)(p + 0x20));
+  for (i = 0; i < 100; i++) D_00326818[i] = 0;
+  D_00326810 = 0;
+  D_0032687C = 0;
+  D_00326814 = _func_0013AF00();
+  D_00326884 = 1;
+}
+
