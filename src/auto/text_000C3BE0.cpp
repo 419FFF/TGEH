@@ -28,13 +28,13 @@ void func_000C40A0(void) {
 
 void func_000C48B0(void)
 {
-  extern P_000C48B0 D_00315CF0[32];
+  extern P_000C48B0 D_00315CE8[34];
   extern char *D_002FBA90;
   extern float D_001D27B0, D_001D5050, D_00315C80, D_001D2A1C, D_00315C84, D_001D9CD8, D_00315C88, D_001D341C, D_001D27F8, D_001D2C00;
   float func_00131760(void);
   int i;
   for (i = 0; i < 32; i++) {
-    P_000C48B0 *p = &D_00315CF0[i];
+    P_000C48B0 *p = &D_00315CE8[i + 1];
     char *q;
     p->x = (func_00131760() * 2 - D_001D27B0) * D_001D5050 + D_00315C80;
     p->y = (func_00131760() * 2 - D_001D27B0) * D_001D2A1C + D_00315C84;
@@ -42,8 +42,8 @@ void func_000C48B0(void)
     *(float *)(D_002FBA90 + i * 0x30) = p->x;
     *(float *)(D_002FBA90 + i * 0x30 + 8) = p->z;
     *(float *)(D_002FBA90 + i * 0x30 + 4) = p->y;
-    p->on = 1;
-    p->w = func_00131760() * D_001D341C + D_001D2A1C;
+    p[1].on = 1;
+    p[1].w = func_00131760() * D_001D341C + D_001D2A1C;
     *(float *)(D_002FBA90 + i * 0x30 + 0x20) = (func_00131760() + D_001D27B0) * D_001D27F8;
     q = D_002FBA90 + i * 0x30;
     *(float *)(q + 0x24) = *(float *)(q + 0x20) * ((func_00131760() + D_001D27B0) * D_001D2C00);
