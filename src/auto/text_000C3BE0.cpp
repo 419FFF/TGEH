@@ -1,6 +1,6 @@
 /* 13 functions from 0x000C3BE0 to 0x000C4AB2, found by Ghidra. */
 #include "common.h"
-struct P_000C48B0 { float a0, a1, x, y, z, w; char on; char pad[3]; };
+struct P_000C48B0 { float x, y, z, w; char on; char pad[3]; };
 
 void func_000C3E40(void) {
  extern unsigned char D_00315718;extern float D_00314F60,D_001D2B98,D_00314F64,D_00314F68,D_001D4EB0,D_0031601C;extern int D_00315CC8,D_00315998,D_00315F88;float fabsf(float);int func_00103990(...),func_00110330(...);float *p=(float *)&D_00315718;
