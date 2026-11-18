@@ -25,6 +25,15 @@ void func_000DD050(void) { extern char D_0031FC1C,D_0031F850,D_0031E6C0; extern 
 #pragma optimize("", on)
 int func_000DD0D0(void) { extern float D_00307DB4,D_0031E6CC,D_0031E6C8,D_001D27FC; int func_000A27E0(...); long double v=((long double)D_00307DB4-D_0031E6CC)/D_0031E6C8*D_001D27FC; int r=v>D_001D27FC; if(r)v=100.0; func_000A27E0((float)v); return r; }
 
+void func_000DD120(char *p)
+{
+  if (p != 0) {
+    int *a = (int*)(p + 0x27c);
+    for (int i = 0; i < 30; i++) a[i] = 0;
+    p[0x278] = 0;
+  }
+}
+
 void func_000DD1F0(void)
 {
   int func_000D5290(...);
