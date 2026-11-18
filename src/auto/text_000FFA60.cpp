@@ -113,7 +113,7 @@ void func_000FFAE0(void)
 
 int func_00100230(int key){extern int* D_00324BA4;extern int* D_00324BB0;int *p=D_00324BA4;while(p){int *v=(int*)p[2];if(v[3]==key)return (int)v;p=(int*)p[0];}p=D_00324BB0;while(p){int *v=(int*)p[2];if(v[3]==key)return (int)v;p=(int*)p[0];}return 0;}
 
-int func_00100340(int key,int a,unsigned int* xyz,int d,unsigned char flag){extern int* D_00324BA4;extern int* D_00324BB0;extern int D_00307D04;int func_00116800(...),func_00116A90(...),func_001100D0(...),func_00116820(...),func_0011C3E0(...),func_0011C3B0(...);int *p;int obj=0;for(p=D_00324BA4;p;p=(int*)p[0]){obj=p[2];if(*(int*)(obj+0xc)==key)goto found;}for(p=D_00324BB0;p;p=(int*)p[0]){obj=p[2];if(*(int*)(obj+0xc)==key)goto found;}func_00116800(D_00307D04);obj=func_00116A90(0xa0,1,1);*(int*)(obj+0xc)=key;func_001100D0(key,obj+0x10);func_00116820();goto setfields;found:func_0011C3E0(obj);setfields:func_0011C3B0(&D_00324BA4,obj,obj);*(unsigned int*)(obj+0x80)=xyz[0];*(unsigned int*)(obj+0x84)=xyz[1];*(unsigned int*)(obj+0x88)=xyz[2];*(unsigned int*)(obj+0x8c)=d;*(unsigned char*)(obj+0x90)=flag;*(unsigned int*)(obj+0x94)=a;return obj;}
+int func_00100340(int key,int a,int *xyz,int d,unsigned char flag){extern int* D_00324BA4;extern int* D_00324BB0;extern int D_00307D04;int func_00116800(...),func_00116A90(...),func_001100D0(...),func_00116820(...),func_0011C3E0(...),func_0011C3B0(...);int *p;int obj=0;for(p=D_00324BA4;p;p=(int*)p[0]){obj=p[2];if(*(int*)(obj+0xc)==key)goto found;}for(p=D_00324BB0;p;p=(int*)p[0]){obj=p[2];if(*(int*)(obj+0xc)==key)goto found;}func_00116800(D_00307D04);obj=func_00116A90(0xa0,1,1);*(int*)(obj+0xc)=key;func_001100D0(key,obj+0x10);func_00116820();goto setfields;found:func_0011C3E0(obj);setfields:func_0011C3B0(&D_00324BA4,obj,obj);*(unsigned int*)(obj+0x80)=xyz[0];*(unsigned int*)(obj+0x84)=xyz[1];*(unsigned int*)(obj+0x88)=xyz[2];*(unsigned int*)(obj+0x8c)=d;*(unsigned char*)(obj+0x90)=flag;*(unsigned int*)(obj+0x94)=a;return obj;}
 
 void func_00100400(undefined4 param_1, undefined2 param_2, undefined2 param_3)
 {
@@ -128,12 +128,14 @@ void func_00100400(undefined4 param_1, undefined2 param_2, undefined2 param_3)
   return;
 }
 
-unsigned int func_00100430(int a,int b){int func_0011BDD0(...);int func_001165C0(...);extern float D_001D314C;int func_00129C70(...);extern int D_00326898;int func_0012F120(...);int func_001313C0(...);int func_0013BB50(...);int manager=func_0011BDD0(*(int*)(b+0xe0),0);int entry=*(int*)(manager+8)+*(int*)(a+0x4c)*0x30;float value=func_001165C0(a)*D_001D314C;unsigned int index=*(unsigned short*)(a+0x52);func_00129C70(*(int*)(entry+4),index,((int*)&D_00326898)[index]);char temp[32];func_0012F120(temp);unsigned int slot=*(unsigned short*)(a+0x50);float* arr=(float*)(temp+32);arr[slot]=value;int converted=func_001313C0(value);arr[slot]=arr[slot]-converted;func_0013BB50(*(int*)(*(int*)(entry+4)+8+index*4),temp);short* count=(short*)(*(int*)(b+0xe0)+0x2a);--*count;return 1;}
-
+#pragma optimize("y", off)
+unsigned char func_00100430(int a,int b){int func_0011BDD0(...);float func_001165C0(...);extern float D_001D314C;int func_00129C70(...);extern int D_00326898;int func_0012F120(...);int func_001313C0(...);int func_0013BB50(...);int manager=func_0011BDD0(*(int*)(b+0xe0),0);int item=*(int*)(manager+8)+*(int*)(a+0x4c)*0x30;double value=(double)func_001165C0(a)*(double)D_001D314C;unsigned int id=*(unsigned short*)(a+0x52);func_00129C70(*(int*)(item+4),id,((int*)&D_00326898)[id]);char temp[32];func_0012F120(temp);unsigned int slot=*(unsigned short*)(a+0x50);float vals[11];vals[slot]=(float)value;int n=func_001313C0((float)value);vals[slot]=vals[slot]-(float)n;func_0013BB50(*(int*)(*(int*)(item+4)+8+id*4),temp);short* count=(short*)(*(int*)(b+0xe0)+0x2a);--*count;return 1;}
+#pragma optimize("", on)
 void func_001004F0(void){extern int D_00324BC0;extern int D_00324BBC;int func_00115D60(...);int local[6];if(D_00324BC0==0){local[1]=0;local[2]=(int)func_00100430;local[3]=0;local[4]=0;local[5]=0;D_00324BBC=func_00115D60(local);}++D_00324BC0;}
 
-void func_001006C0(int param_1){int func_00110060(...);int func_001100A0(...);extern int D_00313B60;int func_0012E650(...);int func_001105E0(...);char local_50[48];int local_54;int local_20,local_1c,local_18;func_00110060(param_1,local_50);func_001100A0(D_00313B60,&local_54);local_20=*(int*)(local_54+0x30);local_1c=*(int*)(local_54+0x34);local_18=*(int*)(local_54+0x38);func_0012E650(&local_20,param_1+0xc0);func_001105E0(param_1,local_50,0);}
-
+#pragma optimize("y", off)
+void func_001006C0(int p){int func_00110060(...);int func_001100A0(...);extern int D_00313B60;int func_0012E650(...);int func_001105E0(...);char buffer[48];int* out;int v[3];func_00110060(p,buffer);func_001100A0(D_00313B60,&out);v[0]=out[12];v[1]=out[13];v[2]=out[14];func_0012E650(v,p+0xc0);func_001105E0(p,buffer,0);}
+#pragma optimize("", on)
 void func_00100730(undefined4 param_1)
 {
   int func_00110480(...);
@@ -194,6 +196,40 @@ void func_001007F0(void){extern unsigned char D_001E5EC8;extern int D_00324D2C;e
 
 void func_00100880(void){extern unsigned char D_001E5EC8,D_00324D46;extern unsigned int D_00324D00,D_00324BD4;void func_001032D0(void),func_00110760(unsigned int),func_00105270(void);if(D_001E5EC8){func_001032D0();func_00110760(D_00324D00);func_00110760(D_00324BD4);D_00324D46=0;func_00105270();}}
 
+extern int _D_00324D2C;
+extern char _D_001E5EC8;
+extern int _D_00324BD4;
+extern char _D_00324D46;
+extern int _D_00324D3C;
+extern int _D_00324D40;
+extern char _D_001E5ECB;
+extern int _D_00324BE8;
+int _func_00110060(...);
+int _func_001105E0(...);
+int _func_001039C0(...);
+int _func_00104D10(...);
+int _func_001275D0(...);
+void _func_001008C0(void)
+{
+    __declspec(align(16)) int a[16];
+    __declspec(align(16)) int b[16];
+    _D_00324D2C++;
+    if (_D_001E5EC8 && _D_00324BD4) {
+        if (!_D_00324D46) {
+            _func_00110060(_D_00324D3C, a);
+            if (_D_00324D40) {
+                _func_00110060(_D_00324D40, b);
+                a[12] = b[12]; a[13] = b[13]; a[14] = b[14]; a[15] = b[15];
+            }
+            _func_001105E0(_D_00324BD4, a, 0);
+        }
+        _func_001039C0();
+        _func_00104D10();
+        if (_D_001E5ECB && _D_00324BE8)
+            _func_001275D0(_D_00324BE8);
+    }
+}
+
 void func_00100990(unsigned char param_1) {
     extern unsigned char D_001E5EC8;
     extern unsigned char D_00324D46;
@@ -206,6 +242,8 @@ void func_001009B0(int a0) {
     extern int D_00324D28;
     D_00324D28 = a0;
 }
+
+void func_001009C0(char p) { extern char D_001E5EC8; extern float D_00324D30,D_001D4F8C,D_001D27B8,D_001D27B0; if(D_001E5EC8){ if(p){D_00324D30-=D_001D4F8C;if(D_00324D30<D_001D27B8)D_00324D30=0.0f;}else{D_00324D30+=D_001D4F8C;if(D_00324D30>D_001D27B0)D_00324D30=1.0f;}}}
 
 void func_00100A20(undefined4 param_1)
 {
