@@ -147,4 +147,3 @@ void func_0013ACF0(undefined4 param_1)
 }
 
 void _func_0013AD10(unsigned int *p){extern unsigned int D_00332B70,D_00332B74,D_00332B78,D_00332B10;D_00332B70=p[0];D_00332B74=p[1];D_00332B78=p[2];D_00332B10|=4;}
-struct S960 { char pad0[0x10]; unsigned int flags; char pad14[8]; char a; char b; char pad1e[6]; int c; char pad28[0x40]; unsigned int d; float e; char pad70[8]; char *f; char pad7c[0xc]; int g; };
