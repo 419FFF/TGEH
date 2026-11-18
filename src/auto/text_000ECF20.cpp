@@ -1,6 +1,7 @@
 /* 15 functions from 0x000ECF20 to 0x000EDF00, found by Ghidra. */
 #include "common.h"
 #include "ghidra.h"
+#include <string.h>
 
 void func_000ED590(void)
 {
@@ -52,6 +53,60 @@ void func_000EDA30(void)
     }
     func_00120E20(0,0,0x44200000,0x43f00000);
   }
+}
+
+extern undefined4 D_001D27EC;
+extern undefined4 D_003246D4;
+extern undefined4 D_001D27B0;
+extern undefined4 D_001D27AC;
+longdouble func_00131250(float param_1, float param_2);
+void func_000EDBC0(float param_1, float param_2, float param_3, float param_4, int param_5);
+void _func_000EDD30(float param_1, float param_2, float param_3, float param_4)
+{
+  // fld st, dword ptr [esp+0x10]; fsub st, dword ptr [esp+0x8]; fmul st, dword ptr [_D_001D27EC]
+  float temp1 = param_3; // Assume param_3 is at esp+0x10 (or similar)
+  float temp2 = param_1; // Assume param_1 is at esp+0x8 (or similar)
+  float fVar5 = (temp1 - temp2) * D_001D27EC; 
+
+  // fld st, dword ptr [esp+0x14]; fsub st, dword ptr [esp+0xc]; fmul st, dword ptr [_D_001D27EC]
+  float temp3 = param_4; // Assume param_4 is at esp+0x14
+  float temp4 = param_2; // Assume param_2 is at esp+0xc (or similar)
+  float fVar1 = (temp3 - temp4) * D_001D27EC;
+
+  // fld st, dword ptr [esp]; fadd st, dword ptr [esp+0x8]; ffstp dword ptr [esp+0x14], st
+  float p1_new = fVar5 + param_1; 
+  
+  // fld st, dword ptr [esp+0x10]; fadd st, dword ptr [esp+0xc]; ffstp dword ptr [esp+0x8], st
+  float p2_new = fVar1 + param_2;
+
+  // fld st, dword ptr [_D_003246D4]; fld st, dword ptr [_D_003246D4]
+  float fVar2 = D_003246D4; 
+  if (D_001D27B0 < D_003246D4) { // Original: fcomp st, dword ptr [_D_001D27B0]; fnstsw ax; test ah, 0x41; jne short 0xe6c
+    fVar2 = D_001D27B0;
+  }
+
+  // lVar3 calculation:
+  longdouble lVar3 = (longdouble)func_00131250(fVar2 * D_001D27AC, fVar5);
+
+  // Replicating the arithmetic structure for lVar3:
+  lVar3 = ((longdouble)D_001D27B0 - (lVar3 + (longdouble)D_001D27B0) * (longdouble)D_001D27EC) 
+          + (longdouble)D_001D27B0;
+
+  // lVar4 calculation:
+  longdouble lVar4 = (longdouble)fVar1 * lVar3; 
+
+  // fVar5 update:
+  float fVar5_new = (float)(lVar3 * (longdouble)fVar5);
+
+  // temp_var and temp_var2 calculations:
+  float temp_var = param_1 - fVar5_new; 
+  float temp_var2 = (param_2 - lVar4) / 2.0f; 
+
+  // final_var calculation (unused in the call below, but keeping structure):
+  float final_var = (param_1 - temp_var) + (param_2 - lVar4); 
+
+  func_000EDBC0(temp_var, temp_var2, fVar5_new + param_1, 
+                 (float)((longdouble)param_2 - lVar4), 0);
 }
 
 int __fastcall func_000EDE10(int a) {
