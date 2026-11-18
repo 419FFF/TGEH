@@ -30,17 +30,13 @@ void _func_000A65B0(void)
     _D_00312AF0 = 0;
     _func_0012F120(_D_00312AB0);
     _func_0012FCF0(_D_00312AB0, 0x3fc90fdb);
-    *(int *)&_D_00312A90 = 0x42c80000;
-    *(int *)&_D_00312A94 = 0x43160000;
-    *(int *)&_D_00312A98 = 0x44700000;
-    *(int *)&_D_00312A9C = 0x44700000;
+    *(__int64 *)&_D_00312A90 = 0x43160000LL << 32 | 0x42c80000;
+    *(__int64 *)&_D_00312A98 = 0x4470000044700000LL;
     _D_00312A70 = 0;
     _func_0012F120(_D_00312A30);
     _func_0012FCF0(_D_00312A30, 0xbfc90fdb);
-    *(int *)&_D_00312A10 = 0x44070000;
-    *(int *)&_D_00312A14 = 0x43160000;
-    *(int *)&_D_00312A18 = 0x44700000;
-    *(int *)&_D_00312A1C = 0x44700000;
+    *(__int64 *)&_D_00312A10 = 0x43160000LL << 32 | 0x44070000;
+    *(__int64 *)&_D_00312A18 = 0x4470000044700000LL;
     _D_00312B00 = 0;
 }
 
@@ -186,4 +182,14 @@ void func_000A6F80(void)
   default: func_0006E860(); return;
   }
 }
-
+int func_0006F4D0(int a, undefined4 b);
+void func_00120E00(undefined4 arg);
+int func_00120EA0(int a, int b, int c, int d);
+int func_00120ED0(int a, int b);
+int func_00120F60(float a);
+int func_00120F70(float a);
+int func_00120F80(float a, float b);
+void func_00120E50(undefined4 a, undefined4 b);
+int func_00120E70(int a, int b, int c, int d);
+void func_00121990(undefined4 arg);
+void func_000688D0();
