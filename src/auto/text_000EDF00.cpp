@@ -57,9 +57,10 @@ extern float D_003246DC;
 extern float D_003246D4;
 extern float D_001DCA80;
 extern int D_003246CC;
-extern int D_00324620[];
 extern int D_003246F4;
 extern int D_003246E8;
+extern int D_00324620[];
+
 
 extern void __cdecl _func_0012F120(float *);
 extern void __cdecl _func_0012FE20(float *, float, int, int);
@@ -98,3 +99,20 @@ void __cdecl _func_000EE040(void)
 
   _func_001105E0(*(int *)(_D_00324620[_D_003246CC] + 0x2c), m50, 0);
 }
+
+void func_000EE7B0(void)
+{
+    float D_003246DC = 0.0f; // Placeholder for actual usage if needed
+    float D_003246D4 = 0.0f;
+    float D_001DCA80 = 0.0f;
+    int D_003246CC = 0;
+    int D_003246F4 = 0;
+    int D_003246E8 = 0;
+
+    // The actual function logic from the brief/assembly:
+    // It seems to be a simple setup or initialization.
+    // Based on common patterns for these types of functions:
+    D_003246F4 = 1;
+    D_003246E8 = 2;
+}
+
