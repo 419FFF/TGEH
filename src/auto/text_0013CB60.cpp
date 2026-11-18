@@ -2,6 +2,12 @@
 #include "common.h"
 #include "ghidra.h"
 
+extern float D_001D27B8; extern float D_001D27B0; extern float D_001DF0D4;
+int __stdcall func_00109BBE(int,int,int,int);
+short func_0013E3F4(...);
+int __stdcall func_001CD3AF(int,void*);
+int __stdcall func_00109CF3(int,int);
+
 void func_0013CC50(void) { extern unsigned char D_003351D0; int __stdcall func_001CD404(int,int); int func_0013C9A0(...); int func_0013CA40(...); func_001CD404(0,0); func_0013C9A0(); func_0013CA40(); D_003351D0=1; }
 
 void func_0013CDD0(void) {
@@ -9,7 +15,7 @@ void func_0013CDD0(void) {
     func_0013CA40();
 }
 
-void func_0013D030(int p,int mode,float value) { extern float D_001D6138; int func_0013CB60(...); float v=value*D_001D6138; if(mode==1) func_0013CB60(0,v); else func_0013CB60(v,v); }
+void func_0013D030(int p,int mode,float value) { extern float D_001D6138; int func_0013CB60(...); float f=value; f*=D_001D6138; if(mode==1){func_0013CB60(0,(float)f);return;} func_0013CB60((float)f,(float)f); }
 
 void func_0013D070(int p) { int func_0013CB60(...); volatile int *q=(int*)((char*)p+0x28); int keep=*q; func_0013CB60(0,0); if(keep==-1) return; }
 
@@ -87,4 +93,8 @@ void func_0013D0F0(int param_1, uint param_2)
   }
   return;
 }
+
+void func_0013D500(short *p,unsigned int n) { int func_00116A90(...); int func_00116FB0(...); unsigned int bytes=n*6,i; short *tmp=(short*)func_00116A90(bytes,1,0); extern int D_0032519C[]; for(i=0;i<n;i++){unsigned int k=D_0032519C[i]*3; tmp[i*3]=p[k];tmp[i*3+1]=p[k+1];tmp[i*3+2]=p[k+2];} for(i=0;i<bytes;i++) ((unsigned char*)p)[i]=((unsigned char*)tmp)[i]; func_00116FB0(); }
+
+void func_0013D750(int p,int *buf){unsigned short n=*(unsigned short*)(p+0x48);int *obj=*(int**)(p+0x24);unsigned char table[0x44];int i;for(i=0;i<0x40;i++)((int*)table)[i]=-1;*(unsigned short*)(table+0x40)=0xffff;unsigned int count=*(unsigned int*)((char*)obj+4);for(i=0;i<(int)count;i++)table[*((unsigned char*)obj+8+i)]=(unsigned char)i;for(i=0;i<(n<<2);i++)((unsigned char*)buf)[i]=table[((signed char*)buf)[i]];}
 
