@@ -55,7 +55,7 @@ void func_00110420(int param_1, int param_2)
 
 void *memcpy(void *dst,const void *src,unsigned int n);
 typedef struct { unsigned char pad[0x20]; unsigned char bit0:1; unsigned char bit1:1; } S_00110480_flags;
-void func_00110480(int a,int b,int c){int func_0010FC60(...);int func_0012F4C0(...);extern int D_00329238;int func_0010F970(...);int func_0010F930(...);__declspec(align(16)) unsigned char local[0x40];__declspec(align(16)) unsigned char local2[0x40];unsigned char pad[4];func_0010FC60(b);func_0010FC60(a);unsigned x=*(unsigned char *)(a+0x23),y=*(unsigned char *)(b+0x23);func_0012F4C0(local2,(y+1)*64+b,(x+1)*64+a);if(*(int *)(b+0xd4)==D_00329238)y=1-y;if(*(int *)(a+0xd4)==D_00329238)x=1-x;func_0012F4C0(local,(y+1)*64+b,(x+1)*64+a);func_0010F970(a,b,0,c,1,c,local2,local);*(volatile unsigned char *)(b+0x20)|=2;func_0010F930(b);}
+void func_00110480(int a,int b,int c){int func_0010FC60(...);int func_0012F4C0(...);extern int D_00329238;int func_0010F970(...);int func_0010F930(...);__declspec(align(16)) unsigned char local[0x40];__declspec(align(16)) unsigned char local2[0x40];unsigned char pad[4];func_0010FC60(b);func_0010FC60(a);unsigned x=*(unsigned char *)(a+0x23),y=*(unsigned char *)(b+0x23);func_0012F4C0(local2,(y+1)*64+b,(x+1)*64+a);if(*(int *)(b+0xd4)==D_00329238)y=1-y;if(*(int *)(a+0xd4)==D_00329238)x=1-x;func_0012F4C0(local,(y+1)*64+b,(x+1)*64+a);func_0010F970(a,b,0,c,1,c,local2,local);S_00110480_flags *f=(S_00110480_flags *)(b+0x20);f->bit1=1;func_0010F930(b);}
 #pragma optimize("", on)
 void func_00110760(int param_1)
 {
@@ -100,6 +100,19 @@ void __fastcall func_001107C0(float *min,float *max,int initial,float a,float b,
     if(*min<b)*min=b;
 }
 
+extern float D_001D27B8;
+float func_0012E8C0(float *a, float *b);
+unsigned char __fastcall func_00110820(float *b, int unused, float *a, float r)
+{
+    float lo[3], hi[3];
+    for (int i = 0; i < 3; i++) {
+        if (a[i] > D_001D27B8) { lo[i] = -b[i]; hi[i] = b[i]; }
+        else { lo[i] = b[i]; hi[i] = -b[i]; }
+    }
+    if (func_0012E8C0(a, lo) + r > D_001D27B8 && func_0012E8C0(a, hi) + r >= D_001D27B8) return 1;
+    return 0;
+}
+
 void func_001108F0(int a0, int a1, int a2, int a3, int a4, int a5) {
     extern int D_001E7CE0;
     int func_00121FC0(...);
@@ -127,3 +140,10 @@ unsigned char func_00110A20(float a,float b,float c,float d,float *out)
     return 0;
 }
 typedef struct { unsigned int words[7]; } CopyBlock_00110370;
+extern undefined4 D_00326150;
+extern undefined4 D_00326138;
+extern undefined4 D_0032613C;
+extern undefined4 D_00326140;
+extern undefined4 D_00326144;
+extern undefined4 D_00326148;
+extern undefined4 D_0032614C;
