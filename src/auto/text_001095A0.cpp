@@ -146,3 +146,8 @@ extern undefined4 *__imp__LaunchDataPage;
 extern void* __imp__MmAllocateContiguousMemory();
 extern void __imp__MmPersistContiguousMemory();
 extern undefined4 _D_001DEBC4;
+extern u16 D_003252C0;
+void func_00136510(unsigned int a, unsigned int b, unsigned int c, unsigned int d);
+int func_0011BDD0(u16* p1, int val);
+void func_00133F30(int* p);
+void func_0011E4A0(unsigned int a, unsigned int b, unsigned int c, unsigned int d, void* e, unsigned int f, unsigned int g, unsigned int h);
