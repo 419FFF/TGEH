@@ -73,3 +73,5 @@ void _func_0014731A_12(void);
 void _func_00147577_8(void);
 void _func_0010F188_8(void);
 extern void __imp__RtlNtStatusToDosError(void);
+extern char D_001E2854[];
+extern char D_001E274C[];
