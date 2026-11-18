@@ -75,3 +75,5 @@ void _func_0010F188_8(void);
 extern void __imp__RtlNtStatusToDosError(void);
 extern char D_001E2854[];
 extern char D_001E274C[];
+extern char D_001E2854[];
+extern char D_001E274C[];
