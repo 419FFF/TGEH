@@ -2,6 +2,44 @@
 #include "common.h"
 #include "ghidra.h"
 
+void _func_000B6AF0(void)
+{
+  extern int D_00313ED8, D_00308158, D_00307DF8, D_00313EF4;
+  extern char D_00313F0E, D_001D8EA4, D_001D8E98;
+  int func_000F9C00(...), func_000E7300(...), func_000C1740(...), func_000A1EA0(...);
+  int func_0011A6A0(...), func_001015F0(...), func_000400A0(...), func_000400B0(...), func_000400C0(...);
+  int func_000B58C0(...), func_000A2DB0(...), func_000A0690(...), func_00101610(...);
+  int iVar1;
+  if (D_00313ED8 == 0xc) {
+    func_000F9C00(D_00308158, &D_001D8EA4);
+    func_000E7300();
+  }
+  if (D_00313ED8 == 9) {
+    func_000F9C00(D_00308158, &D_001D8E98);
+    func_000C1740();
+  }
+  D_00313EF4 = 1;
+  D_00313F0E = 0;
+  if (*(int *)(D_00307DF8 + 0x84) != 0) {
+    func_000A1EA0(*(int *)(D_00307DF8 + 0x84), 0);
+  }
+  func_0011A6A0(0);
+  func_001015F0(0);
+  func_000400A0(0);
+  func_000400B0(0);
+  func_000400C0(0);
+  iVar1 = D_00313ED8;
+  func_000B58C0(D_00313ED8, 5);
+  func_000B58C0(iVar1, 7);
+  D_00313EF4 = 1;
+  func_000A2DB0(0);
+  func_000A0690(1);
+  func_00101610();
+  func_000400A0(0);
+  func_000400B0(0);
+  func_000400C0(0);
+}
+
 void func_000B6BE0(void) { extern unsigned int D_00307DF8,D_00313EF8,D_00313EF4,D_00313ED8; extern unsigned char D_00313F0E,D_00313F14; extern char D_001D8D10; int func_000A1EA0(...);int func_0011A6A0(...);int func_001015F0(...);int func_000400A0(...);int func_000400B0(...);int func_000400C0(...);int func_000B58C0(...);int func_00103210(...);int func_00103990(...);int func_000A0690(...);int func_000A05D0(...);D_00313EF8=0;D_00313F0E=1;if(*(int*)(D_00307DF8+0x84))func_000A1EA0(*(int*)(D_00307DF8+0x84),1);func_0011A6A0(1);func_001015F0(1);func_000400A0(1);func_000400B0(1);func_000400C0(1);D_00313EF4=6;func_000B58C0(D_00313ED8,10);func_00103990(func_00103210(&D_001D8D10,0));func_000A0690(0);func_000A05D0(0);D_00313F14=0;}
 
 void func_000B6C80(void) { extern unsigned int D_00307DF8,D_00313EF8,D_00313EF4,D_00313ED8;extern unsigned char D_00313F0E;extern char D_001D8D10;int func_000A1EA0(...);int func_0011A6A0(...);int func_001015F0(...);int func_000400A0(...);int func_000400B0(...);int func_000400C0(...);int func_000B58C0(...);int func_00103210(...);int func_00103990(...);int func_000A0690(...);int func_000A05D0(...);D_00313EF8=0;D_00313F0E=1;if(*(int*)(D_00307DF8+0x84))func_000A1EA0(*(int*)(D_00307DF8+0x84),1);func_0011A6A0(1);func_001015F0(1);func_000400A0(1);func_000400B0(1);func_000400C0(1);D_00313EF4=7;func_000B58C0(D_00313ED8,9);func_00103990(func_00103210(&D_001D8D10,0));func_000A0690(0);func_000A05D0(0);}
