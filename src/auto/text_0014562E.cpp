@@ -1,7 +1,7 @@
 /* 35 functions from 0x0014562E to 0x001464F0, found by Ghidra. */
 #include "common.h"
 #include "ghidra.h"
-struct F92 { char *_ptr; int _cnt; char *_base; int _flag; int _file; };
+struct F92 { char *_ptr; int _cnt; char *_base; int _flag; int _file; int _charbuf; int _bufsiz; };
 struct IO92 { int h; unsigned char osfile; char pad[35]; };
 extern IO92 *D_0037C300[]; extern IO92 D_002E92A0;
 int func_001454D9(...); int func_0014063B(...); int func_00146D23(...); int func_001460D6(void);
@@ -106,6 +106,45 @@ int _func_0014616E(int a,int b) { extern int _D_001E26D0; extern int D_0037BCB4;
 
 int _func_001461CF(int value) { extern int D_0037BCB8; int f=D_0037BCB8; if(f==0)return 0; int result=((int (__cdecl *)(int))f)(value); if(result==0) return 0; return 1; }
 
+int _func_001461EA(F92 *f)
+{
+  int _func_0014546B(...);
+  int _func_00147022(...);
+  int flag = f->_flag;
+  int n;
+  if ((flag & 0x83) == 0 || (flag & 0x40) != 0)
+    goto fail;
+  if ((flag & 2) != 0) {
+    f->_flag = flag | 0x20;
+    goto fail;
+  }
+  flag |= 1;
+  f->_flag = flag;
+  if ((flag & 0x10c) == 0)
+    _func_0014546B(f);
+  else
+    f->_ptr = f->_base;
+  n = _func_00147022(f->_file, f->_base, *(int *)((char *)f + 0x18));
+  f->_cnt = n;
+  if (n == 0 || n == -1) {
+    f->_flag |= ((n != 0) ? 0x10 : 0) + 0x10;
+    f->_cnt = 0;
+    goto fail;
+  }
+  if ((f->_flag & 0x82) == 0) {
+    int fh = f->_file;
+    IO92 *p = (fh == -1) ? &D_002E92A0 : (IO92 *)((char *)D_0037C300[fh >> 5] + (fh & 0x1f) * 0x28);
+    if ((p->osfile & 0x82) == 0x82)
+      f->_flag |= 0x2000;
+  }
+  if (*(int *)((char *)f + 0x18) == 0x200 && (f->_flag & 8) != 0 && (f->_flag & 0x400) == 0)
+    *(int *)((char *)f + 0x18) = 0x1000;
+  f->_cnt = n - 1;
+  return (unsigned char)*f->_ptr++;
+fail:
+  return -1;
+}
+
 int _func_0014546B(...); unsigned int _func_001462CB(unsigned int value,int *p) { int flags; char *q; if(value==0xffffffff)goto fail; flags=p[3]; if((flags&1)||flags>=0||(flags&2))goto fail; if(p[2]==0)_func_0014546B(p); if(p[0]==p[2]){if(p[1]!=0)goto fail;++p[0];} --p[0]; q=(char*)p[0]; if(flags&0x40){if(*q!=(char)value){p[0]=(int)(q+1);goto fail;}}else *q=(char)value; ++p[1]; p[3]=(p[3]&0xffffffef)|1; return value&0xff; fail:return 0xffffffff; }
 
 long double _func_00146337(double value) { return (long double)(int)value; }
@@ -149,4 +188,13 @@ void func_00146369(undefined4 *param_1, undefined4 *param_2)
 void _func_001463C7(unsigned int *p) { unsigned int a=p[0]; unsigned int b=p[1]; unsigned int c=p[2]; unsigned int first=a+a; unsigned int carryA=a>>31; p[0]=first; unsigned int second=b+b|carryA; p[1]=second; unsigned int third=c+c; unsigned int carryB=b>>31; p[2]=third|carryB; }
 
 void _func_001463F5(unsigned int *p) { unsigned int high=p[2]; unsigned int mid=p[1]; unsigned int low=p[0]; unsigned int outMid=(mid>>1)|(high<<31); p[1]=outMid; unsigned int outLow=(low>>1)|(mid<<31); p[0]=outLow; p[2]=high>>1; }
+
+void _func_00146422(char *param_1,int param_2,uint *param_3)
+{
+    if (param_2 != 0) {
+        param_3[0] = 0;
+        param_3[1] = 0;
+        param_3[2] = 0;
+    }
+}
 
