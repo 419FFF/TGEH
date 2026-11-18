@@ -3,6 +3,8 @@
 extern "C" __declspec(dllimport) int __stdcall XeLoadSection(int);
 extern "C" __declspec(dllimport) int __stdcall XeUnloadSection(int);
 
+#include <string.h>
+#pragma intrinsic(memset, memcmp)
 unsigned int __readfsdword(unsigned long);
 #pragma intrinsic(__readfsdword)
 unsigned int func_0010BA93(void) { return *(unsigned int *)(__readfsdword(0x28) + 0x12c); }
@@ -24,9 +26,10 @@ long __stdcall func_0010BEA9(void *h) {
 
 int __stdcall func_0010BED0(void *h, int *out)
 {
-    unsigned int io[2];
     unsigned char info[0x38];
-    long status = __imp__NtQueryInformationFile(h, io, (unsigned long)info, 0x38, 0x22);
+    unsigned int io[2];
+    long status;
+    status = __imp__NtQueryInformationFile(h, io, (unsigned long)info, 0x38, 0x22);
     if (status < 0) {
         _func_0010AAD1(status);
         return 0;
@@ -45,7 +48,7 @@ int func_0010C459(void) {
     return D_0037C074;
 }
 
-int __stdcall func_0010C45F(unsigned int a, unsigned int b) { extern int D_0037C074; int __stdcall func_0010DA9F(int, int, int); return func_0010DA9F(D_0037C074, (a >> 3) & 8, b); }
+int __stdcall func_0010C45F(unsigned int a, unsigned int b) { extern int D_0037C074; int __stdcall func_0010DA9F(int, int, int); unsigned int x = a; return func_0010DA9F(D_0037C074, (x >> 3) & 8, b); }
 
 unsigned int __stdcall func_0010C47C(unsigned int p){extern int __stdcall func_0010E21A(int,int,int);extern int _D_0037C074;return (func_0010E21A(_D_0037C074,0,p)!=0)?0:p;}
 
