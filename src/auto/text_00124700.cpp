@@ -2,6 +2,10 @@
 #include "common.h"
 #include "ghidra.h"
 
+struct S_125350 { short a; short pad; int b; int c; };
+extern unsigned int D_001DF6B8;
+extern unsigned char D_001DF6BC;
+
 #pragma optimize("y", off)
 void func_00124A10(void){extern unsigned int D_00331518,D_00331508,D_00331500,D_00331178,D_00331370[],D_00331520; extern float D_001E7D60,D_001D27FC; int func_0013E3F4(void); void func_001383B0(void); void func_00138440(int); void func_00138490(int); void func_0012F120(void*); void func_001364D0(void*); void func_00136FF0(int); void func_00123F90(int); void func_00137030(void); unsigned char buf[0x48]; if(D_00331518){func_001383B0();func_00138440(0);func_00138490(0);func_0012F120(buf);func_001364D0(buf);} D_00331500=D_00331518;D_00331178=D_00331508;func_00136FF0(func_0013E3F4()); for(unsigned i=0;i<D_00331518;++i){int ptr=D_00331370[i];func_00123F90(ptr);*(int*)(ptr+8)=D_00331520;}func_00137030();D_00331520++;}
 #pragma optimize("", on)
