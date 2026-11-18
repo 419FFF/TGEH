@@ -2,7 +2,7 @@
 #include "common.h"
 #include "ghidra.h"
 struct F92 { char *_ptr; int _cnt; char *_base; int _flag; int _file; };
-struct IO92 { int h; char osfile; char pad[35]; };
+struct IO92 { int h; unsigned char osfile; char pad[35]; };
 extern IO92 *D_0037C300[]; extern IO92 D_002E92A0;
 int func_001454D9(...); int func_0014063B(...); int func_00146D23(...); int func_001460D6(void);
 
@@ -53,6 +53,10 @@ void func_00145812(void) {
     func_0014573D(1);
 }
 
+#pragma optimize("y", off)
+#pragma auto_inline(off)
+unsigned short func_00145C92(unsigned short ch, F92 *f) { int size, i; char mbc[8]; int fh=f->_file; if(!(f->_flag&0x40) && ((fh==-1?&D_002E92A0:&D_0037C300[fh>>5][fh&0x1f])->osfile&0x80)){ size=func_001454D9(mbc,ch); if(size==-1){ *(int*)func_001460D6()=0x2a; return 0xffff; } for(i=0;i<size;i++){ int r; if(--f->_cnt<0) r=func_0014063B((int)mbc[i],f); else { *f->_ptr=mbc[i]; r=(unsigned char)*f->_ptr++; } if(r==-1) return 0xffff; } return ch; } f->_cnt-=2; if(f->_cnt<0) return (unsigned short)func_00146D23(ch,f); *(unsigned short*)f->_ptr=ch; f->_ptr+=2; return ch; }
+#pragma optimize("", on)
 int _func_00145D57(unsigned short *out,unsigned char *s,int flag) { if(!s)return 0; if(flag==0)return 0; unsigned char c=*s; if(c==0){ if(out) *(volatile unsigned short*)out=0; return 0; } if(out) *out=(unsigned short)c; return 1; }
 
 void _func_00145D8E(int value) { extern int _D_002E92C8[40]; extern void _func_00147C02(int); int i=0; do { if(value==_D_002E92C8[i*2]) break; ++i; } while((unsigned)i<19); if(value==_D_002E92C8[i*2]) _func_00147C02(_D_002E92C8[i*2+1]); }
