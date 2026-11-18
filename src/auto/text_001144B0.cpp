@@ -1,7 +1,6 @@
 /* 13 functions from 0x001144B0 to 0x00115495, found by Ghidra. */
 
     #include "common.h"
-typedef struct S_D_001152B0_arg0 { int x; } S_D_001152B0_arg0;
     void func_001144B0(void* self){volatile int x=1;(void)x;}
 
 unsigned int func_00115100(int a,int b){int func_0011BDD0(int,int);int func_0011B4F0(int,int);int r=func_0011BDD0(*(int*)(a+0x1c),1);unsigned int i=0;if(r){for(;i<*(unsigned int*)(r+4);i++)if(!func_0011B4F0(*(int*)(r+8)+i*0xf0,b))break;--*(short*)(*(int*)(a+0x1c)+0x2a);if(i<*(unsigned int*)(r+4))return i;}return 0xffffffff;}
