@@ -191,3 +191,13 @@ extern unsigned int D_00302A14;
 extern unsigned int D_001D27AC;
 extern unsigned int D_001D2B98;
 extern unsigned int D_001D42A0;
+struct S_D_00011D80_arg0 {
+    void* ptr_c; // +0xC pointer (10 functions)
+    char s8_1;   // +0x12 s8 (1)
+    char s8_2;   // +0x13 s8 (1)
+    unsigned char u8_1; // +0x15 u8 (1)
+    void* ptr_c2; // +0x1C pointer (1)
+    void* ptr_c3; // +0x2C pointer (181)
+    float f32_1[3]; // +0x30 f32 (3)
+    float f32_2[9]; // +0x34 f32 (9)
+};
