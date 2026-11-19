@@ -2,7 +2,7 @@
 #include "common.h"
 #include "ghidra.h"
 
-struct Mat16 { int a[16]; };
+struct __declspec(align(16)) Mat16 { int a[16]; };
 
 #pragma optimize("y", on)
 void func_000E8310(char a0) {
@@ -48,6 +48,54 @@ undefined4 func_000E8390(void)
     return 2;
   }
   return 0;
+}
+
+void func_000E8630(void)
+{
+  int func_0005CCC0(...); int func_000E83C0(...); int func_00110330(...);
+  int func_001105E0(...); int func_00086AA0(...); int func_0009C7A0(...); int func_000A22B0(...);
+  extern int D_00323B6C[], D_00323E3C[];
+  extern int D_00323B00, D_00323B04, D_00323504[], D_003234E8, D_00323AA4, D_00323AA8, D_00323AF0, D_00323AF4;
+  extern int D_003234E4, D_003234E0, D_00323E44;
+  extern char D_00323E48, D_001D2C4C;
+  extern struct Mat16 D_00323B10;
+  int *p;
+  int *q;
+  struct Mat16 m;
+
+  func_0005CCC0(0x14);
+  func_000E83C0();
+  p = D_00323B6C;
+  do {
+    p[-1] = 0;
+    func_00110330(*(int *)(*p + 0x2c), 0);
+    p += 6;
+  } while (p != D_00323E3C);
+  D_00323B00 = 0;
+  m = D_00323B10;
+  m.a[14] = m.a[13];
+  func_001105E0(*(int *)(D_00323B04 + 0x2c), &m, 0);
+  func_00086AA0(D_00323B00);
+  p = D_00323504;
+  do {
+    if (*p != 1) {
+      *p = 8;
+      p[1] = 0;
+      func_00110330(*(int *)(p[-1] + 0x2c), 0);
+      D_003234E8 = 0;
+    }
+    p += 0x18;
+  } while ((int)p < (int)&D_00323AA4);
+  D_00323AA4 = 4;
+  D_00323AA8 = 0;
+  D_00323AF0 = 0;
+  D_00323AF4 = 0xc3480000;
+  q = (int *)func_0009C7A0(D_003234E4, &D_001D2C4C, 0);
+  func_000A22B0(D_003234E4 + 100, 2, q[0], q[1], q[2], 0x3e4ccccd);
+  D_00323E48 = 0;
+  D_003234E0 = 1;
+  D_003234E8 = 0;
+  D_00323E44 = 0;
 }
 
 void func_000E8780(void)
