@@ -2,6 +2,56 @@
 #include "common.h"
 #include "ghidra.h"
 
+void func_00028DB0(int param_1, int param_2)
+{
+  extern int D_0032924C;
+  int func_0011BDD0(...); int func_0011F980(...); int func_0011FCC0(...);
+  int func_00136F80(...); int func_00133F30(...); int func_00133860(...);
+  int iVar3, iVar6, uVar4;
+  int *piVar8;
+  unsigned int local_30, uVar7;
+  int off;
+  char local_24[36];
+
+  iVar3 = func_0011BDD0(*(int *)(param_1 + 0xe0), 0);
+  if (iVar3 != 0) {
+    D_0032924C = D_0032924C + 1;
+    uVar4 = func_0011F980(param_1, param_2, *(int *)(param_1 + 0x124), local_24);
+    func_0011FCC0(local_24, uVar4);
+    uVar4 = func_00136F80(param_1, *(int *)(param_1 + 0xd8), param_2);
+    local_30 = 0;
+    if (local_30 < *(unsigned short *)(iVar3 + 4)) {
+      off = 0;
+      do {
+        iVar6 = *(int *)(iVar3 + 8) + off;
+        if (*(int *)(param_1 + 0x128) != 0) {
+          piVar8 = *(int **)(param_1 + 300);
+        } else {
+          piVar8 = *(int **)(iVar6 + 0x28);
+        }
+        uVar7 = 0;
+        do {
+          if (piVar8[uVar7] != 0) {
+            piVar8[uVar7 + 6] = func_0011BDD0(piVar8[uVar7], 1);
+          }
+          uVar7 = uVar7 + 1;
+        } while (uVar7 < 2);
+        func_00133F30(piVar8 + 4);
+        if (*piVar8 != 0) {
+          *(short *)(*piVar8 + 0x2a) -= 1;
+        }
+        if (piVar8[1] != 0) {
+          *(short *)(piVar8[1] + 0x2a) -= 1;
+        }
+        func_00133860(*(int *)(iVar6 + 0x2c), uVar4);
+        local_30 = local_30 + 1;
+        off = off + 0x30;
+      } while (local_30 < *(unsigned short *)(iVar3 + 4));
+    }
+    *(short *)(*(int *)(param_1 + 0xe0) + 0x2a) -= 1;
+  }
+}
+
 void func_00028EF0(int param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
 {
   extern undefined4 D_003268B0;
@@ -27,6 +77,37 @@ void func_00028EF0(int param_1, undefined4 param_2, undefined4 param_3, undefine
 undefined4 func_000291F0(int param_1)
 {
   return *(undefined4 *)(param_1 + 0x110);
+}
+
+float __cdecl _func_000293B0(int p, int q)
+{
+  float func_0004EF90(int); float func_00012070(float, float);
+  int func_0012F120(...); int func_00115170(...); int func_0012F2E0(...);
+  int func_00068DA0(...); int func_001105E0(...);
+  extern float D_001D27B8, D_001D386C;
+  float f = func_0004EF90(p);
+  float d = func_00012070(f, *(float*)(q + 0x7c));
+  float r;
+  __declspec(align(16)) int w[16]; int b[3]; int t[19];
+  int *m = &w[1];
+  if (d > D_001D27B8) {
+    d = d - D_001D386C;
+    if (d > D_001D27B8) { *(float*)(q + 0x7c) = *(float*)(q + 0x7c) - D_001D386C; r = d; }
+    else { *(float*)(q + 0x7c) = f; r = 0.0f; }
+  } else {
+    d = d + D_001D386C;
+    if (d < D_001D27B8) { *(float*)(q + 0x7c) = *(float*)(q + 0x7c) + D_001D386C; r = d; }
+    else { *(float*)(q + 0x7c) = f; r = 0.0f; }
+  }
+  func_0012F120(m);
+  w[13] = *(int*)(q + 0x50); w[14] = *(int*)(q + 0x54); w[15] = *(int*)(q + 0x58);
+  w[0] = *(int*)(q + 0x7c);
+  b[0] = 0; b[1] = 0x3f800000; b[2] = 0;
+  func_00115170(*(int*)(p + 0x98), *(int*)(q + 0x80), t);
+  func_0012F2E0(t, m);
+  func_00068DA0(m, b, 0);
+  func_001105E0(*(int*)(p + 0x2c), m, 0);
+  return r;
 }
 
 void func_000294F0(int param_1) {
@@ -55,8 +136,9 @@ void __cdecl _func_00029B60(int *object)
   if (*(unsigned char *)(state + 0x13) == 5) {
     int *data = *(int **)(state + 0x110);
     if (*(unsigned char *)((char *)data + 0x84) != 0 &&
-        (float)data[2] == *(float *)((char *)object + 0x20))
+        *(float *)((char *)object + 0x20) == (float)data[2]) {
       _func_00107BF0((int)object, 0);
+    }
   }
 }
 
@@ -110,6 +192,36 @@ void __cdecl _func_00029BF0(int *object)
       *(int *)((char *)object + 0x110) = 3;
     }
     break;
+  }
+}
+
+void __cdecl _func_00029CB0(int *object)
+{
+  extern void __cdecl _func_00110420(int, int);
+  extern void __cdecl _func_00110330(int, int);
+  extern void __cdecl _func_00088A50(int, unsigned int, int);
+  int *state = *(int **)((char *)object + 0x110);
+  int index = *(int *)((char *)state + 0xd0);
+  if (index != 0xff) {
+    int *base = (int *)((char *)state + 0xc8);
+    char *entry = (char *)base + (index << 6);
+    int *target = *(int **)(entry + 0x30);
+    int *ref = *(int **)((char *)target + 0x2c);
+    if (ref) _func_00110420((int)target, *ref);
+    target = *(int **)(entry + 0x30);
+    _func_00110330((int)target, 0);
+    target = *(int **)(entry + 0x30);
+    _func_00088A50((int)target, 0x3f800000, 1);
+    *(int *)(entry + 0x6c) = 0;
+    int next = *(int *)((char *)state + 0xd4);
+    *(int *)((char *)state + 0xd0) = 0xff;
+    if (next) {
+      *(int *)((char *)object + 0x2c) = next;
+      *(int *)((char *)state + 0xd4) = 0;
+    }
+    *(int *)((char *)state + 0x14) = 3;
+    int *other = *(int **)((char *)object + 0x60);
+    if (other) *((unsigned char *)other + 0x38) &= 0xfe;
   }
 }
 
