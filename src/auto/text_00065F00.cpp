@@ -1,5 +1,6 @@
 /* 11 functions from 0x00065F00 to 0x00066C11, found by Ghidra. */
 #include "common.h"
+struct E660C0 { int w[16]; };
 
 void func_00065F00(void)
 {
@@ -31,6 +32,36 @@ void func_00066200(void)
   D_002F7760 = func_00110300(*(int *)(D_00308158 + 0x2c), &D_001D55C4, 0);
   int p = (int)&D_002F7744;
   do { *(int *)(p - 4) = 0x3f800000; *(char *)p = 0; p += 12; } while (p < (int)&D_002F7774);
+}
+
+float _func_00066480(unsigned int *tbl, int ctx, int scale)
+{
+    extern float _func_0012E870(int, int);
+    extern void _func_0011F270(unsigned int*, float, float*, int);
+    unsigned int i;
+    int lo, hi;
+    float bestIdx = -1.0f, bestDist = 1e8f;
+    float tmp[4];
+    for (i = 0; i < *tbl; i++) {
+        float d = _func_0012E870(ctx, tbl[1] + i * 16);
+        if (d < bestDist) {
+            bestDist = d;
+            bestIdx = (float)i;
+        }
+    }
+    hi = ((int)bestIdx + 2) * scale;
+    lo = ((int)bestIdx - 2) * scale;
+    for (; lo < hi; lo++) {
+        float t = (float)lo / (float)scale;
+        float d;
+        _func_0011F270(tbl, t, tmp, 0);
+        d = _func_0012E870((int)tmp, ctx);
+        if (d < bestDist) {
+            bestDist = d;
+            bestIdx = t;
+        }
+    }
+    return bestIdx;
 }
 
 void func_000667A0(int a0, int a1, int a2, int a3, int a4) {
