@@ -2,7 +2,7 @@
 #include "common.h"
 
 void *memcpy(void *, const void *, unsigned int);
-struct S7300 { int h; int one; int z; float m[16]; int z2; int z3; float r; int pad; };
+struct S7300 { int h; int one; int z; float m[16]; int pad0; int z2; int z3; float r; int pad; };
 void func_000E72A0(void)
 {
  extern float D_00323B00; extern u32 D_00323B10; extern int D_00323B04;
