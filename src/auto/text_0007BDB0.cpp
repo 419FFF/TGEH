@@ -2,7 +2,7 @@
 #include "common.h"
 #include "ghidra.h"
 
-struct S_0007C760 { int *f0; float *f4; int *f8; float *fc; int *f10; float *f14; int *f18; float *f1c; int *f20; float *f24; };
+struct S_0007C760 { int *f0; char *f4; int *f8; float *fc; int *f10; float *f14; int *f18; float *f1c; int *f20; float *f24; };
 extern struct S_0007C760 *__cdecl _func_0011CD40(int, int, int, int, int);
 extern float __cdecl _func_00131760(void);
 extern float __cdecl _func_0012EA60(void *);
@@ -90,7 +90,7 @@ void __cdecl _func_0007C760(struct S_0007C760 **param_1, int param_2)
     *(int *)((char *)(*param_1)->f4 + i + 4) = 0;
     *(float *)((char *)(*param_1)->f4 + i + 8) = (float)(_func_00131760() * 2 - D_001D27B0);
     _func_0012EA60((char *)(*param_1)->f4 + i);
-    p = (float *)((char *)(*param_1)->f4 + i);
+    p = (float *)(i + (int)(*param_1)->f4);
     *p = _func_00131760() * *p * D_001D2B64;
     p = (float *)((char *)(*param_1)->f4 + i + 8);
     *p = _func_00131760() * *p * D_001D2B64;
