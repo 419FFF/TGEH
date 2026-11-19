@@ -2,6 +2,7 @@
 #include "common.h"
 struct Blob108 { int d[0x42]; };
 #include "ghidra.h"
+struct V4u { unsigned int a, b, c, d; };
 
 void func_0011CF80(int param_1, float param_2)
 {
@@ -109,6 +110,45 @@ void func_0011D2D0(void *a,int b) { int func_0011D1E0(...); int p=func_0011D1E0(
 
 void func_0011D2F0(void *a,int b) { int func_0011D1E0(...); int p=func_0011D1E0(a); *(int*)(p+0x148)=b; }
 
+void func_0011D310(unsigned int *o, unsigned int *e, int p)
+{
+  unsigned int func_00131310(...);
+  float func_00131760(...);
+  unsigned int idx;
+  float s;
+  float *f = (float *)o;
+  idx = func_00131310() % e[0];
+  o[0] = ((unsigned int *)e[1])[idx * 3];
+  o[1] = ((unsigned int *)e[1])[idx * 3 + 1];
+  o[2] = ((unsigned int *)e[1])[idx * 3 + 2];
+  if (e[2] != e[0]) {
+    idx = func_00131310() % e[2];
+  }
+  o[0xc] = ((unsigned int *)e[3])[idx * 3];
+  o[0xd] = ((unsigned int *)e[3])[idx * 3 + 1];
+  o[0xe] = ((unsigned int *)e[3])[idx * 3 + 2];
+  s = func_00131760() * *(float *)(p + 0x10) + *(float *)(p + 0xc);
+  f[0xc] = s * f[0xc];
+  f[0xd] = s * f[0xd];
+  f[0xe] = s * f[0xe];
+  idx = func_00131310() % e[4];
+  o[0xf] = ((unsigned int *)e[5])[idx * 4];
+  o[0x10] = ((unsigned int *)e[5])[idx * 4 + 1];
+  o[0x11] = ((unsigned int *)e[5])[idx * 4 + 2];
+  o[0x12] = ((unsigned int *)e[5])[idx * 4 + 3];
+  idx = func_00131310() % e[6];
+  o[8] = ((unsigned int *)e[7])[idx * 2];
+  o[9] = ((unsigned int *)e[7])[idx * 2 + 1];
+  idx = func_00131310() % e[8];
+  o[6] = *(unsigned int *)(e[9] + idx * 16);
+  o[7] = *(unsigned int *)(e[9] + idx * 16 + 4);
+  o[4] = *(unsigned int *)(e[9] + idx * 16 + 8);
+  o[5] = *(unsigned int *)(e[9] + idx * 16 + 12);
+  o[0x13] = 0;
+  o[0x14] = *(unsigned int *)(p + 8);
+  o[0x15] = func_00131310();
+}
+
 #pragma optimize("y", off)
 undefined4 func_0011D450(float *p, int count, float dt, int *desc, undefined4 arg5)
 {
@@ -130,6 +170,50 @@ undefined4 func_0011D450(float *p, int count, float dt, int *desc, undefined4 ar
     while (count-- > 0) p += 42;
   }
   return 0;
+}
+
+#pragma optimize("y", on)
+char *_func_0011DD60(int a, unsigned int count, int cbArg, char *buf)
+{
+    extern int _D_003281E4;
+    extern char *_func_0011D1E0(int);
+    extern char *_func_00116070(int, int);
+    extern char *_func_00116A90(int, int, int);
+    extern void _func_0011D310(char*, int, char*);
+    char *src;
+    char *obj;
+    unsigned int off;
+    void (*cb)(char*, int);
+    if (count == 0) return 0;
+    src = _func_0011D1E0(a);
+    if (src == 0) return 0;
+    if (*(int*)(src + 0x28) == 0)
+        (*(void (**)(char*, char*))(src + 0x24))(src + 0x2c, src + 0x30);
+    *(int*)(src + 0x28) = *(int*)(src + 0x28) + 1;
+    obj = _func_00116070(_D_003281E4, 0x184);
+    *(char**)(obj + 0x50) = src;
+    *(Blob108*)(obj + 0x54) = *(Blob108*)(src + 0x30);
+    off = 0;
+    *(int*)(obj + 0x4c) = 0;
+    *(int*)(obj + 0x168) = 0xbf800000;
+    *(unsigned int*)(obj + 0x15c) = count;
+    if (buf == 0) {
+        buf = _func_00116A90(count * 0x58, 1, 1);
+        *(int*)(obj + 0x164) = 0;
+    } else {
+        *(int*)(obj + 0x164) = 1;
+    }
+    *(char**)(obj + 0x160) = buf;
+    if (count > off) {
+        for (; count != 0; count--) {
+            _func_0011D310(*(char**)(obj + 0x160) + off, *(int*)(*(int*)(obj + 0x50) + 0x2c), obj + 0x54);
+            *(int*)(*(char**)(obj + 0x160) + off + 0x20) = 0;
+            off += 0x58;
+        }
+    }
+    cb = *(void (**)(char*, int))(*(int*)(obj + 0x50) + 0x138);
+    if (cb) cb(obj, cbArg);
+    return obj;
 }
 #pragma optimize("", on)
 void func_0011DED0(int param_1)
