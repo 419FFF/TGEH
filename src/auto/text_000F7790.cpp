@@ -4,8 +4,7 @@
 
 static inline void clear10_000F7FB0(int *p)
 {
-  p[0] = 0; p[1] = 0; p[2] = 0; p[3] = 0; p[4] = 0;
-  p[5] = 0; p[6] = 0; p[7] = 0; p[8] = 0; p[9] = 0;
+  for (int i = 0; i < 10; i++) p[i] = 0;
 }
 
 void func_000F79A0(int param_1)
@@ -192,30 +191,19 @@ int func_000F7FB0(int param_1)
   extern int D_00324B00, D_00324AF8;
   extern char *D_00324968[], *D_00324964[];
   int iVar1;
-  int *p;
-  int z;
+  int zero = 0;
+  char one = 1;
   iVar1 = func_0010F750(*(int *)(param_1 + 0x38), D_00324B00, 0x330);
   D_00324968[D_00324AF8] = (char *)iVar1;
   *(int *)(iVar1 + 0xe0) = param_1;
-  *(int *)(D_00324968[D_00324AF8] + 0xe4) = 0;
-  *(char *)(D_00324968[D_00324AF8] + 0x284) = 1;
-  *(char *)(D_00324968[D_00324AF8] + 0x285) = 0;
-  *(char *)(D_00324968[D_00324AF8] + 0x28c) = 1;
-  *(int *)(D_00324968[D_00324AF8] + 0x278) = 0;
-  p = (int *)(D_00324968[D_00324AF8] + 0x2dc);
-  z = 0;
-  p[0] = z;
-  p[1] = z;
-  p[2] = z;
-  p[3] = z;
-  p[4] = z;
-  p[5] = z;
-  p[6] = z;
-  p[7] = z;
-  p[8] = z;
-  p[9] = z;
-  *(char *)(D_00324968[D_00324AF8] + 0x28e) = 0;
-  *(char *)(D_00324968[D_00324AF8] + 0x28f) = 0;
+  *(int *)(D_00324968[D_00324AF8] + 0xe4) = zero;
+  *(char *)(D_00324968[D_00324AF8] + 0x284) = one;
+  *(char *)(D_00324968[D_00324AF8] + 0x285) = (char)zero;
+  *(char *)(D_00324968[D_00324AF8] + 0x28c) = one;
+  *(int *)(D_00324968[D_00324AF8] + 0x278) = zero;
+  clear10_000F7FB0((int *)(D_00324968[D_00324AF8] + 0x2dc));
+  *(char *)(D_00324968[D_00324AF8] + 0x28e) = (char)zero;
+  *(char *)(D_00324968[D_00324AF8] + 0x28f) = (char)zero;
   *(int *)(D_00324968[D_00324AF8] + 0x30c) = D_00324AF8;
   func_000F7BE0((int)D_00324968[D_00324AF8]);
   func_00110480(param_1, D_00324968[D_00324AF8], 8);
