@@ -70,7 +70,7 @@ void func_00058040(int p) {
 
 extern "C" void* memset(void*, int, unsigned);
 #pragma intrinsic(memset)
-void _func_00058080(char *o)
+void _func_00058080(ActorBase *o)
 {
   extern char D_001D2950, D_001D3830, D_001D5208, D_001D5200, D_001D51F8, D_001D51EC, D_001D29C7, D_001D2940, D_001D51DC, D_001D51D0;
   int func_00116A90(...);
@@ -79,8 +79,9 @@ void _func_00058080(char *o)
   int func_000A1BB0(...);
   int func_00131990(...);
   int func_0009CD40(...);
+  int *t = o->tail;
   int *p = (int *)func_00116A90(0x30, 1, 1);
-  *(int **)(o + 0x110) = p;
+  o->ext = p;
   memset(p, 0, 0x30);
   p[1] = func_0009C7A0(o, &D_001D2950, 1);
   p[6] = func_0009C7A0(o, &D_001D3830, 1);
@@ -103,11 +104,9 @@ void _func_00058080(char *o)
   q = (int *)func_0009C7A0(o, &D_001D51DC, 0);
   if (q != 0 && *q == 0x3f800000) p[0] = 0; else p[0] = 4;
   p[7] = func_0009C7A0(o, &D_001D51D0, 1);
-  int *r = (int *)(o + 0x17c);
-  r[0] = 0; r[1] = 0; r[2] = 0; r[3] = 0; r[4] = 0; r[5] = 0; r[6] = 0; r[7] = 0;
-  r[8] = 0x3f800000; r[9] = 0x3f800000;
+  for (int i = 0; i < 8; i++) t[i] = 0;
+  t[8] = 0x3f800000; t[9] = 0x3f800000;
 }
-
 void func_000584D0(int p) {
  int func_000A1C00(...),func_00116FB0(...);
  int s=*(int*)(p+0x110);
