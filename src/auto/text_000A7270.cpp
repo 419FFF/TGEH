@@ -170,28 +170,18 @@ void func_000A7E60(void)
   extern undefined D_001D7968;
   extern undefined D_001D7960;
   extern undefined D_001D7958;
-  undefined4 uVar1;
 
-  func_000F93A0(((undefined *)&D_001D79A8),((undefined *)&D_001D7928));
-  func_000F93A0(((undefined *)&D_001D79A8),((undefined *)&D_001D799C));
-  uVar1 = func_000F91D0(((undefined *)&D_001D72DC));
-  func_000F7EF0(func_000F91D0(((undefined *)&D_001D79A8)),uVar1);
-  uVar1 = func_000F91D0(((undefined *)&D_001D7990));
-  func_000F7EF0(func_000F91D0(((undefined *)&D_001D79A8)),uVar1);
-  uVar1 = func_000F91D0(((undefined *)&D_001D7988));
-  func_000F7EF0(func_000F91D0(((undefined *)&D_001D79A8)),uVar1);
-  func_000F93A0(((undefined *)&D_001D7974),((undefined *)&D_001D7980));
-  func_000F93A0(((undefined *)&D_001D7974),((undefined *)&D_001D799C));
-  uVar1 = func_000F91D0(((undefined *)&D_001D7968));
-  func_000F7EF0(func_000F91D0(((undefined *)&D_001D7974)),uVar1);
-  uVar1 = func_000F91D0(((undefined *)&D_001D7960));
-  func_000F7EF0(func_000F91D0(((undefined *)&D_001D7974)),uVar1);
-  uVar1 = func_000F91D0(((undefined *)&D_001D7958));
-  func_000F7EF0(func_000F91D0(((undefined *)&D_001D7974)),uVar1);
-  uVar1 = func_000F91D0(((undefined *)&D_001D72DC));
-  func_000F7EF0(func_000F91D0(((undefined *)&D_001D7974)),uVar1);
-  uVar1 = func_000F91D0(((undefined *)&D_001D7988));
-  func_000F7EF0(func_000F91D0(((undefined *)&D_001D7974)),uVar1);
-  return;
+  func_000F93A0(((undefined *)&D_001D79A8), ((undefined *)&D_001D7928));
+  func_000F93A0(((undefined *)&D_001D79A8), ((undefined *)&D_001D799C));
+  func_000F7EF0(func_000F91D0(((undefined *)&D_001D79A8)), func_000F91D0(((undefined *)&D_001D72DC)));
+  func_000F7EF0(func_000F91D0(((undefined *)&D_001D79A8)), func_000F91D0(((undefined *)&D_001D7990)));
+  func_000F7EF0(func_000F91D0(((undefined *)&D_001D79A8)), func_000F91D0(((undefined *)&D_001D7988)));
+  func_000F93A0(((undefined *)&D_001D7974), ((undefined *)&D_001D7980));
+  func_000F93A0(((undefined *)&D_001D7974), ((undefined *)&D_001D799C));
+  func_000F7EF0(func_000F91D0(((undefined *)&D_001D7974)), func_000F91D0(((undefined *)&D_001D7968)));
+  func_000F7EF0(func_000F91D0(((undefined *)&D_001D7974)), func_000F91D0(((undefined *)&D_001D7960)));
+  func_000F7EF0(func_000F91D0(((undefined *)&D_001D7974)), func_000F91D0(((undefined *)&D_001D7958)));
+  func_000F7EF0(func_000F91D0(((undefined *)&D_001D7974)), func_000F91D0(((undefined *)&D_001D72DC)));
+  func_000F7EF0(func_000F91D0(((undefined *)&D_001D7974)), func_000F91D0(((undefined *)&D_001D7988)));
 }
 
