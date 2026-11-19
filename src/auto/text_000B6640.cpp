@@ -84,6 +84,59 @@ void func_000B6D90(void) {
   func_000B58C0(D_00313ED8, 4);
 }
 
+void func_000B6E00(int param_1)
+{
+  extern char D_00313F15, D_00313F16, D_00313F17, D_00313F18, D_001E4740;
+  extern int D_00313ED8, D_00313EDC, D_00313EE8;
+  int func_000E1110(...);
+  void func_000B58C0(int, int);
+  D_00313F15 = 0;
+  D_00313F16 = 0;
+  D_00313F17 = 0;
+  D_00313F18 = 0;
+  D_001E4740 = 1;
+  D_00313ED8 = 0;
+  D_00313EDC = 0;
+  D_00313EE8 = 0;
+  func_000E1110(-1);
+  switch (param_1) {
+  case 3:
+    func_000B58C0(1, 0);
+    func_000B58C0(2, 0);
+    break;
+  case 4:
+    func_000B58C0(3, 0);
+    func_000B58C0(4, 0);
+    func_000B58C0(5, 0);
+    break;
+  case 5:
+    func_000B58C0(6, 0);
+    func_000B58C0(7, 0);
+    func_000B58C0(8, 0);
+    func_000B58C0(9, 0);
+    break;
+  case 6:
+    func_000B58C0(10, 0);
+    func_000B58C0(11, 0);
+    func_000B58C0(0x16, 0);
+    func_000B58C0(12, 0);
+    func_000B58C0(0x12, 0);
+    break;
+  case 7:
+    func_000B58C0(13, 0);
+    func_000B58C0(0x13, 0);
+    func_000B58C0(14, 0);
+    break;
+  case 8:
+    func_000B58C0(0x11, 0);
+    func_000B58C0(0x14, 0);
+    func_000B58C0(0x15, 0);
+    func_000B58C0(15, 0);
+    func_000B58C0(0x10, 0);
+    break;
+  }
+}
+
 void func_000B6F40(int param_1)
 {
   extern int D_00313ED8, D_00313EDC, D_00313EF4;
