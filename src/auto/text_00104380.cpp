@@ -124,9 +124,5 @@ void _func_00105340(int a, int b) {
  func_001278C0(D_00324BE8,a,b);
 }
 
-void func_00105360(int p) {
-    int func_00110760(...);
-    int q = *(int *)(p + 0x2c);
-    if (q) func_00110760(q);
-}
+void func_00105360(int param_1){ void func_00110760(...); int value=*(int*)(param_1+0x2c); if(value) func_00110760(value); }
 
