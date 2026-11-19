@@ -4,6 +4,12 @@ extern "C" __declspec(dllimport) int __stdcall XeLoadSection(int);
 extern "C" __declspec(dllimport) int __stdcall XeUnloadSection(int);
 
 #include <string.h>
+typedef long (__stdcall *NtQueryFn)(void*, void*, unsigned long, unsigned long, unsigned long);
+typedef long (__stdcall *NtSetFn)(void*, void*, unsigned long, unsigned long, unsigned long);
+extern "C" NtQueryFn __imp__NtQueryInformationFile;
+extern "C" NtSetFn __imp__NtSetInformationFile;
+extern void __stdcall _func_0010AAD1(long);
+extern void __stdcall func_0010AAA3(long);
 struct XHdr { int a[5]; int magic; unsigned int size; int rest[26]; };
 #pragma intrinsic(memset, memcmp)
 unsigned int __readfsdword(unsigned long);
