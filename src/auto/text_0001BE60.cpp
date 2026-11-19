@@ -17,8 +17,7 @@ void func_0001BE60(int p)
   for (int i = 0; i < 0xa0; i++) x[i] = 0;
   y = x + 1;
   func_0004FA80(p, y);
-  w[0] = 0; w[2] = 0; w[3] = 0; w[4] = 0; w[5] = 0; w[6] = 0; w[7] = 0; w[8] = 0; w[9] = 0;
-  w[1] = 0x3f800000;
+  w[0] = 0; w[1] = 0x3f800000; w[2] = 0; w[3] = 0; w[4] = 0; w[5] = 0; w[6] = 0; w[7] = 0; w[8] = 0; w[9] = 0;
   *((char*)x + 0x99) = 0;
   x[1] = 5;
   x[0x1a] = *(unsigned int*)(p + 0x134);
@@ -40,7 +39,7 @@ void func_0001BE60(int p)
   *((char*)x + 0x264) = 0;
   *((char*)x + 0x265) = 0;
   x[0x9a] = 0xffffffff;
-  *(unsigned char*)(p + 0x10) |= 0x80;
+  *(unsigned short*)(p + 0x10) |= 0x80;
 }
 
 #pragma optimize("y", off)
