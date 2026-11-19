@@ -2,6 +2,8 @@
 #include "common.h"
 #include "ghidra.h"
 
+struct V3_7ED60 { float x, y, z; };
+
 void func_0007ECF0(void) { int func_000688D0(...); int func_0011BF40(...); extern int D_002FB310,D_002FB308,D_002FB30C; extern undefined D_001D66DC; if(D_002FB310==0){func_000688D0();D_002FB308=func_0011BF40(&D_001D66DC,0);func_000688D0();D_002FB30C=0;} D_002FB310++;}
 
 void func_0007ED30(void)
