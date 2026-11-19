@@ -2,7 +2,7 @@
 #include "common.h"
 #include "ghidra.h"
 static undefined4 D_002FDDA0;
-struct S856F0 { int unk0; float *a; int unk8; float *b; int unk10; float *c; int unk18; float *d; int unk20; float *e; };
+struct S856F0 { int unk0; float *a; int unk8; int *b; int unk10; int *c; int unk18; int *d; int unk20; int *e; };
 
 void func_00085870(undefined4 param_1, int param_2)
 {
