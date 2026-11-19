@@ -1,8 +1,52 @@
 /* 13 functions from 0x00080180 to 0x00080F1F, found by Ghidra. */
 #include "common.h"
 #include "ghidra.h"
+struct S80A70 { int p[3]; char r, g, b, a; int u[2]; int v[2]; int t[2]; int pad[2]; };
 
 void func_00080540(void *p){void func_00110760(...); void func_00116FB0(...); func_00110760(*(int*)((char*)p+0x100)); func_00116FB0(*(int*)((char*)p+0xfc));}
+
+void __cdecl _func_00080860(void)
+{
+    extern int D_002FBA84, D_002FBA80;
+    extern float D_001D31C8, D_001D2B64;
+    extern char D_002FB984[];
+    extern int D_002FBA00, D_002FBA04, D_002FBA08, D_002FBA0C, D_002FBA10, D_002FBA14, D_002FBA18, D_002FBA1C;
+    extern int D_002FBA20, D_002FBA24, D_002FBA28, D_002FBA2C, D_002FBA30, D_002FBA34, D_002FBA38, D_002FBA3C;
+    extern int D_002FBA40, D_002FBA44, D_002FBA48, D_002FBA4C, D_002FBA50, D_002FBA54, D_002FBA58, D_002FBA5C;
+    extern int D_002FBA60, D_002FBA64, D_002FBA68, D_002FBA6C, D_002FBA70, D_002FBA74, D_002FBA78, D_002FBA7C;
+    int func_00110370(...);
+    float func_00131760(void);
+    void func_00080540(void);
+    void func_00080570(void);
+    if (D_002FBA84 == 0) {
+        int s[7];
+        unsigned int i;
+        s[1] = (int)func_00080570;
+        s[2] = 0;
+        s[3] = (int)func_00080540;
+        s[4] = 0;
+        D_002FBA80 = func_00110370(s);
+        i = 0;
+        do {
+            *(float *)(D_002FB984 + 4 + i) = (float)((double)func_00131760() * D_001D31C8 - D_001D2B64);
+            *(float *)(D_002FB984 + 8 + i) = (float)((double)func_00131760() * D_001D31C8 - D_001D2B64);
+            *(float *)(D_002FB984 + 12 + i) = (float)((double)func_00131760() * D_001D31C8 - D_001D2B64);
+            i += 0xc;
+        } while (i < 0x78);
+        {
+        int z = 0;
+        D_002FBA00 = z; D_002FBA04 = z; D_002FBA08 = z; D_002FBA0C = z;
+        D_002FBA10 = z; D_002FBA14 = z; D_002FBA18 = z; D_002FBA1C = z;
+        D_002FBA20 = z; D_002FBA24 = z; D_002FBA28 = z; D_002FBA2C = z;
+        D_002FBA30 = z; D_002FBA34 = z; D_002FBA38 = z; D_002FBA3C = z;
+        D_002FBA40 = z; D_002FBA44 = z; D_002FBA48 = z; D_002FBA4C = z;
+        D_002FBA50 = z; D_002FBA54 = z; D_002FBA58 = z; D_002FBA5C = z;
+        D_002FBA60 = z; D_002FBA64 = z; D_002FBA68 = z; D_002FBA6C = z;
+        D_002FBA70 = z; D_002FBA74 = z; D_002FBA78 = z; D_002FBA7C = z;
+        }
+    }
+    D_002FBA84 = D_002FBA84 + 1;
+}
 
 void func_000809C0(void)
 {
@@ -44,6 +88,35 @@ void func_00080A10(void) {
 }
 
 void func_00080A30(void){extern int D_002FBA90,D_002FBA94,D_002FBAF4; void func_00116FB0(...);void func_0013C020(...);void func_0011B990(...); int x; x=D_002FBA90;if(x)func_00116FB0(x); x=D_002FBA94;if(x){func_0013C020(x); *(short*)(D_002FBAF4+0x2a)-=1; func_0011B990(D_002FBAF4);}}
+
+void _func_00080A70(int *a, int *b, float *c)
+{
+ extern int D_002FBAF8, D_002FBAF0, D_002FBA90;
+ extern float D_001D66D8;
+ void *func_00116A90(...);
+ void *func_00116E50(...);
+ char func_001313C0(...);
+ if (D_002FBAF8 == 1) {
+  if (D_002FBA90 == 0) D_002FBA90 = (int)func_00116A90(0x30, 1, 1);
+  else D_002FBA90 = (int)func_00116E50(D_002FBA90, (D_002FBAF0 * 3 + 3) * 16, 1, 1);
+  char *m = (char *)D_002FBA90;
+  *(int *)(m + D_002FBAF0 * 0x30) = a[0];
+  *(int *)((char *)D_002FBA90 + D_002FBAF0 * 0x30 + 4) = a[1];
+  *(int *)((char *)D_002FBA90 + D_002FBAF0 * 0x30 + 8) = a[2];
+  *(int *)((char *)D_002FBA90 + D_002FBAF0 * 0x30 + 0x20) = b[0];
+  *(int *)((char *)D_002FBA90 + D_002FBAF0 * 0x30 + 0x24) = b[1];
+  *((char *)D_002FBA90 + D_002FBAF0 * 0x30 + 0xc) = func_001313C0(c[2] * D_001D66D8);
+  *((char *)D_002FBA90 + D_002FBAF0 * 0x30 + 0xd) = func_001313C0(c[1] * D_001D66D8);
+  *((char *)D_002FBA90 + D_002FBAF0 * 0x30 + 0xe) = func_001313C0(c[0] * D_001D66D8);
+  int o = D_002FBAF0 * 0x30;
+  *((char *)D_002FBA90 + o + 0xf) = func_001313C0(c[3] * D_001D66D8);
+  *(int *)((char *)D_002FBA90 + o + 0x10) = 0;
+  *(int *)((char *)D_002FBA90 + o + 0x14) = 0;
+  *(int *)((char *)D_002FBA90 + o + 0x18) = 0x3f800000;
+  *(int *)((char *)D_002FBA90 + o + 0x1c) = 0x3f800000;
+  D_002FBAF0 = D_002FBAF0 + 1;
+ }
+}
 
 extern int _D_002FBAF0, _D_002FBA94, _D_002FBAF4, _D_002FBAEC, _D_002FBAF8;
 extern int _D_002FBA98[21];
