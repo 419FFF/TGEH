@@ -18,6 +18,35 @@ void func_001304A0(float *a, float *m)
   a[10] = (m[5] * m[0] - m[4] * m[1]) * inv;
 }
 
+void func_001307B0(float *out, float *a, float *b, float t)
+{
+  extern float D_001D27B8, D_001DF754;
+  float func_00131260(float);
+  double func_00131230(float);
+  float sign = 1.0f;
+  float d = a[0] * b[0] + a[2] * b[2] + a[1] * b[1] + b[3] * a[3];
+  float s0, ang, inv;
+  float s1;
+  if (d < D_001D27B8) {
+    d = -d;
+    sign = -1.0f;
+  }
+  if (d <= D_001DF754) {
+    ang = func_00131260(d);
+    double sn = func_00131230(ang);
+    inv = D_001D27B0 / sn;
+    s0 = func_00131230((D_001D27B0 - t) * ang) * inv;
+    s1 = func_00131230(ang * t) * inv * sign;
+  } else {
+    s0 = D_001D27B0 - t;
+    s1 = sign * t;
+  }
+  out[0] = s0 * a[0] + s1 * b[0];
+  out[1] = s0 * a[1] + s1 * b[1];
+  out[2] = s0 * a[2] + s1 * b[2];
+  out[3] = s0 * a[3] + s1 * b[3];
+}
+
 void _func_001308D0(float *param_1, float *param_2)
 {
   extern float D_001D27B0; // Declared globally previously
@@ -56,3 +85,32 @@ void _func_001308D0(float *param_1, float *param_2)
   param_2[9] = fVar8 + fVar11 * fVar4;
   param_2[10] = D_001D27B0 - (fVar10 * fVar3 + fVar9);
 }
+
+extern float D_001D27B0, D_001D3324;
+void _func_001309B0(float *m, float *a, float *b)
+{
+  float t;
+  t = a[0] * a[0];
+  m[0] = D_001D27B0 - (t + t);
+  m[4] = D_001D3324 * a[0] * a[1];
+  m[8] = D_001D3324 * a[0] * a[2];
+  t = (b[2] * a[2] + b[0] * a[0] + b[1] * a[1]) * a[0];
+  m[12] = t + t;
+  m[1] = D_001D3324 * a[0] * a[1];
+  t = a[1] * a[1];
+  m[5] = D_001D27B0 - (t + t);
+  m[9] = D_001D3324 * a[2] * a[1];
+  t = (b[2] * a[2] + b[0] * a[0] + b[1] * a[1]) * a[1];
+  m[13] = t + t;
+  m[2] = D_001D3324 * a[0] * a[2];
+  m[6] = D_001D3324 * a[2] * a[1];
+  t = a[2] * a[2];
+  m[10] = D_001D27B0 - (t + t);
+  t = (b[2] * a[2] + b[0] * a[0] + b[1] * a[1]) * a[2];
+  m[3] = 0.0f;
+  m[7] = 0.0f;
+  m[11] = 0.0f;
+  m[15] = 1.0f;
+  m[14] = t + t;
+}
+
