@@ -9,8 +9,6 @@ void func_00137090(unsigned int x, unsigned int y, int w, int h)
   extern unsigned int D_0033232C, D_0033228C, D_003326C8, D_003326A4, D_00332430, D_003323E0;
   extern float D_001D27D0, D_001D2A28, D_001D3320;
   extern int D_003326AC;
-  extern void __stdcall RtlEnterCriticalSection(void *);
-  extern void __stdcall RtlLeaveCriticalSection(void *);
   void __stdcall func_0014BF50(int, int, int *);
   int r[4];
   if (y > 0x1e0) y = 0x1e0;
@@ -19,15 +17,15 @@ void func_00137090(unsigned int x, unsigned int y, int w, int h)
   if (x + w > 0x280) w = 0x280 - x;
   D_003326C8 = x;
   r[0] = D_0033232C * x / 640;
-  r[2] = D_0033232C * (x + w) / 640;
   D_003326A4 = y;
   D_00332430 = w;
   D_003323E0 = h;
+  r[2] = D_0033232C * (x + w) / 640;
   r[1] = (int)((((float)y - D_001D27D0) * D_001D2A28 + D_001D27D0) * (float)D_0033228C * D_001D3320);
   r[3] = (int)((((float)(y + h) - D_001D27D0) * D_001D2A28 + D_001D27D0) * (float)D_0033228C * D_001D3320);
-  RtlEnterCriticalSection(&D_003326AC);
+  __imp__RtlEnterCriticalSection(&D_003326AC);
   func_0014BF50(1, 0, r);
-  RtlLeaveCriticalSection(&D_003326AC);
+  __imp__RtlLeaveCriticalSection(&D_003326AC);
 }
 
 unsigned int func_001371E0(void)
