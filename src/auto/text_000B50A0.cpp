@@ -147,6 +147,53 @@ char func_000B5690(void) {
 
 unsigned char func_000B56A0(void) { extern int D_00313EE4,D_00313EEC,D_00313EE8; unsigned int x; if(D_00313EE4 || !D_00313EEC) return 0; x=D_00313EE8; if((int)x>=0x14) return 0; x &= 0x80000003; if(x & 0x80000000) x=(x-1|0xfffffffc)+1; if(x) return 0; return 1; }
 
+void func_000B56D0(int param_1, int param_2, int param_3, int param_4)
+{
+    extern int D_00308158;
+    extern int D_002EED00;
+    int func_0009CBF0(int, int);
+    int func_0009C590(int);
+    void func_00110060(int, int);
+    void func_0012F120(int);
+    void func_0012E6D0(int, int, int);
+    float func_0012EA60(int);
+    void func_0012EE00(int, int, int);
+    int r;
+    int *p;
+    int r2;
+    __declspec(align(16)) int a[4];
+    __declspec(align(16)) int b[4];
+    __declspec(align(16)) float c[4];
+    __declspec(align(16)) int m[16];
+    r = func_0009CBF0(D_00308158, param_2);
+    p = *(int **)(r + 8);
+    a[0] = p[0];
+    a[1] = p[1];
+    a[2] = p[2];
+    a[3] = p[3];
+    r2 = func_0009C590(param_3);
+    func_00110060(*(int *)(r2 + 0x2c), (int)m);
+    b[0] = m[12];
+    b[1] = m[13];
+    b[2] = m[14];
+    b[3] = m[15];
+    c[0] = 0.0f;
+    c[1] = 1.0f;
+    c[2] = 0.0f;
+    c[3] = 0.0f;
+    func_0012F120(param_1);
+    func_0012E6D0(param_1 + 0x20, (int)b, (int)a);
+    func_0012EA60(param_1 + 0x20);
+    func_0012EE00(param_1, (int)c, param_1 + 0x20);
+    func_0012EA60(param_1);
+    func_0012EE00(param_1 + 0x10, param_1 + 0x20, param_1);
+    func_0012EA60(param_1 + 0x10);
+    *(int *)(param_1 + 0x30) = a[0];
+    *(int *)(param_1 + 0x34) = a[1];
+    *(int *)(param_1 + 0x38) = a[2];
+    D_002EED00 = param_4;
+}
+
 int func_000B57F0(void) {
     extern int D_00313ED8;
     return D_00313ED8;
