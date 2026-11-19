@@ -50,50 +50,60 @@ fail:
     return 0;
 }
 
+#pragma optimize("s", on)
 unsigned long __stdcall func_0010BCE7(void *h, long off, long *hiPtr, int method)
 {
     unsigned long iosb[2];
-    unsigned long long pos;
+    LI64 pos;
     unsigned long info[14];
-    long long off64;
+    LI64 d;
     long status;
-    if (hiPtr != 0) off64 = ((unsigned long long)(unsigned long)*hiPtr << 32) | (unsigned long)off;
-    else off64 = off;
-    if (method == 0) {
-        pos = off64;
-    } else {
-        if (method == 2) {
-            status = __imp__NtQueryInformationFile(h, iosb, (unsigned long)info, 0x38, 0x22);
-            pos = *(unsigned long long*)&info[10];
-        } else {
-            status = __imp__NtQueryInformationFile(h, iosb, (unsigned long)&pos, 8, 0xe);
-        }
-        if (status < 0) {
-            _func_0010AAD1(status);
-            return 0xffffffff;
-        }
-        pos += off64;
+    unsigned long ret;
+    if (hiPtr) { d.p.hi = *hiPtr; d.p.lo = off; }
+    else d.q = off;
+    switch (method) {
+    case 0:
+        pos.q = d.q;
+        break;
+    case 1:
+        goto cur;
+    case 2:
+        status = __imp__NtQueryInformationFile(h, iosb, (unsigned long)info, 0x38, 0x22);
+        if (status < 0) goto fail;
+        pos.q = *(long long*)&info[10] + d.q;
+        break;
+    default:
+    cur:
+        status = __imp__NtQueryInformationFile(h, iosb, (unsigned long)&pos, 8, 0xe);
+        if (status < 0) goto fail;
+        pos.q += d.q;
+        break;
     }
-    if ((long)(pos >> 32) < 0) {
+    if (pos.q < 0) {
         func_0010AAA3(0x83);
-        return 0xffffffff;
+        goto bad;
     }
-    if (hiPtr == 0 && ((pos >> 32) & 0x7fffffff) != 0) {
+    if (hiPtr == 0 && (pos.p.hi & 0x7fffffff) != 0) {
         func_0010AAA3(0x57);
-        return 0xffffffff;
+        goto bad;
     }
     status = __imp__NtSetInformationFile(h, iosb, (unsigned long)&pos, 8, 0xe);
-    if (status < 0) {
-        _func_0010AAD1(status);
-        if (hiPtr != 0) *hiPtr = -1;
-        return 0xffffffff;
+    if (status >= 0) {
+        if (hiPtr != 0) *hiPtr = pos.p.hi;
+        if (pos.p.lo == 0xffffffff) func_0010AAA3(0);
+        return pos.p.lo;
     }
-    if (hiPtr != 0) *hiPtr = (long)(pos >> 32);
-    if ((unsigned long)pos == 0xffffffff) func_0010AAA3(0);
-    return (unsigned long)pos;
+    _func_0010AAD1(status);
+    ret = 0xffffffff;
+    if (hiPtr != 0) *hiPtr = ret;
+    return ret;
+bad:
+    return 0xffffffff;
+fail:
+    _func_0010AAD1(status);
+    return 0xffffffff;
 }
-
-#pragma optimize("y", on)
+#pragma optimize("", on)
 typedef long (__stdcall *NtQueryFn)(void*, void*, unsigned long, unsigned long, unsigned long);
 typedef long (__stdcall *NtSetFn)(void*, void*, unsigned long, unsigned long, unsigned long);
 typedef long (__stdcall *NtFlushFn)(void*, void*);
