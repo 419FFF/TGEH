@@ -28,6 +28,62 @@ void func_0004FF10(int p,int q) {
  *(unsigned short*)(p+0x10)=(*(unsigned short*)(p+0x10)&0xff7f)|0x100;
 }
 
+void func_0004FFB0(int param_1, int param_2)
+{
+  char func_000A24B0(...);
+  int func_00115100(...);
+  extern char D_001D3600;
+  int func_00091110(...);
+  float func_00131760(...);
+  int func_000A22B0(...);
+  int func_000A2370(...);
+  extern float D_001E461C;
+  char func_0004F9B0(...);
+  int func_0004F310(...);
+  int *puVar1;
+  float fVar2;
+  char cVar3;
+  int iVar4;
+
+  if (*(char *)(param_2 + 0x174) != 0) {
+    cVar3 = func_000A24B0(param_1 + 100);
+    if (cVar3 != 0) {
+      iVar4 = func_00115100(*(int *)(param_1 + 0x98), &D_001D3600);
+      if (iVar4 != -1) {
+        func_00091110(param_1, iVar4, 0);
+      }
+      *(char *)(param_2 + 0x174) = 0;
+    }
+  }
+  switch (*(int *)(param_2 + 0x98)) {
+  case 2:
+    iVar4 = func_000A2370(param_1 + 100);
+    if (iVar4 == 0) {
+      *(int *)(param_2 + 0x98) = 0;
+    }
+    break;
+  case 0:
+    puVar1 = *(int **)(param_2 + 4);
+    *(float *)(param_2 + 0x150) = 0.0f;
+    *(float *)(param_2 + 0x154) = (long double)func_00131760() * *(float *)(param_2 + 0x78) + *(float *)(param_2 + 0x7c);
+    func_000A22B0(param_1 + 100, 2, *puVar1, puVar1[1], puVar1[2], 0x3e4ccccd);
+    *(int *)(param_2 + 0x98) = 1;
+  case 1:
+    fVar2 = D_001E461C + *(float *)(param_2 + 0x150);
+    *(float *)(param_2 + 0x150) = fVar2;
+    if (*(float *)(param_2 + 0x154) < fVar2) {
+      cVar3 = func_0004F9B0(param_1, param_2, 0);
+      if (cVar3 != 0) {
+        *(int *)(param_2 + 0x98) = 2;
+      }
+    }
+    break;
+  }
+  if (*(char *)(param_1 + 0x174) != 0) {
+    func_0004F310(param_1, param_2);
+  }
+}
+
 void func_000500D0(int param_1,int param_2) {
  *(undefined4 *)(param_2 + 0x98) = 0x79;
  *(undefined1 *)(param_2 + 300) = 0xff;
