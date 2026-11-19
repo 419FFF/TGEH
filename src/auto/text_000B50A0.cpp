@@ -26,6 +26,63 @@ void func_000B5180(undefined4 *param_1)
 
 int func_000B51B0(unsigned int *p) { int func_0006E9E0(...); int func_00116A90(...); unsigned int index; unsigned int *bits; if(p[4]<p[3]) { func_0006E9E0(p[0],&index); bits=(unsigned int*)(*(int*)p[0]+(index>>5)*4); *bits |= 1<<(index&31); p[4]++; if(p[4]>p[5]) p[5]=p[4]; return p[2]*index+p[6]; } if(*((char*)p+0x3c)) { p[4]++; if(p[4]>p[5])p[5]=p[4]; return func_00116A90(p[2],1,1); } return 0; }
 
+int func_000B5240(unsigned int *p, unsigned int n) {
+    int func_000B51B0(...); int func_0006EA30(...); int func_00116A90(...);
+    unsigned int index;
+    unsigned int i;
+    unsigned int *bits;
+    if (n < 2) return func_000B51B0(p);
+    if (p[4] + n - 1 < p[3]) {
+        func_0006EA30(p[0], n, &index);
+        i = 0;
+        if (--n != 0) {
+            do {
+                bits = (unsigned int*)(*(int*)p[0] + ((index + i) >> 5) * 4);
+                *bits |= 1 << ((index + i) & 31);
+                bits = (unsigned int*)(*(int*)p[1] + ((index + i) >> 5) * 4);
+                *bits |= 1 << ((index + i) & 31);
+                p[4]++;
+                i++;
+            } while (i < n);
+        }
+        p[4]++;
+        bits = (unsigned int*)(*(int*)p[0] + ((index + i) >> 5) * 4);
+        *bits |= 1 << ((index + i) & 31);
+        if (p[4] > p[5]) p[5] = p[4];
+        return p[2] * index + p[6];
+    }
+    if (*((char*)p + 0x3c)) {
+        p[4]++;
+        if (p[4] > p[5]) p[5] = p[4];
+        return func_00116A90(p[2] * n, 1, 1);
+    }
+    return 0;
+}
+
+void func_000B5350(unsigned int *p, unsigned int a)
+{
+    int func_00116FB0(...);
+    unsigned int base = p[6];
+    if (a >= base && a < p[3] * p[2] + base) {
+        unsigned int i = (a - base) / p[2];
+        unsigned int m = 1 << (i & 0x1f);
+        int o = (i >> 5) * 4;
+        while (*(unsigned int *)(o + *(int *)p[1]) & m) {
+            *(unsigned int *)(*(int *)p[1] + o) &= ~m;
+            *(unsigned int *)(*(int *)p[0] + o) &= ~m;
+            i++;
+            p[4]--;
+            m = 1 << (i & 0x1f);
+            o = (i >> 5) * 4;
+        }
+        *(unsigned int *)(*(int *)p[0] + (i >> 5) * 4) &= ~(1 << (i & 0x1f));
+        p[4]--;
+        return;
+    }
+    func_00116FB0(a);
+    p[4]--;
+}
+
 void func_000B5420(int param_1, undefined1 param_2)
 {
   *(undefined1 *)(param_1 + 0x3c) = param_2;
@@ -79,14 +136,16 @@ void func_000B54D0(int param_1) { int func_000A1EA0(...); int func_0011A6A0(...)
 
 void func_000B5520(unsigned char param_1) { extern unsigned char D_00313F0D,D_00313F0E,D_00313F14,D_00313F10,D_0031151C; extern int D_00313EF8,D_00313EF4,D_00313EFC,D_00307DF8; int func_000A1EA0(...); int func_0011A6A0(...); int func_001015F0(...); int func_000400A0(...); int func_000400B0(...); int func_000400C0(...); int func_000A0690(...); D_00313F0D=param_1; D_00313EF8=0; D_00313EF4=2; D_00313EFC=0x4479c000; D_00313F0E=0; if(*(int*)(D_00307DF8+0x84))func_000A1EA0(*(int*)(D_00307DF8+0x84),0); func_0011A6A0(0); func_001015F0(0); func_000400A0(0); func_000400B0(0); func_000400C0(0); func_000A0690(0); if(D_00313F14){D_0031151C=D_00313F10;return;} D_00313F10=(unsigned int)(unsigned char)D_0031151C; D_00313F14=1; }
 
-void func_000B55C0(float param_1) { extern float D_00313EFC; extern float D_00313F00; extern float D_00313F04; extern float D_001D27B0; int func_00103210(...); int func_00103990(...); extern char D_001D8D10; extern char D_001D8D00; D_00313EFC=param_1; if(param_1<D_00313F00){D_00313F00-=D_001D27B0; func_00103990(func_00103210(&D_001D8D10,0));} if(D_00313EFC<D_00313F04){D_00313F04-=D_001D27B0; func_00103990(func_00103210(&D_001D8D00,0));} }
+void func_000B55C0(float param_1) { extern float D_00313EFC, D_00313F00, D_00313F04, D_001D27B0; int func_00103210(...); int func_00103990(...); extern char D_001D8D10, D_001D8D00; D_00313EFC=param_1; if (!(param_1 >= D_00313F00)) { D_00313F00 = D_00313F00 - D_001D27B0; func_00103990(func_00103210(&D_001D8D10,0)); } if (!(D_00313EFC >= D_00313F04)) { D_00313F04 = D_00313F04 - D_001D27B0; func_00103990(func_00103210(&D_001D8D00,0)); } }
 
-unsigned char func_000B5650(int param_1) { extern unsigned char D_00313F15,D_00313F17,D_00313F16,D_00313F18; extern int D_00313ED8; if(param_1==0x13)return D_00313F15; if(param_1==0x14)return D_00313F17; if(param_1==0x15)return D_00313F16; if(param_1==0x12)return D_00313F18; return D_00313ED8==param_1; }
+unsigned char func_000B5650(int param_1) { extern unsigned char D_00313F15,D_00313F17,D_00313F16,D_00313F18; extern int D_00313ED8; if(param_1==0x13)return D_00313F15; if(param_1==0x14)return D_00313F17; if(param_1==0x15)return D_00313F16; if(param_1==0x12)return D_00313F18; int value=D_00313ED8; unsigned char out=0; if(value==param_1) out=1; return out; }
 
 char func_000B5690(void) {
     extern char D_00313F0E;
     return D_00313F0E;
 }
+
+unsigned char func_000B56A0(void) { extern int D_00313EE4,D_00313EEC,D_00313EE8; unsigned int x; if(D_00313EE4 || !D_00313EEC) return 0; x=D_00313EE8; if((int)x>=0x14) return 0; x &= 0x80000003; if(x & 0x80000000) x=(x-1|0xfffffffc)+1; if(x) return 0; return 1; }
 
 int func_000B57F0(void) {
     extern int D_00313ED8;
