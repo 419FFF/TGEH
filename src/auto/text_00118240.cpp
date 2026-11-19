@@ -4,6 +4,7 @@
 
 struct Grp118 { unsigned int n; int a; char pad[0x20]; int *c; int d; };
 struct Ent118 { int obj; int flags; char pad[0xb0]; };
+struct Blk118 { int w[46]; };
 extern int D_001DF278;
 extern char D_001DF27C;
 extern int func_00131A10(char*);
@@ -27,19 +28,17 @@ void _func_00118A80(int unused, unsigned char *p)
   unsigned int j;
   int k;
   if (i < *(unsigned short*)(p + 4)) {
-    int off = 0;
     do {
-      _func_00132C60(*(int*)(*(int*)(p + 8) + off + 0x2c));
-      _func_00129C90(*(int*)(*(int*)(p + 8) + off + 4));
-      for (j = 0; j < *(unsigned int*)(*(int*)(p + 8) + off); j++) {
+      _func_00132C60(*(int*)(*(int*)(p + 8) + i * 0x30 + 0x2c));
+      _func_00129C90(*(int*)(*(int*)(p + 8) + i * 0x30 + 4));
+      for (j = 0; j < *(unsigned int*)(*(int*)(p + 8) + i * 0x30); j++) {
         for (k = 0; k < 4; k++) {
-          int v = *(int*)(*(int*)(*(int*)(p + 8) + off + 0x28) + j * 0x64 + k * 4);
+          int v = *(int*)(*(int*)(*(int*)(p + 8) + i * 0x30 + 0x28) + j * 0x64 + k * 4);
           if (v) _func_0011B990(v);
         }
       }
-      if (*(int*)(*(int*)(p + 8) + off + 0x28)) _func_00116FB0(*(int*)(*(int*)(p + 8) + off + 0x28));
+      if (*(int*)(*(int*)(p + 8) + i * 0x30 + 0x28)) _func_00116FB0(*(int*)(*(int*)(p + 8) + i * 0x30 + 0x28));
       i++;
-      off += 0x30;
     } while (i < *(unsigned short*)(p + 4));
   }
   _func_00116FB0(*(int*)(p + 8));
