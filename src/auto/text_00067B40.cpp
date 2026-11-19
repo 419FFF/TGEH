@@ -42,6 +42,63 @@ undefined4 func_00068090(int param_1, int param_2)
 
 unsigned char func_000680B0(int p){extern unsigned char D_002F7EF8;int func_00139570(...);int on=D_002F7EF8;if(on)*(int*)(p+0x3c)=1;*(int*)(p+0x38)=1;int a=*(int*)(p+0x14);if(a)*(int*)(p+0x38)=func_00139570(a);if(D_002F7EF8){int b=*(int*)(p+0x18);if(b)*(int*)(p+0x3c)=func_00139570(b);}return 1;}
 
+void func_00068340(char param_1)
+{
+  extern unsigned char D_001E5ECA, D_002F7EF8, D_002F7EF9;
+  extern int D_002F7EEC, D_002F7EF4, D_002F7EF0, D_002F7EFC, D_002F7B04;
+  extern char D_002F7F00;
+  extern unsigned char D_002F7AEC;
+  extern int D_002F7AE0, D_002F7AE4, D_002F7E6C, D_002F7E98, D_002F7E70, D_002F7E9C;
+  extern int D_002F7E60, D_002F7E84, D_002F7E88, D_002F7EB4, D_002F7EE0, D_002F7EB8, D_002F7EE4;
+  extern int D_002F7EA8, D_002F7ECC, D_002F7ED0, D_002F7E68, D_002F7EB0, D_002F7B10, D_002F7B00;
+  extern unsigned char D_002F7E50[];
+  extern char D_001D572C, D_001D5798, D_002F7E58, D_002F7EA0;
+  int func_00136F80(...);
+  int i;
+  if (D_001E5ECA != 0) {
+    D_002F7EF8 = param_1;
+    D_002F7EEC = 0;
+    D_002F7EF4 = 0;
+    D_002F7F00 = 0;
+    D_002F7EF9 = 0;
+    D_002F7EF0 = (param_1 != 0) + 2;
+    D_002F7AE0 = 0;
+    D_002F7AE4 = 0;
+    D_002F7AEC = 1;
+    D_002F7E6C = 0;
+    D_002F7E98 = -1;
+    if (param_1 != 0) {
+      D_002F7E70 = 0;
+      D_002F7E9C = -1;
+    }
+    D_002F7E60 = 0;
+    D_002F7E84 = 0;
+    D_002F7E88 = 0;
+    D_002F7EB4 = 0;
+    D_002F7EE0 = -1;
+    if (param_1 != 0) {
+      D_002F7EB8 = 0;
+      D_002F7EE4 = -1;
+    }
+    i = 0;
+    D_002F7EA8 = 0;
+    D_002F7ECC = 0;
+    D_002F7ED0 = 0;
+    D_002F7E68 = (int)&D_001D572C;
+    D_002F7EB0 = (int)&D_001D5798;
+    D_002F7B10 = (int)&D_002F7E58;
+    D_002F7B00 = (int)&D_002F7EA0;
+    if (D_002F7EF0 > 0) {
+      do {
+        (&D_002F7B04)[i] = func_00136F80();
+        D_002F7E50[i] = 0;
+        i++;
+      } while (i < D_002F7EF0);
+    }
+    D_002F7EFC = 0;
+  }
+}
+
 void func_00068450(void){extern int D_002F7E6C,D_002F7EFC,D_002F7EF0,D_002F7EEC,D_002F7B04;extern unsigned char D_002F7EF8,D_002F7E50[];int func_00139B10(...),func_000688D0(...);int *p=&D_002F7E6C;do{int a=p[0];p[6]=0;if(a)func_00139B10(a);p[11]=-1;p[0]=0;if(D_002F7EF8){int b=p[1];p[7]=0;if(b)func_00139B10(b);p[12]=-1;p[1]=0;}p[-3]=0;p+=0x12;}while((int)p<(int)&D_002F7EFC);int n=D_002F7EF0;D_002F7EEC=0;int i=0;if(n>0){do{func_000688D0(((int*)&D_002F7B04)[i]);D_002F7E50[i]=0;((int*)&D_002F7B04)[i]=0;i++;}while(i<n);}}
 
 void func_00068740(void){extern unsigned char D_001E5ECA,D_002F7F01,D_002F7EF8;extern int D_002F7B10,D_002F7B00;int func_000684F0(...),func_00068100(...),func_00067EF0(...);if(D_001E5ECA){if(D_002F7F01){func_00067EF0(D_002F7B10,0);func_00067EF0(D_002F7B00,0);if(D_002F7EF8){func_00067EF0(D_002F7B10,1);func_00067EF0(D_002F7B00,1);}}else{func_000684F0();func_00068100(D_002F7B10);func_00068100(D_002F7B00);}}}
