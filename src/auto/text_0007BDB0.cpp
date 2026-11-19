@@ -2,6 +2,17 @@
 #include "common.h"
 #include "ghidra.h"
 
+struct S_0007C760 { int *f0; float *f4; int *f8; float *fc; int *f10; float *f14; int *f18; float *f1c; int *f20; float *f24; };
+extern struct S_0007C760 *__cdecl _func_0011CD40(int, int, int, int, int);
+extern float __cdecl _func_00131760(void);
+extern void __cdecl _func_0012EA60(void *);
+extern void __cdecl _func_0011CDF0(int);
+extern void __cdecl _func_0011CE10(int, int);
+extern void __cdecl _func_0011CE20(int, int);
+extern void __cdecl _func_0011CE30(int, int, int);
+extern void __cdecl _func_0011CE50(int, int, int, int, int);
+extern void __cdecl _func_0011CF30(int, int, int);
+
 void func_0007BDB0(void)
 {
   extern undefined4 D_002FA718;
@@ -19,7 +30,27 @@ void func_0007BDB0(void)
 int func_0011E3D0(...);
 int func_000E8390(...);
 int func_0011CFC0(...);
-void func_0007BDD0(void) { extern int D_002FA71C; extern char D_002FA900; extern float D_001D27B8; struct E { int a[3]; float x,y; int z[2]; }; struct E *e=(struct E*)&D_002FA900; int n=D_002FA71C; int i=0; while(i<n) { e[i].y-=e[i].x; if(e[i].y<D_001D27B8) { --D_002FA71C; for(int j=i;j<D_002FA71C;j++) e[j]=e[j+1]; --i; } ++i; } }
+void func_0007BDD0(void) { extern int D_002FA71C; extern char D_002FA900; extern float D_001D27B8; struct E { int a[3]; float x,y; int z[2]; }; struct E *e=(struct E*)&D_002FA900; int n=D_002FA71C; int i=0; while(i<n) { float next=e[i].y-e[i].x; e[i].y=next; if(next<D_001D27B8) { D_002FA71C--; for(int j=i;j<D_002FA71C;j++) ((int*)&e[j])[0]=((int*)&e[j+1])[0],((int*)&e[j])[1]=((int*)&e[j+1])[1],((int*)&e[j])[2]=((int*)&e[j+1])[2],((int*)&e[j])[3]=((int*)&e[j+1])[3],((int*)&e[j])[4]=((int*)&e[j+1])[4],((int*)&e[j])[5]=((int*)&e[j+1])[5],((int*)&e[j])[6]=((int*)&e[j+1])[6]; --i; } ++i; } }
+
+void func_0007C3F0(float scale, unsigned int color, int a, int b) {
+ extern int D_002FA71C;
+ extern unsigned char D_002FA900;
+ extern float D_001D290C;
+ extern float D_001D6008;
+ extern int D_001E4618;
+ extern float D_001D27B0;
+ if (D_002FA71C < 0x20) {
+  char *entry = (char *)&D_002FA900 + D_002FA71C * 0x1c;
+  *(float *)(entry+0x0) = (float)((color >> 16) & 0xff) * D_001D6008;
+  *(float *)(entry+0x4) = (float)((color >> 8) & 0xff) * D_001D6008;
+  *(float *)(entry+0x8) = (float)(color & 0xff) * D_001D6008;
+  *(int *)(entry+0x10) = 0x3f800000;
+  *(float *)(entry+0xc) = D_001D27B0 / ((float)D_001E4618 * scale);
+  *(int *)(entry+0x14) = a;
+  *(int *)(entry+0x18) = b;
+  D_002FA71C++;
+ }
+}
 
 void func_0007C4C0(int p) { extern int D_002FA71C; extern char D_002FA900; extern int D_002FA918; extern int D_001E4618; extern float D_001D290C; extern float D_001D27B0; int i=0; char *q=&D_002FA900; while(i<D_002FA71C) { if(D_002FA918==p) { float f=(float)D_001E4618; if(D_001E4618<0) f+=D_001D290C; *(float*)(q+0xc)=D_001D27B0/f+D_001D27B0/f; return; } ++i; q+=0x1c; } }
 
