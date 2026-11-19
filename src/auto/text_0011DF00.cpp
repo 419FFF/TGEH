@@ -41,6 +41,58 @@ void func_0011E480(int a0, int a1) {
     func_0011DD60(a0, a1, 0, 0);
 }
 
+void func_0011E690(int param_1, char *param_2, char param_3)
+{
+  extern int D_0032924C;
+  int func_0011FF70(...); int func_00115E70(...); int func_001364D0(...);
+  int func_0011BDD0(...); int func_00133F30(...); int func_0013C0F0(...);
+  void func_0012F120(void *);
+  int n;
+  int *p;
+  __declspec(align(16)) char local_50[64];
+
+  if (*(int *)(param_1 + 0x14c) != 0) {
+    if (param_3 != 0) {
+      if (*(int *)(param_1 + 0x120) == 0)
+        return;
+    } else if (*(int *)(param_1 + 0x120) != 0) {
+      func_0011FF70(param_1, param_2);
+      return;
+    }
+    func_0012F120(local_50);
+    if ((*(unsigned char *)(param_1 + 0x154) & 8) != 0) {
+      if (*(int *)(param_1 + 0x158) != 0)
+        func_00115E70(*(int *)(param_1 + 0x158), param_1, param_2);
+      func_001364D0(local_50);
+    } else {
+      if (*(int *)(param_1 + 0x158) != 0)
+        func_00115E70(*(int *)(param_1 + 0x158), param_1, local_50);
+      func_001364D0(param_2);
+    }
+    p = (int *)(param_1 + 0xfc);
+    n = 4;
+    do {
+      if (p[-6] != 0)
+        *p = func_0011BDD0(p[-6], 0);
+      else
+        *p = 0;
+      p++;
+      n--;
+    } while (n != 0);
+    func_00133F30(param_1 + 0xf4);
+    if (*(int *)(param_1 + 0xe4) != 0)
+      *(short *)(*(int *)(param_1 + 0xe4) + 0x2a) -= 1;
+    if (*(int *)(param_1 + 0xe8) != 0)
+      *(short *)(*(int *)(param_1 + 0xe8) + 0x2a) -= 1;
+    if (*(int *)(param_1 + 0xec) != 0)
+      *(short *)(*(int *)(param_1 + 0xec) + 0x2a) -= 1;
+    if (*(int *)(param_1 + 0xf0) != 0)
+      *(short *)(*(int *)(param_1 + 0xf0) + 0x2a) -= 1;
+    D_0032924C = D_0032924C + 1;
+    func_0013C0F0(*(int *)(param_1 + 0xe0), *(int *)(param_1 + 0x14c), *(int *)(param_1 + 0x154), *(int *)(param_1 + 0x150));
+  }
+}
+
 void func_0011E7E0(int param_1)
 {
   int func_00116FB0(...);
