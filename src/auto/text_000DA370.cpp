@@ -1,7 +1,6 @@
 /* 10 functions from 0x000DA370 to 0x000DB0CF, found by Ghidra. */
 #include "common.h"
 #include "ghidra.h"
-#include <string.h>
 
 struct S_000DA370 {
   float unk_0x0, f4, f8, fc;
@@ -236,7 +235,7 @@ void _func_000DAE60(void)
     *(volatile int *)(iVar3 + 0x30) = *(volatile int *)(iVar3 + 0x70);
     *(volatile int *)(iVar3 + 0x34) = *(volatile int *)(iVar3 + 0x74);
     *(volatile int *)(iVar3 + 0x38) = *(volatile int *)(iVar3 + 0x78);
-    func_000D5170(iVar3 - 4, *(volatile int *)(iVar3 - 0x10));
+    func_000D5170((iVar3 + 0x3c) - 0x40, *(volatile int *)(iVar3 - 0x10));
     iVar3 = iVar3 + 0x90;
     iVar2 = iVar2 + -1;
   } while (iVar2 != 0);
