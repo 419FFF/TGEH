@@ -54,6 +54,44 @@ void func_00137A90(int a0, int a1) {
 
 void func_00137AB0(void){extern unsigned char D_00332734;extern int D_00332740,D_0033273C,D_00332738,D_00332744,D_003323A0,D_003326D0,D_003321C0;void __stdcall func_0014DC90(int,int,int,int,int);void func_0014DD80(void);void __stdcall func_0014ADB0(int,int);if(!D_00332734)func_0014DC90(-1,D_00332738,D_0033273C,D_00332740,0x3f800000);else D_00332734=0;func_0014DD80();if(D_00332744>=5){func_0014ADB0(0,(int)&D_003323A0);func_0014ADB0(6,(int)&D_003326D0);func_0014ADB0(1,(int)&D_003321C0);}}
 
+void _func_00137B20(int a, unsigned int n, int *p)
+{
+    extern unsigned char _D_00332734;
+    extern int _D_00332738, _D_0033273C, _D_00332740, _D_00332744;
+    extern char _D_003323A0[], _D_003326D0[], _D_003321C0[];
+    extern void _func_001378E0(int, int);
+    extern void __stdcall _func_0014DC90(int, int, int, int, int);
+    extern void _func_0014DD80(void);
+    extern void __stdcall _func_0014ADB0(int, void*);
+    _func_001378E0(a, 7);
+    if (n > 0) {
+        int *q = p + 10;
+        do {
+            if (_D_00332734 == 0)
+                _func_0014DC90(-1, _D_00332738, _D_0033273C, _D_00332740, 0x3f800000);
+            else
+                _D_00332734 = 0;
+            _D_00332738 = p[0];
+            _D_0033273C = q[-9];
+            _D_00332740 = q[-8];
+            _func_0014DC90(3, q[-2], q[-1], q[0], q[1]);
+            _func_0014DC90(9, q[2], q[3], 0, 0x3f800000);
+            p += 0x18;
+            q += 0x18;
+        } while (--n);
+    }
+    if (_D_00332734 == 0)
+        _func_0014DC90(-1, _D_00332738, _D_0033273C, _D_00332740, 0x3f800000);
+    else
+        _D_00332734 = 0;
+    _func_0014DD80();
+    if (_D_00332744 >= 5) {
+        _func_0014ADB0(0, _D_003323A0);
+        _func_0014ADB0(6, _D_003326D0);
+        _func_0014ADB0(1, _D_003321C0);
+    }
+}
+
 undefined * func_00137C30(int param_1)
 {
   extern undefined D_00332748;
