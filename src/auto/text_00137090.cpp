@@ -32,6 +32,55 @@ unsigned int func_00137870(float a,float b,float c,float d)
  return ((x&255)<<24)|((w&255)<<16)|((y&255)<<8)|(z&255);
 }
 
+extern "C" void *memset(void *, int, unsigned int);
+#pragma intrinsic(memset)
+void func_001378E0(int a, unsigned int b)
+{
+    extern int D_00332744, D_00332248, D_00332200, D_001E82E0, D_001DF790[];
+    extern unsigned char D_00332734;
+    void __stdcall func_0014ADB0(int, void *);
+    void __stdcall func_0014CD60(int, int, int);
+    void __stdcall func_0014D160(int);
+    void __stdcall func_0014DD40(int);
+    unsigned int v;
+    int t;
+    D_00332744 = a;
+    D_00332734 = 1;
+    if (a >= 5) {
+        float m[16];
+        memset(m, 0, sizeof(m));
+        m[0] = 1.0f / 320.0f;
+        m[5] = -1.0f / 240.0f;
+        m[10] = 1.0f;
+        m[12] = -1.0f;
+        m[13] = 1.0f;
+        m[15] = 1.0f;
+        func_0014ADB0(1, m);
+        memset(m, 0, sizeof(m));
+        m[0] = 1.0f;
+        m[5] = 1.0f;
+        m[10] = 1.0f;
+        m[15] = 1.0f;
+        func_0014ADB0(0, m);
+        func_0014ADB0(6, m);
+    }
+    v = (((b & 2) << 4) | (b & 1)) << 1;
+    if (b & 4)
+        v |= 0x100;
+    else if (b & 8)
+        v |= 0x200;
+    t = D_001DF790[a];
+    if (D_00332248 != 0 || D_00332200 != 0) {
+        D_00332248 = 0;
+        D_00332200 = 0;
+        func_0014CD60(0, 0, 0);
+    }
+    if (v != D_001E82E0) {
+        D_001E82E0 = v;
+        func_0014D160(v);
+    }
+    func_0014DD40(t);
+}
 void func_00137A20(void){extern unsigned char D_00332734;extern int D_00332740,D_0033273C,D_00332738;void __stdcall func_0014DC90(int,int,int,int,int);if(!D_00332734)func_0014DC90(-1,D_00332738,D_0033273C,D_00332740,0x3f800000);else D_00332734=0;}
 
 #pragma optimize("", on)
