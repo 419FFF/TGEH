@@ -2,6 +2,33 @@
 #include "common.h"
 #include "ghidra.h"
 
+void func_000F79A0(int param_1)
+{
+  int func_0013F2E9(...);
+  extern char D_001DCFD4, D_001DCFC4, D_001DCFB4, D_001DCFA4, D_001DCF90, D_001DCF80, D_001DCF74, D_001DCF64, D_001DCF58, D_001DCF48, D_001DAE80;
+  extern int D_00313B54;
+  if (func_0013F2E9(*(int *)(param_1 + 0x310), &D_001DCFD4) == 0) {
+    *(char **)(param_1 + 0x314) = &D_001DCFC4;
+  } else if (func_0013F2E9(*(int *)(param_1 + 0x310), &D_001DCFB4) == 0) {
+    *(char **)(param_1 + 0x314) = &D_001DCFC4;
+  } else if (func_0013F2E9(*(int *)(param_1 + 0x310), &D_001DCFA4) == 0) {
+    *(char **)(param_1 + 0x314) = &D_001DCF90;
+  } else if (func_0013F2E9(*(int *)(param_1 + 0x310), &D_001DCF80) == 0) {
+    *(char **)(param_1 + 0x314) = &D_001DCFC4;
+  } else if (func_0013F2E9(*(int *)(param_1 + 0x310), &D_001DCF74) == 0) {
+    *(char **)(param_1 + 0x314) = &D_001DCF64;
+  } else if (func_0013F2E9(*(int *)(param_1 + 0x310), &D_001DCF58) == 0) {
+    *(char **)(param_1 + 0x314) = &D_001DCF48;
+  } else {
+    *(int *)(param_1 + 0x314) = 0;
+  }
+  if (D_00313B54 == 3) {
+    if (func_0013F2E9(*(int *)(param_1 + 0x310), &D_001DAE80) == 0) {
+      *(char **)(param_1 + 0x314) = &D_001DCF64;
+    }
+  }
+}
+
 void func_000F7BE0(int param_1)
 {
   *(undefined4 *)(param_1 + 0x310) = 0;
