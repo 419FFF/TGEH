@@ -5,10 +5,11 @@ struct Obj1D160 {
   char pad0[0x12]; char b12; char pad1[0x19];
   int f2c; char pad2[0xe0]; int f110; char pad3[0xc];
 };
+struct Base1D160 { int w[0x44]; };
 struct Args1D160 { int a, b, c, d; };
 struct Zero1D160 { int x[0x21]; };
 
-unsigned int *func_0001D160(unsigned int *param_1)
+Obj1D160 *func_0001D160(Obj1D160 *param_1)
 {
   int func_00116A90(...);
   int func_0009C7A0(...);
@@ -21,62 +22,57 @@ unsigned int *func_0001D160(unsigned int *param_1)
   extern unsigned int D_00306E54;
   int func_0011DD60(...);
   int func_0001D2D0(...);
-  unsigned int *puVar1;
-  unsigned int *puVar2;
+  Obj1D160 *obj;
+  int *puVar2;
   int *piVar3;
   int uVar4;
-  int iVar5;
   int uVar7;
   int uVar8;
-  int local_a0;
-  int local_9c;
-  int local_98;
-  int local_94;
-  unsigned int local_90[33];
+  int iVar5;
+  Args1D160 a;
 
-  puVar1 = (unsigned int *)func_00116A90(0x120, 1, 1);
-  for (iVar5 = 0; iVar5 < 0x44; iVar5++) puVar1[iVar5] = param_1[iVar5];
-  *(char *)((int)puVar1 + 0x12) = 4;
-  local_a0 = 0;
-  local_9c = 0;
-  local_98 = 0;
-  local_94 = 0;
-  puVar2 = (unsigned int *)func_0009C7A0(puVar1, &D_001D302C, 0);
-  local_a0 = func_001313C0(*puVar2);
-  local_94 = 10;
-  piVar3 = (int *)func_0009C7A0(puVar1, &D_001D301C, 0);
+  obj = (Obj1D160 *)func_00116A90(0x120, 1, 1);
+  *obj = *param_1;
+  obj->b12 = 4;
+  a.a = 0;
+  a.b = 0;
+  a.c = 0;
+  a.d = 0;
+  puVar2 = (int *)func_0009C7A0(obj, &D_001D302C, 0);
+  a.a = func_001313C0(*puVar2);
+  a.d = 10;
+  piVar3 = (int *)func_0009C7A0(obj, &D_001D301C, 0);
   if ((piVar3 != 0) && (*piVar3 == 0x40000000)) {
-    puVar2 = (unsigned int *)func_0009C7A0(puVar1, &D_001D3008, 0);
+    puVar2 = (int *)func_0009C7A0(obj, &D_001D3008, 0);
     uVar4 = *puVar2;
-    local_98 = 0x58;
-    iVar5 = func_000934A0(&D_001D3014, &local_a0);
-    puVar1[0xb] = iVar5;
+    a.c = 0x58;
+    iVar5 = func_000934A0(&D_001D3014, &a);
+    obj->f2c = iVar5;
     if (*(unsigned char *)(iVar5 + 0x22) == D_00306E54) {
       uVar8 = *(int *)(iVar5 + 0x14c);
-      uVar7 = local_a0;
+      uVar7 = a.a;
     } else {
       uVar8 = 0;
       uVar7 = 0;
     }
     uVar4 = func_0011DD60(uVar4, uVar7, iVar5, uVar8);
-    puVar1[0x44] = uVar4;
-    func_000688D0(puVar1[0xb], uVar4);
-    if (puVar1[0x44] != 0) {
-      func_0001D2D0(puVar1);
+    obj->f110 = uVar4;
+    func_000688D0(obj->f2c, uVar4);
+    if (obj->f110 != 0) {
+      func_0001D2D0(obj);
     }
   } else {
-    local_98 = 0x30;
-    uVar4 = func_000934A0(&D_001D3014, &local_a0);
-    puVar1[0xb] = uVar4;
-    for (iVar5 = 0; iVar5 < 0x21; iVar5++) local_90[iVar5] = 0;
-    local_90[0] = local_a0;
-    uVar4 = func_0011E9E0(local_90);
-    puVar1[0x44] = uVar4;
-    func_000688D0(puVar1[0xb], uVar4);
-    func_0001CC10(puVar1);
+    Zero1D160 z;
+    a.c = 0x30;
+    obj->f2c = func_000934A0(&D_001D3014, &a);
+    for (iVar5 = 0; iVar5 < 0x21; iVar5++) z.x[iVar5] = 0;
+    z.x[0] = a.a;
+    obj->f110 = func_0011E9E0(&z);
+    func_000688D0(obj->f2c, obj->f110);
+    func_0001CC10(obj);
   }
-  func_000688D0(puVar1[0xb]);
-  return puVar1;
+  func_000688D0(obj->f2c);
+  return obj;
 }
 
 void func_0001D5C0(int p)
