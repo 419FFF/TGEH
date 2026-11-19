@@ -111,7 +111,6 @@ typedef struct {
 } S_D_002F7E58;
 
 // Global constants and data areas
-extern const char* D_001E5ECA;
 extern void _func_00131990(const char*);
 extern void _func_00067E30();
 extern int _func_00131A10(char buffer[128]);
