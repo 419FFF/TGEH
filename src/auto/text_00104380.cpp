@@ -115,6 +115,12 @@ void func_001052F0(int a) {
     func_00128DB0(0);
 }
 
+void func_00105340(int a, int b) {
+    extern int D_00324BE8;
+    int func_001278C0(...);
+    func_001278C0(D_00324BE8, a, b);
+}
+
 void func_00105360(int p) {
     int func_00110760(...);
     int q = *(int *)(p + 0x2c);
