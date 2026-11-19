@@ -110,3 +110,35 @@ void func_00104190(void)
   return;
 }
 
+void func_00104200(int param_1)
+{
+  extern int D_00324F00[], D_00324F10[], D_00324F20[];
+  extern char D_001D28F0, D_00324F30[];
+  int func_0009C7A0(...);
+  char func_00131A10(...);
+  int func_00124F20(...);
+  void func_001040E0(int, int);
+  char buf[256];
+  unsigned int i;
+  for (i = 0; i < 3; i++) {
+    if (D_00324F00[i] == 0) {
+      D_00324F00[i] = param_1;
+      char **r = (char **)func_0009C7A0(param_1, &D_001D28F0, 0);
+      if (r != 0) {
+        char *name = *r;
+        strcpy(buf, "models/");
+        strcat(buf, name);
+        strcat(buf, "/");
+        strcat(buf, name);
+        strcat(buf, D_00324F30);
+        strcat(buf, ".anm");
+        if (func_00131A10(buf)) {
+          D_00324F20[i] = func_00124F20(D_00324F10[i], buf, 1);
+          func_001040E0(*(int *)(D_00324F00[i] + 0x2c), D_00324F10[i]);
+          return;
+        }
+      }
+    }
+  }
+}
+
