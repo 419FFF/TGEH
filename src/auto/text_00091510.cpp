@@ -1,6 +1,7 @@
 /* 15 functions from 0x00091510 to 0x000924F6, found by Ghidra. */
 #include "common.h"
 #include "ghidra.h"
+static int D_00306E3C;
 
 void __cdecl _func_00091510(int a, int b, int *c, unsigned char d, unsigned char e) { volatile unsigned char local[0x74]; unsigned int i; for(i=0;i<sizeof(local);++i) local[i]=(unsigned char)(a+b+(i%13)); if(c) *c=local[0]; if(d) local[3]=e; }
 
