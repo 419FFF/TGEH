@@ -146,7 +146,6 @@ void func_000920F0(void)
     func_00110480(D_0030809C, D_00306E3C, 8);
     D_00306E38 = 0;
 }
-
 void func_00092220(void)
 {
   int func_001160B0(...);
