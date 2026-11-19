@@ -48,7 +48,8 @@ typedef long (__stdcall *NtQueryFn)(void*, void*, unsigned long, unsigned long, 
 typedef long (__stdcall *NtSetFn)(void*, void*, unsigned long, unsigned long, unsigned long);
 typedef long (__stdcall *NtFlushFn)(void*, void*);
 extern "C" NtQueryFn __imp__NtQueryInformationFile;
-extern NtSetFn __imp__NtSetInformationFile;
+extern "C" NtSetFn __imp__NtSetInformationFile;
+extern void __stdcall func_0010AAA3(long);
 extern NtFlushFn __imp__NtFlushBuffersFile;
 extern void __stdcall _func_0010AAD1(long);
 long __stdcall func_0010BEA9(void *h) {
