@@ -79,3 +79,11 @@ void func_00105270(void) {
     D_00324F80 = 0;
 }
 
+void func_00105280(void) {
+    extern char D_001E5ECB; extern int D_00324BE8;
+    int func_00127460(...);
+    if (D_001E5ECB != 0) {
+        func_00127460(D_00324BE8);
+    }
+}
+
