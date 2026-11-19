@@ -1,6 +1,7 @@
 /* 14 functions from 0x001034C0 to 0x0010437F, found by Ghidra. */
 #include "common.h"
 #include "ghidra.h"
+#include <string.h>
 
 void func_00103960(int param_1, undefined4 param_2, undefined4 param_3)
 {
@@ -25,7 +26,7 @@ void func_00103FA0(void)
   return;
 }
 
-void _func_00103FB0(char *s, char flag, char mode) { extern int D_001DE734,D_001D5784,D_00324EB4,D_00324EB0; extern char D_001DE738,D_001D5788; extern int _func_001392E0(...); char local[128]; char *dst=local; int delta=(int)dst-(int)s; char c; do { c=*s; *(char*)(delta+(int)s)=c; ++s; } while(c); char *p=local; while(*p) ++p; if(mode) { *(int*)p=D_001DE734; p[4]=D_001DE738; } else { *(int*)p=D_001D5784; p[4]=D_001D5788; } D_00324EB0=_func_001392E0(local,D_00324EB4,flag?0x26:0x24,0,0); }
+void _func_00103FB0(char *src, char unused, char mode) { extern int D_001DE734,D_001D5784,D_00324EB4,D_00324EB0; extern char D_001DE738,D_001D5788; extern int _func_001392E0(...); char local[128]; int offset=(int)local-(int)src; char c; do { c=*src; *(char*)(offset+(int)src)=c; ++src; } while(c); register char *p; register char *q; if(mode) { p=local-1; do { q=p; p=q+1; } while(*p); *(int*)p=D_001DE734; p[4]=D_001DE738; } else { p=local-1; do { q=p; p=q+1; } while(*p); *(int*)p=D_001D5784; p[4]=D_001D5788; } int n=0x24; if(mode) n=0x26; D_00324EB0=_func_001392E0(local,D_00324EB4,n,0,0); }
 
 void func_00104050(float param_1)
 {
