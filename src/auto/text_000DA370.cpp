@@ -11,10 +11,6 @@ struct S_000DA370 {
 };
 
 struct M_000DA570 { int v[16]; };
-struct M8_000DAE60 { int v[8]; };
-struct M4_000DAE60 { int v[4]; };
-struct M3_000DAE60 { int v[3]; };
-struct M2_000DAE60 { int v[2]; };
 
 void func_000DA370(void)
 {
