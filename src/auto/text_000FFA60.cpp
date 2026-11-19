@@ -133,6 +133,45 @@ unsigned char func_00100430(int a,int b){int func_0011BDD0(...);float func_00116
 #pragma optimize("", on)
 void func_001004F0(void){extern int D_00324BC0;extern int D_00324BBC;int func_00115D60(...);int local[6];if(D_00324BC0==0){local[1]=0;local[2]=(int)func_00100430;local[3]=0;local[4]=0;local[5]=0;D_00324BBC=func_00115D60(local);}++D_00324BC0;}
 
+int __cdecl func_00100540(int arg)
+{
+    extern unsigned int D_00324AF8;
+    extern int *D_00324968[];
+    int __cdecl func_0013F2E9(int, int);
+    int __cdecl func_000F8810(int);
+    int __cdecl func_00110420(int, int);
+    int __cdecl func_0011BDD0(int, int);
+    int __cdecl func_00110480(int, int, int);
+    int __cdecl func_0009C1F0(int, int);
+    int __cdecl func_0013EB10(int, int, int);
+    unsigned int i, j, k;
+    int *s;
+    int e;
+    int *p;
+    for (i = 0; i < D_00324AF8; i++) {
+        s = D_00324968[i];
+        for (j = 0; j < (unsigned int)s[0x27c / 4]; j++) {
+            if (!func_0013F2E9(*(int *)(*(int *)(s[0x280 / 4] + j * 0x18) + 0x38), arg))
+                break;
+        }
+        if (j < (unsigned int)s[0x27c / 4])
+            break;
+    }
+    e = *(int *)(s[0x280 / 4] + j * 0x18);
+    func_000F8810(e);
+    func_00110420(e, **(int **)(e + 0x2c));
+    p = (int *)func_0011BDD0(*(int *)(e + 0xe0), 1);
+    for (k = 0; k < *(unsigned short *)((char *)p + 4); k++)
+        *(int *)(*(int *)(k * 0x30 + 0x28 + p[2]) + 0x54) = 0;
+    (*(short *)(*(int *)(e + 0xe0) + 0x2a))--;
+    for (k = 0; k < D_00324AF8; k++)
+        func_00110480(*(int *)((char *)D_00324968[k] + 0xe0), e, 8);
+    func_0009C1F0(e, -1);
+    func_0013EB10(s[0x280 / 4] + j * 0x18, s[0x280 / 4] + j * 0x18 + 0x18, (s[0x27c / 4] - j - 1) * 0x18);
+    s[0x27c / 4]--;
+    return e;
+}
+
 #pragma optimize("y", off)
 void func_001006C0(int p){int func_00110060(...);int func_001100A0(...);extern int D_00313B60;int func_0012E650(...);int func_001105E0(...);char buffer[48];int* out;int v[3];func_00110060(p,buffer);func_001100A0(D_00313B60,&out);v[0]=out[12];v[1]=out[13];v[2]=out[14];func_0012E650(v,p+0xc0);func_001105E0(p,buffer,0);}
 #pragma optimize("", on)
