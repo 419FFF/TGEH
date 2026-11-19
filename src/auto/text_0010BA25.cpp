@@ -10,9 +10,42 @@ unsigned int __readfsdword(unsigned long);
 #pragma intrinsic(__readfsdword)
 unsigned int func_0010BA93(void) { return *(unsigned int *)(__readfsdword(0x28) + 0x12c); }
 
+extern "C" __declspec(dllimport) long __stdcall NtWriteFile(void*, void*, void*, void*, void*, void*, unsigned long, void*);
+extern "C" __declspec(dllimport) long __stdcall NtWaitForSingleObject(void*, int, void*);
+int __stdcall func_0010BB8D(void *h, void *buf, unsigned long n, unsigned long *written, unsigned long *ov)
+{
+    unsigned long off[2];
+    unsigned long iosb[2];
+    long status;
+    if (written != 0) *written = 0;
+    if (ov != 0) {
+        off[0] = ov[2];
+        off[1] = ov[3];
+        ov[0] = 0x103;
+        status = NtWriteFile(h, (void*)ov[4], 0, (ov[4] & 1) ? (void*)0 : (void*)ov, ov, buf, n, off);
+        if ((status & 0xc0000000) == 0xc0000000 || status == 0x103) goto fail;
+        if (written != 0) *written = ov[1];
+        return 1;
+    }
+    status = NtWriteFile(h, 0, 0, 0, iosb, buf, n, 0);
+    if (status == 0x103) {
+        status = NtWaitForSingleObject(h, 0, 0);
+        if (status < 0) goto err;
+        status = iosb[0];
+    }
+    if (status >= 0) {
+        *written = iosb[1];
+        return 1;
+    }
+err:
+    if ((status & 0xc0000000) == 0x80000000) *written = iosb[1];
+fail:
+    return 0;
+}
+
 #pragma optimize("y", on)
 typedef long (__stdcall *NtQueryFn)(void*, void*, unsigned long, unsigned long, unsigned long);
-typedef long (__stdcall *NtSetFn)(void*, void*, unsigned long, unsigned long);
+typedef long (__stdcall *NtSetFn)(void*, void*, unsigned long, unsigned long, unsigned long);
 typedef long (__stdcall *NtFlushFn)(void*, void*);
 extern "C" NtQueryFn __imp__NtQueryInformationFile;
 extern NtSetFn __imp__NtSetInformationFile;
