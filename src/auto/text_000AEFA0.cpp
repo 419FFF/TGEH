@@ -221,6 +221,27 @@ void func_000AFB80(void)
   return;
 }
 
+extern "C" char *strcat(char *, const char *);
+extern "C" int func_00126330(char *);
+extern S14 D_001D89B0;
+extern char D_001D89A8[], D_001D89A0[], D_001D8998[], D_001D8990[], D_001D8988[], D_001D8980[];
+extern "C" char *strcpy(char *, const char *);
+#pragma intrinsic(strcat, strcpy)
+void func_000AFB90(char *p)
+{
+  char buf[0x80];
+  strcpy(buf, "abcdefghijklm");
+  strcat(buf, p);
+  switch (D_00313B6C) {
+  case 0: strcat(buf, "abcd"); break;
+  case 1: strcat(buf, "bcde"); break;
+  case 2: strcat(buf, "cdef"); break;
+  case 3: strcat(buf, "defg"); break;
+  case 4: strcat(buf, "efgh"); break;
+  }
+  strcat(buf, "fghi");
+  func_00126330(buf);
+}
 void func_000AFD00(void) {
     int func_001266B0(...);
     func_001266B0();
