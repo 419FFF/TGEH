@@ -2,6 +2,7 @@
 #include "common.h"
 #include "ghidra.h"
 static undefined4 D_002FDDA0;
+struct S856F0 { int unk0; float *a; int unk8; float *b; int unk10; float *c; int unk18; float *d; int unk20; float *e; };
 
 void func_00085870(undefined4 param_1, int param_2)
 {
@@ -109,6 +110,48 @@ void func_00085F80(void)
   return;
 }
 
+void func_00085FA0(int param_1, int param_2, int param_3)
+{
+  int func_0012F120(...);
+  int func_00110420(...);
+  int func_001105E0(...);
+  int func_00110000(...);
+  int func_000F8F40(...);
+  int func_00110480(...);
+  int func_0011CFC0(...);
+  int func_0011DED0(...);
+  extern int D_002FDDA8, D_002FDDAC, D_002FDDB0, D_002FDDB4, D_002FDDA4, D_002FDD9C, D_002FDD98;
+  int iVar1;
+  int iVar2;
+  __declspec(align(16)) char local[64];
+  iVar1 = D_002FDDA4;
+  if (D_002FDD98 != 0) {
+    if (D_002FDD9C != 0) {
+      func_0011CFC0(D_002FDDA4 + 0x54, 0x42480000);
+      D_002FDD9C = 0;
+      *(int *)(iVar1 + 0x178) = 0;
+      return;
+    }
+    return;
+  }
+  func_0012F120(local);
+  if (*(int **)(D_002FDDA0 + 0x2c) != 0) {
+    func_00110420(D_002FDDA0, **(int **)(D_002FDDA0 + 0x2c));
+  }
+  func_001105E0(D_002FDDA0, local, 0);
+  func_00110000(D_002FDDA0);
+  iVar2 = func_000F8F40(*(int *)(param_1 + 0x2c));
+  func_00110480(*(int *)(iVar2 + 0xe0), D_002FDDA0, 8);
+  D_002FDDA8 = param_1;
+  D_002FDDAC = iVar2;
+  D_002FDDB0 = param_2;
+  D_002FDDB4 = param_3;
+  func_0011CFC0(iVar1 + 0x54, 0x42480000);
+  D_002FDD9C = 0;
+  func_0011DED0(D_002FDDA4);
+  D_002FDD98 = 1;
+}
+
 void func_000860B0(void) { extern int D_002FDD9C,D_002FDD98,D_002FDDA4; int func_0011CFC0(...); if(D_002FDD9C==0 && D_002FDD98!=0){ D_002FDD9C=10; func_0011CFC0(D_002FDDA4+0x54,0x3a83126f); } }
 
 void func_000860F0(int p) { extern int D_002FDDBC; int func_00116FB0(...),func_000968D0(...),func_0011B990(...); int x=*(int*)(p+0x108); D_002FDDBC=p; if(x){func_00116FB0(x);p=D_002FDDBC;*(int*)(p+0x108)=0;} x=*(int*)(p+0x10c); if(x){func_00116FB0(x);p=D_002FDDBC;*(int*)(p+0x10c)=0;} func_000968D0(*(int*)(p+0xf8)); int base=D_002FDDBC; x=*(int*)(base+0x110); if(x){*(short*)(x+0x2a)=*(short*)(x+0x2a)-1; x=*(int*)(base+0x110); func_0011B990(x); *(int*)(D_002FDDBC+0x110)=0;} }
@@ -130,4 +173,32 @@ void func_000861A0(void) { extern int D_002FDDBC; extern float D_001D333C; int f
 void func_00086230(int a,int p) { extern int D_002FDDB8; int func_0010F750(...); int r=func_0010F750(*(int*)(p+0xc),D_002FDDB8,0x120); *(int*)(r+0xf4)=p; *(int*)(r+0xe0)=1; *(int*)(r+0xe4)=0; *(int*)(r+0xe8)=1; *(int*)(r+0xec)=0; *(int*)(r+0xf0)=0; }
 
 void func_00086280(int a,int p) { extern int D_002FDDB8; int func_0010F750(...); int r=func_0010F750(*(int*)(p+0xc),D_002FDDB8,0x120); *(int*)(r+0xf4)=p; *(int*)(r+0xe0)=1; *(int*)(r+0xe4)=0; *(int*)(r+0xe8)=0; *(int*)(r+0xec)=1; *(int*)(r+0xf0)=0; }
+
+void func_000862D0(void)
+{
+  extern float D_001E3F94, D_001D27B8, D_0032923C, D_002FDDC4, D_001D31C8, D_001D54D4, D_002FDDC8, D_001D29E0, D_001D27B0, D_001D2868, D_002FDDD0, D_001D2BB4, D_002FDDD4;
+  extern int D_002FDDCC;
+  int func_001313C0(float);
+  long double func_00131230(float);
+  long double func_00131250(float);
+  float fVar2;
+  if (D_001E3F94 < (long double)D_001D27B8) {
+    fVar2 = 0.0f;
+  } else {
+    fVar2 = (long double)D_0032923C - D_001E3F94;
+    D_002FDDC4 = (long double)fVar2 * D_001D31C8 + D_002FDDC4;
+    if (D_001D54D4 <= (long double)D_002FDDC4) {
+      D_002FDDC4 = (long double)D_002FDDC4 - D_001D54D4;
+    }
+  }
+  D_001E3F94 = D_0032923C;
+  D_002FDDCC = func_001313C0(D_002FDDC4);
+  D_002FDDC8 = (long double)fVar2 * D_001D29E0 + D_002FDDC8;
+  if (D_001D27B0 < (long double)D_002FDDC8) {
+    D_002FDDC8 = (long double)D_002FDDC8 - D_001D27B0;
+  }
+  fVar2 = D_002FDDC8;
+  D_002FDDD0 = func_00131230((long double)D_002FDDC8 * D_001D2868) * D_001D2BB4;
+  D_002FDDD4 = func_00131250((long double)fVar2 * D_001D2868) * D_001D2BB4;
+}
 
