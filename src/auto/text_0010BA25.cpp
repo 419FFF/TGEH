@@ -4,6 +4,7 @@ extern "C" __declspec(dllimport) int __stdcall XeLoadSection(int);
 extern "C" __declspec(dllimport) int __stdcall XeUnloadSection(int);
 
 #include <string.h>
+union LI64 { struct { unsigned long lo; long hi; } p; long long q; };
 typedef long (__stdcall *NtQueryFn)(void*, void*, unsigned long, unsigned long, unsigned long);
 typedef long (__stdcall *NtSetFn)(void*, void*, unsigned long, unsigned long, unsigned long);
 extern "C" NtQueryFn __imp__NtQueryInformationFile;
@@ -47,6 +48,49 @@ err:
     if ((status & 0xc0000000) == 0x80000000) *written = iosb[1];
 fail:
     return 0;
+}
+
+unsigned long __stdcall func_0010BCE7(void *h, long off, long *hiPtr, int method)
+{
+    unsigned long iosb[2];
+    unsigned long long pos;
+    unsigned long info[14];
+    long long off64;
+    long status;
+    if (hiPtr != 0) off64 = ((unsigned long long)(unsigned long)*hiPtr << 32) | (unsigned long)off;
+    else off64 = off;
+    if (method == 0) {
+        pos = off64;
+    } else {
+        if (method == 2) {
+            status = __imp__NtQueryInformationFile(h, iosb, (unsigned long)info, 0x38, 0x22);
+            pos = *(unsigned long long*)&info[10];
+        } else {
+            status = __imp__NtQueryInformationFile(h, iosb, (unsigned long)&pos, 8, 0xe);
+        }
+        if (status < 0) {
+            _func_0010AAD1(status);
+            return 0xffffffff;
+        }
+        pos += off64;
+    }
+    if ((long)(pos >> 32) < 0) {
+        func_0010AAA3(0x83);
+        return 0xffffffff;
+    }
+    if (hiPtr == 0 && ((pos >> 32) & 0x7fffffff) != 0) {
+        func_0010AAA3(0x57);
+        return 0xffffffff;
+    }
+    status = __imp__NtSetInformationFile(h, iosb, (unsigned long)&pos, 8, 0xe);
+    if (status < 0) {
+        _func_0010AAD1(status);
+        if (hiPtr != 0) *hiPtr = -1;
+        return 0xffffffff;
+    }
+    if (hiPtr != 0) *hiPtr = (long)(pos >> 32);
+    if ((unsigned long)pos == 0xffffffff) func_0010AAA3(0);
+    return (unsigned long)pos;
 }
 
 #pragma optimize("y", on)
