@@ -1,6 +1,7 @@
 /* 17 functions from 0x00081DC0 to 0x00082CBB, found by Ghidra. */
 #include "common.h"
 #include "ghidra.h"
+static int D_002FBB18;
 
 void _func_00081F60(void)
 {
