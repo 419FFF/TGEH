@@ -13,13 +13,13 @@ void func_000E1F20(char *p)
 {
     char *g = (char *)D_00322478;
     V4_E1F20 v;
-    char buf[76];
+    char buf[64];
     char c;
     v.w = 0x3f800000;
     p[0x126] = (p[0x126] + 1) % p[0x127];
     c = p[p[0x126] + 0x120];
     if (c == 0) {
-        v = *(V4_E1F20 *)(g + 0x20bc);
+        v.x = *(int *)(g + 0x20bc); v.y = *(int *)(g + 0x20c0); v.z = *(int *)(g + 0x20c4); v.w = *(int *)(g + 0x20c8);
     } else if (c < 0x1a) {
         v = *(V4_E1F20 *)(g + c * 0x130 - 0xe0);
     } else if (c == 0x1b) {
