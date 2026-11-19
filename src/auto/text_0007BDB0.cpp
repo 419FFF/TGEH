@@ -5,7 +5,7 @@
 struct S_0007C760 { int *f0; float *f4; int *f8; float *fc; int *f10; float *f14; int *f18; float *f1c; int *f20; float *f24; };
 extern struct S_0007C760 *__cdecl _func_0011CD40(int, int, int, int, int);
 extern float __cdecl _func_00131760(void);
-extern void __cdecl _func_0012EA60(void *);
+extern float __cdecl _func_0012EA60(void *);
 extern void __cdecl _func_0011CDF0(int);
 extern void __cdecl _func_0011CE10(int, int);
 extern void __cdecl _func_0011CE20(int, int);
@@ -75,6 +75,47 @@ void func_0007C750(void) {
     extern int D_001D6654;
     int func_0011D0E0(...);
     func_0011D0E0((int)&D_001D6654);
+}
+
+extern float D_001D27B0, D_001D2B64;
+extern void __cdecl _func_0011CFC0(int, int);
+void __cdecl _func_0007C760(struct S_0007C760 **param_1, int param_2)
+{
+  unsigned int i;
+  *param_1 = _func_0011CD40(10, 1, 1, 1, 1);
+  i = 0;
+  do {
+    float *p;
+    *(float *)((char *)(*param_1)->f4 + i) = (float)(_func_00131760() * 2 - D_001D27B0);
+    *(int *)((char *)(*param_1)->f4 + i + 4) = 0;
+    *(float *)((char *)(*param_1)->f4 + i + 8) = (float)(_func_00131760() * 2 - D_001D27B0);
+    _func_0012EA60((char *)(*param_1)->f4 + i);
+    p = (float *)((char *)(*param_1)->f4 + i);
+    *p = _func_00131760() * *p * D_001D2B64;
+    p = (float *)((char *)(*param_1)->f4 + i + 8);
+    *p = _func_00131760() * *p * D_001D2B64;
+    i += 12;
+  } while (i < 0x78);
+  (*param_1)->fc[0] = 0;
+  *(int *)&(*param_1)->fc[1] = 0x3e4ccccd;
+  *(int *)&(*param_1)->fc[2] = 0x3ecccccd;
+  *(int *)&(*param_1)->f14[0] = 0x3f800000;
+  *(int *)&(*param_1)->f14[1] = 0x3f800000;
+  *(int *)&(*param_1)->f14[2] = 0;
+  *(int *)&(*param_1)->f14[3] = 0x3ecccccd;
+  *(int *)&(*param_1)->f1c[0] = 0x41700000;
+  *(int *)&(*param_1)->f1c[1] = 0x41700000;
+  *(int *)&(*param_1)->f24[0] = 0;
+  *(int *)&(*param_1)->f24[1] = 0;
+  *(int *)&(*param_1)->f24[2] = 0x3f800000;
+  *(int *)&(*param_1)->f24[3] = 0x3f800000;
+  _func_0011CDF0(param_2);
+  _func_0011CE10(param_2, 0);
+  _func_0011CE20(param_2, 0);
+  _func_0011CE30(param_2, 0x442f0000, 0x44480000);
+  _func_0011CE50(param_2, 0, 0xbf19999a, 0, 0xbe800000);
+  _func_0011CF30(param_2, 0x42700000, 0x42700000);
+  _func_0011CFC0(param_2, 0);
 }
 
 void func_0007C8E0(int param_1, int param_2)
