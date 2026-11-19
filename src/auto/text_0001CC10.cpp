@@ -6,7 +6,7 @@ struct Obj1D160 {
   int f2c; char pad2[0xe0]; int f110; char pad3[0xc];
 };
 struct Base1D160 { int w[0x44]; };
-struct Args1D160 { int a, b, c, d; };
+struct Args1D160 { int a, b, c, d; double e; };
 struct Zero1D160 { int x[0x21]; };
 
 Obj1D160 *func_0001D160(Obj1D160 *param_1)
@@ -32,7 +32,7 @@ Obj1D160 *func_0001D160(Obj1D160 *param_1)
   Args1D160 a;
 
   obj = (Obj1D160 *)func_00116A90(0x120, 1, 1);
-  *obj = *param_1;
+  *(Base1D160 *)obj = *(Base1D160 *)param_1;
   obj->b12 = 4;
   a.a = 0;
   a.b = 0;
