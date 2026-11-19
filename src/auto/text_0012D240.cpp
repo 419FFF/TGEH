@@ -7,7 +7,7 @@ struct Sub { char pad[0x18]; int tex; char pad2[0x1c]; };
 struct Blk { char pad[0x18]; unsigned int n; Sub *subs; char pad2[0x130 - 0x20]; };
 struct Hdr {
   Row *rows; Blk *blks; char pad[0x10]; short ncols; char pad2[6]; unsigned int nrows;
-  short nblks; unsigned char fl; unsigned char fl2;
+  short nblks; unsigned short fl;
 };
 
 Hdr * __cdecl _func_0012DE60(int f)
