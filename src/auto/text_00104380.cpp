@@ -54,6 +54,14 @@ void func_00104610(void)
     }
 }
 
+void func_00104AB0(void) {
+    extern int D_00324F1C; extern int D_00324F70; extern int D_00324EB8; extern int D_00324F2C; extern int D_00324F0C; extern int D_00324EBC; extern int D_00324F00; extern int D_00324F04; extern int D_00324F08; extern int D_00324F10; extern int D_00324F14; extern int D_00324F18; extern int D_00324F20; extern int D_00324F74;
+    int func_00124F00(...); int func_00136F80(...);
+    D_00324F1C=0;D_00324F70=0;D_00324EB8=0;D_00324F2C=0;D_00324F0C=0;D_00324EBC=-1;D_00324F00=0;D_00324F04=0;D_00324F08=0;
+    D_00324F10=func_00124F00();D_00324F14=func_00124F00();D_00324F18=func_00124F00();
+    D_00324F20=0;D_00324F2C=0;D_00324F74=func_00136F80();
+}
+
 void func_00105270(void) {
     extern int D_00324F80;
     D_00324F80 = 0;
