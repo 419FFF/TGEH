@@ -37,4 +37,68 @@ extern int __cdecl func_00102E80(int);
 extern int __cdecl func_00103990(int,int);
 #pragma optimize("y", off)
 void func_0003EC00(unsigned char *a, unsigned char *p) { volatile char local[0x214]; int state=*(int*)(p+0x310); if(state==0){if(a[0x174]){_D_00311548=0;func_000860B0();}} if(state==1){int x=*(int*)(p+0x214);if((*(unsigned char*)(x+0x20)&1)==0&&func_000A1EE0(*(int*)(p+0x2b8))<_D_001D31CC){func_00110330(x,0);func_00110330(*(int*)(p+0x218),0);}if(a[0x174]){_D_00311548=0;func_000860B0();func_00110330(x,0);func_00110330(*(int*)(p+0x218),0);int q=func_001031C0(_D_00307DF8,&_D_001D486C);if(!func_00103130(q)){func_00102E80(q);q=func_001031C0(_D_00307DF8,&_D_001D4858);if(q)func_00103990(q,0);}}}if(state==2&&!func_000A1F50(*(int*)(p+0x2b8)))*(int*)p=2;local[29]=0;}
+
+#pragma optimize("y", on)
+void func_0003F820(int param_1, int *param_2)
+{
+    extern char D_001D2B50, D_001D2B20, D_001D44F8, D_002EDCD0;
+    int func_00036970(...);
+    int func_00036B00(...);
+    int func_0009CC90(...);
+    int func_0002D450(...);
+    int func_0003AC60(...);
+    int func_0009C6A0(...);
+    int func_0009D3E0(...);
+    int func_000A2990(...);
+    int func_00101970(...);
+    int func_00110330(...);
+    int *p;
+    int iVar1;
+
+    switch (*param_2) {
+    case 0x19:
+        p = (int *)(func_0009CC90(param_1, &D_001D2B50) + 0x48);
+        *(int *)(param_1 + 0xe8) = p[0];
+        *(int *)(param_1 + 0xec) = p[1];
+        *(int *)(param_1 + 0xf0) = p[2];
+        return;
+    case 0x28:
+        *((char *)param_2 + 0x1a1) = 0;
+        return;
+    case 0x15:
+        func_00036970(param_1, param_2);
+        *param_2 = 2;
+        return;
+    case 0x17:
+        func_00036B00(param_1, param_2);
+        return;
+    case 0x3a:
+    case 0x3b:
+    case 0x3c:
+    case 0x3d:
+        iVar1 = func_0009C6A0(param_1, &D_001D2B20);
+        if (*(char *)(iVar1 + 0x15) != 0x1d) {
+            func_0009D3E0(iVar1);
+            return;
+        }
+        break;
+    case 0x31:
+        func_0003AC60(param_1);
+        return;
+    case 0x2c:
+    case 0x2d:
+        func_0002D450(&D_001D44F8);
+        return;
+    case 0x58:
+        func_00110330(param_2[0x85], 0);
+        func_00110330(param_2[0x86], 0);
+        return;
+    case 0x3f:
+        func_000A2990(0);
+        D_002EDCD0 = 0;
+        func_00101970(0);
+        break;
+    }
+}
+
 #pragma optimize("", on)
