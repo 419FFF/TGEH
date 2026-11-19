@@ -4,13 +4,12 @@
 
 void func_00078F40(void)
 {
- extern float _D_002FA680,_D_001D4F8C,_D_002FA684;
- extern int _D_001D64F8;
+ extern float _D_002FA680,_D_001D4F8C,_D_002FA684; extern int _D_001D64F8;
  int func_00103210(...),func_00103990(...);
  _D_002FA680 += _D_001D4F8C;
  if (_D_002FA680 < _D_002FA684) return;
- do { _D_002FA680 -= _D_002FA684; } while (_D_002FA680 >= _D_002FA684);
- _D_002FA680 = _D_002FA684;
+ while (_D_002FA680 >= _D_002FA684) _D_002FA680 -= _D_002FA684;
+ if (_D_002FA680 >= _D_002FA684) _D_002FA680 = _D_002FA684;
  func_00103990(func_00103210(_D_001D64F8),0);
 }
 
@@ -62,7 +61,11 @@ void func_00078FA0(int *param_1, undefined4 param_2)
   return;
 }
 
-void func_000790E0(int a0) { extern void func_0011DEF0(...); func_0011DEF0(a0); }
+void func_000790E0(int a0) { 
+    extern void func_0011DEF0(...);
+    __pragma(comment(linker, "/OPT:NOREF"))
+    func_0011DEF0(a0);
+}
 
 extern int _D_001D2F4C;
 extern int __cdecl _func_0011D000(int*, void (*)(void));
@@ -108,13 +111,17 @@ void func_00079470(int param_1, int param_2)
   return;
 }
 
-void func_000794C0(int a,void *b,int *p)
+void func_000794C0(void *a,void *b,void *p)
 {
  extern float _D_001E461C; extern float _D_001D650C;
  int func_0011E3D0(...),func_0011CFC0(...);
- int *o=(int *)((char *)a+0x17c); func_0011E3D0(b); o[5]=o[4];
- *(float *)(o+4)+=_D_001E461C;
- if(*(float *)((char *)p+0x34)<_D_001D650C)func_0011CFC0((char *)a+0x54,0);else func_0011CFC0((char *)a+0x54,20.0f);
+ unsigned char *base=(unsigned char *)a;
+ func_0011E3D0(a);
+ unsigned char *o=*(unsigned char **)(base+0x17c);
+ int v=*(int *)(o+0x10); *(int *)(o+0x14)=v;
+ *(float *)(o+0x10)=*(float *)(o+0x10)+_D_001E461C;
+ if (*(float *)((unsigned char *)p+0x34) > _D_001D650C) func_0011CFC0(base+0x54,20.0f);
+ else func_0011CFC0(base+0x54,0);
 }
 
 void func_00079520(void) {
@@ -168,6 +175,58 @@ void func_00079990(void) {
     func_0011D0E0((int)&D_001D651C);
 }
 
+void _func_000799A0(int *param_1, undefined4 param_2)
+{
+  int func_0011CD40(...);
+  int func_0011CDF0(...);
+  int func_0011CE10(...);
+  int func_0011CE20(...);
+  int func_0011CE30(...);
+  int func_0011CE50(...);
+  int func_0011CF30(...);
+  int func_0011CFC0(...);
+  float func_00131760(...);
+  float func_0012EA60(...);
+  extern float D_001D27B0;
+  extern float D_001D2B64;
+  unsigned int i;
+  float f;
+
+  *param_1 = func_0011CD40(10, 1, 1, 1, 1);
+  i = 0;
+  do {
+    f = func_00131760();
+    *(float *)(i + *(int *)(*param_1 + 4)) = f + f - D_001D27B0;
+    *(undefined4 *)(*(int *)(*param_1 + 4) + 4 + i) = 0;
+    f = func_00131760();
+    *(float *)(*(int *)(*param_1 + 4) + 8 + i) = f + f - D_001D27B0;
+    func_0012EA60((float *)(*(int *)(*param_1 + 4) + i));
+    *(float *)(*(int *)(*param_1 + 4) + i) = func_00131760() * *(float *)(*(int *)(*param_1 + 4) + i) * D_001D2B64;
+    *(float *)(*(int *)(*param_1 + 4) + 8 + i) = func_00131760() * *(float *)(*(int *)(*param_1 + 4) + 8 + i) * D_001D2B64;
+    i += 0xc;
+  } while (i < 0x78);
+  **(undefined4 **)(*param_1 + 0xc) = 0;
+  *(undefined4 *)(*(int *)(*param_1 + 0xc) + 4) = 0x3f800000;
+  *(undefined4 *)(*(int *)(*param_1 + 0xc) + 8) = 0;
+  **(undefined4 **)(*param_1 + 0x14) = 0x3f000000;
+  *(undefined4 *)(*(int *)(*param_1 + 0x14) + 4) = 0x3f000000;
+  *(undefined4 *)(*(int *)(*param_1 + 0x14) + 8) = 0x3f000000;
+  *(undefined4 *)(*(int *)(*param_1 + 0x14) + 0xc) = 0x3f800000;
+  **(undefined4 **)(*param_1 + 0x1c) = 0x3f000000;
+  *(undefined4 *)(*(int *)(*param_1 + 0x1c) + 4) = 0x3f000000;
+  **(undefined4 **)(*param_1 + 0x24) = 0;
+  *(undefined4 *)(*(int *)(*param_1 + 0x24) + 4) = 0;
+  *(undefined4 *)(*(int *)(*param_1 + 0x24) + 8) = 0x3f800000;
+  *(undefined4 *)(*(int *)(*param_1 + 0x24) + 0xc) = 0x3f800000;
+  func_0011CDF0(param_2);
+  func_0011CE10(param_2, 0);
+  func_0011CE20(param_2, 0);
+  func_0011CE30(param_2, 0x41c80000, 0x41f00000);
+  func_0011CE50(param_2, 0, 0, 0, 0xbf4ccccd);
+  func_0011CF30(param_2, 0x40600000, 0x41480000);
+  func_0011CFC0(param_2, 0x41200000);
+}
+
 void _func_00079B10(void)
 {
   extern int D_001D6528;
@@ -205,6 +264,21 @@ void func_00079D10(void *a)
  extern void func_00116FB0(...);
  func_0011DEF0(a);
  func_00116FB0(*(int *)((unsigned char *)a+0x17c));
+}
+
+void func_00079D30(void *a,void *b,void *p)
+{
+ extern float _D_001D6534,_D_001D2A2C;
+ int func_0011E3D0(...),func_0012E7B0(...),func_0011CFC0(...);
+ unsigned char *base=(unsigned char *)a,*q=(unsigned char *)p;
+ func_0011E3D0(a);
+ unsigned char *o=*(unsigned char **)(base+0x17c);
+ float d=func_0012E7B0(o+4,q+0x30);
+ if (*(float *)(q+0x34) > _D_001D6534) func_0011CFC0(base+0x54,0);
+ else func_0011CFC0(base+0x54,d*_D_001D2A2C);
+ *(int *)(o+4)=*(int *)(q+0x30);
+ *(int *)(o+8)=*(int *)(q+0x34);
+ *(int *)(o+0xc)=*(int *)(q+0x38);
 }
 
 void func_00079DB0(void) {
