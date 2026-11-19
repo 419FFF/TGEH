@@ -110,7 +110,7 @@ void func_001052F0(int a) {
     func_00128DB0(1);
     func_00131990(D_001E46C0);
     D_00324BE8 = func_00127200(a);
-    *(float *)(D_00324BE8 + 0x15c) = (float)((double)D_00324D20 * (double)D_00324D10);
+    *(float *)(D_00324BE8 + 0x15c) = (float)((double)D_00324D10 * (double)D_00324D20);
     func_00131990(&D_001D29C7);
     func_00128DB0(0);
 }
