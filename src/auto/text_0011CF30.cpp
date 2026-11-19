@@ -1,5 +1,6 @@
 /* 18 functions from 0x0011CF30 to 0x0011DEFC, found by Ghidra. */
 #include "common.h"
+struct Blob108 { int d[0x42]; };
 #include "ghidra.h"
 
 void func_0011CF80(int param_1, float param_2)
