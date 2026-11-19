@@ -5,7 +5,7 @@
 struct Grp118 { unsigned int n; int a; char pad[0x20]; int *c; int d; };
 struct Ent118 { int obj; int flags; char pad[0xb0]; };
 struct Blk118 { int w[46]; };
-struct Tab118 { unsigned int n; unsigned short cnt; unsigned short pad; int u8; int uc; Blk118 *ents; };
+struct Tab118 { unsigned int n; short cnt; unsigned short pad; int u8; int uc; Blk118 *ents; };
 extern "C" void *memcpy(void *, const void *, unsigned int);
 #pragma intrinsic(memcpy)
 extern int D_001DF278;
