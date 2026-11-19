@@ -1,5 +1,6 @@
 /* 21 functions from 0x0009C590 to 0x0009D51A, found by Ghidra. */
 #include "common.h"
+#include <string.h>
 
 extern char D_0030C178[];
 char *_func_0009C7A0(int p, int q)
