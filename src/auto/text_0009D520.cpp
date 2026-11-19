@@ -43,6 +43,30 @@ void _func_0009D620(int p)
     }
 }
 
+void _func_0009D8D0(int p)
+{
+    int _func_000F9610(...);
+    char buf[256];
+    unsigned int i;
+    char *q;
+    int n;
+    strcpy(buf, *(char **)(p + 0xc));
+    strcat(buf, ".");
+    for (i = *(unsigned short *)(p + 0x54) + 1; i < (unsigned int)_D_003104B4; i++) {
+        q = (char *)_D_0030C630[i];
+        if (q != 0) {
+            n = strlen(buf);
+            if (_func_0011B530(*(char **)(q + 0xc), buf, n) == 0 &&
+                _func_0013E600(*(char **)(q + 0xc) + n, ".") == 0) {
+                _func_0009D8D0(_D_0030C630[i]);
+            } else if (_func_0011B530(*(char **)(_D_0030C630[i] + 0xc), buf, strlen(buf)) != 0) {
+                break;
+            }
+        }
+    }
+    _func_000F9610(*(int *)(p + 0x2c));
+}
+
 undefined4 func_0009DAC0(int param_1)
 {
   undefined4 *puVar1;
