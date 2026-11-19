@@ -87,3 +87,9 @@ void func_00105280(void) {
     }
 }
 
+void func_00105360(int p) {
+    int func_00110760(...);
+    int q = *(int *)(p + 0x2c);
+    if (q) func_00110760(q);
+}
+
