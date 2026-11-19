@@ -104,6 +104,17 @@ void func_001052C0(void) {
     }
 }
 
+void func_001052F0(int a) {
+    int func_00128DB0(...); int func_00131990(...); int func_00127200(...);
+    extern int D_001E46C0; extern int D_00324BE8; extern float D_00324D20; extern float D_00324D10; extern char D_001D29C7;
+    func_00128DB0(1);
+    func_00131990(D_001E46C0);
+    D_00324BE8 = func_00127200(a);
+    *(float *)(D_00324BE8 + 0x15c) = (float)((double)D_00324D20 * (double)D_00324D10);
+    func_00131990(&D_001D29C7);
+    func_00128DB0(0);
+}
+
 void func_00105360(int p) {
     int func_00110760(...);
     int q = *(int *)(p + 0x2c);
