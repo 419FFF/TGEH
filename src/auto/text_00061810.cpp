@@ -15,6 +15,34 @@ void func_00061E60(void) {
 
 void _func_00061E90(void){extern int D_00307DF8;unsigned char _func_00061B20(...);int _func_0005CCC0(...);switch(**(int**)(D_00307DF8+0x110)){case 2:case 3:case 16:case 17:case 18:case 19:if(_func_00061B20())_func_0005CCC0(4);return;default:_func_0005CCC0(4);return;}}
 
+#pragma optimize("y", on)
+void _func_00061EF0(void)
+{
+  extern int D_00307DF8, D_00313B60;
+  extern char D_001D5450, D_001D5448;
+  int _func_00110060(...), _func_00115100(...), _func_00115170(...), _func_0012F250(...), _func_0009C590(...);
+  int _func_00130620(...), _func_001105E0(...), _func_0005CCC0(...);
+  int uVar1, iVar2;
+  int a[4], b[4];
+  __declspec(align(16)) int m0[16];
+  int m2[16];
+  int m1[16];
+  int m3[16];
+  _func_00110060(*(int *)(D_00307DF8 + 0x2c), m0);
+  uVar1 = _func_00115100(*(int *)(D_00307DF8 + 0x98), &D_001D5450);
+  _func_00115170(*(int *)(D_00307DF8 + 0x98), uVar1, m3);
+  _func_0012F250(m1, m3, m0);
+  iVar2 = _func_0009C590(&D_001D5448);
+  _func_00110060(*(int *)(iVar2 + 0x2c), m2);
+  a[0] = m1[12]; a[1] = m1[13]; a[2] = m1[14]; a[3] = 0x3f800000;
+  b[0] = m2[12]; b[1] = m2[13]; b[2] = m2[14]; b[3] = 0x3f800000;
+  _func_00130620(m0, a, b, 0);
+  m0[12] = a[0]; m0[13] = a[1]; m0[14] = a[2];
+  m0[3] = 0; m0[7] = 0; m0[11] = 0; m0[15] = 0x3f800000;
+  _func_001105E0(D_00313B60, m0, 0);
+  _func_0005CCC0(4);
+}
+#pragma optimize("", on)
 void _func_00062040(void){extern float D_002EF498,D_002EF49C;extern int D_002EF4A0,D_002EF4A4,D_002EF454,D_002EF458,D_002EF45C,D_002EF460;extern int D_002EF424,D_002EF434,D_002EF444,D_002EF484;void _func_00061CA0(...);_func_00061CA0(&D_002EF484,&D_002EF444,0,&D_002EF434,&D_002EF424,0);D_002EF454=D_002EF498;D_002EF458=D_002EF49C;D_002EF498=D_002EF454;D_002EF49C=D_002EF458;D_002EF4A0=D_002EF45C;D_002EF4A4=D_002EF460;D_002EF45C=D_002EF4A0;D_002EF460=D_002EF4A4;}
 
 void _func_000620E0(void)
