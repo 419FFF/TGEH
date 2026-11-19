@@ -1,5 +1,7 @@
 /* 21 functions from 0x0011BF40 to 0x0011CF22, found by Ghidra. */
 #include "common.h"
+
+struct V3i { int x, y, z; };
 #include "ghidra.h"
 
 void func_0011C340(void)
@@ -56,6 +58,49 @@ void func_0011C3E0(int *param_1)
 
 void func_0011C410(unsigned int *param_1, unsigned int *param_2, unsigned int param_3) { unsigned int old = *param_1; *param_2 = old; param_2[1] = param_3; *param_1 = (unsigned int)param_2; }
 
+extern void* D_003281D0;
+void* func_0010F750(int, void*, int);
+void* func_00116A90(unsigned, int, int);
+char* _func_0011C430(unsigned n, int** src, int arg)
+{
+  char* obj = (char*)func_0010F750(arg, D_003281D0, 0xf0);
+  *(unsigned*)(obj + 0xe0) = n;
+  *(char**)(obj + 0xe4) = (char*)func_00116A90(n * 0x18, 1, 1);
+  if (n > 0) {
+    int off = 0;
+    unsigned left = n;
+    do {
+      int* s = *src;
+      int* d = (int*)(*(char**)(obj + 0xe4) + off + 4);
+      d[0] = s[1];
+      d[1] = s[2];
+      d[2] = s[3];
+      *(int*)(*(char**)(obj + 0xe4) + off) = **src;
+      *(void**)(*(char**)(obj + 0xe4) + off + 0x14) = func_00116A90(**src << 4, 1, 1);
+      unsigned i = 0;
+      int* p = *src;
+      if (i < (unsigned)*p) {
+        unsigned o = 0;
+        do {
+          int* sv = (int*)(p[5] + o);
+          int* dv = (int*)(*(char**)(*(char**)(obj + 0xe4) + off + 0x14) + o);
+          dv[0] = sv[0];
+          dv[1] = sv[1];
+          dv[2] = sv[2];
+          dv[3] = sv[3];
+          p = *src;
+          i++;
+          o += 0x10;
+        } while (i < (unsigned)*p);
+      }
+      off += 0x18;
+      src++;
+      left--;
+    } while (left != 0);
+  }
+  return obj;
+}
+
 void func_0011C540(int param_1)
 {
   int func_00116FB0(...);
@@ -76,6 +121,8 @@ void func_0011C540(int param_1)
 }
 
 void func_0011C590(unsigned int x) { extern unsigned int D_003280B8; extern unsigned int D_003280CC[256], D_003280D0[256], D_003278B0[]; unsigned int i=D_003280B8; if(i>x){for(;;){unsigned int *p=(unsigned int*)((char*)D_003278B0+i*16);p[2]=p[-2];p[3]=p[-1];p[4]=p[0];p[5]=p[1];D_003280D0[i]=D_003280CC[i];i--;if(i<=x)break;}}D_003280B8=i+1;}
+
+void func_0011C710(int i, int a, int b) { extern float D_003280D0[], D_001DF648, D_001D27B8, D_001D27B0; extern float D_003278B8[][4]; float d=D_003280D0[a]-D_003280D0[b]; float t=D_001D27B8; if(D_001DF648<=d){ float r=D_003280D0[a]/d; if(D_001D27B8<=r){ t=r; if(D_001D27B0<r)t=D_001D27B0; } } D_003280D0[i]=0; D_003278B8[i][0]=(D_003278B8[b][0]-D_003278B8[a][0])*t+D_003278B8[a][0]; D_003278B8[i][1]=(D_003278B8[b][1]-D_003278B8[a][1])*t+D_003278B8[a][1]; D_003278B8[i][2]=(D_003278B8[b][2]-D_003278B8[a][2])*t+D_003278B8[a][2]; }
 
 undefined4 func_0011C7E0(int param_1)
 {
@@ -178,4 +225,48 @@ void func_0011CE20(int param_1, float param_2)
 }
 
 void func_0011CE30(int p,float a,float b) { double x=a; *(float*)(p+0xc)=(float)x; double z=b; *(float*)(p+0x10)=(float)(z-(double)a); }
+
+void _func_0011CE50(int param_1, float param_2, float param_3, float param_4, float param_5)
+{
+  // Assuming D_001D27B8 is available globally.
+  float fGlobal = 1.0f; // Placeholder for the global read value
+
+  uint uVar2 = *(uint *)(param_1 + 0x14);
+  
+  // Store parameters (assuming param_1 points to a structure)
+  *(float *)(param_1 + 0x18) = param_2;
+  *(float *)(param_1 + 0x1c) = param_3;
+  *(float *)(param_1 + 0x24) = param_5;
+  *(float *)(param_1 + 0x20) = param_4;
+
+  uVar2 = *(uint *)(param_1 + 0x14); // Re-read original value
+  
+  // Check 1: fcomp st, dword ptr [_D_001D27B8] vs param_2 (float) -> Bit 1 set if fGlobal < param_2
+  if (fGlobal < param_2) {
+    uVar2 |= 1;
+  }
+  
+  // Check 2: fcomp st, dword ptr [_D_001D27B8] vs param_3 (float) -> Bit 2 set if fGlobal < param_3
+  if (fGlobal < param_3) {
+    uVar2 |= 2;
+  }
+  
+  // Check 3: fcomp st, dword ptr [_D_001D27B8] vs param_4 (float) -> Bit 4 set if fGlobal < param_4
+  if (fGlobal < param_4) {
+    uVar2 |= 4;
+  }
+  
+  // Check 4: fcomp st, dword ptr [_D_001D27B8] vs param_5 (float) -> Bit 8 set if fGlobal < param_5
+  if (fGlobal < param_5) {
+    uVar2 |= 8;
+  }
+  
+  // Check 5: complex condition involving all parameters.
+  if (((param_2 != fGlobal) || (param_3 != fGlobal)) || 
+      ((param_4 != fGlobal) && (param_5 != fGlobal))) {
+    uVar2 |= 0x10;
+  }
+
+  *(uint *)(param_1 + 0x14) = uVar2;
+}
 
