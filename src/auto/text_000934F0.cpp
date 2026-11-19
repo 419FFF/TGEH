@@ -6,9 +6,8 @@ struct S_00306E68_in { int pad0[3]; unsigned int count; int pad1; S_00306E68_row
 struct S_00306E68 {
     char pad0[0xf8];
     S_00306E68_in *in;
-    char pad1[0x10];
+    char pad1[0xc];
     float tbl[256 + 2];
-    int pad2[1];
     float scale;
     short *out1;
     short *out2;
