@@ -2,8 +2,10 @@
 #include "common.h"
 #include "ghidra.h"
 
-extern "C" __declspec(dllimport) void __stdcall RtlEnterCriticalSection(void*);
-extern "C" __declspec(dllimport) void __stdcall RtlLeaveCriticalSection(void*);
+extern "C" void (__stdcall *_imp__RtlEnterCriticalSection)(void*);
+extern "C" void (__stdcall *_imp__RtlLeaveCriticalSection)(void*);
+#define RtlEnterCriticalSection (*_imp__RtlEnterCriticalSection)
+#define RtlLeaveCriticalSection (*_imp__RtlLeaveCriticalSection)
 
 undefined4 func_00135260(undefined4 *param_1)
 {
@@ -19,17 +21,16 @@ int* func_001356B0(int a)
 {
     extern int D_00331DB4;
     extern int D_003326AC;
-    extern void __stdcall RtlEnterCriticalSection(void*);
-    extern void __stdcall RtlLeaveCriticalSection(void*);
     int* func_00126240(...);
-    int func_0010C49A(...);
-    void func_00164A0A(...);
-    void func_0014E060(...);
+    int __stdcall func_0010C49A(int, int, int, int);
+    void __stdcall func_00164A0A(int, int*, int);
+    void __stdcall func_0014E060(int*, int);
     void func_00133CF0(...);
     void func_00136440(...);
     int* p;
     int x, y, z;
-    D_00331DB4++;
+    int n = D_00331DB4 + 1;
+    D_00331DB4 = n;
     p = func_00126240(a, 0x80);
     if (p[3] == 11) {
         x = (int)func_00126240(a, 0x80);
