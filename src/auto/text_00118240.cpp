@@ -5,6 +5,8 @@
 struct Grp118 { unsigned int n; int a; char pad[0x20]; int *c; int d; };
 struct Ent118 { int obj; int flags; char pad[0xb0]; };
 struct Blk118 { int w[46]; };
+extern "C" void *memcpy(void *, const void *, unsigned int);
+#pragma intrinsic(memcpy)
 extern int D_001DF278;
 extern char D_001DF27C;
 extern int func_00131A10(char*);
@@ -57,6 +59,52 @@ undefined4 func_00118B70(undefined4 *param_1)
   func_00117130();
   *param_1 = uVar1;
   return uVar1;
+}
+
+void _func_00118BA0(unsigned int *p)
+{
+  int _func_00117100(...); int _func_00116A90(...); int _func_00117130(...); int _func_00116FB0(...);
+  unsigned int i = 0;
+  unsigned int n = *p;
+  *(unsigned short*)(p + 1) = 0;
+  if (n != 0) {
+    int *e = (int*)(p[4] + 0xb0);
+    do {
+      if (*(int*)(*e + 0x2c) == 0) (*(unsigned short*)(p + 1))++;
+      i++;
+      e += 0x2e;
+    } while (i < *p);
+  }
+  if (n != *(unsigned short*)(p + 1)) {
+    Blk118 *buf;
+    unsigned int j;
+    int a, b;
+    Blk118 *s;
+    _func_00117100();
+    buf = (Blk118*)_func_00116A90(*p * 0xb8, 1, 1);
+    _func_00117130();
+    {
+      unsigned int sz = *p * 0xb8;
+      unsigned int k;
+      unsigned char *dd = (unsigned char*)buf, *ss = (unsigned char*)p[4];
+      for (k = 0; k < sz; k++) dd[k] = ss[k];
+    }
+    j = 0;
+    if (*p != 0) {
+      a = 0;
+      b = *(unsigned short*)(p + 1) * 0xb8;
+      s = buf;
+      do {
+        Blk118 *d;
+        if (*(int*)(s->w[0x2c] + 0x2c) == 0) { d = (Blk118*)(p[4] + a); a += 0xb8; }
+        else { d = (Blk118*)(p[4] + b); b += 0xb8; }
+        *d = *s;
+        j++;
+        s++;
+      } while (j < *p);
+    }
+    _func_00116FB0(buf);
+  }
 }
 
 extern unsigned int __cdecl _func_0013E9DB(unsigned int);
