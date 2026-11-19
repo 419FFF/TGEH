@@ -13,6 +13,7 @@ struct S_000DA370 {
 struct M_000DA570 { int v[16]; };
 struct M8_000DAE60 { int v[8]; };
 struct M4_000DAE60 { int v[4]; };
+struct M3_000DAE60 { int v[3]; };
 
 void func_000DA370(void)
 {
@@ -182,7 +183,7 @@ extern int _D_001D8018; extern int _D_0031E510; extern int func_0009C590(int); e
 void _func_000DAE60(void)
 {
   extern undefined4 D_0031E514;
-  extern int D_0031B864;
+  extern volatile int D_0031B864;
   extern M_000DA570 D_0031B870;
   int func_00011CB0(...);
   int func_000D5170(...);
@@ -213,23 +214,23 @@ void _func_000DAE60(void)
   iVar3 = iVar1 + 0x144;
   iVar2 = 5;
   do {
-    *(int *)(iVar3 - 4) = *(int *)(iVar3 + 0x3c);
-    *(int *)(iVar3 + 0x00) = *(int *)(iVar3 + 0x40);
-    *(int *)(iVar3 + 0x04) = *(int *)(iVar3 + 0x44);
-    *(int *)(iVar3 + 0x08) = *(int *)(iVar3 + 0x48);
-    *(int *)(iVar3 + 0x0c) = *(int *)(iVar3 + 0x4c);
-    *(int *)(iVar3 + 0x10) = *(int *)(iVar3 + 0x50);
-    *(int *)(iVar3 + 0x14) = *(int *)(iVar3 + 0x54);
-    *(int *)(iVar3 + 0x18) = *(int *)(iVar3 + 0x58);
-    *(int *)(iVar3 + 0x1c) = *(int *)(iVar3 + 0x5c);
-    *(int *)(iVar3 + 0x20) = *(int *)(iVar3 + 0x60);
-    *(int *)(iVar3 + 0x24) = *(int *)(iVar3 + 0x64);
-    *(int *)(iVar3 + 0x28) = *(int *)(iVar3 + 0x68);
-    *(int *)(iVar3 + 0x2c) = *(int *)(iVar3 + 0x6c);
-    *(int *)(iVar3 + 0x30) = *(int *)(iVar3 + 0x70);
-    *(int *)(iVar3 + 0x34) = *(int *)(iVar3 + 0x74);
-    *(int *)(iVar3 + 0x38) = *(int *)(iVar3 + 0x78);
-    func_000D5170(iVar3 - 4, *(undefined4 *)(iVar3 - 0x10));
+    *(volatile int *)(iVar3 - 4) = *(volatile int *)(iVar3 + 0x3c);
+    *(volatile int *)(iVar3 + 0x00) = *(volatile int *)(iVar3 + 0x40);
+    *(volatile int *)(iVar3 + 0x04) = *(volatile int *)(iVar3 + 0x44);
+    *(volatile int *)(iVar3 + 0x08) = *(volatile int *)(iVar3 + 0x48);
+    *(volatile int *)(iVar3 + 0x0c) = *(volatile int *)(iVar3 + 0x4c);
+    *(volatile int *)(iVar3 + 0x10) = *(volatile int *)(iVar3 + 0x50);
+    *(volatile int *)(iVar3 + 0x14) = *(volatile int *)(iVar3 + 0x54);
+    *(volatile int *)(iVar3 + 0x18) = *(volatile int *)(iVar3 + 0x58);
+    *(volatile int *)(iVar3 + 0x1c) = *(volatile int *)(iVar3 + 0x5c);
+    *(volatile int *)(iVar3 + 0x20) = *(volatile int *)(iVar3 + 0x60);
+    *(volatile int *)(iVar3 + 0x24) = *(volatile int *)(iVar3 + 0x64);
+    *(volatile int *)(iVar3 + 0x28) = *(volatile int *)(iVar3 + 0x68);
+    *(volatile int *)(iVar3 + 0x2c) = *(volatile int *)(iVar3 + 0x6c);
+    *(volatile int *)(iVar3 + 0x30) = *(volatile int *)(iVar3 + 0x70);
+    *(volatile int *)(iVar3 + 0x34) = *(volatile int *)(iVar3 + 0x74);
+    *(volatile int *)(iVar3 + 0x38) = *(volatile int *)(iVar3 + 0x78);
+    func_000D5170(iVar3 - 4, *(volatile int *)(iVar3 - 0x10));
     iVar3 = iVar3 + 0x90;
     iVar2 = iVar2 + -1;
   } while (iVar2 != 0);
