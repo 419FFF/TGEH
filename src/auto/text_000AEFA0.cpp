@@ -2,6 +2,7 @@
 #include "common.h"
 #include "ghidra.h"
 
+struct S14 { int a, b, c; short d; };
 int func_00133F30(int *);
 int func_0011E4A0(int,int,int,int,int *,int *,int,int);
 int func_000688D0(void);
