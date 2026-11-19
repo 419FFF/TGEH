@@ -109,12 +109,49 @@ void func_000920E0(void) {
     func_0011D0E0((int)&D_001D7140);
 }
 
+extern "C" void *memset(void *, int, unsigned int);
+#pragma intrinsic(memset)
+void func_000920F0(void)
+{
+    extern int D_001D6FCC, D_001D6FD0, D_001D6FD4, D_001D6FD8, D_001D6FDC;
+    extern char D_001D714C, D_001D7140;
+    extern int D_00306E3C, D_00306E40, D_00306E38, D_0030809C;
+    int func_0011E840(...);
+    int func_0011DD60(...);
+    int func_0011E830(...);
+    int func_0011DEF0(...);
+    int func_00110480(...);
+    __declspec(align(8)) int s[0x3d];
+    memset(s, 0, sizeof(s));
+    s[0x24] = 2;
+    s[0x25] = 2;
+    s[0] = D_001D6FCC;
+    s[1] = D_001D6FD0;
+    s[0x2e] = 4;
+    s[0x2f] = 5;
+    s[0x2a] = 3;
+    s[0x36] = 0;
+    s[0x37] = 0;
+    s[0x3c] = 10;
+    s[0x39] = 0xf;
+    s[2] = D_001D6FD4;
+    s[3] = D_001D6FD8;
+    s[4] = D_001D6FDC;
+    s[0x3b] = 0x58;
+    D_00306E3C = func_0011E840(&D_001D714C, s);
+    D_00306E40 = func_0011DD60(&D_001D7140, 0xf, D_00306E3C, *(int *)(D_00306E3C + 0x14c));
+    func_0011E830(D_00306E3C, D_00306E40);
+    func_0011DEF0(D_00306E40);
+    func_00110480(D_0030809C, D_00306E3C, 8);
+    D_00306E38 = 0;
+}
+
 void func_00092220(void)
 {
   int func_001160B0(...);
   extern undefined4 D_00306E40;
   int func_00110760(...);
-  extern undefined4 D_00306E3C;
+  extern int D_00306E3C;
   func_001160B0(D_00306E40);
   func_00110760(D_00306E3C);
 }
