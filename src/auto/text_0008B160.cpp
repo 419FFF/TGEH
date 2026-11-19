@@ -2,6 +2,51 @@
 #include "common.h"
 #include "ghidra.h"
 
+extern char D_001D6E74[];
+extern char D_001D6E58[];
+extern char D_001D29E4[];
+void func_0011E3D0(int);
+int func_0009CBE0(char *);
+void func_0011CFC0(int, float);
+int func_00115100(int, char *);
+void func_00115170(int, int, float *);
+void func_001105E0(int, float *, int);
+float func_0012E7B0(float *, float *);
+void func_0008B160(int param_1, int param_2, int param_3) {
+    int *obj;
+    int *pinky;
+    int *sweat;
+    __declspec(align(16)) float mat[16];
+    int idx;
+
+    func_0011E3D0(param_1);
+    obj = *(int **)(param_1 + 0x17c);
+    pinky = (int *)func_0009CBE0(D_001D6E74);
+    sweat = (int *)func_0009CBE0(D_001D6E58);
+    if (pinky == 0) {
+        func_0011CFC0(param_1 + 0x54, 0.0f);
+        return;
+    }
+    if (sweat != 0) {
+        idx = func_00115100(*(int *)((char *)pinky + 0x98), D_001D29E4);
+        if (idx != -1) {
+            func_00115170(*(int *)((char *)pinky + 0x98), idx, mat);
+            mat[12] = (float)(*(float *)(*(int *)((char *)pinky + 0x2c) + 0x70) + (long double)mat[12]);
+            mat[13] = (float)(*(float *)(*(int *)((char *)pinky + 0x2c) + 0x74) + (long double)mat[13]);
+            mat[14] = (float)(*(float *)(*(int *)((char *)pinky + 0x2c) + 0x78) + (long double)mat[14]);
+            mat[15] = (float)(*(float *)(*(int *)((char *)pinky + 0x2c) + 0x7c) + (long double)mat[15]);
+            func_001105E0(*(int *)((char *)sweat + 0x2c), mat, 1);
+        }
+        {
+            float dist = func_0012E7B0((float *)(obj + 1), (float *)(param_3 + 0x30));
+            func_0011CFC0(param_1 + 0x54, dist);
+        }
+        obj[1] = *(int *)(param_3 + 0x30);
+        obj[2] = *(int *)(param_3 + 0x34);
+        obj[3] = *(int *)(param_3 + 0x38);
+    }
+}
+
 void func_0008B280(void) {
     extern int D_001D6E88;
     extern void func_0008AF60(void);
@@ -28,6 +73,60 @@ void func_0008B2E0(void) {
     extern int D_001D6E88;
     int func_0011D0E0(...);
     func_0011D0E0((int)&D_001D6E88);
+}
+
+void func_0008B2F0(int *param_1, int param_2)
+{
+  int func_0011CD40(...);
+  float func_00131760(void);
+  extern float D_001D2C00;
+  extern float D_001D29D8;
+  int func_0011CDF0(...);
+  int func_0011CE20(...);
+  int func_0011CE10(...);
+  int func_0011CE30(...);
+  int func_0011CE50(...);
+  int func_0011CF30(...);
+  int func_0011CFC0(...);
+  int iVar1;
+  unsigned int uVar2;
+
+  iVar1 = func_0011CD40(1,5,1,4,1);
+  *param_1 = iVar1;
+  *(int *)(*(int *)(iVar1 + 4) + 8) = 0;
+  *(int *)(*(int *)(*param_1 + 4) + 4) = 0;
+  **(int **)(*param_1 + 4) = 0;
+  uVar2 = 0;
+  do {
+    *(int *)(uVar2 + *(int *)(*param_1 + 0xc)) = 0;
+    *(int *)(*(int *)(*param_1 + 0xc) + 4 + uVar2) = 0;
+    double f = func_00131760();
+    uVar2 = uVar2 + 0xc;
+    *(float *)(*(int *)(*param_1 + 0xc) + -4 + uVar2) = (float)(f * D_001D2C00 + D_001D29D8);
+  } while (uVar2 < 0x78);
+  *(int *)(*(int *)(*param_1 + 0x1c) + 4) = 0x41000000;
+  **(int **)(*param_1 + 0x1c) = 0x41000000;
+  *(int *)(*(int *)(*param_1 + 0x1c) + 0xc) = 0x41000000;
+  *(int *)(*(int *)(*param_1 + 0x1c) + 8) = 0x41000000;
+  *(int *)(*(int *)(*param_1 + 0x1c) + 0x14) = 0x41000000;
+  *(int *)(*(int *)(*param_1 + 0x1c) + 0x10) = 0x41000000;
+  *(int *)(*(int *)(*param_1 + 0x1c) + 0x1c) = 0x41000000;
+  *(int *)(*(int *)(*param_1 + 0x1c) + 0x18) = 0x41000000;
+  **(int **)(*param_1 + 0x24) = 0;
+  *(int *)(*(int *)(*param_1 + 0x24) + 4) = 0;
+  *(int *)(*(int *)(*param_1 + 0x24) + 8) = 0x3f800000;
+  *(int *)(*(int *)(*param_1 + 0x24) + 0xc) = 0x3f800000;
+  **(int **)(*param_1 + 0x14) = 0x3dcccccd;
+  *(int *)(*(int *)(*param_1 + 0x14) + 4) = 0x3dcccccd;
+  *(int *)(*(int *)(*param_1 + 0x14) + 8) = 0x3dcccccd;
+  *(int *)(*(int *)(*param_1 + 0x14) + 0xc) = 0x3f800000;
+  func_0011CDF0(param_2);
+  func_0011CE20(param_2,0x3fc00000);
+  func_0011CE10(param_2,0x40000000);
+  func_0011CE30(param_2,0x41f00000,0x42700000);
+  func_0011CE50(param_2,0xbdcccccd,0xbdcccccd,0xbdcccccd,0);
+  func_0011CF30(param_2,0x42200000,0x42200000);
+  func_0011CFC0(param_2,0x41800000);
 }
 
 void func_0008B450(undefined4 param_1)
