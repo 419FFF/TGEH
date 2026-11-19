@@ -1,5 +1,6 @@
 /* 13 functions from 0x000C3BE0 to 0x000C4AB2, found by Ghidra. */
 #include "common.h"
+struct P_000C49A0 { float x, y, z, w; char on; char pad[3]; };
 struct P_000C48B0 { float w; char on; char pad[3]; float x, y, z; };
 
 void func_000C3E40(void) {
@@ -24,6 +25,31 @@ void func_000C40A0(void) {
  unsigned int v=func_00131310();D_00315FA4=D_001E4908[v&7];func_000A4010(D_0031151C-1);
  if((unsigned char)D_0031151C>0){D_003159A0=0x4b;D_00314FC4=D_00314FB4;D_00314FC8=D_00314FB8;return;}
  func_00103990(D_00315CAC,0);D_00314F00=11;D_00314F04=0;D_00315C90=0;
+}
+
+void func_000C47A0(void)
+{
+    extern unsigned char D_00315C90;
+    extern float D_00316020, D_00314FA8, D_00316024, D_00314FAC, D_001E461C, D_001D2808, D_001D27B0, D_001D2D4C;
+    extern volatile float D_001D9CD4;
+    extern int D_00313B34, D_00313AD0;
+    extern char* D_00307D08;
+    if (D_00315C90) {
+        D_00316020 = D_00314FA8;
+        D_00316024 = D_00314FAC;
+        D_00314FA8 += D_001E461C * *(float*)(*(char**)(D_00307D08 + 0x10) + D_00313B34 * 0x18) * D_001D2808;
+        D_00314FAC += D_001E461C * *(float*)(*(char**)(D_00307D08 + 0x10) + D_00313AD0 * 0x18) * D_001D2808;
+        D_00314FA8 *= D_001D9CD4;
+        D_00314FAC *= D_001D9CD4;
+        if (D_00314FA8 > D_001D27B0)
+            D_00314FA8 = 1.0f;
+        else if (D_00314FA8 < D_001D2D4C)
+            D_00314FA8 = -1.0f;
+        if (D_00314FAC > D_001D27B0)
+            D_00314FAC = 1.0f;
+        else if (D_00314FAC < D_001D2D4C)
+            D_00314FAC = -1.0f;
+    }
 }
 
 void func_000C48B0(void)
