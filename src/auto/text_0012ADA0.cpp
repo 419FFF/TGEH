@@ -55,6 +55,116 @@ void _func_0012B700(int p)
     }
 }
 
+void func_0012B750(uint param_1)
+{
+  int func_00131230(...);
+  extern undefined4 D_001DF724;
+  int func_00131210(...);
+  extern undefined4 D_001D557C;
+  int func_0013E3F4(...);
+  char cVar1;
+  byte bVar2;
+  uint uVar3;
+  longdouble lVar4;
+  
+  cVar1 = *(char *)(param_1 + 0x81);
+  uVar3 = param_1;
+  switch(*(byte *)(param_1 + 0x9e) & 3) {
+  case 0:
+    lVar4 = (longdouble)func_00131230((float)(int)cVar1 * D_001DF724);
+    func_00131210((float)(lVar4 * (longdouble)D_001D557C));
+    uVar3 = func_0013E3F4();
+    break;
+  case 1:
+    bVar2 = cVar1 * '\b';
+    if (cVar1 < '\0') {
+      bVar2 = cVar1 * -8 - 1;
+    }
+    uVar3 = (uint)bVar2;
+    break;
+  case 2:
+  case 3:
+    uVar3 = 0xff;
+  }
+  uVar3 = (int)(*(byte *)(param_1 + 0x83) * uVar3) >> 5 & 0xfffffffc;
+  if (-1 < *(char *)(param_1 + 0x81)) {
+    uVar3 = -uVar3;
+  }
+  *(uint *)(param_1 + 0x18) = uVar3;
+  *(byte *)(param_1 + 2) = *(byte *)(param_1 + 2) | 1;
+  return;
+}
+
+void _func_0012B930(char *o)
+{
+  extern float _D_001DF724;
+  extern float _D_001D557C;
+  extern float _func_00131230(float);
+  extern float _func_00131210(float);
+  unsigned char r;
+  double x;
+  signed char pos = *((signed char *) (o + 0x85));
+  unsigned char ph = pos & 0x1f;
+  switch (((*((unsigned char *) (o + 0x9e))) >> 4) & 3)
+  {
+    case 0:
+      if (o || _D_001D557C)
+    {
+      x = *((signed char *) (o + 0x81));
+      goto sine;
+    }
+    else
+    {
+      x = *((signed char *) (o + 0x81));
+      goto sine;
+    }
+
+    case 1:
+      r = ph << 3;
+      if (pos < 0)
+    {
+      r = 0xff - r;
+    }
+      *((int *) (o + 0x14)) = r;
+      break;
+
+    case 2:
+      *((int *) (o + 0x14)) = 0xff;
+      break;
+
+    case 3:
+      x = *((signed char *) (o + 0x81));
+      sine:
+    *((int *) (o + 0x14)) = (int) ((double) _func_00131210((float) (((double) _func_00131230((float) (x * _D_001DF724))) * _D_001D557C)));
+
+      break;
+
+  }
+
+  *((int *) (o + 0x14)) = ((*((unsigned char *) (o + 0x87))) * (*((int *) (o + 0x14)))) >> 6;
+  if ((*((signed char *) (o + 0x85))) >= 0)
+  {
+    if (((*((int *) (o + 0x14))) + (*((int *) (o + 0xc)))) > 0x40)
+    {
+      *((int *) (o + 0x14)) = 0x40 - (*((int *) (o + 0xc)));
+    }
+  }
+  else
+  {
+    if (((short) ((*((short *) (o + 0xc))) - (*((short *) (o + 0x14))))) < 0)
+    {
+      *((int *) (o + 0x14)) = *((int *) (o + 0xc));
+    }
+    *((int *) (o + 0x14)) = -(*((int *) (o + 0x14)));
+  }
+  *((char *) (o + 0x85)) = (*((char *) (o + 0x86))) + (*((char *) (o + 0x85)));
+  if ((*((signed char *) (o + 0x85))) > 0x1f)
+  {
+    *((char *) (o + 0x85)) -= 0x40;
+  }
+  *((unsigned char *) (o + 2)) |= 2;
+}
+
 extern int _D_001E7EA8[];
 extern int _D_001E7EAC[];
 int _func_0012BC90(int a, int b)
