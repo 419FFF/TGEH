@@ -254,7 +254,7 @@ void func_00082B80(void)
 {
     extern int D_001D670C, D_001D6710, D_001D6714, D_001D6718, D_001D671C;
     extern int D_001D6828, D_001D681C;
-    extern int D_002FBB18, D_002FBB1C, D_002FBB20, D_002FBB14, D_0030809C;
+    extern int D_002FBB1C, D_002FBB20, D_002FBB14, D_0030809C;
     int func_0011E840(...);
     int func_0011DD60(...);
     int func_0011E830(...);
