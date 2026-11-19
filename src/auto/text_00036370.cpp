@@ -52,26 +52,26 @@ void func_00036970(int param_1, int param_2)
   return;
 }
 
-void __cdecl _func_000369B0(int a, int b)
+void __cdecl _func_000369B0(int a, int *p)
 {
   char name[0x40];
   char buf[0x80];
-  int *p = (int *)b;
-  int n;
-  if (D_00307DF8 == D_003080B0) strcpy(name, "testyakko");
-  else if (D_00307DF8 == D_00307D00) strcpy(name, "wakko");
-  else strcpy(name, "dot");
-  p[0xc5] = 0;
-  strcpy(buf, "models/");
+  int x = D_00307DF8;
+  int y = D_003080B0;
+  int *q = p + 0xc4;
+  if (x == y) *(S10 *)name = D_001D42F8;
+  else if (x == D_00307D00) *(S6 *)name = D_001D42F0;
+  else *(int *)name = 0x746f64;
+  q[1] = 0;
+  *(S8 *)buf = D_001D2E34;
   strcat(buf, name);
   strcat(buf, "/");
   _func_00131990(buf);
-  n = _func_00131310();
-  n = (n & 3) + 1;
-  _func_0013E469(buf, "idle%d", n);
-  p[0xc4] = _func_000A1BB0(a, buf);
-  _func_0013E469(buf, "AnimationFramesIdle%d", n);
-  p[0xc6] = _func_0009C7A0(a, buf, 0);
+  unsigned n = _func_00131310();
+  _func_0013E469(buf, "idle%d", (n & 3) + 1);
+  q[0] = _func_000A1BB0(a, buf);
+  _func_0013E469(buf, "AnimationFramesIdle%d", (n & 3) + 1);
+  q[2] = _func_0009C7A0(a, buf, 0);
   _func_00131990(&D_001D29C7);
 }
 
