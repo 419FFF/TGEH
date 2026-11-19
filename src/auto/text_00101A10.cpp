@@ -1,6 +1,12 @@
 /* 12 functions from 0x00101A10 to 0x00102870, found by Ghidra. */
 #include "common.h"
 
+struct FlagBits {
+    unsigned short pad:4;
+    unsigned short b4:1;
+    unsigned short b5:1;
+};
+
 struct SoundInfo {
     char *str;
     int one;
@@ -86,6 +92,53 @@ void func_001020A0(int param_1, int *param_2, char *param_3, char param_4) {
 void func_00102470(void) {
     int func_001021C0(...);
     func_001021C0();
+}
+
+void func_00102480(int a, int b) {
+    int t;
+    unsigned short f;
+    unsigned char bit;
+
+    t = *(int *)(a + 0xb8);
+    *(int *)(a + 0xb8) = *(int *)(b + 0xb8);
+    *(int *)(b + 0xb8) = t;
+    t = *(int *)(a + 0xbc);
+    *(int *)(a + 0xbc) = *(int *)(b + 0xbc);
+    *(int *)(b + 0xbc) = t;
+    t = *(int *)(a + 0xc0);
+    *(int *)(a + 0xc0) = *(int *)(b + 0xc0);
+    *(int *)(b + 0xc0) = t;
+    t = *(int *)(a + 0xc4);
+    *(int *)(a + 0xc4) = *(int *)(b + 0xc4);
+    *(int *)(b + 0xc4) = t;
+    t = *(int *)(a + 0xc8);
+    *(int *)(a + 0xc8) = *(int *)(b + 0xc8);
+    *(int *)(b + 0xc8) = t;
+
+    f = *(unsigned short *)(b + 0xb6);
+    bit = (unsigned char)((*(unsigned char *)(a + 0xb6) >> 4) & 1);
+    if (bit)
+        f = (unsigned short)(f | 0x10);
+    else
+        f = (unsigned short)(f & 0xffef);
+    *(unsigned short *)(b + 0xb6) = f;
+    bit = (unsigned char)((*(unsigned char *)(b + 0xb6) >> 4) & 1);
+    if (bit)
+        *(unsigned char *)(a + 0xb6) = (unsigned char)(*(unsigned char *)(a + 0xb6) | 0x10);
+    else
+        *(unsigned char *)(a + 0xb6) = (unsigned char)(*(unsigned char *)(a + 0xb6) & 0xef);
+
+    f = *(unsigned short *)(b + 0xb6);
+    bit = (unsigned char)(((unsigned char)f >> 5) & 1);
+    if ((*(unsigned char *)(a + 0xb6) >> 5) & 1)
+        f = (unsigned short)(f | 0x20);
+    else
+        f = (unsigned short)(f & 0xffdf);
+    *(unsigned short *)(b + 0xb6) = f;
+    if (bit)
+        *(unsigned char *)(a + 0xb6) = (unsigned char)(*(unsigned char *)(a + 0xb6) | 0x20);
+    else
+        *(unsigned char *)(a + 0xb6) = (unsigned char)(*(unsigned char *)(a + 0xb6) & 0xdf);
 }
 
 void func_001026A0(int param_1)
