@@ -43,6 +43,7 @@ void func_0001BE60(int p)
   *(unsigned char*)(p + 0x10) |= 0x80;
 }
 
+#pragma optimize("y", off)
 void _func_0001BFD0(int object) { extern int D_001D2CA0,D_0000FFFF,D_001D2F24; int func_00115100(...), func_0004F290(...), func_000A1D10(...), func_0007C3F0(...); volatile int frame[64]; int *state=*(int**)(object+0x110); if (state[0x9a]==-1) state[0x9a]=func_00115100(*(int*)(object+0x98),&D_001D2CA0); switch (*state) { case 0: { int* p; func_0004F290(object); func_000A1D10(state[0x9c],1,0,&D_0000FFFF,0x41c00000,0x3e4ccccd); *state=2; p=*(int**)(state[0x9c]+0x10); frame[12]=*(unsigned short*)(*p+0x1a); if (*(unsigned char*)((char*)state+0x264)) { frame[5]=state[0x98]; } frame[5]=frame[12]; *(float*)((char*)state+0x26c)=(float)frame[12]*(*(float*)&D_001D2F24); break; } case 1: frame[1]=1; break; case 2: frame[2]=2; break; case 3: frame[3]=3; break; case 4: frame[4]=4; break; case 5: frame[5]=5; break; case 6: frame[6]=6; break; case 7: frame[7]=16; break; default: break; } }
 #pragma optimize("", on)
 void func_0001C930(int param_1)
