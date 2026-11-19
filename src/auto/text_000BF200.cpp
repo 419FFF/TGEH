@@ -1,5 +1,6 @@
 /* 6 functions from 0x000BF200 to 0x000BFCCA, found by Ghidra. */
 #include "common.h"
+struct Mtx { __declspec(align(16)) float f[12]; };
 
 void _func_000BF200(void){
  extern int D_00314D90;
