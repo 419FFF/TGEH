@@ -1,6 +1,7 @@
 /* 13 functions from 0x00080180 to 0x00080F1F, found by Ghidra. */
 #include "common.h"
 #include "ghidra.h"
+struct C80A70 { float x, y, z, w; };
 struct S80A70 { int p[3]; char r, g, b, a; int u[2]; int v[2]; int t[2]; int pad[2]; };
 
 void func_00080540(void *p){void func_00110760(...); void func_00116FB0(...); func_00110760(*(int*)((char*)p+0x100)); func_00116FB0(*(int*)((char*)p+0xfc));}
@@ -93,27 +94,27 @@ void _func_00080A70(int *a, int *b, float *c)
 {
  extern int D_002FBAF8, D_002FBAF0, D_002FBA90;
  extern float D_001D66D8;
- void *func_00116A90(...);
- void *func_00116E50(...);
- char func_001313C0(...);
+ void *func_00116A90(int, int, int);
+ void *func_00116E50(int, int, int, int);
+ char func_001313C0(float);
  if (D_002FBAF8 == 1) {
   if (D_002FBA90 == 0) D_002FBA90 = (int)func_00116A90(0x30, 1, 1);
   else D_002FBA90 = (int)func_00116E50(D_002FBA90, (D_002FBAF0 * 3 + 3) * 16, 1, 1);
-  char *m = (char *)D_002FBA90;
-  *(int *)(m + D_002FBAF0 * 0x30) = a[0];
-  *(int *)((char *)D_002FBA90 + D_002FBAF0 * 0x30 + 4) = a[1];
-  *(int *)((char *)D_002FBA90 + D_002FBAF0 * 0x30 + 8) = a[2];
-  *(int *)((char *)D_002FBA90 + D_002FBAF0 * 0x30 + 0x20) = b[0];
-  *(int *)((char *)D_002FBA90 + D_002FBAF0 * 0x30 + 0x24) = b[1];
-  *((char *)D_002FBA90 + D_002FBAF0 * 0x30 + 0xc) = func_001313C0(c[2] * D_001D66D8);
-  *((char *)D_002FBA90 + D_002FBAF0 * 0x30 + 0xd) = func_001313C0(c[1] * D_001D66D8);
-  *((char *)D_002FBA90 + D_002FBAF0 * 0x30 + 0xe) = func_001313C0(c[0] * D_001D66D8);
   int o = D_002FBAF0 * 0x30;
-  *((char *)D_002FBA90 + o + 0xf) = func_001313C0(c[3] * D_001D66D8);
-  *(int *)((char *)D_002FBA90 + o + 0x10) = 0;
-  *(int *)((char *)D_002FBA90 + o + 0x14) = 0;
-  *(int *)((char *)D_002FBA90 + o + 0x18) = 0x3f800000;
-  *(int *)((char *)D_002FBA90 + o + 0x1c) = 0x3f800000;
+  *(int *)(D_002FBA90 + o) = a[0];
+  *(int *)(D_002FBA90 + o + 4) = a[1];
+  *(int *)(D_002FBA90 + o + 8) = a[2];
+  *(int *)(D_002FBA90 + o + 0x20) = b[0];
+  *(int *)(D_002FBA90 + o + 0x24) = b[1];
+  *(char *)(D_002FBA90 + D_002FBAF0 * 0x30 + 0xc) = func_001313C0(D_001D66D8 * c[2]);
+  *(char *)(D_002FBA90 + D_002FBAF0 * 0x30 + 0xd) = func_001313C0(D_001D66D8 * c[1]);
+  *(char *)(D_002FBA90 + D_002FBAF0 * 0x30 + 0xe) = func_001313C0(D_001D66D8 * c[0]);
+  int p = D_002FBAF0 * 0x30;
+  *(char *)(D_002FBA90 + p + 0xf) = func_001313C0(D_001D66D8 * c[3]);
+  *(int *)(D_002FBA90 + p + 0x10) = 0;
+  *(int *)(D_002FBA90 + p + 0x14) = 0;
+  *(int *)(D_002FBA90 + p + 0x18) = 0x3f800000;
+  *(int *)(D_002FBA90 + p + 0x1c) = 0x3f800000;
   D_002FBAF0 = D_002FBAF0 + 1;
  }
 }
