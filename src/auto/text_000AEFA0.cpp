@@ -12,6 +12,92 @@ int func_001266F0(void *);
 int func_00109B91(void);
 int func_0013EA50(unsigned char *,int);
 int func_000B06A0(void);
+void func_000AEFA0(int unused, int p)
+{
+  int func_00116FB0(...);
+  int func_0011B990(...);
+  unsigned int i;
+  if (*(int *)(p + 8)) func_00116FB0(*(int *)(p + 8));
+  if (*(int *)(p + 0x20)) {
+    i = 0;
+    if (*(unsigned int *)(p + 0x1c) > 0) do {
+      func_00116FB0(*(int *)(*(int *)(p + 0x20) + i * 0x10 + 8));
+      i++;
+    } while (i < *(unsigned int *)(p + 0x1c));
+    func_00116FB0(*(int *)(p + 0x20));
+  }
+  if (*(int *)(p + 0x10)) {
+    i = 0;
+    if (*(unsigned int *)(p + 0xc) > 0) do {
+      func_00116FB0(*(int *)(*(int *)(p + 0x10) + i * 0x34 + 0x30));
+      func_00116FB0(*(int *)(*(int *)(p + 0x10) + i * 0x34 + 0x28));
+      i++;
+    } while (i < *(unsigned int *)(p + 0xc));
+    func_00116FB0(*(int *)(p + 0x10));
+  }
+  if (*(int *)(p + 0x18)) func_00116FB0(*(int *)(p + 0x18));
+  if (*(int *)(p + 0x28)) func_00116FB0(*(int *)(p + 0x28));
+  if (*(int *)(p + 0x30)) {
+    i = 0;
+    if (*(unsigned int *)(p + 0x2c) > 0) do {
+      func_0011B990(*(int *)(*(int *)(p + 0x30) + i * 20));
+      i = i + 1;
+    } while (i < *(unsigned int *)(p + 0x2c));
+    func_00116FB0(*(int *)(p + 0x30));
+  }
+  func_00116FB0(p);
+}
+
+void func_000AF0B0(void)
+{
+  extern char D_001D8900, D_001D88F8, D_001D6B04, D_001D87A0, D_001D3A28, D_001D88F0, D_001D8798, D_001D88E8, D_001D88E0, D_001D88D8, D_001D88D0, D_001D88C8, D_001D88C0, D_001D88B8, D_001D88AC, D_001D88A4, D_001D8898, D_001D8890, D_001D8884, D_001D887C, D_001D8870, D_001D8868, D_001D8860, D_001D8854, D_001D884C, D_001D8844, D_001D883C, D_001D8830, D_001D882C, D_001D8824, D_001D8818, D_001D880C, D_001D8800, D_001D87F4;
+  extern int D_00313920;
+  int func_0011B5C0(...); int func_00125BC0(...); int func_00125D20(...);
+  int func_000AEF70(...), func_000AEFA0(...), func_000ADD30(...), func_000AE0F0(...), func_000AE8D0(...), func_000AE9B0(...), func_000AEA90(...), func_00113CB0(...), func_000AEBC0(...), func_000ADD50(...), func_000ADD80(...), func_000ADDB0(...), func_000ADDE0(...), func_000ADE10(...), func_000ADE40(...), func_000ADE70(...), func_000AE080(...), func_000AE9D0(...), func_000AE180(...), func_000AE1B0(...), func_000AE3B0(...), func_000AE930(...), func_000AE8F0(...), func_000AE910(...), func_000AE950(...), func_000AE9F0(...), func_000AEA00(...), func_000AEA30(...), func_000AEAC0(...), func_000AEAE0(...), func_000AEB00(...), func_000AEB80(...), func_000AEB40(...), func_000AECB0(...), func_000AEC50(...), func_000AECE0(...), func_000AED30(...), func_000AEF00(...);
+  int uVar1, uVar2, uVar3, uVar4, uVar5;
+
+  func_0011B5C0(&D_001D8900, func_000AEF70, func_000AEFA0);
+  D_00313920 = func_00125BC0(0, &D_001D88F8, func_000ADD30, 0);
+  uVar1 = func_00125BC0(D_00313920, &D_001D6B04, 0xae0d0, func_000AE0F0);
+  uVar2 = func_00125BC0(D_00313920, &D_001D87A0, func_000AE8D0, 0);
+  uVar3 = func_00125BC0(D_00313920, &D_001D3A28, func_000AE9B0, 0);
+  uVar4 = func_00125BC0(D_00313920, &D_001D88F0, func_000AEA90, 0);
+  uVar5 = func_00125BC0(D_00313920, &D_001D8798, func_00113CB0, func_000AEBC0);
+  func_00125D20(D_00313920, &D_001D88E8, 0);
+  func_00125D20(D_00313920, &D_001D88E0, func_000ADD50);
+  func_00125D20(D_00313920, &D_001D88D8, func_000ADD80);
+  func_00125D20(D_00313920, &D_001D88D0, func_000ADDB0);
+  func_00125D20(D_00313920, &D_001D88C8, func_000ADDE0);
+  func_00125D20(D_00313920, &D_001D88C0, func_000ADE10);
+  func_00125D20(D_00313920, &D_001D88B8, func_000ADE40);
+  func_00125D20(D_00313920, &D_001D88AC, func_000ADE70);
+  func_00125D20(D_00313920, &D_001D88A4, func_000AE080);
+  func_00125D20(uVar1, &D_001D8898, func_000AE9D0);
+  func_00125D20(uVar1, &D_001D88E0, 0);
+  func_00125D20(uVar1, &D_001D8890, func_000AE180);
+  func_00125D20(uVar1, &D_001D8884, func_000AE1B0);
+  func_00125D20(uVar1, &D_001D887C, func_000AE3B0);
+  func_00125D20(uVar2, &D_001D8870, func_000AE9D0);
+  func_00125D20(uVar2, &D_001D8868, func_000AE930);
+  func_00125D20(uVar2, &D_001D8798, func_000AE8F0);
+  func_00125D20(uVar2, &D_001D6B04, func_000AE910);
+  func_00125D20(uVar2, &D_001D8860, func_000AE950);
+  func_00125D20(uVar3, &D_001D8854, func_000AE9D0);
+  func_00125D20(uVar3, &D_001D884C, func_000AE9F0);
+  func_00125D20(uVar3, &D_001D8844, func_000AEA00);
+  func_00125D20(uVar3, &D_001D883C, func_000AEA30);
+  func_00125D20(uVar4, &D_001D8830, func_000AEAC0);
+  func_00125D20(uVar4, &D_001D8868, func_000AEAE0);
+  func_00125D20(uVar4, &D_001D882C, func_000AEB00);
+  func_00125D20(uVar4, &D_001D8824, func_000AEB80);
+  func_00125D20(uVar4, &D_001D8818, func_000AEB40);
+  func_00125D20(uVar5, &D_001D880C, func_000AECB0);
+  func_00125D20(uVar5, &D_001D8800, func_000AEC50);
+  func_00125D20(uVar5, &D_001D88E0, func_000AECE0);
+  func_00125D20(uVar5, &D_001D88AC, func_000AED30);
+  func_00125D20(uVar5, &D_001D87F4, func_000AEF00);
+}
+
 void func_000AF3C0(int param_1)
 {
     int local[21] = {0};
