@@ -77,6 +77,34 @@ void func_000A7890(void)
   return;
 }
 
+void func_000A7A30(void)
+{
+    extern unsigned int D_00312D70, D_001E46B4, D_00312B0C, D_00312C3C, D_00312C38, D_00312D78;
+    extern unsigned int D_00313B00;
+    extern char D_00308153;
+    extern float D_00312C48;
+    int func_0013B380(...);
+    int func_0011FE60(float);
+    int func_0011FE30(...);
+    int func_000B06B0(...);
+    int func_000A7270(...);
+    int func_000A7030(...);
+    int func_000716B0(...);
+    func_000716B0(0);
+    func_000A7030();
+    D_00312D70 = func_0013B380(D_00313B00);
+    func_0011FE60(0);
+    while (D_00312C3C * D_001E46B4 <= D_00312B0C * D_00312D70) {
+        func_0011FE30(D_00312C3C);
+        D_00312D78 = func_000B06B0();
+        if (D_00308153 == 0) func_000A7270();
+        D_00312C3C++;
+        D_00312C38++;
+        D_00312C48 = (float)(D_00312C38 / D_00312B0C);
+    }
+    func_0011FE60((float)((D_00312B0C * D_00312D70) % D_001E46B4) / (float)D_001E46B4);
+}
+
 int func_000A7D70(void) {
     extern int D_00312D84;
     return D_00312D84;
