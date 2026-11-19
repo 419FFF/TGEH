@@ -42,6 +42,36 @@ void __fastcall _func_0008C970(void *self, float rate, float threshold, char mod
 }
 
 #pragma optimize("", on)
+void func_0008D3A0(void)
+{
+    extern int **D_002FE0C4;
+    extern float D_002FE030[16];
+    extern float D_002FE080[16];
+    extern int D_00313B60;
+    void func_0012F120(float *);
+    void func_001364D0(float *);
+    void func_0011FED0(int, float *);
+    void func_001304A0(float *, float *);
+    void func_00138440(int);
+    void func_0008D130(int *);
+    int **node = D_002FE0C4;
+
+    if (node != 0) {
+        func_0012F120(D_002FE030);
+        func_001364D0(D_002FE030);
+        func_0011FED0(D_00313B60, D_002FE080);
+        func_001304A0(D_002FE030, D_002FE080);
+        D_002FE030[12] = -(D_002FE030[12] * D_002FE030[0]) - D_002FE030[13] * D_002FE030[4] - D_002FE030[14] * D_002FE030[8];
+        D_002FE030[13] = -(D_002FE030[1] * D_002FE030[12]) - D_002FE030[5] * D_002FE030[13] - D_002FE030[9] * D_002FE030[14];
+        D_002FE030[14] = -(D_002FE030[2] * D_002FE030[12]) - D_002FE030[6] * D_002FE030[13] - D_002FE030[10] * D_002FE030[14];
+        func_00138440(0);
+        do {
+            func_0008D130(node[0]);
+            node = (int **)node[1];
+        } while (node != 0);
+        func_00138440(1);
+    }
+}
 void func_0008D540(void)
 {
   extern char D_002FE120[];
@@ -69,6 +99,49 @@ void func_0008D540(void)
     }
   }
 }
+
+int _func_0008D630(int a, int *v, float lo, float hi)
+{
+    extern char _D_002FE110[], _D_002FE114[], _D_002FE118[], _D_002FE11C[], _D_002FE120[];
+    extern char _D_002FE124[], _D_002FE128[], _D_002FE12C[], _D_002FE130[], _D_002FE134[], _D_002FE542[];
+    extern int _D_00307DB4;
+    extern float _D_001D6F50;
+    extern float _func_00131290(int, int, float);
+    extern unsigned int _func_00131310(void);
+    int i;
+    unsigned int off;
+    for (i = 0, off = 0; off < 0x4800; off += 0x600, i++) {
+        if (*(int*)(_D_002FE120 + off) == 0) {
+            int o = i * 0x600;
+            int k;
+            unsigned short *p;
+            *(int*)(_D_002FE120 + o) = 1;
+            if (v) {
+                *(float*)(_D_002FE110 + o) = _func_00131290(v[0], 0, 1.0f);
+                *(float*)(_D_002FE114 + o) = _func_00131290(v[1], 0, 1.0f);
+                *(float*)(_D_002FE118 + o) = _func_00131290(v[2], 0, 1.0f);
+                *(float*)(_D_002FE11C + o) = _func_00131290(v[3], 0, 1.0f);
+            }
+            *(int*)(_D_002FE124 + o) = _D_00307DB4;
+            *(int*)(_D_002FE128 + o) = a;
+            *(int*)(_D_002FE134 + o) = 0;
+            *(float*)(_D_002FE130 + o) = (hi - lo) * _D_001D6F50;
+            *(float*)(_D_002FE12C + o) = lo;
+            p = (unsigned short*)(_D_002FE542 + o);
+            for (k = 100; k != 0; k--) {
+                unsigned int r = _func_00131310();
+                unsigned int c = r & 0xff;
+                if (c == 0) c = 1;
+                *((unsigned char*)p - 1) = (unsigned char)c;
+                *p = (unsigned short)((r >> 8) & 0xff);
+                p += 2;
+            }
+            return i;
+        }
+    }
+    return -1;
+}
+
 void func_0008D740(int param_1)
 {
   extern undefined D_002FE120;
