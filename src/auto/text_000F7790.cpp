@@ -2,6 +2,12 @@
 #include "common.h"
 #include "ghidra.h"
 
+static inline void clear10_000F7FB0(int *p)
+{
+  p[0] = 0; p[1] = 0; p[2] = 0; p[3] = 0; p[4] = 0;
+  p[5] = 0; p[6] = 0; p[7] = 0; p[8] = 0; p[9] = 0;
+}
+
 void func_000F79A0(int param_1)
 {
   int func_0013F2E9(...);
@@ -27,6 +33,27 @@ void func_000F79A0(int param_1)
       *(char **)(param_1 + 0x314) = &D_001DCF64;
     }
   }
+}
+
+int func_000F7AC0(int p, int q)
+{
+  int func_0009C7A0(...);
+  int func_0013F2E9(...);
+  extern char D_001DD018, D_001DD004, D_001D29C7, D_001DCFFC, D_001D884C, D_001DCFF4, D_001DCFEC, D_001DCFE0;
+  char b;
+  *(int *)(p + 0x310) = *(int *)func_0009C7A0(q, &D_001DD018, 0);
+  *(int *)(p + 0x314) = *(int *)func_0009C7A0(q, &D_001DD004, 0);
+  if (!func_0013F2E9(*(int *)(p + 0x310), &D_001D29C7) || !func_0013F2E9(*(int *)(p + 0x310), &D_001DCFFC))
+    *(int *)(p + 0x310) = 0;
+  if (!func_0013F2E9(*(int *)(p + 0x314), &D_001D29C7) || !func_0013F2E9(*(int *)(p + 0x314), &D_001DCFFC))
+    *(int *)(p + 0x314) = 0;
+  func_000F79A0(p);
+  if (*(int *)func_0009C7A0(q, &D_001D884C, 0) == 0x3f800000) b = 1; else b = 0;
+  *(char *)(p + 0x31c) = b;
+  *(int *)(p + 0x318) = *(int *)func_0009C7A0(q, &D_001DCFF4, 0);
+  *(int *)(p + 0x320) = *(int *)func_0009C7A0(q, &D_001DCFEC, 0);
+  *(int *)(p + 0x324) = *(int *)func_0009C7A0(q, &D_001DCFE0, 0);
+  return 0;
 }
 
 void func_000F7BE0(int param_1)
@@ -155,6 +182,45 @@ int func_000F7F10(int param_1, int param_2, int param_3)
     }
   }
   return iVar2;
+}
+
+__declspec(noinline) void func_000F7BE0(int param_1);
+int func_000F7FB0(int param_1)
+{
+  int func_0010F750(...);
+  int func_00110480(...);
+  extern int D_00324B00, D_00324AF8;
+  extern char *D_00324968[], *D_00324964[];
+  int iVar1;
+  int *p;
+  int z;
+  iVar1 = func_0010F750(*(int *)(param_1 + 0x38), D_00324B00, 0x330);
+  D_00324968[D_00324AF8] = (char *)iVar1;
+  *(int *)(iVar1 + 0xe0) = param_1;
+  *(int *)(D_00324968[D_00324AF8] + 0xe4) = 0;
+  *(char *)(D_00324968[D_00324AF8] + 0x284) = 1;
+  *(char *)(D_00324968[D_00324AF8] + 0x285) = 0;
+  *(char *)(D_00324968[D_00324AF8] + 0x28c) = 1;
+  *(int *)(D_00324968[D_00324AF8] + 0x278) = 0;
+  p = (int *)(D_00324968[D_00324AF8] + 0x2dc);
+  z = 0;
+  p[0] = z;
+  p[1] = z;
+  p[2] = z;
+  p[3] = z;
+  p[4] = z;
+  p[5] = z;
+  p[6] = z;
+  p[7] = z;
+  p[8] = z;
+  p[9] = z;
+  *(char *)(D_00324968[D_00324AF8] + 0x28e) = 0;
+  *(char *)(D_00324968[D_00324AF8] + 0x28f) = 0;
+  *(int *)(D_00324968[D_00324AF8] + 0x30c) = D_00324AF8;
+  func_000F7BE0((int)D_00324968[D_00324AF8]);
+  func_00110480(param_1, D_00324968[D_00324AF8], 8);
+  D_00324AF8 = D_00324AF8 + 1;
+  return (int)D_00324964[D_00324AF8];
 }
 
 unsigned char func_000F8580(int p){extern int D_003268B0,D_00331ADC;int func_0011BDD0(...);if((*(unsigned char*)(p+0xd0)&1)!=0)return 1;int x=*(unsigned char*)(p+0x22);if(x==D_003268B0){if(!func_0011BDD0(*(int*)(p+0xe0),0))return 0;--*(short*)(*(int*)(p+0xe0)+0x2a);}else if(x==D_00331ADC){if(!func_0011BDD0(*(int*)(p+0xec),0))return 0;--*(short*)(*(int*)(p+0xec)+0x2a);}for(int q=*(int*)(p+0x28);q;q=*(int*)(q+0xc))if((*(unsigned char*)(q+6)&8)==0&&!func_000F8580(*(int*)q))return 0;return 1;}
