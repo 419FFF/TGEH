@@ -15,6 +15,33 @@ void func_00120E50(float,float);
 void func_00121990(char*, ...);
 char* func_000AFD10(char*);
 
+extern float D_0031621C, D_00316220, D_001D3418;
+extern int D_00316224, D_00316228, D_0031622C;
+extern int D_00316210, D_00307DF8;
+extern char D_00316244, D_00316234, D_003161D0;
+void _func_000C8EF0(void)
+{
+  float func_000C8100(float);
+  void func_0011F270(...); void func_0012F7A0(...); void func_0012F610(...);
+  void func_0009D280(...); void func_00110060(...); void func_001105E0(...); void func_0009D3E0(...);
+  __declspec(align(16)) float m[16];
+  float f;
+  D_00316220 = func_000C8100(D_0031621C);
+  f = func_000C8100(D_0031621C + D_001D3418);
+  func_0011F270(D_00316210 + 4, D_00316220, &D_00316224, &D_00316244);
+  func_0011F270(D_00316210 + 4, f, &D_00316234, 0);
+  func_0012F7A0(&D_00316224, &D_003161D0);
+  func_0012F610(&D_00316244, &D_003161D0);
+  func_0012F7A0(&D_00316234, &D_003161D0);
+  func_0009D280(D_00307DF8);
+  func_00110060(*(int*)(D_00307DF8 + 0x2c), m);
+  m[12] = D_00316224;
+  m[13] = D_00316228;
+  m[14] = D_0031622C;
+  func_001105E0(*(int*)(D_00307DF8 + 0x2c), m, 0);
+  func_0009D3E0(D_00307DF8);
+}
+
 void func_000C91C0(void){int func_001031C0(...);extern int D_00316928;extern char D_001DA8A4;int func_00102E80(...);int func_000A29C0(...);int func_000A2840(...);int func_0009D280(...);extern int D_00307DF8;int func_0005CCE0(...);int func_0005F310(...);int func_0005CCC0(...);extern int D_00316930;int func_0009C590(...);extern char D_001DA894,D_001DA880;int func_00044C90(...);int x=func_001031C0(D_00316928,&D_001DA8A4);func_00102E80(x);func_000A29C0(0);func_000A2840();func_0009D280(D_00307DF8);func_0005CCE0(0);func_0005F310(0);func_0005CCC0(1);int v[3]={0,0,0x42c80000};if(D_00316930==0){x=func_0009C590(&D_001DA894);func_00044C90(x,v);return;}x=func_0009C590(&D_001DA880);func_00044C90(x,v);}
 
 void func_000C9270(void)
