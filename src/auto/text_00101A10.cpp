@@ -3,7 +3,7 @@
 
 struct SoundInfo {
     char *str;
-    float one;
+    int one;
     int x;
     int y;
     int len;
@@ -50,43 +50,39 @@ void func_00131990(int);
 void func_00128990(int, int);
 void func_00128780(int, int, void *);
 void func_00128710(int, int, void *);
+#pragma intrinsic(strcpy)
+#pragma intrinsic(strlen)
 void func_001020A0(int param_1, int *param_2, char *param_3, char param_4) {
-    char *str;
-    float one;
-    int x;
-    int y;
-    int len;
-    char buf[128];
+    struct SoundInfo info;
     unsigned int i;
 
     *param_2 = func_001286C0(D_001DE714);
     *(char *)(param_1 + 0x1a) = (char)(*(char *)(param_1 + 0x1a) + 1);
     D_00324EA0 = D_00324EA0 + 1;
-    str = buf;
-    strcpy(buf, param_3);
+    info.str = info.buf;
+    strcpy(info.buf, param_3);
     i = 0;
-    len = (int)strlen(str);
-    if (len != 0) {
+    info.len = (int)strlen(info.str);
+    if (info.len != 0) {
         do {
-            char c = str[i];
+            char c = info.str[i];
             if (c >= 'A' && c <= 'Z')
                 c = (char)(c + 0x20);
-            str[i] = c;
+            info.str[i] = c;
             i++;
-        } while (i < strlen(str));
+        } while (i < strlen(info.str));
     }
     func_00131990(D_00324EAC);
-    one = 1.0f;
-    x = *(int *)(param_1 + 0x34);
-    y = *(int *)(param_1 + 0x38);
+    info.one = 1.0f;
+    info.y = *(int *)(param_1 + 0x38);
+    info.x = *(int *)(param_1 + 0x34);
     func_00128990(*param_2, 0);
-    if (param_4 == 0)
-        func_00128710(*param_2, 0, &str);
+    if (param_4 != 0)
+        func_00128780(*param_2, 0, &info);
     else
-        func_00128780(*param_2, 0, &str);
+        func_00128710(*param_2, 0, &info);
     func_00131990((int)D_001D29C7);
 }
-
 void func_00102470(void) {
     int func_001021C0(...);
     func_001021C0();
