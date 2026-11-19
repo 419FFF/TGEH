@@ -15,6 +15,7 @@ struct M_000DA570 { int v[16]; };
 struct M8_000DAE60 { int v[8]; };
 struct M4_000DAE60 { int v[4]; };
 struct M3_000DAE60 { int v[3]; };
+struct M2_000DAE60 { int v[2]; };
 
 void func_000DA370(void)
 {
@@ -183,6 +184,8 @@ extern int _D_001D8018; extern int _D_0031E510; extern int func_0009C590(int); e
 
 #pragma intrinsic(memcpy)
 void *memcpy(void *, const void *, unsigned int);
+extern "C" void _ReadWriteBarrier(void);
+#pragma intrinsic(_ReadWriteBarrier)
 void _func_000DAE60(void)
 {
   extern undefined4 D_0031E514;
@@ -237,7 +240,8 @@ void _func_000DAE60(void)
     iVar3 = iVar3 + 0x90;
     iVar2 = iVar2 + -1;
   } while (iVar2 != 0);
-  memcpy(&D_0031B870, (void *)(iVar1 + 0xc30), 0x40);
+  D_0031B870 = *(M_000DA570 *)(iVar1 + 0xc30);
+  _ReadWriteBarrier();
   func_000D51E0(&D_0031B870, D_0031B864);
   return;
 }
