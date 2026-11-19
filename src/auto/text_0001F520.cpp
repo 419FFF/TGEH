@@ -2,6 +2,40 @@
 #include "common.h"
 #include "ghidra.h"
 
+void func_0001F520(int p)
+{
+    int func_00116A90(...); int func_0004FA80(...); int func_00048720(...); int func_00056D50(...);
+    int func_00045A60(...); int func_000A1BB0(...); int func_00131990(...);
+    extern int D_00307D10;
+    extern char D_001D31E4, D_001D31DC, D_001D31D4, D_001D29C7;
+    int *w = (int *)(p + 0x17c);
+    unsigned int *x = (unsigned int *)func_00116A90(0x260, 1, 1);
+    int n;
+    *(unsigned int **)(p + 0x110) = x;
+    for (int i = 0; i < 0x98; i++) x[i] = 0;
+    func_0004FA80(p, x);
+    w[0] = 0; w[1] = 0x3f800000; w[2] = 0x3f800000; w[3] = 0; w[4] = 0x3f800000; w[5] = 0; w[6] = 0; w[7] = 0; w[8] = 0x3f800000; w[9] = 0;
+    *((char *)x + 0x95) = 0;
+    x[0] = 10;
+    x[0x19] = *(unsigned int *)(p + 0x134);
+    n = (int)((double)*(float *)(p + 0x138) / (double)*(float *)(x[0x19] + 0x74)) << 1;
+    x[0x20] = n;
+    x[0x1a] = func_00048720(D_00307D10, n, x[0x19], p);
+    func_00056D50(p, x);
+    func_00045A60(p);
+    x[0x96] = func_000A1BB0(p, &D_001D31E4);
+    x[0x97] = func_000A1BB0(p, &D_001D31DC);
+    x[0x95] = func_000A1BB0(p, &D_001D31D4);
+    func_00131990(&D_001D29C7);
+}
+
+void func_0001F630(int self) { int func_00110060(...); int func_0012F7A0(...); int func_0012E6D0(...); longdouble func_0012EA60(...); int func_0012E8C0(...); extern int *D_00307DF8; __declspec(align(16)) char f[0x98];
+func_00110060(*(int*)(self+0x2c),f+0x60); func_00110060(*(int*)((char*)D_00307DF8+0x2c),f+0x20);
+*(int*)(f+4)=*(int*)(self+0xe8); *(int*)(f+8)=*(int*)(self+0xec); *(int*)(f+0xc)=*(int*)(self+0xf0); *(int*)(f+0x10)=0;
+*(int*)(f+0x14)=*(int*)((char*)D_00307DF8+0xe8); *(int*)(f+0x18)=*(int*)((char*)D_00307DF8+0xec); *(int*)(f+0x1c)=*(int*)((char*)D_00307DF8+0xf0); *(int*)(f+0x20)=0;
+func_0012F7A0(f+4,f+0x70); func_0012F7A0(f+0x14,f+0x38);
+func_0012E6D0(f+0x34,f+0x14,f+4); func_0012EA60(f+0x3c); func_0012E8C0(f+0x40,f+0x74); }
+
 void func_0001F710(int param_1)
 {
 int func_001100A0(...);
