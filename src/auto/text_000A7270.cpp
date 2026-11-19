@@ -194,5 +194,4 @@ void func_000A7E60(void)
   func_000F7EF0(func_000F91D0(((undefined *)&D_001D7974)),uVar1);
   return;
 }
-#pragma optimize("", on)
 
