@@ -86,6 +86,72 @@ void func_000A8790(void) {
     func_00100730(D_00312D8C);
 }
 
+void func_000A87A0(void)
+{
+  extern int D_00312D8C, D_00312DAC, D_00312DA8, D_00312DA4, D_00312D90;
+  extern float D_00312DB0, D_001D27EC;
+  extern char D_001D7AEC, D_001D7AD8;
+  int func_000B57F0(...);
+  void func_00110330(int, int);
+  void func_001006C0(int);
+  int func_0009CBE0(...);
+  void func_0009D280(...);
+  void func_0009D3E0(...);
+  int func_0013E469(char *, char *, ...);
+  void func_00110060(int, void *);
+  void func_0012F120(void *);
+  void func_0012FE20(void *, int, int, int);
+  void func_0012E760(void *);
+  void func_0012E680(void *, int);
+  void func_0012F7A0(void *, void *);
+  void func_0012E590(void *, int);
+  void func_0012F2E0(void *, void *);
+  void func_001105E0(int, void *, int);
+  __declspec(align(16)) char other[0x40];
+  __declspec(align(16)) char buf[0x40];
+  __declspec(align(16)) char matrix[0x40];
+  __declspec(align(16)) int vec[4];
+  int n;
+  int p;
+
+  if (func_000B57F0() == 0) {
+    func_00110330(D_00312D8C, 1);
+    func_001006C0(D_00312D8C);
+  } else {
+    func_00110330(D_00312D8C, 0);
+  }
+  n = (int)(long double)*(float *)D_00312DAC;
+  if (D_00312DA8 != n) {
+    D_00312DA8 = n;
+    if (n != 0) {
+      func_0009D280(func_0009CBE0(&D_001D7AEC));
+      n = 0;
+      do {
+        func_0013E469(buf, &D_001D7AD8, n + 1);
+        func_0009D3E0(func_0009CBE0(buf));
+        n = n + 1;
+      } while (n != 4);
+    }
+  }
+  D_00312DB0 = D_00312DB0 + (float)(long double)D_001D27EC;
+  func_00110060(D_00312DA4, other);
+  p = (int)&D_00312D90;
+  do {
+    func_0012F120(matrix);
+    func_0012FE20(matrix, 0, 0, *(int *)&D_00312DB0);
+    func_0012E760(vec);
+    func_0012E680(vec, *(int *)p + 0xc0);
+    func_0012F7A0(vec, matrix);
+    *(int *)(matrix + 0x30) = vec[0];
+    *(int *)(matrix + 0x34) = vec[1];
+    *(int *)(matrix + 0x38) = vec[2];
+    func_0012E590(matrix + 0x30, *(int *)p + 0xc0);
+    func_0012F2E0(matrix, other);
+    func_001105E0(*(int *)p, matrix, 0);
+    p = p + 4;
+  } while (p < (int)&D_00312DA4);
+}
+
 void func_000A8930(void)
 {
   extern undefined4 D_00312DB4;
