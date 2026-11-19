@@ -3,6 +3,39 @@
 #include <string.h>
 
 extern char D_0030C178[];
+int _func_0009C590(char *name)
+{
+  extern int D_00307DF8;
+  extern unsigned int D_003104B4;
+  extern int D_00308160[];
+  extern char D_001D73F0[], D_001D73E8[];
+  int func_0011B4F0(...), func_0011B530(...), func_0013F2E9(...);
+  char buf[256];
+  char *key = name;
+  int n;
+  unsigned int idx;
+  int r;
+  if (func_0011B4F0(name, D_001D73F0) == 0) return D_00307DF8;
+  if (func_0011B530(name, D_001D73E8, 7) == 0) {
+    strcpy(buf, *(char **)(D_00307DF8 + 0xc));
+    strcat(buf, name + 6);
+    key = buf;
+  }
+  n = 0x800;
+  if (D_003104B4 > 0x1000) n = 0x1000;
+  idx = n - 1;
+  while (n > 0) {
+    if (idx >= D_003104B4) r = -1;
+    else {
+      r = func_0013F2E9(key, *(int *)(D_00308160[idx] + 0xc));
+      if (r == 0) return D_00308160[idx];
+    }
+    n >>= 1;
+    if (r < 0) idx -= n; else idx += n;
+  }
+  return 0;
+}
+
 char *_func_0009C7A0(int p, int q)
 {
   int func_0009C510(...), func_0009C590(...), func_0011B4F0(...);
