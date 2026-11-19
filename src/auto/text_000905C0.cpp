@@ -28,14 +28,13 @@ void func_00090950(void)
 {
     extern int D_001D6FCC, D_001D6FD0, D_001D6FD4, D_001D6FD8, D_001D6FDC;
     extern int D_001D6FBC, D_001D6FB0;
-    extern int D_0030414C, D_00304150, D_0030809C;
+    extern int D_00304150, D_0030809C;
     int func_0011E840(...);
     int func_0011DD60(...);
     int func_0011E830(...);
     int func_0011DEF0(...);
     int func_00110480(...);
     __declspec(align(8)) int s[0x3d];
-    int w;
     memset(s, 0, sizeof(s));
     s[0x24] = 2;
     s[0x25] = 2;
@@ -52,8 +51,8 @@ void func_00090950(void)
     s[3] = D_001D6FD8;
     s[4] = D_001D6FDC;
     s[0x3b] = 0x58;
-    w = func_0011E840(&D_001D6FBC, s);
-    D_00304150 = func_0011DD60(&D_001D6FB0, 0x14, D_0030414C = w, *(int *)(w + 0x14c));
+    D_0030414C = func_0011E840(&D_001D6FBC, s);
+    D_00304150 = func_0011DD60(&D_001D6FB0, 0x14, D_0030414C, *(int *)(D_0030414C + 0x14c));
     func_0011E830(D_0030414C, D_00304150);
     func_0011DEF0(D_00304150);
     func_00110480(D_0030809C, D_0030414C, 8);
