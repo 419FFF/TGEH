@@ -1,6 +1,34 @@
 /* 21 functions from 0x00137090 to 0x00137EE7, found by Ghidra. */
 #include "common.h"
 #include "ghidra.h"
+extern "C" void (__stdcall * __imp__RtlEnterCriticalSection)(void*);
+extern "C" void (__stdcall * __imp__RtlLeaveCriticalSection)(void*);
+
+void func_00137090(unsigned int x, unsigned int y, int w, int h)
+{
+  extern unsigned int D_0033232C, D_0033228C, D_003326C8, D_003326A4, D_00332430, D_003323E0;
+  extern float D_001D27D0, D_001D2A28, D_001D3320;
+  extern int D_003326AC;
+  extern void __stdcall RtlEnterCriticalSection(void *);
+  extern void __stdcall RtlLeaveCriticalSection(void *);
+  void __stdcall func_0014BF50(int, int, int *);
+  int r[4];
+  if (y > 0x1e0) y = 0x1e0;
+  if (y + h > 0x1e0) h = 0x1e0 - y;
+  if (x > 0x280) x = 0x280;
+  if (x + w > 0x280) w = 0x280 - x;
+  D_003326C8 = x;
+  r[0] = D_0033232C * x / 640;
+  r[2] = D_0033232C * (x + w) / 640;
+  D_003326A4 = y;
+  D_00332430 = w;
+  D_003323E0 = h;
+  r[1] = (int)((((float)y - D_001D27D0) * D_001D2A28 + D_001D27D0) * (float)D_0033228C * D_001D3320);
+  r[3] = (int)((((float)(y + h) - D_001D27D0) * D_001D2A28 + D_001D27D0) * (float)D_0033228C * D_001D3320);
+  RtlEnterCriticalSection(&D_003326AC);
+  func_0014BF50(1, 0, r);
+  RtlLeaveCriticalSection(&D_003326AC);
+}
 
 unsigned int func_001371E0(void)
 {
@@ -9,6 +37,47 @@ unsigned int func_001371E0(void)
  if(D_0033272C)return D_00332728;
  v=func_00109B91()-1;
  switch(v){case 0:return 0;case 1:return 5;case 2:return 2;case 3:return 1;case 4:return 3;case 5:return 4;case 6:return 7;case 7:return 8;case 8:return 6;default:return 0;}
+}
+
+void func_00137260(int a0, int a1, int a2, int a3, int *a4, int *a5)
+{
+    extern int D_00332738, D_0033273C, D_00332740;
+    void func_001378E0(int, unsigned int);
+    void func_00137A20(void);
+    void func_00137A90(int, int);
+    void func_00137AB0(void);
+    func_001378E0(8, 1);
+    func_00137A20();
+    D_00332738 = a0;
+    D_0033273C = a1;
+    D_00332740 = 0x3f000000;
+    func_00137A90(a4[0], a4[1]);
+    func_00137A20();
+    D_00332738 = a2;
+    D_0033273C = a1;
+    D_00332740 = 0x3f000000;
+    func_00137A90(a5[0], a4[1]);
+    func_00137A20();
+    D_00332738 = a2;
+    D_0033273C = a3;
+    D_00332740 = 0x3f000000;
+    func_00137A90(a5[0], a5[1]);
+    func_00137A20();
+    D_00332738 = a2;
+    D_0033273C = a3;
+    D_00332740 = 0x3f000000;
+    func_00137A90(a5[0], a5[1]);
+    func_00137A20();
+    D_00332738 = a0;
+    D_0033273C = a3;
+    D_00332740 = 0x3f000000;
+    func_00137A90(a4[0], a5[1]);
+    func_00137A20();
+    D_00332738 = a0;
+    D_0033273C = a1;
+    D_00332740 = 0x3f000000;
+    func_00137A90(a4[0], a4[1]);
+    func_00137AB0();
 }
 
 void *func_001373A0(void)
