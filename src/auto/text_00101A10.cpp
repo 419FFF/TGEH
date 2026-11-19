@@ -73,7 +73,7 @@ void func_001020A0(int param_1, int *param_2, char *param_3, char param_4) {
         } while (i < strlen(info.str));
     }
     func_00131990(D_00324EAC);
-    info.one = 1.0f;
+    info.one = 0x3f800000;
     info.y = *(int *)(param_1 + 0x38);
     info.x = *(int *)(param_1 + 0x34);
     func_00128990(*param_2, 0);
