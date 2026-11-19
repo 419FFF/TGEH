@@ -6,7 +6,8 @@ struct Obj1D160 {
   int f2c; char pad2[0xe0]; int f110; char pad3[0xc];
 };
 struct Base1D160 { int w[0x44]; };
-struct __declspec(align(8)) Args1D160 { int a, b, c, d; };
+struct Args1D160 { int a, b, c, d; };
+struct Zero1D160b { union { double dd; int x[0x21]; }; };
 struct Zero1D160 { int x[0x21]; };
 
 Obj1D160 *func_0001D160(Obj1D160 *param_1)
