@@ -43,6 +43,83 @@ void _func_0009D620(int p)
     }
 }
 
+int _func_00088940(int, int);
+int _func_000F8680(int);
+int _func_000A23D0(int);
+int _func_001025A0(int);
+void _func_0009D640(int p)
+{
+    char buf[256];
+    unsigned int i;
+    char *q;
+    int n;
+    strcpy(buf, *(char **)(p + 0xc));
+    strcat(buf, ".");
+    for (i = *(unsigned short *)(p + 0x54) + 1; i < (unsigned int)_D_003104B4; i++) {
+        q = (char *)_D_0030C630[i];
+        if (q != 0) {
+            n = strlen(buf);
+            if (_func_0011B530(*(char **)(q + 0xc), buf, n) == 0 &&
+                _func_0013E600(*(char **)(q + 0xc) + n, ".") == 0) {
+                _func_0009D640(_D_0030C630[i]);
+            } else if (_func_0011B530(*(char **)(_D_0030C630[i] + 0xc), buf, strlen(buf)) != 0) {
+                break;
+            }
+        }
+    }
+    if (!(*(unsigned char *)(p + 0x10) & 8)) {
+        _func_00088940(*(int *)(p + 0x2c), 1);
+        _func_000F8680(*(int *)(p + 0x2c));
+        if (!(*(unsigned char *)(p + 0x11) & 0x40)) {
+            _func_000A23D0(p + 0x64);
+        }
+        if (*(char *)(p + 0x13) == 8) {
+            _func_001025A0(p);
+        }
+        *(unsigned short *)(p + 0x10) |= 8;
+    }
+}
+
+extern int _D_003080AC;
+void _func_000A2410(int, int);
+void _func_000F8810(int);
+void _func_001026A0(int);
+void _func_0009D780(int p)
+{
+    char buf[256];
+    unsigned int i;
+    char *q;
+    int n;
+    unsigned short flags;
+    strcpy(buf, *(char **)(p + 0xc));
+    strcat(buf, ".");
+    for (i = *(unsigned short *)(p + 0x54) + 1; i < (unsigned int)_D_003104B4; i++) {
+        q = (char *)_D_0030C630[i];
+        if (q != 0) {
+            n = strlen(buf);
+            if (_func_0011B530(*(char **)(q + 0xc), buf, n) == 0 &&
+                _func_0013E600(*(char **)(q + 0xc) + n, ".") == 0) {
+                _func_0009D780(_D_0030C630[i]);
+            } else if (_func_0011B530(*(char **)(_D_0030C630[i] + 0xc), buf, strlen(buf)) != 0) {
+                break;
+            }
+        }
+    }
+    flags = *(unsigned short *)(p + 0x10);
+    if (flags & 8) {
+        if (!(flags & 0x4000)) {
+            if (!_D_003080AC)
+                _func_000A2410(p + 0x64, 0);
+            else
+                _func_000A2410(p + 0x64, 1);
+        }
+        _func_000F8810(*(int *)(p + 0x2c));
+        if (*(char *)(p + 0x13) == 8)
+            _func_001026A0(p);
+        *(unsigned short *)(p + 0x10) &= ~0x8;
+    }
+}
+
 void _func_0009D8D0(int p)
 {
     int _func_000F9610(...);
