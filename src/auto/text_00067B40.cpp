@@ -122,6 +122,4 @@ extern void _func_00067E60(void* obj, int param2);
 extern unsigned int D_001D578C;
 extern unsigned int D_001D5784;
 extern unsigned int D_001D5788;
-extern unsigned int D_002F7B04;
-extern unsigned int D_002F7EEC;
 extern unsigned int D_001D29C7;
