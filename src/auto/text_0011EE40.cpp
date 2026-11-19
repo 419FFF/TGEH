@@ -1,5 +1,6 @@
 /* 19 functions from 0x0011EE40 to 0x0011FE22, found by Ghidra. */
 #include "common.h"
+struct V3f { int x, y, z; };
 #include "ghidra.h"
 
 int func_0011F200(int *param_1)
@@ -22,6 +23,30 @@ void __cdecl _func_0011F220(void)
         _D_003281F8 = _func_00115D60(local);
     }
     ++_D_003281FC;
+}
+
+float func_0011F6C0(int *spline, unsigned int steps)
+{
+    struct Vec3 { float x, y, z; };
+    struct Point { Vec3 v; float w; };
+    void func_0011F270(int *, float, Point *, int);
+    float func_0012E7B0(Point *, Point *);
+    unsigned int count = spline[0];
+    unsigned int i, j;
+    float len;
+    Point prev, cur;
+    if (!*(char *)(spline + 2))
+        count--;
+    len = 0.0f;
+    func_0011F270(spline, 0.0f, &prev, 0);
+    for (i = 0; i != count; i++) {
+        for (j = 0; j != steps; j++) {
+            func_0011F270(spline, (float)j / (float)steps + (float)i, &cur, 0);
+            len += func_0012E7B0(&prev, &cur);
+            prev.v = cur.v;
+        }
+    }
+    return len;
 }
 
 #pragma intrinsic(memcpy)
