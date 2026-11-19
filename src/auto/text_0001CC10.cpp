@@ -3,7 +3,7 @@
 
 struct Obj1D160 {
   char pad0[0x12]; char b12; char pad1[0x19];
-  int f2c; char pad2[0xdc]; int f110; char pad3[0xc];
+  int f2c; char pad2[0xe0]; int f110; char pad3[0xc];
 };
 struct Args1D160 { int a, b, c, d; };
 struct Zero1D160 { int x[0x21]; };
