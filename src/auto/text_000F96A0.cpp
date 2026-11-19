@@ -39,6 +39,70 @@ int func_000F9760(void)
   return D_00324B80 + -0x48 + D_00324B84 * 0x48;
 }
 
+void func_000F97A0(int param_1, int *param_2)
+{
+  int func_0013E9DB(...);
+  int func_0011B4F0(...);
+  extern char D_001D8750, D_001D8748, D_001D8734, D_001D8720, D_001D3A28, D_001D87A0, D_001D6B04, D_001D88F0, D_001D8798, D_001D8794;
+  int iVar1;
+  unsigned int uVar2;
+
+  uVar2 = func_0013E9DB(*param_2);
+  uVar2--;
+  if (*(unsigned int *)(param_1 + 0x24) <= uVar2) {
+    *(unsigned int *)(param_1 + 0x24) = uVar2 + 1;
+  }
+  iVar1 = func_0011B4F0(param_2[1], &D_001D8750);
+  if (iVar1 == 0) {
+    *(int *)(param_1 + 0x28 + uVar2 * 4) = 0;
+    return;
+  }
+  iVar1 = func_0011B4F0(param_2[1], &D_001D8748);
+  if (iVar1 == 0) {
+    *(int *)(param_1 + 0x28 + uVar2 * 4) = 1;
+    return;
+  }
+  iVar1 = func_0011B4F0(param_2[1], &D_001D8734);
+  if (iVar1 == 0) {
+    *(int *)(param_1 + 0x28 + uVar2 * 4) = 2;
+    return;
+  }
+  iVar1 = func_0011B4F0(param_2[1], &D_001D8720);
+  if (iVar1 == 0) {
+    *(int *)(param_1 + 0x28 + uVar2 * 4) = 3;
+    return;
+  }
+  iVar1 = func_0011B4F0(param_2[1], &D_001D3A28);
+  if (iVar1 == 0) {
+    *(int *)(param_1 + 0x28 + uVar2 * 4) = 6;
+    return;
+  }
+  iVar1 = func_0011B4F0(param_2[1], &D_001D87A0);
+  if (iVar1 == 0) {
+    *(int *)(param_1 + 0x28 + uVar2 * 4) = 5;
+    return;
+  }
+  iVar1 = func_0011B4F0(param_2[1], &D_001D6B04);
+  if (iVar1 == 0) {
+    *(int *)(param_1 + 0x28 + uVar2 * 4) = 4;
+    return;
+  }
+  iVar1 = func_0011B4F0(param_2[1], &D_001D88F0);
+  if (iVar1 == 0) {
+    *(int *)(param_1 + 0x28 + uVar2 * 4) = 7;
+    return;
+  }
+  iVar1 = func_0011B4F0(param_2[1], &D_001D8798);
+  if (iVar1 == 0) {
+    *(int *)(param_1 + 0x28 + uVar2 * 4) = 8;
+    return;
+  }
+  iVar1 = func_0011B4F0(param_2[1], &D_001D8794);
+  if (iVar1 == 0) {
+    *(int *)(param_1 + 0x28 + uVar2 * 4) = 9;
+  }
+}
+
 int func_000F9BB0(int a,int b){extern int D_00324B74,D_00324B68;int func_0011C3E0(...);int func_0011C3B0(...);int p=D_00324B74;func_0011C3E0(p);for(int i=0;i<0x13a;i++)((int*)p)[i]=0;*(int*)(p+0xc)=a;*(int*)(p+0x18)=0;*(char*)(p+0x15)=0;*(int*)(p+0x10)=b;func_0011C3B0(&D_00324B68,p,p);return p;}
 
 int func_000F9C00(int a,int b){extern int D_00324B74,D_00324B68;int func_0009C510(...);int func_0009C590(...);int func_0009CAA0(...);int func_0011C3E0(...);int func_0011C3B0(...);char x[128],y[128];func_0009C510(b,x,y);if(!a)a=func_0009C590(x);int z=func_0009CAA0(a,y);if(z){int p=D_00324B74;func_0011C3E0(p);for(int i=0;i<0x13a;i++)((int*)p)[i]=0;*(int*)(p+0xc)=a;*(int*)(p+0x18)=0;*(char*)(p+0x15)=0;*(int*)(p+0x10)=z;func_0011C3B0(&D_00324B68,p,p);return p;}return 0;}
