@@ -74,26 +74,28 @@ extern unsigned short D_003281E4; extern char D_001D2F4C,D_001D2F40,D_001D2F38,D
 int func_0011E800(int);
 void func_0001CA30(int p)
 {
-    int q = *(int *)(p + 0x2c);
-    unsigned char *s = *(unsigned char **)(q + 0x158);
-    unsigned int d = *(unsigned int *)&D_003281E4;
-    if (*(unsigned short *)s != d ||
-        (func_0011B4F0(*(int *)(s + 0x50), &D_001D2F4C) &&
-         func_0011B4F0(*(int *)(s + 0x50), &D_001D2F40) &&
-         func_0011B4F0(*(int *)(s + 0x50), &D_001D2F38) &&
-         func_0011B4F0(*(int *)(s + 0x50), &D_001D2F30) &&
-         func_0011B4F0(*(int *)(s + 0x50), &D_001D2F28))) {
-        func_0011E800(*(int *)(p + 0x2c));
-        if (*(int *)(q + 0x150) != 0x30 && *(unsigned short *)s == *(unsigned int *)&D_003281E4) {
-            unsigned int i;
-            *(int *)(s + 0x160) = *(int *)(q + 0x14c);
-            for (i = 0; i < *(unsigned int *)(s + 0x15c); i++) {
-                int o = i * 0x58;
-                func_0011D310(*(int *)(s + 0x160) + o, *(int *)(*(int *)(s + 0x50) + 0x2c), (int)(s + 0x54));
-                *(int *)(o + 0x20 + *(int *)(s + 0x160)) = 0;
-            }
-        }
+  int q = *((int *) (p + 0x2c));
+  int new_var2;
+  int *new_var;
+  unsigned char *s = *((unsigned char **) (q + 0x158));
+  unsigned int d = *((unsigned int *) (&D_003281E4));
+  new_var2 = 0x50;
+  if (((*((unsigned short *) s)) != d) || ((((func_0011B4F0(*((int *) (s + new_var2)), &D_001D2F4C) && func_0011B4F0(*((int *) (s + new_var2)), &D_001D2F40)) && func_0011B4F0(*((int *) (s + new_var2)), &D_001D2F38)) && func_0011B4F0(*((int *) (s + 0x50)), &D_001D2F30)) && func_0011B4F0(*((int *) (s + new_var2)), &D_001D2F28)))
+  {
+    func_0011E800(*((int *) (p + 0x2c)));
+    if (((*((int *) (q + 0x150))) != 0x30) && ((*((unsigned short *) s)) == (*((unsigned int *) (&D_003281E4)))))
+    {
+      unsigned int i;
+      new_var = (int *) (q + 0x14c);
+      *((int *) (s + 0x160)) = *new_var;
+      for (i = 0; i < (*((unsigned int *) (s + 0x15c))); i++)
+      {
+        func_0011D310((*((int *) (s + 0x160))) + (i * 0x58), *((int *) ((*((int *) (s + new_var2))) + 0x2c)), (int) (s + 0x54));
+        *((int *) (((i * 0x58) + (*((int *) (s + 0x160)))) + 0x20)) = 0;
+      }
+
     }
+  }
 }
 
 int _func_0001CB50(void *arg)
