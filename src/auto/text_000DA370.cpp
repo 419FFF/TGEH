@@ -11,6 +11,8 @@ struct S_000DA370 {
 };
 
 struct M_000DA570 { int v[16]; };
+struct M8_000DAE60 { int v[8]; };
+struct M4_000DAE60 { int v[4]; };
 
 void func_000DA370(void)
 {
@@ -94,35 +96,31 @@ void func_000DA4E0(void) {
 
 void __cdecl _func_000DA570(void)
 {
-    extern char *D_0031E514;
+    extern int *D_0031E514;
     extern float D_001D27EC, D_001D27B0, D_001D2B64;
     float func_00131760(void);
     void func_0009D280(int);
     void func_00110330(int, int);
-    char *g = D_0031E514;
-    char *e = g;
-    __declspec(align(16)) int tmpA[16];
-    __declspec(align(16)) int tmpB[16];
-    int i;
-    int n = *(int *)(g + 0xc10);
-    *(int *)(g + 0x6a0) = 0;
-    *(int *)(g + 0x770) = 0;
-    if (*(int *)(g + 0xc0c) > n || (*(int *)(g + 0xc0c) == n && func_00131760() > D_001D27EC))
-        e += 0x5f0;
-    else
-        e += 0x6c0;
-    for (i = 0; i < 16; i++) tmpA[i] = ((int *)(e + 0x10))[i];
-    for (i = 0; i < 16; i++) tmpB[i] = ((int *)(e + 0x50))[i];
-    tmpB[12] = tmpA[12];
-    tmpB[13] = tmpA[13];
-    tmpB[14] = tmpA[14];
-    tmpB[15] = tmpA[15];
-    for (i = 0; i < 16; i++) ((int *)(e + 0x10))[i] = tmpB[i];
-    if (e == g + 0x6c0) {
-        (*(int *)(g + 0xc10))++;
+    int *g = D_0031E514;
+    char *e;
+    __declspec(align(16)) M_000DA570 a;
+    __declspec(align(16)) M_000DA570 b;
+    int n = g[0xc10 / 4];
+    g[0x6a0 / 4] = 0;
+    g[0x770 / 4] = 0;
+    e = (char *)g + ((g[0xc0c / 4] <= n && (g[0xc0c / 4] < n || func_00131760() > D_001D27EC)) ? 0x5f0 : 0x6c0);
+    a = *(M_000DA570 *)(e + 0x10);
+    b = *(M_000DA570 *)(e + 0x50);
+    b.v[12] = a.v[12];
+    b.v[13] = a.v[13];
+    b.v[14] = a.v[14];
+    b.v[15] = a.v[15];
+    *(M_000DA570 *)(e + 0x10) = b;
+    if (e == (char *)g + 0x6c0) {
+        g[0xc10 / 4]++;
     } else {
-        (*(int *)(g + 0xc0c))++;
-        *(float *)(g + 0xbfc) = (func_00131760() + D_001D27B0) * D_001D2B64;
+        g[0xc0c / 4]++;
+        *(float *)&g[0xbfc / 4] = (func_00131760() + D_001D27B0) * D_001D2B64;
     }
     func_0009D280(*(int *)e);
     func_00110330(*(int *)(e + 4), 1);
@@ -130,6 +128,46 @@ void __cdecl _func_000DA570(void)
     *(int *)(e + 0xac) = 0;
     *(int *)(e + 0xb8) = 0;
     *(char *)(e + 0xc0) = 1;
+}
+
+void func_000DA6A0(void)
+{
+  extern char *D_0031E514;
+  extern float D_00307DB4, D_001D27FC, D_001D27B8, D_001D4DFC;
+  extern char D_001DB3D0, D_0031E530;
+  int func_000A27E0(float); int func_000B55C0(float); int func_001031C0(...); int func_00103990(...);
+  int func_0012F120(...); int func_0012FE20(void *, int, int, float); int func_0012F5B0(...);
+  int func_00011CB0(...); int func_0012E650(...); int func_0012E590(...); int func_000D5170(...);
+  char *p = D_0031E514;
+  float f, g;
+  float v[3];
+  int m9c[3];
+  __declspec(align(16)) int m90[12];
+  int m60[4];
+  __declspec(align(16)) int m50[19];
+
+  if (!(*(float *)(p + 0xbf0) >= *(float *)(p + 8))) {
+    f = *(float *)(p + 0xc) - (D_00307DB4 - *(float *)(p + 0xbf8));
+    func_000A27E0(D_001D27FC - (f / *(float *)(p + 0xc)) * D_001D27FC);
+    func_000B55C0(f);
+    if (f < D_001D27B8) {
+      p[1] = 1;
+      f = 0.0f;
+      func_00103990(func_001031C0(*(int *)(D_0031E514 + 0x10), &D_001DB3D0), 0);
+    }
+    g = (f / *(float *)(p + 0xc)) * D_001D4DFC;
+    func_0012F120(m50);
+    func_0012FE20(m50, 0, 0, g);
+    v[0] = 0.0f;
+    v[1] = 2000.0f;
+    v[2] = 0.0f;
+    func_0012F5B0(m9c, v, m50);
+    func_00011CB0(m90, &D_0031E530);
+    func_0012E650(m60, v);
+    func_0012E590(m60, m9c);
+    func_00011CB0(p + 0x850, m90);
+    func_000D5170(p + 0x850, *(int *)(p + 0x844));
+  }
 }
 
 extern int _D_001D8018;
@@ -140,6 +178,65 @@ extern void func_0009D780(int);
 extern void func_0009D8D0(int);
 extern void func_0009D9E0(int);
 extern int _D_001D8018; extern int _D_0031E510; extern int func_0009C590(int); extern void func_0009D280(int); extern void func_0009D780(int); extern void func_0009D8D0(int); extern void func_0009D9E0(int); void func_000DA800(void){volatile int marker=0; _D_0031E510=0;func_0009D280(func_0009C590(_D_001D8018));func_0009D780(func_0009C590(_D_001D8018));func_0009D8D0(func_0009C590(_D_001D8018));func_0009D9E0(func_0009C590(_D_001D8018));}
+
+void _func_000DAE60(void)
+{
+  extern undefined4 D_0031E514;
+  extern int D_0031B864;
+  extern M_000DA570 D_0031B870;
+  int func_00011CB0(...);
+  int func_000D5170(...);
+  int func_000D51E0(...);
+  int iVar1;
+  int iVar2;
+  int iVar3;
+
+  iVar1 = D_0031E514;
+  iVar3 = iVar1 + 0x6d0;
+  func_00011CB0(iVar3, iVar1 + 0x710);
+  func_000D5170(iVar3, *(undefined4 *)(iVar1 + 0x6c4));
+  iVar3 = iVar1 + 0xb0;
+  func_00011CB0(iVar3, iVar1 + 0xf0);
+  func_000D5170(iVar3, *(undefined4 *)(iVar1 + 0xa4));
+  iVar3 = iVar1 + 0x7a0;
+  func_00011CB0(iVar3, iVar1 + 0x7e0);
+  func_000D5170(iVar3, *(undefined4 *)(iVar1 + 0x794));
+  iVar3 = iVar1 + 0x410;
+  func_00011CB0(iVar3, iVar1 + 0x450);
+  func_000D5170(iVar3, *(undefined4 *)(iVar1 + 0x404));
+  iVar3 = iVar1 + 0x4c0;
+  func_00011CB0(iVar3, iVar1 + 0x500);
+  func_000D5170(iVar3, *(undefined4 *)(iVar1 + 0x4b4));
+  iVar3 = iVar1 + 0x550;
+  func_00011CB0(iVar3, iVar1 + 0x590);
+  func_000D5170(iVar3, *(undefined4 *)(iVar1 + 0x544));
+  iVar3 = iVar1 + 0x144;
+  iVar2 = 5;
+  do {
+    *(int *)(iVar3 - 4) = *(int *)(iVar3 + 0x3c);
+    *(int *)(iVar3 + 0x00) = *(int *)(iVar3 + 0x40);
+    *(int *)(iVar3 + 0x04) = *(int *)(iVar3 + 0x44);
+    *(int *)(iVar3 + 0x08) = *(int *)(iVar3 + 0x48);
+    *(int *)(iVar3 + 0x0c) = *(int *)(iVar3 + 0x4c);
+    *(int *)(iVar3 + 0x10) = *(int *)(iVar3 + 0x50);
+    *(int *)(iVar3 + 0x14) = *(int *)(iVar3 + 0x54);
+    *(int *)(iVar3 + 0x18) = *(int *)(iVar3 + 0x58);
+    *(int *)(iVar3 + 0x1c) = *(int *)(iVar3 + 0x5c);
+    *(int *)(iVar3 + 0x20) = *(int *)(iVar3 + 0x60);
+    *(int *)(iVar3 + 0x24) = *(int *)(iVar3 + 0x64);
+    *(int *)(iVar3 + 0x28) = *(int *)(iVar3 + 0x68);
+    *(int *)(iVar3 + 0x2c) = *(int *)(iVar3 + 0x6c);
+    *(int *)(iVar3 + 0x30) = *(int *)(iVar3 + 0x70);
+    *(int *)(iVar3 + 0x34) = *(int *)(iVar3 + 0x74);
+    *(int *)(iVar3 + 0x38) = *(int *)(iVar3 + 0x78);
+    func_000D5170(iVar3 - 4, *(undefined4 *)(iVar3 - 0x10));
+    iVar3 = iVar3 + 0x90;
+    iVar2 = iVar2 + -1;
+  } while (iVar2 != 0);
+  D_0031B870 = *(M_000DA570 *)(iVar1 + 0xc30);
+  func_000D51E0(&D_0031B870, D_0031B864);
+  return;
+}
 
 void func_000DAFF0(void) {
  int func_0012F120(...); int func_00011CB0(...); int func_0012E760(...); int func_0012F7A0(...); int func_00011E30(...); int func_001105E0(...);
