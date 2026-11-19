@@ -62,6 +62,18 @@ void func_00104AB0(void) {
     D_00324F20=0;D_00324F2C=0;D_00324F74=func_00136F80();
 }
 
+void func_00104B30(void) {
+    extern int D_00324F70; extern int D_00324F74; extern int D_00324F10; extern int D_00324F14; extern int D_00324F18;
+    int func_00104190(...); int func_000688D0(...); int func_00116160(...);
+    if (D_00324F70 != 0) {
+        func_00104190();
+    }
+    func_000688D0(D_00324F74);
+    func_00116160(D_00324F10);
+    func_00116160(D_00324F14);
+    func_00116160(D_00324F18);
+}
+
 void func_00105270(void) {
     extern int D_00324F80;
     D_00324F80 = 0;
