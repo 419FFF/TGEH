@@ -58,6 +58,47 @@ int func_000B06A0(void) {
     return D_001E46C4;
 }
 
+extern int D_00313B54;
+extern int D_00313A70;
+extern int D_001E46BC[];
+extern char D_001D29C7[];
+void __cdecl _func_000A7890(void);
+void __cdecl _func_000ED590(void);
+void __cdecl _func_00070720(void);
+void __cdecl _func_0009A610(void);
+void __cdecl _func_000A75D0(void);
+void __cdecl _func_000ED480(void);
+void __cdecl _func_000705C0(void);
+void __cdecl _func_0009B5C0(int, char *);
+void __cdecl _func_000A7A30(void);
+void __cdecl _func_000ED620(void);
+void __cdecl _func_000708D0(void);
+void __cdecl _func_0009ABD0(void);
+void __cdecl _func_000B09A0(void)
+{
+    if (D_00313B54 != D_00313A70) {
+        switch (D_00313B54) {
+        case 1: _func_000A7890(); break;
+        case 12: _func_000ED590(); break;
+        case 2: _func_00070720(); break;
+        case 3: case 4: case 5: case 6: case 7: case 8: case 9: _func_0009A610(); break;
+        }
+        D_00313B54 = D_00313A70;
+        switch (D_00313A70) {
+        case 1: _func_000A75D0(); break;
+        case 12: _func_000ED480(); break;
+        case 2: _func_000705C0(); break;
+        case 3: case 4: case 5: case 6: case 7: case 8: case 9: _func_0009B5C0(D_001E46BC[D_00313A70], D_001D29C7); break;
+        }
+    }
+    switch (D_00313B54) {
+    case 1: _func_000A7A30(); break;
+    case 12: _func_000ED620(); break;
+    case 2: _func_000708D0(); break;
+    case 3: case 4: case 5: case 6: case 7: case 8: case 9: _func_0009ABD0(); break;
+    }
+}
+
 extern int D_00313D38,D_00313BB4,D_00313B9C,D_00313BA0,D_00313BA4,D_00313DAC;
 void func_000B0E00(void){D_00313D38=0x3144;D_00313BB4=1;D_00313B9C=1;D_00313BA0=1;D_00313BA4=1;D_00313DAC=1;}
 
