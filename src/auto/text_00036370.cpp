@@ -17,15 +17,28 @@ int _func_00131310(...);
 int _func_0013E469(...);
 int _func_000A1BB0(...);
 int _func_0009C7A0(...);
-void __cdecl _func_00036820(int a, int b)
+void __cdecl _func_00036820(int a, volatile int b)
 {
   char name[0x40];
   char buf[0x80];
-  int *p = (int *)b;
+  int *p = (int *) b;
   int n;
-  if (D_00307DF8 == D_003080B0) { strcpy(name, "testyakko"); p[0xc5] = 0; }
-  else if (D_00307DF8 == D_00307D00) { strcpy(name, "wakko"); p[0xc5] = 0; }
-  else { strcpy(name, "dot"); p[0xc5] = 0; }
+  if ((D_00307DF8 == D_003080B0) != 0)
+  {
+    strcpy(name, "testyakko");
+    p[0xc5] = 0;
+  }
+  else
+    if (D_00307DF8 == D_00307D00)
+  {
+    strcpy(name, "wakko");
+    p[0xc5] = 0;
+  }
+  else
+  {
+    strcpy(name, "dot");
+    p[0xc5] = 0;
+  }
   strcpy(buf, "models/");
   strcat(buf, name);
   strcat(buf, "/");
@@ -87,6 +100,59 @@ void func_00036B00(int param_1, int param_2)
   puVar1 = (undefined4 *)func_0009C7A0(param_1,((undefined *)&D_001D3CD4),0);
   func_000A22B0(param_1 + 100,1,*puVar1,puVar1[1],puVar1[2],0);
   return;
+}
+
+void __cdecl _func_00036B40(int a, int *p)
+{
+  extern int D_00307D08;
+  extern float D_001D27B8;
+  extern char D_001D3CD4;
+  int func_000A21A0(...);
+  float func_000A2310(int);
+  int func_000A2350(int, float);
+  int func_000A2370(...);
+  int func_000A1D10(...);
+  int func_000A1F50(...);
+  int func_000A1C00(...);
+  int func_000A22B0(...);
+  int *v;
+  switch (p[0xc5]) {
+  case 0:
+    if ((char)func_000A21A0(p[0xc4])) {
+      int iVar3 = a + 100;
+      float f = func_000A2310(iVar3);
+      int iVar1 = **(int **)(*(int *)(a + 0x84) + 0x10);
+      func_000A22B0(iVar3, 1, *(unsigned short *)(iVar1 + 0x18), *(unsigned short *)(iVar1 + 0x1a), *(int *)(iVar1 + 0x1c), 0);
+      func_000A2350(iVar3, f);
+      p[0xc5] = 1;
+    }
+    break;
+  case 1:
+    if (func_000A2370(a + 100) == 0) {
+      int *q = (int *)p[0xc6];
+      func_000A1D10(p[0xc4], 1, q[0], q[1], q[2], 0);
+      p[0xc5] = 2;
+    }
+    break;
+  case 2:
+    if (func_000A1F50(p[0xc4]) == 0) {
+      func_00036B00(a, (int)p);
+      *p = 0x10;
+      return;
+    }
+    break;
+  }
+  int *t = (int *)D_00307D08;
+  unsigned i;
+  for (i = 0; i < (unsigned)t[3]; i++) {
+    if (((float *)t[4])[i * 6] != D_001D27B8) {
+      func_000A1C00(p[0xc4]);
+      v = (int *)_func_0009C7A0(a, &D_001D3CD4, 0);
+      func_000A22B0(a + 100, 1, v[0], v[1], v[2], 0);
+      *p = 0x10;
+      return;
+    }
+  }
 }
 
 void func_00036CA0(int param_1, int param_2)
