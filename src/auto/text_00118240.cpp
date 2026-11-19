@@ -5,6 +5,7 @@
 struct Grp118 { unsigned int n; int a; char pad[0x20]; int *c; int d; };
 struct Ent118 { int obj; int flags; char pad[0xb0]; };
 struct Blk118 { int w[46]; };
+struct Tab118 { unsigned int n; unsigned short cnt; unsigned short pad; int u8; int uc; Blk118 *ents; };
 extern "C" void *memcpy(void *, const void *, unsigned int);
 #pragma intrinsic(memcpy)
 extern int D_001DF278;
@@ -63,14 +64,16 @@ undefined4 func_00118B70(undefined4 *param_1)
 
 void _func_00118BA0(unsigned int *p)
 {
-  int _func_00117100(...); int _func_00116A90(...); int _func_00117130(...); int _func_00116FB0(...);
-  unsigned int i = 0;
+  int func_00117100(...); int func_00116A90(...); int func_00117130(...); int func_00116FB0(...);
+  unsigned int i;
   unsigned int n = *p;
+  i = 0;
   *(unsigned short*)(p + 1) = 0;
-  if (n != 0) {
+  if (i < n) {
     int *e = (int*)(p[4] + 0xb0);
     do {
-      if (*(int*)(*e + 0x2c) == 0) (*(unsigned short*)(p + 1))++;
+      int v = *(int*)(*e + 0x2c);
+      if (v == 0) (*(unsigned short*)(p + 1))++;
       i++;
       e += 0x2e;
     } while (i < *p);
@@ -80,30 +83,26 @@ void _func_00118BA0(unsigned int *p)
     unsigned int j;
     int a, b;
     Blk118 *s;
-    _func_00117100();
-    buf = (Blk118*)_func_00116A90(*p * 0xb8, 1, 1);
-    _func_00117130();
-    {
-      unsigned int sz = *p * 0xb8;
-      unsigned int k;
-      unsigned char *dd = (unsigned char*)buf, *ss = (unsigned char*)p[4];
-      for (k = 0; k < sz; k++) dd[k] = ss[k];
-    }
+    func_00117100();
+    buf = (Blk118*)func_00116A90(*p * 0xb8, 1, 1);
+    func_00117130();
+    memcpy(buf, (void*)p[4], *p * 0xb8);
     j = 0;
-    if (*p != 0) {
-      a = 0;
+    if (j < *p) {
       b = *(unsigned short*)(p + 1) * 0xb8;
+      a = 0;
       s = buf;
       do {
         Blk118 *d;
-        if (*(int*)(s->w[0x2c] + 0x2c) == 0) { d = (Blk118*)(p[4] + a); a += 0xb8; }
+        int *q = (int*)(s->w[0x2c]);
+        if (q[0x0b] == 0) { d = (Blk118*)(p[4] + a); a += 0xb8; }
         else { d = (Blk118*)(p[4] + b); b += 0xb8; }
         *d = *s;
         j++;
         s++;
       } while (j < *p);
     }
-    _func_00116FB0(buf);
+    func_00116FB0(buf);
   }
 }
 
