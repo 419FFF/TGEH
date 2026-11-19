@@ -1,6 +1,49 @@
 /* 25 functions from 0x0006E760 to 0x0006F6B2, found by Ghidra. */
 #include "common.h"
 #include "ghidra.h"
+struct Bitmap6EA30 { unsigned int *data; unsigned int size; };
+
+void func_0006E760(void)
+{
+    extern float D_002FA008, D_001D27B8, D_001D27B0;
+    void func_001383B0(void);
+    void func_00133F30(int *);
+    void func_0011E4A0(int, int, float, float, float *, float *, float *, float);
+    void func_000688D0(void);
+    float scale[2];
+    float pos[2];
+    float color[4];
+    int state[20];
+    double f;
+    pos[0] = 0.0f;
+    pos[1] = 0.0f;
+    scale[0] = 1.0f;
+    scale[1] = 1.0f;
+    func_001383B0();
+    state[0] = 0;
+    state[1] = 0;
+    state[2] = 0;
+    state[6] = 0;
+    state[10] = 4;
+    state[11] = 5;
+    state[12] = 0;
+    state[18] = 6;
+    state[17] = 0;
+    state[19] = 2;
+    func_00133F30(state);
+    f = D_002FA008;
+    if (f < D_001D27B8)
+        f = D_001D27B8;
+    f = D_001D27B0 - f;
+    color[0] = 0.0f;
+    color[1] = 0.0f;
+    color[2] = 0.0f;
+    color[3] = (float)f;
+    if (f < D_001D27B8)
+        color[3] = 0.0f;
+    func_0011E4A0(0, 0, 640.0f, 480.0f, pos, scale, color, 1.0f);
+    func_000688D0();
+}
 
 void func_0006E860(void) {
     extern int D_002FA010;
@@ -50,9 +93,43 @@ void func_0006EC00(int a0) {
 
 void func_0006EC20(float x) { extern float D_002FA014; extern int D_002FA020,D_0032923C; D_002FA020=D_0032923C; D_002FA014=x*-1.0f; }
 
+void _func_0006EC40(void)
+{
+    extern float D_001D27B8, D_001D27B0, D_002FA014, D_002FA018, D_002FA01C, D_002FA020, D_0032923C;
+    extern int D_002FA024;
+    int func_0011F8D0(...);
+    int iVar1;
+    int local[9];
+    float local_c;
+    if (D_002FA014 == D_001D27B8)
+        return;
+    D_002FA018 = (D_0032923C - D_002FA020) / D_002FA014 + D_002FA018;
+    if (D_001D27B8 <= D_002FA018) {
+        if ((D_002FA018 <= D_001D27B0) || (D_002FA018 = 1.0f, D_002FA014 <= D_001D27B8))
+            goto L;
+    } else {
+        D_002FA018 = 0.0f;
+        if (D_001D27B8 <= D_002FA014)
+            goto L;
+    }
+    D_002FA014 = 0.0f;
+L:
+    D_002FA020 = D_0032923C;
+    iVar1 = *(int *)(D_002FA024 + 0x2c);
+    {
+        int *s = (int *)(iVar1 + 0xe4);
+        int *d = local;
+        int n;
+        for (n = 9; n != 0; n--)
+            *d++ = *s++;
+    }
+    local_c = D_002FA01C * D_002FA018;
+    func_0011F8D0(iVar1, local);
+}
+
 void _func_0006F3F0(void){extern int _D_001E3CD0,_D_002FA048,_D_002FA04C;_D_001E3CD0=1;_D_002FA048=0;_D_002FA04C=0;}
 
-void func_0006F410(void) { extern int D_001E3CD0; extern float D_0032923C,D_002FA048,D_001D31C8,D_001D27B0,D_002FA04C,D_001D2868,D_001D290C,D_001D4F28,D_001D2C00; extern float D_002FA024[8]; float func_00131230(float); int i; if(D_001E3CD0) D_001E3CD0=0; else { float t=(D_0032923C-D_002FA048)*D_001D31C8; if(t <= D_001D27B0) { D_002FA04C += D_001D27B0; } } D_002FA048=D_0032923C; if(D_002FA04C > D_001D2868) D_002FA04C-=D_001D2868; for(i=0;i<8;i++) D_002FA024[i]=func_00131230((float)i*D_001D4F28+D_002FA04C)*D_001D2C00; }
+void func_0006F410(void) { extern int D_001E3CD0; extern float D_0032923C,D_002FA048,D_001D31C8,D_001D27B0,D_002FA04C,D_001D2868,D_001D290C,D_001D4F28,D_001D2C00; extern float D_002FA024[8]; float func_00131230(float); int i; if(D_001E3CD0) D_001E3CD0=0; else { float f=(D_0032923C-D_002FA048)*D_001D31C8; if(f<D_001D27B0) D_002FA04C += D_001D27B0; } D_002FA048=D_0032923C; if(D_002FA04C>D_001D2868) D_002FA04C-=D_001D2868; for(i=0;i<8;i++) D_002FA024[i]=func_00131230((float)i*D_001D4F28+D_002FA04C)*D_001D2C00; }
 
 void func_0006F4D0(unsigned int p) { extern int D_0032B70C; void func_0006EF70(void); void func_0006F1F0(void); void func_0006ED30(void); switch(p) { case 0: D_0032B70C=0; return; case 1: D_0032B70C=(int)func_0006EF70; return; case 2: D_0032B70C=(int)func_0006F1F0; return; case 3: D_0032B70C=(int)func_0006ED30; return; } }
 
