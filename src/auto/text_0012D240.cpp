@@ -31,7 +31,7 @@ Hdr * __cdecl _func_0012DE60(int f)
         p->blks[i].subs[j].tex = _func_00139FC0(f);
     }
   }
-  *(unsigned short *)&p->fl = (p->fl & 1) | 2;
+  p->fl = (p->fl & 1) | 2;
   return p;
 }
 
