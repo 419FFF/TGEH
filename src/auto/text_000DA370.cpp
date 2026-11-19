@@ -1,6 +1,7 @@
 /* 10 functions from 0x000DA370 to 0x000DB0CF, found by Ghidra. */
 #include "common.h"
 #include "ghidra.h"
+#include <string.h>
 
 struct S_000DA370 {
   float unk_0x0, f4, f8, fc;
@@ -180,10 +181,12 @@ extern void func_0009D8D0(int);
 extern void func_0009D9E0(int);
 extern int _D_001D8018; extern int _D_0031E510; extern int func_0009C590(int); extern void func_0009D280(int); extern void func_0009D780(int); extern void func_0009D8D0(int); extern void func_0009D9E0(int); void func_000DA800(void){volatile int marker=0; _D_0031E510=0;func_0009D280(func_0009C590(_D_001D8018));func_0009D780(func_0009C590(_D_001D8018));func_0009D8D0(func_0009C590(_D_001D8018));func_0009D9E0(func_0009C590(_D_001D8018));}
 
+#pragma intrinsic(memcpy)
+void *memcpy(void *, const void *, unsigned int);
 void _func_000DAE60(void)
 {
   extern undefined4 D_0031E514;
-  extern volatile int D_0031B864;
+  extern int D_0031B864;
   extern M_000DA570 D_0031B870;
   int func_00011CB0(...);
   int func_000D5170(...);
@@ -234,11 +237,10 @@ void _func_000DAE60(void)
     iVar3 = iVar3 + 0x90;
     iVar2 = iVar2 + -1;
   } while (iVar2 != 0);
-  D_0031B870 = *(M_000DA570 *)(iVar1 + 0xc30);
+  memcpy(&D_0031B870, (void *)(iVar1 + 0xc30), 0x40);
   func_000D51E0(&D_0031B870, D_0031B864);
   return;
 }
-
 void func_000DAFF0(void) {
  int func_0012F120(...); int func_00011CB0(...); int func_0012E760(...); int func_0012F7A0(...); int func_00011E30(...); int func_001105E0(...);
  extern int D_0031E514,D_00313B60; extern float D_001D3AE4;
