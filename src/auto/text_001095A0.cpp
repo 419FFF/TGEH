@@ -1,6 +1,7 @@
 /* 31 functions from 0x001095A0 to 0x0010A569, found by Ghidra. */
 #include "common.h"
 #include "ghidra.h"
+extern "C" __declspec(dllimport) int __stdcall IoCreateSymbolicLink(void *, void *);
 extern "C" __declspec(dllimport) int *LaunchDataPage;
 extern "C" __declspec(dllimport) int __stdcall NtOpenSymbolicLinkObject(int *, unsigned int, void *);
 extern "C" __declspec(dllimport) int __stdcall NtQuerySymbolicLinkObject(int, void *, unsigned int *);
