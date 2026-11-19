@@ -39,9 +39,9 @@ unsigned int func_001371E0(void)
  switch(v){case 0:return 0;case 1:return 5;case 2:return 2;case 3:return 1;case 4:return 3;case 5:return 4;case 6:return 7;case 7:return 8;case 8:return 6;default:return 0;}
 }
 
-void func_00137260(int a0, int a1, int a2, int a3, int *a4, int *a5)
+void func_00137260(float a0, float a1, float a2, float a3, int *a4, int *a5)
 {
-    extern int D_00332738, D_0033273C, D_00332740;
+    extern float D_00332738, D_0033273C, D_00332740;
     void func_001378E0(int, unsigned int);
     void func_00137A20(void);
     void func_00137A90(int, int);
@@ -50,32 +50,32 @@ void func_00137260(int a0, int a1, int a2, int a3, int *a4, int *a5)
     func_00137A20();
     D_00332738 = a0;
     D_0033273C = a1;
-    D_00332740 = 0x3f000000;
+    D_00332740 = 0.5f;
     func_00137A90(a4[0], a4[1]);
     func_00137A20();
     D_00332738 = a2;
     D_0033273C = a1;
-    D_00332740 = 0x3f000000;
+    D_00332740 = 0.5f;
     func_00137A90(a5[0], a4[1]);
     func_00137A20();
     D_00332738 = a2;
     D_0033273C = a3;
-    D_00332740 = 0x3f000000;
+    D_00332740 = 0.5f;
     func_00137A90(a5[0], a5[1]);
     func_00137A20();
     D_00332738 = a2;
     D_0033273C = a3;
-    D_00332740 = 0x3f000000;
+    D_00332740 = 0.5f;
     func_00137A90(a5[0], a5[1]);
     func_00137A20();
     D_00332738 = a0;
     D_0033273C = a3;
-    D_00332740 = 0x3f000000;
+    D_00332740 = 0.5f;
     func_00137A90(a4[0], a5[1]);
     func_00137A20();
     D_00332738 = a0;
     D_0033273C = a1;
-    D_00332740 = 0x3f000000;
+    D_00332740 = 0.5f;
     func_00137A90(a4[0], a4[1]);
     func_00137AB0();
 }
