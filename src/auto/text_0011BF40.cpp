@@ -2,6 +2,8 @@
 #include "common.h"
 
 struct V3i { int x, y, z; };
+struct MeshSrc { unsigned count; int pos[3]; int pad; int* verts; };
+struct MeshDst { unsigned count; int pos[3]; int pad; int* verts; };
 #include "ghidra.h"
 
 void func_0011C340(void)
