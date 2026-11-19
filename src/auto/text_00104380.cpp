@@ -87,6 +87,14 @@ void func_00105280(void) {
     }
 }
 
+void func_001052A0(void) {
+    extern char D_001E5ECB; extern int D_00324BE8;
+    int func_00127930(...);
+    if (D_001E5ECB != 0) {
+        func_00127930(D_00324BE8);
+    }
+}
+
 void func_00105360(int p) {
     int func_00110760(...);
     int q = *(int *)(p + 0x2c);
