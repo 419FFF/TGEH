@@ -1,6 +1,7 @@
 /* 35 functions from 0x0014562E to 0x001464F0, found by Ghidra. */
 #include "common.h"
 #include "ghidra.h"
+struct CPinfo92 { unsigned int cp; unsigned int w[6]; unsigned char range[32]; };
 struct F92 { char *_ptr; int _cnt; char *_base; int _flag; int _file; int _charbuf; int _bufsiz; };
 struct IO92 { int h; unsigned char osfile; char pad[35]; };
 extern IO92 *D_0037C300[]; extern IO92 D_002E92A0;
