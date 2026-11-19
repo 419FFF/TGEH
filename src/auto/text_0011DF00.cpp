@@ -75,30 +75,24 @@ int func_0011E840(int param_1, char *param_2)
     int obj;
     int size;
     unsigned int i;
-    int *src, *dst;
-    int n;
 
     obj = func_0010F750(param_1, D_003281F0, 0x160);
-    src = (int *)(param_2 + 0x80);
-    dst = (int *)(obj + 0xe4);
-    for (n = 0x19; n != 0; n--) *dst++ = *src++;
-    if (*param_2 == 0) {
-        *(int *)(obj + 0xe4) = 0;
-    } else {
+    *(Blk100 *)(obj + 0xe4) = *(Blk100 *)(param_2 + 0x80);
+    if (*param_2 != 0) {
         *(int *)(obj + 0xe4) = func_0011BF40(param_2, 0);
+    } else {
+        *(int *)(obj + 0xe4) = 0;
     }
     *(int *)(obj + 0x148) = *(int *)(param_2 + 0xe4);
     *(int *)(obj + 0x154) = *(int *)(param_2 + 0xf0);
-    *(int *)(obj + 0xe0) = func_0013C000(*(int *)(param_2 + 0xe4));
+    *(int *)(obj + 0xe0) = func_0013C000(*(int *)(obj + 0x148));
     size = *(int *)(param_2 + 0xec);
     if (size == 0) size = 0x30;
     *(int *)(obj + 0x150) = size;
     *(int *)(obj + 0x14c) = func_00116A90(*(int *)(obj + 0x148) * size, 1, 1);
     if (*(int *)(param_2 + 0xe8) != 0 && *(int *)(obj + 0x14c) != 0) {
         for (i = 0; i < *(unsigned int *)(obj + 0x148); i++) {
-            int *s = (int *)(*(int *)(param_2 + 0xe8) + i * 0x30);
-            int *d = (int *)(*(int *)(obj + 0x150) * i + *(int *)(obj + 0x14c));
-            for (n = 0xc; n != 0; n--) *d++ = *s++;
+            *(Blk30 *)(*(int *)(obj + 0x150) * i + *(int *)(obj + 0x14c)) = *(Blk30 *)(*(int *)(param_2 + 0xe8) + i * 0x30);
         }
     }
     return obj;
