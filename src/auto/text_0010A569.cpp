@@ -22,19 +22,17 @@ int func_0010A86C(void)
   char bufC[360];
   char bufD[360];
   int tid;
+  char *name;
   int n;
   int r;
-  char *name;
   struct { unsigned short len, max; char *buf; } as;
-  int sz = 0x168;
   tid = *(int *)(D_00010118 + 8);
   if (tid != -0x20000) {
     int len;
     char *nm;
-    int *pr = &r;
-    *pr = func_0010A3F2(&name, &n, bufA);
-    if (*pr == 0) {
-      func_0010A456(bufB, sz);
+    r = func_0010A3F2(&name, &n, bufA);
+    if (r == 0) {
+      func_0010A456(bufB, 0x168);
       nm = bufB;
     } else {
       nm = name;
@@ -49,7 +47,7 @@ int func_0010A86C(void)
         len++;
         func_0013F170(bufD, __imp__XeImageFileName->Buffer + len, __imp__XeImageFileName->Length - len);
         bufD[__imp__XeImageFileName->Length - len] = 0;
-        if (func_0013F116(bufC, sz, D_001DED74, D_001DED7C, bufD) < 0) return 0;
+        if (func_0013F116(bufC, 0x168, D_001DED74, D_001DED7C, bufD) < 0) return 0;
         if (func_0010A569(bufD, tid, *(int *)(D_00010118 + 0xac), 0) >= 0) {
           func_0010A6EB(bufC, n != -1 ? bufA : 0, 0, n);
         }
@@ -147,6 +145,6 @@ int __stdcall func_0010B1AA(int a0){int __stdcall func_0010AC5D(int,int);return 
 
 extern "C" __declspec(dllimport) void __stdcall HalRegisterShutdownNotification(void*, int);
 extern "C" __declspec(dllimport) int __stdcall IoCreateSymbolicLink(void*, void*);
-extern "C" __declspec(dllimport) void __stdcall MmFreeContiguousMemory(void*);
+extern "C" void (__stdcall *__imp__MmFreeContiguousMemory)(void*);
 extern "C" unsigned char *__imp__XboxHardwareInfo;
 extern "C" int **__imp__LaunchDataPage;
