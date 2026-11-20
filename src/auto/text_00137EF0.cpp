@@ -135,7 +135,7 @@ int func_00138950(int unused, char *s, int *out)
         return 1;
     if (func_0010F1F7(path, 0, info) == 0)
         return 1;
-    func_00147B97(info + 0x18, st);
+    func_00147B97(info + 0x14, st);
     obj = (char *)func_00116A90(0x204, 1, 1);
     strcpy(obj, path);
     *(int *)(obj + 0x1f4) = h;
