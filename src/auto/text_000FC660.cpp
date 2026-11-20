@@ -45,28 +45,6 @@ s32 _func_000FD080(s32 param_1, s32 *param_2) {
     return 1;
 }
 
-// _func_000FD0C0 - uses x87 floating point, complex bit manipulation
-s32 _func_000FD0C0(s32 param_1, s32 param_2) {
-    extern u16 D_00310774;
-    
-    // Load floats from addresses and call helper twice
-    f32 f1 = *(f32 *)(param_1 + 0x4);
-    f32 f2 = *(f32 *)(param_2 + 0xc);
-    
-    s32 idx1 = _func_0013E3F4(f1) * 0x2b4;
-    u16 *addr1 = (u16 *)&D_00310774 + idx1;
-    
-    // Bitwise OR with shifted value based on second float
-    s32 shift = _func_0013E3F4(f2) - 1;
-    if (shift < 0) shift = 0;
-    if (shift > 31) shift = 31;
-    
-    u16 val = (u16)(1 << shift);
-    *addr1 |= val;
-    
-    return 1;
-}
-
 // _func_000FD140 - calls func_0002D030(D_00307DF8) then func_0007CED0(), returns 1
 s32 _func_000FD140(void) {
     extern u16 D_00307DF8;
