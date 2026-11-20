@@ -23,6 +23,43 @@ void _func_0012E280(unsigned int *out, unsigned char *in)
     out[1] = value;
 }
 
+extern int func_00131D60(void *, void *, int);
+extern int func_00116A90(int, int, int);
+extern char func_00131FD0(void *);
+extern void func_0012E280(int, void *);
+extern void func_00131EB0(void *, unsigned int, int);
+extern unsigned int func_00131FB0(void *);
+int func_0012E460(void *f)
+{
+    union { unsigned int v; unsigned char b[4]; } size;
+    unsigned char tag[4];
+    unsigned char fmt[16];
+    unsigned char riff[12];
+    unsigned int *obj;
+
+    func_00131D60(f, riff, 12);
+    obj = (unsigned int *)func_00116A90(0x28, 1, 1);
+    while (!func_00131FD0(f)) {
+        if (!func_00131D60(f, tag, 4)) break;
+        if (!func_00131D60(f, &size, 4)) break;
+        size.v = (((size.b[3] << 8 | size.b[2]) << 8 | size.b[1]) << 8) | size.b[0];
+        if (tag[0] == 'f') {
+            if (tag[1] != 'm' || tag[2] != 't' || tag[3] != ' ') goto skip;
+            func_00131D60(f, fmt, 16);
+            func_0012E280((int)obj, fmt);
+            func_00131EB0(f, size.v - 16, 1);
+        } else {
+            if (tag[0] == 'd' && tag[1] == 'a' && tag[2] == 't' && tag[3] == tag[1]) {
+                obj[7] = func_00131FB0(f);
+                obj[8] = size.v;
+            }
+skip:
+            func_00131EB0(f, size.v, 1);
+        }
+    }
+    return (int)obj;
+}
+
 void _func_0012E590(float *a, float *b) { a[0] += b[0]; a[1] += b[1]; a[2] += b[2]; }
 
 void _func_0012E5C0(float *a, float *b) { a[0] += b[0]; a[1] += b[1]; a[2] += b[2]; a[3] += b[3]; }
@@ -125,7 +162,7 @@ void func_0012EA00(float *p) { extern float D_001D27B8; extern float D_001D27B0;
 
 void func_0012EA60(float *p) { extern float D_001D27B8; extern float D_001D27B0; float n; float func_00131220(float); n=func_00131220(p[2]*p[2]+p[1]*p[1]+p[0]*p[0]); if(n==D_001D27B8){p[0]=0.0f;p[1]=0.0f;p[2]=1.0f;}else{n=D_001D27B0/n;p[0]*=n;p[1]*=n;p[2]*=n;} }
 
-void func_0012EAE0(float *p) { extern float D_001D27B8; extern float D_001D27B0; float n; float func_00131220(float); n=func_00131220(p[3]*p[3]+p[2]*p[2]+p[1]*p[1]+p[0]*p[0]); if(n==D_001D27B8){p[0]=0.0f;p[1]=0.0f;p[2]=0.0f;p[3]=1.0f;}else{n=D_001D27B0/n;p[0]*=n;p[1]*=n;p[2]*=n;p[3]*=n;} }
+void func_0012EAE0(float *p) { extern float D_001D27B8; extern float D_001D27B0; float n; float func_00131220(float); n=func_00131220(p[0]*p[0]+p[1]*p[1]+p[2]*p[2]+p[3]*p[3]); if(n==D_001D27B8){p[0]=0.0f;p[1]=0.0f;p[2]=0.0f;p[3]=1.0f;return;} n=D_001D27B0/n; p[0]=p[0]*n;p[1]=p[1]*n;p[2]=p[2]*n;p[3]=p[3]*n; }
 
 void func_0012EB70(float *out,float *v) {
     extern float __stdcall func_00131220(float);
@@ -140,7 +177,7 @@ void func_0012EBF0(float *out,float *v) {
     extern float __stdcall func_00131220(float);
     extern float D_001D27B8, D_001D27B0;
     float len=func_00131220(v[0]*v[0]+v[1]*v[1]+v[2]*v[2]+v[3]*v[3]);
-    if(len==D_001D27B8) { out[0]=0; out[1]=0; out[2]=0; out[3]=1; return; }
+    if((double)len==(double)D_001D27B8) { out[0]=0; out[1]=0; out[2]=0; out[3]=1; return; }
     float scale=D_001D27B0/len;
     out[0]=scale*v[0]; out[1]=scale*v[1]; out[2]=scale*v[2]; out[3]=scale*v[3];
 }
@@ -181,3 +218,30 @@ void _func_0012EE00(float *out, float *a, float *b)
     out[2] = b[1] * a[0] - b[0] * a[1];
 }
 
+float func_0012EE40(float *a, float *d, float *c)
+{
+  extern float D_001D27B8;
+  float dx = c[0] - a[0];
+  float dot = dx * d[0] + (c[1] - a[1]) * d[1] + (c[2] - a[2]) * d[2];
+  float len2;
+  float t;
+  float dy, dz;
+  if (dot <= D_001D27B8) {
+    dz = c[2] - a[2];
+    dy = c[1] - a[1];
+    return dz * dz + dy * dy + dx * dx;
+  }
+  len2 = d[0] * d[0] + d[1] * d[1] + d[2] * d[2];
+  if (len2 <= dot) {
+    dz = c[2] - (a[2] + d[2]);
+    dy = c[1] - (a[1] + d[1]);
+    dx = c[0] - (a[0] + d[0]);
+    return dz * dz + dy * dy + dx * dx;
+  }
+  t = dot / len2;
+  dz = c[2] - (t * d[2] + a[2]);
+  dy = c[1] - (t * d[1] + a[1]);
+  dx = c[0] - (t * d[0] + a[0]);
+  return dx * dx + dz * dz + dy * dy;
+}
+struct V3 { float x, y, z; };
