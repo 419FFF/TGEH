@@ -3,8 +3,8 @@
 #include "common.h"
 
 // _func_000FC880 - simple function returning 1 after calling another
-s32 _func_000FC880(void) {
-    s32 func_000493C0(...);
+char _func_000FC880(void) {
+    int func_000493C0(...);
     func_000493C0();
     return 1;
 }
