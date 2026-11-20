@@ -1,6 +1,9 @@
 /* 63 functions from 0x000FB670 to 0x000FC655, found by Ghidra. */
 #include "common.h"
 #include "ghidra.h"
+extern "C" unsigned int strlen(const char*);
+extern "C" char* strcpy(char*, const char*);
+extern "C" char* strcat(char*, const char*);
 extern int _D_0032511C;
 extern float _D_001D27B0;
 
@@ -12,6 +15,47 @@ unsigned char func_000FB720(unsigned int param_1, int p) { int func_000F91D0(...
 unsigned char func_000FB760(unsigned int param_1,int *p) { int func_00124BE0(...); int a=*p,b=*(int*)(a+0x60); if(b)func_00124BE0(b,*(int*)p[3]); return 1; }
 
 unsigned char func_000FB780(unsigned int param_1,int *p){int func_001313C0(...),func_00124BB0(...);int v=func_001313C0(*(int*)p[3]);if(v==0){func_00124BB0(*(int*)(*p+0x60),0);return 1;}func_00124BB0(*(int*)(*p+0x60),1);return 1;}
+
+unsigned char func_000FB7C0(int param_1, int *param_2)
+{
+  extern float D_001D57F0;
+  int func_0007E570(...);
+  int func_00116FB0(...);
+  int func_00124B30(int, float, float, int);
+  int func_0011B4F0(...);
+  int func_00124BB0(...);
+  int func_00124BE0(...);
+  int func_0008F840(...);
+  extern char D_001D734C, D_001D42F0, D_001D7348, D_001DCE38, D_001DCE2C, D_001DCE24;
+  int iVar1;
+  float fVar2;
+  float fVar3;
+  fVar2 = (float)((longdouble)*(float *)param_2[3] * (longdouble)D_001D57F0);
+  iVar1 = *param_2;
+  fVar3 = (float)((longdouble)*(float *)param_2[5] * (longdouble)D_001D57F0);
+  if ((*(unsigned short *)(iVar1 + 0x10) & 0x2000) == 0) {
+    if (*(int *)(iVar1 + 0x60) != 0) {
+      return 1;
+    }
+  } else {
+    func_0007E570(*(int *)(iVar1 + 0x60));
+    func_00116FB0(*(int *)(iVar1 + 0x60));
+    *(unsigned short *)(iVar1 + 0x10) &= ~0x2000;
+  }
+  *(int *)(iVar1 + 0x60) = func_00124B30(*(int *)(iVar1 + 0x2c), fVar2, fVar3, (int)(longdouble)*(float *)param_2[7]);
+  if (func_0011B4F0(*(int *)(iVar1 + 0xc), &D_001D734C) == 0 ||
+      func_0011B4F0(*(int *)(iVar1 + 0xc), &D_001D42F0) == 0 ||
+      func_0011B4F0(*(int *)(iVar1 + 0xc), &D_001D7348) == 0 ||
+      func_0011B4F0(*(int *)(iVar1 + 0xc), &D_001DCE38) == 0 ||
+      func_0011B4F0(*(int *)(iVar1 + 0xc), &D_001DCE2C) == 0 ||
+      func_0011B4F0(*(int *)(iVar1 + 0xc), &D_001DCE24) == 0) {
+    func_00124BB0(*(int *)(iVar1 + 0x60), 1);
+    func_00124BE0(*(int *)(iVar1 + 0x60), 0x43480000);
+    *(unsigned char *)(*(int *)(iVar1 + 0x60) + 0x13) |= 0x10;
+  }
+  func_0008F840(*(int *)(iVar1 + 0x2c), 1);
+  return 1;
+}
 
 unsigned char func_000FB8F0(unsigned int a,int *p){extern float D_001D27B8;int func_0008F840(...);int obj=*p;if(*(int*)(obj+0x60)){float x=*(float*)p[3];func_0008F840(*(int*)(obj+0x2c),x!=D_001D27B8);}return 1;}
 
