@@ -2,7 +2,7 @@
 #include "common.h"
 #include "ghidra.h"
 
-struct Mat16 { float m[16]; };
+struct __declspec(align(16)) Mat16 { float m[16]; };
 
 void func_000E3EC0(void)
 {
@@ -106,5 +106,44 @@ void func_000E4340(int param_1)
   }
   D_003234BC = D_003234BC + 1;
   return;
+}
+
+void func_000E4430(int param_1)
+{
+  int func_00110060(...);
+  extern float D_001E461C;
+  int func_001105E0(...);
+  int func_0009D3E0(...);
+  int func_0009D280(...);
+  int func_00088A50(...);
+  extern float D_001D27B0;
+  extern float D_001DBF48;
+  Mat16 local;
+  int i;
+  Mat16 *mats = (Mat16 *)(param_1 + 0xbe0);
+  char *flags = (char *)(param_1 + 0xce0);
+  int *ptrs = (int *)(param_1 + 0xbcc);
+
+  func_00110060(*(int *)(*(int *)(param_1 + 0xbc0) + 0x2c), &local);
+  if (*(char *)(param_1 + 0xbd0) != 0) {
+    for (i = 0; i < 4; i++) {
+      mats[i] = local;
+      flags[i] = 0;
+    }
+    *(char *)(param_1 + 0xbd0) = 0;
+  }
+  for (i = 0; i < 3; i++) {
+    mats[3 - i] = mats[2 - i];
+    mats[3 - i].m[14] += D_001E461C * *(float *)(param_1 + 0xb80);
+    flags[3 - i] = flags[2 - i];
+    func_001105E0(*(int *)(ptrs[-i] + 0x2c), &mats[3 - i], 0);
+    if (flags[3 - i] != 0)
+      func_0009D280(ptrs[-i]);
+    else
+      func_0009D3E0(ptrs[-i]);
+    func_00088A50(*(int *)(ptrs[-i] + 0x2c), ((float)i + D_001D27B0) * D_001DBF48, 1);
+  }
+  mats[0] = local;
+  flags[0] = ~(*(unsigned char *)(*(int *)(param_1 + 0xbc0) + 0x10) >> 1) & 1;
 }
 
