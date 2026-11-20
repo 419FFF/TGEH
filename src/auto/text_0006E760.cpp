@@ -1,6 +1,7 @@
 /* 25 functions from 0x0006E760 to 0x0006F6B2, found by Ghidra. */
 #include "common.h"
 #include "ghidra.h"
+static undefined4 D_002FA058;
 struct Bitmap6EA30 { unsigned int *data; unsigned int size; };
 
 void func_0006E760(void)
@@ -70,6 +71,44 @@ void _func_0006E9B0(void){extern int _D_002FA008,_D_002FA010;extern unsigned cha
 
 unsigned char _func_0006E9E0(unsigned int *p,unsigned int *out){unsigned int count=p[1]>>2,index=0;unsigned int *words=(unsigned int*)p[0];while(index<count){unsigned int value=*words;if(value!=0xffffffff){unsigned int bit=0;do{if(!(value&(1u<<bit))){*out=index*32+bit;return 1;}bit++;}while(bit<32);}index++;words++;}return 0;}
 
+bool func_0006EA30(Bitmap6EA30 *bm, unsigned int n, unsigned int *out)
+{
+    unsigned int i, j, words;
+    unsigned int *p;
+    if (n > 0x20) return false;
+    words = (bm->size >> 2) - 1;
+    i = 0;
+    if (words != 0) {
+        p = bm->data;
+        do {
+            if (*p != 0xffffffff) {
+                unsigned long long cur = *(unsigned long long *)p;
+                for (j = 0; j < 0x20; j++) {
+                    if (((((unsigned long long)(0xffffffffu >> (0x20 - n))) << j) & cur) == 0) {
+                        *out = i * 0x20 + j;
+                        return true;
+                    }
+                }
+            }
+            i++;
+            p++;
+        } while (i < words);
+    }
+    {
+        unsigned int *q = (unsigned int *)((char *)bm->data + i * 4);
+        if (*q != 0xffffffff) {
+            unsigned long long cur = *(unsigned long long *)q;
+            for (j = 0; j < 0x20; j++) {
+                if ((((0xffffffffu >> (0x20 - n)) << j) & cur) == 0) {
+                    *out = i * 0x20 + j;
+                    return true;
+                }
+            }
+        }
+    }
+    return false;
+}
+
 void func_0006EB40(undefined4 *param_1)
 {
   int func_00116FB0(...);
@@ -134,6 +173,46 @@ void func_0006F410(void) { extern int D_001E3CD0; extern float D_0032923C,D_002F
 void func_0006F4D0(unsigned int p) { extern int D_0032B70C; void func_0006EF70(void); void func_0006F1F0(void); void func_0006ED30(void); switch(p) { case 0: D_0032B70C=0; return; case 1: D_0032B70C=(int)func_0006EF70; return; case 2: D_0032B70C=(int)func_0006F1F0; return; case 3: D_0032B70C=(int)func_0006ED30; return; } }
 
 void func_0006F520(void) { extern int D_002FA080; extern int D_001E3CD8; extern unsigned char D_002FA05C; D_002FA05C=0; D_001E3CD8=3; D_002FA080=0; }
+
+void func_0006F540(void)
+{
+  extern undefined D_001D582C;
+  extern undefined D_001D581C;
+  extern undefined D_001D5814;
+  extern undefined D_001D580C;
+  extern undefined D_001D5800;
+  extern undefined D_001D57F4;
+  extern undefined4 D_002FA058, D_002FA054, D_002FA07C, D_002FA06C, D_002FA070, D_002FA074;
+  extern undefined4 D_002FA068, D_002FA078, D_002FA064, D_00326110;
+  int func_0009C590(...);
+  int func_001229B0(...);
+  int func_00063F30(...);
+  int func_0010F750(...);
+  int func_00110480(...);
+  int func_00110300(...);
+  int func_0011BDD0(...);
+  int iVar2, iVar3, iVar4;
+  D_002FA058 = func_0009C590(&D_001D582C);
+  if (D_002FA058 != 0) {
+    D_002FA07C = func_001229B0(&D_001D581C);
+    func_00063F30(D_002FA07C, 0x3f99999a, 0x3fcccccd);
+    D_002FA06C = 0;
+    D_002FA070 = 0;
+    D_002FA074 = 0;
+    D_002FA054 = func_0010F750(&D_001D5814, D_00326110, 0xe0);
+    func_00110480(D_002FA054, D_002FA07C, 8);
+    func_00110480(D_002FA054, *(undefined4 *)(D_002FA058 + 0x2c), 8);
+    iVar3 = func_00110300(*(undefined4 *)(D_002FA058 + 0x2c), &D_001D580C, 0x18);
+    iVar4 = func_0011BDD0(*(undefined4 *)(iVar3 + 0xe0), 0);
+    iVar2 = D_002FA058;
+    *(undefined4 *)(*(int *)(*(int *)(iVar4 + 8) + 0x28) + 0x54) = 1;
+    ((short *)*(int *)(iVar3 + 0xe0))[0x15]--;
+    D_002FA068 = func_00110300(*(undefined4 *)(iVar2 + 0x2c), &D_001D5800, 0x18);
+    iVar2 = D_002FA058;
+    D_002FA078 = func_00110300(*(undefined4 *)(iVar2 + 0x2c), &D_001D57F4, 0x18);
+    D_002FA064 = func_00110300(*(undefined4 *)(D_002FA058 + 0x2c), &D_001D580C, 0x18);
+  }
+}
 
 void func_0006F670(void)
 {
