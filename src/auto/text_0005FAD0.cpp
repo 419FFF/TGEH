@@ -83,53 +83,37 @@ void _func_00060980(void) {
     void func_00060880(void *, float *, float);
     void func_00060780(void *, float *, float);
     extern int D_002EEE94;
-    extern int *D_002EED18;
+    extern struct World60980 *D_002EED18;
     extern int D_00313B54;
     extern int D_00313454;
     float vec[4];
     float dist;
     unsigned int i;
-    char *obj;
-    unsigned int count;
 
     dist = func_0012E7B0((float *)&D_002EEE94, (float *)&D_002EEF08);
     func_0012E5F0(vec, (float *)&D_002EEE94, (float *)&D_002EEF08);
     func_0012ECA0(vec, 0.5f);
-    count = *(unsigned int *)((char *)D_002EED18 + 0xe4);
-    i = 0;
-    if (count > 0) {
-        obj = (char *)D_002EED18;
-        do {
-            unsigned int type = *(unsigned int *)(obj + i * 8 + 0xec);
-            char *item;
-            unsigned int b;
-            if (type > 2)
-                return;
-            item = *(char **)(obj + i * 8 + 0xe8);
-            if (type != 2 || item[0x28e] != 0) {
-                func_00060880(item, vec, dist);
-                b = 0;
-                do {
-                    int *node;
-                    if (b == 0)
-                        node = *(int **)(item + 0x294);
-                    else
-                        node = *(int **)(item + 0x2b8);
-                    while (node != 0) {
-                        char *ent = (char *)node[2];
-                        if (ent[0x14] == 1 && ent[0x13] != 12 && ent != (char *)D_002EED64 &&
-                            (D_00313B54 != 6 || ent != (char *)D_00313454)) {
-                            func_00060780(*(void **)(ent + 0x2c), vec, dist);
-                        }
-                        node = (int *)*node;
+    for (i = 0; i < D_002EED18->count; i++) {
+        unsigned int type = D_002EED18->e[i].type;
+        struct Item60980 *item;
+        unsigned int b;
+        if (type > 2)
+            return;
+        item = D_002EED18->e[i].item;
+        if (type != 2 || item->flag != 0) {
+            func_00060880(item, vec, dist);
+            for (b = 0; b < 2; b++) {
+                struct Node60980 *node = b == 0 ? item->l0 : item->l1;
+                while (node != 0) {
+                    struct Ent60980 *ent = node->ent;
+                    if (ent->k14 == 1 && ent->k13 != 12 && (int)ent != D_002EED64 &&
+                        (D_00313B54 != 6 || (int)ent != D_00313454)) {
+                        func_00060780(ent->p2c, vec, dist);
                     }
-                    b++;
-                } while (b < 2);
+                    node = node->next;
+                }
             }
-            i++;
-            obj = (char *)D_002EED18;
-            count = *(unsigned int *)(obj + 0xe4);
-        } while (i < count);
+        }
     }
 }
 #pragma optimize("y", off)
