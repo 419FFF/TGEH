@@ -30,7 +30,19 @@ void _func_000A1E60(int p) { int _func_001165E0(int); unsigned int i=0; unsigned
 extern int func_00115F60(int, int);
 extern void func_000A1C00(...);
 extern void func_00116FB0(...);
-void func_000A1EA0(int param_1, int param_2) { unsigned int i = 0;while (i < *(unsigned short*)(param_1 + 0xc)) { int base = *(int*)(param_1 + 0x10); int *p = (int*)(base + i * 8); int value = *p;if (value) func_00115F60(value, param_2);i++;} }
+void func_000A1EA0(int param_1, int param_2)
+{
+  int func_00115F60(...);
+  unsigned int i;
+  int *e;
+
+  for (i = 0; i < *(unsigned short *)(param_1 + 0xc); i++) {
+    e = (int *)(*(int *)(param_1 + 0x10) + i * 8);
+    if (*e != 0) {
+      func_00115F60(*e, param_2);
+    }
+  }
+}
 
 longdouble func_000A1EE0(int param_1)
 {
