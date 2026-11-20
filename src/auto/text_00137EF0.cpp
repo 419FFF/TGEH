@@ -1,6 +1,7 @@
 /* 19 functions from 0x00137EF0 to 0x00138E7C, found by Ghidra. */
 #include "common.h"
 #include "ghidra.h"
+#include <string.h>
 
 extern "C" void (__stdcall * __imp__RtlEnterCriticalSection)(void*);
 extern "C" void (__stdcall * __imp__RtlLeaveCriticalSection)(void*);
