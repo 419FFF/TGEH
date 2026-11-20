@@ -68,10 +68,11 @@ s32 _func_000FD140(void) {
 }
 
 // _func_000FD160 - calls func_0007CF70(), returns 1
-s32 _func_000FD160(void) {
-    s32 func_0007CF70(...);
-    func_0007CF70();
-    return 1;
+unsigned char func_000FD160(void)
+{
+  int func_0007CF70(...);
+  func_0007CF70();
+  return 1;
 }
 
 // _func_000FD170 - conditional pointer traversal based on D_003080AC
