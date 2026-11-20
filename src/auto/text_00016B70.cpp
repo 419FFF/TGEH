@@ -13,6 +13,16 @@ void func_00016B70(void *p) {
     func_0012E6D0((char*)frame+0x48,(char*)frame+0x134,(char*)frame+0xb0);
 }
 
+#pragma optimize("y", on)
+int func_000172A0(int *p)
+{
+  extern int D_002EB030;
+  int func_00016B70(int *);
+  p = &D_002EB030;
+  return func_00016B70(p);
+}
+#pragma optimize("", on)
+
 void func_000172B0(int param_1) { int func_0005C5E0(...); int func_0012F120(...); int func_0009C7A0(...); int func_0012FE20(void*,float,float,float); int func_00110330(...); int func_001105E0(...); int func_00110000(...); int func_00110550(...); int func_0010FBA0(...); int func_0009D3E0(...); extern int _D_002EB038; extern int _D_001D2BD8; extern int _D_001D2BC4; extern float _D_001D2BC0; extern int _D_002EB058; extern int _D_002EB060; extern int _D_002EB05C; extern int _D_002EB064; extern int _D_003080B0; float local[12]; func_0005C5E0(&_D_002EB038); func_0012F120(local); int *p=(int*)func_0009C7A0(param_1,&_D_001D2BD8,0); ((int*)local)[8]=p[0]; ((int*)local)[9]=p[1]; ((int*)local)[10]=p[2]; float *q=(float*)func_0009C7A0(param_1,&_D_001D2BC4,0); func_0012FE20(local,_D_001D2BC0*q[0],_D_001D2BC0*q[1],_D_001D2BC0*q[2]); if (_D_002EB058) func_00110330(_D_002EB058,1); if (_D_002EB060) func_00110330(_D_002EB060,1); if (_D_002EB05C) func_00110330(_D_002EB05C,0); if (_D_002EB064) func_00110330(_D_002EB064,0); func_001105E0(*(int*)(param_1+0x2c),local,0); func_00110000(*(int*)(param_1+0x2c)); func_00110550(*(int*)(_D_003080B0+0x2c),*(int*)(param_1+0x2c),8); func_0010FBA0(*(int*)(param_1+0x2c),**(int**)(param_1+0x58)); func_0009D3E0(param_1); }
 
 #pragma optimize("y", on)
