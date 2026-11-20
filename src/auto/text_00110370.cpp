@@ -1,6 +1,7 @@
 /* 17 functions from 0x00110370 to 0x00110DF4, found by Ghidra. */
 #include "common.h"
 #include "ghidra.h"
+struct S_1105E0 { unsigned char pad0[0x23]; unsigned char f23; int f24; int *f28; int *f2c; unsigned char pad30[0xd4-0x30]; int fd4; };
 
 void func_00110370(unsigned int *src)
 {
@@ -56,6 +57,69 @@ void func_00110420(int param_1, int param_2)
 void *memcpy(void *dst,const void *src,unsigned int n);
 typedef struct { unsigned char pad[0x20]; unsigned char bit0:1; unsigned char bit1:1; } S_00110480_flags;
 void func_00110480(int a,int b,int c){int func_0010FC60(...);int func_0012F4C0(...);extern int D_00329238;int func_0010F970(...);int func_0010F930(...);__declspec(align(16)) unsigned char local[0x40];__declspec(align(16)) unsigned char local2[0x40];unsigned char pad[4];func_0010FC60(b);func_0010FC60(a);unsigned x=*(unsigned char *)(a+0x23),y=*(unsigned char *)(b+0x23);func_0012F4C0(local2,(y+1)*64+b,(x+1)*64+a);if(*(int *)(b+0xd4)==D_00329238)y=1-y;if(*(int *)(a+0xd4)==D_00329238)x=1-x;func_0012F4C0(local,(y+1)*64+b,(x+1)*64+a);func_0010F970(a,b,0,c,1,c,local2,local);S_00110480_flags *f=(S_00110480_flags *)(b+0x20);f->bit1=1;func_0010F930(b);}
+
+void func_001105E0(int param_1, unsigned int *param_2, char param_3)
+{
+    extern int D_003291C0, D_00329238;
+    int func_0010FC60(...); int func_0010FDA0(...); int func_00110420(...); int func_00110480(...);
+    int func_0010FBA0(...); int func_0012F4C0(...); int func_0010F930(...);
+    unsigned int *d;
+    int *q, *n;
+    int iVar2;
+    int *p;
+    int iVar5;
+    if (param_1 != 0) {
+        if (param_3 != 0) {
+            func_0010FC60(param_1);
+            iVar5 = 0;
+            do {
+                p = *(int **)(param_1 + 0x2c);
+                *(int *)(param_1 + 0x24) = D_003291C0;
+                while (p != 0) {
+                    if ((*((unsigned char *)p + 6) & 0x10) == 0) {
+                        iVar5 = func_0010FDA0(param_1, *p, param_2);
+                        if (iVar5 != 0) {
+                            iVar2 = p[4];
+                            func_00110420(*p, param_1);
+                            n = *(int **)(iVar5 + 0x2c);
+                            while (n != 0 && (*(unsigned char *)(iVar5 + 0x20) & 8) == 0) {
+                                iVar5 = *n;
+                                n = *(int **)(iVar5 + 0x2c);
+                            }
+                            func_00110420(iVar5, param_1);
+                            func_00110480(iVar5, param_1, 8);
+                            if (iVar2 != 0) func_0010FBA0(param_1, iVar2);
+                            break;
+                        }
+                    }
+                    p = (int *)p[3];
+                }
+                D_003291C0++;
+            } while (iVar5 != 0);
+        }
+        q = *(int **)(param_1 + 0x2c);
+        if (q != 0) {
+            func_0010FC60(*q);
+            if (q[5] != D_00329238) q[6] ^= 1;
+            q[5] = D_00329238;
+            func_0012F4C0(q + q[6] * 16 + 8, param_2, *q + (*(unsigned char *)(*q + 0x23) + 1) * 64);
+            *((unsigned char *)q + 6) &= 0xfe;
+        }
+        if (*(int *)(param_1 + 0xd4) != D_00329238) *(unsigned char *)(param_1 + 0x23) ^= 1;
+        *(int *)(param_1 + 0xd4) = D_00329238;
+        d = (unsigned int *)(param_1 + (*(unsigned char *)(param_1 + 0x23) + 1) * 64);
+        for (int i = 0; i < 16; i++) d[i] = param_2[i];
+        q = *(int **)(param_1 + 0x28);
+        while (q != 0) {
+            if ((*(unsigned char *)(*q + 0x20) & 2) == 0) {
+                *(unsigned short *)(*q + 0x20) |= 2;
+                func_0010F930(*q);
+            }
+            q = (int *)q[3];
+        }
+    }
+}
+
 #pragma optimize("", on)
 void func_00110760(int param_1)
 {
@@ -139,6 +203,40 @@ unsigned char func_00110A20(float a,float b,float c,float d,float *out)
     }
     return 0;
 }
+
+char _func_00110CD0(int param_1, int param_2, int param_3, float param_4, int param_5)
+{
+  float func_0012E7B0(...);
+  float func_0012E8C0(...);
+  float func_00131220(float);
+  int func_0012E6D0(...), func_0012ED20(...), func_0012E590(...);
+  extern float D_001D2A2C, D_001D27B8, D_001D2D4C, D_001D27B0;
+  float d[3], m[3];
+  float a, b, b2, c, disc, t;
+
+  if (func_0012E7B0(param_1, param_3) > param_4) {
+    func_0012E6D0(d, param_2, param_1);
+    func_0012E6D0(m, param_1, param_3);
+    a = func_0012E8C0(d, d);
+    b = func_0012E8C0(d, m);
+    b2 = b + b;
+    c = func_0012E8C0(m, m);
+    disc = (b + b) * b2 - (c - param_4 * param_4) * a * D_001D2A2C;
+    if (disc > D_001D27B8) {
+      b2 = b2 * D_001D2D4C;
+      t = (b2 - func_00131220(disc)) / (a + a);
+      if (t > D_001D27B8 && t < D_001D27B0) {
+        if (param_5 != 0) {
+          func_0012ED20(param_5, d, t);
+          func_0012E590(param_5, param_1);
+        }
+        return 1;
+      }
+    }
+  }
+  return 0;
+}
+
 typedef struct { unsigned int words[7]; } CopyBlock_00110370;
 extern undefined4 D_00326150;
 extern undefined4 D_00326138;
