@@ -2,6 +2,7 @@
 #include "common.h"
 #include "ghidra.h"
 #include <string.h>
+struct S_00026510 { int a, b, c, d, e, f, g; };
 
 void _func_00025990(int a){extern int D_00307D10;int _func_000487A0(...);int _func_000A1C00(...);int _func_00116FB0(...);int*s=*(int**)(a+0x110);_func_000487A0(D_00307D10,s[0x6c/4]);_func_000A1C00(s[0x25c/4]);_func_00116FB0((int)s);}
 
@@ -436,18 +437,12 @@ void _func_00026510(int param_1)
   int iVar2;
   float *pfVar3;
   float *pfVar4;
-  char local_90[64];
-  __declspec(align(16)) char local_50[64];
+  __declspec(align(16)) char local_90[64];
+  char local_50[64];
 
   piVar1 = (int *)func_00116A90(0x1c, 1, 1);
   *(int **)(param_1 + 0x110) = piVar1;
-  piVar1[0] = 0;
-  piVar1[1] = 0;
-  piVar1[2] = 0;
-  piVar1[3] = 0;
-  piVar1[4] = 0;
-  piVar1[5] = 0;
-  piVar1[6] = 0;
+  memset(piVar1, 0, 0x1c);
   iVar2 = func_0009C6A0(param_1, D_001D35EC);
   *piVar1 = iVar2;
   func_00110420(*(int *)(param_1 + 0x2c), *(int *)(iVar2 + 0x2c));
