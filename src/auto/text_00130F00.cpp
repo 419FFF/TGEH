@@ -67,11 +67,11 @@ float func_001312E0(float param_1, float param_2) {
     return param_2;
 }
 
+extern "C" double __cdecl tan(double);
+#pragma intrinsic(tan)
 float _func_00131300(float x) {
-    double d = (double)x;
-    return (float)d;
+    return (float)tan((double)x);
 }
-
 void _func_00131310(void) {
     extern u16 D_00331B34;
     extern u16 D_00331B30;
