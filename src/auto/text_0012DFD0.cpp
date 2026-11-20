@@ -1,6 +1,7 @@
 /* 44 functions from 0x0012DFD0 to 0x0012EF65, found by Ghidra. */
 #include "common.h"
 #include "ghidra.h"
+struct V3 { float x, y, z; };
 
 void _func_0012E280(unsigned int *out, unsigned char *in)
 {
