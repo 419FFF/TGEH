@@ -248,6 +248,60 @@ void *__stdcall func_0010C5B6(void *arg) { return *(void **)((char *)arg + 8); }
 
 struct C_0010C5C0{unsigned int func_0010C5C0(void);}; unsigned int C_0010C5C0::func_0010C5C0(void){extern int _ExQueryNonVolatileSetting(...);unsigned int a,b;int r=_ExQueryNonVolatileSetting(10,&a,&b,4,0);if(r>=0)return a;return 0;}
 
+extern "C" __declspec(dllimport) long __stdcall NtAllocateVirtualMemory(char **base, unsigned long zeroBits, unsigned long *size, unsigned long type, unsigned long protect);
+extern "C" __declspec(dllimport) long __stdcall NtFreeVirtualMemory(char **base, unsigned long *size, unsigned long type);
+extern char D_00010000;
+void *__stdcall func_0010C5E5(void *arg)
+{
+    unsigned int **head = (unsigned int **)((char *)arg + 0x18);
+    unsigned int **list = (unsigned int **)((char *)*head + 0x4c);
+    unsigned int *seg;
+    unsigned int *cur;
+    unsigned long reserve, commit;
+    unsigned int *end;
+    unsigned int *node;
+    unsigned int **prev;
+    unsigned int *c;
+
+    if (*list == 0) {
+        seg = *(unsigned int **)((char *)*head + 0x48);
+        if (seg == 0 || seg[2] == seg[1]) {
+            reserve = (unsigned long)&D_00010000;
+            seg = 0;
+            if (NtAllocateVirtualMemory((char **)&seg, 0, &reserve, 0x2000, 4) < 0)
+                return 0;
+            commit = 0x1000;
+            if (NtAllocateVirtualMemory((char **)&seg, 0, &commit, 0x1000, 4) < 0) {
+                NtFreeVirtualMemory((char **)&seg, &reserve, 0x8000);
+                return 0;
+            }
+            *seg = *(unsigned int *)((char *)*head + 0x48);
+            *(unsigned int **)((char *)*head + 0x48) = seg;
+            seg[1] = reserve;
+            seg[2] = commit;
+            cur = seg + 4;
+        } else {
+            commit = 0x1000;
+            cur = (unsigned int *)((char *)seg + seg[2]);
+            if (NtAllocateVirtualMemory((char **)&cur, 0, &commit, 0x1000, 4) < 0)
+                return 0;
+            seg[2] += commit;
+        }
+        end = (unsigned int *)((char *)seg + seg[2]);
+        c = cur;
+        prev = (unsigned int **)((char *)*head + 0x4c);
+        for (; c < end; c += 4) {
+            *prev = c;
+            prev = (unsigned int **)c;
+        }
+        *prev = 0;
+        list = (unsigned int **)((char *)*head + 0x4c);
+    }
+    node = (unsigned int *)*list;
+    *list = (unsigned int *)*node;
+    return node;
+}
+
 #pragma optimize("Ob1", on)
 void __stdcall func_0010C705(void *p, unsigned int *node) {
     unsigned int **head=(unsigned int **)((char *)p+0x18);
