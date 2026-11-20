@@ -31,8 +31,9 @@ int func_0010A86C(void)
   if (tid != -0x20000) {
     int len;
     char *nm;
-    r = func_0010A3F2(&name, &n, bufA);
-    if (r == 0) {
+    int *pr = &r;
+    *pr = func_0010A3F2(&name, &n, bufA);
+    if (*pr == 0) {
       func_0010A456(bufB, sz);
       nm = bufB;
     } else {
@@ -142,7 +143,7 @@ void __stdcall func_0010B0F0(unsigned int a,unsigned int b){extern char D_001DED
 
 extern "C" __declspec(dllimport) void __stdcall HalReturnToFirmware(unsigned long); void __stdcall func_0010B145(int a,int b,int c){extern int D_00010118; int __stdcall func_00109A27(int,int*); if(*(int*)(D_00010118+8)!=-131072){int local[768]={0};local[0]=a;local[1]=0;local[2]=b;local[3]=c;func_00109A27(0,local);return;} HalReturnToFirmware(4);__debugbreak();__assume(0);}
 
-void __stdcall func_0010B1AA(int a0){int __stdcall func_0010AC5D(int,int);func_0010AC5D(a0,0x4000);}
+int __stdcall func_0010B1AA(int a0){int __stdcall func_0010AC5D(int,int);return func_0010AC5D(a0,0x4000);}
 
 extern "C" __declspec(dllimport) void __stdcall HalRegisterShutdownNotification(void*, int);
 extern "C" __declspec(dllimport) int __stdcall IoCreateSymbolicLink(void*, void*);
