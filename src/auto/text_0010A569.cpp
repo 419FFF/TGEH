@@ -1,6 +1,10 @@
 /* 20 functions from 0x0010A569 to 0x0010B32A, found by Ghidra. */
 #include "common.h"
 
+extern "C" __declspec(dllimport) void __stdcall HalRegisterShutdownNotification(void*, int);
+extern "C" void (__stdcall *__imp__MmFreeContiguousMemory)(void*);
+extern "C" unsigned char *__imp__XboxHardwareInfo;
+extern "C" int **__imp__LaunchDataPage;
 struct XSTR_0010A86C { unsigned short Length, MaximumLength; char *Buffer; };
 extern "C" XSTR_0010A86C *__imp__XeImageFileName;
 extern "C" int (__stdcall *__imp__IoDeleteSymbolicLink)(void *);
