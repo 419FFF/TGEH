@@ -3,7 +3,7 @@
 
 extern "C" double __cdecl fabs(double);
 #pragma intrinsic(fabs)
-float func_00131210(float param_1) {
+float func_00131210(volatile float param_1) {
     param_1 = (float)fabs((double)param_1);
     return param_1;
 }
