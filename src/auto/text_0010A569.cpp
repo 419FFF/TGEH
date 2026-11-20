@@ -1,6 +1,10 @@
 /* 20 functions from 0x0010A569 to 0x0010B32A, found by Ghidra. */
 #include "common.h"
 
+struct XSTR_0010A86C { unsigned short Length, MaximumLength; char *Buffer; };
+extern "C" XSTR_0010A86C *__imp__XeImageFileName;
+extern "C" int (__stdcall *__imp__IoDeleteSymbolicLink)(void *);
+extern "C" int (__stdcall *__imp__IoCreateSymbolicLink)(void *, void *);
 #pragma optimize("y", on)
 unsigned char __stdcall func_0010AA16(char *dst,char *src,int n){extern int D_001DED88;int _func_0013EEE4(...);int _func_0013EF1F(...);_func_0013EEE4(&D_001DED88,0x10);char *out=dst;char *in=src;while(n){if(*in==0)break;*out=*in;out++;in++;n--;}if(n==0){out--;*out=0;_func_0013EF1F();return 1;}*out=0;_func_0013EF1F();return 0;}
 
@@ -35,6 +39,46 @@ void *__stdcall func_0010ABA3(unsigned int size,int flags){extern unsigned int D
 void __stdcall func_0010AC43(void*p,unsigned int f){extern void __stdcall MmFreeContiguousMemory(void*);void __stdcall func_0010C47C(void*);if(f&0x80000000)MmFreeContiguousMemory(p);else func_0010C47C(p);}
 int __stdcall func_0010AC5D(void *file,unsigned int expected) { extern int __stdcall NtOpenFile(void*,unsigned int,void*,void*,unsigned int,unsigned int); extern int __stdcall NtQueryVolumeInformationFile(void*,void*,void*,unsigned int,unsigned int); extern int __stdcall NtClose(void*); unsigned char oa[12],iosb[8],info[16]; unsigned int attr=0x40; int status; status=NtOpenFile(&file,0x100001,&attr,oa,3,0x800021); if(status<0) return status; status=NtQueryVolumeInformationFile(file,iosb,info,0x18,3); NtClose(file); if(status>=0&&*(unsigned int*)(info+0x10)**(unsigned int*)(info+0x0c)!=expected) status=0xc000014f; return status; }
 
+#pragma optimize("s", on)
+int __stdcall func_0010ACD5(int a0, char *path, int n, int a3)
+{
+    struct { int root; void *name; int attr; } oa;
+    struct { unsigned short len, max; char *buf; } name;
+    unsigned char iosb[8];
+    int info[14];
+    char *f = path;
+    char *s = f;
+    char *q = s + 1;
+    char c;
+    int len;
+    char *p;
+    int status;
+    do { c = *s; s++; } while (c != 0);
+    len = s - q;
+    p = f + len;
+    func_0010AA16(p, (char*)a3, n - len);
+    RtlInitAnsiString(&name, f);
+    oa.root = 0;
+    oa.name = &name;
+    oa.attr = 0x40;
+    status = NtCreateFile(&path, 0x40100000, &oa, iosb, 0, 4, 1, 3, 0x22);
+    *p = 0;
+    if (status >= 0) {
+        status = NtQueryInformationFile(path, iosb, info, 0x38, 0x22);
+        if (status >= 0 && info[10] == 0 && info[11] == 0) {
+            void *buf = func_0010C577(a0);
+            if (buf) {
+                status = NtWriteFile(path, 0, 0, 0, iosb, buf, func_0010C5B6(a0), 0);
+                func_0010C598(a0);
+            }
+        }
+        NtClose(path);
+    } else if (status == 0xc0000035) {
+        status = 0;
+    }
+    return status;
+}
+#pragma optimize("t", on)
 void __stdcall func_0010B0F0(unsigned int a,unsigned int b){extern char D_001DED38;extern char D_001E62E0,D_001E62E8,D_001E62F0,D_001E62F8;void func_0013E469(void*,void*,unsigned int);int __stdcall func_0010ADBC(void*,void*,void*,unsigned int,unsigned int,unsigned int);char tmp[12];func_0013E469(tmp,&D_001DED38,a);if(func_0010ADBC(&D_001E62E0,&D_001E62E8,tmp,1,0,0)>=0)func_0010ADBC(&D_001E62F0,&D_001E62F8,tmp,1,b,0);}
 
 extern "C" __declspec(dllimport) void __stdcall HalReturnToFirmware(unsigned long); void __stdcall func_0010B145(int a,int b,int c){extern int D_00010118; int __stdcall func_00109A27(int,int*); if(*(int*)(D_00010118+8)!=-131072){int local[768]={0};local[0]=a;local[1]=0;local[2]=b;local[3]=c;func_00109A27(0,local);return;} HalReturnToFirmware(4);__debugbreak();__assume(0);}
