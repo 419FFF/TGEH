@@ -9,9 +9,10 @@ float func_00131210(volatile float param_1) {
 }
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
-float _func_00131220(float param_1)
+float _func_00131220(volatile float param_1)
 {
-  return param_1 * param_1;
+  param_1 = (float)sqrt((double)param_1);
+  return param_1;
 }
 
 extern double sin(double);
