@@ -2,7 +2,7 @@
 #include "common.h"
 struct S_000C3F00_A { unsigned char a, b, pad0[2]; float pos[3]; char pad1[0x14]; int obj; unsigned char c, pad2[3]; int obj2; int pad3; float x, y; char pad4[4]; };
 struct S_000C3F00_B { float pos[3]; char pad0[0xc]; int count; int state; char pad1; unsigned char f1; unsigned char f2; char pad2; float v[3]; char pad3[0xc]; int arg[3]; char pad4[0x90 - 0x48]; };
-struct S_000C4240 { int obj; char on; char pad[3]; float x, y, z; float vx, vy, vz; float pad2[3]; float lim; };
+struct S_000C4240 { int obj; char on; char pad[3]; float x, y, z; float vx, vy, vz; float pad2[2]; float lim; };
 struct P_000C49A0 { float x, y, z, w; char on; char pad[3]; };
 struct P_000C48B0 { float w; char on; char pad[3]; float x, y, z; };
 
@@ -76,6 +76,40 @@ void func_000C40A0(void) {
  unsigned int v=func_00131310();D_00315FA4=D_001E4908[v&7];func_000A4010(D_0031151C-1);
  if((unsigned char)D_0031151C>0){D_003159A0=0x4b;D_00314FC4=D_00314FB4;D_00314FC8=D_00314FB8;return;}
  func_00103990(D_00315CAC,0);D_00314F00=11;D_00314F04=0;D_00315C90=0;
+}
+
+void func_000C4240(void)
+{
+  extern S_000C4240 D_00315450[16];
+  extern float D_001E461C, D_00314F68, D_00314F60, D_00314F64, D_001D4EB0;
+  extern int D_00315CBC;
+  int func_0012F120(...), func_0012FE20(...), func_0012F910(...), func_001105E0(...), func_00103990(...), func_0007F4C0(...), func_00110330(...);
+  float fabsf(float);
+  float m[16];
+  int i;
+  for (i = 0; i < 16; i++) {
+    S_000C4240 *p = &D_00315450[i];
+    if (p->on) {
+      p->x = D_001E461C * p->vx + p->x;
+      p->y = D_001E461C * p->vy + p->y;
+      p->z = D_001E461C * p->vz + p->z;
+      func_0012F120(m);
+      func_0012FE20(m, 0, 0x40490fdb, 0);
+      func_0012F910(m, 0x3fc00000);
+      m[12] = p->x;
+      m[13] = p->y;
+      m[14] = p->z;
+      func_001105E0(*(int *)(p->obj + 0x2c), m, 0);
+      if (p->z < D_00314F68 + p->lim) {
+        func_00103990(D_00315CBC, 0);
+        func_0007F4C0(0x447a0000, &p->x);
+        p->on = 0;
+        func_00110330(*(int *)(p->obj + 0x2c), 0);
+        if (fabsf(p->x - D_00314F60) < D_001D4EB0 && fabsf(p->y - D_00314F64) < D_001D4EB0)
+          func_000C40A0();
+      }
+    }
+  }
 }
 
 void func_000C47A0(void)
