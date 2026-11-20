@@ -7,9 +7,16 @@ extern "C" unsigned char *__imp__XboxHardwareInfo;
 extern "C" int **__imp__LaunchDataPage;
 struct XSTR_0010A86C { unsigned short Length, MaximumLength; char *Buffer; };
 extern "C" XSTR_0010A86C *__imp__XeImageFileName;
+extern "C" __declspec(dllimport) int __stdcall RtlNtStatusToDosError(int);
+extern "C" __declspec(dllimport) void __stdcall HalReturnToFirmware(unsigned long);
 extern "C" int (__stdcall *__imp__IoDeleteSymbolicLink)(void *);
 extern "C" int (__stdcall *__imp__IoCreateSymbolicLink)(void *, void *);
 #pragma optimize("y", off)
+int __stdcall func_0010A6EB(char *path, int a1, int flags, int a3)
+{
+  return 0;
+}
+
 int func_0010A86C(void)
 {
   extern char *D_00010118;
@@ -146,4 +153,77 @@ int __stdcall func_0010B0F0(unsigned int a,unsigned int b){extern char D_001DED3
 extern "C" __declspec(dllimport) void __stdcall HalReturnToFirmware(unsigned long); void __stdcall func_0010B145(int a,int b,int c){extern int D_00010118; int __stdcall func_00109A27(int,int*); if(*(int*)(D_00010118+8)!=-131072){int local[768]={0};local[0]=a;local[1]=0;local[2]=b;local[3]=c;func_00109A27(0,local);return;} HalReturnToFirmware(4);__debugbreak();__assume(0);}
 
 int __stdcall func_0010B1AA(int a0){int __stdcall func_0010AC5D(int,int);return func_0010AC5D(a0,0x4000);}
+
+#pragma optimize("s", on)
+void func_0010B1BB(void)
+{
+  extern int D_001E6770, D_001E62D8, D_00010138, D_00010134, D_0037C074, D_00010124;
+  extern char D_001E62D0[], D_001E62C8[];
+  extern int *D_00010118;
+  int __stdcall func_0010D67B(int, int, int, int, int, void *);
+  int __stdcall func_0010A052(int);
+  void __stdcall func_0010B145(int, int, int);
+  void func_0010EB69(void);
+  unsigned int func_0010C5C0(void);
+  int init[12];
+  int *p = 0;
+  int local = (int)p;
+  int st;
+  unsigned int v;
+  int i;
+
+  HalRegisterShutdownNotification(&D_001E6770, 1);
+  func_0010EB69();
+  for (i = 0; i < 12; i++)
+    init[i] = 0;
+  init[0] = 0x30;
+  D_0037C074 = func_0010D67B(2, 0, D_00010134, D_00010138, 0, init);
+  if (D_0037C074 == 0) {
+    func_0010B145(1, 1, local);
+    return;
+  }
+  if (!(D_00010124 & 8)) {
+    if (func_0010B1AA((int)&D_001E62D8) < 0) {
+      func_0010B145(1, 2, local);
+      return;
+    }
+  }
+  if (!(*__imp__XboxHardwareInfo & 8)) {
+    st = __imp__IoCreateSymbolicLink(D_001E62C8, D_001E62D0);
+    if (st < 0 && st != (int)0xc0000035) {
+      func_0010B145(1, 1, local);
+      return;
+    }
+  }
+  if (!(D_00010124 & 0x18)) {
+    st = func_0010B0F0(D_00010118[2], (unsigned int)(D_00010118 + 3));
+    if (st < 0) {
+      if (st == (int)0xc000007f)
+        func_0010B145(2, 0x54, 0x10);
+      else
+        func_0010B145(1, 2, local);
+      return;
+    }
+  }
+  if (!(D_00010124 & 8) && (D_00010124 & 1)) {
+    if (!func_0010A052(D_00010124 & 2))
+      func_0010B145(1, 2, 0);
+  }
+  v = D_00010118[0xa4 / 4];
+  if (v < func_0010C5C0()) {
+    func_0010B145(1, 4, v);
+    return;
+  }
+  if (__imp__LaunchDataPage && *__imp__LaunchDataPage) {
+    p = *__imp__LaunchDataPage;
+    if (*(unsigned char *)((char *)p + 0x214) & 1)
+      *p = *(int *)((char *)p + 0x218);
+  }
+  func_0010A86C();
+  if (p && *p == -1) {
+    *__imp__LaunchDataPage = 0;
+    __imp__MmFreeContiguousMemory(p);
+  }
+}
+#pragma optimize("", on)
 
