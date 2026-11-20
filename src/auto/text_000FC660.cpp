@@ -3,6 +3,11 @@
 #include "common.h"
 
 // _func_000FC880 - simple function returning 1 after calling another
+unsigned char func_000FC730(void)
+{
+  return 1;
+}
+
 char _func_000FC880(void) {
     int func_000493C0(...);
     func_000493C0();
