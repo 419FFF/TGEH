@@ -3,6 +3,8 @@
 struct S_000C3F00_A { unsigned char a, b, pad0[2]; float pos[3]; char pad1[0x14]; int obj; unsigned char c, pad2[3]; int obj2; int pad3; float x, y; char pad4[4]; };
 struct S_000C3F00_B { float pos[3]; char pad0[0xc]; int count; int state; char pad1; unsigned char f1; unsigned char f2; char pad2; float v[3]; char pad3[0xc]; int arg[3]; char pad4[0x90 - 0x48]; };
 struct S_000C4240 { int obj; char on; char pad[3]; float x, y, z; float vx, vy, vz; float pad2[2]; float lim; };
+extern "C" double fabs(double);
+#pragma intrinsic(fabs)
 struct P_000C49A0 { float x, y, z, w; char on; char pad[3]; };
 struct P_000C48B0 { float w; char on; char pad[3]; float x, y, z; };
 
