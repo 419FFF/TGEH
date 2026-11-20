@@ -139,7 +139,7 @@ int __stdcall func_0010ACD5(int a0, char *path, int n, int a3)
     return status;
 }
 #pragma optimize("t", on)
-void __stdcall func_0010B0F0(unsigned int a,unsigned int b){extern char D_001DED38;extern char D_001E62E0,D_001E62E8,D_001E62F0,D_001E62F8;void func_0013E469(void*,void*,unsigned int);int __stdcall func_0010ADBC(void*,void*,void*,unsigned int,unsigned int,unsigned int);char tmp[12];func_0013E469(tmp,&D_001DED38,a);if(func_0010ADBC(&D_001E62E0,&D_001E62E8,tmp,1,0,0)>=0)func_0010ADBC(&D_001E62F0,&D_001E62F8,tmp,1,b,0);}
+int __stdcall func_0010B0F0(unsigned int a,unsigned int b){extern char D_001DED38;extern char D_001E62E0,D_001E62E8,D_001E62F0,D_001E62F8;void func_0013E469(void*,void*,unsigned int);int __stdcall func_0010ADBC(void*,void*,void*,unsigned int,unsigned int,unsigned int);char tmp[12];int r;func_0013E469(tmp,&D_001DED38,a);r=func_0010ADBC(&D_001E62E0,&D_001E62E8,tmp,1,0,0);if(r>=0)r=func_0010ADBC(&D_001E62F0,&D_001E62F8,tmp,1,b,0);return r;}
 
 extern "C" __declspec(dllimport) void __stdcall HalReturnToFirmware(unsigned long); void __stdcall func_0010B145(int a,int b,int c){extern int D_00010118; int __stdcall func_00109A27(int,int*); if(*(int*)(D_00010118+8)!=-131072){int local[768]={0};local[0]=a;local[1]=0;local[2]=b;local[3]=c;func_00109A27(0,local);return;} HalReturnToFirmware(4);__debugbreak();__assume(0);}
 
