@@ -2,7 +2,7 @@
 #include "common.h"
 #include "ghidra.h"
 
-struct __declspec(align(16)) Mat16 { float m[16]; };
+struct Mat16 { float m[16]; };
 
 void func_000E3EC0(void)
 {
