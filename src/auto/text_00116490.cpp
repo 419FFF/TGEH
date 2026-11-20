@@ -17,6 +17,26 @@ struct HHeap {
     unsigned int mark;
     int freeCount;
 };
+static inline HNode *HAlloc(HHeap *h)
+{
+    HNode *p = h->freeList;
+    h->freeList = p->next;
+    p->next = 0;
+    p->prev = 0;
+    p->addr = 0;
+    p->size = 0;
+    p->unk10 = 0;
+    h->freeCount--;
+    return p;
+}
+static inline void HFree(HHeap *h, HNode *n)
+{
+    n->next = h->freeList;
+    h->freeList = n;
+    n->addr = 0;
+    n->size = 0;
+    h->freeCount++;
+}
 extern float _func_001161D0(void *, int);
 extern void _func_00115FC0(void *, float);
 void _func_00116590(void *p, unsigned int value)
@@ -210,91 +230,90 @@ int *_func_00116960(int *pool, unsigned int size, unsigned int align, int *out)
     return found;
 }
 
-void _func_00116CC0(unsigned int *param_1, unsigned int *param_2)
+void _func_00116CC0(HHeap *h, HNode *n)
 {
-    extern void _func_001166D0(unsigned int *, unsigned int *, unsigned int);
-    unsigned int uVar1;
-    unsigned int *puVar2;
-    unsigned int uVar3;
-    unsigned int uVar4;
-    unsigned int *puVar5;
-    int iVar6;
+    extern void _func_001166D0(HHeap *, HNode *, HNode *);
+    unsigned int addr;
+    HNode *p;
+    HNode *ins;
+    HNode *nx;
+    int i;
 
-    param_1[0x33]--;
-    puVar2 = (unsigned int *)param_1[0x2f];
-    param_1[0x32] -= param_2[3];
-    if (puVar2 != 0) {
+    h->count--;
+    p = h->tail;
+    h->used -= n->size;
+    if (p != 0) {
         do {
-            if (puVar2[2] <= param_2[2]) {
-                uVar3 = *puVar2;
+            if (p->addr <= n->addr) {
+                ins = p->next;
                 goto found;
             }
-            puVar2 = (unsigned int *)puVar2[1];
-        } while (puVar2 != 0);
+            p = p->prev;
+        } while (p != 0);
     }
-    uVar3 = param_1[0x2e];
+    ins = h->head;
 found:
-    puVar2 = (unsigned int *)param_1[0x2d];
-    param_1[0x2d] = *puVar2;
-    unsigned int *z = puVar2;
-    z[0] = 0; z[1] = 0; z[2] = 0; z[3] = 0; z[4] = 0;
-    param_1[0x37]--;
-    puVar2[2] = param_2[2];
-    puVar2[3] = param_2[3];
-    uVar1 = param_2[2];
-    _func_001166D0(param_1, puVar2, uVar3);
-    if (param_2[1] != 0) {
-        *(unsigned int *)param_2[1] = *param_2;
-    } else {
-        param_1[0x30] = *param_2;
-    }
-    if (*param_2 != 0) {
-        *(unsigned int *)(*param_2 + 4) = param_2[1];
-    } else {
-        param_1[0x31] = param_2[1];
-    }
-    *param_2 = param_1[0x2d];
-    param_1[0x2d] = (unsigned int)param_2;
-    param_2[2] = 0;
-    param_2[3] = 0;
-    param_1[0x37]++;
-    if (puVar2[1] != 0) {
-        puVar2 = (unsigned int *)puVar2[1];
-    }
-    iVar6 = 0;
+    p = h->freeList;
+    h->freeList = p->next;
+    p->next = 0;
+    p->prev = 0;
+    p->addr = 0;
+    p->size = 0;
+    p->unk10 = 0;
+    h->freeCount--;
+    p->addr = n->addr;
+    p->size = n->size;
+    addr = n->addr;
+    _func_001166D0(h, p, ins);
+    if (n->prev != 0)
+        n->prev->next = n->next;
+    else
+        h->head2 = n->next;
+    if (n->next != 0)
+        n->next->prev = n->prev;
+    else
+        h->tail2 = n->prev;
+    n->next = h->freeList;
+    h->freeList = n;
+    n->addr = 0;
+    n->size = 0;
+    h->freeCount++;
+    if (p->prev != 0)
+        p = p->prev;
+    i = 0;
     do {
-        puVar5 = (unsigned int *)*puVar2;
-        if (puVar5 == 0) break;
-        if (puVar2[2] + puVar2[3] == puVar5[2]) {
-            puVar2[3] = puVar5[3] + puVar2[3];
-            if (puVar5[1] != 0) {
-                *(unsigned int *)puVar5[1] = *puVar5;
-            } else {
-                param_1[0x2e] = *puVar5;
-            }
-            if (*puVar5 != 0) {
-                *(unsigned int *)(*puVar5 + 4) = puVar5[1];
-            } else {
-                param_1[0x2f] = puVar5[1];
-            }
-            *puVar5 = param_1[0x2d];
-            param_1[0x2d] = (unsigned int)puVar5;
-            puVar5[2] = 0;
-            puVar5[3] = 0;
-            param_1[0x37]++;
-            puVar5 = puVar2;
+        nx = p->next;
+        if (nx == 0)
+            break;
+        if (p->addr + p->size == nx->addr) {
+            p->size = nx->size + p->size;
+            if (nx->prev != 0)
+                nx->prev->next = nx->next;
+            else
+                h->head = nx->next;
+            if (nx->next != 0)
+                nx->next->prev = nx->prev;
+            else
+                h->tail = nx->prev;
+            nx->next = h->freeList;
+            h->freeList = nx;
+            nx->addr = 0;
+            nx->size = 0;
+            h->freeCount++;
+            nx = p;
         }
-        iVar6 = iVar6 + 1;
-        puVar2 = puVar5;
-    } while (iVar6 < 3);
-    if (param_1[0x36] <= uVar1) {
-        uVar1 = *param_1;
-        for (uVar3 = param_1[0x2f];
-             uVar3 != 0 && (uVar4 = *(int *)(uVar3 + 0xc) + *(int *)(uVar3 + 8), param_1[0x36] <= uVar4);
-             uVar3 = *(unsigned int *)(uVar3 + 4)) {
-            uVar1 = uVar4;
+        i++;
+        p = nx;
+    } while (i < 3);
+    if (addr >= h->mark) {
+        addr = h->base;
+        for (nx = h->tail; nx != 0; nx = nx->prev) {
+            unsigned int e = nx->size + nx->addr;
+            if (e < h->mark)
+                break;
+            addr = e;
         }
-        param_1[0x36] = uVar1;
+        h->mark = addr;
     }
 }
 
