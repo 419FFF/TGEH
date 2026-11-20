@@ -143,7 +143,3 @@ extern "C" __declspec(dllimport) void __stdcall HalReturnToFirmware(unsigned lon
 
 int __stdcall func_0010B1AA(int a0){int __stdcall func_0010AC5D(int,int);return func_0010AC5D(a0,0x4000);}
 
-extern "C" __declspec(dllimport) void __stdcall HalRegisterShutdownNotification(void*, int);
-extern "C" void (__stdcall *__imp__MmFreeContiguousMemory)(void*);
-extern "C" unsigned char *__imp__XboxHardwareInfo;
-extern "C" int **__imp__LaunchDataPage;
