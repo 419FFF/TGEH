@@ -2,6 +2,16 @@
 /* 47 functions from 0x000FC660 to 0x000FD5F2, found by Ghidra. */
 #include "common.h"
 
+void func_000F33B0(int);
+void func_000F3250(int);
+void func_0009A0D0(int);
+void func_000FC890(int n)
+{
+  func_000F33B0(n);
+  func_000F3250(n);
+  func_0009A0D0(2);
+}
+
 // _func_000FC880 - simple function returning 1 after calling another
 unsigned char func_000FC730(void)
 {
@@ -12,6 +22,26 @@ char _func_000FC880(void) {
     int func_000493C0(...);
     func_000493C0();
     return 1;
+}
+
+unsigned char _func_000FC8B0(int unused, int *msg)
+{
+  extern char D_001D42F0, D_001D7348, D_001DD194, D_001D3B84, D_001DD18C, D_001D3B8C, D_001DD180, D_001D6B04;
+  int func_0011B4F0(...);
+  void func_0009F840(int);
+  void func_000F33B0(int);
+  void func_000F3250(int);
+  void func_0009A0D0(int);
+  void func_000FC890(int);
+  if (func_0011B4F0(**(int **)(msg + 1), &D_001D42F0) == 0) { func_0009F840(0x10); return 1; }
+  if (func_0011B4F0(**(int **)(msg + 1), &D_001D7348) == 0) { func_0009F840(0x20); return 1; }
+  if (func_0011B4F0(**(int **)(msg + 1), &D_001DD194) == 0) { func_0009F840(0x40); func_000F33B0(0xb); func_000F3250(0xb); func_0009A0D0(2); return 1; }
+  if (func_0011B4F0(**(int **)(msg + 1), &D_001D3B84) == 0) { func_0009F840(0x80); func_000F33B0(0xa); func_000F3250(0xa); func_0009A0D0(2); return 1; }
+  if (func_0011B4F0(**(int **)(msg + 1), &D_001DD18C) == 0) { func_0009F840(0x100); func_000FC890(0x13); return 1; }
+  if (func_0011B4F0(**(int **)(msg + 1), &D_001D3B8C) == 0) { func_0009F840(0x200); func_000FC890(0xc); return 1; }
+  if (func_0011B4F0(**(int **)(msg + 1), &D_001DD180) == 0) { func_0009F840(0x400); return 1; }
+  if (func_0011B4F0(**(int **)(msg + 1), &D_001D6B04) == 0) { func_0009F840(0x800); }
+  return 1;
 }
 
 unsigned char func_000FCF30(void)
