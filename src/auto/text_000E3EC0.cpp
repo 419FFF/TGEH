@@ -2,6 +2,8 @@
 #include "common.h"
 #include "ghidra.h"
 
+struct Mat16 { float m[16]; };
+
 void func_000E3EC0(void)
 {
   int func_0009CBE0(...);
@@ -64,3 +66,45 @@ void func_000E3EC0(void)
   D_0032280C = func_0009C6A0(iVar2,((undefined *)&D_001DC05C));
   return;
 }
+
+void func_000E4340(int param_1)
+{
+  int func_00110060(...);
+  extern undefined4 D_001DBF48;
+  int func_0012F120(...);
+  int func_0012FE20(...);
+  int func_00011CB0(...);
+  extern undefined4 D_003234BC;
+  extern undefined D_00322838;
+  extern undefined D_0032283C;
+  extern undefined D_00322840;
+  int func_001105E0(...);
+  int func_00110000(...);
+  int iVar1;
+  undefined1 local_d0 [48];
+  float local_a0;
+  float local_9c;
+  float local_98;
+  undefined1 local_90 [48];
+  float local_60;
+  float local_5c;
+  float local_58;
+  undefined1 local_50 [76];
+  
+  func_00110060(*(undefined4 *)(*(int *)(param_1 + 0xba8) + 0x2c),local_90);
+  *(float *)(param_1 + 0xed0) = *(float *)(param_1 + 0xed0) + D_001DBF48;
+  func_0012F120(local_50);
+  func_0012FE20(local_50,0,*(undefined4 *)(param_1 + 0xed0),0);
+  func_00011CB0(local_d0,local_50);
+  iVar1 = D_003234BC * 0x10;
+  local_a0 = local_60 + *(float *)(((undefined *)&D_00322838) + iVar1);
+  local_9c = local_5c + *(float *)(((undefined *)&D_0032283C) + iVar1);
+  local_98 = local_58 + *(float *)(((undefined *)&D_00322840) + iVar1);
+  func_001105E0(*(undefined4 *)(*(int *)(param_1 + 0xbc0) + 0x2c),local_d0,0);
+  if (D_003234BC < 2) {
+    func_00110000(*(undefined4 *)(*(int *)(param_1 + 0xbc0) + 0x2c));
+  }
+  D_003234BC = D_003234BC + 1;
+  return;
+}
+
