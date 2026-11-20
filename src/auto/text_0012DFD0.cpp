@@ -30,14 +30,11 @@ int _func_0012E2E0(int param_1)
   int _func_00131C80(...), _func_00116A90(...), _func_00131EB0(...), _func_00131D60(...), _func_0012E280(...), _func_00131D10(...);
   char _func_00131FD0(...);
   int fp, obj;
-  unsigned int tag;
-  unsigned int size;
+  U_0012E2E0 tag, size;
   unsigned char fmt[16];
   unsigned char *buf;
   unsigned int i;
   char c;
-  unsigned char *t = (unsigned char *)&tag;
-  unsigned char *s = (unsigned char *)&size;
 
   fp = _func_00131C80(param_1, 0);
   obj = _func_00116A90(0x28, 1, 1);
@@ -48,26 +45,26 @@ int _func_0012E2E0(int param_1)
       _func_00131D10(fp);
       return obj;
     }
-    size = ((((s[3] << 8) | s[2]) << 8 | s[1]) << 8) | s[0];
-    if (t[0] == 'f') {
-      if (t[1] == 'm' && t[2] == 't' && t[3] == ' ') {
+    size.u = ((((size.b[3] << 8) | size.b[2]) << 8 | size.b[1]) << 8) | size.b[0];
+    if (tag.b[0] == 'f') {
+      if (tag.b[1] == 'm' && tag.b[2] == 't' && tag.b[3] == ' ') {
         _func_00131D60(fp, fmt, 0x10);
         _func_0012E280(obj, fmt);
-        _func_00131EB0(fp, size - 0x10, 1);
+        _func_00131EB0(fp, size.u - 0x10, 1);
       } else {
-        _func_00131EB0(fp, size, 1);
+        _func_00131EB0(fp, size.u, 1);
       }
     } else {
-      if (t[0] != 'd' || t[1] != 'a' || t[2] != 't' || t[3] != t[1]) {
-        _func_00131EB0(fp, size, 1);
+      if (tag.b[0] != 'd' || tag.b[1] != 'a' || tag.b[2] != 't' || tag.b[3] != tag.b[1]) {
+        _func_00131EB0(fp, size.u, 1);
       } else {
-        *(unsigned int *)(obj + 0x20) = size;
-        buf = (unsigned char *)_func_00116A90(size, 1, 1);
+        *(unsigned int *)(obj + 0x20) = size.u;
+        buf = (unsigned char *)_func_00116A90(size.u, 1, 1);
         *(unsigned char **)(obj + 0x24) = buf;
         _func_00131D60(fp, buf, *(unsigned int *)(obj + 0x20));
         buf = *(unsigned char **)(obj + 0x24);
         i = 0;
-        if ((*(unsigned int *)(obj + 0x20) & 0xfffffffe) != 0) {
+        if ((*(unsigned int *)(obj + 0x20) & 0xfffffffe) > 0u) {
           do {
             *(unsigned short *)(buf + i * 2) = (buf[i * 2 + 1] << 8) | buf[i * 2];
             i++;
