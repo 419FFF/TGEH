@@ -11,6 +11,16 @@ extern unsigned char D_0031545C[];
 int func_00110330(int, int);
 void func_000C40A0(void);
 struct Part65F0 { char a, b, c, d; int pad; int x, y; float z; float vy, vx; int w; char rest[0x10]; };
+struct Ent6810 {
+  int a;
+  char b[8];
+  float c;
+  char d[0x10];
+  char e0, e1;
+  char f[0x1a];
+  char g[0x40];
+  int h;
+};
 struct Vec65F0 { int x, y; float z; };
 struct Buf65F0 { char pad[0x30]; int x; int y; float z; };
 
@@ -93,6 +103,63 @@ void func_000C67C0(float *p, float target, float step)
     if (*p > target) *p = target;
   }
 }
+
+void func_000C6810(void)
+{
+  extern float D_00314F90, D_001E461C, D_001D715C, D_001D27B0, D_001D27B8, D_00315C94, D_001D515C, D_001D341C, D_00314F68;
+  extern int D_0031501C[];
+  extern int D_00315A30[];
+  extern char D_00315C80[], D_00314F80[];
+  int func_00110060(...);
+  int func_001031A0(...);
+  float func_0012E7B0(...);
+  int func_0012E5F0(...);
+  int func_001100D0(...);
+  int func_00022780(...);
+  int func_0010FF70(...);
+  float vec[3];
+  __declspec(align(16)) struct { char pad[0x30]; float a, b, c; } buf;
+  char tmp[8];
+  int *piVar2, *piVar3;
+  float f;
+
+  D_00314F90 = D_00314F90 + D_001E461C;
+  vec[0] = 0; vec[1] = 0; vec[2] = 1.0f;
+  piVar3 = D_0031501C;
+  piVar2 = D_00315A30;
+  do {
+    if (*piVar2 != 0) {
+      func_00110060(*(int *)(*piVar2 + 0x2c), piVar2 - 0x10);
+    }
+    if (*((char *)piVar2 - 0x5c) == 0) {
+      func_001031A0(piVar3[0x32f], 0);
+    } else {
+      func_00110060(*piVar3, &buf);
+      f = (D_001D27B0 - func_0012E7B0(tmp, D_00315C80) * D_001D715C);
+      if (f < D_001D27B8) f = D_001D27B8;
+      else if (f > D_001D27B0) f = D_001D27B0;
+      func_001031A0(piVar3[0x32f], D_00315C94 * f * D_001D515C);
+      if (*((char *)piVar2 - 0x5a) == 0) {
+        func_0012E5F0(piVar2 - 0x1f, piVar2 - 0x1c, D_00314F80);
+        func_001100D0(*piVar3, &buf);
+        func_00022780(&buf, *piVar3 + 0xc0, vec, piVar2[-0x20]);
+        func_0010FF70(*piVar3, &buf);
+        func_0010FF70(piVar3[5], &buf);
+      } else {
+        func_001100D0(*piVar3, &buf);
+        func_00022780(&buf, *piVar3 + 0xc0, vec, piVar2[-0x20]);
+        buf.c = buf.c - D_001E461C * D_001D341C;
+        ((float *)piVar2)[-0x1d] = ((float *)piVar2)[-0x1d] - D_001E461C * D_001D341C;
+        func_0010FF70(*piVar3, &buf);
+        func_0010FF70(piVar3[5], &buf);
+        if (((float *)piVar2)[-0x1d] < D_00314F68) *((char *)piVar2 - 0x5c) = 0;
+      }
+    }
+    piVar2 += 0x24;
+    piVar3 += 1;
+  } while ((int)piVar2 < 0x315D00);
+}
+
 #pragma optimize("", on)
 void func_000C6CE0(void) {
     unsigned char *p = D_0031519C;
