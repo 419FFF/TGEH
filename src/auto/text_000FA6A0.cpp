@@ -3,6 +3,8 @@
 #include "ghidra.h"
 #include <string.h>
 
+struct Slot_000FA750 { char *buf; int pad[3]; };
+struct Arg_000FA750 { int x; Slot_000FA750 *slot; };
 
 extern void* D_00324B68;
 
@@ -59,6 +61,46 @@ void _func_000FA8D0(void) {
  func_00063C40();
  int i = D_003104B4;
  while ((i -= 1) >= 0) { int v = D_0030C630[i]; if (v) { int x=func_000F9C00(v,&D_001DD164); if(x)func_000FA750(x); } }
+}
+
+unsigned char func_000FA910(int a, int *p)
+{
+  extern int D_00324BA0, D_00324B9C, D_00324B88;
+  char *s = *(char**)p[3];
+  int depth, i;
+  unsigned short *rec;
+  if (!strcmp(s, "<")) {
+    if ((double)*(float*)p[1] < *(float*)p[5]) return 1;
+  } else if (!strcmp(s, "<=")) {
+    if ((double)*(float*)p[1] <= *(float*)p[5]) return 1;
+  } else if (!strcmp(s, "==")) {
+    if ((double)*(float*)p[5] == *(float*)p[1]) return 1;
+  } else if (!strcmp(s, ">=")) {
+    if ((double)*(float*)p[1] >= *(float*)p[5]) return 1;
+  } else if (!strcmp(s, ">")) {
+    if ((double)*(float*)p[1] > *(float*)p[5]) return 1;
+  }
+  depth = 0;
+  i = *(int*)(a + 0x18) + 1;
+  if ((unsigned)i < *(unsigned short*)(*(int*)(a + 0x10) + 6)) {
+    rec = (unsigned short*)(*(int*)(*(int*)(a + 0x10) + 0x28) + i * 8);
+    do {
+      unsigned int t = *rec;
+      if (t == D_00324BA0) {
+        depth++;
+      } else {
+        if (t == D_00324B9C && depth == 0) break;
+        if (t == D_00324B88) {
+          if (depth == 0) break;
+          depth--;
+        }
+      }
+      i++;
+      rec += 4;
+    } while ((unsigned)i < *(unsigned short*)(*(int*)(a + 0x10) + 6));
+  }
+  *(int*)(a + 0x18) = i;
+  return 1;
 }
 
 unsigned char _func_000FAA50(int p) { extern unsigned short D_00324BA0,D_00324B88; unsigned int i=*(unsigned int*)(p+24); unsigned int n; unsigned int depth=0; unsigned short *tokens; unsigned char *ctx=*(unsigned char**)(p+16); i++; n=*(unsigned short*)(ctx+6); if(i>=n){*(unsigned int*)(p+24)=i;return 1;} tokens=(unsigned short*)(*(unsigned int*)(ctx+40)+i*8); while(i<n){ unsigned int c=tokens[0]; if(c==D_00324BA0)depth++; else if(c==D_00324B88){if(!depth)break;depth--;} i++;tokens+=4; n=*(unsigned short*)(ctx+6); } *(unsigned int*)(p+24)=i;return 1;}
@@ -208,7 +250,24 @@ undefined4 func_000FAFA0(undefined4 param_1, int *param_2)
     return 1;
 }
 
-unsigned char _func_000FAFD0(unsigned int a,int*p){ unsigned char func_00063C20(unsigned int); int func_000A1F50(unsigned int); if(func_00063C20(a))return 1; int x=*p;if(!*(int*)(x+0x84))return 1;if((*(unsigned char*)(x+0x10)&8)==0){if(*(unsigned char*)(x+0x15)==10)*(unsigned char*)(x+0x11)|=8;if(func_000A1F50(*(unsigned int*)(*p+0x84))==0){*(unsigned char*)(*p+0x11)&=0xf7;return 1;}}return 0;}
+unsigned char _func_000FAFD0(unsigned int a, int *p)
+{
+    unsigned char func_00063C20(unsigned int);
+    int func_000A1F50(unsigned int);
+    int x = func_00063C20(a);
+    if (x) return 1;
+    x = *p;
+    if (!*(int *)(x + 0x84)) return 1;
+    if ((*(unsigned char *)(x + 0x10) & 8) == 0) {
+        if (*(unsigned char *)(x + 0x15) == 10)
+            *(unsigned char *)(x + 0x11) |= 8;
+        if (func_000A1F50(*(unsigned int *)(*p + 0x84)) == 0) {
+            *(unsigned char *)(*p + 0x11) &= 0xf7;
+            return 1;
+        }
+    }
+    return 0;
+}
 
 unsigned char func_000FB0E0(undefined4 param_1, int *param_2)
 {
