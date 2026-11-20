@@ -135,3 +135,35 @@ void func_000695A0(float *pos, float radius, int *obj, int a4, int a5, int *out,
     }
 }
 
+int func_00069990(int *a, int *b, int c, float *out)
+{
+  int func_00110060(...), func_0012F810(...), func_0011B020(...), func_0012F7A0(...);
+  extern int D_00307D60;
+  __declspec(align(16)) float v[4];
+  float t[4];
+  float m1[4], m2[4], m3[16];
+  int *p;
+  int found = 0, i = 0;
+  v[0] = ((float *)b)[0]; v[1] = ((float *)b)[1]; v[2] = ((float *)b)[2]; v[3] = ((float *)b)[3];
+  if (*(int *)(c + 0x96c) != 0) {
+    p = (int *)(c + 8);
+    do {
+      if (p[0] && p[-1] && *(char *)(p[0] + 0x13) == 12) {
+        func_00110060(p[-1], m3);
+        func_0012F810(m1, a, m3);
+        func_0012F810(m2, v, m3);
+        if ((char)func_0011B020(p[-1], m1, m2, t, 0, 0)) {
+          func_0012F7A0(t, m3);
+          v[0] = t[0]; v[1] = t[1]; v[2] = t[2];
+          found = p[0];
+          D_00307D60 = found;
+        }
+      }
+      i++;
+      p += 3;
+    } while (i != *(int *)(c + 0x96c));
+    if (found) { out[0] = v[0]; out[1] = v[1]; out[2] = v[2]; }
+  }
+  return found;
+}
+
