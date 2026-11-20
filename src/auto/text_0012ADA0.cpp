@@ -181,6 +181,52 @@ void _func_0012B930(char *o)
   *((unsigned char *) (o + 2)) |= 2;
 }
 
+void _func_0012BB70(Chan12BB70 *c, unsigned char cmd)
+{
+  if (cmd >= 0x10 && cmd <= 0x50) {
+    c->vol = cmd - 0x10;
+    c->flags |= 2;
+    return;
+  }
+  switch (cmd >> 4) {
+  case 6:
+  case 8:
+    c->vol -= cmd & 0xf;
+    if (c->vol < 0) c->vol = 0;
+    c->flags |= 2;
+    return;
+  case 7:
+  case 9:
+    c->vol += cmd & 0xf;
+    if (c->vol > 0x40) c->vol = 0x40;
+    c->flags |= 2;
+    return;
+  case 10:
+    c->v82 = cmd & 0xf;
+    return;
+  case 11:
+    c->v83 = cmd & 0xf;
+    return;
+  case 12:
+    c->pan = (cmd & 0xf) << 4;
+    c->flags |= 4;
+    return;
+  case 13:
+    c->pan -= cmd & 0xf;
+    c->flags |= 4;
+    return;
+  case 14:
+    c->pan += cmd & 0xf;
+    c->flags |= 4;
+    return;
+  case 15:
+    if (cmd & 0xf) c->v80 = cmd << 4;
+    c->v7c = c->v60[1];
+    c->flags &= 0xf7;
+    return;
+  }
+}
+
 extern int _D_001E7EA8[];
 extern int _D_001E7EAC[];
 int _func_0012BC90(int a, int b)
