@@ -2,6 +2,21 @@
 #include "common.h"
 #include "ghidra.h"
 
+struct HNode { HNode *next; HNode *prev; unsigned int addr; unsigned int size; int unk10; };
+struct HHeap {
+    unsigned int base;
+    char pad04[0xb0];
+    HNode *freeList;
+    HNode *head;
+    HNode *tail;
+    HNode *head2;
+    HNode *tail2;
+    unsigned int used;
+    int count;
+    char padd0[8];
+    unsigned int mark;
+    int freeCount;
+};
 extern float _func_001161D0(void *, int);
 extern void _func_00115FC0(void *, float);
 void _func_00116590(void *p, unsigned int value)
@@ -90,10 +105,245 @@ void func_00116820(void)
   return;
 }
 
-int _func_00116960(int *piVar1, undefined4 D_00326814, undefined D_00326790, int func_0013AF50, int func_0013AF70)
+int * func_00116830(int *param_1, unsigned int param_2, int param_3, unsigned int *param_4)
 {
-  // Implementation for this function
-  return 0;
+  int func_001166D0(...);
+  int *piVar3;
+  unsigned int uVar4;
+  int *piVar2;
+  unsigned int uVar1;
+
+  piVar2 = (int *)param_1[0x2e];
+  uVar4 = *param_1 + 1;
+  piVar3 = (int *)0;
+  if (piVar2 != (int *)0) {
+    do {
+      uVar1 = piVar2[2];
+      if (uVar1 >= (unsigned int)param_1[0x36]) break;
+      uVar1 = (piVar2[3] - ((uVar1 - 1 + param_3) & ~(param_3 - 1U))) + uVar1;
+      if ((uVar1 >= param_2) && (uVar1 < uVar4)) {
+        if ((*piVar2 != 0) &&
+            ((*(unsigned int *)(*piVar2 + 8) < (unsigned int)param_1[0x36] &&
+              (piVar3 = piVar2, uVar4 = uVar1, uVar1 == param_2)))) break;
+        if (piVar3 == (int *)0) {
+          piVar3 = piVar2;
+          uVar4 = uVar1;
+        }
+      }
+      piVar2 = (int *)*piVar2;
+    } while (piVar2 != (int *)0);
+  }
+  if (piVar3 == (int *)0)
+    return (int *)0;
+  uVar4 = (piVar3[2] - 1 + param_3) & ~(param_3 - 1U);
+  param_4[2] = uVar4;
+  if (uVar4 != (unsigned int)piVar3[2]) {
+    piVar2 = (int *)param_1[0x2d];
+    param_1[0x2d] = *piVar2;
+    *piVar2 = 0;
+    piVar2[1] = 0;
+    piVar2[2] = 0;
+    piVar2[3] = 0;
+    piVar2[4] = 0;
+    param_1[0x37] = param_1[0x37] - 1;
+    func_001166D0(param_1, piVar2, piVar3);
+    piVar2[2] = piVar3[2];
+    piVar2[3] = param_4[2] - piVar3[2];
+  }
+  param_4[1] = param_1[0x31];
+  *param_4 = 0;
+  if ((unsigned int *)param_1[0x31] == (unsigned int *)0) {
+    param_1[0x30] = (int)param_4;
+  } else {
+    *(unsigned int *)param_1[0x31] = (unsigned int)param_4;
+  }
+  param_1[0x31] = (int)param_4;
+  piVar3[3] = piVar3[3] + ((piVar3[2] - param_4[3]) - param_4[2]);
+  piVar3[2] = param_4[3] + param_4[2];
+  return piVar3;
+}
+
+int *_func_00116960(int *pool, unsigned int size, unsigned int align, int *out)
+{
+    extern void _func_001166D0(int *, int *, int);
+    unsigned int best = pool[0] + 1;
+    int *found = 0;
+    int *blk = (int *)pool[0xbc / 4];
+    while (blk) {
+        unsigned int len = blk[3];
+        unsigned int start;
+        unsigned int rem;
+        if ((unsigned int)blk[2] + len < (unsigned int)pool[0xd8 / 4])
+            break;
+        start = (blk[2] + align - 1) & ~(align - 1);
+        rem = blk[2] - start + len;
+        if (rem >= size && rem < best) {
+            found = blk;
+            best = rem;
+            if (rem == size)
+                break;
+        }
+        blk = (int *)blk[1];
+    }
+    if (!found)
+        return 0;
+    out[2] = (found[3] - size + found[2]) & ~(align - 1);
+    if ((unsigned int)out[2] < (unsigned int)pool[0xd8 / 4])
+        pool[0xd8 / 4] = out[2];
+    out[1] = pool[0xc4 / 4];
+    out[0] = 0;
+    if (pool[0xc4 / 4])
+        *(int *)pool[0xc4 / 4] = (int)out;
+    else
+        pool[0xc0 / 4] = (int)out;
+    pool[0xc4 / 4] = (int)out;
+    if ((unsigned int)(out[2] + size) < (unsigned int)(found[2] + found[3])) {
+        int *n = (int *)pool[0xb4 / 4];
+        pool[0xb4 / 4] = *n;
+        n[0] = n[1] = n[2] = n[3] = n[4] = 0;
+        pool[0xdc / 4]--;
+        _func_001166D0(pool, n, found[0]);
+        n[2] = out[2] + out[3];
+        n[3] = found[3] - n[2] + found[2];
+    }
+    found[3] = out[2] - found[2];
+    return found;
+}
+
+void _func_00116CC0(unsigned int *param_1, unsigned int *param_2)
+{
+    extern void _func_001166D0(unsigned int *, unsigned int *, unsigned int);
+    unsigned int uVar1;
+    unsigned int *puVar2;
+    unsigned int uVar3;
+    unsigned int uVar4;
+    unsigned int *puVar5;
+    int iVar6;
+
+    param_1[0x33]--;
+    puVar2 = (unsigned int *)param_1[0x2f];
+    param_1[0x32] -= param_2[3];
+    if (puVar2 != 0) {
+        do {
+            if (puVar2[2] <= param_2[2]) {
+                uVar3 = *puVar2;
+                goto found;
+            }
+            puVar2 = (unsigned int *)puVar2[1];
+        } while (puVar2 != 0);
+    }
+    uVar3 = param_1[0x2e];
+found:
+    puVar2 = (unsigned int *)param_1[0x2d];
+    param_1[0x2d] = *puVar2;
+    unsigned int *z = puVar2;
+    z[0] = 0; z[1] = 0; z[2] = 0; z[3] = 0; z[4] = 0;
+    param_1[0x37]--;
+    puVar2[2] = param_2[2];
+    puVar2[3] = param_2[3];
+    uVar1 = param_2[2];
+    _func_001166D0(param_1, puVar2, uVar3);
+    if (param_2[1] != 0) {
+        *(unsigned int *)param_2[1] = *param_2;
+    } else {
+        param_1[0x30] = *param_2;
+    }
+    if (*param_2 != 0) {
+        *(unsigned int *)(*param_2 + 4) = param_2[1];
+    } else {
+        param_1[0x31] = param_2[1];
+    }
+    *param_2 = param_1[0x2d];
+    param_1[0x2d] = (unsigned int)param_2;
+    param_2[2] = 0;
+    param_2[3] = 0;
+    param_1[0x37]++;
+    if (puVar2[1] != 0) {
+        puVar2 = (unsigned int *)puVar2[1];
+    }
+    iVar6 = 0;
+    do {
+        puVar5 = (unsigned int *)*puVar2;
+        if (puVar5 == 0) break;
+        if (puVar2[2] + puVar2[3] == puVar5[2]) {
+            puVar2[3] = puVar5[3] + puVar2[3];
+            if (puVar5[1] != 0) {
+                *(unsigned int *)puVar5[1] = *puVar5;
+            } else {
+                param_1[0x2e] = *puVar5;
+            }
+            if (*puVar5 != 0) {
+                *(unsigned int *)(*puVar5 + 4) = puVar5[1];
+            } else {
+                param_1[0x2f] = puVar5[1];
+            }
+            *puVar5 = param_1[0x2d];
+            param_1[0x2d] = (unsigned int)puVar5;
+            puVar5[2] = 0;
+            puVar5[3] = 0;
+            param_1[0x37]++;
+            puVar5 = puVar2;
+        }
+        iVar6 = iVar6 + 1;
+        puVar2 = puVar5;
+    } while (iVar6 < 3);
+    if (param_1[0x36] <= uVar1) {
+        uVar1 = *param_1;
+        for (uVar3 = param_1[0x2f];
+             uVar3 != 0 && (uVar4 = *(int *)(uVar3 + 0xc) + *(int *)(uVar3 + 8), param_1[0x36] <= uVar4);
+             uVar3 = *(unsigned int *)(uVar3 + 4)) {
+            uVar1 = uVar4;
+        }
+        param_1[0x36] = uVar1;
+    }
+}
+
+int _func_00116E50(int p, unsigned int size, int a, int b)
+{
+    extern int D_00326814, D_00326810;
+    extern int D_00326790[];
+    extern unsigned char D_00326818[], D_0032687C;
+    extern void func_0013AF50(int);
+    extern void func_0013AF70(int);
+    extern int *_func_0013B1E0(void);
+    extern int _func_00116A90(unsigned int, int, int);
+    extern void _func_00116CC0(int, int);
+    if (p == 0)
+        return _func_00116A90(size, a, b);
+    func_0013AF50(D_00326814);
+    int hdr = *(int *)(p - 4);
+    int s = D_00326790[*(unsigned char *)(hdr + 0x13)];
+    int *t = _func_0013B1E0();
+    int k = t[0x84 / 4] + 1;
+    t[0x84 / 4] = k;
+    t[0x88 / 4 + k] = s;
+    unsigned char c = *(unsigned char *)(hdr + 0x12);
+    func_0013AF50(D_00326814);
+    D_00326810++;
+    D_00326818[D_00326810] = c;
+    D_0032687C = c;
+    func_0013AF70(D_00326814);
+    int *u = _func_0013B1E0();
+    int saved = u[0x80 / 4];
+    u[0x80 / 4] = *(unsigned int *)(hdr + 8) >= *(unsigned int *)(s + 0xd8);
+    *(int *)(s + 0xe0) = p;
+    unsigned int n = *(unsigned int *)(hdr + 0xc) - *(unsigned short *)(hdr + 0x10);
+    *(unsigned int *)(s + 0xe4) = n;
+    if (n > size)
+        *(unsigned int *)(s + 0xe4) = size;
+    _func_00116CC0(s, hdr);
+    int r = _func_00116A90(size, a, b);
+    u[0x80 / 4] = saved;
+    *(int *)(s + 0xe0) = 0;
+    *(int *)(s + 0xe4) = 0;
+    func_0013AF50(D_00326814);
+    D_00326810--;
+    D_0032687C = D_00326818[D_00326810];
+    func_0013AF70(D_00326814);
+    int *w = _func_0013B1E0();
+    w[0x84 / 4]--;
+    func_0013AF70(D_00326814);
+    return r;
 }
 
 void func_00116FB0(int p){extern int D_00326814,D_00326790[]; void func_0013AF50(int); void func_0013AF70(int); void func_00116CC0(int,int); if(p){func_0013AF50(D_00326814); int q=*(int*)(p-4); func_00116CC0(D_00326790[*(unsigned char*)(q+0x13)],q); *(int*)(p-4)=0; func_0013AF70(D_00326814);}}
