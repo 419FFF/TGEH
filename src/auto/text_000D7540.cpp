@@ -2,13 +2,99 @@
 #include "common.h"
 #include "ghidra.h"
 
+struct T_000D7540 { int f0, f4, f8, pc, p10, p14, f18, p1c, p20, p24, f28, f2c, f30, p34, p38, p3c, p40, f44, f48, f4c; };
+void func_0011E4A0(float, float, float, float, void *, void *, int, float);
 struct E_001E5488 { unsigned char a, b; short x, y; unsigned char z, pad; };
 extern int D_001E54E8;
 extern int D_0031E508;
 extern unsigned char D_001E53A8[];
 void func_000D7870(signed char *p){if(p){int i=(((p[1]+p[0]*6)*0x10+p[2])*0xc+p[3])*0xc;*(int*)(D_0031E508+i+4)=0;*(int*)(p+8)=1;}}
 
+void func_000D78C0(void)
+{
+    extern int D_0031E508;
+    extern float D_001D313C, D_001D27EC, D_00307DB4;
+    int func_0013E3F4(...);
+    int func_000688D0(...);
+    int func_000D7540(...);
+    char c1, c2;
+    unsigned int r;
+    int base, n;
+    char *p;
+    float dt;
+    float v[2];
+    int ix, iy;
+
+    base = D_0031E508;
+    dt = (D_00307DB4 - *(float *)(base + 0xda8c)) * D_001D313C;
+    r = func_0013E3F4();
+    v[0] = *(float *)(base + 0xefe4) * D_001D313C;
+    c1 = *(char *)(base + 0xd805);
+    c2 = *(char *)(base + 0xd804);
+    v[1] = *(float *)(base + 0xefe8) * D_001D313C;
+    func_000688D0();
+    p = (char *)(base + 0xe955);
+    n = 0x32;
+    do {
+        if (*(int *)(p + 7) != 0 && p[-1] == c2 && *p == c1) {
+            float w[2];
+            ix = p[1];
+            iy = p[2];
+            w[0] = ((float)ix + D_001D27EC) * *(float *)(base + 0xefe4) * D_001D313C;
+            w[1] = ((float)iy + D_001D27EC) * *(float *)(base + 0xefe8) * D_001D313C;
+            func_000D7540(base + 0xe8b4 + (r & 7) * 0x14, w, v, 4, 5, 0);
+        }
+        p += 0x1c;
+        n--;
+    } while (n != 0);
+}
+
 int func_000D79D0(signed char *a,signed char *b,int value){int x=(int)a[0];int y=(int)a[1];int z=(int)a[2];int w=(int)a[3];int i=(((y+x*6)*16+z)*12+w)*12;int *base=(int*)D_0031E508;int *slot=(int*)((char*)base+i+4);if(*slot==value)*slot=0;if(b[0]==1&&b[1]==5&&b[3]==11&&b[2]>=9&&b[2]<=10){*(char*)base=1;return 1;}x=(int)b[0];y=(int)b[1];z=(int)b[2];w=(int)b[3];i=(((y+x*6)*16+z)*12+w)*12;*(int*)((char*)base+i+4)=value;return *(char*)base;}
+
+#pragma optimize("y", on)
+void func_000D7B60(void)
+{
+    extern int D_0031E508;
+    extern float D_001D313C;
+    extern float D_001D27EC;
+    int func_000688D0(...);
+    int func_000D7540(...);
+    int object = D_0031E508;
+    float cur[2];
+    float step[2];
+    float start;
+    int rows, cols;
+    char *row;
+    char *cell;
+    step[0] = *(float *)(object + 0xefe4) * D_001D313C;
+    step[1] = *(float *)(object + 0xefe8) * D_001D313C;
+    row = (char *)(object + (((int)*(signed char *)(object + 0xd805) + *(signed char *)(object + 0xd804) * 6) * 0x900));
+    start = step[0] * D_001D27EC;
+    cur[1] = step[1] * D_001D27EC;
+    cur[0] = start;
+    func_000688D0();
+    row += 8;
+    rows = 12;
+    do {
+        cell = row;
+        cols = 16;
+        do {
+            int id = *(int *)cell;
+            if (id != 0x14 && id != 0x15) {
+                int base = object + id * 0x14;
+                func_000D7540(base + 0xdb08, cur, step, *(int *)(base + 0xdb14), *(int *)(object + 0xdb18 + id * 0x14), *(unsigned char *)(cell + 4));
+            }
+            cell += 0x90;
+            cols--;
+            cur[0] = cur[0] + step[0];
+        } while (cols != 0);
+        cur[1] = cur[1] + step[1];
+        row += 12;
+        rows--;
+        cur[0] = start;
+    } while (rows != 0);
+}
+#pragma optimize("", on)
 
 void func_000D7C70(void){extern void func_000688D0(...); extern void func_000D7540(...); int *s=(int*)D_0031E508; signed char r=*(signed char*)((char*)s+0xd805),c=*(signed char*)((char*)s+0xd804); char b=D_001E53A8[c+r*4]; int a[4]={0x43a00000,0x43700000,0x44200000,0x43f00000};func_000688D0();func_000D7540((char*)s+0xdaa4+b*0x14,&a[0],&a[2],1,0,0);}
 
