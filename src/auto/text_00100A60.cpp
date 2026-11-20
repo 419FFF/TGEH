@@ -116,6 +116,50 @@ void func_001010A0(void) {
 
 void _func_001010B0(void) { extern int D_00324D60,D_00307D04; extern int D_00324D48[]; int _func_00116800(...); int _func_00103990(...); int _func_00116820(...); if(D_00324D48[D_00324D60]) { _func_00116800(D_00307D04); _func_00103990(D_00324D48[D_00324D60],0); _func_00116820(); register int ecx=D_00324D60; ecx++; ecx &= 0x80000003; if(ecx<0)ecx=(ecx-1|0xfffffffc)+1; D_00324D60=ecx; } }
 
+void _func_00101110(int mode)
+{
+  extern char _D_001DE478[], _D_001DE46C[], _D_001DE460[], _D_001DE458[], _D_001DE450[], _D_001DE448[], _D_001DE43C[], _D_001DE42C[], _D_001DE41C[], _D_001DE410[], _D_001DE404[], _D_001DE3F8[], _D_001DE3EC[], _D_001DE3E4[], _D_001DE3DC[], _D_001DE3D4[], _D_001DE3CC[], _D_001DE3C0[], _D_001DE3B4[];
+  char _func_00100D80(void);
+  void _func_001052F0(char *);
+  void _func_00105340(char *, int);
+  if (_func_00100D80()) {
+    switch (mode) {
+    case 3:
+    case 9:
+      _func_001052F0(_D_001DE478);
+      return;
+    case 4:
+      _func_001052F0(_D_001DE46C);
+      return;
+    case 5:
+      _func_001052F0(_D_001DE460);
+      _func_00105340(_D_001DE458, 1);
+      _func_00105340(_D_001DE450, 1);
+      _func_00105340(_D_001DE448, 1);
+      _func_00105340(_D_001DE43C, 1);
+      _func_00105340(_D_001DE42C, 1);
+      _func_00105340(_D_001DE41C, 1);
+      _func_00105340(_D_001DE410, 1);
+      _func_00105340(_D_001DE404, 1);
+      _func_00105340(_D_001DE3F8, 1);
+      break;
+    case 6:
+      _func_001052F0(_D_001DE3EC);
+      _func_00105340(_D_001DE3E4, 1);
+      _func_00105340(_D_001DE3DC, 1);
+      _func_00105340(_D_001DE3D4, 1);
+      _func_00105340(_D_001DE3CC, 1);
+      return;
+    case 7:
+      _func_001052F0(_D_001DE3C0);
+      return;
+    case 8:
+      _func_001052F0(_D_001DE3B4);
+      return;
+    }
+  }
+}
+
 void func_00101240(void) {
     int func_00105D10(...);
     func_00105D10();
