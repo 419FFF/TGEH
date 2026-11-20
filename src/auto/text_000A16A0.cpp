@@ -2,6 +2,8 @@
 #include "common.h"
 #include "ghidra.h"
 struct P8_000A1F10 { int a; int b; };
+struct S8_2070 { int a; int b; };
+extern "C" char *strcat(char *, const char *);
 
 void func_000A1BB0(int param_1,int param_2) { int func_000A18A0(...);extern int _D_003080AC; int mode; unsigned char *ecx=(unsigned char*)param_1;if(ecx[0x10]&8){volatile int three=3;int eax=three;int v=param_2;func_000A18A0(ecx+0x64,v,eax);return;}int edx=_D_003080AC;int eax=(edx!=0)+1;int v=param_2;func_000A18A0(ecx+0x64,v,eax); }
 
