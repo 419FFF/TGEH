@@ -27,7 +27,7 @@ float func_00131240(float a0) {
     return r;
 }
 
-extern double cos(double);
+extern "C" double __cdecl cos(double);
 #pragma intrinsic(cos)
 float func_00131250(float x) {
     return (float)cos((double)x);
