@@ -5,7 +5,7 @@
 void func_000F33B0(int);
 void func_000F3250(int);
 void func_0009A0D0(int);
-void func_000FC890(int n)
+static void func_000FC890(int n)
 {
   func_000F33B0(n);
   func_000F3250(n);
@@ -29,10 +29,6 @@ unsigned char _func_000FC8B0(int unused, int *msg)
   extern char D_001D42F0, D_001D7348, D_001DD194, D_001D3B84, D_001DD18C, D_001D3B8C, D_001DD180, D_001D6B04;
   int func_0011B4F0(...);
   void func_0009F840(int);
-  void func_000F33B0(int);
-  void func_000F3250(int);
-  void func_0009A0D0(int);
-  void func_000FC890(int);
   if (func_0011B4F0(**(int **)(msg + 1), &D_001D42F0) == 0) { func_0009F840(0x10); return 1; }
   if (func_0011B4F0(**(int **)(msg + 1), &D_001D7348) == 0) { func_0009F840(0x20); return 1; }
   if (func_0011B4F0(**(int **)(msg + 1), &D_001DD194) == 0) { func_0009F840(0x40); func_000F33B0(0xb); func_000F3250(0xb); func_0009A0D0(2); return 1; }
