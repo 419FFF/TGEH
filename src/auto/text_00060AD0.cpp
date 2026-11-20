@@ -2,7 +2,7 @@
 #include "common.h"
 #include "ghidra.h"
 
-struct Entry61 { int a, b, t0, d, c0, c1, t1, z0, s0, s1, t2, z1, one; };
+struct Entry61 { int a, b; float t0; int d, c0, c1; float t1; int z0, s0, s1; float t2; int z1, one; };
 
 unsigned char func_00060AD0(int p,int a,int b){int func_001100A0(...),func_0012F810(...);char func_0011B020(...);int func_0012F730(...);char x[16],y[16],z[16];int saved=p;int result;if((*(unsigned char *)(p+0xd0)&2)!=0)return 0;func_001100A0(p,&p);func_0012F810(y,a,p);func_0012F810(x,b,p);result=func_0011B020(saved,y,x,z,0,0);if(result){func_0012F730(b,z,p);return 1;}return 0;}
 
@@ -60,7 +60,7 @@ void _func_00061650(int a, int b, int c, int d)
     extern unsigned int D_002EEF80;
     extern float D_002EF004, D_002EF000, D_00307DB4;
     extern char D_002EEF90, D_001D2968;
-    extern int D_002EEFF8[];
+    extern Entry61 D_002EEFF8[];
     extern void func_0002D7B0(int, int);
     extern void func_00110060(int, void *);
     extern int *func_0009C7A0(int, void *, int);
@@ -68,7 +68,7 @@ void _func_00061650(int a, int b, int c, int d)
     extern void func_0005CCC0(int);
     extern void func_00060ED0(void);
     unsigned int n;
-    int *e;
+    Entry61 *e;
 
     if ((D_002EEC00 != 6 && D_002EECA0 != 6) ||
         ((n = D_002EEF80, D_002EEF80 <= 1) && !(D_002EF000 + D_002EF004 >= D_00307DB4))) {
@@ -81,25 +81,26 @@ void _func_00061650(int a, int b, int c, int d)
         func_000A22B0(D_00307DF8 + 100, 2, p[0], p[1], p[2], 0);
         n = D_002EEF80;
     }
-    e = (int *)((char *)D_002EEFF8 + n * 0x34);
-    e[0] = a;
-    e[1] = b;
-    e[2] = *(int *)&D_00307DB4;
-    e[3] = d;
-    e[4] = c;
-    e[5] = c;
-    e[6] = *(int *)&D_00307DB4;
-    e[8] = 0x3f800000;
-    e[9] = 0x3f800000;
-    D_002EEF80 = n + 1;
-    e[7] = 0;
-    e[10] = *(int *)&D_00307DB4;
-    e[11] = 0;
-    e[12] = 1;
-    if (1 < n + 1) {
-        int *q = (int *)((char *)D_002EEFF8 + (n - 1) * 0x34);
-        e[8] = q[9];
-        e[9] = q[9];
+    e = &D_002EEFF8[n];
+    e->a = a;
+    e->b = b;
+    e->t0 = *(int *)&D_00307DB4;
+    e->d = d;
+    e->c0 = c;
+    e->c1 = c;
+    e->t1 = *(int *)&D_00307DB4;
+    e->s0 = 0x3f800000;
+    e->s1 = 0x3f800000;
+    n++;
+    D_002EEF80 = n;
+    e->z0 = 0;
+    e->t2 = *(int *)&D_00307DB4;
+    e->z1 = 0;
+    e->one = 1;
+    if (n > 1) {
+        int v = D_002EEFF8[n - 2].s1;
+        e->s0 = v;
+        e->s1 = D_002EEFF8[n - 2].s1;
         func_0005CCC0(6);
         return;
     }
