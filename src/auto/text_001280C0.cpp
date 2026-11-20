@@ -1,6 +1,7 @@
 /* 30 functions from 0x001280C0 to 0x00129088, found by Ghidra. */
 #include "common.h"
 #include "ghidra.h"
+struct F108_00128A80 { char pad[0x108]; unsigned char b0 : 1; unsigned char b1 : 1; };
 
 static inline int inl_strlen(const char *s)
 {
@@ -162,6 +163,57 @@ void func_00128990(int param_1, char param_2)
   return;
 }
 
+void func_00128A80(int param_1, char param_2)
+{
+  extern undefined D_00331AF4;
+  int func_0011BDD0(...);
+  int func_0013A0A0(...);
+  int func_0013A020(...);
+  int func_00110060(...);
+  int func_0013ABE0(...);
+  int func_0013AC60(...);
+  int func_0013AC50(...);
+  int func_001289C0(...);
+  int func_0013AC00(int, float);
+  int func_0013AD40(...);
+  int func_001288B0(...);
+  int func_0013AC20(...);
+  int func_0013AA30(...);
+  int func_0011C3E0(...);
+  int func_0011C3B0(...);
+  int uVar2;
+  __declspec(align(16)) char local_50[64];
+  if (*(int *)(param_1 + 0xec) != 0) {
+    if (*(int *)(param_1 + 0xf0) == 0) {
+      uVar2 = func_0011BDD0(*(int *)(param_1 + 0xec), 0);
+      if ((*(unsigned char *)(param_1 + 0x108) & 2) != 0) {
+        uVar2 = func_0013A020(uVar2, 0x3f800000);
+      } else {
+        uVar2 = func_0013A0A0(uVar2, 0x3f800000);
+      }
+      *(int *)(param_1 + 0xf0) = uVar2;
+      ((short *)*(int *)(param_1 + 0xec))[0x15]--;
+    }
+    if ((*(unsigned char *)(param_1 + 0x108) & 2) == 0) {
+      func_00110060(param_1, local_50);
+      func_0013ABE0(*(int *)(param_1 + 0xf0), *(int *)(param_1 + 0xf8), *(int *)(param_1 + 0xfc));
+      func_0013AC60(*(int *)(param_1 + 0xf0), (*(char *)(param_1 + 0x108) & 1) ? 1 : 0);
+      func_0013AC50(*(int *)(param_1 + 0xf0), *(int *)(param_1 + 0x10c));
+      func_001289C0(param_1, 0);
+    }
+    func_0013AC00(*(int *)(param_1 + 0xf0), (float)((longdouble)*(float *)(param_1 + 0x100) * (longdouble)*(float *)(param_1 + 0xf4)));
+    func_0013AD40(*(int *)(param_1 + 0xf0), *(int *)(param_1 + 0x110));
+    if (*(int *)(param_1 + 0x104) == -1) {
+      uVar2 = func_001288B0(param_1);
+      *(int *)(param_1 + 0x104) = uVar2;
+    }
+    func_0013AC20(*(int *)(param_1 + 0xf0), *(int *)(param_1 + 0x104));
+    func_0013AA30(*(int *)(param_1 + 0xf0), param_2 != 0);
+    func_0011C3E0(param_1 + 0xe0);
+    func_0011C3B0(&D_00331AF4, param_1 + 0xe0, param_1);
+  }
+}
+
 void func_00128BE0(int p) { int func_0013AAC0(...); int q=*(int *)(p+0xf0); if(q) func_0013AAC0(q); }
 
 void func_00128C90(char *obj)
@@ -225,6 +277,45 @@ void func_00128DB0(int a0) {
     extern int D_00331B08;
     D_00331B08 = a0;
 }
+
+void func_00128EE0(int param_1, unsigned int *param_2)
+{
+  unsigned int *puVar2 = param_2;
+  unsigned short *puVar5;
+  unsigned short *pi;
+  unsigned int uVar3;
+  int iVar4;
+  int local_8;
+  unsigned int local_4;
+  for (uVar3 = 0; uVar3 < 26; uVar3++) param_2[uVar3] = 0xff7fffff;
+  local_4 = 0;
+  pi = *(unsigned short **)((char *)param_2 + 0x6c);
+  if (*(unsigned short *)((char *)param_2 + 0x68) != 0) {
+    do {
+      local_8 = 3;
+      puVar5 = pi;
+      do {
+        uVar3 = 0;
+        iVar4 = (unsigned int)*puVar5 * 0x68;
+        do {
+          if ((double)*(float *)(*(int *)(param_1 + 8) + iVar4) > (double)*(float *)&puVar2[uVar3]) {
+            puVar2[uVar3] = *(unsigned int *)(*(int *)(param_1 + 8) + iVar4);
+          }
+          if ((double)*(float *)(*(int *)(param_1 + 8) + 4 + iVar4) > (double)*(float *)&puVar2[uVar3 + 1]) {
+            puVar2[uVar3 + 1] = *(unsigned int *)(*(int *)(param_1 + 8) + 4 + iVar4);
+          }
+          uVar3 = uVar3 + 2;
+          iVar4 = iVar4 + 8;
+        } while (uVar3 < 0x1a);
+        puVar5 = puVar5 + 1;
+        local_8 = local_8 + -1;
+      } while (local_8 != 0);
+      local_4 = local_4 + 1;
+      pi = pi + 4;
+    } while (local_4 < *(unsigned short *)((char *)puVar2 + 0x68));
+  }
+}
+
 // Prototypes
 char* _func_00131A10(char *s);
 char* _func_00126120(char *s);
