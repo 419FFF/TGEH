@@ -12,6 +12,7 @@ extern "C" __declspec(dllimport) void __stdcall HalReturnToFirmware(unsigned lon
 extern "C" int (__stdcall *__imp__IoDeleteSymbolicLink)(void *);
 extern "C" int (__stdcall *__imp__IoCreateSymbolicLink)(void *, void *);
 extern "C" void *memset(void *, int, unsigned int);
+extern "C" int memcmp(const void *, const void *, unsigned int);
 #pragma optimize("s", on)
 int __stdcall func_0010A569(char *name, int tid, int id, int unused)
 {
@@ -26,14 +27,14 @@ int __stdcall func_0010A569(char *name, int tid, int id, int unused)
   void __stdcall XcSHAInit(void *);
   void __stdcall XcSHAUpdate(void *, void *, unsigned int);
   void __stdcall XcSHAFinal(void *, void *);
-  int info[0x1ec / 4];
-  char path[260];
-  char sha[116];
-  int hdr[34];
-  struct { unsigned int count; unsigned int ids[16]; } blk;
-  unsigned int digest[5];
-  int ov[5];
   unsigned int size;
+  int ov[5];
+  unsigned int digest[5];
+  struct { unsigned int count; unsigned int ids[16]; } blk;
+  int hdr[34];
+  char sha[116];
+  char path[260];
+  int info[0x1ec / 4];
   unsigned int n;
   int h = -1;
   int result;
@@ -43,11 +44,7 @@ int __stdcall func_0010A569(char *name, int tid, int id, int unused)
   if (h == -1) goto fail;
   if (!func_0010C1D8(h, tid, 1, hdr)) goto fail;
   if (!(hdr[8] & 1)) goto fail;
-  {
-    int z[5] = {0};
-    int i;
-    for (i = 0; i < 5; i++) ov[i] = z[i];
-  }
+  memset(ov, 0, 20);
   ov[2] = hdr[13];
   if (hdr[14] != 0x44) goto fail;
   if (!func_0010BAA0(h, &blk, 0x44, &size, ov)) goto fail;
