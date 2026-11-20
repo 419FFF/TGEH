@@ -4,6 +4,7 @@
 struct P8_000A1F10 { int a; int b; };
 struct S8_2070 { int a; int b; };
 extern "C" char *strcat(char *, const char *);
+extern "C" unsigned int strlen(const char *);
 
 void func_000A1BB0(int param_1,int param_2) { int func_000A18A0(...);extern int _D_003080AC; int mode; unsigned char *ecx=(unsigned char*)param_1;if(ecx[0x10]&8){volatile int three=3;int eax=three;int v=param_2;func_000A18A0(ecx+0x64,v,eax);return;}int edx=_D_003080AC;int eax=(edx!=0)+1;int v=param_2;func_000A18A0(ecx+0x64,v,eax); }
 
@@ -90,6 +91,36 @@ void func_000A1F80(int param_1, int param_2)
 }
 
 void func_000A1FC0(int p){int func_00116480(...);int func_0013E3F4(...);int func_001163C0(...);int func_00115E40(...);extern float _D_001D27B8;unsigned int i;int *a;unsigned short x;if(p==*(int*)(*(int*)(p+0x18)+0x20)){i=0;if(*(unsigned short*)(p+0xc)){a=*(int**)(p+0x10);do{if(*a){func_00116480(*a);break;}i++;a+=2;}while(i<*(unsigned short*)(p+0xc));}x=func_0013E3F4();*(unsigned short*)(*(int*)(p+0x18)+0x28)=x;i=0;if(*(unsigned short*)(p+0xc)){a=*(int**)(p+0x10);do{if(*a){x=func_001163C0(*a);goto done;}i++;a+=2;}while(i<*(unsigned short*)(p+0xc));}x=0;done:*(unsigned short*)(*(int*)(p+0x18)+0x2a)=x;}i=0;while(i<*(unsigned short*)(p+0xc)){a=*(int**)(p+0x10);if(a[i*2])func_00115E40(a[i*2]);a[i*2]=0;i++;}}
+
+void func_000A2070(int param_1, char param_2)
+{
+  int func_00131990(...);
+  int func_000A16A0(...);
+  int func_000A1D10(...);
+  int func_00115FC0(...);
+  extern S8_2070 _D_001D2E34;
+  extern short _D_001D2E30;
+  extern char _D_001D29C7;
+  char buf[0x80];
+  unsigned int i;
+  *(S8_2070 *)buf = _D_001D2E34;
+  strcat(buf, *(char **)(*(int *)(param_1 + 0x18) + 0xc));
+  strcat(buf, (char *)&_D_001D2E30);
+  func_00131990(buf);
+  for (i = 0; i < *(unsigned short *)(param_1 + 0xc); i++) {
+    func_000A16A0(param_1, *(int *)(param_1 + 0x10) + i * 8, param_2 ? 2 : 1);
+  }
+  if (param_1 == *(int *)(*(int *)(param_1 + 0x18) + 0x20)) {
+    int o = *(int *)(param_1 + 0x18);
+    float f = (float)*(unsigned short *)(o + 0x28);
+    func_000A1D10(param_1, *(unsigned short *)(o + 0x2a), *(unsigned short *)(o + 0x24), *(unsigned short *)(o + 0x26), *(int *)(o + 0x2c), 0);
+    for (i = 0; i < *(unsigned short *)(param_1 + 0xc); i++) {
+      int e = *(int *)(*(int *)(param_1 + 0x10) + i * 8);
+      if (e) func_00115FC0(e, f);
+    }
+  }
+  func_00131990(&_D_001D29C7);
+}
 
 unsigned char _func_000A21A0(int p){int _func_00124F50(int);unsigned int i=0;unsigned char seen=0;unsigned short n=*(unsigned short*)(p+0xc);if(n==0)return 0;do{int *a=*(int**)(p+0x10)+i*2;int x=*a;if(x){int t=*(int*)(a[1]+0x14)-1;seen=1;switch(t){case 0:if(!_func_00124F50(x))return 0;break;case 1:if(!_func_00124F50(x))return 0;break;case 2:if(!_func_00124F50(x))return 0;break;case 4:if(!_func_00124F50(x))return 0;break;}}++i;}while(i<n);return seen;}
 
