@@ -93,6 +93,53 @@ unsigned char func_000FB9E0(unsigned int a,int p){extern float D_001D6008;int fu
 
 unsigned char func_000FBA20(unsigned int a,int *p){int func_0013E3F4(float);int func_000ACFB0(...);int n=func_0013E3F4(*(float*)((char*)p+4));switch(n){case 0:func_000ACFB0(3,1);break;case 1:func_000ACFB0(4,1);break;case 2:func_000ACFB0(5,1);break;case 3:func_000ACFB0(6,1);break;case 4:func_000ACFB0(7,1);break;case 5:func_000ACFB0(8,1);}return 1;}
 
+#pragma intrinsic(strlen, strcpy, strcat)
+unsigned char func_000FBAB0(int a, int *p, int c)
+{
+  extern unsigned short D_001D73E4;
+  extern int D_00308158;
+  int func_0013E600(...), func_0009C590(...), func_00110300(...), func_00100270(...);
+  int* func_000F9280(...);
+  char buf[128];
+  int vals[3];
+  char *name = *(char**)(*(int*)(a + 0xc) + 0xc);
+  char *cur, *q, *s, *d;
+  char ch;
+  int r;
+  if (strlen(name) != 0) {
+    s = name; d = buf;
+    do { ch = *s++; *d++ = ch; } while (ch);
+    strcat(buf, "\\");
+    strcat(buf, **(char***)(p + 1));
+  } else {
+    s = **(char***)(p + 1); d = buf;
+    do { ch = *s++; *d++ = ch; } while (ch);
+  }
+  cur = buf;
+  do {
+    q = cur;
+    r = func_0013E600(q, &D_001D73E4);
+    if (r == 0) break;
+    cur = (char*)(r + 1);
+  } while (cur != 0);
+  if (q != buf) {
+    q[-1] = 0;
+    r = func_0009C590(buf);
+  } else {
+    r = D_00308158;
+  }
+  vals[0] = **(int**)(p + 3);
+  vals[1] = **(int**)(p + 5);
+  vals[2] = **(int**)(p + 7);
+  if (r == D_00308158) {
+    int *z = func_000F9280(q);
+    func_00100270(*z, z, vals, **(int**)(p + 9), c);
+    return 1;
+  }
+  int u = func_00110300(*(int*)(r + 0x2c), q, 8);
+  func_00100270(u, 0, vals, **(int**)(p + 9), c);
+  return 1;
+}
 void func_000FBC20(int a0, int a1) {
     int func_000FBAB0(...);
     func_000FBAB0(a0, a1, 1);
