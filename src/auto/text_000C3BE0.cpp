@@ -6,6 +6,8 @@ struct S_000C4240 { int obj; char on; char pad[3]; float x, y, z; float vx, vy, 
 extern "C" double fabs(double);
 #pragma intrinsic(fabs)
 struct P_000C49A0 { float x, y, z, w; char on; char pad[3]; };
+struct S_000C44A0 { int obj; char on; char pad[3]; float x, y, z, vx, vy; int w; float h; };
+struct Q_000C44A0 { float x, y, z, w; };
 struct P_000C48B0 { float w; char on; char pad[3]; float x, y, z; };
 
 void func_000C3E40(void) {
@@ -83,14 +85,13 @@ void func_000C40A0(void) {
 void func_000C4240(void)
 {
   extern S_000C4240 D_00315450[16];
+  extern char D_00315720;
   extern float D_001E461C, D_00314F68, D_00314F60, D_00314F64, D_001D4EB0;
   extern int D_00315CBC;
   int func_0012F120(...), func_0012FE20(...), func_0012F910(...), func_001105E0(...), func_00103990(...), func_0007F4C0(...), func_00110330(...);
-  float fabsf(float);
-  float m[16];
-  int i;
-  for (i = 0; i < 16; i++) {
-    S_000C4240 *p = &D_00315450[i];
+  __declspec(align(16)) float m[16];
+  S_000C4240 *p = D_00315450;
+  do {
     if (p->on) {
       p->x = D_001E461C * p->vx + p->x;
       p->y = D_001E461C * p->vy + p->y;
@@ -107,11 +108,100 @@ void func_000C4240(void)
         func_0007F4C0(0x447a0000, &p->x);
         p->on = 0;
         func_00110330(*(int *)(p->obj + 0x2c), 0);
-        if (fabsf(p->x - D_00314F60) < D_001D4EB0 && fabsf(p->y - D_00314F64) < D_001D4EB0)
+        if ((float)fabs(p->x - D_00314F60) < D_001D4EB0 && (float)fabs(p->y - D_00314F64) < D_001D4EB0)
           func_000C40A0();
       }
     }
-  }
+    p++;
+  } while ((int)p < (int)&D_00315720 - 0x10 + 0x10 - 0x10 + 0x10 - 0x10 + 0x10 - 0x10 + 0x10 - 0x10 + 0x10 - 0x10 + 0x10 - 0x10 + 0x10 - 0x10 + 0x10);
+}
+
+void func_000C4370(float param_1, float param_2, float param_3)
+{
+  extern char D_00315194, D_00315190, D_00315454;
+  extern float D_00314F80, D_00314F84, D_00314F88;
+  extern char D_00315198, D_0031519C, D_003151A0, D_003151A4, D_003151A8, D_003151AC;
+  extern int D_00315C9C;
+  int func_0012F120(...);
+  int func_0012FE20(...);
+  int func_001105E0(...);
+  int func_00110330(...);
+  int func_00110000(...);
+  int func_00103990(...);
+  char *pc = &D_00315194;
+  int i = 0;
+  float fv;
+  __declspec(align(16)) float m[15];
+  do {
+    if (*pc == 0) {
+      i = i * 0x2c;
+      param_3 = 1.0f / param_3;
+      *(float *)(&D_00315198 + i) = D_00314F80;
+      *(float *)(&D_0031519C + i) = D_00314F84;
+      *(float *)(&D_003151A0 + i) = D_00314F88;
+      *(float *)(&D_003151A4 + i) = (param_1 * 1600.0f - D_00314F80) * param_3;
+      *(float *)(&D_003151A8 + i) = ((param_2 * 1200.0f + 5000.0f) - D_00314F84) * param_3;
+      fv = 50000.0f - D_00314F88;
+      (&D_00315194)[i] = 1;
+      *(float *)(&D_003151AC + i) = fv * param_3;
+      func_0012F120(m);
+      func_0012FE20(m, 0, 0, 0);
+      m[12] = *(float *)(&D_00315198 + i);
+      m[13] = *(float *)(&D_0031519C + i);
+      m[14] = *(float *)(&D_003151A0 + i);
+      func_001105E0(*(int *)(*(int *)(&D_00315190 + i) + 0x2c), m, 0);
+      func_00110330(*(int *)(*(int *)(&D_00315190 + i) + 0x2c), 1);
+      func_00110000(*(int *)(*(int *)(&D_00315190 + i) + 0x2c));
+      func_00103990(D_00315C9C, 0);
+      return;
+    }
+    pc += 0x2c;
+    i++;
+  } while ((int)pc < (int)&D_00315454);
+}
+
+void func_000C44A0(float a, float b, int n)
+{
+  extern char D_00315194, D_00315454;
+  extern float D_001D35FC, D_001D41D4, D_00314F64, D_00314F68, D_00314F60, D_001D27B0, D_001D9CC8, D_001D9CCC;
+  extern int D_00315CC4, D_00315190, D_00315198, D_003151A0, D_003151A4, D_003151A8, D_003151AC, D_003151B0, D_00315718, D_00315720;
+  extern float D_0031519C, D_0031571C;
+  int func_0012F120(void *), func_0012FE20(void *, int, int, int), func_001105E0(int, void *, int), func_00110330(int, int), func_00110000(int), func_00103990(int, int);
+  __declspec(align(16)) struct { char pad[0x30]; int x, y, z; } buf;
+  int i = 0;
+  char *p = &D_00315194;
+  do {
+    if (*p == 0) goto found;
+    p += 0x2c;
+    ++i;
+  } while ((int)p < (int)&D_00315454);
+  return;
+found:
+  i *= 0x2c;
+  n *= 0x40;
+  *(int *)((char *)&D_00315198 + i) = *(int *)((char *)&D_00315718 + n);
+  *(float *)((char *)&D_0031519C + i) = *(float *)((char *)&D_0031571C + n) - D_001D35FC;
+  *(int *)((char *)&D_003151A0 + i) = *(int *)((char *)&D_00315720 + n);
+  b = b * D_001D41D4;
+  *(int *)((char *)&D_003151B0 + i) = 0x3f000000;
+  b = b + D_00314F64;
+  float c = *(float *)((char *)&D_0031571C + n);
+  float d = D_001D27B0 / (D_00314F68 - *(float *)((char *)&D_00315720 + n));
+  float e = a * D_001D9CC8 + D_00314F60;
+  float f = *(float *)((char *)&D_00315718 + n);
+  *(int *)((char *)&D_003151AC + i) = 0xc59c4000;
+  *((char *)&D_00315194 + i) = 1;
+  *(float *)((char *)&D_003151A4 + i) = (e - f) * d * D_001D9CCC;
+  *(float *)((char *)&D_003151A8 + i) = d * (b - c) * D_001D9CCC;
+  func_0012F120(&buf);
+  func_0012FE20(&buf, 0, 0, 0);
+  buf.x = *(int *)((char *)&D_00315198 + i);
+  buf.y = *(int *)((char *)&D_0031519C + i);
+  buf.z = *(int *)((char *)&D_003151A0 + i);
+  func_001105E0(*(int *)(*(int *)((char *)&D_00315190 + i) + 0x2c), &buf, 0);
+  func_00110330(*(int *)(*(int *)((char *)&D_00315190 + i) + 0x2c), 1);
+  func_00110000(*(int *)(*(int *)((char *)&D_00315190 + i) + 0x2c));
+  func_00103990(D_00315CC4, 0);
 }
 
 void func_000C47A0(void)
