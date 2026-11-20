@@ -15,6 +15,18 @@ void func_00016B70(void *p) {
 
 void func_000172B0(int param_1) { int func_0005C5E0(...); int func_0012F120(...); int func_0009C7A0(...); int func_0012FE20(void*,float,float,float); int func_00110330(...); int func_001105E0(...); int func_00110000(...); int func_00110550(...); int func_0010FBA0(...); int func_0009D3E0(...); extern int _D_002EB038; extern int _D_001D2BD8; extern int _D_001D2BC4; extern float _D_001D2BC0; extern int _D_002EB058; extern int _D_002EB060; extern int _D_002EB05C; extern int _D_002EB064; extern int _D_003080B0; float local[12]; func_0005C5E0(&_D_002EB038); func_0012F120(local); int *p=(int*)func_0009C7A0(param_1,&_D_001D2BD8,0); ((int*)local)[8]=p[0]; ((int*)local)[9]=p[1]; ((int*)local)[10]=p[2]; float *q=(float*)func_0009C7A0(param_1,&_D_001D2BC4,0); func_0012FE20(local,_D_001D2BC0*q[0],_D_001D2BC0*q[1],_D_001D2BC0*q[2]); if (_D_002EB058) func_00110330(_D_002EB058,1); if (_D_002EB060) func_00110330(_D_002EB060,1); if (_D_002EB05C) func_00110330(_D_002EB05C,0); if (_D_002EB064) func_00110330(_D_002EB064,0); func_001105E0(*(int*)(param_1+0x2c),local,0); func_00110000(*(int*)(param_1+0x2c)); func_00110550(*(int*)(_D_003080B0+0x2c),*(int*)(param_1+0x2c),8); func_0010FBA0(*(int*)(param_1+0x2c),**(int**)(param_1+0x58)); func_0009D3E0(param_1); }
 
+#pragma optimize("y", on)
+void func_000173D0(int param_1) { int func_0006B5A0(...); int func_00110060(...); int func_00110000(...); int func_0012F7A0(...); int func_000F8F40(void*,void*,float); int func_0005C500(...); int func_0012F610(...); int func_001031C0(...); int func_00103990(...); int func_001031A0(...); int func_00016970(...); extern int _D_001D2B50; extern int _D_00314240; extern int _D_002EB070; extern int _D_002EB078; extern int _D_002EB07C; extern int _D_002EB080; extern float _D_00307DB4; extern float _D_001D2808; extern int _D_001D2B28; extern float _D_002EB074; extern int _D_002EB0A8; extern char _D_002EB094; extern char _D_002EB0AD; __declspec(align(16)) float m[16]; int v[4]; func_0006B5A0(param_1,&_D_001D2B50); *(char*)(_D_00314240+0x19e0)=1; _D_002EB070=param_1; func_00110060(*(int*)(param_1+0x2c),m); func_00110000(*(int*)(param_1+0x2c)); v[0]=*(int*)(param_1+0xe8); v[1]=*(int*)(param_1+0xec); v[2]=*(int*)(param_1+0xf0); func_0012F7A0(v,m); int r=func_000F8F40(*(void**)(param_1+0x2c),v,10000.0f); func_0005C500(&_D_002EB078,r); _D_002EB078=0; _D_002EB07C=0x41f00000; _D_002EB080=0x41900000; func_0012F610(&_D_002EB078,_D_00314240+0x27c0); _D_002EB074=_D_00307DB4+_D_001D2808; _D_002EB0A8=func_001031C0(param_1,&_D_001D2B28); func_00103990(_D_002EB0A8,1); func_001031A0(_D_002EB0A8,0); _D_002EB094=0; _D_002EB0AD=1; func_00016970(&_D_002EB070); }
+
+extern int D_002EB070;
+int func_00016B70(int *);
+int func_000174F0(int *p)
+{
+  p = &D_002EB070;
+  return func_00016B70(p);
+}
+
+#pragma optimize("", on)
 void func_00017500(int param_1) { int func_0005C5E0(...); int func_0012F120(...); int func_0009C7A0(...); int func_0012FE20(...); int func_001105E0(...); int func_00110000(...); extern int _D_002EB078; extern int _D_001D2BD8; extern int _D_001D2BC4; extern float _D_001D2BC0; extern int _D_00314240; float local[12]; func_0005C5E0(&_D_002EB078); func_0012F120(local); int *p=(int*)func_0009C7A0(param_1,&_D_001D2BD8,0); ((int*)local)[8]=p[0]; ((int*)local)[9]=p[1]; ((int*)local)[10]=p[2]; float *q=(float*)func_0009C7A0(param_1,&_D_001D2BC4,0); func_0012FE20(local,q[0]*_D_001D2BC0,q[1]*_D_001D2BC0,q[2]*_D_001D2BC0); func_001105E0(*(int*)(param_1+0x2c),local,0); func_00110000(*(int*)(param_1+0x2c)); *(char*)(_D_00314240+0x19e0)=0; }
 
 int func_00016B70(...);
