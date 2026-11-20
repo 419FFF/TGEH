@@ -2,6 +2,22 @@
 #include "common.h"
 #include "ghidra.h"
 
+struct Chan12BB70 {
+  char p0[2];
+  unsigned char flags;
+  char p3[9];
+  int vol;
+  int pan;
+  char p14[0x4c];
+  int v60[2];
+  char p68[0x14];
+  int v7c;
+  unsigned char v80;
+  char p81;
+  unsigned char v82;
+  unsigned char v83;
+};
+
 void _func_0012AE40(int, int, void *);
 void _func_0012FA20(int, void *, int, void *, int);
 #pragma optimize("y", off)
