@@ -106,6 +106,13 @@ s32 _func_000FD1B0(unsigned int param_1, undefined4 *param_2) {
     return 1;
 }
 
+unsigned char func_000FD500(void)
+{
+  int func_0005F310(...);
+  func_0005F310(0);
+  return 1;
+}
+
     
 
 
