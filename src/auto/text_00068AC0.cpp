@@ -1,6 +1,8 @@
 /* 19 functions from 0x00068AC0 to 0x00069AB4, found by Ghidra. */
 #include "common.h"
 
+struct Ent_000693E0 { int *o; float r2; float p[3]; int pad; };
+
 void func_00068AC0(int p,float t,int *out,int *out2){ extern float D_001D27B8; int func_000688E0(int); void func_0011F270(); unsigned type=*(unsigned*)(p+4); if(type==0){if(out){out[0]=0;out[1]=0;out[2]=0;}if(out2){out2[0]=0;out2[1]=0x3f800000;out2[2]=0;}return;} if(type==1){if(out){int*q=*(int**)(p+8);out[0]=q[0];out[1]=q[1];out[2]=q[2];}if(out2){out2[0]=0;out2[1]=0x3f800000;out2[2]=0;}return;} int x=func_000688E0(p); if(t<D_001D27B8)t=0; if((float)*(int*)(x+0xc)<t)func_0011F270();else func_0011F270(); }
 
 float func_00068B80(int p) { extern float D_001D27B8; int func_000688E0(int); if ((unsigned)*(int*)(p+4)<2) return D_001D27B8; int x=func_000688E0(p); return *(float*)(x+8); }
@@ -86,6 +88,42 @@ void _func_00069340(int p1,int p2,int *obj,int *param4,int *param5)
   } while(index!=*(int *)((char *)obj+0x96c));
  }
 }
+
+void func_000693E0(int self, float *pos, float r, int out, int *cnt)
+{
+  float func_00131210(float);
+  float func_0012E870(float *, float *);
+  unsigned int i;
+  int off = 0;
+  for (i = 0; i < *(unsigned int *)(self + 0x27c); i++, off += 0x18) {
+    int *e;
+    int obj;
+    unsigned char fl;
+    if (*cnt == 200) return;
+    e = *(int **)(self + 0x280);
+    obj = *(int *)((char *)e + off);
+    fl = *(unsigned char *)(obj + 0x20);
+    e = (int *)((char *)e + off);
+    if (!(fl & 1)) {
+      if (*(unsigned char *)(obj + 0xd0) & 4) {
+        float t = r * r + ((float *)e)[1];
+        if (func_0012E870(pos, (float *)(e + 2)) <= t) goto add;
+      } else {
+        if (!(func_00131210(pos[0] - ((float *)e)[2]) > r + *(float *)(*e + 0x10)) &&
+            !(func_00131210(pos[1] - ((float *)e)[3]) > r + *(float *)(*e + 0x14)) &&
+            !(func_00131210(pos[2] - ((float *)e)[4]) > r + *(float *)(*e + 0x18)))
+        {
+        add:
+          *(int *)(out + 4 + *cnt * 12) = *e;
+          *(int *)(out + 8 + *cnt * 12) = 0;
+          *(int *)(out + *cnt * 12) = 10;
+          (*cnt)++;
+        }
+      }
+    }
+  }
+}
+
 #pragma optimize("", on)
 int _func_00069540(int a, int b, int c, int ctx)
 {
