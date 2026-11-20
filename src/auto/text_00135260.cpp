@@ -2,6 +2,7 @@
 #include "common.h"
 #include "ghidra.h"
 #include <string.h>
+struct P_00135A10 { unsigned char flag; int w; int h; int bpp; unsigned cnt; int fmt; int mode; };
 
 extern "C" void (__stdcall *_imp__RtlEnterCriticalSection)(void*);
 extern "C" void (__stdcall *_imp__RtlLeaveCriticalSection)(void*);
@@ -153,5 +154,85 @@ void func_001359E0(undefined4 *param_1, undefined4 *param_2)
     *param_2 = D_0033228C;
   }
   return;
+}
+
+void _func_00135A10(unsigned char *param_1)
+{
+  extern int D_003323E8[17];
+  extern int D_00332404, D_003323FC, D_003323EC, D_00332408, D_00332410, D_00332414, D_003323F0, D_0033240C, D_003323F4, D_00332418, D_003323F8;
+  extern int D_00332330, D_00332324, D_003326C8, D_003326A4, D_00332430, D_003323E0, D_0033232C, D_0033228C;
+  extern unsigned func_0014726E(void);
+  extern int func_00147245(void);
+  extern int __stdcall func_00157D70(int, int, int, int, int);
+  unsigned uVar1;
+  int iVar2;
+  unsigned c;
+
+  memset(D_003323E8, 0, 0x44);
+  c = *param_1;
+  D_00332404 = c & 1;
+  uVar1 = func_0014726E();
+  D_003323FC = 2;
+  D_003323E8[0] = *(int *)(param_1 + 4);
+  D_003323EC = *(int *)(param_1 + 8);
+  D_00332408 = 1;
+  D_00332410 = 0x100;
+  iVar2 = func_00147245();
+  if ((iVar2 == 3) && ((uVar1 & 0x40) != 0)) {
+    D_003323E8[0] = 0x280;
+    D_003323EC = 0x1e0;
+    D_00332414 = 0x3c;
+  }
+  if (*(int *)(param_1 + 0xc) == 0x10) {
+    D_003323F0 = 5;
+    D_0033240C = 0x2c;
+  } else {
+    D_003323F0 = 6;
+    D_0033240C = 0x2a;
+  }
+  D_003323F4 = *(int *)(param_1 + 0x10);
+  if (*(unsigned *)(param_1 + 0x10) < 1) {
+    D_003323F4 = 1;
+  }
+  if (2 < *(unsigned *)(param_1 + 0x10)) {
+    D_003323F4 = 2;
+  }
+  switch (*(int *)(param_1 + 0x18)) {
+  case 0:
+    D_00332418 = 0x80000000;
+    break;
+  case 2:
+    D_00332418 = 2;
+    break;
+  default:
+    D_00332418 = 1;
+    break;
+  }
+  switch (*(int *)(param_1 + 0x14)) {
+  case 2:
+    D_003323F8 = 0x1121;
+    break;
+  case 4:
+    D_003323F8 = 0x1222;
+    break;
+  case 9:
+    D_003323F8 = 0x2233;
+    break;
+  default:
+    D_003323F8 = 0x11;
+    break;
+  }
+  iVar2 = func_00157D70(0, 1, D_003323F0, 0, D_003323F8);
+  if (iVar2 < 0) {
+    D_003323F8 = 0x11;
+  }
+  D_00332330 = *(int *)(param_1 + 4);
+  D_00332324 = *(int *)(param_1 + 8);
+  D_003326C8 = 0;
+  D_003326A4 = 0;
+  D_0033232C = *(int *)(param_1 + 4);
+  D_0033228C = *(int *)(param_1 + 8);
+  D_00332430 = 0x280;
+  D_003323E0 = 0x1e0;
 }
 
