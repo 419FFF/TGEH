@@ -4,6 +4,8 @@
 #include <string.h>
 
 struct S127310 { int *p0; char *p4; int p8; int pc; int u10; int u14; short s18; short s1a; int u1c; int n20; short s24; unsigned char b26; };
+struct E38 { char pad[0x18]; int f18; char pad2[0x1c]; };
+struct E130 { char pad[0x18]; int n; E38 *a; char pad2[0x110]; };
 int _func_00116FB0(...);
 int _func_0013AB30(...);
 int _func_0013ADF0(...);
@@ -12,82 +14,47 @@ int _func_00116070(...);
 int _func_00116A90(...);
 extern int _D_00331AD0;
 
-char func_00127310(int *param_1)
+char func_00127310(S127310 *p)
 {
   int func_0013A000(...);
   int func_00116FB0(...);
-  int iVar1;
-  int *piVar2;
-  int iVar3;
-  int iVar4;
-  int iVar5;
-  int local_4;
+  int i, j, k;
+  int v;
 
-  piVar2 = param_1;
-  if (param_1 == 0) return 0;
-  local_4 = 0;
-  if (0 < (short)param_1[9]) {
-    param_1 = 0;
-    do {
-      iVar5 = piVar2[1] + (int)param_1;
-      iVar4 = 0;
-      if (0 < *(int *)(piVar2[1] + 0x18 + (int)param_1)) {
-        iVar3 = 0;
-        do {
-          iVar1 = *(int *)(*(int *)(iVar5 + 0x1c) + iVar3 + 0x18);
-          if (iVar1 != 0) {
-            func_0013A000(iVar1);
-          }
-          iVar4 = iVar4 + 1;
-          iVar3 = iVar3 + 0x38;
-        } while (iVar4 < *(int *)(iVar5 + 0x18));
-      }
-      local_4 = local_4 + 1;
-      param_1 = (int *)((int)param_1 + 0x130);
-    } while (local_4 < (short)piVar2[9]);
-  }
-  if ((*(unsigned char *)((int)piVar2 + 0x26) & 2) == 0) {
-    if (piVar2[1] != 0) {
-      iVar4 = 0;
-      if (0 < (short)piVar2[9]) {
-        iVar5 = 0;
-        do {
-          func_00116FB0(*(int *)(piVar2[1] + 0x1c + iVar5));
-          iVar4 = iVar4 + 1;
-          iVar5 = iVar5 + 0x130;
-        } while (iVar4 < (short)piVar2[9]);
-      }
-      func_00116FB0(piVar2[1]);
-    }
-    if (*piVar2 != 0) {
-      iVar4 = 0;
-      if (0 < piVar2[8]) {
-        do {
-          if (*(int *)(*piVar2 + 4 + iVar4 * 8) != 0) {
-            iVar5 = 0;
-            if (0 < (short)piVar2[6]) {
-              do {
-                iVar3 = *(int *)(*(int *)(*piVar2 + 4 + iVar4 * 8) + 4 + iVar5 * 8);
-                if (iVar3 != 0) {
-                  func_00116FB0(iVar3);
-                }
-                iVar5 = iVar5 + 1;
-              } while (iVar5 < (short)piVar2[6]);
-            }
-            func_00116FB0(*(int *)(*piVar2 + 4 + iVar4 * 8));
-          }
-          iVar4 = iVar4 + 1;
-        } while (iVar4 < piVar2[8]);
-      }
-      if (*piVar2 != 0) {
-        func_00116FB0(*piVar2);
-      }
+  if (p == 0) return 0;
+  for (i = 0; i < p->s24; i++) {
+    char *e = p->p4 + i * 0x130;
+    for (j = 0; j < *(int *)(e + 0x18); j++) {
+      char *q = *(char **)(e + 0x1c) + j * 0x38;
+      v = *(int *)(q + 0x18);
+      if (v != 0) func_0013A000(v);
     }
   }
-  if (piVar2[2] != 0) {
-    func_00116FB0(piVar2[2]);
+  if ((p->b26 & 2) == 0) {
+    if (p->p4 != 0) {
+      for (i = 0; i < p->s24; i++)
+        func_00116FB0(*(int *)(p->p4 + i * 0x130 + 0x1c));
+      func_00116FB0(p->p4);
+    }
+    if (p->p0 != 0) {
+      i = 0;
+      if (p->n20 > 0) {
+      do {
+        if (p->p0[i * 2 + 1] != 0) {
+          for (j = 0; j < p->s18; j++) {
+            v = *(int *)(p->p0[i * 2 + 1] + 4 + j * 8);
+            if (v != 0) func_00116FB0(v);
+          }
+          func_00116FB0(p->p0[i * 2 + 1]);
+        }
+        i++;
+      } while (i < p->n20);
+      }
+      if (p->p0 != 0) func_00116FB0(p->p0);
+    }
   }
-  func_00116FB0(piVar2);
+  if (p->p8 != 0) func_00116FB0(p->p8);
+  func_00116FB0(p);
   return 1;
 }
 
