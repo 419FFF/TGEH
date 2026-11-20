@@ -18,9 +18,12 @@ struct Buf65F0 { char pad[0x30]; int x; int y; float z; };
 void func_000C65F0(void)
 {
   extern char D_00315714, D_00315994, D_00315716, D_00315715;
-  extern int D_00315718, D_00314F80, D_0031571C, D_00314F84, D_0031572C, D_00315720;
+  extern volatile int D_00315718, D_0031571C;
+  extern int D_0031572C, D_00315720;
+  extern volatile int D_00314F80, D_00314F84;
+  extern volatile float D_00314F88;
   extern int D_00315710, D_00315734, D_00315738, D_00315740, D_00315744, D_00315CD0;
-  extern float D_00314F88, D_00315728, D_001D2A2C, D_001D341C;
+  extern float D_00315728, D_001D2A2C, D_001D341C;
   extern float D_00315724, D_001D27B0, D_001D28E0;
   extern const float D_001D27EC;
   double func_00131760(void);
@@ -48,17 +51,12 @@ void func_000C65F0(void)
   return;
 found:
   i *= 0x40;
-  (&D_00315716)[i] = 1;
-  (&D_00315714)[i] = 1;
-  (&D_00315715)[i] = 1;
-  {
-    int a = D_00314F80;
-    *(int *)((char *)&D_00315718 + i) = a;
-    int b = D_00314F84;
-    *(int *)((char *)&D_0031571C + i) = b;
-  }
-  func_00131760();
-  *(float *)((char *)&D_00315720 + i) = D_001D341C + D_00314F88;
+  ((volatile char *)&D_00315716)[i] = 1;
+  ((volatile char *)&D_00315714)[i] = 1;
+  ((volatile char *)&D_00315715)[i] = 1;
+  *(volatile int *)((char *)&D_00315718 + i) = D_00314F80;
+  *(volatile int *)((char *)&D_0031571C + i) = D_00314F84;
+  *(float *)((char *)&D_00315720 + i) = D_00314F88 + D_001D341C;
   *(float *)((char *)&D_00315728 + i) = func_00131760() * D_001D2A2C;
   *(float *)((char *)&D_00315724 + i) = (func_00131760() + D_001D27B0) * D_001D28E0;
   if ((float)func_00131760() > D_001D27EC) {
