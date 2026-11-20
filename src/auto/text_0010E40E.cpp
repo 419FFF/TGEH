@@ -3,6 +3,11 @@
 #include <xmmintrin.h>
 
 extern "C" void (__stdcall *__imp__HalInitiateShutdown)(void);
+extern "C" int (__stdcall *__imp__NtQueryDirectoryFile)(void *, void *, void *, void *, void *, void *, unsigned int, int, void *, int);
+extern "C" void (__stdcall *__imp__RtlInitAnsiString)(void *, const char *);
+extern "C" int (__stdcall *__imp__NtOpenFile)(void *, unsigned int, void *, void *, unsigned int, unsigned int);
+extern "C" int (__stdcall *__imp__NtSetInformationFile)(void *, void *, void *, unsigned int, int);
+extern "C" int (__stdcall *__imp__NtClose)(void *);
 int __stdcall func_0010E40E(int a,int b,int c,int d){return (a|b)+(c|d);}
 
 void _func_0010EB3C(void){extern void (__stdcall *__imp__KeSetTimer)(void*,unsigned int,int,void*);extern int _D_0037C020,_D_0037C040;unsigned int due=0xB5659000u;int period=-51;__imp__KeSetTimer(&_D_0037C040,due,period,&_D_0037C020);}
@@ -88,4 +93,13 @@ extern "C" int (__stdcall *__imp__NtQueryFullAttributesFile)(void*,void*);
 extern "C" void __stdcall _func_0010AAD1(int);
 #pragma optimize("g", off)
 int __stdcall func_0010F279(int a,int*b,int*c,int*d,int e){return __imp__RtlNtStatusToDosError(ExQueryNonVolatileSetting(a,b,c,d,e));}
+
 #pragma optimize("", on)
+float *__stdcall func_0010F29B(float *out, float *a, float *b)
+{
+    ((__m128 *)out)[0] = _mm_add_ps(_mm_add_ps(_mm_add_ps(_mm_mul_ps(_mm_shuffle_ps(((__m128 *)a)[0], ((__m128 *)a)[0], 0x00), ((__m128 *)b)[0]), _mm_mul_ps(_mm_shuffle_ps(((__m128 *)a)[0], ((__m128 *)a)[0], 0x55), ((__m128 *)b)[1])), _mm_mul_ps(_mm_shuffle_ps(((__m128 *)a)[0], ((__m128 *)a)[0], 0xaa), ((__m128 *)b)[2])), _mm_mul_ps(_mm_shuffle_ps(((__m128 *)a)[0], ((__m128 *)a)[0], 0xff), ((__m128 *)b)[3]));
+    ((__m128 *)out)[1] = _mm_add_ps(_mm_add_ps(_mm_add_ps(_mm_mul_ps(_mm_shuffle_ps(((__m128 *)a)[1], ((__m128 *)a)[1], 0x00), ((__m128 *)b)[0]), _mm_mul_ps(_mm_shuffle_ps(((__m128 *)a)[1], ((__m128 *)a)[1], 0x55), ((__m128 *)b)[1])), _mm_mul_ps(_mm_shuffle_ps(((__m128 *)a)[1], ((__m128 *)a)[1], 0xaa), ((__m128 *)b)[2])), _mm_mul_ps(_mm_shuffle_ps(((__m128 *)a)[1], ((__m128 *)a)[1], 0xff), ((__m128 *)b)[3]));
+    ((__m128 *)out)[2] = _mm_add_ps(_mm_add_ps(_mm_add_ps(_mm_mul_ps(_mm_shuffle_ps(((__m128 *)a)[2], ((__m128 *)a)[2], 0x00), ((__m128 *)b)[0]), _mm_mul_ps(_mm_shuffle_ps(((__m128 *)a)[2], ((__m128 *)a)[2], 0x55), ((__m128 *)b)[1])), _mm_mul_ps(_mm_shuffle_ps(((__m128 *)a)[2], ((__m128 *)a)[2], 0xaa), ((__m128 *)b)[2])), _mm_mul_ps(_mm_shuffle_ps(((__m128 *)a)[2], ((__m128 *)a)[2], 0xff), ((__m128 *)b)[3]));
+    ((__m128 *)out)[3] = _mm_add_ps(_mm_add_ps(_mm_add_ps(_mm_mul_ps(_mm_shuffle_ps(((__m128 *)a)[3], ((__m128 *)a)[3], 0x00), ((__m128 *)b)[0]), _mm_mul_ps(_mm_shuffle_ps(((__m128 *)a)[3], ((__m128 *)a)[3], 0x55), ((__m128 *)b)[1])), _mm_mul_ps(_mm_shuffle_ps(((__m128 *)a)[3], ((__m128 *)a)[3], 0xaa), ((__m128 *)b)[2])), _mm_mul_ps(_mm_shuffle_ps(((__m128 *)a)[3], ((__m128 *)a)[3], 0xff), ((__m128 *)b)[3]));
+    return out;
+}
