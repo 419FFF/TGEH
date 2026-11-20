@@ -1,10 +1,11 @@
 /* 36 functions from 0x00130F00 to 0x00131EB0, found by Ghidra. */
 #include "common.h"
 
-extern double fabs(double);
+extern "C" double __cdecl fabs(double);
 #pragma intrinsic(fabs)
 float func_00131210(float param_1) {
-    return (float)(param_1 < 0.0f ? -(double)param_1 : (double)param_1);
+    param_1 = (float)fabs((double)param_1);
+    return param_1;
 }
 float _func_00131220(float param_1)
 {
