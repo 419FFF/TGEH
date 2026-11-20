@@ -2,6 +2,59 @@
 #include "common.h"
 #include "ghidra.h"
 
+void _func_0007ADC0(int *param_1, int param_2)
+{
+  int func_0011CD40(...);
+  float func_00131760(void);
+  extern float D_001D27EC;
+  extern float D_001D2808;
+  extern float D_001D27D4;
+  extern float D_001D2A2C;
+  extern float D_001D2A14;
+  extern float D_001D2B64;
+  int func_0011CDF0(...);
+  int func_0011CE20(...);
+  int func_0011CE10(...);
+  int func_0011CE30(...);
+  int func_0011CE50(...);
+  int func_0011CF30(...);
+  int func_0011CFC0(...);
+  int iVar2;
+  unsigned int uVar4;
+
+  iVar2 = func_0011CD40(1, 5, 1, 5, 1);
+  *param_1 = iVar2;
+  **(int **)(iVar2 + 4) = 0;
+  *(int *)(*(int *)(*param_1 + 4) + 4) = 0;
+  *(int *)(*(int *)(*param_1 + 4) + 8) = 0;
+  for (uVar4 = 0; uVar4 < 0x3c; uVar4 += 0xc) {
+    *(float *)(uVar4 + *(int *)(*param_1 + 0xc)) = (func_00131760() - D_001D27EC) * D_001D2B64;
+    *(float *)(*(int *)(*param_1 + 0xc) + 4 + uVar4) = func_00131760() * D_001D2A2C + D_001D2A14;
+    *(float *)(*(int *)(*param_1 + 0xc) + 8 + uVar4) = (func_00131760() - D_001D27EC) * D_001D2B64;
+  }
+  **(int **)(*param_1 + 0x14) = 0x3f018182;
+  *(int *)(*(int *)(*param_1 + 0x14) + 4) = 0x3e949495;
+  *(int *)(*(int *)(*param_1 + 0x14) + 8) = 0x3d109091;
+  *(int *)(*(int *)(*param_1 + 0x14) + 0xc) = 0x3f333333;
+  uVar4 = 0;
+  do {
+    *(float *)(*(int *)(*param_1 + 0x1c) + 4 + uVar4) = func_00131760() * D_001D27D4 + D_001D2808;
+    *(int *)(*(int *)(*param_1 + 0x1c) + uVar4) = *(int *)(*(int *)(*param_1 + 0x1c) + 4 + uVar4);
+    uVar4 = uVar4 + 8;
+  } while (uVar4 < 0x28);
+  **(int **)(*param_1 + 0x24) = 0;
+  *(int *)(*(int *)(*param_1 + 0x24) + 4) = 0;
+  *(int *)(*(int *)(*param_1 + 0x24) + 8) = 0x3f800000;
+  *(int *)(*(int *)(*param_1 + 0x24) + 0xc) = 0x3f800000;
+  func_0011CDF0(param_2);
+  func_0011CE20(param_2, 0x3f19999a);
+  func_0011CE10(param_2, 0);
+  func_0011CE30(param_2, 0x42200000, 0x42200000);
+  func_0011CE50(param_2, 0, 0, 0, 0xbf800000);
+  func_0011CF30(param_2, 0x41400000, 0x41400000);
+  func_0011CFC0(param_2, 0x44fa0000);
+}
+
 void _func_0007AF50(int s, int arg)
 {
   extern int D_001E4618;
