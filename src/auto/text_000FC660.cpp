@@ -46,18 +46,6 @@ unsigned short func_000FC7E0(unsigned int param_1, int *param_2) {
     func_00012D60(*param_2, 0x1c);
     return 1;
 }
-
-unsigned short func_000FC7E0(unsigned int param_1, int *param_2) {
-    extern unsigned short func_001060A0(unsigned int);
-    extern void func_00012D60(int, uint);
-    
-    unsigned short iVar1 = *param_2;
-    unsigned short uVar2 = func_001060A0(*(unsigned int *)(param_2 + 3));
-    *(unsigned short *)(iVar1 + 0x130) = uVar2;
-    *(unsigned short *)(iVar1 + 0x134) = *(unsigned int *)param_2[5];
-    func_00012D60(*param_2, 0x1c);
-    return 1;
-}
 // _func_000FC880 - simple function returning 1 after calling another
 s32 _func_000FC880(void) {
     s32 func_000493C0(...);
