@@ -30,8 +30,9 @@ float func_00131240(float a0) {
 
 extern "C" double __cdecl cos(double);
 #pragma intrinsic(cos)
-float func_00131250(float x) {
-    return (float)cos((double)x);
+float func_00131250(volatile float x) {
+    x = (float)cos((double)x);
+    return x;
 }
 
 float func_00131260(float a0) {
