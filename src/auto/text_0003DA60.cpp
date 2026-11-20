@@ -11,7 +11,7 @@ struct Obj3E880 {
   int idx2;
   char pad2[0x23c - 0x1d8];
   int owner;
-  int handle;
+  volatile int handle;
   char pad3[0x2f4 - 0x244];
   int *cfgA;
   int *cfgB;
@@ -59,44 +59,43 @@ void func_0003E880(int param_1, int *param_2)
   int func_0009D3E0(...);
   int func_000A1D10(...);
   int *puVar1;
-  int *puVar2;
+  Obj3E880 *self = (Obj3E880 *)param_2;
   int iVar3;
   int uVar4;
 
-  puVar2 = param_2;
-  switch (param_2[0xc5]) {
+  switch (self->state) {
   case 0:
-    if (func_000A1F50(puVar2[0x90]) == 0) {
-      puVar1 = (int *)puVar2[0xbd];
-      func_000A1D10(puVar2[0x90],1,*puVar1,puVar1[1],puVar1[2],0);
-      func_00116160(*(int *)(*(int *)(puVar2[0x6d] + 0x58) + puVar2[0x74] * 4));
-      uVar4 = func_00115AB0(*(int *)(*(int *)(puVar2[0x8f] + 0x18) + 0x34),puVar2[0x75]);
-      *(int *)(*(int *)(puVar2[0x6d] + 0x58) + puVar2[0x74] * 4) = uVar4;
-      func_0010FBA0(*(int *)(puVar2[0x6d] + 0x2c),
-                     *(int *)(*(int *)(puVar2[0x6d] + 0x58) + puVar2[0x74] * 4));
+    if (func_000A1F50(self->handle) == 0) {
+      puVar1 = self->cfgA;
+      func_000A1D10(self->handle,1,*puVar1,puVar1[1],puVar1[2],0);
+      func_00116160(*(int *)(*(int *)(self->obj + 0x58) + self->idx * 4));
+      uVar4 = func_00115AB0(*(int *)(*(int *)(self->owner + 0x18) + 0x34),self->idx2);
+      *(int *)(*(int *)(self->obj + 0x58) + self->idx * 4) = uVar4;
+      func_0010FBA0(*(int *)(self->obj + 0x2c),
+                     *(int *)(*(int *)(self->obj + 0x58) + self->idx * 4));
       func_001100A0(*(int *)(param_1 + 0x2c),&param_2);
-      func_001105E0(*(int *)(puVar2[0x6d] + 0x2c),param_2,0);
-      func_00110000(*(int *)(puVar2[0x6d] + 0x2c));
+      func_001105E0(*(int *)(self->obj + 0x2c),param_2,0);
+      func_00110000(*(int *)(self->obj + 0x2c));
       func_00089320(0,0);
       func_0002D450(&D_001D3BE4);
       iVar3 = func_001031C0(D_00307DF8,&D_001D4828);
       if (iVar3 != 0) {
         func_00103990(iVar3,0);
       }
-      puVar2[0xc5] = 1;
+      self->state = 1;
     }
     break;
   case 1:
-    if (func_000A1F50(puVar2[0x90]) == 0) {
-      puVar1 = (int *)puVar2[0xbe];
-      func_000A1D10(puVar2[0x90],1,*puVar1,puVar1[1],puVar1[2],0);
-      func_0009D3E0(puVar2[0x6d]);
-      puVar2[0xc5] = 2;
+    if (func_000A1F50(self->handle) == 0) {
+      puVar1 = self->cfgB;
+      func_000A1D10(self->handle,1,*puVar1,puVar1[1],puVar1[2],0);
+      func_0009D3E0(self->obj);
+      self->state = 2;
     }
     break;
   case 2:
-    if (func_000A1F50(puVar2[0x90]) == 0) {
-      *puVar2 = puVar2[0xc6];
+    if (func_000A1F50(self->handle) == 0) {
+      self->next = self->nextState;
     }
     break;
   }
