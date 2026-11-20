@@ -59,12 +59,91 @@ void func_00070180(int a0) {
 
 void func_00070190(void) { int a[22]={0}; a[11]=4;a[12]=5;a[20]=6;a[21]=2; func_00133F30(a);func_001378E0(8,3); }
 
+void func_00070200(float *param_1, float *param_2)
+{
+  int func_00137870(int, int, int, int);
+  void func_00137A20(void);
+  void func_00137A60(int);
+  extern float D_00332740, D_00332738, D_0033273C;
+  int h;
+  float a, b;
+
+  h = func_00137870(((int *)param_1)[0], ((int *)param_1)[1], ((int *)param_1)[2], ((int *)param_1)[3]);
+  b = param_2[1]; a = param_2[0];
+  func_00137A20();
+  D_00332738 = a; D_0033273C = b; D_00332740 = 1.0f;
+  func_00137A60(h);
+  b = param_2[1]; a = param_2[2];
+  func_00137A20();
+  D_00332738 = a; D_0033273C = b; D_00332740 = 1.0f;
+  func_00137A60(h);
+  b = param_2[3]; a = param_2[2];
+  func_00137A20();
+  D_00332738 = a; D_0033273C = b; D_00332740 = 1.0f;
+  func_00137A60(h);
+  b = param_2[3]; a = param_2[2];
+  func_00137A20();
+  D_00332738 = a; D_0033273C = b; D_00332740 = 1.0f;
+  func_00137A60(h);
+  b = param_2[3]; a = param_2[0];
+  func_00137A20();
+  D_00332738 = a; D_0033273C = b; D_00332740 = 1.0f;
+  func_00137A60(h);
+  b = param_2[1]; a = param_2[0];
+  func_00137A20();
+  D_00332738 = a; D_0033273C = b; D_00332740 = 1.0f;
+  func_00137A60(h);
+}
+
 void func_00070370(void) {
     int func_00137AB0(...);
     func_00137AB0();
 }
 
 void func_00070380(int x,int *p) { int a[22]={0}; float b[4]={0,0,1,1}; a[11]=4;a[12]=5;a[20]=6;a[21]=2;func_00133F30(a);func_0011E4A0(p[0],p[1],p[2],p[3],a,b+2,x,1.0f);func_000688D0(); }
+
+void func_00070430(void)
+{
+  extern float D_00329234, D_002FA2E8, D_001D27B0, D_002FA2D4, D_001D27B8, D_002FA2FC;
+  int func_00133F30(...);
+  int func_0011E4A0(...);
+  __int64 func_000688D0(void);
+  int a[21];
+  struct { int x, y, z; float w; } c;
+  float r[4];
+  int i;
+  int *p = a;
+  for (i = 0x15; i != 0; i--)
+    *p++ = 0;
+  a[0] = 0;
+  a[1] = 0;
+  a[2] = 0;
+  a[6] = 0;
+  a[10] = 4;
+  a[11] = 5;
+  a[12] = 0;
+  a[18] = 6;
+  a[17] = 0;
+  a[19] = 2;
+  func_00133F30(a);
+  c.x = 0;
+  c.y = 0;
+  c.z = 0;
+  float f = (D_001D27B0 - D_00329234) * D_002FA2D4 + D_00329234 * D_002FA2E8;
+  if (D_002FA2FC > D_001D27B8) {
+    c.w = D_002FA2FC * D_002FA2FC;
+    if ((long double)D_001D27B8 != (long double)f)
+      c.w = (D_001D27B0 - c.w) * f + c.w;
+  } else {
+    c.w = f;
+  }
+  r[0] = 0;
+  r[1] = 0;
+  r[2] = 1.0f;
+  r[3] = 1.0f;
+  func_0011E4A0(0, 0, 0x44200000, 0x43f00000, r, r + 2, &c, 0x3f800000);
+  func_000688D0();
+}
 
 int func_000705A0(void) { extern int D_002FA2EC; int x=D_002FA2EC-1; if(x==0) return 2; else return 1; }
 
