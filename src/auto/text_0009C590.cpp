@@ -174,6 +174,31 @@ unsigned char func_0009D110(int a,int p){extern int func_0012F120(...),func_0009
 
 void func_0009D280(unsigned char *p){extern void func_0009D1A0(...); unsigned short v=*(unsigned short*)(p+0x10); if(v&2){v&=0xfffd;*(unsigned short*)(p+0x10)=v;if(!(v&4))func_0009D1A0(p);}}
 
+void func_0009D2B0(int p)
+{
+  extern unsigned int D_003104B4;
+  extern int D_0030C630[];
+  int func_0011B530(...), func_0013E600(...), func_00110330(...), func_000F8FA0(...);
+  char buf[256];
+  unsigned int i;
+  strcpy(buf, *(char **)(p + 0xc));
+  strcat(buf, ".");
+  for (i = *(unsigned short *)(p + 0x54) + 1; i < D_003104B4; i++) {
+    int e = D_0030C630[i];
+    if (e) {
+      int n = strlen(buf);
+      if (!func_0011B530(*(int *)(e + 0xc), buf, n) && !func_0013E600(*(int *)(e + 0xc) + n, ".")) {
+        func_0009D2B0(D_0030C630[i]);
+        *(unsigned short *)(D_0030C630[i] + 0x10) |= 4;
+      } else if (func_0011B530(*(int *)(D_0030C630[i] + 0xc), buf, strlen(buf))) {
+        break;
+      }
+    }
+  }
+  func_00110330(*(int *)(p + 0x2c), 0);
+  func_000F8FA0(p);
+}
+
 void func_0009D3E0(int p)
 {
   int func_0009D2B0(...);
