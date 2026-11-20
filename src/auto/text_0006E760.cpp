@@ -182,7 +182,7 @@ void func_0006F540(void)
   extern undefined D_001D580C;
   extern undefined D_001D5800;
   extern undefined D_001D57F4;
-  extern undefined4 D_002FA058, D_002FA054, D_002FA07C, D_002FA06C, D_002FA070, D_002FA074;
+  extern undefined4 D_002FA054, D_002FA07C, D_002FA06C, D_002FA070, D_002FA074;
   extern undefined4 D_002FA068, D_002FA078, D_002FA064, D_00326110;
   int func_0009C590(...);
   int func_001229B0(...);
@@ -191,7 +191,7 @@ void func_0006F540(void)
   int func_00110480(...);
   int func_00110300(...);
   int func_0011BDD0(...);
-  int iVar2, iVar3, iVar4;
+  int iVar3, iVar4;
   D_002FA058 = func_0009C590(&D_001D582C);
   if (D_002FA058 != 0) {
     D_002FA07C = func_001229B0(&D_001D581C);
@@ -204,12 +204,10 @@ void func_0006F540(void)
     func_00110480(D_002FA054, *(undefined4 *)(D_002FA058 + 0x2c), 8);
     iVar3 = func_00110300(*(undefined4 *)(D_002FA058 + 0x2c), &D_001D580C, 0x18);
     iVar4 = func_0011BDD0(*(undefined4 *)(iVar3 + 0xe0), 0);
-    iVar2 = D_002FA058;
     *(undefined4 *)(*(int *)(*(int *)(iVar4 + 8) + 0x28) + 0x54) = 1;
     ((short *)*(int *)(iVar3 + 0xe0))[0x15]--;
-    D_002FA068 = func_00110300(*(undefined4 *)(iVar2 + 0x2c), &D_001D5800, 0x18);
-    iVar2 = D_002FA058;
-    D_002FA078 = func_00110300(*(undefined4 *)(iVar2 + 0x2c), &D_001D57F4, 0x18);
+    D_002FA068 = func_00110300(*(undefined4 *)(D_002FA058 + 0x2c), &D_001D5800, 0x18);
+    D_002FA078 = func_00110300(*(undefined4 *)(D_002FA058 + 0x2c), &D_001D57F4, 0x18);
     D_002FA064 = func_00110300(*(undefined4 *)(D_002FA058 + 0x2c), &D_001D580C, 0x18);
   }
 }
