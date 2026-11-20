@@ -5,7 +5,7 @@
 void func_000F33B0(int);
 void func_000F3250(int);
 void func_0009A0D0(int);
-static void func_000FC890(int n)
+static __declspec(noinline) void func_000FC890(int n)
 {
   func_000F33B0(n);
   func_000F3250(n);
