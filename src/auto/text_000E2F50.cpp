@@ -2,7 +2,8 @@
 #include "common.h"
 
 struct V3 { int x, y, z; };
-struct __declspec(align(16)) M4 { char b[0x30]; };
+#include <xmmintrin.h>
+struct M4 { __m128 b[3]; };
 
 void func_000E2F50(void)
 {
