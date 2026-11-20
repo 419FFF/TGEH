@@ -70,9 +70,12 @@ void _func_0007A350(void)
     int func_0011DEF0(...);
     int func_00110480(...);
     unsigned int off;
+    int z;
     __declspec(align(8)) int s[0x3d];
 
-    for (off = 0; off < 0x40; off += 0x10) {
+    z = 0;
+    off = 0;
+    do {
         E5C0 *e = (E5C0 *)((char *)_D_002FA688 + off);
         memset(s, 0, sizeof(s));
         s[0x2e] = 1;
@@ -83,14 +86,14 @@ void _func_0007A350(void)
         s[0x2b] = 3;
         s[0x2c] = 3;
         s[0x2d] = 3;
-        s[0x20] = 0;
-        s[0x21] = 0;
-        s[0x22] = 0;
-        s[0x23] = 0;
-        s[0x30] = 0;
-        s[0x36] = 0;
-        s[0x35] = 0;
-        s[0x37] = 0;
+        s[0x20] = z;
+        s[0x21] = z;
+        s[0x22] = z;
+        s[0x23] = z;
+        s[0x30] = z;
+        s[0x36] = z;
+        s[0x35] = z;
+        s[0x37] = z;
         s[0x3c] = 10;
         s[0x39] = 0x64;
         strcpy((char *)s, "sprites/trail_grey.tga");
@@ -99,9 +102,10 @@ void _func_0007A350(void)
         e->b = (unsigned char *)func_0011DD60(&D_001D6560, 0x64, e->a, *(int *)(e->a + 0x14c));
         func_0011E830(e->a, e->b);
         func_0011DEF0(e->b);
-        e->c = 0;
+        e->c = z;
         func_00110480(D_0030809C, e->a, 8);
-    }
+        off += 0x10;
+    } while (off < 0x40);
 }
 
 void func_0007A4A0(void)
@@ -207,6 +211,61 @@ void func_0007A850(int param_1)
   } while(iVar2!=0);
 }
 
+void _func_0007A8D0(int param_1, int param_2)
+{
+    int func_0011BDD0(int, int);
+    int func_001152B0(int, void *);
+    int *obj;
+    int *res;
+    int count;
+    int i;
+    int n4;
+    int *src;
+    int *dst;
+    __declspec(align(16)) char buf[0x1000];
+
+    obj = *(int **)(param_2 + 0x98);
+    res = (int *)func_0011BDD0(obj[0x1c / 4], 1);
+    count = res[1];
+    (*(short *)(obj[0x1c / 4] + 0x2a))--;
+    func_001152B0(*(int *)(param_2 + 0x98), buf);
+    i = 0;
+    if (count > 3) {
+        n4 = ((count - 4) >> 2) + 1;
+        src = (int *)(buf + 8);
+        do {
+            dst = *(int **)(*(int *)(*(int *)(param_1 + 0x50) + 0x2c) + 4);
+            dst[i * 12 / 4] = src[-2];
+            dst[i * 12 / 4 + 1] = src[-1];
+            dst[i * 12 / 4 + 2] = src[0];
+            dst = *(int **)(*(int *)(*(int *)(param_1 + 0x50) + 0x2c) + 4);
+            dst[i * 12 / 4 + 3] = src[0xe];
+            dst[i * 12 / 4 + 4] = src[0xf];
+            dst[i * 12 / 4 + 5] = src[0x10];
+            dst = *(int **)(*(int *)(*(int *)(param_1 + 0x50) + 0x2c) + 4);
+            dst[i * 12 / 4 + 6] = src[0x1e];
+            dst[i * 12 / 4 + 7] = src[0x1f];
+            dst[i * 12 / 4 + 8] = src[0x20];
+            dst = *(int **)(*(int *)(*(int *)(param_1 + 0x50) + 0x2c) + 4);
+            dst[i * 12 / 4 + 9] = src[0x2e];
+            dst[i * 12 / 4 + 10] = src[0x2f];
+            dst[i * 12 / 4 + 11] = src[0x30];
+            i += 4;
+            src += 0x40;
+            n4--;
+        } while (n4 != 0);
+    }
+    while (i < count) {
+        dst = *(int **)(*(int *)(*(int *)(param_1 + 0x50) + 0x2c) + 4);
+        src = (int *)(buf + 8 + i * 0x40);
+        dst[i * 3] = src[-2];
+        dst[i * 3 + 1] = src[-1];
+        dst[i * 3 + 2] = src[0];
+        i++;
+    }
+    **(int **)(*(int *)(param_1 + 0x50) + 0x2c) = count;
+}
+
 void func_0007AA40(void)
 {
   extern int D_001D6560;
@@ -223,6 +282,58 @@ void func_0007AA90(void) {
     extern int D_001D6560;
     int func_0011D0E0(...);
     func_0011D0E0((int)&D_001D6560);
+}
+
+void func_0007AAA0(int *param_1, int param_2)
+{
+  int func_0011CD40(...);
+  float func_00131760(void);
+  extern float D_001D27EC;
+  extern float D_001D2808;
+  extern float D_001D27B0;
+  extern float D_001D31C8;
+  extern float D_001D2B64;
+  int func_0011CDF0(...);
+  int func_0011CE20(...);
+  int func_0011CE10(...);
+  int func_0011CE30(...);
+  int func_0011CE50(...);
+  int func_0011CF30(...);
+  int func_0011CFC0(...);
+  int iVar2;
+  unsigned int uVar4;
+
+  iVar2 = func_0011CD40(1, 5, 1, 5, 1);
+  *param_1 = iVar2;
+  **(int **)(iVar2 + 4) = 0;
+  *(int *)(*(int *)(*param_1 + 4) + 4) = 0;
+  *(int *)(*(int *)(*param_1 + 4) + 8) = 0;
+  for (uVar4 = 0; uVar4 < 0x3c; uVar4 += 0xc) {
+    *(float *)(uVar4 + *(int *)(*param_1 + 0xc)) = (func_00131760() - D_001D27EC) * D_001D2808;
+    *(float *)(*(int *)(*param_1 + 0xc) + 4 + uVar4) = (func_00131760() + D_001D27B0) * 2.0f;
+    *(float *)(*(int *)(*param_1 + 0xc) + 8 + uVar4) = (func_00131760() - D_001D27EC) * D_001D2808;
+  }
+  **(int **)(*param_1 + 0x14) = 0x3f018182;
+  *(int *)(*(int *)(*param_1 + 0x14) + 4) = 0x3e949495;
+  *(int *)(*(int *)(*param_1 + 0x14) + 8) = 0x3d109091;
+  *(int *)(*(int *)(*param_1 + 0x14) + 0xc) = 0x3e19999a;
+  uVar4 = 0;
+  do {
+    *(float *)(*(int *)(*param_1 + 0x1c) + 4 + uVar4) = func_00131760() * D_001D31C8 + D_001D2B64;
+    *(int *)(*(int *)(*param_1 + 0x1c) + uVar4) = *(int *)(*(int *)(*param_1 + 0x1c) + 4 + uVar4);
+    uVar4 = uVar4 + 8;
+  } while (uVar4 < 0x28);
+  **(int **)(*param_1 + 0x24) = 0;
+  *(int *)(*(int *)(*param_1 + 0x24) + 4) = 0;
+  *(int *)(*(int *)(*param_1 + 0x24) + 8) = 0x3f800000;
+  *(int *)(*(int *)(*param_1 + 0x24) + 0xc) = 0x3f800000;
+  func_0011CDF0(param_2);
+  func_0011CE20(param_2, 0x3f19999a);
+  func_0011CE10(param_2, 0);
+  func_0011CE30(param_2, 0x42200000, 0x42200000);
+  func_0011CE50(param_2, 0, 0, 0, 0xbe19999a);
+  func_0011CF30(param_2, 0x42200000, 0x42200000);
+  func_0011CFC0(param_2, 0x46435000);
 }
 
 extern float D_001D27B8;
