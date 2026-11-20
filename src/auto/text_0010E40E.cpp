@@ -8,6 +8,7 @@ extern "C" void (__stdcall *__imp__RtlInitAnsiString)(void *, const char *);
 extern "C" int (__stdcall *__imp__NtOpenFile)(void *, unsigned int, void *, void *, unsigned int, unsigned int);
 extern "C" int (__stdcall *__imp__NtSetInformationFile)(void *, void *, void *, unsigned int, int);
 extern "C" int (__stdcall *__imp__NtClose)(void *);
+extern "C" void *memset(void *, int, unsigned int);
 int __stdcall func_0010E40E(int a,int b,int c,int d){return (a|b)+(c|d);}
 
 void _func_0010EB3C(void){extern void (__stdcall *__imp__KeSetTimer)(void*,unsigned int,int,void*);extern int _D_0037C020,_D_0037C040;unsigned int due=0xB5659000u;int period=-51;__imp__KeSetTimer(&_D_0037C040,due,period,&_D_0037C020);}
