@@ -2,6 +2,7 @@
 #include "common.h"
 #include "ghidra.h"
 struct V3 { float x, y, z; };
+union U_0012E2E0 { unsigned int u; unsigned char b[4]; };
 
 void _func_0012E280(unsigned int *out, unsigned char *in)
 {
@@ -22,6 +23,60 @@ void _func_0012E280(unsigned int *out, unsigned char *in)
     value = in[3];
     value = (value << 8) | in[2];
     out[1] = value;
+}
+
+int _func_0012E2E0(int param_1)
+{
+  int _func_00131C80(...), _func_00116A90(...), _func_00131EB0(...), _func_00131D60(...), _func_0012E280(...), _func_00131D10(...);
+  char _func_00131FD0(...);
+  int fp, obj;
+  unsigned int tag;
+  unsigned int size;
+  unsigned char fmt[16];
+  unsigned char *buf;
+  unsigned int i;
+  char c;
+  unsigned char *t = (unsigned char *)&tag;
+  unsigned char *s = (unsigned char *)&size;
+
+  fp = _func_00131C80(param_1, 0);
+  obj = _func_00116A90(0x28, 1, 1);
+  _func_00131EB0(fp, 0xc, 0);
+  c = _func_00131FD0(fp);
+  for (;;) {
+    if (c || !_func_00131D60(fp, &tag, 4) || !_func_00131D60(fp, &size, 4)) {
+      _func_00131D10(fp);
+      return obj;
+    }
+    size = ((((s[3] << 8) | s[2]) << 8 | s[1]) << 8) | s[0];
+    if (t[0] == 'f') {
+      if (t[1] == 'm' && t[2] == 't' && t[3] == ' ') {
+        _func_00131D60(fp, fmt, 0x10);
+        _func_0012E280(obj, fmt);
+        _func_00131EB0(fp, size - 0x10, 1);
+      } else {
+        _func_00131EB0(fp, size, 1);
+      }
+    } else {
+      if (t[0] != 'd' || t[1] != 'a' || t[2] != 't' || t[3] != t[1]) {
+        _func_00131EB0(fp, size, 1);
+      } else {
+        *(unsigned int *)(obj + 0x20) = size;
+        buf = (unsigned char *)_func_00116A90(size, 1, 1);
+        *(unsigned char **)(obj + 0x24) = buf;
+        _func_00131D60(fp, buf, *(unsigned int *)(obj + 0x20));
+        buf = *(unsigned char **)(obj + 0x24);
+        i = 0;
+        if ((*(unsigned int *)(obj + 0x20) & 0xfffffffe) != 0) {
+          do {
+            *(unsigned short *)(buf + i * 2) = (buf[i * 2 + 1] << 8) | buf[i * 2];
+            i++;
+          } while (i < (*(unsigned int *)(obj + 0x20) >> 1));
+        }
+      }
+    }
+    c = _func_00131FD0(fp);
+  }
 }
 
 extern int func_00131D60(void *, void *, int);
@@ -219,30 +274,34 @@ void _func_0012EE00(float *out, float *a, float *b)
     out[2] = b[1] * a[0] - b[0] * a[1];
 }
 
-float func_0012EE40(float *a, float *d, float *c)
+float func_0012EE40(const V3 *a, const V3 *d, const V3 *c)
 {
   extern float D_001D27B8;
-  float dx = c[0] - a[0];
-  float dot = dx * d[0] + (c[1] - a[1]) * d[1] + (c[2] - a[2]) * d[2];
+  float dx = c->x - a->x;
+  float dot = (c->z - a->z) * d->z + (c->y - a->y) * d->y + dx * d->x;
   float len2;
   float t;
   float dy, dz;
   if (dot <= D_001D27B8) {
-    dz = c[2] - a[2];
-    dy = c[1] - a[1];
+    dz = c->z - a->z;
+    dy = c->y - a->y;
     return dz * dz + dy * dy + dx * dx;
   }
-  len2 = d[0] * d[0] + d[1] * d[1] + d[2] * d[2];
+  len2 = d->z * d->z + d->y * d->y + d->x * d->x;
   if (len2 <= dot) {
-    dz = c[2] - (a[2] + d[2]);
-    dy = c[1] - (a[1] + d[1]);
-    dx = c[0] - (a[0] + d[0]);
+    float px = a->x + d->x, py = d->y + a->y, pz = d->z + a->z;
+    dz = c->z - pz;
+    dy = c->y - py;
+    dx = c->x - px;
     return dz * dz + dy * dy + dx * dx;
   }
   t = dot / len2;
-  dz = c[2] - (t * d[2] + a[2]);
-  dy = c[1] - (t * d[1] + a[1]);
-  dx = c[0] - (t * d[0] + a[0]);
-  return dx * dx + dz * dz + dy * dy;
+  {
+    float px = t * d->x + a->x, py = t * d->y + a->y, pz = t * d->z + a->z;
+    dz = c->z - pz;
+    dy = c->y - py;
+    dx = c->x - px;
+    return dx * dx + dz * dz + dy * dy;
+  }
 }
 /* */
