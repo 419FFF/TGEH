@@ -5,7 +5,66 @@ struct XSTR_0010A86C { unsigned short Length, MaximumLength; char *Buffer; };
 extern "C" XSTR_0010A86C *__imp__XeImageFileName;
 extern "C" int (__stdcall *__imp__IoDeleteSymbolicLink)(void *);
 extern "C" int (__stdcall *__imp__IoCreateSymbolicLink)(void *, void *);
-#pragma optimize("y", on)
+#pragma optimize("y", off)
+int func_0010A86C(void)
+{
+  extern char *D_00010118;
+  extern char D_001DED7C[], D_001DED74[], D_001E62C8[];
+  int __stdcall func_0010A3F2(char **, int *, char *);
+  void __stdcall func_0010A456(char *, int);
+  int func_0013F294(...);
+  int func_0013F170(...);
+  int func_0013F116(...);
+  int __stdcall func_0010A569(char *, int, int, int);
+  int __stdcall func_0010A6EB(char *, char *, int, int);
+  char bufA[3072];
+  char bufB[360];
+  char bufC[360];
+  char bufD[360];
+  int tid;
+  int n;
+  int r;
+  char *name;
+  struct { unsigned short len, max; char *buf; } as;
+  int sz = 0x168;
+  tid = *(int *)(D_00010118 + 8);
+  if (tid != -0x20000) {
+    int len;
+    char *nm;
+    r = func_0010A3F2(&name, &n, bufA);
+    if (r == 0) {
+      func_0010A456(bufB, sz);
+      nm = bufB;
+    } else {
+      nm = name;
+    }
+    {
+      char *q = nm;
+      while (*q++) ;
+      len = q - (nm + 1);
+    }
+    if (__imp__XeImageFileName->Length > (unsigned)len) {
+      if (func_0013F294(__imp__XeImageFileName->Buffer, nm, len) == 0) {
+        len++;
+        func_0013F170(bufD, __imp__XeImageFileName->Buffer + len, __imp__XeImageFileName->Length - len);
+        bufD[__imp__XeImageFileName->Length - len] = 0;
+        if (func_0013F116(bufC, sz, D_001DED74, D_001DED7C, bufD) < 0) return 0;
+        if (func_0010A569(bufD, tid, *(int *)(D_00010118 + 0xac), 0) >= 0) {
+          func_0010A6EB(bufC, n != -1 ? bufA : 0, 0, n);
+        }
+      }
+    }
+    if (r != 0) {
+      char *q = nm;
+      while (*q++) ;
+      as.len = as.max = (unsigned short)(q - (nm + 1));
+      as.buf = nm;
+      __imp__IoDeleteSymbolicLink(D_001E62C8);
+      __imp__IoCreateSymbolicLink(D_001E62C8, &as);
+    }
+  }
+  return 0;
+}
 unsigned char __stdcall func_0010AA16(char *dst,char *src,int n){extern int D_001DED88;int _func_0013EEE4(...);int _func_0013EF1F(...);_func_0013EEE4(&D_001DED88,0x10);char *out=dst;char *in=src;while(n){if(*in==0)break;*out=*in;out++;in++;n--;}if(n==0){out--;*out=0;_func_0013EF1F();return 1;}*out=0;_func_0013EF1F();return 0;}
 
 int _func_0010AA7B(void){extern int D_003252D4;int fs;int *tls=*(int**)((char*)&fs+4);return *(int*)(tls[D_003252D4]+8);}
@@ -84,3 +143,9 @@ void __stdcall func_0010B0F0(unsigned int a,unsigned int b){extern char D_001DED
 extern "C" __declspec(dllimport) void __stdcall HalReturnToFirmware(unsigned long); void __stdcall func_0010B145(int a,int b,int c){extern int D_00010118; int __stdcall func_00109A27(int,int*); if(*(int*)(D_00010118+8)!=-131072){int local[768]={0};local[0]=a;local[1]=0;local[2]=b;local[3]=c;func_00109A27(0,local);return;} HalReturnToFirmware(4);__debugbreak();__assume(0);}
 
 void __stdcall func_0010B1AA(int a0){int __stdcall func_0010AC5D(int,int);func_0010AC5D(a0,0x4000);}
+
+extern "C" __declspec(dllimport) void __stdcall HalRegisterShutdownNotification(void*, int);
+extern "C" __declspec(dllimport) int __stdcall IoCreateSymbolicLink(void*, void*);
+extern "C" __declspec(dllimport) void __stdcall MmFreeContiguousMemory(void*);
+extern "C" unsigned char *__imp__XboxHardwareInfo;
+extern "C" int **__imp__LaunchDataPage;
