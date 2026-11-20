@@ -2,7 +2,10 @@
 #include "common.h"
 #include "ghidra.h"
 #include <string.h>
-struct S_00026510 { int a, b, c, d, e, f, g; };
+struct S_00026510 {
+  int a, b, c, d, e, f, g;
+  void init() { a = 0; b = 0; c = 0; d = 0; e = 0; f = 0; g = 0; }
+};
 
 void _func_00025990(int a){extern int D_00307D10;int _func_000487A0(...);int _func_000A1C00(...);int _func_00116FB0(...);int*s=*(int**)(a+0x110);_func_000487A0(D_00307D10,s[0x6c/4]);_func_000A1C00(s[0x25c/4]);_func_00116FB0((int)s);}
 
