@@ -15,7 +15,7 @@ float _func_00131220(volatile float param_1)
   return param_1;
 }
 
-extern double sin(double);
+extern "C" double __cdecl sin(double);
 #pragma intrinsic(sin)
 float func_00131230(float x) {
     return (float)sin((double)x);
