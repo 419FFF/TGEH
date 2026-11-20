@@ -244,4 +244,4 @@ float func_0012EE40(float *a, float *d, float *c)
   dx = c[0] - (t * d[0] + a[0]);
   return dx * dx + dz * dz + dy * dy;
 }
-struct V3 { float x, y, z; };
+/* */
