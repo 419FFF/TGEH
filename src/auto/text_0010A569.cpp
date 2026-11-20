@@ -11,12 +11,124 @@ extern "C" __declspec(dllimport) int __stdcall RtlNtStatusToDosError(int);
 extern "C" __declspec(dllimport) void __stdcall HalReturnToFirmware(unsigned long);
 extern "C" int (__stdcall *__imp__IoDeleteSymbolicLink)(void *);
 extern "C" int (__stdcall *__imp__IoCreateSymbolicLink)(void *, void *);
-#pragma optimize("y", off)
+extern "C" void *memset(void *, int, unsigned int);
+#pragma optimize("s", on)
+int __stdcall func_0010A569(char *name, int tid, int id, int unused)
+{
+  extern char D_001DED64[];
+  int __stdcall func_0010A2DC(char *, char *, unsigned int *);
+  int __stdcall func_0010BF49(char *, int, int, int, int, int, int);
+  int __stdcall func_0010C1D8(int, int, int, int *);
+  int __stdcall func_0010BAA0(int, void *, unsigned int, unsigned int *, void *);
+  int __stdcall func_0010A326(char *, int *);
+  void __stdcall func_0010B7F8(int);
+  int func_0010AA7B(void);
+  void __stdcall XcSHAInit(void *);
+  void __stdcall XcSHAUpdate(void *, void *, unsigned int);
+  void __stdcall XcSHAFinal(void *, void *);
+  int info[0x1ec / 4];
+  char path[260];
+  char sha[116];
+  int hdr[34];
+  struct { unsigned int count; unsigned int ids[16]; } blk;
+  unsigned int digest[5];
+  int ov[5];
+  unsigned int size;
+  unsigned int n;
+  int h = -1;
+  int result;
+  size = 260;
+  if (!func_0010A2DC(D_001DED64, path, &size)) goto fail;
+  h = func_0010BF49(path, 0x80000000, 1, 0, 3, 0, 0);
+  if (h == -1) goto fail;
+  if (!func_0010C1D8(h, tid, 1, hdr)) goto fail;
+  if (!(hdr[8] & 1)) goto fail;
+  {
+    int z[5] = {0};
+    int i;
+    for (i = 0; i < 5; i++) ov[i] = z[i];
+  }
+  ov[2] = hdr[13];
+  if (hdr[14] != 0x44) goto fail;
+  if (!func_0010BAA0(h, &blk, 0x44, &size, ov)) goto fail;
+  if (size != 0x44) goto fail;
+  XcSHAInit(sha);
+  XcSHAUpdate(sha, &blk, 0x44);
+  XcSHAFinal(sha, digest);
+  if (digest[0] != (unsigned)hdr[15] || digest[1] != (unsigned)hdr[16] || digest[2] != (unsigned)hdr[17] || digest[3] != (unsigned)hdr[18] || digest[4] != (unsigned)hdr[19]) goto fail;
+  if (blk.count > 0x10) goto fail;
+  for (n = 0; n < blk.count; n++)
+    if (blk.ids[n] == (unsigned)id) break;
+  if (n == blk.count) goto fail;
+  size = 260;
+  if (!func_0010A2DC(name, path, &size)) {
+    func_0010AA7B();
+    func_0010AA7B();
+    goto fail;
+  }
+  result = func_0010A326(path, info);
+  if (result < 0) goto fail;
+  if (info[2] == tid) goto done;
+fail:
+  result = 0x8007000d;
+done:
+  if (h != -1) func_0010B7F8(h);
+  return result;
+}
+#pragma optimize("", on)
 int __stdcall func_0010A6EB(char *path, int a1, int flags, int a3)
 {
+  extern char *D_00010118;
+  extern char D_001E6280[], D_001E6260[], D_001DED74[];
+  void __stdcall func_0010A456(char *, int);
+  int __stdcall func_00109B4A(int, int, int, int, int);
+  int __stdcall func_00109A69(char *, char *, int, int, int, int);
+  void __stdcall func_0010A4E8(char *, char *);
+  int func_0013F116(...);
+  char bufA[360];
+  char bufB[360];
+  char *base = D_00010118;
+  int isD;
+  int kind;
+  int r;
+  char *other;
+  char *p = path;
+  char *name;
+  int tid;
+  if (p == 0)
+    return func_00109B4A(0, 0, (a1 != 0) * 2 - 1, *(int *)(base + 8), a1);
+  tid = *(int *)(base + 8);
+  isD = 0;
+  kind = 1;
+  func_0010A456(bufA, 0x168);
+  if ((p[0] == 'D' || p[0] == 'd') && p[1] == ':' && p[2] == '\\') {
+    p += 3;
+    isD = 1;
+    name = p;
+    other = bufA;
+  } else {
+    if ((p[0] == 'T' || p[0] == 't') && p[1] == ':' && p[2] == '\\' && p[3] == '$' &&
+        (p[4] == 'U' || p[4] == 'u') && p[5] == '\\') {
+      p += 6;
+      r = func_0013F116(bufB, 0x168, D_001E6280, tid, p);
+    } else if ((flags & 2) && (p[0] == 'Y' || p[0] == 'y') && p[1] == ':' && p[2] == '\\') {
+      p += 3;
+      r = func_0013F116(bufB, 0x168, D_001DED74, D_001E6260, p);
+    } else
+      return 0x57;
+    if (r < 0) return 0x57;
+    kind = 0;
+    name = bufB;
+    other = 0;
+  }
+  r = func_00109A69(name, other, kind, a1 ? a3 : -1, tid, a1);
+  if (!isD || a1)
+    func_0010A4E8(bufA, p);
+  if (r < 0)
+    return RtlNtStatusToDosError(r);
+  HalReturnToFirmware(2);
   return 0;
 }
-
 int func_0010A86C(void)
 {
   extern char *D_00010118;
@@ -166,8 +278,9 @@ void func_0010B1BB(void)
   void func_0010EB69(void);
   unsigned int func_0010C5C0(void);
   int init[12];
+  int local = 0;
   int *p = 0;
-  int local = (int)p;
+  int a, b;
   int st;
   unsigned int v;
   int i;
@@ -179,30 +292,31 @@ void func_0010B1BB(void)
   init[0] = 0x30;
   D_0037C074 = func_0010D67B(2, 0, D_00010134, D_00010138, 0, init);
   if (D_0037C074 == 0) {
-    func_0010B145(1, 1, local);
-    return;
+    a = 1; b = 1;
+    goto fail;
   }
   if (!(D_00010124 & 8)) {
     if (func_0010B1AA((int)&D_001E62D8) < 0) {
-      func_0010B145(1, 2, local);
-      return;
+      a = 1; b = 2;
+      goto fail;
     }
   }
   if (!(*__imp__XboxHardwareInfo & 8)) {
     st = __imp__IoCreateSymbolicLink(D_001E62C8, D_001E62D0);
     if (st < 0 && st != (int)0xc0000035) {
-      func_0010B145(1, 1, local);
-      return;
+      a = 1; b = 1;
+      goto fail;
     }
   }
   if (!(D_00010124 & 0x18)) {
     st = func_0010B0F0(D_00010118[2], (unsigned int)(D_00010118 + 3));
     if (st < 0) {
-      if (st == (int)0xc000007f)
-        func_0010B145(2, 0x54, 0x10);
-      else
-        func_0010B145(1, 2, local);
-      return;
+      if (st == (int)0xc000007f) {
+        a = 2; b = 0x54; local = 0x10;
+      } else {
+        a = 1; b = 2;
+      }
+      goto fail;
     }
   }
   if (!(D_00010124 & 8) && (D_00010124 & 1)) {
@@ -211,8 +325,8 @@ void func_0010B1BB(void)
   }
   v = D_00010118[0xa4 / 4];
   if (v < func_0010C5C0()) {
-    func_0010B145(1, 4, v);
-    return;
+    a = 1; b = 4; local = v;
+    goto fail;
   }
   if (__imp__LaunchDataPage && *__imp__LaunchDataPage) {
     p = *__imp__LaunchDataPage;
@@ -224,6 +338,9 @@ void func_0010B1BB(void)
     *__imp__LaunchDataPage = 0;
     __imp__MmFreeContiguousMemory(p);
   }
+  return;
+fail:
+  func_0010B145(a, b, local);
 }
 #pragma optimize("", on)
 
