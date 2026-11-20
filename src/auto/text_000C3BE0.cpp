@@ -1,11 +1,62 @@
 /* 13 functions from 0x000C3BE0 to 0x000C4AB2, found by Ghidra. */
 #include "common.h"
+struct S_000C3F00_A { char a, b, pad0[2]; float pos[3]; char pad1[0x14]; int obj; char c, pad2[3]; int obj2; int pad3; float x, y; char pad4[4]; };
+struct S_000C3F00_B { float pos[3]; char pad0[0xc]; int count; int state; char pad1; char f1; char f2; char pad2; float v[3]; char pad3[0xc]; int arg[3]; char pad4[0x90 - 0x48]; };
 struct P_000C49A0 { float x, y, z, w; char on; char pad[3]; };
 struct P_000C48B0 { float w; char on; char pad[3]; float x, y, z; };
 
 void func_000C3E40(void) {
  extern unsigned char D_00315718;extern float D_00314F60,D_001D2B98,D_00314F64,D_00314F68,D_001D4EB0,D_0031601C;extern int D_00315CC8,D_00315998,D_00315F88;float fabsf(float);int func_00103990(...),func_00110330(...);float *p=(float *)&D_00315718;
  do{if(*((char *)p-4)&&!*((char *)p-3)&&fabsf(p[0]-D_00314F60)<D_001D2B98&&fabsf(p[1]-D_00314F64)<D_001D2B98&&fabsf(p[2]-D_00314F68)<D_001D4EB0){func_00103990(D_00315CC8,0);*((char *)p-4)=0;++D_00315998;D_0031601C=(float)D_00315998/(float)D_00315F88;func_00110330(*(int *)(*(int *)((char *)p-8)+0x2c),0);}p+=16;}while(p<(float *)&D_00315998);
+}
+
+void func_000C3F00(void)
+{
+  extern int D_003159A4, D_00315CC0, D_00315CA0, D_00315C98, D_00314F14;
+  extern char D_0031573C, D_003159BC, D_003159CC, D_00315C9C, D_001D7108;
+  int func_00103990(...), func_0007F4C0(...), func_00110330(...), func_00091510(...);
+  char *p;
+  int *q;
+  if (D_003159A4 != -1) {
+    D_003159A4++;
+    if (D_003159A4 == 5) {
+      D_003159A4 = -1;
+      return;
+    }
+    if (D_003159A4 == 2) {
+      p = &D_0031573C;
+      do {
+        if (p[-0x28] != 0 && p[-0x27] != 0 && *p != 0) {
+          func_00103990(D_00315CC0, 0);
+          func_0007F4C0(0x43fa0000, p - 0x24);
+          p[-0x27] = 0;
+          func_00110330(*(int *)(p + 4), 0);
+          func_00110330(*(int *)(*(int *)(p - 4) + 0x2c), 1);
+          *(int *)(p + 0xc) = 0;
+          *(int *)(p + 0x10) = 0x43fa0000;
+        }
+        p += 0x40;
+      } while ((int)p < (int)&D_003159BC);
+      q = (int *)&D_003159CC;
+      do {
+        if (*q != 0 && *((char *)q + 9) != 0) {
+          func_00103990(D_00315CA0, 0);
+          *q = *q - 1;
+          q[1] = 3;
+          if (*q == 0) {
+            *((char *)q + 10) = 1;
+            q[3] = q[-6];
+            q[4] = q[-5];
+            q[5] = q[-4];
+            func_00103990(D_00315C98, 0);
+            func_0007F4C0(0x447a0000, q - 6);
+            func_00091510(&D_001D7108, D_00314F14, q + 9, 1, 0);
+          }
+        }
+        q += 0x24;
+      } while ((int)q < (int)&D_00315C9C);
+    }
+  }
 }
 
 void func_000C4020(void) {
@@ -73,6 +124,36 @@ void func_000C48B0(void)
     *(float *)(D_002FBA90 + i * 0x30 + 0x20) = (func_00131760() + D_001D27B0) * D_001D27F8;
     q = D_002FBA90 + i * 0x30;
     *(float *)(q + 0x24) = *(float *)(q + 0x20) * ((func_00131760() + D_001D27B0) * D_001D2C00);
+  }
+}
+
+void func_000C49A0(void)
+{
+  extern P_000C48B0 D_00315CE8[34];
+  extern char *D_002FBA90;
+  extern float D_001D27B0, D_001D5050, D_00315C80, D_001D2A1C, D_00315C84, D_001D9CD8, D_00315C88, D_001D341C, D_001D27F8, D_001D2C00, D_001E461C;
+  float func_00131760(void);
+  int i;
+  float f;
+  for (i = 0; i < 32; i++) {
+    P_000C48B0 *p = &D_00315CE8[i];
+    if (p[1].on == 0) {
+      p->x = (func_00131760() * 2 - D_001D27B0) * D_001D5050 + D_00315C80;
+      p->y = (func_00131760() * 2 - D_001D27B0) * D_001D2A1C + D_00315C84;
+      f = D_00315C88;
+      p[1].on = 1;
+      p->z = D_001D9CD8 + f;
+      p[1].w = func_00131760() * D_001D341C + D_001D2A1C;
+      *(float *)(D_002FBA90 + i * 0x30 + 0x20) = (func_00131760() + D_001D27B0) * D_001D27F8;
+      char *q = D_002FBA90 + i * 0x30;
+      *(float *)(q + 0x24) = *(float *)(q + 0x20) * ((func_00131760() + D_001D27B0) * D_001D2C00);
+    } else {
+      p->z = p->z - D_001E461C * p[1].w;
+      *(float *)(D_002FBA90 + i * 0x30) = p->x;
+      *(float *)(D_002FBA90 + i * 0x30 + 8) = p->z;
+      *(float *)(D_002FBA90 + i * 0x30 + 4) = p->y;
+      if (p->z < D_00315C88) p[1].on = 0;
+    }
   }
 }
 
