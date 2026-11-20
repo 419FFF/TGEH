@@ -150,6 +150,27 @@ void _func_0012F890(float *m,float *v){long double x=(long double)v[0]-m[12],y=(
 
 void _func_0012F910(float *m,float s){m[0]=(float)((long double)s*(long double)m[0]);m[1]=(float)((long double)s*(long double)m[1]);m[2]=(float)((long double)s*(long double)m[2]);m[4]=(float)((long double)s*(long double)m[4]);m[5]=(float)((long double)s*(long double)m[5]);m[6]=(float)((long double)s*(long double)m[6]);m[8]=(float)((long double)s*(long double)m[8]);m[9]=(float)((long double)s*(long double)m[9]);m[10]=(float)((long double)s*(long double)m[10]);}
 
+#pragma optimize("y", on)
+void func_0012FA20(float *param_1, float *param_2, float param_3, float *param_4, float param_5)
+{
+  param_1[0] = param_3 * param_2[0] + param_5 * param_4[0];
+  param_1[1] = param_3 * param_2[1] + param_5 * param_4[1];
+  param_1[2] = param_3 * param_2[2] + param_5 * param_4[2];
+  param_1[3] = param_3 * param_2[3] + param_5 * param_4[3];
+  param_1[4] = param_3 * param_2[4] + param_5 * param_4[4];
+  param_1[5] = param_3 * param_2[5] + param_5 * param_4[5];
+  param_1[6] = param_3 * param_2[6] + param_5 * param_4[6];
+  param_1[7] = param_3 * param_2[7] + param_5 * param_4[7];
+  param_1[8] = param_3 * param_2[8] + param_5 * param_4[8];
+  param_1[9] = param_3 * param_2[9] + param_5 * param_4[9];
+  param_1[10] = param_3 * param_2[10] + param_5 * param_4[10];
+  param_1[11] = param_3 * param_2[11] + param_5 * param_4[11];
+  param_1[12] = param_3 * param_2[12] + param_5 * param_4[12];
+  param_1[13] = param_3 * param_2[13] + param_5 * param_4[13];
+  param_1[14] = param_3 * param_2[14] + param_5 * param_4[14];
+  param_1[15] = param_3 * param_2[15] + param_5 * param_4[15];
+}
+#pragma optimize("", on)
 void _func_0012FB60(float *p,float a,float b,float c,float d){extern float _D_001D29F4,_D_001D27B0;*p=_D_001D29F4/a;p[1]=0;p[2]=0;p[3]=0;p[4]=0;p[5]=_D_001D29F4/(a/b);p[6]=0;p[7]=0;p[8]=0;p[9]=0;p[10]=_D_001D27B0/(c-d);p[11]=0;p[12]=0;p[13]=0;p[14]=p[10]*c;p[15]=1;}
 
 void _func_0012FBD0(float *p,float a,float b,float c,float d){int func_00131300(...);extern float _D_001D27EC,_D_001D27B0;float t=func_00131300(a*_D_001D27EC);float y=_D_001D27B0/t;p[1]=p[2]=p[3]=p[4]=0;p[5]=y;p[6]=p[7]=p[8]=p[9]=0;p[10]=0;p[11]=1;p[12]=p[13]=0;p[14]=(c*d)/(c-d);p[15]=0;p[0]=y/b;}
