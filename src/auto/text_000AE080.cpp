@@ -70,81 +70,64 @@ void func_000AE0F0(int param_1)
   return;
 }
 
-void func_000AE1B0(int param_1, undefined4 *param_2)
+void _func_000AE1B0(int param_1, int *param_2)
 {
-  extern undefined D_001D8750;
-  extern undefined D_001D8748;
-  extern undefined D_001D8734;
-  extern undefined D_001D8720;
-  extern undefined D_001D6B04;
-  extern undefined D_001D87A0;
-  extern undefined D_001D3A28;
-  extern undefined D_001D8798;
-  extern undefined D_001D8794;
-  char *pcVar1;
-  char cVar2;
-  char *pcVar3;
-  int iVar4;
-  int iVar5;
-  
-  pcVar3 = (char *)param_2[1];
-  pcVar1 = pcVar3 + 1;
+  int func_0013E9DB(...);
+  int func_0011B4F0(...);
+  extern char D_001D8750, D_001D8748, D_001D8734, D_001D8720, D_001D6B04, D_001D87A0, D_001D3A28, D_001D8798, D_001D8794;
+  char *s = (char *)param_2[1];
+  char *e = s + 1;
+  char c;
+  int len;
+  int idx;
+  int *pl = &len;
+
   do {
-    cVar2 = *pcVar3;
-    pcVar3 = pcVar3 + 1;
-  } while (cVar2 != '\0');
-  if (pcVar3 != pcVar1) {
-    iVar4 = func_0013E9DB(*param_2);
-    iVar5 = iVar4 + -1;
-    if ((int)(uint)*(ushort *)(param_1 + 4) <= iVar5) {
-      *(short *)(param_1 + 4) = (short)iVar4;
+    c = *s;
+    s++;
+  } while (c != 0);
+  len = s - e;
+  if (len != 0) {
+    idx = func_0013E9DB(*param_2) - 1;
+    if (*(unsigned short *)(param_1 + 4) <= idx) {
+      *(short *)(param_1 + 4) = idx + 1;
     }
-    iVar4 = func_0011B4F0(param_2[1],((undefined *)&D_001D8750));
-    if (iVar4 == 0) {
-      *(undefined4 *)(param_1 + 8 + iVar5 * 4) = 0;
+    if (func_0011B4F0(param_2[1], &D_001D8750) == 0) {
+      *(int *)(param_1 + 8 + idx * 4) = 0;
       return;
     }
-    iVar4 = func_0011B4F0(param_2[1],((undefined *)&D_001D8748));
-    if (iVar4 == 0) {
-      *(undefined4 *)(param_1 + 8 + iVar5 * 4) = 1;
+    if (func_0011B4F0(param_2[1], &D_001D8748) == 0) {
+      *(int *)(param_1 + 8 + idx * 4) = 1;
       return;
     }
-    iVar4 = func_0011B4F0(param_2[1],((undefined *)&D_001D8734));
-    if (iVar4 == 0) {
-      *(undefined4 *)(param_1 + 8 + iVar5 * 4) = 2;
+    if (func_0011B4F0(param_2[1], &D_001D8734) == 0) {
+      *(int *)(param_1 + 8 + idx * 4) = 2;
       return;
     }
-    iVar4 = func_0011B4F0(param_2[1],((undefined *)&D_001D8720));
-    if (iVar4 == 0) {
-      *(undefined4 *)(param_1 + 8 + iVar5 * 4) = 3;
+    if (func_0011B4F0(param_2[1], &D_001D8720) == 0) {
+      *(int *)(param_1 + 8 + idx * 4) = 3;
       return;
     }
-    iVar4 = func_0011B4F0(param_2[1],((undefined *)&D_001D6B04));
-    if (iVar4 == 0) {
-      *(undefined4 *)(param_1 + 8 + iVar5 * 4) = 4;
+    if (func_0011B4F0(param_2[1], &D_001D6B04) == 0) {
+      *(int *)(param_1 + 8 + idx * 4) = 4;
       return;
     }
-    iVar4 = func_0011B4F0(param_2[1],((undefined *)&D_001D87A0));
-    if (iVar4 == 0) {
-      *(undefined4 *)(param_1 + 8 + iVar5 * 4) = 5;
+    if (func_0011B4F0(param_2[1], &D_001D87A0) == 0) {
+      *(int *)(param_1 + 8 + idx * 4) = 5;
       return;
     }
-    iVar4 = func_0011B4F0(param_2[1],((undefined *)&D_001D3A28));
-    if (iVar4 == 0) {
-      *(undefined4 *)(param_1 + 8 + iVar5 * 4) = 6;
+    if (func_0011B4F0(param_2[1], &D_001D3A28) == 0) {
+      *(int *)(param_1 + 8 + idx * 4) = 6;
       return;
     }
-    iVar4 = func_0011B4F0(param_2[1],((undefined *)&D_001D8798));
-    if (iVar4 == 0) {
-      *(undefined4 *)(param_1 + 8 + iVar5 * 4) = 8;
+    if (func_0011B4F0(param_2[1], &D_001D8798) == 0) {
+      *(int *)(param_1 + 8 + idx * 4) = 8;
       return;
     }
-    iVar4 = func_0011B4F0(param_2[1],((undefined *)&D_001D8794));
-    if (iVar4 == 0) {
-      *(undefined4 *)(param_1 + 8 + iVar5 * 4) = 9;
+    if (func_0011B4F0(param_2[1], &D_001D8794) == 0) {
+      *(int *)(param_1 + 8 + idx * 4) = 9;
     }
   }
-  return;
 }
 
 void func_000AE390(char *param_1)
