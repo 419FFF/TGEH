@@ -23,6 +23,9 @@ extern unsigned char D_0000FF00;
 extern unsigned char D_0000FF01;
 extern "C" __declspec(dllimport) long __stdcall NtAllocateVirtualMemory(char **base, unsigned long zeroBits, unsigned long *size, unsigned long type, unsigned long protect);
 void __stdcall func_0010C726(void *p, unsigned int a, unsigned int b);
+extern "C" __declspec(dllimport) long __stdcall NtFreeVirtualMemory(char **base, unsigned long *size, unsigned long type);
+void * __stdcall func_0010C7B9(Heap *heap, HeapSegment *seg, unsigned long *size, int flags);
+void * __stdcall func_0010C944(Heap *heap, void *block, unsigned long *size, int flags);
 
 #pragma optimize("y", off)
 #pragma optimize("s", on)
@@ -87,3 +90,59 @@ void __stdcall func_0010CBE9(Heap *heap, HeapFreeEntry *block, unsigned long fre
 unsigned short *__stdcall func_0010CCE3(unsigned short *p) { if(*((unsigned char *)p+5)&8) return (unsigned short *)((char *)p-24); return (unsigned short *)((char *)p+(*p*16)-16); }
 #pragma optimize("y", on)
 int __stdcall func_0010D0FD(int a,int b,int c) { unsigned char f=*(unsigned char *)(c-11); int result; if(!(f&1)){ result=-1; goto done; } if(f&8){ result=*(int *)(c-24)-*(unsigned short *)(c-16); goto done; } result=(*(unsigned short *)(c-16)<<4)-*(unsigned char *)(c-10); done: return result; }
+
+#pragma optimize("y", off)
+#pragma optimize("s", on)
+unsigned char __stdcall func_0010D12C(Heap *heap, char *segment, unsigned char index, unsigned long flags, char *base, char *commit, char *reserveEnd)
+{
+    unsigned short prevSize;
+    int pages;
+    volatile int headerUnits;
+    register int pageSize = 0x1000;
+    char *seg;
+    char *first;
+    register char *cmt;
+    int uncommitted;
+
+    pages = ((int)reserveEnd - (int)base) / pageSize;
+    seg = segment;
+    first = (char *)(((unsigned int)seg + 0x57) & 0xfffffff0);
+    if ((char *)heap == base)
+        prevSize = *(unsigned short *)heap;
+    else
+        prevSize = 0;
+    headerUnits = ((int)first - (int)seg) >> 4;
+    cmt = commit;
+    if (first + 0x10 >= cmt) {
+        if (first + 0x10 >= reserveEnd)
+            return 0;
+        segment = (char *)((first - cmt) + 0x10);
+        if (NtAllocateVirtualMemory(&commit, 0, (unsigned long *)&segment, pageSize, 4) < 0)
+            return 0;
+        cmt = commit + (int)segment;
+    }
+    uncommitted = ((int)reserveEnd - (int)cmt) / pageSize;
+    *(unsigned short *)(seg + 2) = prevSize;
+    *(unsigned short *)seg = (unsigned short)headerUnits;
+    *(unsigned long *)(seg + 0x14) = flags;
+    *(Heap **)(seg + 0x18) = heap;
+    *(char **)(seg + 0x20) = base;
+    *(unsigned char *)(seg + 5) = 1;
+    *(char **)(seg + 0x2c) = base + (pages << 12);
+    *(unsigned char *)(seg + 4) = index;
+    *(unsigned long *)(seg + 0x10) = 0xffeeffee;
+    *(char **)(seg + 0x28) = first;
+    *(int *)(seg + 0x24) = pages;
+    *(int *)(seg + 0x30) = uncommitted;
+    if (uncommitted != 0)
+        func_0010C726(seg, (unsigned int)cmt, (unsigned int)(uncommitted << 12));
+    heap->Segments[index] = (HeapSegment *)seg;
+    *(unsigned char *)(first + 5) = 0x10;
+    *(char **)(seg + 0x40) = first;
+    *(unsigned short *)(first + 2) = *(unsigned short *)seg;
+    *(unsigned char *)(first + 4) = index;
+    func_0010CBE9(heap, (HeapFreeEntry *)first, (unsigned long)((cmt - first) >> 4));
+    return 1;
+}
+#pragma optimize("", on)
+
