@@ -15,11 +15,12 @@ struct Ent6810 {
   int a;
   char b[8];
   float c;
-  char d[0x10];
-  char e0, e1;
-  char f[0x1a];
+  char d[0x14];
+  char e0, pad0, e1;
+  char f[0x19];
   char g[0x40];
   int h;
+  char tail[0xc];
 };
 struct Vec65F0 { int x, y; float z; };
 struct Buf65F0 { char pad[0x30]; int x; int y; float z; };
