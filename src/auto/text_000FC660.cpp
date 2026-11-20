@@ -14,6 +14,13 @@ char _func_000FC880(void) {
     return 1;
 }
 
+unsigned char func_000FCF30(void)
+{
+  int func_000F8B60(...);
+  func_000F8B60(1, 0);
+  return 1;
+}
+
 // _func_000FD040 - complex pointer dereference with conditions
 s32 _func_000FD040(s32 param_1, s32 *param_2) {
     extern u16 D_003281F0;
