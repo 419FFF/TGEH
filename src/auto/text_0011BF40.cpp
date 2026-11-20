@@ -6,6 +6,69 @@ struct MeshSrc { unsigned count; int pos[3]; int pad; int* verts; };
 struct MeshDst { unsigned count; int pos[3]; int pad; int* verts; };
 #include "ghidra.h"
 
+void _func_0011C1D0(void)
+{
+    extern int D_003278A4, D_003278A8, D_003278A0;
+    extern volatile unsigned int D_003268E8;
+    extern unsigned int D_00326900[], D_003268FC[];
+    extern int func_0013B2B0(int, float);
+    extern void func_0013AF50(int);
+    extern void func_0013AF70(int);
+    extern int func_0011B690(int);
+    extern void func_00131990(int);
+    extern int func_0011B760(int, unsigned int);
+    extern void func_0011B990(unsigned int);
+    extern void func_0011BB00(unsigned int);
+    extern void func_0011C3E0(unsigned int);
+    extern void func_00116FB0(unsigned int);
+    extern void func_0013B280(int, int);
+    struct E { char pad[0x18]; char state; char p2[3]; int a; int b; int c; short d; short e; short f; };
+    #define CUR ((E *)D_00326900[0])
+    for (;;) {
+        func_0013B2B0(D_003278A4, -1.0f);
+        func_0013AF50(D_003278A8);
+        for (; D_003268E8 > 0; D_003268E8--) {
+            char st = CUR->state;
+            if (st == 1) {
+                func_0013AF70(D_003278A8);
+                int r = func_0011B690(CUR->a);
+                func_00131990(CUR->b);
+                r = func_0011B760(r, D_00326900[0]);
+                func_0013AF50(D_003278A8);
+                CUR->c = r;
+                E *q = CUR;
+                st = q->state;
+                if (st == 0) {
+                    q->d++;
+                    CUR->state = 2;
+                    func_0011B990(D_00326900[0]);
+                } else {
+                    q->state = 2;
+                    if (st == 3) {
+                        CUR->f--;
+                        func_0011BB00(D_00326900[0]);
+                    }
+                }
+            } else if (st == 0) {
+                func_0011C3E0(D_00326900[0]);
+                func_00116FB0(D_00326900[0]);
+            } else if (st == 4) {
+                func_0011C3E0(D_00326900[0] + 0xc);
+                CUR->state = 2;
+            }
+            func_0013B280(D_003278A0, 1);
+            unsigned int i = 1;
+            if (i < D_003268E8) {
+                do {
+                    D_003268FC[i] = D_00326900[i];
+                    i++;
+                } while (i < D_003268E8);
+            }
+        }
+        func_0013AF70(D_003278A8);
+    }
+}
+
 void func_0011C340(void)
 {
   extern undefined4 D_003278AC;
@@ -70,13 +133,12 @@ char* _func_0011C430(unsigned n, int** src, int arg)
   *(char**)(obj + 0xe4) = (char*)func_00116A90(n * 0x18, 1, 1);
   if (n > 0) {
     int off = 0;
-    unsigned left = n;
     do {
-      int* s = *src;
+      int* sp = *src + 1;
       int* d = (int*)(*(char**)(obj + 0xe4) + off + 4);
-      d[0] = s[1];
-      d[1] = s[2];
-      d[2] = s[3];
+      d[0] = sp[0];
+      d[1] = sp[1];
+      d[2] = sp[2];
       *(int*)(*(char**)(obj + 0xe4) + off) = **src;
       *(void**)(*(char**)(obj + 0xe4) + off + 0x14) = func_00116A90(**src << 4, 1, 1);
       unsigned i = 0;
@@ -97,8 +159,7 @@ char* _func_0011C430(unsigned n, int** src, int arg)
       }
       off += 0x18;
       src++;
-      left--;
-    } while (left != 0);
+    } while (--n != 0);
   }
   return obj;
 }
@@ -123,6 +184,62 @@ void func_0011C540(int param_1)
 }
 
 void func_0011C590(unsigned int x) { extern unsigned int D_003280B8; extern unsigned int D_003280CC[256], D_003280D0[256], D_003278B0[]; unsigned int i=D_003280B8; if(i>x){for(;;){unsigned int *p=(unsigned int*)((char*)D_003278B0+i*16);p[2]=p[-2];p[3]=p[-1];p[4]=p[0];p[5]=p[1];D_003280D0[i]=D_003280CC[i];i--;if(i<=x)break;}}D_003280B8=i+1;}
+
+extern "C" void *memcpy(void *, const void *, unsigned int);
+void _func_0011C5F0(int index) {
+    extern undefined4 D_003280B8;
+    extern undefined D_003278C0;
+    extern undefined D_003278BC;
+    extern undefined D_003280D0;
+    extern undefined D_003280D4;
+    extern undefined D_003280D8;
+    extern undefined D_003280DC;
+    extern undefined D_003280E0;
+    int i = index;
+    int n = D_003280B8 - 1;
+    int len = n - i;
+    D_003280B8 = n;
+    if (len >= 4) {
+        int *p = (int *)((char *)&D_003278C0 + (i << 4));
+        unsigned limit = (unsigned)n - 3;
+        do {
+            p[-2] = p[2];
+            p[-1] = p[3];
+            p[0] = p[4];
+            p[1] = p[5];
+            ((int *)&D_003280D0)[i] = ((int *)&D_003280D4)[i];
+            p[2] = p[6];
+            p[3] = p[7];
+            p[4] = p[8];
+            p[5] = p[9];
+            ((int *)&D_003280D4)[i] = ((int *)&D_003280D8)[i];
+            p[6] = p[10];
+            p[7] = p[11];
+            p[8] = p[12];
+            p[9] = p[13];
+            ((int *)&D_003280D8)[i] = ((int *)&D_003280DC)[i];
+            p[10] = p[14];
+            p[11] = p[15];
+            p[12] = p[16];
+            p[13] = p[17];
+            ((int *)&D_003280DC)[i] = ((int *)&D_003280E0)[i];
+            i += 4;
+            p += 16;
+        } while ((unsigned)i < limit);
+    }
+    if ((unsigned)i < (unsigned)n) {
+        int *q = (int *)((char *)&D_003278BC + (i << 4));
+        unsigned remain = (unsigned)n - (unsigned)i;
+        memcpy((char *)&D_003280D0 + i * 4, (char *)&D_003280D4 + i * 4, remain << 2);
+        do {
+            q[-1] = q[3];
+            q[0] = q[4];
+            q[1] = q[5];
+            q[2] = q[6];
+            q += 4;
+        } while (--remain != 0);
+    }
+}
 
 void func_0011C710(int i, int a, int b) { extern float D_003280D0[], D_001DF648, D_001D27B8, D_001D27B0; extern float D_003278B8[][4]; float d=D_003280D0[a]-D_003280D0[b]; float t=D_001D27B8; if(D_001DF648<=d){ float r=D_003280D0[a]/d; if(D_001D27B8<=r){ t=r; if(D_001D27B0<r)t=D_001D27B0; } } D_003280D0[i]=0; D_003278B8[i][0]=(D_003278B8[b][0]-D_003278B8[a][0])*t+D_003278B8[a][0]; D_003278B8[i][1]=(D_003278B8[b][1]-D_003278B8[a][1])*t+D_003278B8[a][1]; D_003278B8[i][2]=(D_003278B8[b][2]-D_003278B8[a][2])*t+D_003278B8[a][2]; }
 
