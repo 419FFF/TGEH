@@ -3,6 +3,43 @@
 
 extern "C" double __cdecl fabs(double);
 #pragma intrinsic(fabs)
+void func_00130F00(float *out, float *m)
+{
+  extern float D_001D27B8, D_001D27B0, D_001D27EC;
+  float func_00131220(float);
+  int n[3];
+  int i = 0, j, k;
+  float tr;
+  double s;
+  float *q = (float*)n;
+  n[0] = 1;
+  n[1] = 2;
+  n[2] = i;
+  tr = (float)((double)m[5] + m[0] + m[10]);
+  if (tr > D_001D27B8) {
+    s = func_00131220(tr + D_001D27B0);
+    out[3] = (float)(D_001D27EC * s);
+    s = D_001D27EC / s;
+    out[0] = (float)((m[9] - m[6]) * s);
+    out[1] = (float)((m[2] - m[8]) * s);
+    out[2] = (float)((m[4] - m[1]) * s);
+    return;
+  }
+  if (m[5] > m[0]) i = 1;
+  if (m[i * 5] < m[10]) i = 2;
+  j = n[i];
+  k = n[j];
+  s = func_00131220((float)(m[i * 5] - (m[k * 5] + (double)m[j * 5]) + D_001D27B0));
+  q[i] = (float)(D_001D27EC * s);
+  if (s != D_001D27B8) s = D_001D27EC / s;
+  out[3] = (float)((m[j + k * 4] - (double)m[k + j * 4]) * s);
+  q[j] = (float)((m[i + j * 4] + (double)m[j + i * 4]) * s);
+  q[k] = (float)((m[i + k * 4] + (double)m[k + i * 4]) * s);
+  out[0] = q[0];
+  out[1] = q[1];
+  out[2] = q[2];
+}
+
 float func_00131210(volatile float param_1) {
     param_1 = (float)fabs((double)param_1);
     return param_1;
@@ -114,6 +151,35 @@ void func_001314C0(void) { }
 
 float func_00131550(float x) { return 0.0f; }
 
+#pragma intrinsic(fabs)
+float func_00131610(float a, float b)
+{
+  extern float D_001DF760, D_001D27B8, D_001D286C, D_001D342C, D_001DF764;
+  extern float *D_00331B2C;
+  int func_00131460(float);
+  int i;
+  volatile float x = a;
+  volatile float y = b;
+  x = (float)fabs((double)x);
+  y = (float)fabs((double)y);
+  if (x > y) {
+    i = func_00131460((float)((double)a * D_001DF760 / b));
+    if (i < 0) {
+      if ((double)b < D_001D27B8) return D_001D286C - D_00331B2C[-i];
+      return -D_00331B2C[-i];
+    }
+    if ((double)b < D_001D27B8) return D_00331B2C[i] - D_001D286C;
+    return D_00331B2C[i];
+  }
+  i = func_00131460((float)((double)b * D_001DF760 / a));
+  if (i < 0) {
+    if ((double)a < D_001D27B8) return D_00331B2C[-i] - D_001D342C;
+    return D_00331B2C[-i] + D_001D342C;
+  }
+  if ((double)a < D_001D27B8) return D_001DF764 - D_00331B2C[i];
+  return D_001D342C - D_00331B2C[i];
+}
+
 float func_00131760(void) { extern unsigned int func_00131310(void); extern float D_001D27B0; unsigned int u=func_00131310(); u=(u&0x7fffff)|0x3f800000; return *(float*)&u-D_001D27B0; }
 
 void func_00131780(int arg0,char *arg1) { extern int func_00148220(int); extern int func_00116A90(int,int,int); extern int func_0011C3B0(int,int,int); extern char D_00331B64; int value=func_00148220(arg0); int obj=func_00116A90(0x90,1,1); char *dst=(char*)(obj+0xc); char *src=arg1; int off=(int)dst-(int)src; char c; do { c=*src; dst[off+(int)src]=c; src++; } while(c); *(int*)(obj+0x8c)=value; func_0011C3B0((int)&D_00331B64,obj,obj); }
@@ -142,6 +208,7 @@ void func_00131990(char *param_1)
 
 void _func_001319B0(char *out,unsigned int size){extern char *_func_0013B1E0(void);char *src=_func_0013B1E0();char *end=src;while(*end)end++;unsigned int n=(unsigned int)(end-src-1);if(size<=n){unsigned int i=0;while(i<size-1){out[i]=src[i];i++;}out[size-1]=0;return;}int off=(int)out-(int)src;do{char c=*src;*(char*)((int)src+off)=c;src++;}while(src[-1]);}
 
+extern "C" void *memcpy(void *, const void *, unsigned int);
 extern volatile int D_00331B70;
 extern char *D_00331B74;
 extern void _func_001318D0(unsigned int, char *);
