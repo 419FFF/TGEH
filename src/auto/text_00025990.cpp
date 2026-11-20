@@ -1,12 +1,94 @@
 /* 10 functions from 0x00025990 to 0x00026989, found by Ghidra. */
 #include "common.h"
 #include "ghidra.h"
+#include <string.h>
 
 void _func_00025990(int a){extern int D_00307D10;int _func_000487A0(...);int _func_000A1C00(...);int _func_00116FB0(...);int*s=*(int**)(a+0x110);_func_000487A0(D_00307D10,s[0x6c/4]);_func_000A1C00(s[0x25c/4]);_func_00116FB0((int)s);}
 
-void __fastcall _func_000259D0(int a){int*p=(int*)(a+0x17c);p[0]=0;p[1]=0x3f800000;p[2]=0;p[3]=0;p[4]=0x3f800000;p[5]=0;p[6]=0;p[7]=0;p[8]=0x3f800000;p[9]=0;}
+void __fastcall _func_000259D0(int a,int unused){int*p=(int*)(a+0x17c);p[0]=0;p[1]=0x3f800000;p[2]=0;p[3]=0;p[4]=0x3f800000;p[5]=0;p[6]=0;p[7]=0;p[8]=0x3f800000;p[9]=0;}
 
-void __fastcall _func_00025A20(int a){int*p=(int*)(a+0x17c);p[0]=0;p[1]=0x3f800000;p[2]=0x3f800000;p[3]=0x3f800000;p[4]=0x3f800000;p[5]=0;p[6]=0x3f800000;p[7]=0x3f800000;p[8]=0x3f800000;p[9]=0;}
+void __fastcall _func_00025A20(int a,int unused){int*p=(int*)(a+0x17c);p[0]=0;p[1]=0x3f800000;p[2]=0x3f800000;p[3]=0x3f800000;p[4]=0x3f800000;p[5]=0;p[6]=0x3f800000;p[7]=0x3f800000;p[8]=0x3f800000;p[9]=0;}
+
+void func_00025A70(int param_1)
+{
+  int func_00116A90(...);
+  int func_0004FA80(...);
+  int func_00048720(...);
+  extern undefined4 D_00307D10;
+  int func_00056D50(...);
+  int func_0009C6A0(...);
+  extern undefined D_001D35EC;
+  int func_0011DF00(...);
+  int func_00045A60(...);
+  int func_000A1BB0(...);
+  extern undefined D_001D35E4;
+  extern undefined D_001D35D8;
+  extern undefined D_001D35C8;
+  extern undefined D_001D35BC;
+  extern undefined D_001D35B0;
+  int func_00131990(...);
+  extern undefined D_001D29C7;
+  undefined4 *puVar1;
+  undefined4 uVar2;
+  int iVar3;
+  undefined4 *puVar4;
+  byte bVar5;
+  
+  bVar5 = 0;
+  puVar1 = (undefined4 *)func_00116A90(0x27c,1,1);
+  *(undefined4 **)(param_1 + 0x110) = puVar1;
+  puVar4 = puVar1;
+  for (iVar3 = 0x9f; iVar3 != 0; iVar3 = iVar3 + -1) {
+    *puVar4 = 0;
+    puVar4 = puVar4 + (uint)bVar5 * -2 + 1;
+  }
+  puVar4 = puVar1 + 1;
+  func_0004FA80(param_1,puVar4);
+  *(undefined4 *)(param_1 + 0x17c) = 0;
+  *(undefined4 *)(param_1 + 0x180) = 0x3f800000;
+  *(undefined4 *)(param_1 + 0x18c) = 0x3f800000;
+  *(undefined4 *)(param_1 + 0x19c) = 0x3f800000;
+  *(undefined4 *)(param_1 + 0x184) = 0;
+  *(undefined4 *)(param_1 + 0x188) = 0;
+  *(undefined4 *)(param_1 + 400) = 0;
+  *(undefined4 *)(param_1 + 0x194) = 0;
+  *(undefined4 *)(param_1 + 0x198) = 0;
+  *(undefined4 *)(param_1 + 0x1a0) = 0;
+  *(undefined1 *)((int)puVar1 + 0x99) = 0;
+  *(undefined1 *)((int)puVar1 + 0x9a) = 0;
+  puVar1[0x1a] = *(undefined4 *)(param_1 + 0x134);
+  iVar3 = (int)(*(float *)(param_1 + 0x138) / *(float *)(puVar1[0x1a] + 0x74));
+  puVar1[0x21] = (unsigned int)iVar3 << 1;
+  uVar2 = func_00048720(D_00307D10,(unsigned int)iVar3 << 1,puVar1[0x1a],param_1);
+  puVar1[0x1b] = uVar2;
+  puVar1[0x19] = *(undefined4 *)(param_1 + 0x130);
+  *puVar4 = 5;
+  func_00056D50(param_1,puVar4);
+  iVar3 = func_0009C6A0(param_1,((undefined *)&D_001D35EC));
+  puVar1[0x9b] = iVar3;
+  if (iVar3 != 0) {
+    uVar2 = *(undefined4 *)(*(int *)(iVar3 + 0x2c) + 0x158);
+    puVar1[0x9c] = uVar2;
+    func_0011DF00(uVar2);
+    puVar1[0xd] = 0;
+  }
+  func_00045A60(param_1);
+  if (puVar1[0x9b] != 0) {
+    uVar2 = func_000A1BB0(param_1,((undefined *)&D_001D35E4));
+    puVar1[0x96] = uVar2;
+  }
+  uVar2 = func_000A1BB0(param_1,((undefined *)&D_001D35D8));
+  puVar1[0x97] = uVar2;
+  uVar2 = func_000A1BB0(param_1,((undefined *)&D_001D35C8));
+  puVar1[0x98] = uVar2;
+  uVar2 = func_000A1BB0(param_1,((undefined *)&D_001D35BC));
+  puVar1[0x99] = uVar2;
+  uVar2 = func_000A1BB0(param_1,((undefined *)&D_001D35B0));
+  puVar1[0x9a] = uVar2;
+  func_00131990(((undefined *)&D_001D29C7));
+  puVar1[0x9e] = 0xffffffff;
+  return;
+}
 
 void func_00025C00(int param_1)
 {
@@ -329,6 +411,75 @@ LAB_00002a09:
 }
 
 void _func_000264A0(int a){extern int D_00307D10;int _func_000487A0(...);int _func_000A1C00(...);int _func_00116FB0(...);int*s=*(int**)(a+0x110);_func_000487A0(D_00307D10,s[0x6c/4]);_func_000A1C00(s[0x268/4]);_func_000A1C00(s[0x25c/4]);_func_000A1C00(s[0x264/4]);_func_000A1C00(s[0x260/4]);if(s[0x258/4])_func_000A1C00(s[0x258/4]);_func_00116FB0((int)s);}
+
+void _func_00026510(int param_1)
+{
+  int func_00116A90(...);
+  int func_0009C6A0(...);
+  extern char D_001D35EC[], D_001D3614[], D_001D3608[], D_001D2968[], D_001D35E4[], D_001D29C7[];
+  int func_00110420(...);
+  int func_000F8F40(...);
+  int func_00110480(...);
+  int func_0011DF00(...);
+  int func_0009C7A0(...);
+  int func_00110060(...);
+  float func_00131760(void);
+  int func_0012F560(...);
+  int func_0012ECA0(...);
+  int func_0012F2E0(...);
+  int func_001105E0(...);
+  int func_00110000(...);
+  int func_00045A60(...);
+  int func_000A1BB0(...);
+  int func_00131990(...);
+  int *piVar1;
+  int iVar2;
+  float *pfVar3;
+  float *pfVar4;
+  char local_90[64];
+  __declspec(align(16)) char local_50[64];
+
+  piVar1 = (int *)func_00116A90(0x1c, 1, 1);
+  *(int **)(param_1 + 0x110) = piVar1;
+  piVar1[0] = 0;
+  piVar1[1] = 0;
+  piVar1[2] = 0;
+  piVar1[3] = 0;
+  piVar1[4] = 0;
+  piVar1[5] = 0;
+  piVar1[6] = 0;
+  iVar2 = func_0009C6A0(param_1, D_001D35EC);
+  *piVar1 = iVar2;
+  func_00110420(*(int *)(param_1 + 0x2c), *(int *)(iVar2 + 0x2c));
+  iVar2 = func_000F8F40(*(int *)(param_1 + 0x2c));
+  func_00110480(*(int *)(iVar2 + 0xe0), *(int *)(*piVar1 + 0x2c), 8);
+  iVar2 = *(int *)(*(int *)(*piVar1 + 0x2c) + 0x158);
+  piVar1[1] = iVar2;
+  func_0011DF00(iVar2);
+  pfVar3 = (float *)func_0009C7A0(param_1, D_001D3614, 0);
+  pfVar4 = (float *)func_0009C7A0(param_1, D_001D3608, 0);
+  if ((pfVar3 == 0) || (pfVar4 == 0)) {
+    *(char *)((int)piVar1 + 0x1a) = 1;
+  } else {
+    func_00110060(*(int *)(param_1 + 0x2c), local_50);
+    *(float *)&piVar1[5] = (*pfVar4 - *pfVar3) * func_00131760() + *pfVar3;
+    func_00110060(*(int *)(*piVar1 + 0x2c), local_90);
+    func_0012F560(local_90, local_50);
+    func_0012ECA0(local_90 + 0x30, piVar1[5]);
+    func_0012F2E0(local_90, local_50);
+    func_001105E0(*(int *)(*piVar1 + 0x2c), local_90, 0);
+    func_00110000(*(int *)(*piVar1 + 0x2c));
+    *(char *)((int)piVar1 + 0x1a) = 0;
+  }
+  iVar2 = func_0009C7A0(param_1, D_001D2968, 0);
+  piVar1[2] = iVar2;
+  func_00045A60(param_1);
+  iVar2 = func_000A1BB0(param_1, D_001D35E4);
+  piVar1[3] = iVar2;
+  func_00131990(D_001D29C7);
+  *(char *)(piVar1 + 6) = 1;
+  piVar1[4] = 0x40a00000;
+}
 
 unsigned char *func_00026910(unsigned char *p) { extern void *func_00116A90(...); if((*p%2)==0) ++*p; unsigned char *r=(unsigned char *)func_00116A90(0x10,1,1); int n=*p; void *q=func_00116A90(n*n*4,1,1); *(void **)(r+4)=q; r[0]=*p; unsigned char c=*p; r[8]=c>>1; return r; }
 
