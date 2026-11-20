@@ -43,12 +43,6 @@ void func_00131270(float x, float *s, float *c) {
     *c = (float)cos((double)x);
 }
 
-extern double tan(double);
-#pragma intrinsic(tan)
-float func_00131300(float x) {
-    return (float)tan((double)x);
-}
-
 float func_00131290(float param_1, float param_2, float param_3) {
     if (param_1 < param_2) {
         return param_2;
