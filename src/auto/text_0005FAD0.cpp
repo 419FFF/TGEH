@@ -2,6 +2,10 @@
 #include "common.h"
 #include "ghidra.h"
 
+struct Ent60980 { char pad[0x13]; unsigned char k13; unsigned char k14; char pad2[0x17]; void *p2c; };
+struct Node60980 { struct Node60980 *next; int pad; struct Ent60980 *ent; };
+struct Item60980 { char pad[0x28e]; char flag; char pad2[5]; struct Node60980 *l0; char pad3[0x20]; struct Node60980 *l1; };
+struct World60980 { char pad[0xe4]; unsigned int count; struct { struct Item60980 *item; unsigned int type; } e[1]; };
 extern int D_002EED64;
 extern float D_001D5420;
 extern int D_002EEF08;
@@ -70,7 +74,65 @@ unsigned int func_00060700(void)
     }
     return 1;
 }
-#pragma optimize("", on)
+
+#pragma optimize("y", on)
+void _func_00060980(void) {
+    float func_0012E7B0(float *, float *);
+    void func_0012E5F0(float *, float *, float *);
+    void func_0012ECA0(float *, float);
+    void func_00060880(void *, float *, float);
+    void func_00060780(void *, float *, float);
+    extern int D_002EEE94;
+    extern int *D_002EED18;
+    extern int D_00313B54;
+    extern int D_00313454;
+    float vec[4];
+    float dist;
+    unsigned int i;
+    char *obj;
+    unsigned int count;
+
+    dist = func_0012E7B0((float *)&D_002EEE94, (float *)&D_002EEF08);
+    func_0012E5F0(vec, (float *)&D_002EEE94, (float *)&D_002EEF08);
+    func_0012ECA0(vec, 0.5f);
+    count = *(unsigned int *)((char *)D_002EED18 + 0xe4);
+    i = 0;
+    if (count > 0) {
+        obj = (char *)D_002EED18;
+        do {
+            unsigned int type = *(unsigned int *)(obj + i * 8 + 0xec);
+            char *item;
+            unsigned int b;
+            if (type > 2)
+                return;
+            item = *(char **)(obj + i * 8 + 0xe8);
+            if (type != 2 || item[0x28e] != 0) {
+                func_00060880(item, vec, dist);
+                b = 0;
+                do {
+                    int *node;
+                    if (b == 0)
+                        node = *(int **)(item + 0x294);
+                    else
+                        node = *(int **)(item + 0x2b8);
+                    while (node != 0) {
+                        char *ent = (char *)node[2];
+                        if (ent[0x14] == 1 && ent[0x13] != 12 && ent != (char *)D_002EED64 &&
+                            (D_00313B54 != 6 || ent != (char *)D_00313454)) {
+                            func_00060780(*(void **)(ent + 0x2c), vec, dist);
+                        }
+                        node = (int *)*node;
+                    }
+                    b++;
+                } while (b < 2);
+            }
+            i++;
+            obj = (char *)D_002EED18;
+            count = *(unsigned int *)(obj + 0xe4);
+        } while (i < count);
+    }
+}
+#pragma optimize("y", off)
 
 void func_00060AA0(void)
 {
