@@ -32,6 +32,62 @@ void func_0007DFF0(void) {
 
 void func_0007E050(void) { extern int D_001D66B0; int func_0011D0E0(...); func_0011D0E0((int)&D_001D66B0); }
 
+void func_0007E060(void)
+{
+  extern int D_001D66C4, D_001D66C8, D_001D66CC, D_001D66D0;
+  extern short D_001D66D4;
+  extern char D_001D66B8, D_001D66B0, D_002FADF8[], D_002FADFC[], D_002FAE00[], D_002FAE04[];
+  extern int D_002FAE48;
+  extern int D_0030809C;
+  int func_0011E840(...);
+  int func_0011DD60(...);
+  int func_0011E830(...);
+  int func_0011DEF0(...);
+  int func_00110480(...);
+  int a[61];
+  unsigned int k;
+  int r;
+  for (k = 0; k < 0x50; k += 0x10) {
+    int *p = a;
+    for (r = 0x3d; r != 0; r--)
+      *p++ = 0;
+    a[36] = 2;
+    a[37] = 2;
+    a[0] = D_001D66C4;
+    a[1] = D_001D66C8;
+    a[2] = D_001D66CC;
+    a[46] = 4;
+    a[47] = 5;
+    a[32] = 0;
+    a[33] = 0;
+    a[34] = 0;
+    a[35] = 0;
+    a[42] = 3;
+    a[43] = 3;
+    a[44] = 3;
+    a[45] = 3;
+    a[48] = 0;
+    a[54] = 0;
+    a[53] = 0;
+    a[55] = 0;
+    a[60] = 10;
+    a[57] = 0x1e;
+    a[3] = D_001D66D0;
+    *(short *)&a[4] = D_001D66D4;
+    a[59] = 0x58;
+    r = func_0011E840(&D_001D66B8, a);
+    *(int *)(D_002FADF8 + k) = r;
+    r = func_0011DD60(&D_001D66B0, 0x1e, r, *(int *)(r + 0x14c));
+    *(int *)(D_002FADFC + k) = r;
+    func_0011E830(*(int *)(D_002FADF8 + k), r);
+    func_0011DEF0(*(int *)(D_002FADFC + k));
+    *(int *)(D_002FAE00 + k) = 1;
+    *(int *)(D_002FAE04 + k) = 0;
+    func_00110480(D_0030809C, *(int *)(D_002FADF8 + k), 8);
+  }
+  D_002FAE48 = 1;
+}
+
 void func_0007E1F0(void)
 {
   int func_001160B0(...);
