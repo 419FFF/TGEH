@@ -99,6 +99,61 @@ void func_00089D40(void) {
     func_0011D0E0((int)&D_001D6DF4);
 }
 
+void func_00089D50(int *param_1, int param_2)
+{
+  int func_0011CD40(...);
+  float func_00131760(void);
+  extern float D_001D27EC;
+  int func_0011CDF0(...);
+  int func_0011CE20(...);
+  int func_0011CE10(...);
+  int func_0011CE30(...);
+  int func_0011CE50(...);
+  int func_0011CF30(...);
+  int func_0011CFC0(...);
+  int func_0011CF90(...);
+  int iVar1;
+  unsigned int uVar2;
+
+  iVar1 = func_0011CD40(1, 10, 1, 4, 1);
+  *param_1 = iVar1;
+  **(int **)(iVar1 + 4) = 0;
+  *(int *)(*(int *)(*param_1 + 4) + 4) = 0;
+  *(int *)(*(int *)(*param_1 + 4) + 8) = 0;
+  uVar2 = 0;
+  do {
+    *(float *)(uVar2 + *(int *)(*param_1 + 0xc)) = (func_00131760() - D_001D27EC) * D_001D27EC;
+    *(int *)(*(int *)(*param_1 + 0xc) + 4 + uVar2) = 0x3f800000;
+    double f = func_00131760() - D_001D27EC;
+    uVar2 = uVar2 + 0xc;
+    *(float *)(*(int *)(*param_1 + 0xc) + -4 + uVar2) = (float)(f * D_001D27EC);
+  } while (uVar2 < 0x78);
+  **(int **)(*param_1 + 0x14) = 0x3f800000;
+  *(int *)(*(int *)(*param_1 + 0x14) + 4) = 0x3f800000;
+  *(int *)(*(int *)(*param_1 + 0x14) + 8) = 0x3f800000;
+  *(int *)(*(int *)(*param_1 + 0x14) + 0xc) = 0x3f800000;
+  **(int **)(*param_1 + 0x1c) = 0x40800000;
+  *(int *)(*(int *)(*param_1 + 0x1c) + 4) = 0x40800000;
+  *(int *)(*(int *)(*param_1 + 0x1c) + 8) = 0x41000000;
+  *(int *)(*(int *)(*param_1 + 0x1c) + 0xc) = 0x41000000;
+  *(int *)(*(int *)(*param_1 + 0x1c) + 0x10) = 0x41400000;
+  *(int *)(*(int *)(*param_1 + 0x1c) + 0x14) = 0x41400000;
+  *(int *)(*(int *)(*param_1 + 0x1c) + 0x18) = 0x41800000;
+  *(int *)(*(int *)(*param_1 + 0x1c) + 0x1c) = 0x41800000;
+  **(int **)(*param_1 + 0x24) = 0;
+  *(int *)(*(int *)(*param_1 + 0x24) + 4) = 0;
+  *(int *)(*(int *)(*param_1 + 0x24) + 8) = 0x3f800000;
+  *(int *)(*(int *)(*param_1 + 0x24) + 0xc) = 0x3f800000;
+  func_0011CDF0(param_2);
+  func_0011CE20(param_2, 0);
+  func_0011CE10(param_2, 0);
+  func_0011CE30(param_2, 0x42200000, 0x42700000);
+  func_0011CE50(param_2, 0, 0, 0, 0);
+  func_0011CF30(param_2, 0, 0);
+  func_0011CFC0(param_2, 0x41700000);
+  func_0011CF90(param_2, 0, 0, 0x42480000, 0x3f800000);
+}
+
 void _func_00089EE0(int param_1, int param_2)
 {
   extern float D_001D2B64, D_001D27EC, D_001D504C, D_001D6784, D_001D411C;
@@ -154,6 +209,53 @@ void func_00089FF0(void) {
     extern int D_001D6DFC;
     int func_0011D0E0(...);
     func_0011D0E0((int)&D_001D6DFC);
+}
+
+extern "C" char *strcpy(char *, const char *);
+extern "C" void *memset(void *, int, unsigned int);
+void __cdecl _func_0008A000(void)
+{
+    extern char D_001D6E0C, D_001D6DF4;
+    extern char D_002FDF70[], D_002FDF74[], D_002FDF78[];
+    extern int D_0030809C;
+    int func_0011E840(...);
+    int func_0011DD60(...);
+    int func_0011E830(...);
+    int func_0011DEF0(...);
+    int func_00110480(...);
+    __declspec(align(8)) int s[0x3d];
+    unsigned int off = 0;
+    int z = 0;
+    do {
+        memset(s, 0, sizeof(s));
+        s[0x2e] = 1;
+        s[0x2f] = 1;
+        s[0x24] = 2;
+        s[0x25] = 2;
+        s[0x2a] = 3;
+        s[0x2b] = 3;
+        s[0x2c] = 3;
+        s[0x2d] = 3;
+        s[0x20] = z;
+        s[0x21] = z;
+        s[0x22] = z;
+        s[0x23] = z;
+        s[0x30] = z;
+        s[0x36] = z;
+        s[0x35] = z;
+        s[0x37] = z;
+        s[0x3c] = 10;
+        s[0x39] = 100;
+        strcpy((char *)s, "sprites/trail_grey.tga");
+        s[0x3b] = 0x58;
+        *(int *)(D_002FDF70 + off) = func_0011E840(&D_001D6E0C, s);
+        *(int *)(D_002FDF74 + off) = func_0011DD60(&D_001D6DF4, 100, *(int *)(D_002FDF70 + off), *(int *)(*(int *)(D_002FDF70 + off) + 0x14c));
+        func_0011E830(*(int *)(D_002FDF70 + off), *(int *)(D_002FDF74 + off));
+        func_0011DEF0(*(int *)(D_002FDF74 + off));
+        *(int *)(D_002FDF78 + off) = z;
+        func_00110480(D_0030809C, *(int *)(D_002FDF70 + off), 8);
+        off += 0x10;
+    } while (off < 0xa0);
 }
 
 void func_0008A160(void)
