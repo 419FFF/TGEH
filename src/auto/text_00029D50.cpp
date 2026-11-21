@@ -2,7 +2,7 @@
 #include "common.h"
 #include "ghidra.h"
 
-struct __declspec(align(16)) M50 { char b[76]; };
+struct __declspec(align(16)) M50 { char b[64]; };
 
 void func_00029D50(int param_1)
 {
@@ -23,37 +23,37 @@ void func_00029D50(int param_1)
   unsigned int local_64;
   int local_60;
   float local_5c;
-  char local_50[76];
+  M50 local_50;
   int uVar3;
 
   iVar2 = *(int *)(param_1 + 0x110);
   iVar7 = *(int *)(iVar2 + 200);
   uVar3 = **(int **)(*(int *)(param_1 + 0x2c) + 0x2c);
-  func_00110060(*(int *)(param_1 + 0x2c), local_50);
+  func_00110060(*(int *)(param_1 + 0x2c), &local_50);
   uVar6 = 0;
-  func_00110330(*(int *)(param_1 + 0x2c), 0);
+  func_00110330(*(int *)(param_1 + 0x2c), uVar6);
   iVar5 = *(int *)(param_1 + 0x2c);
   if (*(unsigned char *)(iVar5 + 0x22) == D_003268B0) {
     local_60 = *(int *)(iVar5 + 0x124);
   }
   else {
-    int *p = *(int **)(iVar5 + 0x28);
-    local_60 = 0;
-    for (; p != 0; p = (int *)p[3]) {
-      if (*(unsigned char *)(*p + 0x22) == D_003268B0) {
-        local_60 = *(int *)(*p + 0x124);
+    int p = *(int *)(iVar5 + 0x28);
+    local_60 = uVar6;
+    for (; p != uVar6; p = *(int *)(p + 12)) {
+      if (*(unsigned char *)(*(int *)p + 0x22) == D_003268B0) {
+        local_60 = *(int *)(*(int *)p + 0x124);
         break;
       }
     }
   }
   local_64 = 0xff;
   local_5c = -1.0f;
-  if (*(unsigned short *)(iVar7 + 0x2e) != 0) {
+  if (uVar6 < *(unsigned short *)(iVar7 + 0x2e)) {
     iVar5 = iVar7 + 0x34;
     do {
       if (*(int *)(iVar5 + 0x38) == 0) break;
       float f = func_000A2310(iVar5);
-      if (local_5c < f) {
+      if (f > local_5c) {
         local_5c = f;
         local_64 = uVar6;
       }
@@ -61,7 +61,7 @@ void func_00029D50(int param_1)
       iVar5 = iVar5 + 0x40;
     } while (uVar6 < *(unsigned short *)(iVar7 + 0x2e));
   }
-  if (*(unsigned short *)(iVar7 + 0x2e) <= uVar6) {
+  if (uVar6 >= *(unsigned short *)(iVar7 + 0x2e)) {
     func_00029CB0(*(int *)(local_64 * 0x40 + 0x6c + iVar7));
     uVar6 = local_64;
   }
@@ -70,7 +70,7 @@ void func_00029D50(int param_1)
   *(unsigned int *)(iVar2 + 0xd0) = uVar6;
   func_0009C1F0(*(int *)(iVar7 + 0x30), local_60);
   func_00110330(*(int *)(iVar7 + 0x30), 1);
-  func_001105E0(*(int *)(iVar7 + 0x30), local_50, 0);
+  func_001105E0(*(int *)(iVar7 + 0x30), &local_50, 0);
   func_00110000(*(int *)(iVar7 + 0x30));
   func_00110480(uVar3, *(int *)(iVar7 + 0x30), 8);
   func_000A22B0(iVar7 + 0x34, 1, 1, 0x18, 0x41c00000, 0);
