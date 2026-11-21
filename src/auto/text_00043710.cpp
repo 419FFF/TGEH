@@ -1,38 +1,45 @@
 /* 6 functions from 0x00043710 to 0x00044350, found by Ghidra. */
 #include "common.h"
 struct V3 { int x, y, z; };
+struct E43710 { int a, b, c; int d; short e; short f; };
+struct H43710 { int pad[3]; int count; E43710 *items; };
 
-void _func_000438D0(char *obj)
+void _func_000438D0(char *param)
 {
     extern int _D_00307D10, _D_002EEAE0;
     extern char _D_002EEAE4[];
-    extern int __stdcall _func_00116A90(int, int, int);
-    extern void __stdcall _func_0004FA80(char*, void*);
-    extern int __stdcall _func_0013E3F4(int, char*);
-    extern int __stdcall _func_00048720(int, int);
-    extern void __stdcall _func_001100A0(int, char**);
-    extern void __stdcall _func_00048820(int, void*);
-    extern void __stdcall _func_00012890(char*);
+    extern int _func_00116A90(int, int, int);
+    extern void _func_0004FA80(char*, void*);
+    extern int _func_00048720(int, int, int, char*);
+    extern void _func_001100A0(int, char**);
+    extern void _func_00048820(int, void*);
+    extern void _func_00012890(char*);
+    char *obj = param;
     int *s;
-    char *t;
     int i;
+    int ptr;
+    char none = -1;
+    V3 *src, *dst;
     s = (int*)_func_00116A90(0x738, 1, 1);
     *(int**)(obj + 0x110) = s;
     for (i = 0; i < 0x1ce; i++) s[i] = 0;
     _func_0004FA80(obj, s + 1);
-    s[0x1b] = _func_00048720(_D_00307D10, _func_0013E3F4(*(int*)(obj + 0x134), obj) );
-    _func_001100A0(*(int*)(obj + 0x2c), &t);
-    s[0x4f] = *(int*)(t + 0x30);
-    s[0x50] = *(int*)(t + 0x34);
-    s[0x51] = *(int*)(t + 0x38);
-    _func_00048820(*(int*)(s[0x1b] + 8), s + 0x4f);
+    ptr = *(int*)(obj + 0x134);
+    s[0x1b] = _func_00048720(_D_00307D10, (int)(*(float*)(obj + 0x138) * 2 / *(float*)(ptr + 0x74)), ptr, obj);
+    _func_001100A0(*(int*)(obj + 0x2c), &param);
+    src = (V3*)(param + 0x30);
+    dst = (V3*)(s + 0x4f);
+    dst->x = src->x;
+    dst->y = src->y;
+    dst->z = src->z;
+    _func_00048820(*(int*)(s[0x1b] + 8), dst);
     s[0] = 0;
-    *(unsigned char*)(s + 0x4c) = 0xff;
+    *(char*)(s + 0x4c) = none;
     for (i = 0; i != *(int*)(*(int*)(s[0x1b] + 8) + 0xd4); i++) {
         if (obj == *(char**)(*(int*)(*(int*)(s[0x1b] + 8) + 0xd8) + i * 8))
-            *(unsigned char*)(s + 0x4c) = (unsigned char)i;
+            *(char*)(s + 0x4c) = (char)i;
     }
-    *(unsigned char*)(s + 0x1cd) = 0xff;
+    *(char*)(s + 0x1cd) = none;
     s[0x1c5] = 0;
     s[0x1c4] = 0;
     *(float*)(s + 0x1c6) = *(float*)(s + 0x1c) + *(float*)(s + 0x1c);
