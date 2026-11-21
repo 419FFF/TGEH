@@ -2,7 +2,7 @@
 #include "common.h"
 #include "ghidra.h"
 
-struct Blob22 { char c[22]; };
+struct Blob22 { int a[5]; short b; char c; };
 void _func_0007ADC0(int *param_1, int param_2)
 {
   int func_0011CD40(...);
@@ -152,6 +152,54 @@ void func_0007B1B0(void)
  extern undefined D_001D65B8;
  func_0011D0E0(&D_001D65C0);
  func_0011D0E0(&D_001D65B8);
+}
+
+void func_0007B1D0(void)
+{
+  extern Blob22 D_001D65E0;
+  extern undefined D_001D65D4;
+  extern undefined D_001D65C8;
+  extern undefined D_001D65C0;
+  extern undefined D_001D65B8;
+  extern int D_002FA6D8, D_002FA6DC, D_002FA6C8, D_002FA6CC, D_0030809C;
+  extern char D_002FA6D4;
+  int func_0011E840(...); int func_0011DD60(...); int func_0011E830(...); int func_0011DEF0(...); int func_00110480(...);
+  int s[61];
+  int i;
+  for (i = 0; i < 61; i++) s[i] = 0;
+  s[0x3c] = 10;
+  s[0x39] = 10;
+  s[0x2e] = 4;
+  s[0x2f] = 5;
+  s[0x24] = 2;
+  s[0x25] = 2;
+  s[0x2a] = 3;
+  s[0x36] = 0;
+  s[0x37] = 0;
+  *(Blob22*)s = D_001D65E0;
+  s[0x3b] = 0x58;
+  D_002FA6D8 = func_0011E840(&D_001D65D4, s);
+  D_002FA6DC = func_0011DD60(&D_001D65C0, 10, D_002FA6D8, *(int*)(D_002FA6D8 + 0x14c));
+  func_0011E830(D_002FA6D8, D_002FA6DC);
+  func_0011DEF0(D_002FA6DC);
+  func_00110480(D_0030809C, D_002FA6D8, 8);
+  s[0x2e] = 4;
+  s[0x2f] = 5;
+  s[0x24] = 2;
+  s[0x25] = 2;
+  s[0x2a] = 3;
+  s[0x36] = 0;
+  s[0x37] = 0;
+  s[0x3c] = 10;
+  s[0x39] = 0x1e;
+  *(Blob22*)s = D_001D65E0;
+  s[0x3b] = 0x58;
+  D_002FA6C8 = func_0011E840(&D_001D65C8, s);
+  D_002FA6CC = func_0011DD60(&D_001D65B8, 0x1e, D_002FA6C8, *(int*)(D_002FA6C8 + 0x14c));
+  func_0011E830(D_002FA6C8, D_002FA6CC);
+  func_0011DEF0(D_002FA6CC);
+  func_00110480(D_0030809C, D_002FA6C8, 8);
+  D_002FA6D4 = 0;
 }
 
 void func_0007B3A0(void)
