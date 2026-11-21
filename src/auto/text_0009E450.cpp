@@ -32,6 +32,8 @@ int func_0009C2E0(const void*, const void*);
 void func_00110330(int, int);
 void func_0009C300(void);
 void func_001053A0(void*);
+extern int D_00313B54; extern char D_003104D8[]; extern int D_001D74D4, D_001D32D8, D_001E39B0[]; extern float D_001D27B8;
+void func_000A4260(int); void func_000A4120(int); int* func_0009C7A0(...); void func_00027C80(void*); void func_000A40A0(int, int); void func_000A40E0(int); void func_000A2D70(void);
 void _func_0009EEA0(int a)
 {
   char buf[128];
