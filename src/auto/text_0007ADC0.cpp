@@ -2,7 +2,7 @@
 #include "common.h"
 #include "ghidra.h"
 
-struct Blob22 { int a[5]; short b; char c; };
+struct Blob22 { char c[22]; };
 void _func_0007ADC0(int *param_1, int param_2)
 {
   int func_0011CD40(...);
