@@ -3,11 +3,33 @@
 extern "C" __declspec(dllimport) void __stdcall RtlEnterCriticalSection(void*);
 extern "C" __declspec(dllimport) void __stdcall RtlLeaveCriticalSection(void*);
 
+struct S33860 { char kind; char pad[3]; int f4; void (__cdecl *f8)(S33860 *, int); int fc; unsigned int f10; char *f14; unsigned int f18; int *f1c; unsigned int f20; char *f24; char pad2[0x20]; unsigned short f48; };
 signed char _func_00132F90(signed char index) { extern signed char _D_001E82AC[]; return _D_001E82AC[(int)index]; }
 
 int _func_00133430(void) { return 0; }
 
 void _func_00133490(void *p) { extern unsigned int _D_001E82DC,_D_00331D68,_D_00331D6C,_D_00331D70; extern unsigned short _D_00331D74,_D_00331D78,_D_00331D7C,_D_00331D80; unsigned char*q=(unsigned char*)p; *(unsigned int*)(q+52)=_D_001E82DC; *(unsigned int*)(q+56)=_D_00331D68; *(unsigned int*)(q+60)=_D_00331D6C; *(unsigned int*)(q+64)=_D_00331D70; *(unsigned short*)(q+42)=_D_00331D74; *(unsigned short*)(q+44)=_D_00331D78; *(unsigned short*)(q+46)=_D_00331D7C; *(unsigned short*)(q+48)=_D_00331D80; }
+
+void func_001336F0(int *s)
+{
+  extern float *D_00331C84;
+  extern signed char D_001E82AC[];
+  void __fastcall func_0014CD20(int, float *, int);
+  __declspec(align(16)) float m[12];
+  unsigned int k;
+  if (D_00331C84) {
+    for (k = 0; k < (unsigned int)s[1]; k++) {
+      unsigned int idx = ((unsigned char *)s)[8 + k];
+      if (D_00331C84) {
+        float *src = D_00331C84 + idx * 16;
+        m[0] = src[0]; m[1] = src[4]; m[2] = src[8]; m[3] = src[12];
+        m[4] = src[1]; m[5] = src[5]; m[6] = src[9]; m[7] = src[13];
+        m[8] = src[2]; m[9] = src[6]; m[10] = src[10]; m[11] = src[14];
+      }
+      func_0014CD20(D_001E82AC[(signed char)k] + 0x60, m, 12);
+    }
+  }
+}
 
 void _func_001339F0(int a, int b, int c) { if (a != b) (void)c; }
 
