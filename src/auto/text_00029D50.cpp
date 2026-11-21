@@ -7,7 +7,7 @@ extern "C" unsigned int strlen(const char *);
 #pragma intrinsic(strcpy, strcat, strlen)
 
 struct __declspec(align(16)) M50 { char b[64]; };
-struct L29F00 { int a, b, c; int *p; char flag, z; };
+struct L29F00 { int a, b, c; int *p; char flag, z; short pad; };
 
 void func_00029D50(int param_1)
 {
