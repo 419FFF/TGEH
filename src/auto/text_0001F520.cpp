@@ -2,6 +2,8 @@
 #include "common.h"
 #include "ghidra.h"
 
+struct V4_1FF10 { unsigned int a, b, c, d; };
+
 void func_0001F520(int p)
 {
     int func_00116A90(...); int func_0004FA80(...); int func_00048720(...); int func_00056D50(...);
@@ -318,6 +320,47 @@ void func_0001FEC0(int param_1)
   func_000A1C00(*(undefined4 *)(iVar1 + 0x25c));
   func_00116FB0(iVar1);
   return;
+}
+
+void func_0001FF10(int p)
+{
+    int func_00116A90(...); int func_0004FA80(...); int func_00048720(...); int func_0012E750(...);
+    int func_0009C7A0(...); int func_00103210(...); int func_0013E469(...);
+    extern int D_00307D10;
+    extern char D_001D321C, D_001D3214, D_001D320C, D_001D3204;
+    char buf[256];
+    unsigned int *x = (unsigned int *)func_00116A90(0x330, 1, 1);
+    unsigned int *s;
+    float *f;
+    *(unsigned int **)(p + 0x110) = x;
+    func_0004FA80(p, x + 2);
+    x[0] = *(unsigned int *)(p + 0x134);
+    x[0x97] = *(unsigned int *)(p + 0x130);
+    s = (unsigned int *)x[0x16];
+    x[0x9d] = s[0]; x[0x9e] = s[1]; x[0x9f] = s[2]; x[0xa0] = s[3];
+    s = (unsigned int *)x[0x14];
+    x[0xa5] = s[0]; x[0xa6] = s[1]; x[0xa7] = s[2]; x[0xa8] = s[3];
+    s = (unsigned int *)x[0x17];
+    x[0xa1] = s[0]; x[0xa2] = s[1]; x[0xa3] = s[2]; x[0xa4] = s[3];
+    s = (unsigned int *)x[0x15];
+    x[0xa9] = s[0]; x[0xaa] = s[1]; x[0xab] = s[2]; x[0xac] = s[3];
+    x[0x1c] = func_00048720(D_00307D10, 7, x[0], p);
+    x[1] = 0;
+    x[0x98] = 0x3f800000;
+    x[0x19] = (unsigned int)(x + 0x98);
+    x[0x9c] = 0xbf800000;
+    func_0012E750(x + 0x1d);
+    *((char *)x + 0x17a) = 1;
+    *(char *)(p + 0x13) = 0x4b;
+    f = (float *)func_0009C7A0(p, &D_001D321C, 0);
+    if (f) x[199] = (int)*f; else x[199] = 0;
+    *(char *)(x + 200) = 0;
+    func_0013E469(buf, &D_001D3214, *(int *)(p + 0xc));
+    x[0xc9] = func_00103210(buf);
+    func_0013E469(buf, &D_001D320C, *(int *)(p + 0xc));
+    x[0xca] = func_00103210(buf);
+    func_0013E469(buf, &D_001D3204, *(int *)(p + 0xc));
+    x[0xcb] = func_00103210(buf);
 }
 
 void _func_000204C0(int arg) { extern int _D_00307D10; extern void _func_000487A0(int, int); extern void _func_00116FB0(int); _func_000487A0(_D_00307D10, *(int*)(*(int*)(arg + 0x110) + 0x70)); _func_00116FB0(*(int*)(arg + 0x110)); }
