@@ -1,8 +1,49 @@
 /* 6 functions from 0x00043710 to 0x00044350, found by Ghidra. */
 #include "common.h"
 struct V3 { int x, y, z; };
-struct E43710 { int a, b, c; int d; short e; short f; };
+struct E43710 { int a, b, c; int d; short e; short f; int g; };
 struct H43710 { int pad[3]; int count; E43710 *items; };
+
+extern "C" void * __cdecl memcpy(void *, const void *, unsigned int);
+#pragma intrinsic(memcpy)
+void func_00043710(int param_1)
+{
+  extern char D_002EEAA4, D_002EEAAC, D_002EEAA3, D_002EEAA2;
+  extern H43710 *D_00307D08;
+  extern int D_00313A88, D_00313B34, D_00313AD0, D_00313AF8, D_00307DF0;
+  int func_000FA580(...);
+  int func_00042590(...);
+  char buf[0x204];
+  E43710 *p;
+
+  if (D_002EEAA4 == 0) {
+    D_002EEAAC = func_000FA580() & 1;
+    if (D_002EEAA3 != 0 || D_002EEAA2 != 0) {
+      p = D_00307D08->items;
+      memcpy(buf, p, D_00307D08->count * 24);
+      if (D_002EEAA3 != 0) {
+        p[D_00313A88].a = 0;
+        D_00307D08->items[D_00313A88].e = 0;
+        D_00307D08->items[D_00313A88].d = 0;
+      }
+      if (D_002EEAA2 != 0) {
+        D_00307D08->items[D_00313B34].a = 0;
+        D_00307D08->items[D_00313B34].e = 0;
+        D_00307D08->items[D_00313B34].d = 0;
+        D_00307D08->items[D_00313AD0].a = 0;
+        D_00307D08->items[D_00313AD0].e = 0;
+        D_00307D08->items[D_00313AD0].d = 0;
+        D_00307D08->items[D_00313AF8].a = 0;
+        D_00307D08->items[D_00313AF8].e = 0;
+        D_00307D08->items[D_00313AF8].d = 0;
+      }
+    }
+    D_00307DF0 = 0;
+    func_00042590(param_1);
+    if (D_002EEAA3 != 0 || D_002EEAA2 != 0)
+      memcpy(D_00307D08->items, buf, D_00307D08->count * 24);
+  }
+}
 
 void _func_000438D0(char *param)
 {
