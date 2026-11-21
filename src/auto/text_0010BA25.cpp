@@ -136,6 +136,52 @@ int __stdcall func_0010BED0(void *h, int *out)
 
 int __stdcall func_0010BF0E(void *h,int *out){int __stdcall func_0010BED0(void*,int*);void __stdcall func_0010AAA3(unsigned int);int local[2];if(!func_0010BED0(h,local))local[0]=-1;else{if(out)*out=local[1];if(local[0]==-1)func_0010AAA3(0);}return local[0];}
 
+#pragma optimize("s", on)
+typedef long (__stdcall *NtCreateFn)(void*, unsigned long, void*, void*, unsigned long, unsigned long, unsigned long, unsigned long, unsigned long);
+extern "C" NtCreateFn __imp__NtCreateFile;
+unsigned int __stdcall func_0010BF49(const char *name, unsigned int access, unsigned int share, void *sa, int disp, unsigned int flags, void *tmpl)
+{
+  extern long __stdcall __imp__RtlInitAnsiString(void*, const char*);
+  unsigned short ansi[4];
+  unsigned long attr[4];
+  unsigned long iosb[2];
+  unsigned long handle;
+  unsigned long opts;
+  unsigned long status;
+  unsigned int orig = access;
+  int slash;
+
+  switch (disp) {
+  case 1: access = 2; break;
+  case 2: access = 5; break;
+  case 3: access = 1; break;
+  case 4: access = 3; break;
+  case 5:
+    access = 4;
+    if (orig & 0x40000000) break;
+  default:
+    _func_0010AAD1(0xc000000d);
+    return 0xffffffff;
+  }
+  __imp__RtlInitAnsiString(ansi, name);
+  if (ansi[0] > 1 && name[ansi[0] - 1] == '\\') slash = 1;
+  else slash = 0;
+  attr[1] = (unsigned long)ansi;
+  opts = ((((flags >> 4 & 0x8000000 | flags & 0x20000000) >> 1 | flags & 0x8000000) >> 8 | flags & 0x10000000) >> 6 | flags & 0x2000000) >> 0xb | ~(flags >> 0x19) & 0x20;
+  attr[0] = 0xfffffffd;
+  attr[2] = 0x40;
+  if (flags & 0x4000000) { opts |= 0x1000; orig |= 0x10000; }
+  if ((flags & 0x2000000) == 0) opts |= 0x40;
+  status = __imp__NtCreateFile(&handle, orig | 0x100080, attr, iosb, 0, flags & 0x7fa7, share, access, opts);
+  if ((long)status < 0) {
+    _func_0010AAD1(status);
+    if (status == 0xc0000035) func_0010AAA3(0x50);
+    else if (status == 0xc00000ba) func_0010AAA3(slash ? 3 : 5);
+    return 0xffffffff;
+  }
+  func_0010AAA3(((disp == 2 && iosb[1] == 3) || (disp == 4 && iosb[1] == 1)) ? 0xb7 : 0);
+  return handle;
+}
 void __stdcall func_0010C0D4(int a,int b){extern unsigned char __imp__XboxHDKey[];extern void __stdcall XcHMAC(void*,unsigned int,void*,unsigned int,unsigned int,unsigned int,int);XcHMAC(__imp__XboxHDKey,0x10,&a,4,0,0,b);}
 
 #pragma optimize("sy", off)
@@ -216,6 +262,78 @@ fail:
     }
     return 1;
 }
+
+int __stdcall func_0010C2B9(unsigned int flags, unsigned char *s1, int n1, unsigned char *s2, int n2)
+{
+    extern unsigned int _D_001E6330[];
+    extern int _D_001E6730[];
+    unsigned char c1, c2;
+    unsigned int u1, u2;
+    unsigned int r = 0;
+    unsigned int k = ~(flags >> 12) & 1;
+    unsigned int f1 = flags & 1;
+    flags &= 4;
+    if (s1 == 0 || s2 == 0 || n1 < -1 || n2 < -1) {
+        func_0010AAA3(0x57);
+        return 0;
+    }
+    while (n1 != 0) {
+        if (n2 == 0) {
+            if (*s2 == 0) goto l_b;
+            return 1;
+        }
+        c1 = *s1;
+        if (c1 == 0) {
+            if (*s2 != 0) return 1;
+            return _D_001E6730[r];
+        }
+        c2 = *s2;
+        if (c2 == 0) return 3;
+        u1 = _D_001E6330[c1];
+        u2 = _D_001E6330[c2];
+        if (k != 0) {
+            if ((u1 & 0x10000) != 0) {
+                if ((u2 & 0x10000) == 0) {
+                    if (r == 0) r = 4;
+                    r |= 1;
+                    goto l_64;
+                }
+                if (u1 < u2) r = 7;
+                else if (u2 < u1) r = 0xb;
+                goto l_c1;
+            }
+            if ((u2 & 0x10000) == 0) goto l_83;
+            if (r == 0) r = 8;
+            r |= 2;
+            goto l_c7;
+        }
+      l_83:
+        if (flags != 0) {
+            if ((u1 & 0x20000) != 0) goto l_64;
+            if ((u2 & 0x20000) != 0) goto l_c7;
+        }
+        if (f1 != 0) {
+            if ((u1 & 0x100000) != 0) u1 = (c1 + 0x20) | 0x80000;
+            if ((u2 & 0x100000) != 0) u2 = (c2 + 0x20) | 0x80000;
+        }
+        if (u1 < u2) return 1;
+        if (u2 < u1) return 3;
+      l_c1:
+        s1++; n1--;
+        goto l_c7;
+      l_64:
+        s1++; n1--;
+        continue;
+      l_c7:
+        s2++; n2--;
+    }
+    if (n2 == 0) {
+      l_b:
+        return _D_001E6730[r];
+    }
+    return (n1 == 0) * 2 + 1;
+}
+
 #pragma optimize("y", on)
 int func_0010C459(void) {
     extern int D_0037C074;
