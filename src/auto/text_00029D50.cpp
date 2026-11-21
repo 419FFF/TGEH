@@ -7,6 +7,7 @@ extern "C" unsigned int strlen(const char *);
 #pragma intrinsic(strcpy, strcat, strlen)
 
 struct __declspec(align(16)) M50 { char b[64]; };
+struct L29F00 { int a, b, c; int *p; char flag, z; };
 
 void func_00029D50(int param_1)
 {
@@ -85,6 +86,66 @@ void func_00029D50(int param_1)
     unsigned char *pb = (unsigned char *)(*(int *)(param_1 + 0x60) + 0x38);
     *pb = *pb | 1;
   }
+}
+
+extern int *D_002ED3EC;
+int func_0011B4F0(...);
+extern int D_001D2E38;
+extern int D_001D2E34;
+extern short D_001D2E30;
+extern int D_001D2E28;
+extern char D_001D2E2C;
+int func_00116A90(...);
+int func_00131990(...);
+extern char D_001D29C7;
+int func_0011C3B0(...);
+int func_00029F00(char *name, unsigned short count)
+{
+  extern int *D_002ED3EC;
+  extern char D_001D29C7;
+  int func_00116A90(...);
+  int func_00131990(...);
+  int func_000EBB10(...);
+  int func_00110170(...);
+  int func_00110330(...);
+  int func_0011C3B0(...);
+  int func_0011B4F0(...);
+  int *node;
+  int obj;
+  char buf[0x80];
+  int loc[5];
+  unsigned int i;
+  int *p;
+
+  for (node = D_002ED3EC; node != 0; node = (int *)*node) {
+    obj = node[2];
+    if (func_0011B4F0(name, obj + 0xc) == 0) {
+      *(short *)(obj + 0x2c) = *(short *)(obj + 0x2c) + 1;
+      return obj;
+    }
+  }
+  obj = func_00116A90(0xf0, 1, 1);
+  strcpy((char *)(obj + 0xc), name);
+  *(short *)(obj + 0x2c) = 1;
+  *(unsigned short *)(obj + 0x2e) = count;
+  strcpy(buf, "models/");
+  strcat(buf, name);
+  strcat(buf, "/");
+  func_00131990(buf);
+  strcpy(buf + 4, name);
+  strcat(buf, ".mdl");
+  for (i = 0, p = (int *)(obj + 0x30); i < *(unsigned short *)(obj + 0x2e); i++, p += 0x10) {
+    loc[0] = 0; loc[1] = 0; loc[2] = 0;
+    loc[3] = (int)(p + 1);
+    *(short *)&loc[4] = 1;
+    func_000EBB10(buf + 4, loc);
+    *p = loc[0];
+    func_00110170(loc[0]);
+    func_00110330(*p, 0);
+  }
+  func_00131990(&D_001D29C7);
+  func_0011C3B0(&D_002ED3EC, obj, obj);
+  return obj;
 }
 
 void func_0002A0C0(int param_1)
