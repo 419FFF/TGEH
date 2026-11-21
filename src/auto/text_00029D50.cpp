@@ -1,7 +1,10 @@
 /* 11 functions from 0x00029D50 to 0x0002A50F, found by Ghidra. */
 #include "common.h"
 #include "ghidra.h"
-#include <string.h>
+extern "C" char *strcpy(char *, const char *);
+extern "C" char *strcat(char *, const char *);
+extern "C" unsigned int strlen(const char *);
+#pragma intrinsic(strcpy, strcat, strlen)
 
 struct __declspec(align(16)) M50 { char b[64]; };
 
