@@ -139,6 +139,7 @@ int __stdcall func_0010BF0E(void *h,int *out){int __stdcall func_0010BED0(void*,
 #pragma optimize("s", on)
 typedef long (__stdcall *NtCreateFn)(void*, unsigned long, void*, void*, unsigned long, unsigned long, unsigned long, unsigned long, unsigned long);
 extern "C" NtCreateFn __imp__NtCreateFile;
+#pragma optimize("s", on)
 unsigned int __stdcall func_0010BF49(const char *name, unsigned int access, unsigned int share, void *sa, int disp, unsigned int flags, void *tmpl)
 {
   extern long __stdcall __imp__RtlInitAnsiString(void*, const char*);
@@ -167,9 +168,9 @@ unsigned int __stdcall func_0010BF49(const char *name, unsigned int access, unsi
   if (ansi[0] > 1 && name[ansi[0] - 1] == '\\') slash = 1;
   else slash = 0;
   attr[1] = (unsigned long)ansi;
-  opts = ((((flags >> 4 & 0x8000000 | flags & 0x20000000) >> 1 | flags & 0x8000000) >> 8 | flags & 0x10000000) >> 6 | flags & 0x2000000) >> 0xb | ~(flags >> 0x19) & 0x20;
   attr[0] = 0xfffffffd;
   attr[2] = 0x40;
+  opts = ((((flags >> 4 & 0x8000000 | flags & 0x20000000) >> 1 | flags & 0x8000000) >> 8 | flags & 0x10000000) >> 6 | flags & 0x2000000) >> 0xb | ~(flags >> 0x19) & 0x20;
   if (flags & 0x4000000) { opts |= 0x1000; orig |= 0x10000; }
   if ((flags & 0x2000000) == 0) opts |= 0x40;
   status = __imp__NtCreateFile(&handle, orig | 0x100080, attr, iosb, 0, flags & 0x7fa7, share, access, opts);
@@ -369,6 +370,8 @@ struct C_0010C5C0{unsigned int func_0010C5C0(void);}; unsigned int C_0010C5C0::f
 extern "C" __declspec(dllimport) long __stdcall NtAllocateVirtualMemory(char **base, unsigned long zeroBits, unsigned long *size, unsigned long type, unsigned long protect);
 extern "C" __declspec(dllimport) long __stdcall NtFreeVirtualMemory(char **base, unsigned long *size, unsigned long type);
 extern char D_00010000;
+typedef long (__stdcall *NtAllocFn)(void*, unsigned long, void*, unsigned long, unsigned long);
+extern "C" NtAllocFn __imp__NtAllocateVirtualMemory;
 void *__stdcall func_0010C5E5(void *arg)
 {
     unsigned int **head = (unsigned int **)((char *)arg + 0x18);
@@ -446,6 +449,98 @@ void __stdcall func_0010C726(void *p,unsigned int a,unsigned int b) {
         link=n;
     }
     if (end > *(unsigned int*)(base+0x1c)) *(unsigned int*)(base+0x1c)=end;
+}
+
+unsigned short * __stdcall func_0010C7B9(unsigned int *param_1, unsigned short *param_2, unsigned int *param_3, unsigned short *param_4)
+{
+  extern long (__stdcall *__imp__NtAllocateVirtualMemory)(void*, unsigned long, void*, unsigned long, unsigned long);
+  int *piVar1;
+  int iVar2;
+  unsigned short *puVar3;
+  int iVar5;
+  unsigned short *puVar6;
+  unsigned int *puVar7;
+  unsigned short *puVar8;
+  int *piVar10;
+  int *local_c;
+  int *local_8;
+  bool bVar11;
+
+  iVar2 = (int)param_2;
+  local_8 = 0;
+  piVar1 = *(int **)(iVar2 + 0x38);
+  if (piVar1 != 0) {
+    local_c = (int *)(iVar2 + 0x38);
+    do {
+      piVar10 = piVar1;
+      if (*param_3 <= (unsigned int)piVar10[2] && (param_4 == 0 || (unsigned short *)piVar10[1] == param_4)) {
+        param_2 = (unsigned short *)piVar10[1];
+        if (param_1[0x161] == 0)
+          iVar5 = __imp__NtAllocateVirtualMemory(&param_2, 0, param_3, 0x1000, 4);
+        else
+          iVar5 = ((int (__stdcall *)(unsigned int *, unsigned short **, unsigned int *))param_1[0x161])(param_1, &param_2, param_3);
+        puVar3 = param_2;
+        if (iVar5 < 0) return 0;
+        *(int *)(iVar2 + 0x30) = *(int *)(iVar2 + 0x30) - (*param_3 >> 0xc);
+        if (*(int *)(iVar2 + 0x1c) == piVar10[2]) *(int *)(iVar2 + 0x1c) = 0;
+        puVar8 = *(unsigned short **)(iVar2 + 0x40);
+        if ((*(unsigned char *)((int)puVar8 + 5) & 0x10) != 0 && puVar8 + (unsigned int)*puVar8 * 8 == (unsigned short *)piVar10[1]) goto found;
+        if (local_8 == 0) puVar8 = *(unsigned short **)(iVar2 + 0x28);
+        else puVar8 = (unsigned short *)(local_8[2] + local_8[1]);
+        if ((*(unsigned char *)((int)puVar8 + 5) & 0x10) != 0) goto found;
+        goto next;
+      }
+      piVar1 = (int *)*piVar10;
+      local_c = piVar10;
+      local_8 = piVar10;
+    } while (piVar1 != 0);
+  }
+  return 0;
+next:
+  param_4 = puVar8;
+  puVar8 = param_4 + (unsigned int)*param_4 * 8;
+  if (*(unsigned short **)(iVar2 + 0x2c) <= puVar8 || *puVar8 == 0) {
+    bVar11 = puVar8 != param_2;
+    puVar8 = param_4;
+    if (bVar11) return 0;
+    goto found;
+  }
+  if ((*(unsigned char *)((int)puVar8 + 5) & 0x10) != 0) {
+found:
+    *(unsigned char *)((int)puVar8 + 5) &= 0xef;
+    piVar10[1] = piVar10[1] + *param_3;
+    piVar1 = piVar10 + 2;
+    *piVar1 = *piVar1 - *param_3;
+    if (*piVar1 == 0) {
+      if (piVar10[1] == *(int *)(iVar2 + 0x2c)) {
+        *(unsigned char *)((int)param_2 + 5) = 0x10;
+        puVar6 = param_2;
+      } else {
+        *(unsigned char *)((int)param_2 + 5) = 0;
+        puVar6 = *(unsigned short **)(iVar2 + 0x28);
+      }
+      *(unsigned short **)(iVar2 + 0x40) = puVar6;
+      iVar5 = *piVar10;
+      *local_c = iVar5;
+      func_0010C705((void *)iVar2, (unsigned int *)piVar10);
+      *(int *)(iVar2 + 0x34) = *(int *)(iVar2 + 0x34) - 1;
+    } else {
+      *(unsigned char *)((int)param_2 + 5) = 0x10;
+      *(unsigned short **)(iVar2 + 0x40) = param_2;
+    }
+    *(char *)(puVar3 + 2) = (char)puVar8[2];
+    *puVar3 = (unsigned short)(*param_3 >> 4);
+    puVar3[1] = *puVar8;
+    if ((*(unsigned char *)((int)puVar3 + 5) & 0x10) == 0)
+      puVar3[(unsigned int)*puVar3 * 8 + 1] = *puVar3;
+    if (*(int *)(iVar2 + 0x1c) == 0) {
+      for (puVar7 = *(unsigned int **)(iVar2 + 0x38); puVar7 != 0; puVar7 = (unsigned int *)*puVar7) {
+        if (*(unsigned int *)(iVar2 + 0x1c) <= puVar7[2]) *(unsigned int *)(iVar2 + 0x1c) = puVar7[2];
+      }
+    }
+    return puVar3;
+  }
+  goto next;
 }
 
 #pragma optimize("", on)
