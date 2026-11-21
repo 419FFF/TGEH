@@ -2,6 +2,7 @@
 #include "common.h"
 #include "ghidra.h"
 
+struct Blob22 { char c[22]; };
 void _func_0007ADC0(int *param_1, int param_2)
 {
   int func_0011CD40(...);
@@ -204,6 +205,76 @@ void func_0007B3E0(int param_1)
   func_0011E3A0(D_002FA6CC, 0);
   func_0011DED0(D_002FA6CC);
   D_002FA6D4 = 1;
+}
+
+void func_0007B560(int *param_1, int param_2)
+{
+  int func_0011CD40(...);
+  float func_00131760(void);
+  extern float D_001D3E00;
+  extern float D_001D2C00;
+  extern float D_001D27B0;
+  extern float D_001D31D0;
+  int func_0011CDF0(...);
+  int func_0011CE10(...);
+  int func_0011CE20(...);
+  int func_0011CE30(...);
+  int func_0011CE50(...);
+  int func_0011CF30(...);
+  int func_0011CFC0(...);
+  int func_0011CF90(...);
+  int *puVar1;
+  int iVar2;
+  unsigned int uVar3;
+  double lVar4;
+
+  iVar2 = func_0011CD40(10,0x19,1,10,1);
+  *param_1 = iVar2;
+  uVar3 = 0;
+  do {
+    lVar4 = func_00131760();
+    *(float *)(uVar3 + *(int *)(*param_1 + 4)) = (float)(lVar4 * D_001D3E00 - D_001D2C00);
+    *(int *)(*(int *)(*param_1 + 4) + 4 + uVar3) = 0;
+    lVar4 = func_00131760();
+    uVar3 = uVar3 + 0xc;
+    *(float *)(*(int *)(*param_1 + 4) + -4 + uVar3) = (float)(lVar4 * D_001D3E00 - D_001D2C00);
+  } while (uVar3 < 0x78);
+  uVar3 = 0;
+  do {
+    lVar4 = func_00131760();
+    *(float *)(uVar3 + *(int *)(*param_1 + 0xc)) = (float)(lVar4 * D_001D3E00 - D_001D2C00);
+    *(int *)(*(int *)(*param_1 + 0xc) + 4 + uVar3) = 0x3dcccccd;
+    lVar4 = func_00131760();
+    uVar3 = uVar3 + 0xc;
+    *(float *)(*(int *)(*param_1 + 0xc) + -4 + uVar3) = (float)(lVar4 * D_001D3E00 - D_001D2C00);
+  } while (uVar3 < 300);
+  **(int **)(*param_1 + 0x14) = 0x3f800000;
+  *(int *)(*(int *)(*param_1 + 0x14) + 4) = 0x3f800000;
+  *(int *)(*(int *)(*param_1 + 0x14) + 8) = 0x3f800000;
+  *(int *)(*(int *)(*param_1 + 0x14) + 0xc) = 0x3f4ccccd;
+  uVar3 = 0;
+  do {
+    lVar4 = func_00131760();
+    lVar4 = lVar4 + D_001D27B0;
+    iVar2 = *(int *)(*param_1 + 0x1c);
+    *(float *)(uVar3 + iVar2) = (float)(lVar4 * D_001D31D0);
+    puVar1 = (int *)(*(int *)(*param_1 + 0x1c) + uVar3);
+    iVar2 = *(int *)(*param_1 + 0x1c) + uVar3;
+    uVar3 = uVar3 + 8;
+    *(int *)(iVar2 + 4) = *puVar1;
+  } while (uVar3 < 0x50);
+  **(int **)(*param_1 + 0x24) = 0;
+  *(int *)(*(int *)(*param_1 + 0x24) + 4) = 0;
+  *(int *)(*(int *)(*param_1 + 0x24) + 8) = 0x3f800000;
+  *(int *)(*(int *)(*param_1 + 0x24) + 0xc) = 0x3f800000;
+  func_0011CDF0(param_2);
+  func_0011CE10(param_2,0);
+  func_0011CE20(param_2,0);
+  func_0011CE30(param_2,0x42f00000,0x42f00000);
+  func_0011CE50(param_2,0xbdcccccd,0xbdcccccd,0xbe4ccccd,0xbeb33333);
+  func_0011CF30(param_2,0x41700000,0x41700000);
+  func_0011CFC0(param_2,0x42200000);
+  func_0011CF90(param_2,0,0,0,0);
 }
 
 void _func_0007B710(void)
