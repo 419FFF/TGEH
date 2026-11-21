@@ -13,7 +13,7 @@ void func_00043710(int param_1)
   extern int D_00313A88, D_00313B34, D_00313AD0, D_00313AF8, D_00307DF0;
   int func_000FA580(...);
   int func_00042590(...);
-  char buf[0x204];
+  char buf[0x20c];
   E43710 *p;
 
   if (D_002EEAA4 == 0) {
@@ -44,7 +44,6 @@ void func_00043710(int param_1)
       memcpy(D_00307D08->items, buf, D_00307D08->count * 24);
   }
 }
-
 void _func_000438D0(char *param)
 {
     extern int _D_00307D10, _D_002EEAE0;
