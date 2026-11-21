@@ -1,6 +1,7 @@
 /* 11 functions from 0x00029D50 to 0x0002A50F, found by Ghidra. */
 #include "common.h"
 #include "ghidra.h"
+#include <string.h>
 
 struct __declspec(align(16)) M50 { char b[64]; };
 
@@ -18,9 +19,9 @@ void func_00029D50(int param_1)
   int func_000A22B0(...);
   int iVar2;
   int iVar5;
-  unsigned int uVar6;
+  int uVar6;
   int iVar7;
-  unsigned int local_64;
+  int local_64;
   int local_60;
   float local_5c;
   M50 local_50;
@@ -39,16 +40,17 @@ void func_00029D50(int param_1)
   else {
     int p = *(int *)(iVar5 + 0x28);
     local_60 = uVar6;
-    for (; p != uVar6; p = *(int *)(p + 12)) {
+    while (p != uVar6) {
       if (*(unsigned char *)(*(int *)p + 0x22) == D_003268B0) {
         local_60 = *(int *)(*(int *)p + 0x124);
         break;
       }
+      p = *(int *)(p + 12);
     }
   }
   local_64 = 0xff;
   local_5c = -1.0f;
-  if (uVar6 < *(unsigned short *)(iVar7 + 0x2e)) {
+  if ((unsigned)uVar6 < *(unsigned short *)(iVar7 + 0x2e)) {
     iVar5 = iVar7 + 0x34;
     do {
       if (*(int *)(iVar5 + 0x38) == 0) break;
@@ -59,9 +61,9 @@ void func_00029D50(int param_1)
       }
       uVar6 = uVar6 + 1;
       iVar5 = iVar5 + 0x40;
-    } while (uVar6 < *(unsigned short *)(iVar7 + 0x2e));
+    } while ((unsigned)uVar6 < *(unsigned short *)(iVar7 + 0x2e));
   }
-  if (uVar6 >= *(unsigned short *)(iVar7 + 0x2e)) {
+  if ((unsigned)uVar6 >= *(unsigned short *)(iVar7 + 0x2e)) {
     func_00029CB0(*(int *)(local_64 * 0x40 + 0x6c + iVar7));
     uVar6 = local_64;
   }
