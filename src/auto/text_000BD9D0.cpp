@@ -10,6 +10,7 @@ extern int D_003250F8;
 extern int D_001D9678;
 extern int D_001D967C;
 extern float D_001D27B8;
+struct Part { float f[9]; };
 int func_0009C7A0(...);
 int func_0005F310(...);
 int func_0005CCC0(...);
