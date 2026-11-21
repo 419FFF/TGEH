@@ -2,6 +2,8 @@
 #include "common.h"
 #include <xmmintrin.h>
 
+struct __declspec(align(16)) M3BD10 { char b[64]; };
+
 #pragma optimize("y", on)
 bool func_0003C260(int param_1, int param_2, int param_3)
 {
