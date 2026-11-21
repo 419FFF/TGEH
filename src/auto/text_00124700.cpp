@@ -6,6 +6,7 @@ struct Tri64 { char v[0x40]; };
 extern "C" unsigned int strlen(const char *);
 #pragma intrinsic(strlen)
 struct S_125350 { short a; short pad; int b; int c; };
+struct RNode { unsigned char k[4]; RNode *next; };
 extern unsigned int D_001DF6B8;
 extern unsigned char D_001DF6BC;
 
