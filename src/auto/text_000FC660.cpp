@@ -40,6 +40,14 @@ unsigned char _func_000FC8B0(int unused, int *msg)
   return 1;
 }
 
+char func_000FCED0(void *param_1, int *param_2)
+{
+  int func_000F91D0(int);
+  int func_000F8870(int);
+  func_000F8870(func_000F91D0(*(int *)*(int **)((char *)param_2 + 4)));
+  return 1;
+}
+
 unsigned char func_000FCF30(void)
 {
   int func_000F8B60(...);
