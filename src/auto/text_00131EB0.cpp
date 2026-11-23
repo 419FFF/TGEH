@@ -1,9 +1,10 @@
 /* 20 functions from 0x00131EB0 to 0x00132E0C, found by Ghidra. */
 #include "common.h"
 #include "ghidra.h"
+#include "string.h"
 struct S_00132C60 { char pad0[0x18]; unsigned int flags; int pad1c, pad20; void *f24; unsigned short n; char pad2a[0x1a]; char *f44; int pad48; unsigned int cnt; char *f50; };
-extern "C" __declspec(dllimport) void __stdcall RtlEnterCriticalSection(void*);
-extern "C" __declspec(dllimport) void __stdcall RtlLeaveCriticalSection(void*);
+extern "C" __declspec(dllimport) void __cdecl RtlEnterCriticalSection(void*);
+extern "C" __declspec(dllimport) void __cdecl RtlLeaveCriticalSection(void*);
 struct C_001321C0 {
     int func_001321C0(void);
 };
@@ -134,6 +135,49 @@ int func_00132950(int *p) {
  return func_00116A90(size,1,0);
 }
 
+int func_001329E0(int *arg)
+{
+  extern char D_003326AC;
+  extern int D_00331D64;
+  int func_00132950(...), func_0013E270(...), func_0013D0F0(...), func_00132890(...), func_00132660(...), func_0013D7B0(...), func_00132210(...), func_00132350(...), func_001325C0(...), func_00136440(...);
+  int src=*arg;
+  volatile int saved=src;
+  if (!*(int*)(src+0x34) || !*(int*)(src+0xc)) return 0;
+  RtlEnterCriticalSection(&D_003326AC);
+  int dst=func_00132950();
+  memset((void*)dst,0,0x54);
+  *(int*)(dst+0x18)=**(int**)(src+4);
+  *(int*)(dst+0x1c)=*(int*)(src+4);
+  *(short*)(dst+0x48)=*(short*)(src+0xc);
+  *(int*)(dst+0x10)=*(int*)(src+0x34);
+  *(short*)(dst+0x28)=*(short*)(src+0x44);
+  *(int*)(dst+0x4c)=((C_001321C0*)*(int*)(dst+0x18))->func_001321C0();
+  *(char*)dst=func_0013E270(*(int*)(src+4));
+  int end=dst+0x54+(*(int*)(dst+0x4c)<<4);
+  *(int*)(dst+0x50)=dst+0x54;
+  memset((void*)(dst+0x54),0,*(int*)(dst+0x4c)<<4);
+  func_0013D0F0(*(int*)(dst+0x50),*(int*)(dst+0x18));
+  if (*(int*)(dst+0x18)&0x40000) end=func_00132890(src,end);
+  *(int*)(dst+0x14)=end;
+  if (*(int*)(dst+0x18)&0x20000) {
+    memcpy((void*)end,*(void**)(src+0x38),*(int*)(dst+0x10)*2);
+    int tmp=func_00132660();
+    func_0013D7B0(dst,tmp);
+    func_00132210(end+*(int*)(dst+0x10)*2);
+    func_00132350(dst,tmp);
+    memcpy((void*)end,*(void**)(tmp+0x38),*(int*)(tmp+0x34)*2);
+    func_001325C0();
+  } else {
+    memcpy((void*)end,*(void**)(src+0x38),*(int*)(dst+0x10)*2);
+    func_00132210(end+*(int*)(dst+0x10)*2);
+    func_00132350(dst,src);
+  }
+  func_00136440();
+  RtlLeaveCriticalSection(&D_003326AC);
+  ++D_00331D64;
+  return dst;
+}
+
 undefined4 func_00132B80(undefined4 param_1, undefined4 param_2)
 {
   int func_00117100(...);
@@ -194,7 +238,7 @@ undefined4 func_00132B80(undefined4 param_1, undefined4 param_2)
   return uVar2;
 }
 
-void func_00132C60(char *p)
+void func_00132C60(S_00132C60 *p)
 {
     extern char D_003326AC[]; extern int D_00332248[16]; extern int D_00332200[16]; extern int D_00331D64;
     void __stdcall func_0014CD60(unsigned int,int,int);
@@ -203,32 +247,29 @@ void func_00132C60(char *p)
     void func_0013E310(void);
     unsigned int i;
     int off = 0;
-    if (p != 0) {
-        RtlEnterCriticalSection(D_003326AC);
-        i = 0;
-        do {
-            if (D_00332248[i] || D_00332200[i]) {
-                D_00332248[i] = 0;
-                D_00332200[i] = 0;
-                func_0014CD60(i, 0, 0);
-            }
-            i++;
-        } while (i < 16);
-        RtlLeaveCriticalSection(D_003326AC);
-        if (*(int*)(p + 0x44)) {
-            for (i = 0; i < *(unsigned short*)(p + 0x28); i++, off += 0xc)
-                func_0014E090((void*)(*(int*)(p + 0x44) + off));
+    if (p == 0) return;
+    RtlEnterCriticalSection(D_003326AC);
+    for (i = 0; i < 16; i++) {
+        if (D_00332248[i] || D_00332200[i]) {
+            D_00332248[i] = 0;
+            D_00332200[i] = 0;
+            func_0014CD60(i, 0, 0);
         }
-        if (*(unsigned int*)(p + 0x18) & 0x20000) func_00116FB0(*(void**)(p + 0x24));
-        i = (*(unsigned int*)(p + 0x18) & 0x40000) ? 3 : 0;
-        if (i < *(unsigned int*)(p + 0x4c)) {
-            off = i << 4;
-            for (; i < *(unsigned int*)(p + 0x4c); i++, off += 0x10)
-                func_0014E090((void*)(*(int*)(p + 0x50) + off));
-        }
-        func_00116FB0(p);
-        if (--D_00331D64 == 0) func_0013E310();
     }
+    RtlLeaveCriticalSection(D_003326AC);
+    if (p->f44) {
+        for (i = 0; i < p->n; i++, off += 0xc)
+            func_0014E090(p->f44 + off);
+    }
+    if (p->flags & 0x20000) func_00116FB0(p->f24);
+    i = (p->flags & 0x40000) ? 3 : 0;
+    if (i < p->cnt) {
+        off = i << 4;
+        for (; i < p->cnt; i++, off += 0x10)
+            func_0014E090(p->f50 + off);
+    }
+    func_00116FB0(p);
+    if (--D_00331D64 == 0) func_0013E310();
 }
 
 void func_00132D50(int a,int b) {
