@@ -3,8 +3,8 @@
 #include "ghidra.h"
 #include "string.h"
 struct S_00132C60 { char pad0[0x18]; unsigned int flags; int pad1c, pad20; void *f24; unsigned short n; char pad2a[0x1a]; char *f44; int pad48; unsigned int cnt; char *f50; };
-extern "C" __declspec(dllimport) void __cdecl RtlEnterCriticalSection(void*);
-extern "C" __declspec(dllimport) void __cdecl RtlLeaveCriticalSection(void*);
+extern "C" __declspec(dllimport) void __stdcall RtlEnterCriticalSection(void*);
+extern "C" __declspec(dllimport) void __stdcall RtlLeaveCriticalSection(void*);
 struct C_001321C0 {
     int func_001321C0(void);
 };
