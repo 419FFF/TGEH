@@ -48,6 +48,14 @@ char func_000FCED0(void *param_1, int *param_2)
   return 1;
 }
 
+char func_000FCEF0(void *param_1, int *param_2)
+{
+  int func_000F91D0(int);
+  int func_000F86E0(int);
+  func_000F86E0(func_000F91D0(*(int *)*(int **)((char *)param_2 + 4)));
+  return 1;
+}
+
 unsigned char func_000FCF30(void)
 {
   int func_000F8B60(...);
