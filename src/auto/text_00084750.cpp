@@ -359,6 +359,40 @@ int func_00084750(char *param_1)
   return 0x3e;
 }
 
+void func_000850A0(int param_1, int *param_2)
+{
+  extern float D_001D27EC, D_001D2B64, D_001D2A14, D_001D2A2C, D_001D31C8, D_001D54E4;
+  float func_00131760(...);
+  int func_0011CF30(...);
+  int iVar2 = *(int *)(*(int *)(param_1 + 0x50) + 0x2c);
+  int i;
+  if (*param_2 == 0) {
+    for (i = 0; i < 0xf0; i += 0xc) {
+      *(float *)(i + *(int *)(iVar2 + 0xc)) = (func_00131760() - D_001D27EC) * D_001D2B64;
+      float a = func_00131760();
+      *(float *)(*(int *)(iVar2 + 0xc) + 4 + i) = a + a;
+      *(float *)(*(int *)(iVar2 + 0xc) + 8 + i) = (func_00131760() - D_001D27EC) * D_001D2B64;
+    }
+    for (i = 0; i < 0x28; i += 8) {
+      *(float *)((i + 4) + *(int *)(iVar2 + 0x1c)) = func_00131760() * D_001D2A14 + D_001D2A2C;
+      *(int *)(*(int *)(iVar2 + 0x1c) + i) = *(int *)(*(int *)(iVar2 + 0x1c) + 4 + i);
+    }
+    func_0011CF30(param_1 + 0x54, 0x42200000, 0x42200000);
+    return;
+  }
+  for (i = 0; i < 0xf0; i += 0xc) {
+    *(float *)(i + *(int *)(iVar2 + 0xc)) = (func_00131760() - D_001D27EC) * D_001D31C8;
+    float a = func_00131760();
+    *(float *)(*(int *)(iVar2 + 0xc) + 4 + i) = a + a;
+    *(float *)(*(int *)(iVar2 + 0xc) + 8 + i) = (func_00131760() - D_001D27EC) * D_001D31C8;
+  }
+  for (i = 0; i < 0x28; i += 8) {
+    *(float *)((i + 4) + *(int *)(iVar2 + 0x1c)) = func_00131760() * D_001D54E4 + D_001D2A14;
+    *(int *)(*(int *)(iVar2 + 0x1c) + i) = *(int *)(*(int *)(iVar2 + 0x1c) + 4 + i);
+  }
+  func_0011CF30(param_1 + 0x54, 0x428c0000, 0x428c0000);
+}
+
 void func_000851F0(int p, int q)
 {
   extern float D_001D27B8;
@@ -441,5 +475,52 @@ void func_00085370(void)
     func_00110480(D_0030809C, *(int *)(D_002FDD64 + k), 8);
   }
   D_002FDD94 = 0;
+}
+
+void func_000854E0(int param_1, int param_2) {
+extern char D_002FDD64[], D_002FDD70[];
+extern unsigned int D_002FDD80,D_002FDD90,D_002FDD94,D_003080F4;
+extern char D_002FDD74,D_002FDD84;
+int func_00110060(...),func_00110420(...),func_001105E0(...),func_00110000(...),func_000F8F40(...),func_00110480(...),func_0011E3A0(...),func_0011DED0(...);
+float func_00131760(void);
+extern float D_001D29E0,D_001D29D8,D_001D2C00,D_001D27EC,D_001D28C0,D_001D27B0;
+unsigned int u=999999999;
+int *p=0;
+__declspec(align(16)) char local[64];
+if(*(unsigned int*)D_002FDD70<u){u=*(unsigned int*)D_002FDD70;p=(int*)D_002FDD64;}
+if(D_002FDD80<u){u=D_002FDD80;p=(int*)&D_002FDD74;}
+if(D_002FDD90<u)p=(int*)&D_002FDD84;
+func_00110060(*(int*)(param_1+0x2c),local);
+int *q=*(int**)(*p+0x2c);
+if(q)func_00110420(*p,*q);
+func_001105E0(*p,local,0);
+func_00110000(*p);
+int r=func_000F8F40(*(int*)(param_1+0x2c));
+func_00110480(*(int*)(r+0xe0),*p,8);
+func_0011E3A0(p[1],&param_2);
+func_0011DED0(p[1]);
+p[3]=D_002FDD94++;
+if(param_2) {
+int x=p[1];
+
+switch(D_003080F4) { case 1: {
+ double v=func_00131760()*D_001D29E0;
+ float *dest=(float *)(*(int*)(*(int*)(*(int*)(x+0x50)+0x2c)+0x14)+0);
+ *dest=(float)(v+D_001D2C00);
+ *(int *)(*(int*)(*(int*)(*(int*)(x+0x50)+0x2c)+0x14)+4)=0x3f800000;
+ *(float *)(*(int*)(*(int*)(*(int*)(x+0x50)+0x2c)+0x14)+8)=func_00131760()*D_001D29E0+D_001D28C0;
+ *(float *)(*(int*)(*(int*)(*(int*)(x+0x50)+0x2c)+0x14)+12)=(func_00131760()+D_001D27B0)*D_001D29E0;
+ } break; case 2: case 10: 
+ *(int *)(*(int*)(*(int*)(*(int*)(x+0x50)+0x2c)+0x14)+0)=0x3f800000;
+ *(float *)(*(int*)(*(int*)(*(int*)(x+0x50)+0x2c)+0x14)+4)=func_00131760()*D_001D29E0+D_001D29D8;
+ *(float *)(*(int*)(*(int*)(*(int*)(x+0x50)+0x2c)+0x14)+8)=func_00131760()*D_001D29E0+D_001D27EC;
+ *(float *)(*(int*)(*(int*)(*(int*)(x+0x50)+0x2c)+0x14)+12)=func_00131760()*D_001D2C00+D_001D29E0;
+ break; default: 
+ *(float *)(*(int*)(*(int*)(*(int*)(x+0x50)+0x2c)+0x14)+0)=func_00131760()*D_001D2C00+D_001D27EC;
+ *(float *)(*(int*)(*(int*)(*(int*)(x+0x50)+0x2c)+0x14)+4)=func_00131760()*D_001D2C00+D_001D27EC;
+ *(float *)(*(int*)(*(int*)(*(int*)(x+0x50)+0x2c)+0x14)+8)=func_00131760()*D_001D2C00+D_001D27EC;
+ *(float *)(*(int*)(*(int*)(*(int*)(x+0x50)+0x2c)+0x14)+12)=func_00131760()*D_001D2C00+D_001D29E0;
+ break; }
+}
 }
 
