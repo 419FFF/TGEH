@@ -1,6 +1,7 @@
 /* 19 functions from 0x00104380 to 0x00105375, found by Ghidra. */
 #include "common.h"
 #include "ghidra.h"
+#include "string.h"
 
 void func_001045F0(void) {
     int func_00104200(...);
@@ -153,12 +154,38 @@ void func_00104B30(void)
   return;
 }
 
+void *func_00104B70(void *src)
+{
+ int func_00116A90(...),func_0010F750(...); float *func_0009C7A0(...); void func_0011C410(...);
+ extern int D_00326110,D_00324F80; extern char D_001DE834,D_001DE828,D_001DE81C,D_001DE810,D_001DE804,D_001DE7F8,D_001DE7EC,D_001DE7E0,D_001DE7D4,D_001DE600,D_001DE5F0,D_001DCFF4,D_001DE5BC,D_00324F78;
+ char *p=(char*)func_00116A90(0x150,1,1);
+ int *d=(int*)p,*q=(int*)src;
+ memcpy(p,src,0x110);
+ p[0x12]=9; p[0x138]=0; p[0x139]=0;
+ *(int*)(p+0x2c)=func_0010F750(&D_001DE834,D_00326110,0xe0);
+ p[0x130]=(unsigned char)(long double)*func_0009C7A0(p,&D_001DE828,0);
+ p[0x131]=(unsigned char)(long double)*func_0009C7A0(p,&D_001DE81C,0);
+ p[0x132]=(unsigned char)(long double)*func_0009C7A0(p,&D_001DE810,0);
+ p[0x133]=(unsigned char)(long double)*func_0009C7A0(p,&D_001DE804,0);
+ p[0x134]=(unsigned char)(long double)*func_0009C7A0(p,&D_001DE7F8,0);
+ p[0x135]=(unsigned char)(long double)*func_0009C7A0(p,&D_001DE7EC,0);
+ p[0x136]=(unsigned char)(long double)*func_0009C7A0(p,&D_001DE7E0,0);
+ p[0x137]=(unsigned char)(long double)*func_0009C7A0(p,&D_001DE7D4,0);
+ *(int*)(p+0x144)=*(int*)func_0009C7A0(p,&D_001DE600,0);
+ *(int*)(p+0x140)=*(int*)func_0009C7A0(p,&D_001DE5F0,0);
+ *(int*)(p+0x128)=*(int*)func_0009C7A0(p,&D_001DCFF4,0);
+ *(int*)(p+0x13c)=(int)(long double)*func_0009C7A0(p,&D_001DE5BC,0);
+ func_0011C410(&D_00324F78,p+0x114,p);
+ D_00324F80++;
+ return p;
+}
+
 void _func_001051F0(void)
 {
     extern int D_00313B54, D_00324F80, D_00324F78;
     extern unsigned char D_001E6231, D_001E6232, D_001E6233, D_001E6234;
     int x = D_00313B54;
-    unsigned char c;
+    char c;
     D_00324F80 = 0;
     D_00324F78 = 0;
     if (x == 3 || x == 4) {
@@ -166,23 +193,21 @@ void _func_001051F0(void)
         D_001E6232 = 1;
         D_001E6233 = 2;
         D_001E6234 = 3;
-        return;
-    }
-    if (x == 5) {
-        c = (unsigned char)x;
-        c |= 0xFF;
+    } else if (x == 5) {
+        c = (char)x;
+        c |= (char)-1;
         D_001E6231 = c;
         D_001E6232 = c;
         D_001E6233 = c;
         D_001E6234 = c;
-        return;
+    } else {
+        D_001E6231 = 10;
+        D_001E6232 = 11;
+        D_001E6233 = 12;
+        D_001E6234 = 13;
     }
-    D_001E6231 = 10;
-    D_001E6232 = 11;
-    D_001E6233 = 12;
-    D_001E6234 = 13;
 }
-
+#pragma optimize("", on)
 void func_00105270(void) {
     extern int D_00324F80;
     D_00324F80 = 0;
