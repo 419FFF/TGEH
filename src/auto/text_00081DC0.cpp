@@ -3,6 +3,8 @@
 #include "ghidra.h"
 static int D_002FBB18;
 
+void func_00081DC0(int*p,unsigned q){int func_0011CD40(...),func_0011CDF0(...),func_0011CE10(...),func_0011CE20(...),func_0011CE30(...),func_0011CE50(...),func_0011CF30(...),func_0011CFC0(...);float func_00131760(...);extern float D_001D27EC,D_001D5D00,D_001D28C0,D_001D31D0,D_001D31C8;unsigned i;*p=func_0011CD40(32,10,1,4,1);for(i=0;i<384;i+=12){*(float*)(*(int*)(*p+4)+i)=(func_00131760()-D_001D27EC)*D_001D5D00;*(unsigned*)(*(int*)(*p+4)+i+4)=0;*(float*)(*(int*)(*p+4)+i+8)=(func_00131760()-D_001D27EC)*D_001D5D00;}for(i=0;i<120;i+=12){*(float*)(*(int*)(*p+12)+i)=(func_00131760()-D_001D27EC)*D_001D28C0;*(unsigned*)(*(int*)(*p+12)+i+4)=0x3f800000;*(float*)(*(int*)(*p+12)+i+8)=(func_00131760()-D_001D27EC)*D_001D28C0;}*(unsigned*)(*(int*)(*p+20))=0x3f4ccccd;*(unsigned*)(*(int*)(*p+20)+4)=0x3f4ccccd;*(unsigned*)(*(int*)(*p+20)+8)=0x3f4ccccd;*(unsigned*)(*(int*)(*p+20)+12)=0x3e99999a;for(i=0;i<32;i+=8){*(float*)(*(int*)(*p+28)+i)=func_00131760()*D_001D31D0+D_001D31C8;*(float*)(*(int*)(*p+28)+i+4)=func_00131760()*D_001D31D0+D_001D31C8;}*(unsigned*)(*(int*)(*p+36))=0;*(unsigned*)(*(int*)(*p+36)+4)=0;*(unsigned*)(*(int*)(*p+36)+8)=0x3f800000;*(unsigned*)(*(int*)(*p+36)+12)=0x3f800000;func_0011CDF0(q);func_0011CE10(q,0);func_0011CE20(q,0);func_0011CE30(q,0x41f00000,0x41b00000);func_0011CE50(q,0,0,0,0xbdcccccd);func_0011CF30(q,0,0);func_0011CFC0(q,0x41c80000);}
+
 void _func_00081F60(void)
 {
   extern int D_001D67EC;
@@ -180,52 +182,20 @@ void func_000824C0(int p)
 void func_00082820(int param_1, int param_2)
 {
   extern float D_001D27B8;
-  extern int D_002FBB18, D_0030809C;
-  extern int D_002FBB14;
+  extern int D_002FBB18, D_0030809C, D_002FBB14;
   int func_000F8F40(...);
   int func_00110420(...);
   int func_00110480(...);
-  int iVar1;
-  unsigned int uVar1;
-  unsigned int uVar3;
-  float *pfVar4;
+  int n, i;
 
   if (*(int *)(param_1 + 0x4c) == 0) {
-    iVar1 = *(int *)(param_1 + 0x15c);
-    uVar1 = iVar1;
-    uVar3 = 0;
-    if (iVar1 >= 4) {
-      pfVar4 = (float *)(*(int *)(param_1 + 0x160) + 0x78);
-      do {
-        if ((long double)D_001D27B8 != pfVar4[-0x16]) goto done;
-        if ((long double)D_001D27B8 != pfVar4[0]) {
-          uVar3++;
-          goto done;
-        }
-        if ((long double)D_001D27B8 != pfVar4[0x16]) {
-          uVar3 += 2;
-          goto done;
-        }
-        if ((long double)D_001D27B8 != pfVar4[0x2c]) {
-          uVar3 += 3;
-          goto done;
-        }
-        uVar3 += 4;
-        pfVar4 += 0x58;
-      } while (uVar3 < uVar1 - 3);
+    n = *(int *)(param_1 + 0x15c);
+    for (i = 0; i < n; i++) {
+      if ((long double)D_001D27B8 != *(float *)(*(int *)(param_1 + 0x160) + i * 0x58 + 0x20)) break;
     }
-    if (uVar3 < uVar1) {
-      pfVar4 = (float *)(*(int *)(param_1 + 0x160) + 0x20 + uVar3 * 0x58);
-      do {
-        if ((long double)D_001D27B8 != *pfVar4) break;
-        uVar3++;
-        pfVar4 += 0x16;
-      } while (uVar3 < uVar1);
-    }
-done:
-    if (uVar3 == uVar1) {
-      iVar1 = func_000F8F40(param_2);
-      func_00110420(*(int *)(iVar1 + 0xe0), D_002FBB18);
+    if (i == n) {
+      int r = func_000F8F40(param_2);
+      func_00110420(*(int *)(r + 0xe0), D_002FBB18);
       func_00110480(D_0030809C, D_002FBB18, 8);
       D_002FBB14 = 0;
     }
