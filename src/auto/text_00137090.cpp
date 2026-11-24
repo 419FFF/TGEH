@@ -1,6 +1,7 @@
 /* 21 functions from 0x00137090 to 0x00137EE7, found by Ghidra. */
 #include "common.h"
 #include "ghidra.h"
+extern "C" void* __imp__RtlInitializeCriticalSection;
 extern "C" void (__stdcall * __imp__RtlEnterCriticalSection)(void*);
 extern "C" void (__stdcall * __imp__RtlLeaveCriticalSection)(void*);
 
@@ -86,6 +87,39 @@ void *func_001373A0(void)
  func_00165A09(&D_001E8B70,0,0,D_0033231C,0x200,0x200,0,1);
  func_00133CF0(0x200,0x200,1,1,D_00332298,D_0033231C);
  return D_00332298;
+}
+
+unsigned char func_00137690(int* s) {
+ int func_00116A90(...); void func_00040000(void);
+ extern void* __imp__RtlInitializeCriticalSection;
+ int __stdcall func_00157D30(int), __stdcall func_00157D40(int,int,void*), __stdcall func_00157DF0(int,int), __stdcall func_00157E10(int,int,int,int,void*,void*);
+ int __stdcall func_0014E4A0(int,int,int,int,int,int), __stdcall func_0014F2F0(int), __stdcall func_0014AF50(int), __stdcall func_0014B100(void*);
+ int func_00147245(void),func_00135A10(...),func_00135BA0(void),func_00137C50(void),func_001314C0(void),func_000688D0(void),func_0014B4A0(void),func_0014B4C0(void),func_00136510(...);
+ 
+ extern int D_003326AC,D_0033231C,D_00332288,D_00332290,D_003323E8,D_003323F4,D_00332334,D_00332240,D_003326A0,D_00332328;
+ extern unsigned char D_00332710; extern unsigned short D_00332320,D_00332318;
+ extern int D_00332658[10];
+ char local[224]; unsigned int i; int a,b;
+ D_0033231C=func_00116A90((int)&func_00040000,0x80,1);
+ ((void (__stdcall *)(void*))__imp__RtlInitializeCriticalSection)(&D_003326AC);
+ D_00332288=func_00157D30(0);
+ if(!D_00332288)return 0;
+ s[12]=3;s[26]=8;
+ func_00147245();func_00135A10(s);
+ func_00157D40(0,1,local+16);
+ if(s[15])func_00157DF0(s[15],0x20000);
+ func_00157E10(0,1,0,0x40,&D_003323E8,&D_00332290);
+ for(i=0;i<=D_003323F4+1;i++){func_0014E4A0(0,0,0xf3,0,0x3f800000,0);func_0014F2F0(0);}
+ func_00135BA0();func_00137C50();func_001314C0();func_000688D0();func_000688D0();
+ D_00332334=func_0014B4A0();D_00332240=func_0014B4C0();
+ D_00332710=1;D_00332320=0;D_00332318=0;
+ func_0014B100(&a); D_003326A0=a;D_00332328=b;
+ func_00136510(0xbf800000,0x3f800000,0xbf800000,0x3f800000);
+ D_00332658[0]=0;D_00332658[1]=0;D_00332658[2]=0;D_00332658[3]=0;D_00332658[4]=0;D_00332658[5]=0;D_00332658[6]=0;D_00332658[7]=0;D_00332658[8]=0;D_00332658[9]=0;
+ func_0014AF50(0x1359a0);
+ for(i=0;i<10;i++){if(!D_00332658[i]){D_00332658[i]=0;break;}}
+ func_00137090(0,0,0x280,0x1e0);
+ return 1;
 }
 
 extern "C" void *memcpy(void *, const void *, unsigned int);
