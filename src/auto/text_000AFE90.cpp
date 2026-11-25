@@ -211,7 +211,7 @@ void func_000B0730(int param_1)
   D_00313A7A = 10;
   D_00313A7C = 10;
   func_00100B90();
-  func_00100BC0((float)(D_001D29E0 * (double)(int)D_00313A78));
+  func_00100BC0((float)((long double)(int)D_00313A78 * D_001D29E0));
   func_00100BE0((float)(D_001D29E0 * (double)(int)D_00313A7A));
   func_00100C10((float)(D_001D29E0 * (double)(int)D_00313A7C));
   D_00313B1C = func_00116A90(&D_0000FA00, 1, 1);
