@@ -2,6 +2,84 @@
 #include "common.h"
 #include "ghidra.h"
 
+struct S_0001B0D0_node { S_0001B0D0_node *next; int unk4; char *data; };
+struct S_0001B0D0_st { int a, b, c; void *p; char flag; char z; };
+
+void func_0001AF40(int param_1)
+{
+  int func_00110060(...);
+  int func_00110330(...);
+  extern int D_003268B0;
+  float func_000A2310(...);
+  int func_0001AED0(...);
+  int func_0009C1F0(...);
+  int func_001105E0(...);
+  int func_00110000(...);
+  int func_00110480(...);
+  int func_000A22B0(...);
+  extern char D_0000FFFF;
+  int uVar1;
+  int iVar2;
+  int *piVar3;
+  unsigned int uVar4;
+  int iVar5;
+  unsigned int local_64;
+  int local_60;
+  float local_5c;
+  double f;
+  __declspec(align(16)) char local_50[64];
+
+  uVar1 = **(int **)(*(int *)(param_1 + 0x2c) + 0x2c);
+  iVar5 = *(int *)(param_1 + 0x114);
+  func_00110060(*(int *)(param_1 + 0x2c), local_50);
+  uVar4 = 0;
+  func_00110330(*(int *)(param_1 + 0x2c), 0);
+  iVar2 = *(int *)(param_1 + 0x2c);
+  if (*(unsigned char *)(iVar2 + 0x22) == D_003268B0) {
+    local_60 = *(int *)(iVar2 + 0x124);
+  } else {
+    piVar3 = *(int **)(iVar2 + 0x28);
+    local_60 = uVar4;
+    for (; piVar3 != (int *)uVar4; piVar3 = (int *)piVar3[3]) {
+      if (*(unsigned char *)(*piVar3 + 0x22) == D_003268B0) {
+        local_60 = *(int *)(*piVar3 + 0x124);
+        break;
+      }
+    }
+  }
+  local_64 = 0xff;
+  *(int *)&local_5c = 0xbf800000;
+  if (uVar4 < *(unsigned short *)(iVar5 + 0x2e)) {
+    piVar3 = (int *)(iVar5 + 0x6c);
+    do {
+      if (*piVar3 == 0) break;
+      if (*(int *)(*piVar3 + 0x140) == 0) {
+        if ((f = func_000A2310(piVar3 - 0xe)) > local_5c) {
+          local_5c = (float)f;
+          local_64 = uVar4;
+        }
+      }
+      uVar4 = uVar4 + 1;
+      piVar3 = piVar3 + 0x10;
+    } while (uVar4 < *(unsigned short *)(iVar5 + 0x2e));
+  }
+  if (!(uVar4 < *(unsigned short *)(iVar5 + 0x2e))) {
+    func_0001AED0(*(int *)(local_64 * 0x40 + 0x6c + iVar5));
+    uVar4 = local_64;
+  }
+  iVar5 = iVar5 + uVar4 * 0x40;
+  *(int *)(iVar5 + 0x6c) = param_1;
+  *(unsigned int *)(param_1 + 0x118) = uVar4;
+  func_0009C1F0(*(int *)(iVar5 + 0x30), local_60);
+  func_00110330(*(int *)(iVar5 + 0x30), 1);
+  func_001105E0(*(int *)(iVar5 + 0x30), local_50, 0);
+  func_00110000(*(int *)(iVar5 + 0x30));
+  func_00110480(uVar1, *(int *)(iVar5 + 0x30), 8);
+  func_000A22B0(iVar5 + 0x34, 1, 1, &D_0000FFFF, 0x41c00000, 0);
+  *(int *)(param_1 + 0x124) = *(int *)(param_1 + 0x2c);
+  *(int *)(param_1 + 0x2c) = *(int *)(iVar5 + 0x30);
+}
+
 short func_0001B280(int p)
 {
     int func_0001AED0(int);
