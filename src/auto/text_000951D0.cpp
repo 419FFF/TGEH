@@ -72,6 +72,55 @@ float* _func_00095670(void)
 #pragma optimize("", on)
 unsigned char func_000957A0(unsigned int param_1) { extern unsigned int D_00307C04,D_00307C08; int func_00116E50(int,int,int,int); if ((D_00307C04&0x3f)==0) D_00307C08=func_00116E50(D_00307C08,D_00307C04*4+0x100,1,1); *(unsigned int*)(D_00307C08+D_00307C04*4)=param_1; D_00307C04++; return 1; }
 
+float _func_000957F0(float *p, float **out, int flag)
+{
+  extern int D_00307C04;
+  extern float **D_00307C08;
+  extern float D_001D27F8, D_001D2888, D_001D27B8;
+  int _func_001100A0(float *, int **);
+  int _func_0012F7A0(float *, int *);
+  int _func_0012F890(float *, int *);
+  char _func_0011B020(float *, float *, float *, float *, int, float *);
+  float _func_00097180(float *, float, float);
+  float *o;
+  int *m;
+  float c[4], dy, b[4], a[4], e[4], dummy[16];
+  float r;
+  int i;
+  if (out) *out = 0;
+  for (i = 0; i < D_00307C04; i++) {
+    o = D_00307C08[i];
+    _func_001100A0(o, &m);
+    c[0] = ((float *)m)[0x30/4];
+    c[1] = ((float *)m)[0x34/4];
+    c[2] = ((float *)m)[0x38/4];
+    c[3] = 1.0f;
+    _func_0012F7A0(c, m);
+    if (p[0] < c[0] + o[0] + o[4] && (o[0] - o[4]) + c[0] < p[0] &&
+        p[2] < (c[2] + o[2]) + o[6] && (o[2] - o[6]) + c[2] < p[2]) {
+      a[0] = p[0] - ((float *)m)[0x30/4];
+      a[1] = (p[1] - ((float *)m)[0x34/4]) - D_001D27F8;
+      a[2] = p[2] - ((float *)m)[0x38/4];
+      a[3] = 1.0f;
+      b[0] = p[0] - ((float *)m)[0x30/4];
+      b[1] = (p[1] - ((float *)m)[0x34/4]) + D_001D2888;
+      b[2] = p[2] - ((float *)m)[0x38/4];
+      b[3] = 1.0f;
+      _func_0012F890(a, m);
+      _func_0012F890(b, m);
+      if (_func_0011B020(o, a, b, e, 0, dummy)) {
+        _func_0012F7A0(e, m);
+        if (out) *out = o;
+        dy = e[1] - p[1];
+        r = dy;
+        if (flag) r = _func_00097180(o, p[0], p[2]) + dy;
+        if (r >= D_001D27B8) return r;
+      }
+    }
+  }
+  return D_001D27B8;
+}
+
 int func_000959D0(int param_1, undefined4 param_2)
 {
   int func_0011B4F0(int, undefined4);
