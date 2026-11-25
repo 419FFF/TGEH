@@ -214,6 +214,51 @@ void func_00101690(int a0) {
     D_00324D6C = a0;
 }
 
+void _func_001016A0(void)
+{
+  extern unsigned int _D_00313B54, _D_00313B6C;
+  extern int _D_00324D6C, _D_001E46C0, _D_00307DF8, _D_002EED18, _D_00313B60, _D_003080AC;
+  extern short _D_00313A78, _D_00313A7A, _D_00313A7C;
+  extern float _D_001D29E0;
+  void _func_00102090(unsigned char);
+  void _func_001019C0(int);
+  void _func_001007F0(void);
+  void _func_00100BC0(float);
+  void _func_00100BE0(float);
+  void _func_00100C10(float);
+  void _func_00068340(unsigned char);
+  void _func_00100770(int);
+  void _func_00100750(int);
+  void _func_00100790(int);
+  void _func_001007D0(unsigned char);
+  void _func_00100A60(int);
+  void _func_00101360(void);
+  void _func_00104AB0(void);
+  unsigned char m;
+  _D_00324D6C = 0;
+  m = 0xff;
+  if (_D_00313B54 >= 3 && _D_00313B54 <= 8)
+    m = (unsigned char)(1 << (_D_00313B54 - 3));
+  _func_00102090(m);
+  _func_001019C0(_D_001E46C0);
+  _func_001007F0();
+  _func_00100BC0((float)((longdouble)_D_00313A78 * _D_001D29E0));
+  _func_00100BE0((float)((longdouble)_D_00313A7A * _D_001D29E0));
+  _func_00100C10((float)((longdouble)_D_00313A7C * _D_001D29E0));
+  _func_00068340(_D_00313B54 == 4 || _D_00313B54 == 6 || _D_00313B54 == 7 || _D_00313B54 == 3);
+  _func_00100770(_D_00307DF8);
+  _func_00100750(_D_002EED18);
+  _func_00100790(_D_00313B60);
+  _func_001007D0(_D_003080AC != 0);
+  if (_D_00313B6C == 0) _func_00100A60(1);
+  if (_D_00313B6C == 1) _func_00100A60(2);
+  if (_D_00313B6C == 2) _func_00100A60(4);
+  if (_D_00313B6C == 3) _func_00100A60(1);
+  if (_D_00313B6C == 4) _func_00100A60(1);
+  _func_00101360();
+  _func_00104AB0();
+}
+
 void _func_00101810(void) { extern int D_00324D48,D_00324D4C,D_00324D50,D_00324D54,D_00324D58,D_00324D84; extern char D_001DE5B0,D_001DE5A4,D_001DE590,D_001DE57C,D_001DE568,D_001DE554,D_001DE544,D_001DE534; int _func_0009C590(const char*); int _func_00100A20(int); int _func_00100A40(int); int _func_00103210(const char*); int _func_001031A0(int,int); int _func_00103990(int,int); _func_00100A20(_func_0009C590(&D_001DE5B0)); _func_00100A40(_func_0009C590(&D_001DE5A4)); D_00324D48=_func_00103210(&D_001DE590); D_00324D4C=_func_00103210(&D_001DE57C); D_00324D50=_func_00103210(&D_001DE568); D_00324D54=_func_00103210(&D_001DE554); D_00324D58=_func_00103210(&D_001DE544); D_00324D84=_func_00103210(&D_001DE534); if(D_00324D84){_func_001031A0(D_00324D84,0);_func_00103990(D_00324D84,1);} }
 
 void _func_001018B0(void) { extern int D_00307D04,D_003080AC,D_00313910,D_00307DF8,D_002EED18,D_00313B60,D_00324D6C; extern float D_0031391C,D_001D2BF8; extern unsigned char D_002F7318; unsigned char _func_00100D80(void); int _func_00116800(int); int _func_00100BC0(int),_func_00100BE0(int),_func_00100C10(int); int _func_00100770(int),_func_00100750(int),_func_00100790(int); void _func_001007D0(unsigned char); int _func_001009C0(int),_func_001009B0(int); int _func_00100E80(void),_func_00101430(void),_func_00068740(void),_func_00116820(void); if(_func_00100D80()){_func_00116800(D_00307D04); if(D_003080AC==5 && D_00313910==4 && D_0031391C>D_001D2BF8){_func_00100BC0(0);_func_00100BE0(0);_func_00100C10(0);} _func_00100770(D_00307DF8);_func_00100750(D_002EED18);_func_00100790(D_00313B60);_func_001007D0(D_003080AC!=0);_func_001009C0(D_002F7318);_func_001009B0(D_00324D6C);_func_00100E80();_func_00101430();_func_00068740();_func_00116820();} }
@@ -259,4 +304,14 @@ void func_001019D0(int param_1)
   func_0012E940(local_10);
   return;
 }
-
+void _func_00101430(void)
+{
+    extern int D_003080AC, D_00324D7C;
+    void _func_00101360(void);
+    if (D_003080AC == 2) {
+        if (0 < D_00324D7C) {
+            _func_00101360();
+            return;
+        }
+    }
+}
