@@ -3,6 +3,16 @@
 #include "ghidra.h"
 #include <xmmintrin.h>
 
+struct S_00095EF0_part {
+    float unk_0x0[3];
+    float center[3];
+    float radius;
+    int unk_0x1c;
+    unsigned short *indices;
+    unsigned count;
+    int unk_0x28[2];
+};
+
 void _func_000955D0(void)
 {
   extern int D_001D71F8;
@@ -153,5 +163,52 @@ int _func_00095C90(float *p) {
   q=(float*)((char*)q+0x30); ++i;
  }
  return -1;
+}
+
+void func_00095EF0(void)
+{
+ extern int *D_00307C0C;
+ extern float D_001D27B0, D_001D290C;
+ float func_0012E870(float*,float*);
+ int *obj=D_00307C0C;
+ obj[6]=0xc7c35000;obj[7]=0xc7c35000;obj[8]=0xc7c35000;
+ obj[9]=0x47c35000;obj[10]=0x47c35000;obj[11]=0x47c35000;
+ unsigned i=0;
+ int off;
+ if((unsigned)obj[2]>0) { off=0; do {
+ unsigned num=*(unsigned*)(obj[0]+off+36);
+ int *part=(int*)(obj[0]+off);
+ float *center=(float*)(part+3);
+ unsigned j=0;
+ center[0]=0;((float*)part)[4]=0;((float*)part)[5]=0;
+ if(num>0) do {
+ float *vertex=(float*)(obj[5]+((unsigned short*)part[8])[j]*12);
+ float x=vertex[0],y=vertex[1];
+ float z=vertex[2];
+ center[0]=(float)(x+center[0]);
+ ((float*)part)[4]=(float)(y+((float*)part)[4]);
+ ((float*)part)[5]=(float)(z+((float*)part)[5]);
+ if(x>((float*)obj)[6])((float*)obj)[6]=(float)x;
+ if(x<((float*)obj)[9])((float*)obj)[9]=(float)x;
+ if(y>((float*)obj)[7])((float*)obj)[7]=(float)x;
+ if(y<((float*)obj)[10])((float*)obj)[10]=(float)x;
+ if(z>((float*)obj)[8])((float*)obj)[8]=(float)x;
+ if(z<((float*)obj)[11])((float*)obj)[11]=(float)x;
+ ++j;
+ }while(j<(unsigned)part[9]);
+ float scale=D_001D27B0/(unsigned)part[9];
+ part[6]=0;
+ center[0]=(float)(scale*center[0]);
+ ((float*)part)[4]=(float)(scale*((float*)part)[4]);
+ ((float*)part)[5]=(float)(scale*((float*)part)[5]);
+ j=0;
+ if((unsigned)part[9]>0)do {
+ float dist=func_0012E870(center,(float*)(obj[5]+((unsigned short*)part[8])[j]*12));
+ if(dist>((float*)part)[6])((float*)part)[6]=(float)dist;
+ ++j;obj=D_00307C0C;
+ }while(j<(unsigned)part[9]);
+ ++i;off+=48;
+ }while(i<(unsigned)obj[2]);
+ }
 }
 
