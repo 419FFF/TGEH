@@ -90,8 +90,4 @@ void _func_00121AD0(unsigned int p1,unsigned int p2,unsigned int p3,unsigned int
 
 extern int D_001E7D2C;
 extern int D_001E7D30;
-extern unsigned char *D_0032B6F4;
-extern char D_0032B700;
-extern char D_001E7D40;
-extern int D_001E7D38;
-int func_0013FF19(...);
+
