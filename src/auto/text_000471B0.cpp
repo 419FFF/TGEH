@@ -1,5 +1,7 @@
 /* 13 functions from 0x000471B0 to 0x000480D3, found by Ghidra. */
 #include "common.h"
+struct PathTbl_000476A0 { int n; float (*pts)[4]; };
+struct PathWalker_000476A0 { PathTbl_000476A0 *tbl; int sub[7]; float f20; int u24[11]; int idx; int cnt; int x58; float t; float rate; float out; };
 
 unsigned char __cdecl _func_000471B0(int a, int *b, char c)
 {
@@ -12,6 +14,54 @@ unsigned char __cdecl _func_000471B0(int a, int *b, char c)
     _func_00106AC0(a+4,b,xy);x=xy[0];y=xy[1];n=*(int *)(a+0xc)-1;
     if(x<0||x>n||y<0||y>n)return 0;
     return (unsigned char)((*(unsigned char *)(*(int *)(*(int *)(a+0x28)+4)+(x+*(int *)(a+0xc)*y)*4+2)&0x50)==0x50);
+}
+
+bool _func_00047260(int self, int world, int *pos, int out)
+{
+    extern void func_001100A0(int, int *);
+    extern float func_0012E870(int *, int *);
+    extern void func_0012E6D0(int, int *, int *);
+    extern float func_0012EA60(int);
+    int a[3];
+    int b[3];
+    float r;
+    int mat;
+    int i;
+
+    a[0] = pos[0];
+    a[2] = pos[2];
+    a[1] = 0;
+    r = *(float *)(self + 0xf4);
+    if (r < *(float *)(self + 0xfc))
+        r = *(float *)(self + 0xfc);
+    i = 0;
+    if (*(int *)(world + 0xd4) != 0) {
+        do {
+            int *ent = (int *)(*(int *)(world + 0xd8) + i * 8);
+            int o = ent[0];
+            if (o != 0 && (*(unsigned char *)(*(int *)(o + 0x2c) + 0x20) & 1) == 0 && o != self &&
+                *(char *)(o + 0x15) != 0 && ent[1] != 0) {
+                double d;
+                double r2;
+                func_001100A0(*(int *)(o + 0x2c), &mat);
+                b[0] = *(int *)(mat + 0x30);
+                b[1] = *(int *)(mat + 0x34);
+                b[2] = *(int *)(mat + 0x38);
+                b[1] = 0;
+                d = func_0012E870(a, b);
+                r2 = *(float *)(o + 0xf4);
+                if (r2 < *(float *)(o + 0xfc))
+                    r2 = *(float *)(o + 0xfc);
+                if (d < (r2 + (double)r) * (r2 + (double)r)) {
+                    func_0012E6D0(out, a, b);
+                    func_0012EA60(out);
+                    return true;
+                }
+            }
+            i++;
+        } while (i != *(int *)(world + 0xd4));
+    }
+    return false;
 }
 
 void __cdecl _func_000473B0(volatile float *p)
@@ -75,6 +125,85 @@ void __cdecl _func_000475E0(int a, int b, int c, int d, int *e)
       p[0]=e[0];p[1]=e[1];p[2]=e[2];
       _func_0012EE00(a,e,q);_func_0012EA60(a);_func_0012EE00(q,a,p);_func_0012EA60(q);}
     _func_00130590(a);
+}
+
+bool func_00047840(int *param_1, int *param_2)
+{
+  int func_00058890(...);
+  int func_00058B80(int *, float, int *);
+  extern float D_001E461C, D_001D27B0;
+  int *piVar3;
+  int iVar2;
+  float *f = (float *)param_1;
+  int l[9];
+  float fVar1;
+  double d;
+
+  if (param_1[0x17] == -0x40800000) {
+    iVar2 = param_1[0x14];
+    if (iVar2 == param_1[0x15] + 1) {
+      param_1[0x14] = -1;
+      return true;
+    }
+    piVar3 = (int *)*param_1;
+    if (iVar2 == *piVar3) {
+      param_1[0x14] = 0;
+    }
+    l[1] = param_2[0xe];
+    l[0] = param_2[0xc];
+    d = *(float *)(param_1[0x14] * 0x10 + piVar3[1]);
+    *(float *)&l[2] = (float)d;
+    l[5] = param_2[8];
+    d = *(float *)(param_1[0x14] * 0x10 + 8 + piVar3[1]);
+    *(float *)&l[3] = (float)d;
+    l[6] = param_2[10];
+    l[4] = param_1[0x16];
+    func_00058890(param_1 + 1, l);
+    param_1[0x17] = 0;
+    param_1[0x14] = param_1[0x14] + 1;
+  }
+  fVar1 = (float)((double)f[0x18] / (double)f[8] * D_001E461C + (double)f[0x17]);
+  f[0x17] = fVar1;
+  func_00058B80(param_1 + 1, fVar1, l);
+  param_2[8] = l[3];
+  param_2[0xc] = l[5];
+  param_2[0xe] = l[6];
+  param_2[2] = l[1];
+  param_2[10] = l[4];
+  *param_2 = l[0];
+  param_2[4] = 0;
+  param_2[5] = 0x3f800000;
+  param_2[6] = 0;
+  param_2[1] = 0;
+  param_2[9] = 0;
+  d = f[0x17];
+  if (!(d <= (double)D_001D27B0)) {
+    param_1[0x17] = -0x40800000;
+    return false;
+  }
+  return true;
+}
+
+float __cdecl _func_00047C90(int a, float f, int *out)
+{
+    int _func_00110060(...), _func_0012F7A0(...), _func_0012E6D0(...), _func_0012ED20(...);
+    float _func_0012E940(...);
+    extern int _D_00307DF8;
+    extern float _D_001D27B0;
+    int m1[16], m2[16], v[3];
+    int p[4], q[4];
+    float len;
+    _func_00110060(*(int *)(a+0x2c), m1);
+    _func_00110060(*(int *)(_D_00307DF8+0x2c), m2);
+    p[0]=*(int *)(a+0xe8);p[1]=*(int *)(a+0xec);p[2]=*(int *)(a+0xf0);p[3]=0;
+    q[0]=*(int *)(_D_00307DF8+0xe8);q[1]=*(int *)(_D_00307DF8+0xec);q[2]=*(int *)(_D_00307DF8+0xf0);q[3]=0;
+    _func_0012F7A0(p, m1);
+    _func_0012F7A0(q, m2);
+    ((float *)q)[1] = ((float *)q)[1] - f;
+    _func_0012E6D0(v, q, p);
+    len = _func_0012E940(v);
+    if (out) _func_0012ED20(out, v, _D_001D27B0 / len);
+    return len;
 }
 
 void __cdecl _func_00047DA0(int v0,int v1,int v2,int v3,int *out,int d)
