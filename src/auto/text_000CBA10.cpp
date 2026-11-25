@@ -3,6 +3,7 @@
 #include "ghidra.h"
 
 struct S11 { char c[11]; };
+struct __declspec(align(16)) MtxCC5F0 { float m[16]; };
 extern "C" char *strcat(char *, const char *);
 #pragma intrinsic(strcat)
 
@@ -28,6 +29,44 @@ void func_000CC130(void)
     puVar1 = puVar1 + 1;
   } while ((int)puVar1 < 0x4160);
   return;
+}
+
+void _func_000CC190(void)
+{
+    extern S11 D_001DAA5C;
+    extern int D_00318D10, D_00318D20[], D_00318D40[], D_00318DE0;
+    extern char D_00318D1C;
+    extern int func_00110300(int, char *, int);
+    extern void func_00110060(int, void *);
+    extern void func_0012ECA0(float *, float);
+    extern void func_0012F610(float *, void *);
+    extern void func_0012E590(void *, float *);
+    char mat[0x30];
+    char out[0x1c];
+    int i = 0;
+    do {
+        S11 name = D_001DAA5C;
+        union { char c[2]; unsigned short w; } suf;
+        suf.w = 0x31;
+        suf.c[0] = (char)(i + 0x31);
+        strcat(name.c, suf.c);
+        int h = func_00110300(*(int *)(D_00318D10 + 0x2c), name.c, 0x18);
+        D_00318D20[i] = h;
+        func_00110060(h, mat);
+        D_00318D40[i * 5] = h;
+        if (i == 7) {
+            float v[3];
+            v[0] = -1.0f;
+            v[1] = 0.0f;
+            v[2] = 0.0f;
+            func_0012ECA0(v, *(float *)(h + 0x10) + *(float *)(h + 0x10));
+            func_0012F610(v, mat);
+            func_0012E590(out, v);
+            D_00318DE0 = 0;
+        }
+        i++;
+    } while (i != 8);
+    D_00318D1C = 0;
 }
 
 void func_000CC2C0(void)
@@ -59,6 +98,68 @@ void func_000CC2C0(void)
     D_00318D1C = 1;
     D_0031A954 = 1;
   }
+  return;
+}
+
+void func_000CC300(int param_1)
+{
+  extern undefined D_00318D44;
+  extern undefined D_00318D40;
+  int func_00110060(...);
+  extern undefined4 D_00318D10;
+  int func_0012F420(...);
+  int func_0012F250(...);
+  extern undefined4 D_00318E08;
+  extern undefined4 D_00318E0C;
+  extern undefined4 D_00318E10;
+  int func_0012F5B0(...);
+  extern undefined D_00318D48;
+  int func_0012E590(...);
+  extern undefined4 D_00318E18;
+  extern undefined4 D_00318E14;
+  extern undefined4 D_00318E1C;
+  extern undefined4 D_00318E00;
+  extern undefined4 D_00318E04;
+  extern undefined4 D_00318DF4;
+  extern undefined4 D_00318DFC;
+  int func_001031C0(...);
+  extern undefined4 D_00318D14;
+  extern undefined D_001DAA68;
+  int func_00103990(...);
+  int iVar1;
+  undefined4 uVar2;
+  int iVar3;
+  undefined1 local_dc [12];
+  undefined1 local_d0 [48];
+  undefined4 local_a0;
+  undefined4 local_9c;
+  undefined4 local_98;
+  undefined1 local_90 [64];
+  undefined1 local_50 [76];
+  
+  iVar3 = param_1 * 0x14;
+  iVar1 = *(int *)(((undefined *)&D_00318D44) + iVar3);
+  uVar2 = *(undefined4 *)(((undefined *)&D_00318D40) + iVar3);
+  func_00110060(*(undefined4 *)(D_00318D10 + 0x2c),local_90);
+  func_00110060(uVar2,local_50);
+  func_0012F420(local_90);
+  func_0012F250(local_d0,local_50,local_90);
+  D_00318E08 = local_a0;
+  D_00318E0C = local_9c;
+  D_00318E10 = local_98;
+  func_0012F5B0(local_dc,((undefined *)&D_00318D48) + iVar3,local_d0);
+  func_0012E590(&local_a0,local_dc);
+  D_00318E18 = local_9c;
+  D_00318E14 = local_a0;
+  D_00318E1C = local_98;
+  D_00318E00 = param_1;
+  D_00318E04 = 0;
+  D_00318DF4 = 1;
+  D_00318DFC = uVar2;
+  *(undefined4 *)(((undefined *)&D_00318D40) + iVar1 * 0x14) = uVar2;
+  *(undefined4 *)(((undefined *)&D_00318D40) + iVar3) = 0;
+  uVar2 = func_001031C0(D_00318D14,((undefined *)&D_001DAA68),0);
+  func_00103990(uVar2);
   return;
 }
 
