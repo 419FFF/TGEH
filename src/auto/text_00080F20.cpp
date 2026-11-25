@@ -2,6 +2,8 @@
 #include "common.h"
 #include "ghidra.h"
 
+struct Emitter { int u0; float *pos; int u8; float *vel; int u10; float *col; int u18; float *size; int u20; float *tex; };
+
 void func_00081220(void) {
     extern int D_001D2F40;
     extern void func_00080D20(void);
