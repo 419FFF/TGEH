@@ -167,6 +167,47 @@ void func_000A6C20(int param)
   func_000688D0();
 }
 
+void func_000A6DC0(void)
+{
+ extern int D_00312B08,D_00312C34;
+ extern volatile float D_001D557C;
+ extern float D_001D27F4,D_001D7600;
+ extern char D_001D7658,D_001D7650,D_001D7648,D_001D7640,D_001D7634;
+ extern int D_001E4660[];
+ void func_00120E00(int),func_00120EA0(int,int,int,int),func_00120ED0(int,int);
+ void func_00120F60(float),func_00120F70(float),func_00120F80(float,float),func_00120E70(float,float,float,float),func_00120E50(float,float);
+ void func_0006F4D0(int),func_00121990(int),func_000688D0(void);
+ float func_00121A30(int);
+ func_00120E00(D_00312B08);
+ func_00120EA0(1,1,1,0);
+ func_00120ED0(4,5);
+ long double denom=*(unsigned short*)(D_00312B08+0x258a);
+ func_00120F60((float)((D_001D557C/ denom)*D_001D27F4));
+ denom=*(unsigned short*)(D_00312B08+0x258a);
+ func_00120F70((float)((D_001D557C/ denom)*D_001D27F4));
+ func_00120F80(2.5f,2.5f);
+ func_00120E70(1.0f,1.0f,1.0f,1.0f);
+ func_00120E50(320.0f,100.0f);
+ func_0006F4D0(0);
+ switch(D_00312C34){
+ case 0:func_00121990((int)&D_001D7658);break;
+ case 1:func_00121990((int)&D_001D7650);break;
+ case 2:func_00121990((int)&D_001D7648);break;
+ case 3:func_00121990((int)&D_001D7640);break;
+ case 4:func_00121990((int)&D_001D7634);break;
+ }
+ denom=*(unsigned short*)(D_00312B08+0x258a);
+ func_00120F60((float)(D_001D557C/ denom));
+ denom=*(unsigned short*)(D_00312B08+0x258a);
+ func_00120F70((float)(D_001D557C/ denom));
+ for(int i=0;i<5;++i){
+ func_00120E50(320.0f,(float)((long double)func_00121A30(D_001E4660[i])*i+D_001D7600));
+ if(i==D_00312C34)func_0006F4D0(1);else func_0006F4D0(0);
+ func_00121990(D_001E4660[i]);
+ }
+ func_000688D0();func_0006F4D0(0);
+}
+
 void func_000A6F80(void)
 {
   extern int _D_00312C40, _D_00313B00, _D_00312C4C, _D_00313A70;
