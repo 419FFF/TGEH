@@ -51,13 +51,7 @@ void _func_00120ED0(int a0,int a1) {
  _D_003293A0=3; _D_003293D0=6; _D_003293B0=a0; _D_003293B4=a1;
 }
 
-void _func_00120F40(int a0) {
- extern int _D_001E7D2C,_D_001E7D30;
- register int first=a0;
- register int second=a0;
- _D_001E7D2C=first;
- _D_001E7D30=second;
-}
+void _func_00120F40(int a0) { extern int _D_001E7D2C,_D_001E7D30; volatile int copy=a0; _D_001E7D2C=a0; _D_001E7D30=copy; }
 
 void func_00120F60(int a0) {
     extern int D_001E7D2C;
@@ -85,19 +79,19 @@ void _func_00121990(int a0) {
 }
 
 float _func_001219C0(int a0) {
- extern void __stdcall _func_0013EE4D(void *,int,void *);
- extern void *_func_00120FA0(void *,void *,float *);
- char text[0x400];
- char line[0x400];
- float maximum=0.0f,current;
- void *next=text;
- _func_0013EE4D(text,a0,&a0);
- do {
-  next=_func_00120FA0(next,line,&current);
-  if(maximum<current) maximum=current;
- } while(next);
- return maximum;
+ extern void _func_0013EE4D(void *,int,void *); extern void *_func_00120FA0(void *,void *,float *);
+ union { unsigned int bits; float f; } maximum; float current; unsigned char buffer[0x800]; void *next;
+ _func_0013EE4D(buffer,a0,(char *)&a0+4); maximum.bits=0; next=buffer;
+ do { next=_func_00120FA0(next,buffer+0x400,&current); if(maximum.f<current) maximum.f=current; if(!next) break; } while(1);
+ return maximum.f;
 }
+
+void _func_00121AD0(unsigned int p1,unsigned int p2,unsigned int p3,unsigned int p4){extern unsigned char D_0032F720,D_0032F730;extern unsigned int D_0032F714,D_0032F718,D_0032F710,D_0032F71C,D_0032F724;void _func_0012F730(...);if(D_0032F720){if(D_0032F714==D_0032F718)return;unsigned int base=D_0032F710+D_0032F71C*D_0032F714;D_0032F714++;_func_0012F730(base,p1,(unsigned int)&D_0032F730);_func_0012F730(base+0x10,p2,(unsigned int)&D_0032F730);_func_0012F730(base+0x20,p3,(unsigned int)&D_0032F730);*(unsigned int*)(base+0x3c)=p4;if(D_0032F714!=D_0032F724)return;}D_0032F730=1;}
 
 extern int D_001E7D2C;
 extern int D_001E7D30;
+extern unsigned char *D_0032B6F4;
+extern char D_0032B700;
+extern char D_001E7D40;
+extern int D_001E7D38;
+int func_0013FF19(...);
