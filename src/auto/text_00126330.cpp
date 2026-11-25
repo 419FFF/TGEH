@@ -2,6 +2,7 @@
 #include "common.h"
 static inline int slen_00127200(const char* s) { const char* t = s + 1; char c; do { c = *s++; } while (c != 0); return (int)(s - t); }
 #include "ghidra.h"
+static inline void clampb_00126750(unsigned char *p) { int v = *p; if (v <= 0) *p = 0; else if (v >= 255) *p = 255; else *p = (unsigned char)v; }
 
 void func_001266B0(int param_1)
 {
@@ -39,6 +40,45 @@ int func_001266F0(int key) {
   list=(int *)list[0];
  }
  return 0;
+}
+
+int func_00126750(unsigned char r, unsigned char g, unsigned char b, unsigned char *h, unsigned char *s, unsigned char *l)
+{
+  extern double D_001DF0B8, D_001DF6D8, D_001DF0B0;
+  extern float D_001D290C, D_001D27D0, D_001D313C, D_001D29F4, D_001D2A2C;
+  unsigned char mn, mx;
+  unsigned int sum, den;
+  double hue;
+  r = (r <= 0) ? 0 : ((r >= 255) ? 255 : r);
+  g = (g <= 0) ? 0 : ((g >= 255) ? 255 : g);
+  b = (b <= 0) ? 0 : ((b >= 255) ? 255 : b);
+  mn = r;
+  if (g <= r) mn = g;
+  if (mn < b) {
+    mn = b;
+    if (r < g) mn = r;
+  }
+  mx = g;
+  if (g <= r) mx = r;
+  if (b <= mx) {
+    b = r;
+    if (r < g) b = g;
+  }
+  *l = (unsigned char)(int)((double)(unsigned int)((mn + b) * 240) * D_001DF6D8 + D_001DF0B0);
+  if (b == mn) {
+    *s = 0;
+    *h = 160;
+    return 0;
+  }
+  sum = mn + b;
+  den = sum <= 255 ? sum : 510 - sum;
+  *s = (unsigned char)(int)((double)(int)(b - mn) / (double)den * D_001D27D0 + D_001DF0B0);
+  if (r == b) hue = (double)(int)(g - b) / (double)(int)(b - mn) * D_001D313C;
+  else if (g == b) hue = ((double)(int)(b - r) / (double)(int)(b - mn) + D_001D29F4) * D_001D313C;
+  else hue = ((double)(int)(r - g) / (double)(int)(b - mn) + D_001D2A2C) * D_001D313C;
+  if (hue > D_001D27D0) hue -= D_001D27D0;
+  *h = (unsigned char)(int)(hue + D_001DF0B0);
+  return 1;
 }
 
 void func_00126960(undefined4 param_1, undefined4 param_2, float param_3)
@@ -87,6 +127,49 @@ void func_00126960(undefined4 param_1, undefined4 param_2, float param_3)
   // Reverting to the best attempt structure for the next compile, hoping it captures enough context.
   // The assembly is too dense and requires knowing the exact stack layout/register usage at each jump target.
   // I'll trust the existing template but acknowledge that this function is very hard.
+}
+
+extern float D_001D6014;
+extern float D_001D27B8;
+extern float D_001D27B0;
+extern float D_001D4524;
+extern float D_001D66D8;
+extern double D_001DF0B0;
+unsigned char func_00126960(float, float, float);
+unsigned char func_0013E3F4(float);
+void func_00126A40(unsigned char a, unsigned char c, unsigned char b, unsigned char *p4, unsigned char *p5, unsigned char *p6) {
+    unsigned char r;
+    float f1, f2, f3;
+    if (a == 0)
+        a = 0;
+    else if (a >= 0xef)
+        a = 0xef;
+    if (c == 0)
+        c = 0;
+    else if (c >= 0xf0)
+        c = 0xf0;
+    if (b == 0)
+        b = 0;
+    else if (b >= 0xf0)
+        b = 0xf0;
+    f1 = (float)(a * 0x168) * D_001D6014;
+    f2 = (float)c * D_001D6014;
+    f3 = (float)b * D_001D6014;
+    if (f2 != D_001D27B8) {
+        if (b < 0x79)
+            f2 = (f2 + D_001D27B0) * f3;
+        else
+            f2 = (f2 + f3) - f3 * f2;
+        f3 = (f3 + f3) - f2;
+        *p4 = func_00126960(f3, f2, f1 + D_001D4524);
+        *p5 = func_00126960(f3, f2, f1);
+        *p6 = func_00126960(f3, f2, f1 - D_001D4524);
+        return;
+    }
+    r = func_0013E3F4(f3 * D_001D66D8 + (float)D_001DF0B0);
+    *p6 = r;
+    *p5 = r;
+    *p4 = r;
 }
 
 int __cdecl _func_00126E80(int param_1)
@@ -154,7 +237,6 @@ char* func_00127200(char* name)
     char* p;
     char* q;
     int h;
-    unsigned int n;
     char* r;
 
     p = name;
@@ -168,8 +250,7 @@ char* func_00127200(char* name)
     do {
         c = *p++;
     } while (c != 0);
-    n = (unsigned int)(p - q);
-    (buf - 2)[n] = c;
+    *(char*)((int)buf + ((int)p - (int)q) - 2) = c;
     p = buf - 1;
     do {
         q = p + 1;
