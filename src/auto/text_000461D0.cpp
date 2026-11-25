@@ -83,6 +83,50 @@ undefined4 func_00046300(char *param_1, undefined4 *param_2)
   return 1;
 }
 
+float func_00131760(void);
+double func_00131220(float);
+double func_00131210(float);
+int func_00046730(char *self, float *target)
+{
+ extern float D_001D27EC, D_001D27B0;
+
+ int func_00106210(...);
+ int index=0, row=0, best=-1;
+ int *cells;
+ float min=3.402823466e38f;
+ float radius,scale;
+ int pos[2];
+ float point[2], chosen[3];
+ if(!*self)return 3;
+ scale=(float)*(int*)(self+12) * *(float*)(*(int*)(self+8)+0x74) * D_001D27EC;
+ radius=(func_00131760()+D_001D27B0)*scale*D_001D27EC;
+ cells=*(int**)(*(int*)(self+40)+4);
+ if(*(int*)(self+12)!=0){
+ do{
+ int col=0;
+ if(*(int*)(self+12)!=0) do {
+ if((((unsigned char*)cells)[2]&0x50)==0x50){
+ pos[0]=col; pos[1]=row;
+ func_00106210(self+4,pos,point);
+ float dx=point[0]-target[0], dz=point[1]-target[2];
+ float delta=radius-func_00131220(dx*dx+dz*dz);
+ if(func_00131210(delta)<min){
+ min=func_00131210(delta);best=index;chosen[0]=point[0];chosen[2]=point[1];
+ }
+ }
+ ++index;++cells;++col;
+ }while(col!=*(int*)(self+12));
+ ++row;
+ }while(row!=*(int*)(self+12));
+ if(best!=-1){
+ *(float*)(self+0x5d4)=chosen[0];*(float*)(self+0x5dc)=chosen[2];
+ int n=func_00026F50(*(int*)(self+40),best,self+0x118,300);
+ if(n){*(int*)(self+0x5c8)=func_00026EA0(*(int*)(self+40),self+0x118,n);return 0;}
+ }
+ }
+ return 2;
+}
+
 longdouble func_0012E910(float*);
 void func_0012EA00(float*);
 extern float D_001D27B0;
