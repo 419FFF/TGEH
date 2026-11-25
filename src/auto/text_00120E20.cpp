@@ -2,6 +2,13 @@
 #include "common.h"
 #include "ghidra.h"
 
+extern int D_001E7D2C;
+extern unsigned char *D_0032B6F4;
+extern char D_0032B700;
+extern char D_001E7D40;
+extern int D_001E7D38;
+int func_0013FF19(...);
+
 void func_00120E20(int a0, int a1, int a2, int a3) {
     extern int D_0032B6E4;
     extern int D_0032B6E8;
