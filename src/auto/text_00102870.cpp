@@ -2,6 +2,44 @@
 #include "common.h"
 #include "ghidra.h"
 
+struct V3_00102870 { int x, y, z; };
+
+void _func_00102870(int p)
+{
+    int func_00110060(...); int func_001100A0(...); float func_0011F7C0(...); int func_0011F270(...); int func_0012F730(...);
+    extern int D_00324BD4, D_00324D38, D_00308158;
+    int loc[3];
+    float f;
+    __declspec(align(16)) int b[15];
+    int *v = b + 12;
+    int *o = (int*)(*(int*)(p + 0x78));
+    unsigned char c = *(unsigned char*)((char*)o + 0x32);
+    unsigned char t = c >> 3;
+    if (t % 2 != 0) {
+        func_00110060(D_00324BD4, b);
+        o = (int*)*(int*)(p + 0x78);
+        o[7] = v[0]; o[8] = v[1]; o[9] = v[2];
+        *(int*)(p + 0xe4) = v[0]; *(int*)(p + 0xe8) = v[1]; *(int*)(p + 0xec) = v[2];
+        return;
+    }
+    if (*(int*)(p + 0x80)) {
+        func_00110060(*(int*)(*(int*)(p + 0x80) + 0x2c), b);
+    } else if (*(int*)(p + 0xf0)) {
+        func_001100A0(*(int*)(D_00324D38 + 0x2c), loc);
+        func_00110060(*(int*)(p + 0xb8), b);
+        f = func_0011F7C0(*(int*)(p + 0xf0) + 4, loc[0] + 0x30, 10);
+        func_0011F270(*(int*)(p + 0xf0) + 4, *(int*)&f, b + 12, 0);
+    } else if (*(int*)(p + 0x7c) == D_00308158) {
+        *(int*)(p + 0xe4) = o[7]; *(int*)(p + 0xe8) = o[8]; *(int*)(p + 0xec) = o[9];
+        return;
+    } else {
+        func_00110060(*(int*)(*(int*)(p + 0x7c) + 0x2c), b);
+        func_0012F730(loc, *(int*)(p + 0x78) + 0x1c, b);
+        v[0] = loc[0]; v[1] = loc[1]; v[2] = loc[2];
+    }
+    *(int*)(p + 0xe4) = v[0]; *(int*)(p + 0xe8) = v[1]; *(int*)(p + 0xec) = v[2];
+}
+
 void _func_00102A20(int p) { int func_00110060(...); int func_001105E0(...); __declspec(align(16)) unsigned char b[0x5c]; int obj=*(int*)(p+0xb8); if(obj){func_00110060(obj,b+0x10); *(int*)(b+0x48)=*(int*)(p+0xe4); *(int*)(b+0x50)=*(int*)(p+0xe8); *(int*)(b+0x5c)=*(int*)(p+0xec); func_001105E0(obj,b+0x1c,0);} }
 
 void _func_00102C50(int p) { int func_00131230(...); extern int D_00324D2C; extern float D_001DE730,D_001D27B0; int edx=*(int*)(p+0xe0); int ecx=*(int*)(p+0x78); int delta=D_00324D2C-edx; float t=func_00131230((float)delta * *(float*)(ecx+0x7c) * D_001DE730); *(float*)(p+0x9c)=t**(float*)(ecx+0x80)+D_001D27B0; *(float*)(p+0xac)=t**(float*)(ecx+0x84)+D_001D27B0; }
@@ -28,6 +66,8 @@ extern volatile float _D_001D2B60,_D_001D27B0,_D_001D27B8;
 if(_func_00102810(p)){float f=*(float*)((char*)p+0xa0)+_D_001D2B60;*(float*)((char*)p+0xa0)=f;if(_D_001D27B0<=f)*(int*)((char*)p+0xa0)=0x3f800000;}
 else{float f=*(float*)((char*)p+0xa0)-_D_001D2B60;*(float*)((char*)p+0xa0)=f;if(f<=_D_001D27B8)*(int*)((char*)p+0xa0)=0;}
 }
+
+char _func_00103130(int p) { extern char D_001E5EC9; int _func_00128C50(int); if (D_001E5EC9 == 0) { return 1; } else { int v=*(int*)(p+0xb8); if(v == 0) return 1; else return (_func_00128C50(v) == 0) ? 1 : 0; } }
 
 void _func_00103160(int p,int value) { extern char D_001E5EC9; if(D_001E5EC9 && p) *(int*)(p+0x98)=value; }
 
@@ -62,6 +102,27 @@ int func_001031C0(int key, int value)
         node = *(int *)node;
     }
     return 0;
+}
+
+void func_00103210(char *path)
+{
+    char local[128];
+    char *s = path;
+    do {
+        *(&local[0] + (s - path)) = *s;
+    } while (*s++ != 0);
+    s = path;
+    while (*s++ != 0) {}
+    int len = (int)(s - path) - 2;
+    while (len > 0 && path[len] != '.') --len;
+    if (len <= 0) {
+        func_001031C0(D_00308158, (int)path);
+        return;
+    }
+    local[len] = 0;
+    int found = func_0009C590(local);
+    if (found)
+        func_001031C0(found, (int)(path + len + 1));
 }
 
 void _func_001032A0(void) { extern int D_00324EA8,D_00324EA0,D_00324E9C,D_00324E98,D_00324BEC,D_00324BCC,D_00324BF4,D_00324BDC; D_00324EA8=0; D_00324EA0=0; D_00324E9C=0; D_00324E98=0; D_00324BEC=0; D_00324BCC=0; D_00324BF4=0; D_00324BDC=0; }
@@ -156,13 +217,16 @@ void func_00103440(int param_1, char param_2)
   return;
 }
 
-void _func_00103480(int p, char enable) {
-    if (p) {
-        if (enable)
-            *(unsigned char *)(p + 0xb6) |= 8;
-        else
-            *(unsigned char *)(p + 0xb6) &= 0xf7;
+void func_00103480(int param_1, char param_2)
+{
+  if (param_1 != 0) {
+    if (param_2 != '\0') {
+      *(byte *)(param_1 + 0xb6) = *(byte *)(param_1 + 0xb6) | 8;
+      return;
     }
+    *(byte *)(param_1 + 0xb6) = *(byte *)(param_1 + 0xb6) & 0xf7;
+  }
+  return;
 }
 
 undefined4 func_001034A0(int param_1)
