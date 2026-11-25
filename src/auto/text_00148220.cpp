@@ -107,13 +107,7 @@ undefined4 func_00148AE0(int param_1)
 
 unsigned char _func_00148AF0(unsigned int* p) { return p[3] >= (*(unsigned int*)(p[0]+12)&0x7fffffff); }
 
-void func_00148B10(int param_1)
-{
-  int func_00116FB0(...);
-  func_00116FB0(*(undefined4 *)(param_1 + 8));
-  func_00116FB0(param_1);
-  return;
-}
+void func_00148B10(int param_1) { int func_00116FB0(...); func_00116FB0(*(undefined4 *)(param_1+8)); func_00116FB0(param_1); }
 
 unsigned long long _func_00148B30(unsigned int a,unsigned int b,unsigned char c) { if(c>=64)return 0; if(c>=32)return (unsigned long long)(b>>(c&31)); return ((unsigned long long)(b>>(c&31))<<32) | ((a>>(c&31)) | (b<<(32-(c&31)))); }
 
