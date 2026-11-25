@@ -6,6 +6,72 @@ extern "C" __declspec(dllimport) void __stdcall RtlLeaveCriticalSection(void*);
 struct S33860 { char kind; char pad[3]; int f4; void (__cdecl *f8)(S33860 *, int); int fc; unsigned int f10; char *f14; unsigned int f18; int *f1c; unsigned int f20; char *f24; char pad2[0x20]; unsigned short f48; };
 signed char _func_00132F90(signed char index) { extern signed char _D_001E82AC[]; return _D_001E82AC[(int)index]; }
 
+extern "C" void *memset(void *, int, unsigned int);
+#pragma intrinsic(memset)
+int _func_00132FA0(float *arg)
+{
+    extern float _D_001D27B0, _D_00331CCC[], _D_00331CD0[];
+    void _func_00137D40(float *);
+    int *_func_00137C40(unsigned int);
+    char *_func_00137C30(unsigned int);
+    void _func_0012F810(float *, float *, float *);
+    void _func_0012F670(float *, float *, float *);
+    void __fastcall _func_0014CB30(int, float *);
+    void __fastcall _func_0014CB90(int, float *);
+    void __fastcall _func_0014CD20(int, float *, int);
+    struct { float b[4]; float c[4]; float a[16]; } L;
+    unsigned int n, m, i;
+    int *p;
+    char *q;
+    int r;
+
+    _func_00137D40(L.a);
+    _func_0014CB30(0x75, L.a);
+    n = 0;
+    m = 0;
+    for (i = 0; i < 8; i++) {
+        p = _func_00137C40(i);
+        if (p) {
+            switch (*p) {
+            case 2:
+                q = _func_00137C30(i);
+                if (m < 4) {
+                    _func_0012F810(L.c, (float *)(q + 0x34), arg);
+                    _func_0014CB30(0x7e + m, L.c);
+                    _func_0014CB30(0x82 + m, (float *)(q + 4));
+                    m++;
+                    _D_00331CCC[m] = (float)((double)_D_001D27B0 / (double)*(float *)(q + 0x5c));
+                }
+                break;
+            case 1:
+                q = _func_00137C30(i);
+                if (n < 4) {
+                    _func_0012F670(L.b, (float *)(q + 0x40), arg);
+                    *(int *)&L.b[3] = 0;
+                    _func_0014CB30(0x76 + n, L.b);
+                    _func_0014CB30(0x7a + n, (float *)(q + 4));
+                    n++;
+                }
+                break;
+            }
+        }
+    }
+    if (m) _func_0014CB30(0x86, _D_00331CD0);
+    memset(L.a, 0, 64);
+    r = 4 - n;
+    if (r != 0) {
+        if (r == 1) _func_0014CB30(0x7a + n, L.a);
+        else if (r == 4) _func_0014CB90(0x7a + n, L.a);
+        else _func_0014CD20(0x7a + n, L.a, r * 4);
+    }
+    r = 4 - m;
+    if (r != 0) {
+        if (r == 1) _func_0014CB30(0x82 + n, L.a);
+        else if (r == 4) _func_0014CB90(0x82 + n, L.a);
+        else _func_0014CD20(0x82 + n, L.a, r * 4);
+    }
+    return m + n;
+}
 int _func_00133430(void) { return 0; }
 
 void _func_00133490(void *p) { extern unsigned int _D_001E82DC,_D_00331D68,_D_00331D6C,_D_00331D70; extern unsigned short _D_00331D74,_D_00331D78,_D_00331D7C,_D_00331D80; unsigned char*q=(unsigned char*)p; *(unsigned int*)(q+52)=_D_001E82DC; *(unsigned int*)(q+56)=_D_00331D68; *(unsigned int*)(q+60)=_D_00331D6C; *(unsigned int*)(q+64)=_D_00331D70; *(unsigned short*)(q+42)=_D_00331D74; *(unsigned short*)(q+44)=_D_00331D78; *(unsigned short*)(q+46)=_D_00331D7C; *(unsigned short*)(q+48)=_D_00331D80; }
@@ -29,6 +95,79 @@ void func_001336F0(int *s)
       func_0014CD20(D_001E82AC[(signed char)k] + 0x60, m, 12);
     }
   }
+}
+
+void func_00133860(S33860 *p)
+{
+  extern char D_003326AC;
+  extern int D_001E82E0, D_001E82A8;
+  extern unsigned int D_00329240, D_00329244;
+  void func_0013BB90(int, int *);
+  void func_001334F0(S33860 *);
+  void func_00132E10(void);
+  void __stdcall func_0014D160(int);
+  int func_0013E290(int *);
+  void func_00138440(int);
+  void func_00133220(S33860 *);
+  void __stdcall func_0014CEF0(int);
+  void func_001336F0(char *);
+  void __stdcall func_0014D9F0(int, int, char *);
+  void func_0013BF80(void);
+  unsigned int k = 0;
+  unsigned int n = 0;
+  unsigned int flags;
+  int r;
+
+  if (p == 0) return;
+  RtlEnterCriticalSection(&D_003326AC);
+  func_0013BB90(p->f1c[1], p->f1c + 2);
+  func_001334F0(p);
+  func_00132E10();
+  r = p->f4;
+  if (r != 0) {
+    flags = 0;
+    if (r != D_001E82E0) {
+      D_001E82E0 = r;
+      func_0014D160(r);
+    }
+    if (p->f8 != 0)
+      p->f8(p, p->fc);
+  } else {
+    flags = p->f18;
+    r = func_0013E290(p->f1c);
+    if (r != D_001E82E0) {
+      D_001E82E0 = r;
+      func_0014D160(r);
+    }
+    if (p->kind != 0)
+      func_00138440((int)(p->f18 >> 4) & 0xffffff01);
+    else
+      func_00133220(p);
+  }
+  if (flags & 0x20000) {
+    if (D_001E82A8 != 1) {
+      D_001E82A8 = 1;
+      func_0014CEF0(1);
+    }
+    for (k = 0; k < p->f20; k++) {
+      func_001336F0(p->f24 + k * 0x38);
+      func_0014D9F0(5, *(int *)(p->f24 + k * 0x38) * 3, p->f14 + n * 6);
+      n += *(int *)(p->f24 + k * 0x38);
+    }
+    n = 0;
+  } else {
+    func_0014D9F0(5, p->f10, p->f14);
+    if (p->f4 == 0) goto done;
+  }
+  if (D_001E82A8 != n) {
+    D_001E82A8 = n;
+    func_0014CEF0(n);
+  }
+done:
+  D_00329240 += p->f10 / 3;
+  D_00329244 += p->f48;
+  func_0013BF80();
+  RtlLeaveCriticalSection(&D_003326AC);
 }
 
 void _func_001339F0(int a, int b, int c) { if (a != b) (void)c; }
