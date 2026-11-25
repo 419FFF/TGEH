@@ -8,12 +8,12 @@ void _func_00116FB0(void *);
 void _func_00148540(char *obj)
 {
     if (obj != 0) {
-        _func_0013AF30(*(void **)(obj + 0x82C));   /* obj->res    */
-        _func_00131D10(*(void **)obj);             /* obj->handle */
-        _func_00116FB0(*(void **)(obj + 0x824));   /* obj->buf3   */
-        _func_00116FB0(*(void **)(obj + 0x8));     /* obj->buf2   */
-        _func_00116FB0(*(void **)(obj + 0x4));     /* obj->buf1   */
-        _func_00116FB0(obj);                       /* the object  */
+        _func_0013AF30(*(void **)(obj + 0x82C));
+        _func_00131D10(*(void **)obj);
+        _func_00116FB0(*(void **)(obj + 0x824));
+        _func_00116FB0(*(void **)(obj + 0x8));
+        _func_00116FB0(*(void **)(obj + 0x4));
+        _func_00116FB0(obj);
     }
 }
 
