@@ -40,6 +40,38 @@ unsigned char _func_000FC8B0(int unused, int *msg)
   return 1;
 }
 
+unsigned char _func_000FCA30(int unused, int *msg)
+{
+    extern char _D_001D42F0, _D_001D7348, _D_001DD194, _D_001D3B84, _D_001DD18C, _D_001D3B8C, _D_001DD1A8, _D_001D3B34, _D_001D2B20, _D_001DD1A0, _D_001D6B04;
+    int _func_0011B4F0(...);
+    int _func_0009F820(...);
+    **(int **)(msg + 3) = 0;
+    if (_func_0011B4F0(**(int **)(msg + 1), &_D_001D42F0) == 0) {
+        if (_func_0009F820() & 0x10) **(int **)(msg + 3) = 0x3f800000;
+    } else if (_func_0011B4F0(**(int **)(msg + 1), &_D_001D7348) == 0) {
+        if (_func_0009F820() & 0x20) **(int **)(msg + 3) = 0x3f800000;
+    } else if (_func_0011B4F0(**(int **)(msg + 1), &_D_001DD194) == 0) {
+        if (_func_0009F820() & 0x40) **(int **)(msg + 3) = 0x3f800000;
+    } else if (_func_0011B4F0(**(int **)(msg + 1), &_D_001D3B84) == 0) {
+        if (_func_0009F820() & 0x80) **(int **)(msg + 3) = 0x3f800000;
+    } else if (_func_0011B4F0(**(int **)(msg + 1), &_D_001DD18C) == 0) {
+        if (_func_0009F820() & 0x100) **(int **)(msg + 3) = 0x3f800000;
+    } else if (_func_0011B4F0(**(int **)(msg + 1), &_D_001D3B8C) == 0) {
+        if (_func_0009F820() & 0x200) **(int **)(msg + 3) = 0x3f800000;
+    } else if (_func_0011B4F0(**(int **)(msg + 1), &_D_001DD1A8) == 0) {
+        if (_func_0009F820() & 8) **(int **)(msg + 3) = 0x3f800000;
+    } else if (_func_0011B4F0(**(int **)(msg + 1), &_D_001D3B34) == 0) {
+        if (_func_0009F820() & 2) **(int **)(msg + 3) = 0x3f800000;
+    } else if (_func_0011B4F0(**(int **)(msg + 1), &_D_001D2B20) == 0) {
+        if (_func_0009F820() & 1) **(int **)(msg + 3) = 0x3f800000;
+    } else if (_func_0011B4F0(**(int **)(msg + 1), &_D_001DD1A0) == 0) {
+        if (_func_0009F820() & 4) **(int **)(msg + 3) = 0x3f800000;
+    } else if (_func_0011B4F0(**(int **)(msg + 1), &_D_001D6B04) == 0) {
+        if (_func_0009F820() & 0x800) **(int **)(msg + 3) = 0x3f800000;
+    }
+    return 1;
+}
+
 char func_000FCED0(void *param_1, int *param_2)
 {
   int func_000F91D0(int);
