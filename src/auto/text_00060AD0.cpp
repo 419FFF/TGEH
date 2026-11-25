@@ -1,6 +1,7 @@
 /* 17 functions from 0x00060AD0 to 0x00061804, found by Ghidra. */
 #include "common.h"
 #include "ghidra.h"
+struct Vec60 { float x,y,z,w; };
 
 struct Entry61 { int a, b; float t0; int d, c0, c1; float t1; int z0, s0, s1; float t2; int z1, one; };
 
@@ -27,6 +28,37 @@ void func_00060F60(void)
   func_000A7B80();
   func_00060ED0();
   return;
+}
+
+void func_00060F70(void) {
+ int func_00060980(...),func_001100A0(...),func_00060AA0(...);
+ extern int D_002EEF74,D_002EEF78,D_00307C08,D_00307C04,D_00313B60,D_002EEFD8,D_002EEFDC;
+ extern unsigned char D_002EEFED,D_002EEFD0,D_002EEFEC;
+ extern float D_002EEFD4,D_001D2888;
+ int p; int a[4],b[4]; int saved1,saved0;
+ func_00060980();
+ saved0=D_002EEF74; saved1=D_002EEF78;
+ D_002EEF74=D_00307C08; D_002EEF78=D_00307C04;
+ func_001100A0(D_00313B60,&p);
+ if(D_002EEFED) {
+ a[0]=*(int*)(p+48); a[1]=*(int*)(p+52); a[2]=*(int*)(p+56);
+ *(float*)&a[1]+=10000.0f;
+ b[0]=*(int*)(p+48); b[1]=*(int*)(p+52); b[2]=*(int*)(p+56);
+ D_002EEFEC=func_00060B60((int)a,b,0);
+ if(D_002EEFD0 && !D_002EEFEC) {D_002EEFEC=1;D_002EEFD4=10000.0f;}
+ D_002EEFED=0;
+ } else if(func_00060B60((int)&D_002EEFD8,(int*)(p+48),0)) {
+ if(*(float*)&D_002EEFDC>*(float*)(p+52)) D_002EEFEC=1;
+ else {D_002EEFEC=0;D_002EEFD4=0;goto done;}
+ }
+ if(!D_002EEFEC) {D_002EEFD4=0;goto done;}
+ a[0]=*(int*)(p+48); a[1]=*(int*)(p+52); a[2]=*(int*)(p+56);
+ *(float*)&a[1]+=10000.0f;
+ b[0]=*(int*)(p+48); b[1]=*(int*)(p+52); b[2]=*(int*)(p+56);
+ if(func_00060B60((int)a,b,b)) {
+ if(*(float*)&b[1]>*(float*)(p+52)) D_002EEFD4=*(float*)&b[1]-*(float*)(p+52);
+ }else D_002EEFD4=10000.0f;
+ done: D_002EEF74=saved0;D_002EEF78=saved1;func_00060AA0();
 }
 
 void func_00061500(void){int func_0011FED0(...);extern int D_002EEFF0;extern volatile float D_001D5434,D_001D5430;extern volatile float D_002EEC50,D_002EECA8;volatile float a[16];func_0011FED0(D_002EEFF0,(float*)a);D_002EEC50=a[2]*D_001D5434;D_002EECA8=a[0]*D_001D5430;}
@@ -73,8 +105,8 @@ void _func_00061650(int a, int b, int c, int d)
     if ((D_002EEC00 != 6 && D_002EECA0 != 6) ||
         ((n = D_002EEF80, D_002EEF80 <= 1) && !(D_002EF000 + D_002EF004 >= D_00307DB4))) {
         int *p;
-        D_002EEFE8 = **(int **)(D_00307DF8 + 0x110);
         D_002EEF80 = 0;
+        D_002EEFE8 = **(int **)(D_00307DF8 + 0x110);
         func_0002D7B0(D_00307DF8, 0);
         func_00110060(*(int *)(D_00307DF8 + 0x2c), &D_002EEF90);
         p = func_0009C7A0(D_00307DF8, &D_001D2968, 0);
@@ -84,17 +116,17 @@ void _func_00061650(int a, int b, int c, int d)
     e = &D_002EEFF8[n];
     e->a = a;
     e->b = b;
-    e->t0 = *(int *)&D_00307DB4;
+    e->t0 = D_00307DB4;
     e->d = d;
     e->c0 = c;
     e->c1 = c;
-    e->t1 = *(int *)&D_00307DB4;
+    e->t1 = D_00307DB4;
     e->s0 = 0x3f800000;
     e->s1 = 0x3f800000;
     n++;
     D_002EEF80 = n;
     e->z0 = 0;
-    e->t2 = *(int *)&D_00307DB4;
+    e->t2 = D_00307DB4;
     e->z1 = 0;
     e->one = 1;
     if (n > 1) {
