@@ -66,6 +66,57 @@ char *_func_0009C7A0(int p, int q)
   return 0;
 }
 
+#pragma optimize("p", on)
+void func_0009C8B0(int p, int q, float a, float b, float c, float d)
+{
+ int func_0009C510(...), func_0009C590(...), func_0011B4F0(...);
+ int func_001053E0(int,float);
+ extern int D_00307D18;
+ char x[512];
+ unsigned i;
+ unsigned n;
+ int *s;
+ int off;
+ func_0009C510(q,x,x+256);
+ if(!p)p=func_0009C590(x);
+ s=*(int**)(p+28);
+ n=0;i=0;
+ if(i<*(unsigned short*)((char*)s+4)) {
+ off=0;
+ do {
+ int cmp=func_0011B4F0(*(int*)((char*)s[2]+off),x+256);
+ if(cmp==0) {
+ char *field=(char*)s[2]+i*24;
+ if(*(short*)(field+4)==3) {
+ int *v=(int*)(D_0030C178+i*16);
+ v[0]=*(int*)&a;v[1]=*(int*)&b;v[2]=*(int*)&c;v[3]=*(int*)&d;
+ return;
+ }
+ switch(*(unsigned short*)(field+6)) {
+ case 0: *(float*)(n*16+*(int*)(p+36))=a;return;
+ case 1: {int val=func_001053E0(D_00307D18,a);*(int*)(n*16+*(int*)(p+36))=val;return;}
+ case 2:
+ n*=16;
+ *(float*)(n+*(int*)(p+36))=a;
+ *(float*)(*(int*)(p+36)+4+n)=b;
+ *(float*)(*(int*)(p+36)+8+n)=b;
+ *(float*)(*(int*)(p+36)+12+n)=b;
+ return;
+ case 3:
+ n*=16;
+ *(int*)(n+*(int*)(p+36))=*(int*)&a;
+ *(int*)(*(int*)(p+36)+4+n)=*(int*)&b;
+ *(float*)(*(int*)(p+36)+8+n)=c;
+ return;
+ }
+ return;
+ }
+ if(*(short*)((char*)s[2]+off+4)==2)++n;
+ ++i;off+=24;
+ }while(i<*(unsigned short*)((char*)s+4));
+ }
+}
+#pragma optimize("", on)
 int func_0009CAA0(int p,int q) { int func_0009C510(...),func_0009C590(...),func_0011B4F0(...); char x[512]; int *s; int i; func_0009C510(q,x,x+256); if(!p)p=func_0009C590(x); s=*(int **)(p+28); i=0; if((unsigned)s[3]>0) { do { if(!func_0011B4F0(*(int *)((char *)s[4]+i*52),x+256)) return (int)((char *)s[4]+i*52); ++i; } while((unsigned)i<(unsigned)s[3]); } return 0; }
 
 int func_0009CB40(int a,int b) { int func_0009C510(...),func_0009C590(...),func_0011B4F0(...); char buf[512]; int p=a,i; int *t; func_0009C510(b,buf+16,buf+272); if(!p)p=func_0009C590(buf+16); t=*(int **)(p+28); for(i=0;i<t[5];i++) if(func_0011B4F0(*(int *)((char *)t[6]+i*52),buf+272)==0) return *(int *)(p+40)+i*64; return 0; }
@@ -166,6 +217,48 @@ int func_0009CE20(char *str, int obj)
     }
   }
   return 0;
+}
+
+void func_0009CE80(int p)
+{
+ extern unsigned D_003104B4;
+ extern int D_0030C630[];
+ extern char D_001D73E4;
+ int func_0011B530(...),func_0013E600(...);
+ void _func_000688D0(int);
+ void func_0001AC90(int),func_000688D0(int),func_0001CBF0(int),func_00027600(int),func_00105360(int),func_001027B0(int),func_0001B3E0(int);
+ void func_0007E570(int),func_00116FB0(int),func_00124B70(int),func_00088940(int,int),func_0009CDE0(int),func_0011C3E0(int),func_0009C240(int);
+ char buf[256];
+ unsigned i;
+ char *q;
+ int n;
+ strcpy(buf,*(char**)(p+12));
+ strcat(buf,".");
+ for(i=*(unsigned short*)(p+84)+1;i<D_003104B4;i++){
+ q=(char*)D_0030C630[i];
+ if(q){
+ n=strlen(buf);
+ if(!func_0011B530(*(char**)(q+12),buf,n)&&!func_0013E600(*(char**)(q+12)+n,&D_001D73E4))func_0009CE80(D_0030C630[i]);
+ else if(func_0011B530(*(char**)(D_0030C630[i]+12),buf,strlen(buf)))break;
+ }
+ }
+ switch(*(unsigned char*)(p+18)){
+ case 9:if(*(char*)(p+19)==55)func_00105360(p);else func_001027B0(p);break;
+ case 13:_func_000688D0(p);break;
+ case 2:func_0001AC90(p);break;
+ case 3:func_000688D0(p);break;
+ case 4:func_0001CBF0(p);break;
+ case 5:func_00027600(p);break;
+ case 11:func_0001B3E0(p);break;
+ }
+ if(*(int*)(p+96)){
+ if(*(unsigned char*)(p+17)&32){func_0007E570(*(int*)(p+96));func_00116FB0(*(int*)(p+96));}
+ else func_00124B70(*(int*)(p+96));
+ }
+ if(*(int*)(p+44)&&*(char*)(p+18)!=9){func_00088940(*(int*)(p+44),1);func_0009CDE0(*(int*)(p+44));}
+ func_0011C3E0(p);func_0009C240(p);func_00116FB0(p);
+ unsigned count=D_003104B4;
+ for(i=0;i<count;++i)if(D_0030C630[i]==p)D_0030C630[i]=0;
 }
 
 void func_0009D080(void){extern int D_00308158,D_003104B4,D_0030BFE0,D_0030C498;extern int D_0030C630[],D_0030BFE8[];extern int func_0009CE80(...),func_0011B990(...),func_00116FB0(...);int i;int base=D_00308158;int obj=*(int*)(base+0x18);i=D_003104B4;--i;if(i<0)goto done1;do{int x=D_0030C630[i];if(x)func_0009CE80(x);}while(--i>=0);done1:func_0011B990(obj);if(D_0030BFE0){func_00116FB0(D_0030BFE0);D_0030BFE0=0;}unsigned i2=0;if((unsigned)D_0030C498>0)do{func_00116FB0(D_0030BFE8[i2]);}while(++i2<(unsigned)D_0030C498);D_0030C498=0;D_003104B4=0;}
