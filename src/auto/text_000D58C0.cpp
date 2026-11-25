@@ -1,5 +1,6 @@
 /* 12 functions from 0x000D58C0 to 0x000D65C4, found by Ghidra. */
 #include "common.h"
+struct S_D5E00 { float x; float rest[0x23]; };
 
 struct S0x40 { int v[16]; };
 #define CP(off) (*(S0x40 *)(c + (off)) = *(S0x40 *)(c + (off) - 0x40))
@@ -69,11 +70,124 @@ int func_000D5C00(char a) {
  return D_0031E4CC==D_001D27B8;
 }
 
+int _func_000D5C80(void)
+{
+  extern float D_00307DB4, D_0031E4E8, D_0031E4C8, D_0031E4C0, D_0031E4CC, D_001D290C, D_001D27EC, D_001D27B8, D_001D2BB4, D_001D4F88, D_001D411C, D_001D2C00;
+  extern int D_0031E4D0, D_0031BC14;
+  extern char D_0031BC90, D_0031BC50, D_0031BC20, D_0031D980;
+  void _func_0011F270(int *, float, void *, int);
+  void _func_0012E650(void *, void *);
+  void _func_0012E5F0(void *, void *, void *);
+  void _func_000D5170(void *, int);
+  void _func_00110330(int, int);
+  char b1[16], b2[16];
+  float f1, f2, t;
+  char *p;
+  unsigned int n, i;
+  f1 = D_00307DB4 - D_0031E4E8 + D_0031E4C8;
+  p = &D_0031D980;
+  t = (float)*(unsigned int *)(D_0031E4D0 + 4);
+  t = t / D_0031E4C0 * f1 - D_001D27EC;
+  f2 = t < D_001D27B8 ? 0.0f : t;
+  _func_0011F270((int *)(D_0031E4D0 + 4), 0.0f, b1, 0);
+  _func_0011F270((int *)(D_0031E4D0 + 4), f2, b2, 0);
+  _func_0012E650(b2, b1);
+  _func_0012E5F0(&D_0031BC50, &D_0031BC90, b2);
+  _func_000D5170(&D_0031BC20, D_0031BC14);
+  n = (unsigned int)(D_0031E4CC * D_001D2BB4 + D_001D4F88);
+  if (n > 0) {
+    i = n;
+    do {
+      _func_00110330(*(int *)(p + 4), 1);
+      p += 0x90;
+    } while (--i);
+  }
+  if (n < 0x14) {
+    int *q = (int *)(p + 4);
+    for (i = n; i < 0x14; i++) {
+      _func_00110330(*q, 0);
+      q += 0x24;
+    }
+  }
+  f1 = D_0031E4C0 - f1;
+  if (f1 < D_001D411C) {
+    if (f1 - (float)(int)f1 < D_001D2C00)
+      return 1;
+    return 0;
+  }
+  return f1 < D_001D411C;
+}
+
+int func_000D5E00(void)
+{
+    extern float D_0031E4F4, D_001D2BF4, D_001D99CC, D_001DAE68;
+    extern float D_0031BAA0, D_0031BB30, D_0031BBC0, D_0031BC50;
+    extern int D_0031BA64, D_0031BAF4, D_0031BB84, D_0031BC14;
+    extern char D_0031BA70, D_0031BB00, D_0031BB90, D_0031BC20, D_0031BB70;
+    extern float D_0031D4A0[], D_0031C0F0[], D_0031D9C0[];
+    void func_000D5170(void *, int);
+    float func_0012E7B0(void *, void *);
+    float s;
+    float *p, *q;
+    int i, j;
+    D_0031E4F4 = D_0031E4F4 - D_001D2BF4;
+    if (D_0031E4F4 > D_001D99CC)
+        D_0031E4F4 = -3.0f;
+    s = -D_0031E4F4;
+    D_0031BAA0 = D_0031BAA0 + s;
+    func_000D5170(&D_0031BA70, D_0031BA64);
+    D_0031BB30 = D_0031BB30 + s;
+    func_000D5170(&D_0031BB00, D_0031BAF4);
+    D_0031BBC0 = D_0031BBC0 + s;
+    func_000D5170(&D_0031BB90, D_0031BB84);
+    p = D_0031D4A0;
+    i = 3;
+    do {
+        p[0] = s + p[0];
+        func_000D5170(p - 0xc, *(int *)(p - 0xf));
+        p[0x6c] = s + p[0x6c];
+        func_000D5170(p + 0x60, *(int *)(p + 0x5d));
+        p[0xd8] = s + p[0xd8];
+        func_000D5170(p + 0xcc, *(int *)(p + 0xc9));
+        p += 0x24;
+        i--;
+    } while (i != 0);
+    i = 3;
+    p = D_0031C0F0;
+    do {
+        j = 7;
+        q = p;
+        do {
+            q[0] = s + q[0];
+            func_000D5170(q - 0xc, *(int *)(q - 0xf));
+            q[-0xfc] = s + q[-0xfc];
+            func_000D5170(q - 0x108, *(int *)(q - 0x10b));
+            q += 0x24;
+            j--;
+        } while (j != 0);
+        p += 0x1f8;
+        i--;
+    } while (i != 0);
+    p = D_0031D9C0;
+    i = 0x14;
+    do {
+        p[0] = s + p[0];
+        func_000D5170(p - 0xc, *(int *)(p - 0xf));
+        p += 0x24;
+        i--;
+    } while (i != 0);
+    D_0031BC50 = D_0031BC50 + s;
+    func_000D5170(&D_0031BC20, D_0031BC14);
+    if (func_0012E7B0(&D_0031BB30, &D_0031BB70) > D_001DAE68)
+        return 1;
+    return 0;
+}
+
 void func_000D5FF0(void)
 {
   int func_00011CB0(...);
   extern char D_0031B8B0, D_0031B870, D_0031BAB0, D_0031BA70, D_0031BB40, D_0031BB00, D_0031BBD0, D_0031BB90;
-  extern int D_0031D4B4, D_0031C104;
+  extern int D_0031D4B4[], D_0031C104[];
   int *puVar1;
   int *puVar2;
   int iVar3;
@@ -83,10 +197,11 @@ void func_000D5FF0(void)
   func_00011CB0(&D_0031BAB0, &D_0031BA70);
   func_00011CB0(&D_0031BB40, &D_0031BB00);
   func_00011CB0(&D_0031BBD0, &D_0031BB90);
-  puVar1 = &D_0031D4B4;
+  puVar1 = D_0031D4B4;
   iVar3 = 3;
   do {
-    puVar1[-1] = puVar1[-0x11];
+    int t = puVar1[-0x11];
+    puVar1[-1] = t;
     *puVar1 = puVar1[-0x10];
     puVar1[1] = puVar1[-0xf];
     puVar1[2] = puVar1[-0xe];
@@ -137,7 +252,7 @@ void func_000D5FF0(void)
     puVar1 = puVar1 + 0x24;
     iVar3 = iVar3 + -1;
   } while (iVar3 != 0);
-  puVar1 = &D_0031C104;
+  puVar1 = D_0031C104;
   iVar3 = 3;
   do {
     iVar4 = 7;
