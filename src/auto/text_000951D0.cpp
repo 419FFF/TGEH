@@ -3,15 +3,6 @@
 #include "ghidra.h"
 #include <xmmintrin.h>
 
-struct S_00095EF0_part {
-    float unk_0x0[3];
-    float center[3];
-    float radius;
-    int unk_0x1c;
-    unsigned short *indices;
-    unsigned count;
-    int unk_0x28[2];
-};
 
 void _func_000955D0(void)
 {
@@ -174,7 +165,7 @@ void func_00095EF0(void)
  obj[6]=0xc7c35000;obj[7]=0xc7c35000;obj[8]=0xc7c35000;
  obj[9]=0x47c35000;obj[10]=0x47c35000;obj[11]=0x47c35000;
  unsigned i=0;
- int off;
+ unsigned off;
  if((unsigned)obj[2]>0) { off=0; do {
  unsigned num=*(unsigned*)(obj[0]+off+36);
  int *part=(int*)(obj[0]+off);
@@ -196,13 +187,14 @@ void func_00095EF0(void)
  if(z<((float*)obj)[11])((float*)obj)[11]=(float)x;
  ++j;
  }while(j<(unsigned)part[9]);
- float scale=D_001D27B0/(unsigned)part[9];
+ unsigned count=(unsigned)part[9];
+ float scale=D_001D27B0/count;
  part[6]=0;
  center[0]=(float)(scale*center[0]);
  ((float*)part)[4]=(float)(scale*((float*)part)[4]);
  ((float*)part)[5]=(float)(scale*((float*)part)[5]);
  j=0;
- if((unsigned)part[9]>0)do {
+ if(count>0)do {
  float dist=func_0012E870(center,(float*)(obj[5]+((unsigned short*)part[8])[j]*12));
  if(dist>((float*)part)[6])((float*)part)[6]=(float)dist;
  ++j;obj=D_00307C0C;
