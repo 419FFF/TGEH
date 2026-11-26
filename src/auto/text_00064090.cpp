@@ -2,6 +2,24 @@
 #include "common.h"
 #include "ghidra.h"
 
+struct Ent_00064210 { int obj; float f; char flag; char pad[3]; };
+extern float D_002F7340;
+extern float D_001E461C;
+extern float D_002F733C;
+extern float D_001D27B0;
+extern float D_002F7338;
+extern float D_002F7344;
+extern float D_001D2D4C;
+extern float D_002F732C;
+extern float D_001E3B3C;
+extern float D_002F7330;
+extern float D_002F7334;
+extern void* D_00313B60;
+void func_00110060(void*,void*);
+void func_001105E0(void*,void*,int);
+#pragma optimize("y", off)
+void _func_00064090(void) { float a[12]; long double f; D_002F7340=(float)((long double)D_002F7340+(long double)D_001E461C); if(D_002F7340<D_002F733C){ f=((long double)D_001D27B0-(long double)D_002F7340/(long double)D_002F733C)*(long double)D_002F7338; D_002F7344=(float)((long double)D_002F7344*(long double)D_001D2D4C); func_00110060(D_00313B60,a); a[8]=(float)(((long double)D_002F732C+f)*(long double)D_001E3B3C*(long double)D_002F7344+a[8]); a[9]=(float)(((long double)D_002F7330+f)*(long double)D_001E3B3C*(long double)D_002F7344+a[9]); a[10]=(float)(((long double)D_002F7334+f)*(long double)D_001E3B3C*(long double)D_002F7344+a[10]); func_001105E0(D_00313B60,&a[8],1); } }
+#pragma optimize("", on)
 void func_00064180(void)
 {
   int func_00063FD0(...);
@@ -230,7 +248,7 @@ switchD_000024af_default:
   return;
 }
 
-void _func_00064DF0(void) { extern int D_001E3B48,D_001E3B4C,D_001E3B50,D_001E3B54,D_001E3B58,D_001E3B5C,D_001E3B60,D_001E3B64,D_001E3B68; extern int D_002F7714,D_002F771C,D_002F7700,D_002F7704,D_002F7708,D_002F7724,D_002F7728,D_002F772C,D_002F76F0,D_002F76F4,D_002F76F8,D_002F76FC,D_002F770C,D_002F7718; extern char D_001D5580; extern int _func_001229B0(...); extern int _func_00063F30(...); D_002F7714=0; D_002F771C=0; D_002F7700=D_001E3B54; D_002F7704=D_001E3B58; D_002F7708=D_001E3B5C; D_002F7724=D_001E3B48; D_002F7728=D_001E3B4C; D_002F772C=D_001E3B50; D_002F76F0=D_001E3B60; D_002F76F4=D_001E3B64; D_002F76F8=D_001E3B68; D_002F76FC=0; D_002F770C=5; D_002F7718=_func_001229B0(&D_001D5580); _func_00063F30(D_002F7718,0x4019999a,0x404ccccd); }
+void _func_00064DF0(void) { extern volatile int D_001E3B48,D_001E3B4C,D_001E3B50,D_001E3B54,D_001E3B58,D_001E3B5C,D_001E3B60,D_001E3B64,D_001E3B68; extern volatile int D_002F7714,D_002F771C,D_002F7700,D_002F7704,D_002F7708,D_002F7724,D_002F7728,D_002F772C,D_002F76F0,D_002F76F4,D_002F76F8,D_002F76FC,D_002F770C,D_002F7718; extern char D_001D5580; extern int _func_001229B0(...); extern int _func_00063F30(...); int a=D_001E3B58; int b=D_001E3B5C; int z=0; D_002F7714=z; D_002F771C=z; int c=D_001E3B54; D_002F7700=c; int d=D_001E3B48; D_002F7704=a; int e=D_001E3B4C; D_002F7708=b; int f=D_001E3B50; D_002F7724=d; int g=D_001E3B60; D_002F7728=e; int h=D_001E3B64; D_002F772C=f; int i=D_001E3B68; D_002F76F0=g; D_002F76F4=h; D_002F76F8=i; D_002F76FC=0; D_002F770C=5; int x=_func_001229B0(&D_001D5580); D_002F7718=x; _func_00063F30(x,0x4019999a,0x404ccccd); }
 
 void func_00064EA0(void) {
     extern int D_002F7718;
@@ -238,7 +256,7 @@ void func_00064EA0(void) {
     func_00110760(D_002F7718);
 }
 
-void _func_00064EB0(void *p) { extern int D_002F7720, D_002F7730, D_002F7718; extern char D_001D5590, D_002F76B0; extern int _func_00110300(int,const char*,int); extern int _func_00110060(int,const char*); extern int _func_00110420(int,int); extern int _func_00110480(int,int,int); extern int _func_00110330(int,int); if (p) { D_002F7720=(int)p; D_002F7730=_func_00110300(*(int*)((char*)p+0x2c),&D_001D5590,0x18); _func_00110060(*(int*)((char*)p+0x2c),&D_002F76B0); int a=*(int*)((char*)p+0x2c); _func_00110420(**(int**)(a+0x2c),a); _func_00110480(D_002F7718,*(int*)((char*)p+0x2c),8); _func_00110330(*(int*)((char*)p+0x2c),0); } }
+void _func_00064EB0(void *p) { extern int D_002F7720,D_002F7730,D_002F7718; extern char D_001D5590,D_002F76B0; extern int _func_00110300(int,const char*,int); extern int _func_00110060(int,const char*); extern int _func_00110420(int,int); extern int _func_00110480(int,int,int); extern int _func_00110330(int,int); if(p){ int a=*(int*)((char*)p+0x2c); D_002F7720=(int)p; _func_00110300(a,&D_001D5590,0x18); int b=*(int*)((char*)p+0x2c); D_002F7730=_func_00110060(b,&D_002F76B0); int c=*(int*)(D_002F7720+0x2c); int d=*(int*)(c+0x2c); _func_00110420(*(int*)d,c); int e=*(int*)(D_002F7720+0x2c); _func_00110480(D_002F7718,e,8); int f=*(int*)(D_002F7720+0x2c); _func_00110330(f,0); } }
 
 bool func_00064F30(void)
 {
