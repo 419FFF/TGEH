@@ -9,7 +9,7 @@ static __forceinline void Hermite3(float *o, float a, float b, FBox cb)
 {
   float c = cb.v;
   long double la = a;
-  double lb = b;
+  long double lb = b;
   long double lc = c;
   long double t = lc * D_001D2A2C;
   long double s = lb + la;
