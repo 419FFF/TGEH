@@ -1,5 +1,6 @@
 /* 18 functions from 0x000700B0 to 0x00070FC6, found by Ghidra. */
 #include "common.h"
+struct EdgeSeg { char c; char pad[3]; int a, b, d, e; };
 
 int func_00133F30(...);
 int func_001378E0(...);
@@ -233,5 +234,69 @@ void func_00070D50(int a0) {
 int func_00070D60(void) {
     extern int D_002FA2EC;
     return D_002FA2EC;
+}
+
+void func_00070D70(char c, int *p2, int *p3, int p4, int *p5, int *p6)
+{
+  extern int D_002FA320;
+  extern char D_002FA31C;
+  extern struct { char pad[0xc]; char c; int a; int b; int e; int f; } D_002FA31C_dummy;
+  extern int D_00332740, D_00332738, D_0033273C;
+  int func_00137A20(void);
+  int func_00137A60(int);
+  int func_00137A90(int, int);
+  extern char D_002FA328[];
+  extern int D_002FA32C[], D_002FA330[], D_002FA334[], D_002FA338[];
+  if (c == '>') {
+    int i = D_002FA320 * 5;
+    D_002FA334[i] = p3[0];
+    D_002FA338[i] = p3[1];
+    D_002FA328[i * 4] = 0;
+    D_002FA31C = 1;
+    return;
+  }
+  if (D_002FA31C == 0) {
+    int x, y;
+    y = p2[1]; x = p2[0];
+    func_00137A20();
+    D_00332738 = x; D_0033273C = y; D_00332740 = 0;
+    func_00137A60(p4);
+    func_00137A90(p5[0], p6[0]);
+    y = p2[1]; x = p3[0];
+    func_00137A20();
+    D_00332738 = x; D_0033273C = y; D_00332740 = 0;
+    func_00137A60(p4);
+    func_00137A90(p5[1], p6[0]);
+    y = p3[1]; x = p3[0];
+    func_00137A20();
+    D_00332738 = x; D_0033273C = y; D_00332740 = 0;
+    func_00137A60(p4);
+    func_00137A90(p5[1], p6[1]);
+    y = p3[1]; x = p3[0];
+    func_00137A20();
+    D_00332738 = x; D_0033273C = y; D_00332740 = 0;
+    func_00137A60(p4);
+    func_00137A90(p5[1], p6[1]);
+    y = p3[1]; x = p2[0];
+    func_00137A20();
+    D_00332738 = x; D_0033273C = y; D_00332740 = 0;
+    func_00137A60(p4);
+    func_00137A90(p5[0], p6[1]);
+    y = p2[1]; x = p2[0];
+    func_00137A20();
+    D_00332738 = x; D_0033273C = y; D_00332740 = 0;
+    func_00137A60(p4);
+    func_00137A90(p5[0], p6[0]);
+  } else {
+    if (c == '<') {
+      D_002FA32C[D_002FA320 * 5] = p2[0];
+      D_002FA330[D_002FA320 * 5] = p2[1];
+      D_002FA320++;
+      D_002FA31C = 0;
+      return;
+    }
+    if (D_002FA328[D_002FA320 * 20] == 0)
+      D_002FA328[D_002FA320 * 20] = c;
+  }
 }
 
