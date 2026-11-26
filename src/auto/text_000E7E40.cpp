@@ -54,6 +54,44 @@ undefined4 func_000E8390(void)
   return 0;
 }
 
+void func_000E83C0(void) {
+ void func_00110060(int,void *); int func_00115100(int,void *);void func_00115170(int,int,void *);
+ void func_0012F250(void *,void *,void *);int func_0009C590(void *);
+ float func_00131610(float,float);float func_00131220(float);float func_00131230(float);float func_00131250(float);
+ void func_00130620(void *,void *,void *,int);
+ float dx,dz,angle,dist,sine;
+ float eye[4],at[4];
+ Mat16 out, first, joint, second, bone;
+ func_00110060(*(int *)(D_00307DF8+0x2c),&out);
+ int id=func_00115100(*(int *)(D_00307DF8+0x98),&D_001D5450);
+ func_00115170(*(int *)(D_00307DF8+0x98),id,&bone);
+ func_0012F250(&joint,&bone,&out);
+ int h=func_0009C590(&D_001D5448);
+ func_00110060(*(int *)(h+0x2c),&first);
+ h=func_0009C590(&D_001DC53C);
+ func_00110060(*(int *)(h+0x2c),&second);
+ dx=(float)((float *)joint.a)[12]-((float *)first.a)[12];
+ dz=(float)((float *)joint.a)[14]-((float *)first.a)[14];
+ ((int *)eye)[0]=joint.a[12];((int *)eye)[1]=joint.a[13];((int *)eye)[2]=joint.a[14];eye[3]=1.0f;
+ ((int *)at)[0]=first.a[12];((int *)at)[1]=first.a[13];((int *)at)[2]=first.a[14];at[3]=1.0f;
+ angle=func_00131610(dx,dz);
+ dist=func_00131220((float)dx*dx+(float)dz*dz);
+ if((float)dist>D_001D2888) dist=10000.0f;
+ dx=(float)((float *)second.a)[12]-at[0];
+ dz=(float)((float *)second.a)[14]-at[2];
+ angle=((float)func_00131610(dx,dz)-angle)*D_001D28C0+angle;
+ sine=func_00131230(angle);
+ float cosine=func_00131250(angle);
+ float radius=*(volatile float *)&dist+D_001DC538;
+ eye[0]=(float)sine*radius+at[0];eye[2]=radius*cosine+at[2];
+ at[1]=(float)at[1]-D_001D2B98;
+ eye[1]=(float)eye[1]+D_001D74E8;
+ func_00130620(&out,eye,at,0);
+ out.a[12]=((int *)eye)[0];out.a[13]=((int *)eye)[1];out.a[14]=((int *)eye)[2];
+ ((float *)out.a)[3]=0.0f;((float *)out.a)[7]=0.0f;((float *)out.a)[11]=0.0f;((float *)out.a)[15]=1.0f;
+ D_002EED70=out;
+}
+
 void func_000E8630(void)
 {
   int func_0005CCC0(...); int func_000E83C0(...); int func_00110330(...);
