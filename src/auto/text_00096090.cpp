@@ -1,6 +1,8 @@
 /* 14 functions from 0x00096090 to 0x00096F66, found by Ghidra. */
 #include "common.h"
 #include "ghidra.h"
+struct PV3 { float x, y, z; };
+struct PObj { int u0; PV3 *a; int u8; PV3 *b; int u10; float (*c)[4]; int u18; float (*d)[2]; int u20; float *e; };
 
 void func_00096090(void)
 {
