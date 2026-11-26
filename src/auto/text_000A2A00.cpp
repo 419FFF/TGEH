@@ -5,7 +5,6 @@
 void func_000A2A00(unsigned *p) {
  extern unsigned D_00312080[][28],D_00312084[][28];
  extern unsigned char D_0031151C;
- int i=(int)D_0031151C/3;
- p[0]=D_00312080[i][0];
+ p[0]=D_00312080[D_0031151C/3][0];
  p[1]=D_00312084[D_0031151C/3][0];
 }
