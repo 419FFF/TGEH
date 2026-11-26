@@ -2,6 +2,44 @@
 #include "common.h"
 #include "ghidra.h"
 
+void func_000EEDB0(void)
+{
+  int func_00110300(...);
+  int func_00110330(...);
+  extern int D_00324620, D_00324624, D_00324628, D_0032462C, D_00324630, D_00324634, D_00324638, D_0032463C, D_00324694;
+  extern char D_001DCAE4, D_001DCAD8, D_001DCAC8, D_001DCABC, D_001DCAB0, D_001DCAA4, D_001DCA94, D_001DCA88;
+  int o1, o2, o3, o8;
+  struct { int a[4]; int o4, o5, o6, o7; int e[2]; } L;
+  o1 = func_00110300(*(int *)(D_00324620 + 0x2c), &D_001DCAE4, 0);
+  o2 = func_00110300(*(int *)(D_00324624 + 0x2c), &D_001DCAD8, 0);
+  o3 = func_00110300(*(int *)(D_00324628 + 0x2c), &D_001DCAC8, 0);
+  L.o4 = func_00110300(*(int *)(D_0032462C + 0x2c), &D_001DCABC, 0);
+  L.o5 = func_00110300(*(int *)(D_00324630 + 0x2c), &D_001DCAB0, 0);
+  L.o6 = func_00110300(*(int *)(D_00324634 + 0x2c), &D_001DCAA4, 0);
+  L.o7 = func_00110300(*(int *)(D_0032463C + 0x2c), &D_001DCA94, 0);
+  o8 = func_00110300(*(int *)(D_00324638 + 0x2c), &D_001DCA88, 0);
+  func_00110330(o1, 0);
+  func_00110330(o2, 0);
+  func_00110330(o3, 0);
+  func_00110330(L.o4, 0);
+  func_00110330(L.o5, 0);
+  func_00110330(L.o6, 0);
+  func_00110330(L.o7, 0);
+  if (o8 != 0)
+    func_00110330(o8, 0);
+  switch (D_00324694) {
+  case 3: func_00110330(o1, 1); break;
+  case 4: func_00110330(o2, 1); break;
+  case 5: func_00110330(o3, 1); break;
+  case 6: func_00110330(L.o4, 1); break;
+  case 7: func_00110330(L.o5, 1); break;
+  case 8: func_00110330(L.o6, 1); break;
+  case 9:
+  case 14: func_00110330(L.o7, 1); break;
+  case 2: func_00110330(o8, 1); break;
+  }
+}
+
 void func_000EEFD0(void)
 {
   int func_0009F820(...);
