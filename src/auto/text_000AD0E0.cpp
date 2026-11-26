@@ -142,5 +142,3 @@ void func_000ADE40(int param_1, undefined4 *param_2)
   int iVar1=func_0013E9DB(*param_2,1,1);
   *(undefined4 *)(param_1+0x30)=func_00116A90(iVar1*0x14);
 }
-struct Item18 { int name; short type; short kind; union { int i; float f; } v[4]; };
-struct Table18 { int pad0; unsigned short count; short pad6; Item18 *items; };
