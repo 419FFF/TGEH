@@ -2,7 +2,7 @@
 #include "common.h"
 #include "ghidra.h"
 #include <math.h>
-struct D3300Entry { int model; int object; char rest[0x108]; };
+struct D3300Entry { int model; int object; char rest[0xcc]; char active; char padding[11]; char complete; char tail[0x2f]; };
 
 void _func_000D2FF0(void)
 {
@@ -94,12 +94,13 @@ void func_000D3300(void) {
  ((int*)b)[0]=*(int*)D_0031AD04;((int*)b)[1]=*(int*)(D_0031AD04+4);((int*)b)[2]=*(int*)(D_0031AD04+8);
  b[2]-=*(float*)(D_0031AD04+0x18);
  func_0012F7A0(b,m);func_000D5450(b,c);
- int *p=(int*)&D_0031B094;offset=0;
- do {
+ offset=0;
+ do { D3300Entry *entry=(D3300Entry*)((int)&D_0031B094+offset*0x110-4);
+ int *p=&entry->object;
  ((char*)p)[0xdc]=0;
  if(((char*)p)[0xd0] && D_0031AD9C && !done && D_0031ADB8<4){
- int *obj=p-1;
- func_00110060(*(int*)obj,m);
+ D3300Entry *obj=entry;
+ func_00110060(obj->model,m);
  int e=*p;
  a[3]=1;
  ((int*)a)[0]=*(int*)(e+0x40);((int*)a)[1]=*(int*)(e+0x44);((int*)a)[2]=*(int*)(e+0x48);
@@ -111,8 +112,8 @@ void func_000D3300(void) {
  }
  if(((char*)p)[0xdc]==1)return;
  }
- offset+=0x110;p+=0x44;
- }while(offset<0x330);
+ ++offset;
+ }while(offset<3);
 }
 #pragma optimize("", on)
 void func_000D3550(void) { extern char D_0031B130,D_0031AF24,D_0031B3C4,D_0031B460,D_0031B7C4; int func_0012E750(...); int *p=(int *)&D_0031B130; do { ((char *)p)[0x34]=0;*p=0;p[-4]=0;p+=0x44;}while((int)p<(int)&D_0031B460); char *b=&D_0031AF24,*a=&D_0031B3C4; do{func_0012E750(a+0x10);*a=0;*b=0;a+=0x40;b+=0x18;}while((int)a<(int)&D_0031B7C4); }
