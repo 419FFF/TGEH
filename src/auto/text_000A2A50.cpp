@@ -2,12 +2,9 @@
 #include "common.h"
 #include "ghidra.h"
 
-void func_000A2A50(undefined4 *param_1)
-{
-  extern undefined D_00312088;
-  extern undefined D_0031151C;
-  extern undefined D_0031208C;
-  *param_1 = *(undefined4 *)(((undefined *)&D_00312088) + (D_0031151C / 3) * 0x70);
-  param_1[1] = *(undefined4 *)(((undefined *)&D_0031208C) + (D_0031151C / 3) * 0x70);
-  return;
+void func_000A2A50(unsigned *p) {
+ extern unsigned D_00312088[][28],D_0031208C[][28];
+ extern unsigned char D_0031151C;
+ p[0]=D_00312088[D_0031151C/3][0];
+ p[1]=D_0031208C[D_0031151C/3][0];
 }
