@@ -108,6 +108,53 @@ void func_00073A20(void)
   return;
 }
 
+void _func_00073B40(unsigned char flags) {
+ extern int D_002FA574,D_002FA544,D_002FA380[];
+ extern unsigned int D_002FA550,D_002FA548,D_002FA59C;
+ extern unsigned char D_002FA3D8[];
+ void _func_00103440(unsigned int,int);
+ int value;
+ if(flags&4) value=((MenuEntry737 *)D_002FA380[D_002FA544])[D_002FA574].value;
+ else {
+ MenuEntry737 *entry=(MenuEntry737 *)D_002FA380[D_002FA544];
+ value=D_002FA550;
+ int i=0;
+ do {
+ if(entry->text && entry->text[0]=='-') break;
+ value=entry->value; ++i; ++entry;
+ } while(i<8);
+ }
+ D_002FA550=value;
+ if(value==-1) D_002FA550=14;
+ MenuMotion737 *m=(MenuMotion737 *)D_002FA3D8;
+
+ m[0].y=235.0f; m[0].x=-580.0f;
+ m[0].b=0.0f;m[0].c=0.0f;m[0].d=0.0f;
+ m[0].active=0;m[0].enabled=1;
+ m[1].y=235.0f; m[1].x=-580.0f;
+ m[1].b=0.0f;m[1].c=0.0f;m[1].d=0.0f;
+ m[1].active=0;m[1].enabled=1;
+ m[2].y=235.0f; m[2].x=-580.0f;
+ m[2].b=0.0f;m[2].c=0.0f;m[2].d=0.0f;
+ m[2].active=0;m[2].enabled=1;
+ m[3].y=235.0f; m[3].x=-580.0f;
+ m[3].b=0.0f;m[3].c=0.0f;m[3].d=0.0f;
+ m[3].active=0;m[3].enabled=1;
+ m[4].y=235.0f; m[4].x=-580.0f;
+ m[4].b=0.0f;m[4].c=0.0f;m[4].d=0.0f;
+ m[4].active=0;m[4].enabled=1;
+ m[5].y=235.0f; m[5].x=-580.0f;
+ m[5].b=0.0f;m[5].c=0.0f;m[5].d=0.0f;
+ m[5].active=0;m[5].enabled=1;
+ m[6].y=235.0f; m[6].x=-580.0f;
+ m[6].b=0.0f;m[6].c=0.0f;m[6].d=0.0f;
+ m[6].active=0;m[6].enabled=1;
+ m[7].y=235.0f; m[7].x=-580.0f;
+ m[7].b=0.0f;m[7].c=0.0f;m[7].d=0.0f;
+ m[7].active=0;m[7].enabled=1;
+ _func_00103440(D_002FA548,1);_func_00103440(D_002FA59C,1);
+}
+
 void func_00073DD0(void) {
  extern int D_002FA574,D_002FA544,D_002FA380[]; extern unsigned char D_002FA3D8[],D_002FA4F8[];
  extern float D_001D2E24,D_001D2A24,D_001D27B0,D_001E3EF8,D_001D6018,D_001D3E00;
