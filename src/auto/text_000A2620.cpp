@@ -250,6 +250,32 @@ void func_000A2BF0(int param_1, int param_2)
   return;
 }
 
+void func_000A2C30(int param_1)
+{
+  extern int D_00311680, D_00312480, D_00311A30, D_00311D10;
+  extern int D_00312694, D_00311DB4, D_00311EE4;
+  extern float D_00312488, D_00311A38, D_00311D18, D_0031269C, D_00311DBC, D_00311EEC;
+  if (param_1 != 0) {
+    if (D_00311680 == 0) {
+      if (D_00312480 != 1) D_00312480 = 2; else D_00312488 = 10.0;
+      if (D_00311A30 != 1) D_00311A30 = 2; else D_00311A38 = 10.0;
+      if (D_00311D10 != 1) D_00311D10 = 2; else D_00311D18 = 10.0;
+      if (D_00312694 != 1) D_00312694 = 2; else D_0031269C = 5.0;
+      if (D_00311DB4 != 1) D_00311DB4 = 2; else D_00311DBC = 10.0;
+      if (D_00311EE4 != 1) D_00311EE4 = 2; else D_00311EEC = 10.0;
+      D_00311680 = 1;
+    }
+  } else if (D_00311680 != 0) {
+    if (D_00312480 != 0) D_00312480 = 3;
+    if (D_00311A30 != 0) D_00311A30 = 3;
+    if (D_00311D10 != 0) D_00311D10 = 3;
+    if (D_00312694 != 0) D_00312694 = 3;
+    if (D_00311DB4 != 0) D_00311DB4 = 3;
+    if (D_00311EE4 != 0) D_00311EE4 = 3;
+    D_00311680 = 0;
+  }
+}
+
 void func_000A2D70(void)
 {
   extern undefined4 D_00311B30;
@@ -304,7 +330,43 @@ void func_000A2E70(int *p, int a, int b, int c, int d, int e) { int func_000688D
 
 void func_000A2EE0(int **param_1) { int func_0011B990(...); int *p=*param_1; *(short*)((char*)p+0x2a) -= 1; *param_1=p; func_0011B990(p); }
 
-void func_000A2F00(void *p,float x,int y) { *(float*)((char*)p+8)=x; *(int*)((char*)p+12)=y; }
+void func_000A2F00(void *p,float x,int y) { volatile float t=x; *(float*)((char*)p+8)=t; *(int*)((char*)p+12)=y; }
+
+void func_000A2F20(float *p)
+{
+    extern float D_001D27EC;
+    void func_00133F30(int *);
+    void func_001383B0(void);
+    void func_0011E4A0(float, float, float, float, int *, int *, int, float);
+    int state[21];
+    int a[2];
+    int b[2];
+    double x0, y0;
+    float left, top, right, bottom;
+    state[0] = 1;
+    state[1] = 1;
+    state[2] = ((int *)p)[1];
+    a[0] = ((int *)p)[6];
+    a[1] = ((int *)p)[7];
+    x0 = p[2] - p[4] * (double)D_001D27EC;
+    left = (float)(p[6] * (double)p[4] + x0);
+    state[6] = 3;
+    state[10] = 4;
+    state[11] = 5;
+    state[12] = 0;
+    state[18] = 6;
+    state[17] = 0;
+    state[19] = 0;
+    right = (float)(p[8] * (double)p[4] + x0);
+    b[0] = ((int *)p)[8];
+    y0 = p[3] - p[5] * (double)D_001D27EC;
+    top = (float)(p[5] * (double)p[7] + y0);
+    b[1] = ((int *)p)[9];
+    bottom = (float)(p[9] * (double)p[5] + y0);
+    func_00133F30(state);
+    func_001383B0();
+    func_0011E4A0(left, top, right, bottom, a, b, 0, 1.0f);
+}
 
 void func_000A3020(undefined4 *param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4, undefined4 param_5, undefined4 param_6, undefined4 param_7, undefined4 param_8)
 {
@@ -316,6 +378,8 @@ void func_000A3020(undefined4 *param_1, undefined4 param_2, undefined4 param_3, 
 }
 
 void func_000A3070(int p) { int func_0011B990(...); int a=*(int*)(p+4); *(short*)(a+0x2a)-=1; func_0011B990(*(int*)(p+4)); int b=*(int*)(p+0x2c); *(short*)(b+0x2a)-=1; func_0011B990(*(int*)(p+0x2c)); }
+
+void func_000A30A0(int *p,float x) { extern float D_001D27B8,D_001D27B0; int func_000A2F20(...); float f; if(x<D_001D27B8) f=D_001D27B8; else if(D_001D27B0<x) f=D_001D27B0; else f=x; if(p[0]==1) { f=D_001D27B0-f; p[7]=0; p[9]=0x3f800000; p[10]=0x3f800000; p[8]=*(int*)&f; } else if(p[0]==0) {p[9]=*(int*)&f;p[7]=0;p[8]=0;p[10]=0x3f800000;} func_000A2F20(p+1); func_000A2F20(p+11); }
 
 void func_000A3130(char a0, int a1) {
     extern char D_00312824;
@@ -329,12 +393,16 @@ void func_000A3150(char a0, int a1) {
     extern int D_00312580;
     D_00312584 = a0;
     D_00312580 = a1;
-}extern uint D_00312620, D_00312624;extern uint D_00312620, D_00312624;
-extern uint D_00312620, D_00312624;
-void func_000A2B20(undefined4 *param_1)
-{
-  extern undefined4 D_00312620;
-  extern undefined4 D_00312624;
-  *(float *)param_1 = *(float *)&D_00312620;
-  param_1[1] = D_00312624;
 }
+
+void func_000A3170(byte a,byte b){extern volatile byte D_00311F80,D_003124F0,D_0031078C,D_00310A40,D_00310CF4,D_00310FA8,D_0031125C,D_00312000,D_00311AB0; D_00311F80=a;D_003124F0=b;if(D_0031078C==0&&D_00310A40==0&&D_00310CF4==0&&D_00310FA8==0&&D_0031125C==0){D_00312000=a&b;D_00311AB0=a&b;return;}D_00312000=a&b;D_00311AB0=a&b;}
+
+void func_000A3460(void){extern int D_0032923C,D_00312570,D_00311680,D_00312744,D_003126B0,D_003126B4,D_003126B8,D_003126BC; extern char D_001D757C; int func_000A65B0(...); int func_0009C590(...); int func_0009D3E0(...); int func_00095AA0(...); void func_000A3170(...); D_00312570=D_0032923C;D_00311680=0;func_000A65B0();D_00312744=func_0009C590(&D_001D757C);if(D_00312744!=0){func_0009D3E0(D_00312744);func_00095AA0(*(int*)(D_00312744+0x2c));}D_003126B0=0;D_003126B4=0;D_003126B8=0;D_003126BC=0;func_000A3170(1,1);}
+
+extern uint D_00312620, D_00312624;extern uint D_00312620, D_00312624;
+extern uint D_00312620, D_00312624;
+void func_000A2B20(undefined4 *param_1) { extern undefined4 D_00312620; extern undefined4 D_00312624; *(float *)param_1 = *(float *)&D_00312620; param_1[1] = D_00312624; }
+
+extern uint D_00312628, D_0031262C;
+void func_000A2B40(undefined4 *param_1) { extern undefined4 D_00312628; extern undefined4 D_0031262C; *(float *)param_1 = *(float *)&D_00312628; param_1[1] = D_0031262C; }
+
