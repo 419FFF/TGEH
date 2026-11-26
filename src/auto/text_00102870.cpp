@@ -3,19 +3,19 @@
 #include "ghidra.h"
 
 struct V3_00102870 { int x, y, z; };
+struct F_00102A80 { unsigned short a:4, b:1, c:1; };
 
 void _func_00102870(int p)
 {
     int func_00110060(...); int func_001100A0(...); float func_0011F7C0(...); int func_0011F270(...); int func_0012F730(...);
     extern int D_00324BD4, D_00324D38, D_00308158;
     int loc[3];
-    float f;
     __declspec(align(16)) int b[15];
     int *v = b + 12;
     int *o = (int*)(*(int*)(p + 0x78));
-    unsigned char c = *(unsigned char*)((char*)o + 0x32);
-    unsigned char t = c >> 3;
-    if (t % 2 != 0) {
+    char t = *(char*)((char*)o + 0x32);
+    t = t >> 3;
+    if ((t & 1) != 0) {
         func_00110060(D_00324BD4, b);
         o = (int*)*(int*)(p + 0x78);
         o[7] = v[0]; o[8] = v[1]; o[9] = v[2];
@@ -27,7 +27,7 @@ void _func_00102870(int p)
     } else if (*(int*)(p + 0xf0)) {
         func_001100A0(*(int*)(D_00324D38 + 0x2c), loc);
         func_00110060(*(int*)(p + 0xb8), b);
-        f = func_0011F7C0(*(int*)(p + 0xf0) + 4, loc[0] + 0x30, 10);
+        float f = func_0011F7C0(*(int*)(p + 0xf0) + 4, loc[0] + 0x30, 10);
         func_0011F270(*(int*)(p + 0xf0) + 4, *(int*)&f, b + 12, 0);
     } else if (*(int*)(p + 0x7c) == D_00308158) {
         *(int*)(p + 0xe4) = o[7]; *(int*)(p + 0xe8) = o[8]; *(int*)(p + 0xec) = o[9];
@@ -41,6 +41,75 @@ void _func_00102870(int p)
 }
 
 void _func_00102A20(int p) { int func_00110060(...); int func_001105E0(...); __declspec(align(16)) unsigned char b[0x5c]; int obj=*(int*)(p+0xb8); if(obj){func_00110060(obj,b+0x10); *(int*)(b+0x48)=*(int*)(p+0xe4); *(int*)(b+0x50)=*(int*)(p+0xe8); *(int*)(b+0x5c)=*(int*)(p+0xec); func_001105E0(obj,b+0x1c,0);} }
+
+void _func_00102A80(int p)
+{
+    extern float D_001D27B8; extern float D_001D290C;
+    int func_0011BDD0(...); int func_001288B0(...);
+    int i;
+    unsigned char b = *(unsigned char *)(p + 0xb6);
+    b >>= 5;
+    if (b & 1) {
+        int o = *(int *)(p + 0xb8);
+        if (func_0011BDD0(*(int *)(o + 0xec), 0) == 0) return;
+        (*(short *)(*(int *)(o + 0xec) + 0x2a))--;
+        i = 0;
+        if (*(unsigned char *)(*(int *)(p + 0x78) + 0x30) - 1 > 0) {
+            int *q = (int *)(p + 0xbc);
+            do {
+                int c = *q;
+                if (func_0011BDD0(*(int *)(c + 0xec), 0) == 0) return;
+                (*(short *)(*(int *)(c + 0xec) + 0x2a))--;
+                i++; q++;
+            } while (i < *(unsigned char *)(*(int *)(p + 0x78) + 0x30) - 1);
+        }
+        *(unsigned char *)(p + 0xb6) &= 0xdf;
+    }
+    unsigned short fl = *(unsigned short *)(p + 0xb6);
+    unsigned char c1 = fl;
+    c1 >>= 5;
+    if ((c1 & 1) == 0) {
+        unsigned char c2 = fl;
+        c2 >>= 4;
+        if ((c2 & 1) == 0) {
+        if (*(float *)(*(int *)(p + 0x78) + 0x2c) == D_001D27B8 && *(int *)(p + 0xb8) != 0) {
+            int r = func_001288B0(*(int *)(p + 0xb8));
+            float f = (float)r;
+            if (r < 0) f += D_001D290C;
+            *(float *)(*(int *)(p + 0x78) + 0x2c) = f;
+        }
+        i = 0;
+        if (*(unsigned char *)(*(int *)(p + 0x78) + 0x30) - 1 > 0) {
+            int off = 0x50;
+            int *q = (int *)(p + 0xbc);
+            do {
+                if (*(float *)(off + *(int *)(p + 0x78)) == D_001D27B8 && *q != 0) {
+                    int r = func_001288B0(*q);
+                    float f = (float)r;
+                    if (r < 0) f += D_001D290C;
+                    *(float *)(off + *(int *)(p + 0x78)) = f;
+                }
+                i++; q++; off += 4;
+            } while (i < *(unsigned char *)(*(int *)(p + 0x78) + 0x30) - 1);
+        }
+        }
+    }
+    if (*(float *)(p + 0xcc) == D_001D27B8) {
+        int s = *(int *)(p + 0x78);
+        if (*(float *)(s + 0x2c) != D_001D27B8) {
+            *(int *)(p + 0xcc) = *(int *)(s + 0x2c);
+            i = 0;
+            if (*(unsigned char *)(s + 0x30) - 1 > 0) {
+                int off = 0x50;
+                int *q = (int *)(p + 0xd0);
+                do {
+                    *q = *(int *)(off + *(int *)(p + 0x78));
+                    i++; off += 4; q++;
+                } while (i < *(unsigned char *)(*(int *)(p + 0x78) + 0x30) - 1);
+            }
+        }
+    }
+}
 
 void _func_00102C50(int p) { int func_00131230(...); extern int D_00324D2C; extern float D_001DE730,D_001D27B0; int edx=*(int*)(p+0xe0); int ecx=*(int*)(p+0x78); int delta=D_00324D2C-edx; float t=func_00131230((float)delta * *(float*)(ecx+0x7c) * D_001DE730); *(float*)(p+0x9c)=t**(float*)(ecx+0x80)+D_001D27B0; *(float*)(p+0xac)=t**(float*)(ecx+0x84)+D_001D27B0; }
 
