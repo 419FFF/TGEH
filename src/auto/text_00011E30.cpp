@@ -2,6 +2,66 @@
 #include "common.h"
 #include "ghidra.h"
 
+void func_00011E30(int param_1, int *param_2, int *param_3)
+{
+  int func_0012F120(...);
+  float func_00131230(int);
+  float func_00131250(int);
+  int func_0012ED20(...);
+  int func_0012F730(...);
+  int func_0012EA60(...);
+  int func_0012F610(...);
+  float lVar1, lVar2, lVar3, lVar4, lVar5;
+  float e[3], c[3], d[3], a[3], b[3];
+  char local_10[16];
+
+  func_0012F120(param_2);
+  lVar1 = func_00131230(param_3[1]);
+  lVar2 = func_00131250(param_3[2]);
+  a[0] = (float)((long double)lVar2 * lVar1);
+  lVar1 = func_00131250(param_3[1]);
+  a[1] = lVar1;
+  lVar1 = func_00131230(param_3[1]);
+  lVar2 = func_00131230(param_3[2]);
+  a[2] = (float)((long double)lVar2 * lVar1);
+  func_0012ED20(local_10, a, *param_3);
+  func_0012F730(b, local_10, param_1);
+  param_2[0xc] = ((int *)b)[0];
+  param_2[0xd] = ((int *)b)[1];
+  param_2[0xe] = ((int *)b)[2];
+  lVar1 = func_00131250(param_3[1]);
+  lVar2 = func_00131230(param_3[2]);
+  lVar3 = func_00131230(param_3[1]);
+  lVar4 = func_00131250(param_3[1]);
+  lVar5 = func_00131250(param_3[2]);
+  c[0] = (float)-((long double)lVar5 * lVar4);
+  c[1] = lVar3;
+  c[2] = (float)-((long double)lVar2 * lVar1);
+  func_0012EA60(c);
+  func_0012ED20(d, a, 0xbf800000);
+  func_0012F610(d, param_1);
+  func_0012EA60(d);
+  lVar1 = func_00131230(param_3[1]);
+  lVar2 = func_00131250(param_3[2]);
+  lVar3 = func_00131230(param_3[1]);
+  lVar4 = func_00131230(param_3[2]);
+  e[0] = (float)-((long double)lVar4 * lVar3);
+  ((int *)e)[1] = 0;
+  e[2] = (float)((long double)lVar2 * lVar1);
+  func_0012EA60(e);
+  func_0012F610(e, param_1);
+  func_0012F610(c, param_1);
+  param_2[0] = ((int *)e)[0];
+  param_2[1] = ((int *)e)[1];
+  param_2[2] = ((int *)e)[2];
+  param_2[4] = ((int *)c)[0];
+  param_2[5] = ((int *)c)[1];
+  param_2[6] = ((int *)c)[2];
+  param_2[8] = ((int *)d)[0];
+  param_2[9] = ((int *)d)[1];
+  param_2[10] = ((int *)d)[2];
+}
+
 void func_00012040(int param_1, undefined4 param_2)
 {
   int func_00110420(...);
@@ -20,6 +80,44 @@ void func_000120B0(int param_1, undefined4 param_2, undefined4 param_3, undefine
   *(undefined1 *)(param_1 + 0x25) = 1;
   func_00099E70(param_1 + 0x20,param_3,param_4);
   return;
+}
+
+unsigned char _func_00012360(int obj, int *pos, int a, int b, unsigned char c)
+{
+    extern int D_00307DF8, D_003251B8, D_00325200, D_00325150;
+    extern void _func_0012F7A0(int *, int);
+    extern void _func_00110060(int, void *);
+    extern unsigned char _func_00113380(int *, int, int *, int);
+    extern void _func_00107C40(int, int, int);
+    int v[9];
+    __declspec(align(16)) char buf[0x40];
+    int *p = v + 1;
+    int *q = v + 5;
+    p[0] = pos[0]; p[1] = pos[1]; p[2] = pos[2];
+    _func_0012F7A0(p, b);
+    _func_00110060(*(int *)(D_00307DF8 + 0x2c), buf);
+    q[0] = *(int *)(D_00307DF8 + 0xe8);
+    q[1] = *(int *)(D_00307DF8 + 0xec);
+    q[2] = *(int *)(D_00307DF8 + 0xf0);
+    _func_0012F7A0(q, (int)buf);
+    if (_func_00113380(p, a, q, D_00307DF8 + 0xf4)) {
+        int *d = (int *)(D_00307DF8 + 0x150);
+        if (*(char *)(D_00307DF8 + 0x175) == 0 && *(char *)((int)d + 0x24) == 0) {
+            for (int i = 0; i < 11; i++)
+                d[i] = 0;
+            *(char *)(D_00307DF8 + 0x174) = 1;
+            *(int *)(D_00307DF8 + 0x160) = obj;
+            *(int *)(D_00307DF8 + 0x178) = *(char *)(obj + 0x13) == 5;
+            d = (int *)(D_00307DF8 + 0x150);
+            d[0] = p[0]; d[1] = p[1]; d[2] = p[2];
+            *(float *)(D_00307DF8 + 0x168) = (float)c;
+            _func_00107C40(D_003251B8, D_00307DF8, obj);
+            _func_00107C40(D_00325200, D_00307DF8, obj);
+            _func_00107C40(D_00325150, D_00307DF8, obj);
+        }
+        return 1;
+    }
+    return 0;
 }
 
 void func_000127A0(void)
