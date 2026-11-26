@@ -2,6 +2,8 @@
 #include "common.h"
 #include "ghidra.h"
 
+extern "C" void (__stdcall *__imp__RtlEnterCriticalSection)(void *);
+extern "C" void (__stdcall *__imp__RtlLeaveCriticalSection)(void *);
 struct MeshEntry { int pad0[8]; unsigned short *indices; unsigned int count; int pad1[3]; };
 struct MeshData { MeshEntry *entries; int pad0; unsigned int entryCount; unsigned int vertCount; int pad1; int *verts; };
 
