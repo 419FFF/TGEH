@@ -228,6 +228,7 @@ LAB_00002825:
 void func_000639A0(void)
 {
   extern int D_00307DF8, D_002F730C, D_002F7308, D_001E3B30, D_00313B60, D_002F7310;
+  extern int D_002EF4F8, D_002EF4FC, D_002EF500;
   extern char D_002EF600[], D_002EF5FC[], D_002EF50C[], D_002EF508[], D_002EF4F4[], D_002EF4E4[];
   int func_00060980(...);
   int func_00060AA0(...);
@@ -293,10 +294,10 @@ found:
     func_0005CCC0(0x17);
     puVar2 = *(int **)(D_002EF508 + local_68 * 0x1f8);
     func_00110060(D_00313B60, local_50);
-    ((int *)D_002EF4F4)[0] = local_50[12];
-    ((int *)D_002EF4F4)[1] = local_50[13];
-    ((int *)D_002EF4F4)[2] = local_50[14];
-    ((int *)D_002EF4F4)[3] = local_50[15];
+    *(int *)D_002EF4F4 = local_50[12];
+    D_002EF4F8 = local_50[13];
+    D_002EF4FC = local_50[14];
+    D_002EF500 = local_50[15];
     fRes = func_00068CF0(*puVar2, D_002EF4F4, 10);
     func_00063530(*(int *)&fRes);
     D_002F7310 = local_68;
