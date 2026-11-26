@@ -14,7 +14,7 @@ static __forceinline void Hermite3(float *o, float a, float b, FBox cb)
   long double t = lc * D_001D2A2C;
   long double s = lb + la;
   o[0] = (float)((s + s) - t);
-  long double u = lb * (long double)D_001D2808;
+  long double u = D_001D2808 * lb;
   o[1] = (float)(t - (u + la));
   o[2] = (float)lb;
 }
