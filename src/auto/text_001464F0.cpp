@@ -8,6 +8,13 @@ extern unsigned int _D_0037C300[];
 extern int func_001414C5(...);
 extern int func_001460D6(...);
 extern int func_001460DF(...);
+extern "C" int __stdcall func_0010BAA0(unsigned int, void *, unsigned int, unsigned int *, void *);
+extern int func_0010AA7B(...);
+extern int func_001460E8(...);
+extern int func_001450B3(...);
+#define OSFILE_00146E4B(fh) (*((unsigned char *)_D_0037C300[(fh) >> 5] + ((fh) & 31) * 40 + 4))
+#define PIPECH_00146E4B(fh) (*((char *)_D_0037C300[(fh) >> 5] + ((fh) & 31) * 40 + 5))
+#define HANDLE_00146E4B(fh) (*(unsigned int *)((char *)_D_0037C300[(fh) >> 5] + ((fh) & 31) * 40))
 
 unsigned int _func_00146767(unsigned int n) { int *e; if(n<_D_0037C2E0){e=(int*)((char*)_D_0037C300[n>>5]+(n&31)*40);if((((unsigned char*)e)[4]&1)&&*e!=-1){*e|=-1;return 0;}}*(unsigned int*)func_001460D6()=9;*(unsigned int*)func_001460DF()&=0;return -1;}
 
@@ -28,7 +35,11 @@ unsigned long long _func_001468B3(unsigned int n, unsigned int a, unsigned int* 
 void _func_00146980(unsigned int* p) { if(p[3]&0x40) p[3]=0; else { } }
 
 extern void __imp__RtlLeaveCriticalSection(void*);
-void _func_001469C9(void) { int f(...); f(0); }
+void func_001469C9(void)
+{
+  int func_001414C5(int);
+  func_001414C5(0);
+}
 
 void _func_001469D1(unsigned int n) {
     extern int _D_001E2720;
@@ -98,6 +109,72 @@ void _func_00146CAD(unsigned short *out, int value, int mode) {
     }
 }
 
+#pragma optimize("s", on)
+unsigned short _func_00146D23(int ch, int *str) {
+    extern int _D_002E8C78;
+    extern int _D_002E8C98;
+    extern int _D_002E92A0;
+    int _func_001454AF(int);
+    void _func_0014546B(int *);
+    int _func_001453C0(int, void *, int);
+    int _func_00145125(int, int, int);
+    int *stream;
+    int fh;
+    int flag;
+    int written;
+    int charcount;
+    char *base;
+    char *p;
+
+    stream = str;
+    fh = stream[4];
+    flag = stream[3];
+    if (!(flag & 0x82) || (flag & 0x40)) {
+        stream[3] = flag | 0x20;
+        return 0xFFFF;
+    }
+    if (flag & 1) {
+        stream[1] = 0;
+        if (!(flag & 0x10)) {
+            stream[3] = flag | 0x20;
+            return 0xFFFF;
+        }
+        stream[0] = stream[2];
+        stream[3] = flag & ~1;
+    }
+    flag = stream[3];
+    stream[1] = 0;
+    written = 0;
+    stream[3] = (flag & ~0x10) | 2;
+    if (!(*(unsigned short *)&stream[3] & 0x10c) && ((stream != (int *)&_D_002E8C78 && stream != (int *)&_D_002E8C98) || !_func_001454AF(fh)))
+        _func_0014546B(stream);
+    if (*(unsigned short *)&stream[3] & 0x108) {
+        base = (char *)stream[2];
+        charcount = (char *)stream[0] - base;
+        stream[0] = (int)(base + 2);
+        stream[1] = stream[6] - 2;
+        if (charcount > 0) {
+            written = _func_001453C0(fh, base, charcount);
+        } else {
+            if (fh != -1)
+                p = (char *)_D_0037C300[fh >> 5] + (fh & 0x1f) * 40;
+            else
+                p = (char *)&_D_002E92A0;
+            if (p[4] & 0x20)
+                _func_00145125(fh, 0, 2);
+        }
+        *(unsigned short *)stream[2] = (unsigned short)ch;
+    } else {
+        charcount = 2;
+        written = _func_001453C0(fh, &ch, charcount);
+    }
+    if (written != charcount) {
+        stream[3] |= 0x20;
+        return 0xFFFF;
+    }
+    return ch & 0xffff;
+}
+#pragma optimize("", on)
 int _func_001460D6(...);
 int _func_001460DF(...);
 int _func_0013EF1F(...);
@@ -138,41 +215,32 @@ extern void __stdcall MmQueryStatistics(void*);
 #pragma optimize("y", on)
 int __stdcall func_00147306(int value) { if (value <= 9) { value += 0x30; } else { value += 0x37; } return value; }
 
-void __stdcall func_0014731A(unsigned short* text, char* out, int unused) {
-    // Declarations for external dependencies and globals (assuming they are handled by edit_file later)
-    extern int __stdcall func_0013EEB0(int a, int b, int c, int d);
-extern long long __stdcall func_00148B50(int a, long b, int c, int d);
-extern int __cdecl func_00148B30(int a, long b, int c);
-extern int __stdcall func_00147306(int n);
-extern int _D_00010000; // Global/Data
-extern int _D_0000FFFF; // Global/Data
-
-    long long v = 0;
-    unsigned short* t_ptr = text;
-
-    // Loop: while(*text)
-    while (*t_ptr != 0) {
-        // Block 1: Call func_0013EEB0 (Target uses and dword ptr [ebp-0x4], [ebp-0x8])
-        int t = func_0013EEB0(0, 0, _D_00010000, 0);
-
-        // Block 2: Call func_00148B50 (Uses v+*text and _D_0000FFFF)
-        v = func_00148B50((int)(v + *t_ptr), (long)((v + *t_ptr) >> 32), -59, _D_0000FFFF);
-
-        // Advance pointer and count
-        t_ptr++;
-    }
-
-    // Loop: for(int i=0;i<12;++i){...}
-    for (int i = 0; i < 12; ++i) {
-        // Calculate n using func_00148B30 and mask & 15
-        int n = func_00148B30((int)v, (long)(v >> 32), 0) & 0xF;
-        out[11 - i] = (char)func_00147306(n);
-    }
-
-    // Finalization
-    out[12] = 0;
+long long __stdcall func_0013EEB0(long long, long long);
+long long __stdcall func_00148B50(long long, long long);
+extern "C" char D_00010000, D_0000FFFF;
+extern "C" void _ReadWriteBarrier(void);
+#pragma optimize("s", on)
+void __stdcall func_0014731A(unsigned short* text, char* out, int unused)
+{
+ typedef long long (__stdcall *LL4)(int,int,int,int);
+ long long v=0;
+ volatile int *parts=(volatile int*)&v;
+ unsigned short c=*text;
+ if(!c) goto output;
+ do {
+  long long prod=((LL4)func_0013EEB0)(parts[0],parts[1],(int)&D_00010000,0);
+  prod+=(int)c;
+  int *sum=(int*)&prod;
+  long long next=((LL4)func_00148B50)(sum[0],sum[1],-59,(int)&D_0000FFFF);
+  ++text;
+  c=*text;
+  v=next;
+ }while((unsigned short)c);
+ output:
+ for(int i=11;i>=0;--i) out[i]=(char)func_00147306((int)(v>>((11-i)*4))&15);
+ out[12]=0;
 }
-
+#pragma optimize("", on)
 int __stdcall func_001473AC(int a,int b){extern int __stdcall func_0010BCE7(int,int,int,int);extern int __stdcall func_0010BAA0(int,short*,int,int*,int);int local=0;short* ch=(short*)((char*)&b+2);int ok=0;if(b)func_0010BCE7(a,0,0,0);ok=func_0010BAA0(a,ch,2,&local,0);if(ok&&local==2&&*ch!=(short)0xfeff)return 1;return 0;}
 extern int __stdcall func_0013EEB0(int a, int b, int c, int d);
 extern long long __stdcall func_00148B50(int a, long b, int c, int d);
