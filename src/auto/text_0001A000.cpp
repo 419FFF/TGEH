@@ -1,6 +1,7 @@
 /* 5 functions from 0x0001A000 to 0x0001AF3E, found by Ghidra. */
 #include "common.h"
-#define U2F(v) ((int)(v) < 0 ? (long double)(int)(v) + D_001D290C : (long double)(int)(v))
+extern float D_001D290C;
+static inline long double U2F(int v) { long double r = (long double)v; if (v < 0) r += D_001D290C; return r; }
 
 void _func_0001AC90(int p){void _func_00065E70(...);void _func_0011B990(int);_func_00065E70(*(int*)(p+0x110));int a=*(int*)(p+0x114);--*(short*)(a+0x2a);_func_0011B990(*(volatile int*)(p+0x114));}
 
@@ -11,7 +12,7 @@ void _func_0001ACC0(int a)
   extern int D_00307DF8;
   int s = *(int *)(a + 0x110);
   unsigned int y, x;
-  float fVar1, fy, fx, fw, fh, dy, dx;
+  float fVar1, fy, dy, dx;
   int iVar8, off;
   int l18, l14;
   float l10[3];
@@ -21,15 +22,12 @@ void _func_0001ACC0(int a)
   fVar1 = (float)(((long double)_func_00131760() * D_001D28C0 + D_001D27B0) * D_002EB5BC);
   for (y = 0; y < *(unsigned int *)(s + 0xc); y++) {
     for (x = 0; x < *(unsigned int *)(s + 8); x++) {
-      fy = (float)(int)y; if ((int)y < 0) fy = (float)(fy + (long double)D_001D290C);
+      fy = (float)(long double)y;
       iVar8 = *(int *)(s + 8);
       off = (iVar8 * y + x) * 0x58;
-      fx = (float)(int)x; if ((int)x < 0) fx = (float)(fx + (long double)D_001D290C);
-      fw = (float)iVar8; if (iVar8 < 0) fw = (float)(fw + (long double)D_001D290C);
-      fh = (float)*(int *)(s + 0xc); if (*(int *)(s + 0xc) < 0) fh = (float)(fh + (long double)D_001D290C);
-      dy = (float)(fy / ((long double)fh - D_001D27B0) - D_001D27EC);
+      dx = (float)((long double)x / ((long double)*(unsigned int *)(s + 8) - D_001D27B0) - D_001D27EC);
+      dy = (float)((long double)fy / ((long double)*(unsigned int *)(s + 0xc) - D_001D27B0) - D_001D27EC);
       dy = dy * dy;
-      dx = (float)(fx / ((long double)fw - D_001D27B0) - D_001D27EC);
       _func_00131220((float)(dx * (long double)dx + dy));
       *(float *)(*(int *)(s + 0x50) + 0x48 + off) = (float)(dx * (long double)fVar1 * D_001D2E24);
       *(int *)(*(int *)(s + 0x50) + 0x4c + off) = 0;
