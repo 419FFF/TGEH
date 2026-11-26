@@ -1,6 +1,8 @@
 /* 20 functions from 0x00138E80 to 0x00139D80, found by Ghidra. */
 #include "common.h"
+#pragma pack(push, 2)
 struct Wave139200 { unsigned short tag,channels; unsigned int rate,average; unsigned short block,bits,extra; };
+#pragma pack(pop)
 struct Desc139200 { unsigned int flags,size; void* format; unsigned int a,b,c; };
 extern "C" void *memset(void *, int, unsigned int);
 extern "C" void *memcpy(void *, const void *, unsigned int);
@@ -15,22 +17,22 @@ x=*(int*)((char*)p+0xc);if(x){_func_00116FB0((void*)x);*(int*)((char*)p+0xc)=0;}
 _func_0011C3E0(p);_func_0011C3B0(_D_00332AC0,p,p);*(int*)((char*)p+0x90)=0;
 }
 
-void func_00139200(char *self)
+void func_00139200(char* self)
 {
-  int func_001AEBB6(...);
-  int func_0010C49A(...);
-  int func_001B1540(...);
-  int D_001AFA16(...);
-  int D_001AFA1B(...);
-  int a[4] = {0,0,0,0};
-  short s = 0;
-  int b[3] = {0,0,0};
-  func_001AEBB6(1, *(int*)(*(int*)(self + 0xc) + 8), a);
-  for (int i = 0; i < 3; i++)
-    *(int*)(self + 0xa0 + i * 4) = func_0010C49A(0x12000, -1, 0, 0x204);
-  func_001B1540(b, self + 0x9c);
-  D_001AFA16(*(int*)(self + 0x9c), 0x258);
-  D_001AFA1B(*(int*)(self + 0x9c), 1);
+ int __stdcall func_001AEBB6(int,int,void*);
+ int __stdcall func_0010C49A(int,int,int,int);
+ int __stdcall func_001B1540(void*,void*);
+ int __stdcall D_001AFA16(int,int);
+ int __stdcall D_001AFA1B(int,int);
+ Wave139200 a={0};
+ Desc139200 b;
+ func_001AEBB6(1,*(int*)(*(int*)(self+12)+8),&a);
+ a.channels=2;a.average*=2;a.block*=2;
+ for(int i=0;i<3;i++) *(int*)(self+0xa0+i*4)=func_0010C49A(0x12000,-1,0,0x204);
+ memset(&b,0,sizeof(b));b.size=3;b.format=&a;
+ func_001B1540(&b,self+0x9c);
+ D_001AFA16(*(int*)(self+0x9c),600);
+ D_001AFA1B(*(int*)(self+0x9c),1);
 }
 
 void func_001392D0(void) {
