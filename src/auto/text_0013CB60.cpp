@@ -1,6 +1,7 @@
 /* 16 functions from 0x0013CB60 to 0x0013DACF, found by Ghidra. */
 #include "common.h"
 #include "ghidra.h"
+#include "string.h"
 
 extern float D_001D27B8; extern float D_001D27B0; extern float D_001DF0D4;
 int __stdcall func_00109BBE(int,int,int,int);
@@ -80,6 +81,34 @@ void func_0013CC70(unsigned int *param_1)
 void func_0013CDD0(void) {
     int func_0013CA40(...);
     func_0013CA40();
+}
+
+void func_0013CDE0(unsigned *p) {
+extern float D_001DFA24, D_001D6008;
+unsigned char *b=(unsigned char*)p[10];
+if(p[1]!=3 && p[1]!=4) {
+if(*(int*)(b+0x78)) *p|=1; else *p&=~1u;
+*(float*)(p[4]+0)=(double)*(short*)(b+10)*D_001DFA24;
+*(float*)(p[4]+24)=(double)*(short*)(b+12)*D_001DFA24;
+*(float*)(p[4]+48)=(double)*(short*)(b+14)*D_001DFA24;
+*(float*)(p[4]+72)=(double)*(short*)(b+16)*D_001DFA24;
+*(float*)(p[4]+240)=(*b&1) ? (double)D_001D27B0 : (double)D_001D27B8;
+*(float*)(p[4]+264)=(*b&2) ? (double)D_001D27B0 : (double)D_001D27B8;
+*(float*)(p[4]+288)=(*b&4) ? (double)D_001D27B0 : (double)D_001D27B8;
+*(float*)(p[4]+312)=(*b&8) ? (double)D_001D27B0 : (double)D_001D27B8;
+*(float*)(p[4]+96)=(*b&16) ? (double)D_001D27B0 : (double)D_001D27B8;
+*(float*)(p[4]+120)=(*b&32) ? (double)D_001D27B0 : (double)D_001D27B8;
+*(float*)(p[4]+336)=(double)b[2]*D_001D6008;
+*(float*)(p[4]+360)=(double)b[3]*D_001D6008;
+*(float*)(p[4]+384)=(double)b[5]*D_001D6008;
+*(float*)(p[4]+408)=(double)b[4]*D_001D6008;
+*(float*)(p[4]+432)=(*b&64)?(double)D_001D27B0:(double)D_001D27B8;
+*(float*)(p[4]+456)=(*b&128)?(double)D_001D27B0:(double)D_001D27B8;
+*(float*)(p[4]+144)=(double)b[7]*D_001D6008;
+*(float*)(p[4]+192)=(double)b[6]*D_001D6008;
+*(float*)(p[4]+168)=(double)b[8]*D_001D6008;
+*(float*)(p[4]+216)=(double)b[9]*D_001D6008;
+}
 }
 
 void func_0013D030(int p,int mode,float value) { extern float D_001D6138; int func_0013CB60(...); float f=value; f*=D_001D6138; if(mode==1){func_0013CB60(0,(float)f);return;} func_0013CB60((float)f,(float)f); }
@@ -208,6 +237,57 @@ int _func_0013D400(uint param_1, int param_2, uint *param_3, int param_4, uint p
 }
 
 void func_0013D500(short *p,unsigned int n) { int func_00116A90(...); int func_00116FB0(...); unsigned int bytes=n*6,i; short *tmp=(short*)func_00116A90(bytes,1,0); extern int D_0032519C[]; for(i=0;i<n;i++){unsigned int k=D_0032519C[i]*3; tmp[i*3]=p[k];tmp[i*3+1]=p[k+1];tmp[i*3+2]=p[k+2];} for(i=0;i<bytes;i++) ((unsigned char*)p)[i]=((unsigned char*)tmp)[i]; func_00116FB0(); }
+
+void func_0013D590(int self, unsigned char *buf)
+{
+    unsigned char mA[48], mB[64];
+    unsigned int aA[48], aB[48];
+    unsigned int i, j, n = 0;
+    unsigned int cA, cB;
+    char *p;
+    memset(mA, 0, 48);
+    memset(mB, 0, 48);
+    cA = *(unsigned int *)(*(char **)(self + 0x24) + 4);
+    for (i = 0; i < cA; i++) {
+        cB = *(unsigned int *)(*(char **)(self + 0x24) + 0x3c);
+        for (j = 0; j < cB; j++) {
+            if (*(unsigned char *)(*(char **)(self + 0x24) + 8 + i) == *(unsigned char *)(*(char **)(self + 0x24) + 0x40 + j)) {
+                mA[i] = 1;
+                mB[j] = 1;
+                aA[n] = *(unsigned char *)(*(char **)(self + 0x24) + 8 + i);
+                aB[n] = *(unsigned char *)(*(char **)(self + 0x24) + 0x40 + j);
+                n++;
+            }
+        }
+    }
+    {
+        unsigned int *q = aA + n;
+        for (i = 0; i < cA; i++)
+            if (!mA[i])
+                *q++ = *(unsigned char *)(*(char **)(self + 0x24) + 8 + i);
+    }
+    p = *(char **)(self + 0x24);
+    cB = *(unsigned int *)(p + 0x3c);
+    {
+        unsigned int *q = aB + n;
+        for (i = 0; i < cB; i++)
+            if (!mB[i])
+                *q++ = *(unsigned char *)(p + 0x40 + i);
+    }
+    for (i = 0; i < *(unsigned int *)(*(char **)(self + 0x24) + 4); i++)
+        *(*(char **)(self + 0x24) + 8 + i) = (char)aA[i];
+    for (i = 0; i < *(unsigned int *)(*(char **)(self + 0x24) + 0x3c); i++)
+        *(*(char **)(self + 0x24) + 0x40 + i) = (char)aB[i];
+    memset(mB, 0xff, 64);
+    p = *(char **)(self + 0x24);
+    for (i = 0; i < *(unsigned int *)(p + 4); i++)
+        mB[*(unsigned char *)(p + 8 + i)] = (unsigned char)i;
+    for (i = 0; i < *(unsigned int *)(p + 0x3c); i++)
+        mB[*(unsigned char *)(p + 0x40 + i)] = (unsigned char)i;
+    cA = (unsigned int)*(unsigned short *)(self + 0x48) << 2;
+    for (i = 0; i < cA; i++)
+        buf[i] = mB[(signed char)buf[i]];
+}
 
 void func_0013D750(int p,int *buf){unsigned short n=*(unsigned short*)(p+0x48);int *obj=*(int**)(p+0x24);unsigned char table[0x44];int i;for(i=0;i<0x40;i++)((int*)table)[i]=-1;*(unsigned short*)(table+0x40)=0xffff;unsigned int count=*(unsigned int*)((char*)obj+4);for(i=0;i<(int)count;i++)table[*((unsigned char*)obj+8+i)]=(unsigned char)i;for(i=0;i<(n<<2);i++)((unsigned char*)buf)[i]=table[((signed char*)buf)[i]];}
 
