@@ -3,6 +3,42 @@
 #include "ghidra.h"
 #include "string.h"
 
+void func_00104380(int a, char *name)
+{
+ extern int D_00324F70,D_00313B6C,D_00324EB8;
+ extern char D_001DE74C,D_001DE754,D_001DE75C,D_00324F30,D_00324EC0;
+ void func_00104190(void);
+ void func_00104200(int);
+ int func_0011B810(int),func_0011BF40(char *,int);
+ char func_00131A10(char *);
+ char prefix[4], path[256];
+ char *language;
+ if(D_00324F70)func_00104190();
+ switch(D_00313B6C) {
+ case 1: language=&D_001DE74C;break;
+ case 2: language=&D_001DE754;break;
+ default: language=&D_001DE75C;break;
+ }
+ strcpy(&D_00324F30,name);
+ func_0011B810(1);
+ if(a)func_00104200(a);
+ prefix[0]=language[0];prefix[1]=language[1];prefix[2]=language[2];prefix[3]=0;
+ strcpy(&D_00324EC0,"speech/");
+ strcat(&D_00324EC0,language);
+ strcat(&D_00324EC0,prefix);
+ strcat(&D_00324EC0,name);
+ strcat(&D_00324EC0,".wav");
+ strcpy(path,"speech/");
+ strcat(path,language);
+ strcat(path,prefix);
+ strcat(path,name);
+ strcat(path,".bwav");
+ if(!func_00131A10(path) && !func_00131A10(&D_00324EC0))D_00324EB8=0;
+ else D_00324EB8=func_0011BF40(&D_00324EC0,1);
+ func_0011B810(0);
+ D_00324F70=1;
+}
+
 void func_001045F0(void) {
     int func_00104200(...);
     func_00104200();
@@ -56,6 +92,90 @@ void func_00104610(void)
         func_000FA700(&D_001DE7B0);
         func_000F9C00(D_00308158, &D_001DE768);
     }
+}
+
+void func_00104770(void)
+{
+    extern int _D_00324F70, _D_00324F2C, _D_00324F1C, _D_00324EB8, _D_00324F20[3], _D_00313B60;
+    extern char _D_001DE7CC, _D_00324EC0, _D_0000FFFF;
+    extern float _D_00324D08;
+    int func_0011BDD0(...);
+    int func_00139570(...);
+    char func_00124F50(...);
+    int func_001286C0(...);
+    int func_0012F120(...);
+    int func_001105E0(...);
+    int func_00128710(...);
+    int func_00110550(...);
+    void func_00128A80(int, int, float);
+    void func_00128840(int, float);
+    int func_00139B80(...);
+    void func_00115EB0(int, int, int, void *, float, int);
+    int func_00128C50(...);
+    int func_001163C0(...);
+    void func_00104610(void);
+    void func_00104190(void);
+    unsigned int i;
+    int info[4];
+    __declspec(align(16)) float mat[15];
+
+    switch (_D_00324F70) {
+    case 2:
+        func_00104610();
+        if (_D_00324F2C != 0) {
+            if (func_00139570(_D_00324F2C) != 1)
+                return;
+        } else if (_D_00324F1C != 0) {
+            if (func_00128C50(_D_00324F1C) == 2)
+                return;
+        } else if (_D_00324F20[0] != 0) {
+            if (func_001163C0(_D_00324F20[0]) != 0)
+                return;
+        }
+        func_00104190();
+        return;
+    case 1:
+        break;
+    default:
+        return;
+    }
+    if (_D_00324EB8 != 0) {
+        if (func_0011BDD0(_D_00324EB8, 0) == 0)
+            return;
+        *(short *)(_D_00324EB8 + 0x2a) -= 1;
+    }
+    if (_D_00324F2C != 0 && func_00139570(_D_00324F2C) == 4)
+        return;
+    for (i = 0; i < 3; i++) {
+        if (_D_00324F20[i] != 0 && func_00124F50(_D_00324F20[i]) == 0)
+            break;
+    }
+    if (i < 3)
+        return;
+    if (_D_00324EB8 != 0) {
+        _D_00324F1C = func_001286C0(&_D_001DE7CC);
+        func_0012F120(mat);
+        mat[12] = 0;
+        mat[13] = 0;
+        mat[14] = 100.0f;
+        func_001105E0(_D_00324F1C, mat, 0);
+        info[0] = 0; info[1] = 0; info[2] = 0; info[3] = 0;
+        info[0] = (int)&_D_00324EC0;
+        info[1] = 0x3f800000;
+        info[3] = 0x49742400;
+        info[2] = 0x49742400;
+        func_00128710(_D_00324F1C, 0, info);
+        func_00128840(_D_00324F1C, _D_00324D08);
+        func_00110550(_D_00313B60, _D_00324F1C, 8);
+        func_00128A80(_D_00324F1C, 0, 1.0f);
+    }
+    if (_D_00324F2C != 0)
+        func_00139B80(_D_00324F2C);
+    for (i = 0; i < 0xc; i += 4) {
+        if (*(int *)((char *)_D_00324F20 + i) != 0)
+            func_00115EB0(*(int *)((char *)_D_00324F20 + i), 1, 0, &_D_0000FFFF, 24.0f, 0);
+    }
+    _D_00324F70 = 2;
 }
 
 void func_00104980(char flag)
