@@ -16,6 +16,51 @@ int func_0012F310(...);
 int __stdcall func_0014ADB0(int, int *);
 int func_00011CB0(...);
 
+void func_001360A0(float *color,int *surface) {
+ extern int D_00332454,D_003326A8,D_0033232C,D_0033228C,D_003291CC,D_003291D0;
+ extern int D_003326A0,D_00332328,D_00332434,D_00332714;
+ extern char D_00332711; extern float D_001D66D8;
+ int __stdcall func_0014E340(int*,int); void __stdcall func_0014B1D0(int,int);
+ void __stdcall func_0014B4E0(void*);
+ void __stdcall func_0014E4A0(int,int,int,unsigned int,float,int);
+ int func_00131460(float); int func_0010BA93(void);
+ int viewport[6];
+ RtlEnterCriticalSection(&D_003326AC);
+ if(surface){
+ D_00332454=func_0014E340(surface+8,0);
+ int tex=surface[4]?func_0014E340(surface+13,0):0;
+ D_003326A8=tex;func_0014B1D0(D_00332454,tex);
+ D_0033232C=surface[0];D_0033228C=surface[1];
+ }else{D_00332454=0;D_0033232C=D_003291CC;D_0033228C=D_003291D0;}
+ if(color){
+ if(surface){
+ if(surface[4]){
+ unsigned int c=func_00131460(color[3]*D_001D66D8);
+ c=(c<<8)|(func_00131460(color[0]*D_001D66D8)&255);
+ c=(c<<8)|(func_00131460(color[1]*D_001D66D8)&255);
+ c=(c<<8)|(func_00131460(color[2]*D_001D66D8)&255);
+ func_0014E4A0(0,0,0xf1,c,1.0f,0);
+ }else{
+ unsigned int c=func_00131460(color[3]*D_001D66D8);
+ c=(c<<8)|(func_00131460(color[0]*D_001D66D8)&255);
+ c=(c<<8)|(func_00131460(color[1]*D_001D66D8)&255);
+ c=(c<<8)|(func_00131460(color[2]*D_001D66D8)&255);
+ func_0014E4A0(0,0,0xf0,c,1.0f,0);
+ }
+ }else{
+ viewport[0]=0;viewport[1]=0;viewport[2]=D_003326A0;viewport[3]=D_00332328;viewport[4]=0;viewport[5]=0x3f800000;
+ func_0014B4E0(viewport);
+ unsigned int c=func_00131460(color[3]*D_001D66D8);
+ c=(c<<8)|(func_00131460(color[0]*D_001D66D8)&255);
+ c=(c<<8)|(func_00131460(color[1]*D_001D66D8)&255);
+ c=(c<<8)|(func_00131460(color[2]*D_001D66D8)&255);
+ func_0014E4A0(0,0,0xf3,c,1.0f,0);
+ func_0014B4E0(&D_00332434);
+ }
+ }else if(!surface)func_0014E4A0(0,0,3,0,1.0f,0);
+ D_00332711=1;D_00332714=func_0010BA93();
+}
+
 int _func_00136440(void) { return 0; }
 
 void func_00136450(void) {
@@ -97,7 +142,7 @@ void func_00136F90(short x, short y) {
 
 void func_00136FF0(int n) {
   RtlEnterCriticalSection(&D_003326AC);
-  unsigned int q = (unsigned long long)(unsigned)n * 0x51eb851f >> 32;
+  unsigned int q = (unsigned __int64)(unsigned)n * 0x51eb851f >> 32;
   q >>= 5;
   int __cdecl func_00088F10(int);
   func_00088F10(0x95);
