@@ -4,8 +4,67 @@
 
 extern "C" void (__stdcall *__imp__RtlEnterCriticalSection)(void *);
 extern "C" void (__stdcall *__imp__RtlLeaveCriticalSection)(void *);
-struct MeshEntry { int pad0[8]; unsigned short *indices; unsigned int count; int pad1[3]; };
+struct MeshEntry { int pad0[8]; unsigned short *indices; unsigned int count; int pad1[2]; };
 struct MeshData { MeshEntry *entries; int pad0; unsigned int entryCount; unsigned int vertCount; int pad1; int *verts; };
+
+void _func_00096F70(int param_1)
+{
+  int func_00096230(int);
+  void func_00096E40(int);
+  int __stdcall func_0014E3D0(int);
+  int *__stdcall func_0014E420(int, int);
+  int *__stdcall func_0014E390(int);
+  int **func_0009C7A0(int, void *, int);
+  void func_00131990(void *);
+  int func_0011BF40(int, int);
+  int func_0011BDD0(int, int);
+  void func_00110060(int, void *);
+  extern char D_003326AC, D_001D6BFC, D_001D29C7;
+  int s = *(int *)(param_1 + 0x2c);
+  unsigned int i, j, k;
+  int *v;
+  int **q;
+  int h;
+  unsigned short *dst;
+  __declspec(align(16)) int buf[15];
+
+  *(int *)(s + 0xf4) = func_00096230(s);
+  func_00096E40(param_1);
+  __imp__RtlEnterCriticalSection(&D_003326AC);
+  h = func_0014E3D0((*(MeshData **)(s + 0xf4))->vertCount << 4);
+  *(int *)(s + 0xf8) = h;
+  v = func_0014E420(h, 0);
+  for (i = 0; i < (*(MeshData **)(s + 0xf4))->vertCount; i++) {
+    v[0] = (*(MeshData **)(s + 0xf4))->verts[i * 3];
+    v[1] = (*(MeshData **)(s + 0xf4))->verts[i * 3 + 1];
+    v[2] = (*(MeshData **)(s + 0xf4))->verts[i * 3 + 2];
+    v[3] = -1;
+    v += 4;
+  }
+  for (k = 0; k < (*(MeshData **)(s + 0xf4))->entryCount; k++) {
+    *(int *)(s + 0x108) += (*(MeshData **)(s + 0xf4))->entries[k].count;
+  }
+  *(int **)(s + 0xfc) = func_0014E390(*(int *)(s + 0x108) << 1);
+  *(int *)(s + 0x108) = 0;
+  for (j = 0; j < (*(MeshData **)(s + 0xf4))->entryCount; j++) {
+    dst = (unsigned short *)(*(int *)(*(int *)(s + 0xfc) + 4) + *(int *)(s + 0x108) * 2);
+    for (i = 0; i < (*(MeshData **)(s + 0xf4))->entries[j].count; i++) {
+      *dst = (*(MeshData **)(s + 0xf4))->entries[j].indices[i];
+      dst++;
+    }
+    *(int *)(s + 0x108) += (*(MeshData **)(s + 0xf4))->entries[j].count;
+  }
+  q = func_0009C7A0(param_1, &D_001D6BFC, 0);
+  if (q == 0)
+    for (;;) ;
+  func_00131990(&D_001D29C7);
+  *(int *)(s + 0x100) = func_0011BF40((int)*q, 0);
+  *(int *)(s + 0x104) = func_0011BDD0(*(int *)(s + 0x100), 0);
+  func_00131990(&D_001D29C7);
+  __imp__RtlLeaveCriticalSection(&D_003326AC);
+  func_00110060(*(int *)(param_1 + 0x2c), buf);
+  *(int *)(s + 0x118) = buf[14];
+}
 
 float func_00097180(void) {
     extern float D_001D27B8;
