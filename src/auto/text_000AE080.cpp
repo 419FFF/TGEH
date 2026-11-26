@@ -1,5 +1,6 @@
 /* 30 functions from 0x000AE080 to 0x000AEF9E, found by Ghidra. */
 #include "common.h"
+struct E_000AED30 { int a[1]; unsigned short b; unsigned short t; int c[4]; };
 #include "ghidra.h"
 
 int func_0011B4F0(...);
@@ -197,5 +198,66 @@ void func_000AEAE0(int param_1, undefined4 *param_2)
   *(undefined4 *)(param_1 + 0x44) = uVar1;
   *(undefined1 *)(param_1 + 0x60) = 1;
   return;
+}
+
+void _func_000AED30(int param_1, int *param_2)
+{
+    extern int D_003104B0;
+    int func_0011BDD0(...), func_00117100(...), func_00117130(...), func_001053E0(...), func_0011B4F0(...), func_0013E9DB(...);
+    float func_0013E9E0(...);
+    int *piVar1;
+    int *puVar2;
+    unsigned short uVar3;
+    int iVar4;
+    unsigned int uVar7;
+    unsigned char *tab;
+
+    piVar1 = (int *)(*(int *)(param_1 + 0x30) + *(int *)(param_1 + 0x2c) * 0x14);
+    uVar3 = *(unsigned short *)((int)piVar1 + 0xe);
+    puVar2 = (int *)(piVar1[4] + (unsigned int)uVar3 * 0x18);
+    *(unsigned short *)((int)piVar1 + 0xe) = uVar3 + 1;
+    iVar4 = func_0011BDD0(*piVar1, 1);
+    if (*(short *)(iVar4 + 4) != 0) {
+        func_00117100();
+        *puVar2 = func_001053E0(D_003104B0, *param_2);
+        func_00117130();
+        uVar7 = 0;
+        if (uVar7 < *(unsigned short *)(iVar4 + 4)) {
+            param_1 = 0;
+            do {
+                if (func_0011B4F0(*param_2, *(int *)(*(int *)(iVar4 + 8) + param_1)) == 0) break;
+                uVar7++;
+                param_1 = param_1 + 0x18;
+            } while (uVar7 < *(unsigned short *)(iVar4 + 4));
+        }
+        tab = *(unsigned char **)(iVar4 + 8);
+        *(unsigned short *)((int)puVar2 + 6) = *(unsigned short *)(tab + uVar7 * 0x18 + 6);
+        switch (*(unsigned short *)(*(unsigned char **)(iVar4 + 8) + uVar7 * 0x18 + 6)) {
+        case 0:
+            *(float *)(puVar2 + 2) = func_0013E9E0(param_2[1]);
+            break;
+        case 1:
+            func_00117100();
+            puVar2[2] = func_001053E0(D_003104B0, param_2[1]);
+            func_00117130();
+            break;
+        case 2:
+            *(float *)(puVar2 + 2) = func_0013E9E0(param_2[1]);
+            *(float *)(puVar2 + 3) = func_0013E9E0(param_2[2]);
+            *(float *)(puVar2 + 4) = func_0013E9E0(param_2[3]);
+            if (param_2[4] != 0) {
+                *(float *)(puVar2 + 5) = func_0013E9E0(param_2[4]);
+            } else {
+                puVar2[5] = 0;
+            }
+            break;
+        case 3:
+            puVar2[2] = func_0013E9DB(param_2[1]);
+            puVar2[3] = func_0013E9DB(param_2[2]);
+            *(float *)(puVar2 + 4) = func_0013E9E0(param_2[3]);
+            break;
+        }
+        *(short *)(*piVar1 + 0x2a) = *(short *)(*piVar1 + 0x2a) - 1;
+    }
 }
 
