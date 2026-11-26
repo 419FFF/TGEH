@@ -479,6 +479,95 @@ void _func_00026510(int param_1)
   piVar1[4] = 0x40a00000;
 }
 
+void func_000266A0(int param_1)
+{
+  int func_00110060(...);
+  int func_0012F910(...);
+  int func_001105E0(...);
+  int func_00110000(...);
+  int func_0012ECA0(...);
+  int func_0011DED0(...);
+  int func_000A1D10(...);
+  extern undefined D_0000FFFF;
+  extern float D_001E461C;
+  extern float D_001D2A2C;
+  int func_0011DEF0(...);
+  int func_000A22B0(...);
+  char func_00011D20(...);
+  extern int D_00307DF8;
+  extern float D_001D27B0;
+  char func_0002EC40(char *, float, float, int, int);
+  extern float D_001D35FC;
+  extern float D_001D35F8;
+  int func_0012F730(...);
+  int *func_0009C7A0(...);
+  extern undefined D_001D2878;
+  int *piVar1;
+  int *puVar4;
+  int local_a0[4];
+  __declspec(align(16)) char local_90 [48];
+  char local_60 [16];
+  char local_50 [64];
+
+  piVar1 = *(int **)(param_1 + 0x110);
+  if (!*(char *)((int)piVar1 + 0x1a)) {
+    if (!(*(unsigned char *)(param_1 + 0x11) & 2)) {
+      return;
+    }
+    func_00110060(*(int *)(param_1 + 0x2c),local_90);
+    func_0012F910(local_90,piVar1[5]);
+    func_001105E0(*(int *)(param_1 + 0x2c),local_90,0);
+    func_00110000(*(int *)(param_1 + 0x2c));
+    func_0012ECA0(param_1 + 0xf4,piVar1[5]);
+    func_0012ECA0(param_1 + 0x30,piVar1[5]);
+    *(float *)(param_1 + 0x50) = *(float *)&piVar1[5] * *(float *)(param_1 + 0x50);
+    *(char *)((int)piVar1 + 0x1a) = 1;
+  }
+  if (*(char *)((int)piVar1 + 0x19)) {
+    if (!*(char *)(piVar1 + 6)) {
+      *(char *)(piVar1 + 6) = 1;
+      func_0011DED0(piVar1[1]);
+      piVar1[4] = 0;
+      func_000A1D10(piVar1[3],2,0,((undefined *)&D_0000FFFF),0x41c00000,0x3e4ccccd);
+    }
+    else {
+      piVar1[4] = 0x3f800000;
+    }
+    *(char *)((int)piVar1 + 0x19) = 0;
+  }
+  if (*(char *)(piVar1 + 6)) {
+    *(float *)&piVar1[4] = D_001E461C + *(float *)&piVar1[4];
+    if (*(float *)&piVar1[4] > D_001D2A2C) {
+      func_0011DEF0(piVar1[1]);
+      *(char *)(piVar1 + 6) = 0;
+      puVar4 = (int *)piVar1[2];
+      func_000A22B0(param_1 + 100,2,*puVar4,puVar4[1],puVar4[2],0x3e4ccccd);
+      *(char *)(param_1 + 0x174) = 0;
+      return;
+    }
+    if (func_00011D20(D_00307DF8) == '\0') {
+      func_00110060(*(int *)(*piVar1 + 0x2c),local_90);
+      if (func_0002EC40(local_60,(*(float *)&piVar1[4] >= D_001D27B0 ? D_001D27B0 : *(float *)&piVar1[4]) * D_001D35FC + D_001D35F8,50.0f,D_00307DF8,0) != '\0') {
+        memset((void *)(D_00307DF8 + 0x150), 0, 0x2c);
+        *(char *)(D_00307DF8 + 0x174) = 1;
+        *(int *)(D_00307DF8 + 0x160) = param_1;
+        *(int *)(D_00307DF8 + 0x178) = 10;
+        local_a0[0] = *(int *)(D_00307DF8 + 0xe8);
+        local_a0[1] = *(int *)(D_00307DF8 + 0xec);
+        local_a0[2] = *(int *)(D_00307DF8 + 0xf0);
+        func_00110060(*(int *)(D_00307DF8 + 0x2c),local_50);
+        func_0012F730(D_00307DF8 + 0x150,local_a0,local_50);
+        puVar4 = func_0009C7A0(param_1,((undefined *)&D_001D2878),0);
+        if (puVar4 != 0) {
+          *(int *)(D_00307DF8 + 0x16c) = *puVar4;
+        }
+      }
+    }
+  }
+  *(char *)(param_1 + 0x174) = 0;
+  return;
+}
+
 unsigned char *func_00026910(unsigned char *p) { extern void *func_00116A90(...); if((*p%2)==0) ++*p; unsigned char *r=(unsigned char *)func_00116A90(0x10,1,1); int n=*p; void *q=func_00116A90(n*n*4,1,1); *(void **)(r+4)=q; r[0]=*p; unsigned char c=*p; r[8]=c>>1; return r; }
 
 void func_00026970(int param_1)
