@@ -4,14 +4,15 @@
 
 extern float D_001D2A2C;
 extern float D_001D2808;
-static __forceinline void Hermite3(float *o, float a, float b, int ci)
+static __forceinline void Hermite3(float *o, float a, float b, float c)
 {
-  float c = *(float *)&ci;
+  long double la = a;
+  long double lb = b;
   long double t = (long double)c * D_001D2A2C;
-  long double s = (long double)b + a;
+  long double s = lb + la;
   o[0] = (float)((s + s) - t);
-  o[1] = (float)(t - ((long double)b * D_001D2808 + a));
-  o[2] = b;
+  o[1] = (float)(t - (lb * D_001D2808 + la));
+  o[2] = (float)lb;
 }
 struct Blk100 { int d[25]; };
 struct Blk30 { int d[12]; };
