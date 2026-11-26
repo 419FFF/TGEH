@@ -2,6 +2,8 @@
 #include "common.h"
 #include "ghidra.h"
 #include "string.h"
+struct MenuEntry737 { char *text; int value; void (*callback)(int); };
+struct MenuMotion737 { float x,y,z,a,b,c,d; int active,enabled; };
 extern unsigned int D_002FA56C, D_002FA524, D_0032B70C;
 extern float D_002FA520, D_001D3E00, D_001D2C00, D_001D27B0, D_001D27EC;
 extern unsigned char D_002FA5BB;
