@@ -14,6 +14,46 @@ void func_00092500(void)
   func_0011D2D0(&D_001D7140,func_000920C0);
 }
 
+void func_00092550(int *p, undefined4 q){int func_0011CD40(...),func_0011CDF0(...),func_0011CE10(...),func_0011CE20(...),func_0011CE30(...),func_0011CE50(...),func_0011CF30(...),func_0011CFC0(...),func_0011CF90(...); float func_00131760(...); float func_0012EA60(...); extern float D_001D27B0,D_001D2B60,D_001D35F8,D_001D28C0,D_001D2C00,D_001D29D8,D_001D29E0,D_001D37AC; extern char D_00306E50; unsigned int i; *p=func_0011CD40(0x32,0x32,4,4,1);
+for(i=0;i<600;){
+*(float *)(*(int *)(*p+4)+i)=func_00131760()*2-D_001D27B0;
+*(int *)(*(int *)(*p+4)+i+4)=0;
+*(float *)(*(int *)(*p+4)+i+8)=func_00131760()*2-D_001D27B0;
+func_0012EA60((void *)(*(int *)(*p+4)+i));
+*(int *)(*(int *)(*p+12)+i)=*(int *)(*(int *)(*p+4)+i);
+*(int *)(*(int *)(*p+12)+i+4)=0x3f800000;
+*(int *)(*(int *)(*p+12)+i+8)=*(int *)(*(int *)(*p+4)+i+8);
+*(float *)(*(int *)(*p+4)+i)=func_00131760()**(float *)(*(int *)(*p+4)+i)*D_001D2B60;
+*(float *)(*(int *)(*p+4)+i+4)=(float)((long double)*(float *)(*(int *)(*p+4)+i+4)-D_001D35F8);
+*(float *)(*(int *)(*p+4)+i+8)=func_00131760()**(float *)(*(int *)(*p+4)+i+8)*D_001D2B60;
+*(float *)(*(int *)(*p+12)+i)=(float)((long double)*(float *)(*(int *)(*p+12)+i)*D_001D28C0);
+float *a=(float *)(*(int *)(*p+12)+8+i);
+float *b=(float *)(*(int *)(*p+12)+8+i);
+i+=12;
+*b=(float)((long double)*a*D_001D28C0);
+}
+i=0; do{
+*(float *)(*(int *)(*p+20)+i)=func_00131760()*D_001D2C00+D_001D29D8;
+*(float *)(*(int *)(*p+20)+i+4)=func_00131760()*D_001D2C00+D_001D29D8;
+*(float *)(*(int *)(*p+20)+i+8)=func_00131760()*D_001D29E0+D_001D37AC;
+float f=(func_00131760()+D_001D27B0)*D_001D2C00;
+i+=16;
+*(float *)(*(int *)(*p+20)+i-4)=f;
+}while(i<0x40);
+*(int *)(*(int *)(*p+28))=0x40a00000;
+*(int *)(*(int *)(*p+28)+4)=0x40a00000;
+*(int *)(*(int *)(*p+28)+8)=0x41200000;
+*(int *)(*(int *)(*p+28)+12)=0x41200000;
+*(int *)(*(int *)(*p+28)+16)=0x41700000;
+*(int *)(*(int *)(*p+28)+20)=0x41700000;
+*(int *)(*(int *)(*p+28)+24)=0x41a00000;
+*(int *)(*(int *)(*p+28)+28)=0x41a00000;
+*(int *)(*(int *)(*p+36))=0;
+*(int *)(*(int *)(*p+36)+4)=0;
+*(int *)(*(int *)(*p+36)+8)=0x3f800000;
+*(int *)(*(int *)(*p+36)+12)=0x3f800000;
+func_0011CDF0(q);func_0011CE20(q,0);func_0011CE10(q,0);func_0011CE30(q,0x43960000,0x44480000);func_0011CE50(q,0,0,0,0);func_0011CF30(q,0xc1c80000,0xc1c80000);func_0011CFC0(q,0x461c4000);func_0011CF90(q,0,0,0xc47a0000,0);D_00306E50=0;}
+
 void func_000927D0(int param_1)
 {
   int func_0011CFC0(...);
