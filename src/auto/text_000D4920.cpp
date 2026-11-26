@@ -6,6 +6,10 @@ extern int D_0031B864, D_0031B860, D_0031B8A0, D_0031B8A4, D_0031B8A8, D_0031B8F
 extern char D_001DAE4C, D_001DAE44, D_001D748C, D_001DAE3C, D_0031B920, D_0031B870;
 extern "C" char * __cdecl strcpy(char *,const char *);
 extern "C" char * __cdecl strcat(char *,const char *);
+extern "C" unsigned int __cdecl strlen(const char *);
+extern "C" void * __cdecl memcpy(void *,const void *,unsigned int);
+extern short D_001DAE50,D_001DAE48;
+extern char D_001DAE52,D_001DAE4A;
 
 void func_000D4D90(void)
 {
@@ -161,6 +165,34 @@ int func_000D53E0(int *param_1,unsigned int param_2,int *out)
  if(obj==0)return 0;
  out[1]=obj; func_00110060(obj,local); for(int i=0;i<16;i++)out[4+i]=local[i]; func_00011CB0(out+20,out+4);return 1;
 }
+
+void func_000D54E0(int p, int a, int b) {
+ int func_0009CBE0(...),func_00110300(...); extern int D_0031B9B0,D_0031B914,D_0031B9A0; void func_00110060(int,char*); void func_0012F730(float*,int,char*);
+ float v[4]; char name[256]; int obj; int x,y,z; char *end;
+ D_0031B9B0=b; D_0031B900=a;
+ strcpy(name,*(char **)(p+12)); end=name-1; do { ++end; } while(*end); *(int *)end=*(int *)&D_001DAE4C; *(short *)(end+4)=*(short *)(&D_001DAE4C+4); end[6]=*(&D_001DAE4C+6);
+ D_0031B914=func_0009CBE0(name);
+ D_0031B910=func_00110300(*(int *)(D_0031B914+44),&D_001D748C,24);
+ obj=D_0031B914;
+ func_00110060(*(int *)(obj+44),&D_0031B920);
+ func_0012F730(v,obj+64,&D_0031B920);
+ x=*(int *)&v[0];y=*(int *)&v[1];z=*(int *)&v[2]; D_0031B950=x; D_0031B9A4=x;
+ D_0031B954=y; D_0031B958=z;
+ D_0031B9A8=y; D_0031B9AC=z;
+ func_000D51E0((int)&D_0031B920,D_0031B914);
+ strcpy(name,*(char **)(p+12)); end=name-1; do { ++end; } while(*end); *(int *)end=*(int *)&D_001DAE44; *(short *)(end+4)=*(short *)(&D_001DAE44+4); end[6]=*(&D_001DAE44+6);
+ D_0031B864=func_0009CBE0(name);
+ D_0031B860=func_00110300(*(int *)(D_0031B864+44),&D_001DAE3C,24);
+ obj=D_0031B864;
+ func_00110060(*(int *)(obj+44),&D_0031B870);
+ func_0012F730(v,obj+64,&D_0031B870);
+ x=*(int *)&v[0];y=*(int *)&v[1];z=*(int *)&v[2]; D_0031B8A0=x; D_0031B8F4=x;
+ D_0031B8A4=y; D_0031B8A8=z;
+ D_0031B8F8=y; D_0031B8FC=z;
+ func_000D51E0((int)&D_0031B870,D_0031B864);
+ D_0031B9A0=0; D_0031B8F0=0;
+}
+
 extern int D_0031B914;
 extern int D_0031B9A0;
 extern int D_0031B9B0;
