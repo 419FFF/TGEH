@@ -2,6 +2,9 @@
 #include "common.h"
 #include "ghidra.h"
 
+struct MeshEntry { int pad0[8]; unsigned short *indices; unsigned int count; int pad1[3]; };
+struct MeshData { MeshEntry *entries; int pad0; unsigned int entryCount; unsigned int vertCount; int pad1; int *verts; };
+
 float func_00097180(void) {
     extern float D_001D27B8;
     return D_001D27B8;
@@ -32,6 +35,56 @@ void func_00097260(int param_1)
   return;
 }
 
+void __stdcall func_000972C0(int start,int step,int count,void (*fn)(void)){int i=count-1;if(i>=0){int p=start;do{fn();p+=step;i--;}while(i>=0);}}
+
+extern float D_00307C98,D_001D7230,D_001D27B0,D_00307C9C,D_001D333C,D_00307CA0,D_001D27B8,D_0032923C,D_00307CA4;
+void __stdcall func_0014D2D0(int,int);
+extern char D_00307C90;
+extern char D_00307C84;
+void func_00097690(void){unsigned int local[0x3c]={0};local[0x30]=0xc00;local[0x8]=0xc00;local[0x38]=0x842;local[0x3a]=0xffffff20;local[0x3b]=0xfffffff1;local[0x37]=0x11002;local[0x26]=0x1080209;local[0x31]=0xd00;local[0x27]=0x10a0d20;local[0x35]=0x2080;func_0014D2D0((int)local,(int)&D_00307C84);}
+
+void func_00097740(void)
+{
+    extern int D_00307C94;
+    extern int D_00307C58;
+    extern int D_00307C78;
+    extern char D_00307C5C;
+    extern int D_00307C60;
+    extern int *D_00307C7C;
+    extern void *D_00307C8C;
+    extern int D_00307C80;
+    extern int D_00307C88;
+    extern int D_00307C70;
+    void func_00096EB0(void);
+    int func_00110370(void *);
+    void func_00096E30(int);
+    void __fastcall func_000972F0(int);
+    void func_00097600(void);
+    int __stdcall func_0014E270(int, int, int, int, int, int, int);
+    int __stdcall func_001649C8(int, int, int, int, int, int, void *, int, int);
+    struct { int a; void *c; int d; void *e; int f; int g; int h; } s;
+    if (D_00307C94 == 0) {
+        s.f = 0;
+        s.e = (void *)func_00096EB0;
+        s.c = (void *)func_00097240;
+        s.d = 0;
+        D_00307C58 = func_00110370(&s);
+        func_00096E30(0);
+        D_00307C78 = 0;
+        func_000972F0(0x100);
+        func_00097600();
+        func_00097690();
+        D_00307C7C = (int *)func_0014E270(0x100, 0x100, 1, 1, 1, 6, 3);
+        func_001649C8(0x100, 0x100, 1, 0, 0x3a, 0, &D_00307C5C, 0, 0);
+        D_00307C60 = D_00307C7C[1];
+        D_00307C8C = &D_00307C5C;
+        D_00307C80 = 0;
+        D_00307C88 = func_0014E270(0x100, 0x100, 1, 1, 1, 6, 3);
+        D_00307C70 = func_0014E270(0x100, 0x100, 1, 1, 1, 6, 3);
+    }
+    D_00307C94++;
+}
+
 void func_00097840(void)
 {
   extern undefined4 D_00307C94;
@@ -60,4 +113,6 @@ void func_00097840(void)
   }
   return;
 }
+
+void func_000978B0(void *a,float b,float c){extern float D_001D27B8;float *p=*(float**)((char*)a+0x2c);float x=b-p[70];if(c>D_001D27B8){p[68]=x;p[69]=(x-p[67])/c;return;}p[67]=x;p[68]=x;}
 
