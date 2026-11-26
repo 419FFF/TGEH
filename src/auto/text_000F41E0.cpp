@@ -2,6 +2,12 @@
 #include "common.h"
 #include "ghidra.h"
 
+struct F4Owner { char pad0[0x22]; unsigned char id; char pad1[0x101]; unsigned char flags; };
+struct F4Link { char pad[0x28e]; char active; };
+struct F4Obj { char pad0[0x10]; unsigned char flags; char pad1[2]; char type; char pad2[0x18]; F4Owner *owner; char pad3[0xe0]; F4Link *link; int busy; };
+struct F4Out { float x, y, z; char pad0[3]; char shade; char pad1[0x10]; float s0; float s1; };
+struct F4Ent { F4Obj *obj; float x, y, z; int state; float t; float limit; float phase; F4Out *out; };
+
 int func_000F42D0(void)
 {
  extern int D_00324830; extern int D_00324828; extern float D_001D27B8;
