@@ -4,8 +4,10 @@
 
 extern float D_001D2A2C;
 extern float D_001D2808;
-static __forceinline void Hermite3(float *o, float a, float b, float c)
+struct FBox { float v; FBox(float x) : v(x) {} };
+static __forceinline void Hermite3(float *o, float a, float b, FBox cb)
 {
+  float c = cb.v;
   long double la = a;
   long double lb = b;
   long double t = (long double)c * D_001D2A2C;
