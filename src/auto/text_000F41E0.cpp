@@ -7,7 +7,7 @@ struct F4Link { char pad[0x28e]; char active; };
 struct F4Obj { char pad0[0x10]; unsigned char flags; char pad1[2]; char type; char pad2[0x18]; F4Owner *owner; char pad3[0xe0]; F4Link *link; int busy; };
 struct F4Out { float x, y, z; char pad0[3]; char shade; char pad1[0x10]; float s0; float s1; };
 struct F4Ent { F4Obj *obj; float x, y, z; int state; float t; float limit; float phase; F4Out *out; };
-struct F4St { int state; float t; float limit; float phase; F4Out *out; int pad; };
+struct F4St { int state; float t; float limit; float phase; F4Out *out; int pad[4]; };
 
 int func_000F42D0(void)
 {
