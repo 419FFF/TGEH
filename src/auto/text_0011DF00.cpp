@@ -2,6 +2,16 @@
 #include "common.h"
 #include "ghidra.h"
 
+extern float D_001D2A2C;
+extern float D_001D2808;
+static __forceinline void Hermite3(float *o, float a, float b, float c)
+{
+  float t = c * D_001D2A2C;
+  float s = b + a;
+  o[0] = (s + s) - t;
+  o[1] = t - (b * D_001D2808 + a);
+  o[2] = b;
+}
 struct Blk100 { int d[25]; };
 struct Blk30 { int d[12]; };
 
@@ -39,6 +49,96 @@ void func_0011E450(void){extern int D_003281EC,D_003281D8,D_003281E4;int func_00
 void func_0011E480(int a0, int a1) {
     int func_0011DD60(...);
     func_0011DD60(a0, a1, 0, 0);
+}
+
+void func_0011E4A0(undefined4 param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4, undefined4 *param_5, undefined4 *param_6, undefined4 *param_7, undefined4 param_8)
+{
+  int func_00137870(...);
+  void func_001378E0(int, int);
+  int func_00137A20(...);
+  extern undefined4 D_00332738;
+  extern undefined4 D_0033273C;
+  extern undefined4 D_00332740;
+  int func_00137A60(...);
+  int func_00137A90(...);
+  int func_00137AB0(...);
+  undefined4 uVar1;
+  uint uVar2;
+  
+  uVar1 = param_8;
+  if (param_7 != (undefined4 *)0x0) {
+    uVar1 = func_00137870(*param_7,param_7[1],param_7[2],param_7[3]);
+  }
+  uVar2 = 1;
+  if (param_5 != (undefined4 *)0x0) {
+    uVar2 = 5;
+  }
+  if (param_7 != (undefined4 *)0x0) {
+    uVar2 += 2;
+  }
+  func_001378E0(8,uVar2);
+  func_00137A20();
+  D_00332738 = param_1;
+  D_0033273C = param_2;
+  D_00332740 = param_8;
+  if (param_7 != (undefined4 *)0x0) {
+    func_00137A60(uVar1);
+  }
+  if (param_5 != (undefined4 *)0x0) {
+    func_00137A90(*param_5,param_5[1]);
+  }
+  func_00137A20();
+  D_00332738 = param_3;
+  D_0033273C = param_2;
+  D_00332740 = param_8;
+  if (param_7 != (undefined4 *)0x0) {
+    func_00137A60(uVar1);
+  }
+  if (param_5 != (undefined4 *)0x0) {
+    func_00137A90(*param_6,param_5[1]);
+  }
+  func_00137A20();
+  D_00332738 = param_3;
+  D_0033273C = param_4;
+  D_00332740 = param_8;
+  if (param_7 != (undefined4 *)0x0) {
+    func_00137A60(uVar1);
+  }
+  if (param_5 != (undefined4 *)0x0) {
+    func_00137A90(*param_6,param_6[1]);
+  }
+  func_00137A20();
+  D_00332738 = param_3;
+  D_0033273C = param_4;
+  D_00332740 = param_8;
+  if (param_7 != (undefined4 *)0x0) {
+    func_00137A60(uVar1);
+  }
+  if (param_5 != (undefined4 *)0x0) {
+    func_00137A90(*param_6,param_6[1]);
+  }
+  func_00137A20();
+  D_00332738 = param_1;
+  D_0033273C = param_4;
+  D_00332740 = param_8;
+  if (param_7 != (undefined4 *)0x0) {
+    func_00137A60(uVar1);
+  }
+  if (param_5 != (undefined4 *)0x0) {
+    func_00137A90(*param_5,param_6[1]);
+  }
+  func_00137A20();
+  D_00332738 = param_1;
+  D_0033273C = param_2;
+  D_00332740 = param_8;
+  if (param_7 != (undefined4 *)0x0) {
+    func_00137A60(uVar1);
+  }
+  if (param_5 != (undefined4 *)0x0) {
+    func_00137A90(*param_5,param_5[1]);
+  }
+  func_00137AB0();
+  return;
 }
 
 void func_0011E690(int param_1, char *param_2, char param_3)
@@ -153,4 +253,155 @@ int func_0011E840(int param_1, char *param_2)
 void func_0011E950(int p){int func_0011B990(...);int func_00116FB0(...);int func_0013C020(int);func_0011B990(*(int*)(p+0xe4));func_00116FB0(*(int*)(p+0x14c));*(int*)(p+0x14c)=0;func_0013C020(*(int*)(p+0xe0));}
 
 void func_0011E990(void){extern int D_003281F4,D_003281F0;int func_000688D0(...);int func_0011E950(...);int func_0011E690(...);int func_00110370(...);int local[7];if(!D_003281F4){func_000688D0();local[4]=0;local[3]=(int)func_0011E950;local[1]=(int)func_0011E690;local[2]=0;D_003281F0=func_00110370(local);}D_003281F4++;}
+
+int func_0011E9E0(int *param_1)
+{
+  int func_00116070(...);
+  int func_00116A90(...);
+  extern int D_003281F8;
+  extern float D_001D2A2C;
+  extern float D_001D2808;
+  float fVar1;
+  float fVar2;
+  float fVar4;
+  float fVar5;
+  int iVar3;
+  int iVar6;
+  float *f = (float *)param_1;
+
+  iVar6 = func_00116070(D_003281F8,0xf0);
+  iVar3 = *param_1;
+  *(int *)(iVar6 + 0x50) = iVar3;
+  *(int *)(iVar6 + 0xec) = func_00116A90(iVar3 * 0x18,1,1);
+  *(int *)(iVar6 + 0x90) = param_1[10];
+  *(int *)(iVar6 + 0x94) = param_1[0xb];
+  *(int *)(iVar6 + 0x98) = param_1[0xc];
+  *(int *)(iVar6 + 0x9c) = param_1[0xd];
+  *(int *)(iVar6 + 0x78) = param_1[4];
+  *(int *)(iVar6 + 0x7c) = param_1[5];
+  *(int *)(iVar6 + 0x80) = param_1[6];
+  *(int *)(iVar6 + 0x84) = param_1[7];
+  *(int *)(iVar6 + 0x88) = param_1[8];
+  *(int *)(iVar6 + 0x8c) = param_1[9];
+  *(int *)(iVar6 + 0xdc) = param_1[0x1d];
+  *(int *)(iVar6 + 0xe0) = param_1[0x1e];
+  *(int *)(iVar6 + 0xe4) = param_1[0x1f];
+  *(int *)(iVar6 + 0xe8) = param_1[0x20];
+  fVar1 = f[3];
+  fVar2 = f[1];
+  fVar5 = f[2] * D_001D2A2C;
+  fVar4 = fVar2 + fVar1;
+  *(float *)(iVar6 + 0x60) = (fVar4 + fVar4) - fVar5;
+  *(float *)(iVar6 + 100) = fVar5 - (fVar2 * D_001D2808 + fVar1);
+  *(float *)(iVar6 + 0x68) = fVar2;
+  fVar1 = f[0x16];
+  fVar2 = f[0xe];
+  fVar5 = f[0x12] * D_001D2A2C;
+  fVar4 = fVar2 + fVar1;
+  *(float *)(iVar6 + 0xa0) = (fVar4 + fVar4) - fVar5;
+  *(float *)(iVar6 + 0xa4) = fVar5 - (fVar2 * D_001D2808 + fVar1);
+  *(float *)(iVar6 + 0xa8) = fVar2;
+  fVar1 = f[0x17];
+  fVar2 = f[0xf];
+  fVar5 = f[0x13] * D_001D2A2C;
+  fVar4 = fVar2 + fVar1;
+  *(float *)(iVar6 + 0xac) = (fVar4 + fVar4) - fVar5;
+  *(float *)(iVar6 + 0xb0) = fVar5 - (fVar2 * D_001D2808 + fVar1);
+  *(float *)(iVar6 + 0xb4) = fVar2;
+  fVar1 = f[0x18];
+  fVar2 = f[0x10];
+  fVar5 = f[0x14] * D_001D2A2C;
+  fVar4 = fVar2 + fVar1;
+  *(float *)(iVar6 + 0xb8) = (fVar4 + fVar4) - fVar5;
+  *(float *)(iVar6 + 0xbc) = fVar5 - (fVar2 * D_001D2808 + fVar1);
+  *(float *)(iVar6 + 0xc0) = fVar2;
+  fVar1 = f[0x19];
+  fVar2 = f[0x11];
+  fVar5 = f[0x15] * D_001D2A2C;
+  fVar4 = fVar2 + fVar1;
+  *(float *)(iVar6 + 0xc4) = (fVar4 + fVar4) - fVar5;
+  *(float *)(iVar6 + 200) = fVar5 - (fVar2 * D_001D2808 + fVar1);
+  *(float *)(iVar6 + 0xcc) = fVar2;
+  fVar1 = f[0x1c];
+  fVar2 = f[0x1a];
+  fVar5 = f[0x1b] * D_001D2A2C;
+  fVar4 = fVar2 + fVar1;
+  *(float *)(iVar6 + 0xd0) = (fVar4 + fVar4) - fVar5;
+  *(float *)(iVar6 + 0xd4) = fVar5 - (fVar2 * D_001D2808 + fVar1);
+  *(float *)(iVar6 + 0xd8) = fVar2;
+  *(int *)(iVar6 + 0x58) = 0;
+  *(int *)(iVar6 + 0x5c) = 0;
+  *(char *)(iVar6 + 0x54) = 1;
+  *(char *)(iVar6 + 0x4c) = 1;
+  return iVar6;
+}
+
+void func_0011EC30(int param_1, int param_2)
+{
+  extern float D_001D2A2C;
+  extern float D_001D2808;
+  float fVar1;
+  float fVar2;
+  float fVar3;
+  float fVar4;
+  *(int *)(param_1 + 0x90) = *(int *)(param_2 + 0x28);
+  *(int *)(param_1 + 0x94) = *(int *)(param_2 + 0x2c);
+  *(int *)(param_1 + 0x98) = *(int *)(param_2 + 0x30);
+  *(int *)(param_1 + 0x9c) = *(int *)(param_2 + 0x34);
+  *(int *)(param_1 + 0x78) = *(int *)(param_2 + 0x10);
+  *(int *)(param_1 + 0x7c) = *(int *)(param_2 + 0x14);
+  *(int *)(param_1 + 0x80) = *(int *)(param_2 + 0x18);
+  *(int *)(param_1 + 0x84) = *(int *)(param_2 + 0x1c);
+  *(int *)(param_1 + 0x88) = *(int *)(param_2 + 0x20);
+  *(int *)(param_1 + 0x8c) = *(int *)(param_2 + 0x24);
+  *(int *)(param_1 + 0xdc) = *(int *)(param_2 + 0x74);
+  *(int *)(param_1 + 0xe0) = *(int *)(param_2 + 0x78);
+  *(int *)(param_1 + 0xe4) = *(int *)(param_2 + 0x7c);
+  *(int *)(param_1 + 0xe8) = *(int *)(param_2 + 0x80);
+  fVar1 = *(float *)(param_2 + 0xc);
+  fVar2 = *(float *)(param_2 + 4);
+  fVar4 = *(float *)(param_2 + 8) * D_001D2A2C;
+  fVar3 = fVar2 + fVar1;
+  *(float *)(param_1 + 0x60) = (fVar3 + fVar3) - fVar4;
+  *(float *)(param_1 + 0x64) = fVar4 - (fVar2 * D_001D2808 + fVar1);
+  *(float *)(param_1 + 0x68) = fVar2;
+  fVar1 = *(float *)(param_2 + 0x58);
+  fVar2 = *(float *)(param_2 + 0x38);
+  fVar4 = *(float *)(param_2 + 0x48) * D_001D2A2C;
+  fVar3 = fVar2 + fVar1;
+  *(float *)(param_1 + 0xa0) = (fVar3 + fVar3) - fVar4;
+  *(float *)(param_1 + 0xa4) = fVar4 - (fVar2 * D_001D2808 + fVar1);
+  *(float *)(param_1 + 0xa8) = fVar2;
+  fVar1 = *(float *)(param_2 + 0x5c);
+  fVar2 = *(float *)(param_2 + 0x3c);
+  fVar4 = *(float *)(param_2 + 0x4c) * D_001D2A2C;
+  fVar3 = fVar2 + fVar1;
+  *(float *)(param_1 + 0xac) = (fVar3 + fVar3) - fVar4;
+  *(float *)(param_1 + 0xb0) = fVar4 - (fVar2 * D_001D2808 + fVar1);
+  *(float *)(param_1 + 0xb4) = fVar2;
+  fVar1 = *(float *)(param_2 + 0x60);
+  fVar2 = *(float *)(param_2 + 0x40);
+  fVar4 = *(float *)(param_2 + 0x50) * D_001D2A2C;
+  fVar3 = fVar2 + fVar1;
+  *(float *)(param_1 + 0xb8) = (fVar3 + fVar3) - fVar4;
+  *(float *)(param_1 + 0xbc) = fVar4 - (fVar2 * D_001D2808 + fVar1);
+  *(float *)(param_1 + 0xc0) = fVar2;
+  fVar1 = *(float *)(param_2 + 0x64);
+  fVar2 = *(float *)(param_2 + 0x44);
+  fVar4 = *(float *)(param_2 + 0x54) * D_001D2A2C;
+  fVar3 = fVar2 + fVar1;
+  *(float *)(param_1 + 0xc4) = (fVar3 + fVar3) - fVar4;
+  *(float *)(param_1 + 0xc8) = fVar4 - (fVar2 * D_001D2808 + fVar1);
+  *(float *)(param_1 + 0xcc) = fVar2;
+  fVar1 = *(float *)(param_2 + 0x70);
+  fVar2 = *(float *)(param_2 + 0x68);
+  fVar4 = *(float *)(param_2 + 0x6c) * D_001D2A2C;
+  fVar3 = fVar2 + fVar1;
+  *(float *)(param_1 + 0xd0) = (fVar3 + fVar3) - fVar4;
+  *(float *)(param_1 + 0xd4) = fVar4 - (fVar2 * D_001D2808 + fVar1);
+  *(float *)(param_1 + 0xd8) = fVar2;
+  *(int *)(param_1 + 0x58) = 0;
+  *(int *)(param_1 + 0x5c) = 0;
+  *(char *)(param_1 + 0x54) = 1;
+}
 
