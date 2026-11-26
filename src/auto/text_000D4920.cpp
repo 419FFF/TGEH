@@ -1,6 +1,7 @@
 /* 19 functions from 0x000D4920 to 0x000D58BA, found by Ghidra. */
 #include "common.h"
 #include "ghidra.h"
+struct Vec_D54E0 { int x,y,z; };
 extern int D_0031B900, D_0031B910, D_0031B950, D_0031B954, D_0031B958, D_0031B9A4, D_0031B9A8, D_0031B9AC;
 extern int D_0031B864, D_0031B860, D_0031B8A0, D_0031B8A4, D_0031B8A8, D_0031B8F4, D_0031B8F8, D_0031B8FC, D_0031B8F0;
 extern char D_001DAE4C, D_001DAE44, D_001D748C, D_001DAE3C, D_0031B920, D_0031B870;
@@ -170,7 +171,7 @@ void func_000D54E0(int p, int a, int b) {
  int func_0009CBE0(...),func_00110300(...); extern int D_0031B9B0,D_0031B914,D_0031B9A0; void func_00110060(int,char*); void func_0012F730(float*,int,char*);
  float v[4]; char name[256]; int obj; int x,y,z; char *end;
  D_0031B9B0=b; D_0031B900=a;
- strcpy(name,*(char **)(p+12)); end=name-1; do { ++end; } while(*end); *(int *)end=*(int *)&D_001DAE4C; *(short *)(end+4)=*(short *)(&D_001DAE4C+4); end[6]=*(&D_001DAE4C+6);
+ strcpy(name,*(char **)(p+12)); strcat(name,".brain");
  D_0031B914=func_0009CBE0(name);
  D_0031B910=func_00110300(*(int *)(D_0031B914+44),&D_001D748C,24);
  obj=D_0031B914;
@@ -180,7 +181,7 @@ void func_000D54E0(int p, int a, int b) {
  D_0031B954=y; D_0031B958=z;
  D_0031B9A8=y; D_0031B9AC=z;
  func_000D51E0((int)&D_0031B920,D_0031B914);
- strcpy(name,*(char **)(p+12)); end=name-1; do { ++end; } while(*end); *(int *)end=*(int *)&D_001DAE44; *(short *)(end+4)=*(short *)(&D_001DAE44+4); end[6]=*(&D_001DAE44+6);
+ strcpy(name,*(char **)(p+12)); strcat(name,".pinky");
  D_0031B864=func_0009CBE0(name);
  D_0031B860=func_00110300(*(int *)(D_0031B864+44),&D_001DAE3C,24);
  obj=D_0031B864;
