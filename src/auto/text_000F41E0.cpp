@@ -3,7 +3,9 @@
 #include "ghidra.h"
 struct F4760Params {
  int kind; float color[3]; int flags[2]; float scale; int tail[2];
- F4760Params() { volatile int *p=(volatile int *)this; p[0]=0; p[1]=0; p[2]=0; p[3]=0; p[4]=0; p[5]=0; p[6]=0; p[7]=0; p[8]=0; }
+ #pragma optimize("g", off)
+ __forceinline F4760Params() { kind=0; color[0]=0; color[1]=0; color[2]=0; flags[0]=0; flags[1]=0; scale=0; tail[0]=0; tail[1]=0; }
+ #pragma optimize("", on)
 };
 
 struct F4Owner { char pad0[0x22]; unsigned char id; char pad1[0x101]; unsigned char flags; };
@@ -61,8 +63,9 @@ void func_000F4460(void)
   extern int D_00324838;
   extern F4St *D_00324834;
   extern int D_003268B0;
-  extern float D_001D314C, D_001D2BB4, D_001D27B0, D_00329310, D_001D31C8, D_00329314, D_00329318;
-  extern float D_001D6164, D_001D28E0, D_001D28E4, D_001D66D8, D_001D2B60;
+  extern const float D_001D314C, D_001D2BB4, D_001D27B0, D_001D31C8;
+  extern float D_00329310, D_00329314, D_00329318;
+  extern const float D_001D6164, D_001D28E0, D_001D28E4, D_001D66D8, D_001D2B60;
   extern float D_001E5DE8[];
   F4St *s;
   F4Obj *o;
@@ -103,7 +106,7 @@ cleanup:
       }
     }
     else {
-      s->phase += D_001D2BB4;
+      s->phase = (double)s->phase + D_001D2BB4;
       if (s->phase >= D_001D27B0) {
         s->t = 0;
         s->state = 0;
@@ -119,12 +122,12 @@ cleanup:
       p->x = (double)m[8] * f[-1] + m[4] * f[-2] + m[0] * f[-3] + m[12];
       p->y = (double)m[9] * f[-1] + m[5] * f[-2] + f[-3] * m[1] + m[13];
       p->z = (double)m[10] * f[-1] + m[6] * f[-2] + f[-3] * m[2] + m[14];
-      p->x = (double)p->x - (double)D_00329310 * D_001D31C8;
-      p->y = (double)p->y - (double)D_00329314 * D_001D31C8;
-      p->z = (double)p->z - (double)D_00329318 * D_001D31C8;
-      p->shade = (char)(int)(((double)D_001E5DE8[-(int)(s->phase * D_001D6164)] * D_001D28E0 + D_001D28E4) * D_001D66D8);
-      p->s0 = (double)D_001E5DE8[-(int)(s->phase * D_001D6164)] * D_001D2B60;
-      p->s1 = (double)D_001E5DE8[-(int)(s->phase * D_001D6164)] * D_001D2B60;
+      p->x = p->x - (double)D_00329310 * D_001D31C8;
+      p->y = p->y - (double)D_00329314 * D_001D31C8;
+      p->z = p->z - (double)D_00329318 * D_001D31C8;
+      p->shade = (char)(int)(((double)D_001E5DE8[-(int)((double)s->phase * D_001D6164)] * D_001D28E0 + D_001D28E4) * D_001D66D8);
+      p->s0 = (double)D_001E5DE8[-(int)((double)s->phase * D_001D6164)] * D_001D2B60;
+      p->s1 = (double)D_001E5DE8[-(int)((double)s->phase * D_001D6164)] * D_001D2B60;
     }
   }
 }
@@ -199,13 +202,13 @@ void func_000F4760(void)
     uVar2 = func_00110300(*(undefined4 *)(D_0032485C + 0x2c),((undefined *)&D_001DCE18),0x18,0);
     func_00110330(uVar2);
   }
-  if ((D_00324884 != 0) && (iVar1 = *(int *)(D_00324884 + 0x2c), *(int *)(iVar1 + 0x2c) != 0)) {
+  if ((D_00324884 != 0) && (iVar1 = *(int *)(D_00324884 + 0x2c), *(volatile int *)(iVar1 + 0x2c) != 0)) {
     func_00110420(**(undefined4 **)(iVar1 + 0x2c),iVar1);
   }
-  if ((D_0032485C != 0) && (iVar1 = *(int *)(D_0032485C + 0x2c), *(int *)(iVar1 + 0x2c) != 0)) {
+  if ((D_0032485C != 0) && (iVar1 = *(int *)(D_0032485C + 0x2c), *(volatile int *)(iVar1 + 0x2c) != 0)) {
     func_00110420(**(undefined4 **)(iVar1 + 0x2c),iVar1);
   }
-  if ((D_00324888 != 0) && (iVar1 = *(int *)(D_00324888 + 0x2c), *(int *)(iVar1 + 0x2c) != 0)) {
+  if ((D_00324888 != 0) && (iVar1 = *(int *)(D_00324888 + 0x2c), *(volatile int *)(iVar1 + 0x2c) != 0)) {
     func_00110420(**(undefined4 **)(iVar1 + 0x2c),iVar1);
   }
   D_00324848 = 0;
