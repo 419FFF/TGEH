@@ -7,6 +7,37 @@ extern float D_002FA520, D_001D3E00, D_001D2C00, D_001D27B0, D_001D27EC;
 extern unsigned char D_002FA5BB;
 extern char D_001D4E88;
 
+#pragma optimize("a", on)
+void _func_000737F0(void *text, float x, float y, int selected)
+{
+ void _func_00120E00(int); void _func_00120EA0(int,int,int,int); void _func_00120ED0(int,int);
+ void _func_00120F60(float); void _func_00120F70(float); void _func_00120F80(float,float);
+ void _func_00120E50(float,float); void _func_00120E70(float,float,float,float);
+ void _func_00121990(char *,char *); void _func_000688D0();
+ char *p=(char *)text;
+ void _func_00073600();
+ D_002FA524=0; D_0032B70C=(unsigned int)&_func_00073600;
+ _func_00120E00(D_002FA56C); _func_00120EA0(0,1,1,0); _func_00120ED0(4,5);
+ _func_00120F60(1.0f); _func_00120F70(1.0f); _func_00120F80(2.0f,2.0f);
+ _func_00120E50(x,y); _func_00120E70(.5f,.5f,.75f,.7f);
+ if(*p=='^') {
+ switch(p[1]) {
+ case '0': _func_00120E70(1,1,1,.7f); break;
+ case '1': _func_00120E70(0,0,0,.7f); break;
+ case '2': _func_00120E70(1,.3f,.3f,.7f); break;
+ case '3': _func_00120E70(.3f,1,.3f,.7f); break;
+ case '4': _func_00120E70(.3f,.3f,1,.7f); break;
+ case '5': _func_00120E70(.3f,.3f,1,.2f); break;
+ default: _func_00120E70(.5f,.5f,.75f,.7f); break;
+ }
+ p+=2;
+ } else if(selected) {
+ _func_00120E70(1,(float)(((longdouble)*(volatile float *)&D_002FA520+D_001D27B0)*D_001D27EC),(float)((longdouble)*(volatile float *)&D_002FA520*D_001D3E00+D_001D2C00),.7f);
+ D_002FA524=selected;
+ }
+ _func_00121990(&D_001D4E88,p); D_0032B70C=0; _func_000688D0(); D_002FA5BB=0;
+}
+#pragma optimize("", on)
 void func_00073A20(void)
 {
   int func_00136450(...);
