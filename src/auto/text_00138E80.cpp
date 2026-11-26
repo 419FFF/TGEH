@@ -1,5 +1,8 @@
 /* 20 functions from 0x00138E80 to 0x00139D80, found by Ghidra. */
 #include "common.h"
+extern "C" void *memset(void *, int, unsigned int);
+extern "C" void *memcpy(void *, const void *, unsigned int);
+#pragma intrinsic(memset, memcpy)
 
 void _func_00139170(void *p) {
 extern int _D_00332AC0;extern void __stdcall MmFreeContiguousMemory(void*);void _func_00131D10(void*);void _func_00116FB0(void*);void _func_0011C3E0(void*);void _func_0011C3B0(int,void*,void*);
@@ -81,6 +84,40 @@ float _func_00139440(void *p) {
     return *(float *)((char *)p + 0xbc);
 }
 
+extern "C" double pow(double, double);
+#pragma intrinsic(pow)
+void func_00139460(int p, float v)
+{
+    extern float D_001D27B8, D_001D27B0, D_001D333C, D_001D3340, D_001D27EC, D_001DF7DC, D_001DF7D8;
+    extern double D_001DF7E0;
+    float func_0013ADC0(int);
+    int func_001313C0(float);
+    void func_001AFA11(int, int);
+    if (v < D_001D27B8) {
+        v = 0.0f;
+    } else if (v > D_001D27B0) {
+        v = 1.0f;
+    }
+    *(float *)(p + 0xbc) = v;
+    if (*(int *)(p + 0xc0) != 0) {
+        v = func_0013ADC0(*(int *)(p + 0xc0)) * v;
+    }
+    if (*(int *)(p + 0x9c) == 0) return;
+    if (v < D_001D333C) {
+        v = -10000.0f;
+    } else if (v > D_001D3340) {
+        v = 0.0f;
+    } else {
+        v = -pow(D_001DF7E0, D_001DF7DC - v * D_001D27EC * D_001DF7DC);
+        if (v > D_001D27B8) {
+            v = 0.0f;
+        } else if (v < D_001DF7D8) {
+            v = -10000.0f;
+        }
+    }
+    func_001AFA11(*(int *)(p + 0x9c), func_001313C0(v));
+}
+
 int func_00139570(int param_1)
 {
   if (param_1 != 0) {
@@ -118,6 +155,81 @@ void func_00139690(int self)
   _D_001AFA1B(*(int *)(self + 0x9c), 0);
   *(int *)(self + 0x90) = 4;
   func_00139460(self, *(int *)(self + 0xbc));
+}
+
+void _func_001398C0(void)
+{
+    extern int D_00332AD8, D_00332AE0, D_00332AEC, D_00332ACC;
+    extern char D_00332ADC;
+    int func_0013AF50(...), func_0013AF70(...), func_00139170(...), func_0011C3E0(...), func_00139460(...), func_00116FB0(...), func_001396C0(...);
+    void __stdcall func_00109CF3(int, int);
+    void __stdcall func_00109C1F(int);
+    unsigned int i, n, j;
+    int list[10];
+    int *node;
+    int obj;
+    char did;
+
+    func_00109CF3(D_00332ACC, -1);
+    if (D_00332ADC == 0) {
+        do {
+            do {
+                func_0013AF50(D_00332AD8);
+                n = 0;
+                did = 0;
+                node = (int *)D_00332AE0;
+                while (node) {
+                    list[n] = node[2];
+                    node = (int *)*node;
+                    n++;
+                }
+                for (i = 0; i < n; i++) {
+                    obj = list[i];
+                    switch (*(int *)(obj + 0x90)) {
+                    case 1:
+                    case 4:
+                        if (*(char *)(obj + 0xba) == 0) {
+                            for (j = 0; j < 3; j++) {
+                                if (*(int *)(obj + 0xac + j * 4) == 0) {
+                                    func_001396C0(j);
+                                    did = 1;
+                                }
+                            }
+                        } else {
+                            for (j = 0; j < 3; j++) {
+                                if (*(int *)(obj + 0xac + j * 4) != 0) break;
+                            }
+                            if (j == 3) {
+                                *(int *)(obj + 0x90) = 5;
+                                func_00139170();
+                                did = 1;
+                            } else {
+                                *(int *)(obj + 0x90) = 4;
+                            }
+                        }
+                        break;
+                    case 5:
+                        func_00139170();
+                        did = 1;
+                        break;
+                    case 6:
+                        func_00139170();
+                        if (*(int *)(obj + 0xc0) != 0) func_0011C3E0(obj + 0xc4);
+                        *(int *)(obj + 0xc0) = 0;
+                        func_00139460(obj, *(int *)(obj + 0xbc));
+                        func_0011C3E0(obj);
+                        func_00116FB0(obj);
+                        func_00109C1F(D_00332AEC);
+                        did = 1;
+                        break;
+                    }
+                }
+                func_0013AF70(D_00332AD8);
+            } while (did);
+            func_00109CF3(D_00332ACC, -1);
+        } while (D_00332ADC == 0);
+    }
+    D_00332ADC = 0;
 }
 
 unsigned char func_00139A70(void) { extern int D_00332AF0,D_00332AE0,D_00332AE4,D_00332AC0,D_00332AC4,D_00332AD8,D_00332AD4,D_00332ACC,D_00332AEC,D_00332AD0; extern int func_0013AF00(...),func_00116A90(...),func_001359C0(...),func_0013AFB0(...),func_001398C0(...),func_0013B0B0(...); extern int __stdcall func_00109BBE(int,int,int,int); extern void func_001392D0(...); if(!D_00332AF0){D_00332AE0=0;D_00332AE4=0;D_00332AC0=0;D_00332AC4=0;D_00332AD8=func_0013AF00();D_00332AD4=func_00116A90(0x24000,0x20,1);D_00332ACC=func_00109BBE(0,0,0,0);D_00332AEC=func_00109BBE(0,0,0,0);func_001359C0(func_001392D0);D_00332AD0=func_0013AFB0(func_001398C0,0,0x2000);func_0013B0B0(D_00332AD0,0);}D_00332AF0++;return 1;}
