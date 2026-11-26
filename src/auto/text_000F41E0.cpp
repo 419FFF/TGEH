@@ -3,9 +3,6 @@
 #include "ghidra.h"
 struct F4760Params {
  int kind; float color[3]; int flags[2]; float scale; int tail[2];
- #pragma optimize("g", off)
- __forceinline F4760Params() { kind=0; color[0]=0; color[1]=0; color[2]=0; flags[0]=0; flags[1]=0; scale=0; tail[0]=0; tail[1]=0; }
- #pragma optimize("", on)
 };
 
 struct F4Owner { char pad0[0x22]; unsigned char id; char pad1[0x101]; unsigned char flags; };
