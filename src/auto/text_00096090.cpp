@@ -337,5 +337,4 @@ void func_00096F20(undefined4 param_1, int param_2, undefined4 param_3)
   *(undefined4 *)(iVar1 + 0x100) = 0;
   return;
 }
-struct PV3 { float x, y, z; };
-struct PObj { int u0; PV3 *a; int u8; PV3 *b; int u10; float (*c)[4]; int u18; float (*d)[2]; int u20; float *e; };
+
