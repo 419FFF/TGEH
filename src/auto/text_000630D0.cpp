@@ -2,6 +2,47 @@
 #include "common.h"
 #include "ghidra.h"
 
+void func_000630D0(void)
+{
+  extern int D_002EEC00, D_003080AC, D_002EF494, D_002EF47C, D_002EF41C;
+  extern char D_002EF470, D_002EF4C8;
+  extern float D_002EF4D0, D_002EF4D4, D_001D54D8, D_001D2800, D_001D27D0, D_001D54D4;
+  int func_0011FED0(...);
+  int func_00133F30(...);
+  int func_001383B0(...);
+  int func_0011E4A0(float, float, float, float, void *, void *, int, int);
+  __declspec(align(16)) float m[16];
+  float v[2];
+  float b[4];
+  int s[22];
+
+  if (D_002EEC00 == 4 && D_002EF470 != 0 && D_003080AC != 2) {
+    func_0011FED0(D_002EF494, m);
+    s[2] = 1;
+    s[3] = 1;
+    v[0] = (float)(((double)D_002EF4D0 + m[12] - D_001D54D8) + D_001D2800);
+    b[0] = 0;
+    b[1] = 0;
+    *(int *)&b[2] = 0x3f800000;
+    *(int *)&b[3] = 0x3f800000;
+    v[1] = (float)(((double)D_002EF4D4 + m[13] - D_001D54D8) + D_001D27D0);
+    if (D_002EF4C8 != 0)
+      s[2] = D_002EF41C;
+    else
+      s[2] = D_002EF47C;
+    s[6] = 3;
+    s[10] = 4;
+    s[11] = 5;
+    s[12] = 0;
+    s[18] = 6;
+    s[17] = 0;
+    s[19] = 0;
+    func_00133F30(s);
+    func_001383B0();
+    func_0011E4A0((float)(((double)v[0] + D_001D54D8) - D_001D54D8), v[1], (float)(D_001D54D8 + ((double)v[0] + D_001D54D8)), (float)(D_001D54D4 + (double)v[1]), &b[0], &b[2], 0, 0x3f800000);
+  }
+}
+
 void func_00063240(void)
 {
   extern undefined4 D_002EF480;
@@ -94,13 +135,13 @@ float _func_00063490(void *self, void *a, void *b) { return 0.0f; }
 
 void _func_00063530(float value);
 
-void _func_00063690(int *self) {
+void __fastcall _func_00063690(int *self) {
  extern int D_00313B60,D_002EF4F4,D_002EF4F8,D_002EF4FC,D_002EF500;
  int func_00110060(...);float func_00068CF0(...);
- void _func_00063530(float);
- __declspec(align(16)) int v[19];
- func_00110060(D_00313B60,&v[16]);
- D_002EF4F4=v[12];D_002EF4F8=v[13];D_002EF4FC=v[14];D_002EF500=v[15];
+ __declspec(align(16)) int m[16];
+ int context=D_00313B60;
+ func_00110060(context,m);
+ D_002EF4F4=m[12];D_002EF4F8=m[13];D_002EF4FC=m[14];D_002EF500=m[15];
  float f=func_00068CF0(*self,&D_002EF4F4,10);
  _func_00063530(f);
 }
@@ -182,6 +223,90 @@ LAB_00002825:
     }
   }
   return;
+}
+
+void func_000639A0(void)
+{
+  extern int D_00307DF8, D_002F730C, D_002F7308, D_001E3B30, D_00313B60, D_002F7310;
+  extern char D_002EF600[], D_002EF5FC[], D_002EF50C[], D_002EF508[], D_002EF4F4[], D_002EF4E4[];
+  int func_00060980(...);
+  int func_00060AA0(...);
+  int func_00063270(...);
+  char func_000679D0(...);
+  int func_0005D410(...);
+  int func_0005CCC0(...);
+  int func_00110060(...);
+  float func_00068CF0(...);
+  int func_00063530(int);
+  int func_0005F310(...);
+  int *piVar1;
+  int iVar4, iVar5, local_68;
+  int *piVar6, *piVar7;
+  int *puVar2;
+  float fRes;
+  char *slot;
+  __declspec(align(16)) int local_60[4];
+  __declspec(align(16)) int local_50[16];
+
+  func_00060980();
+  func_00060AA0();
+  piVar1 = *(int **)(D_00307DF8 + 0x110);
+  if (*piVar1 != 0x1c && *piVar1 != 0x1d) {
+    if (D_002EF600[D_002F730C * 0x1f8] == 0)
+      return;
+    func_00063270(local_60);
+    iVar5 = 0;
+    if (0 < *(int *)(D_002EF5FC + D_002F730C * 0x1f8)) {
+      do {
+        if (func_000679D0(*(int *)(D_002EF50C + (D_002F730C * 0x7e + iVar5) * 4), local_60) != 0)
+          return;
+        iVar5++;
+      } while (iVar5 < *(int *)(D_002EF5FC + D_002F730C * 0x1f8));
+    }
+    local_68 = 0;
+    if (0 < D_002F7308) {
+      piVar6 = (int *)D_002EF5FC;
+      do {
+        iVar4 = 0;
+        if (0 < *piVar6) {
+          piVar7 = piVar6 - 0x3c;
+          do {
+            *(char *)(piVar6 + 1) = 0;
+            if (func_000679D0(*piVar7, local_60) != 0) {
+              *(char *)(piVar6 + 1) = 1;
+              goto found;
+            }
+            if (*(char *)(piVar6 + 1) != 0) goto found;
+            iVar4++;
+            piVar7++;
+          } while (iVar4 < *piVar6);
+        }
+        local_68++;
+        piVar6 += 0x7e;
+      } while (local_68 < D_002F7308);
+    }
+    slot = D_002EF508 + D_002F730C * 0x1f8;
+    goto fail2;
+found:
+    if (*piVar1 != 0xf || piVar1[0xd5] != 2)
+      func_0005D410(D_001E3B30, D_002EF4E4, D_002EF4F4);
+    func_0005CCC0(0x17);
+    puVar2 = *(int **)(D_002EF508 + local_68 * 0x1f8);
+    func_00110060(D_00313B60, local_50);
+    ((int *)D_002EF4F4)[0] = local_50[12];
+    ((int *)D_002EF4F4)[1] = local_50[13];
+    ((int *)D_002EF4F4)[2] = local_50[14];
+    ((int *)D_002EF4F4)[3] = local_50[15];
+    fRes = func_00068CF0(*puVar2, D_002EF4F4, 10);
+    func_00063530(*(int *)&fRes);
+    D_002F7310 = local_68;
+    return;
+  }
+  slot = D_002EF508 + D_002F730C * 0x1f8;
+fail2:
+  func_0005F310(1);
+  func_0005CCC0(1);
+  slot[0xf8] = 0;
 }
 
 void _func_00063BC0(int p){extern int _D_00307D08,_D_00313AF8,_D_00313A94;extern unsigned char _D_002F7314,_D_002F7315;if(*(int*)(p+0x4e0)<=0)return;int d=_D_00307D08;int a=_D_00313AF8;int *c=*(int**)(d+0x10);int x=a*0x18;if(*(short*)((char*)c+x+0x10)==0){a=_D_00313A94;x=a*0x18;if(*(short*)((char*)c+x+0x10)==0)return;}unsigned char v=1;_D_002F7314=v;int *e=*(int**)(d+0x10);a=_D_00313A94;x=a*0x18;if(*(short*)((char*)e+x+0x10)!=0)_D_002F7315=v;}
