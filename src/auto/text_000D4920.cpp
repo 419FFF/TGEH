@@ -1,6 +1,11 @@
 /* 19 functions from 0x000D4920 to 0x000D58BA, found by Ghidra. */
 #include "common.h"
 #include "ghidra.h"
+extern int D_0031B900, D_0031B910, D_0031B950, D_0031B954, D_0031B958, D_0031B9A4, D_0031B9A8, D_0031B9AC;
+extern int D_0031B864, D_0031B860, D_0031B8A0, D_0031B8A4, D_0031B8A8, D_0031B8F4, D_0031B8F8, D_0031B8FC, D_0031B8F0;
+extern char D_001DAE4C, D_001DAE44, D_001D748C, D_001DAE3C, D_0031B920, D_0031B870;
+extern "C" char * __cdecl strcpy(char *,const char *);
+extern "C" char * __cdecl strcat(char *,const char *);
 
 void func_000D4D90(void)
 {
@@ -17,6 +22,37 @@ void func_000D4D90(void)
     p += 0x110;
     ++i;
   } while (p < (int)&D_0031B494);
+}
+
+unsigned char func_000D4FB0(int param_1, int param_2, float param_3, float param_4, int param_5, int param_6) {
+    extern float D_001D27B8;
+    int func_0009C7A0(int, int, int);
+    void func_000A22B0(int, int, int, int, int, int);
+    double func_000A2310(int);
+    int func_0013E3F4(...);
+    unsigned int *p = (unsigned int *)func_0009C7A0(*(int *)(param_1 + 4), param_2, 0);
+    if (p != *(unsigned int **)(param_1 + 0x90) && (double)param_3 > (double)D_001D27B8) {
+        *(unsigned int **)(param_1 + 0x90) = p;
+        func_000A22B0(*(int *)(param_1 + 4) + 0x64, 1, p[0], p[0], p[2], param_6);
+        return 1;
+    }
+    if ((double)param_3 >= (double)param_4) {
+        double v = func_000A2310(*(int *)(param_1 + 4) + 0x64) + (char)param_6;
+        unsigned int *c;
+        if ((char)param_6 > 0) {
+            c = *(unsigned int **)(param_1 + 0x90);
+            if (v > (double)c[1])
+                v = (double)c[0];
+        } else {
+            c = *(unsigned int **)(param_1 + 0x90);
+            if (v < (double)c[0])
+                v = (double)c[1];
+        }
+        int r = (int)v;
+        func_000A22B0(*(int *)(param_1 + 4) + 0x64, 1, r, r, p[2], param_6);
+        return 1;
+    }
+    return 0;
 }
 
 void func_000D50D0(int self, int arg1, int arg2)
