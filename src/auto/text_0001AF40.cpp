@@ -1,6 +1,7 @@
 /* 15 functions from 0x0001AF40 to 0x0001BE54, found by Ghidra. */
 #include "common.h"
 #include "ghidra.h"
+#include "string.h"
 
 struct S_0001B0D0_node { S_0001B0D0_node *next; int unk4; char *data; };
 struct S_0001B0D0_st { int a, b, c; void *p; char flag; char z; };
@@ -80,6 +81,66 @@ void func_0001AF40(int param_1)
   *(int *)(param_1 + 0x2c) = *(int *)(iVar5 + 0x30);
 }
 
+#pragma intrinsic(strcpy, strcat)
+char *func_0001B0D0(char *name, unsigned short count)
+{
+    extern S_0001B0D0_node *D_002EB5C0;
+    extern unsigned int D_001D2E38, D_001D2E34, D_001D2E28;
+    extern unsigned short D_001D2E30;
+    extern char D_001D2E2C, D_001D29C7;
+    int func_0011B4F0(const char *, const char *);
+    char *func_00116A90(int, int, int);
+    int func_00131990(const char *);
+    int func_000EBB10(char *, S_0001B0D0_st *);
+    int func_00110170(int);
+    int func_00110330(int, int);
+    int func_0011C3B0(void *, void *, void *);
+    S_0001B0D0_node *n;
+    char *b;
+    char buf[112];
+    char *e;
+    unsigned int i;
+    char *slot;
+    n = D_002EB5C0;
+    if (n) do {
+        char *d = n->data;
+        if (func_0011B4F0(name, d + 0xc) == 0) {
+            (*(short *)(d + 0x2c))++;
+            return d;
+        }
+        n = n->next;
+    } while (n);
+    b = func_00116A90(0xf0, 1, 1);
+    strcpy(b + 0xc, name);
+    *(unsigned short *)(b + 0x2e) = count;
+    *(short *)(b + 0x2c) = 1;
+    *(unsigned int *)(buf + 4) = D_001D2E38;
+    *(unsigned int *)buf = D_001D2E34;
+    strcat(buf, name);
+    for (e = buf; *e; e++) ;
+    *(unsigned short *)e = D_001D2E30;
+    func_00131990(buf);
+    strcpy(buf + 4, name);
+    for (e = buf; *e; e++) ;
+    *(unsigned int *)e = D_001D2E28;
+    e[4] = D_001D2E2C;
+    slot = b + 0x30;
+    for (i = count; i; i--) {
+        S_0001B0D0_st st;
+        st.a = 0; st.b = 0; st.c = 0;
+        st.p = slot + 4;
+        st.flag = 1;
+        st.z = 0;
+        func_000EBB10(buf, &st);
+        *(int *)slot = st.a;
+        func_00110170(st.a);
+        func_00110330(*(int *)slot, 0);
+        slot += 0x40;
+    }
+    func_00131990(&D_001D29C7);
+    func_0011C3B0(&D_002EB5C0, b, b);
+    return b;
+}
 short func_0001B280(int p)
 {
     int func_0001AED0(int);
@@ -312,6 +373,3 @@ unsigned char func_0001BB10(int a,int b,int c,int d,int depth)
  if(res!=0)return 1;}}
  return 0;
 }
-
-void __fastcall func_0001BE10(unsigned int *p){p[0x17c/4]=0;p[0x180/4]=0x3f800000;p[0x184/4]=0x3f800000;p[0x188/4]=0x3f800000;p[0x18c/4]=0x3f800000;p[0x190/4]=0x3f800000;p[0x194/4]=0x3f800000;p[0x198/4]=0x3f800000;p[0x19c/4]=0;p[0x1a0/4]=0;}
-
