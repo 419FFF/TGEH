@@ -144,3 +144,60 @@ void func_000ADE40(int param_1, undefined4 *param_2)
   int iVar1=func_0013E9DB(*param_2,1,1);
   *(undefined4 *)(param_1+0x30)=func_00116A90(iVar1*0x14);
 }
+
+void func_000ADE70(Table18 *param_1, int *param_2)
+{
+  extern int D_00307D18;
+  extern char D_001D878C, D_001D8784, D_001D8774, D_001D73F8, D_001D28F0, D_001D8764, D_001D8758;
+  extern char D_001D8750, D_001D8748, D_001D873C, D_001D8734, D_001D8728, D_001D8720;
+  int func_001053E0(...);
+  int func_0011B4F0(...);
+  int func_0013F2E9(...);
+  int func_0013E9DB(...);
+  float func_0013E9E0(...);
+  Item18 *p;
+
+  p = param_1->items + param_1->count++;
+  p->name = func_001053E0(D_00307D18, *param_2);
+  if (func_0011B4F0(param_2[1], &D_001D878C) != 0) {
+    if (func_0011B4F0(param_2[1], &D_001D8784) != 0) goto L2;
+    if (func_0013F2E9(p->name, &D_001D8774) != 0 &&
+        func_0013F2E9(p->name, &D_001D73F8) != 0 &&
+        func_0013F2E9(p->name, &D_001D28F0) != 0 &&
+        func_0013F2E9(p->name, &D_001D8764) != 0 &&
+        func_0013F2E9(p->name, &D_001D8758) != 0) {
+      p->type = 2;
+      goto L2;
+    }
+  }
+  p->type = 1;
+L2:
+  if (func_0011B4F0(param_2[2], &D_001D8750) == 0) {
+    p->kind = 0;
+    p->v[0].f = func_0013E9E0(param_2[3]);
+    return;
+  }
+  if (func_0011B4F0(param_2[2], &D_001D8748) != 0 && func_0011B4F0(param_2[2], &D_001D873C) != 0) {
+    if (func_0011B4F0(param_2[2], &D_001D8734) != 0 && func_0011B4F0(param_2[2], &D_001D8728) != 0) {
+      if (func_0011B4F0(param_2[2], &D_001D8720) != 0)
+        return;
+      p->kind = 3;
+      p->v[0].i = func_0013E9DB(param_2[3]);
+      p->v[1].i = func_0013E9DB(param_2[4]);
+      p->v[2].f = func_0013E9E0(param_2[5]);
+      return;
+    }
+    p->kind = 2;
+    p->v[0].f = func_0013E9E0(param_2[3]);
+    p->v[1].f = func_0013E9E0(param_2[4]);
+    p->v[2].f = func_0013E9E0(param_2[5]);
+    if (param_2[6] != 0)
+      p->v[3].f = func_0013E9E0(param_2[6]);
+    else
+      p->v[3].i = 0;
+    return;
+  }
+  p->kind = 1;
+  p->v[0].i = func_001053E0(D_00307D18, param_2[3]);
+}
+
