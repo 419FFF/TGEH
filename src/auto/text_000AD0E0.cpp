@@ -1,6 +1,8 @@
 /* 11 functions from 0x000AD0E0 to 0x000AE07E, found by Ghidra. */
 #include "common.h"
 #include "ghidra.h"
+struct Item18 { int name; short type; short kind; union { int i; float f; } v[4]; };
+struct Table18 { int pad0; unsigned short count; short pad6; Item18 *items; };
 
 char _func_000AD0E0(void)
 {
