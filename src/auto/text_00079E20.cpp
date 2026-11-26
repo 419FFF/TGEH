@@ -5,6 +5,65 @@
 struct E5C0 { int a; unsigned char *b; int c; int d; };
 extern E5C0 _D_002FA688[4];
 
+void func_00079E20(int *param_1, undefined4 param_2)
+{
+  int func_0011CD40(...),func_0011CDF0(...),func_0011CE10(...),func_0011CE20(...),func_0011CE30(...),func_0011CE50(...),func_0011CF30(...),func_0011CFC0(...);
+  float func_00131760(...),func_0012EA60(...);
+  extern float D_001D27EC,D_001D411C,D_001D27B0,D_001D2B64;
+  extern float D_001D313C;
+  extern float D_001D4270;
+  extern float D_001D2C00;
+  float *pfVar1;
+  float *pfVar2;
+  int iVar3;
+  uint uVar4;
+  longdouble lVar5;
+  
+  iVar3 = func_0011CD40(10,10,1,4,1);
+  *param_1 = iVar3;
+ for(uVar4=0;uVar4<120;uVar4+=12) {
+ *(float *)(*(int *)(*param_1+4)+uVar4)=func_00131760()-D_001D27EC;
+ *(float *)(*(int *)(*param_1+4)+uVar4+4)=func_00131760()-D_001D27EC;
+ *(float *)(*(int *)(*param_1+4)+uVar4+8)=func_00131760()-D_001D27EC;
+ func_0012EA60((void *)(*(int *)(*param_1+4)+uVar4));
+ *(float *)(*(int *)(*param_1+4)+uVar4)=func_00131760()**(float *)(*(int *)(*param_1+4)+uVar4)*D_001D313C;
+ *(float *)(*(int *)(*param_1+4)+uVar4+4)=func_00131760()**(float *)(*(int *)(*param_1+4)+uVar4+4)*D_001D4270;
+ *(float *)(*(int *)(*param_1+4)+uVar4+8)=func_00131760()**(float *)(*(int *)(*param_1+4)+uVar4+8)*D_001D313C;
+ *(float *)(*(int *)(*param_1+4)+uVar4+4)=(float)((double)*(float *)(*(int *)(*param_1+4)+uVar4+4)+D_001D411C);
+ }
+ uVar4=0;
+ do {
+ *(float *)(*(int *)(*param_1+12)+uVar4)=(func_00131760()-D_001D27EC)*D_001D2C00;
+ *(int *)(*(int *)(*param_1+12)+uVar4+4)=0x3f800000;
+ float f=(func_00131760()-D_001D27EC)*D_001D2C00;
+ uVar4+=12;
+ *(float *)(*(int *)(*param_1+12)+uVar4-4)=f;
+ }while(uVar4<120);
+  **(undefined4 **)(*param_1 + 0x14) = 0x3f800000;
+  *(undefined4 *)(*(int *)(*param_1 + 0x14) + 4) = 0x3f800000;
+  *(undefined4 *)(*(int *)(*param_1 + 0x14) + 8) = 0x3f800000;
+  *(undefined4 *)(*(int *)(*param_1 + 0x14) + 0xc) = 0x3e99999a;
+ uVar4=0;
+ do {
+ *(float *)(*(int *)(*param_1+28)+uVar4)=(func_00131760()+D_001D27B0)*D_001D2B64;
+ float f=(func_00131760()+D_001D27B0)*D_001D2B64;
+ uVar4+=8;
+ *(float *)(*(int *)(*param_1+28)+uVar4-4)=f;
+ }while(uVar4<32);
+  **(undefined4 **)(*param_1 + 0x24) = 0;
+  *(undefined4 *)(*(int *)(*param_1 + 0x24) + 4) = 0;
+  *(undefined4 *)(*(int *)(*param_1 + 0x24) + 8) = 0x3f800000;
+  *(undefined4 *)(*(int *)(*param_1 + 0x24) + 0xc) = 0x3f800000;
+  func_0011CDF0(param_2);
+  func_0011CE10(param_2,0);
+  func_0011CE20(param_2,0);
+  func_0011CE30(param_2,0x42200000,0x42700000);
+  func_0011CE50(param_2,0,0,0,0xbdb851ec);
+  func_0011CF30(param_2,0x40a00000,0x40a00000);
+  func_0011CFC0(param_2,0x41c80000);
+  return;
+}
+
 void _func_0007A040(void)
 {
   extern int D_001D6548;
@@ -199,6 +258,23 @@ void _func_0007A5C0(int p1, int p2)
         }
     }
 }
+
+#pragma optimize("s", on)
+void func_0007A690(int *param_1, int param_2)
+{
+ int func_0011CD40(...); float func_00131760(void);
+ extern float D_001D2804,D_001D313C,D_001D35F8,D_001D27B0,D_001D4270;
+ int func_0011CDF0(...); int func_0011CE20(...); int func_0011CE10(...); int func_0011CE30(...); int func_0011CE50(...); int func_0011CF30(...); int func_0011CFC0(...);
+ unsigned int i; int p;
+ p=func_0011CD40(0x40,1,3,4,1); *param_1=p;
+ for(i=0;i<0x300;i+=12){*(float *)(*(int *)(*param_1+4)+i)=func_00131760()*D_001D2804-D_001D313C;*(float *)(*(int *)(*param_1+4)+i+4)=func_00131760()*D_001D35F8;*(float *)(*(int *)(*param_1+4)+i+8)=func_00131760()*D_001D2804-D_001D313C;}
+ *(int *)(*(int *)(*param_1+0xc)+8)=0;*(int *)(*(int *)(*param_1+0xc)+4)=0;**(int **)(*param_1+0xc)=0;
+ for(i=0;i<0x20;i+=8){*(float *)(*(int *)(*param_1+0x1c)+i+4)=(func_00131760()+D_001D27B0)*D_001D4270;*(int *)(*(int *)(*param_1+0x1c)+i)=*(int *)(*(int *)(*param_1+0x1c)+i+4);}
+ *(int *)(*(int *)(*param_1+0x24))=0;*(int *)(*(int *)(*param_1+0x24)+4)=0;*(int *)(*(int *)(*param_1+0x24)+8)=0x3f800000;*(int *)(*(int *)(*param_1+0x24)+12)=0x3f800000;
+ *(int *)(*(int *)(*param_1+0x14))=0x3f800000;*(int *)(*(int *)(*param_1+0x14)+4)=0x3e4ccccd;*(int *)(*(int *)(*param_1+0x14)+8)=0x3e4ccccd;*(int *)(*(int *)(*param_1+0x14)+12)=0x3f000000;*(int *)(*(int *)(*param_1+0x14)+16)=0x3e4ccccd;*(int *)(*(int *)(*param_1+0x14)+20)=0x3f800000;*(int *)(*(int *)(*param_1+0x14)+24)=0x3e4ccccd;*(int *)(*(int *)(*param_1+0x14)+28)=0x3f000000;*(int *)(*(int *)(*param_1+0x14)+32)=0x3e4ccccd;*(int *)(*(int *)(*param_1+0x14)+36)=0x3e4ccccd;*(int *)(*(int *)(*param_1+0x14)+40)=0x3f800000;*(int *)(*(int *)(*param_1+0x14)+44)=0x3f000000;
+ func_0011CDF0(param_2);func_0011CE20(param_2,0x3dcccccd);func_0011CE10(param_2,0x40000000);func_0011CE30(param_2,0,0);func_0011CE50(param_2,0,0,0,0);func_0011CF30(param_2,0xc1a00000,0xc1a00000);func_0011CFC0(param_2,0x461c4000);
+}
+#pragma optimize("", on)
 
 void func_0007A850(int param_1)
 {
