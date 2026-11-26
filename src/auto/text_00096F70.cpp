@@ -2,6 +2,7 @@
 #include "common.h"
 #include "ghidra.h"
 
+struct MeshObj { char pad0[0xf4]; struct MeshData *mesh; int vbuf; int *ibuf; int h1; int h2; int total; char pad1[0xc]; int val; };
 extern "C" void (__stdcall *__imp__RtlEnterCriticalSection)(void *);
 extern "C" void (__stdcall *__imp__RtlLeaveCriticalSection)(void *);
 struct MeshEntry { int pad0[8]; unsigned short *indices; unsigned int count; int pad1[2]; };
@@ -24,16 +25,14 @@ void _func_00096F70(int param_1)
   unsigned int i, j, k;
   int *v;
   int **q;
-  int h;
   unsigned short *dst;
   __declspec(align(16)) int buf[15];
 
   *(int *)(s + 0xf4) = func_00096230(s);
   func_00096E40(param_1);
   __imp__RtlEnterCriticalSection(&D_003326AC);
-  h = func_0014E3D0((*(MeshData **)(s + 0xf4))->vertCount << 4);
-  *(int *)(s + 0xf8) = h;
-  v = func_0014E420(h, 0);
+  *(int *)(s + 0xf8) = func_0014E3D0((*(MeshData **)(s + 0xf4))->vertCount << 4);
+  v = func_0014E420(*(int *)(s + 0xf8), 0);
   for (i = 0; i < (*(MeshData **)(s + 0xf4))->vertCount; i++) {
     v[0] = (*(MeshData **)(s + 0xf4))->verts[i * 3];
     v[1] = (*(MeshData **)(s + 0xf4))->verts[i * 3 + 1];
