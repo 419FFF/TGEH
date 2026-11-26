@@ -4,8 +4,9 @@
 
 extern float D_001D2A2C;
 extern float D_001D2808;
-static __forceinline void Hermite3(float *o, float a, float b, float c)
+static __forceinline void Hermite3(float *o, float a, float b, int ci)
 {
+  float c = *(float *)&ci;
   long double t = (long double)c * D_001D2A2C;
   long double s = (long double)b + a;
   o[0] = (float)((s + s) - t);
