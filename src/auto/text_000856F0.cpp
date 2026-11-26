@@ -2,7 +2,8 @@
 #include "common.h"
 #include "ghidra.h"
 static undefined4 D_002FDDA0;
-extern int D_002FDDB0,D_002FDDB4,D_002FDD9C,D_002FDD98,D_002FDDAC,D_0030809C;
+static int D_002FDDB0,D_002FDDB4,D_002FDD9C,D_002FDD98;
+extern int D_002FDDAC,D_0030809C;
 extern unsigned int D_001E4618;
 extern float D_001D27B8,D_001D290C,D_001D27B0,D_001D65B0,D_001D27EC,D_001D2808,D_001D27D4;
 struct S856F0 { int unk0; float *a; int unk8; int *b; int unk10; int *c; int unk18; int *d; int unk20; int *e; };
@@ -87,6 +88,51 @@ void func_000858F0(void) {
     extern int D_001D6B9C;
     int func_0011D0E0(...);
     func_0011D0E0((int)&D_001D6B9C);
+}
+
+void func_00085BF0(int p)
+{
+ float func_00131760(void); int func_00110420(...); int func_00110480(...);
+ int *v=(int *)D_002FDDB0;
+ **(int **)(*(int *)(*(int *)(p+0x50)+0x2c)+4)=v[0];
+ ((int *)*(int *)(*(int *)(*(int *)(p+0x50)+0x2c)+4))[1]=v[1];
+ ((int *)*(int *)(*(int *)(*(int *)(p+0x50)+0x2c)+4))[2]=v[2];
+ if(D_002FDD9C) {
+ int count=*(int *)(p+0x15c),i=0;
+ for(;i<count;++i) {
+ if(*(float *)(*(int *)(p+0x160)+i*0x58+0x20)!=D_001D27B8) break;
+ }
+
+ if(i==count) {
+ D_002FDD9C=0;D_002FDD98=0;
+ func_00110420(*(int *)(D_002FDDAC+0xe0),D_002FDDA0);
+ func_00110480(D_0030809C,D_002FDDA0,8);
+ }
+ }
+ int i=0;
+
+ if(*(int *)(p+0x15c)>0) {
+ int offset=0;
+ do {
+ longdouble time=(longdouble)(int)D_001E4618;
+ float *a=(float *)(*(int *)(p+0x160)+offset+0x34);
+ if((int)D_001E4618<0) time+=D_001D290C;
+ *a=(longdouble)*a-((longdouble)D_001D27B0/time)*D_001D65B0;
+ ++i;offset+=0x58;
+ }while(i<*(int *)(p+0x15c));
+ }
+ int off=0;
+ do {
+ longdouble r=func_00131760();
+ *(float *)(*(int *)(*(int *)(*(int *)(p+0x50)+0x2c)+12)+off)=
+ (longdouble)*(float *)D_002FDDB4*D_001D27D4+(r-D_001D27EC)*D_001D2808;
+ r=func_00131760();
+ *(float *)(*(int *)(*(int *)(*(int *)(p+0x50)+0x2c)+12)+off+4)=
+ (longdouble)((float *)D_002FDDB4)[1]*D_001D27D4+(r-D_001D27EC)*D_001D2808;
+ r=func_00131760();off+=12;
+ *(float *)(*(int *)(*(int *)(*(int *)(p+0x50)+0x2c)+12)+off-4)=
+ (longdouble)((float *)D_002FDDB4)[2]*D_001D27D4+(r-D_001D27EC)*D_001D2808;
+ }while(off<180);
 }
 
 void func_00085E20(void) {
