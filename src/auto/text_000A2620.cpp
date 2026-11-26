@@ -409,3 +409,6 @@ void func_000A2B40(undefined4 *param_1) { extern undefined4 D_00312628; extern u
 extern uint D_00311D40, D_00311D44;
 void func_000A2B60(undefined4 *param_1) { extern undefined4 D_00311D40; extern undefined4 D_00311D44; *(float *)param_1 = *(float *)&D_00311D40; param_1[1] = D_00311D44; }
 
+extern uint D_00311D48, D_00311D4C;
+void func_000A2B80(undefined4 *param_1) { extern undefined4 D_00311D48; extern undefined4 D_00311D4C; *(float *)param_1 = *(float *)&D_00311D48; param_1[1] = D_00311D4C; }
+
