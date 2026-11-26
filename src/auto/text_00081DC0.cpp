@@ -1,6 +1,7 @@
 /* 17 functions from 0x00081DC0 to 0x00082CBB, found by Ghidra. */
 #include "common.h"
 #include "ghidra.h"
+extern float D_001D290C,D_001D2BF4,D_001D27AC,D_001D29D8,D_001D2C00,D_001D31C8,D_001D2B64;
 static int D_002FBB18;
 
 void func_00081DC0(int*p,unsigned q){int func_0011CD40(...),func_0011CDF0(...),func_0011CE10(...),func_0011CE20(...),func_0011CE30(...),func_0011CE50(...),func_0011CF30(...),func_0011CFC0(...);float func_00131760(...);extern float D_001D27EC,D_001D5D00,D_001D28C0,D_001D31D0,D_001D31C8;unsigned i;*p=func_0011CD40(32,10,1,4,1);for(i=0;i<384;i+=12){*(float*)(*(int*)(*p+4)+i)=(func_00131760()-D_001D27EC)*D_001D5D00;*(unsigned*)(*(int*)(*p+4)+i+4)=0;*(float*)(*(int*)(*p+4)+i+8)=(func_00131760()-D_001D27EC)*D_001D5D00;}for(i=0;i<120;i+=12){*(float*)(*(int*)(*p+12)+i)=(func_00131760()-D_001D27EC)*D_001D28C0;*(unsigned*)(*(int*)(*p+12)+i+4)=0x3f800000;*(float*)(*(int*)(*p+12)+i+8)=(func_00131760()-D_001D27EC)*D_001D28C0;}*(unsigned*)(*(int*)(*p+20))=0x3f4ccccd;*(unsigned*)(*(int*)(*p+20)+4)=0x3f4ccccd;*(unsigned*)(*(int*)(*p+20)+8)=0x3f4ccccd;*(unsigned*)(*(int*)(*p+20)+12)=0x3e99999a;for(i=0;i<32;i+=8){*(float*)(*(int*)(*p+28)+i)=func_00131760()*D_001D31D0+D_001D31C8;*(float*)(*(int*)(*p+28)+i+4)=func_00131760()*D_001D31D0+D_001D31C8;}*(unsigned*)(*(int*)(*p+36))=0;*(unsigned*)(*(int*)(*p+36)+4)=0;*(unsigned*)(*(int*)(*p+36)+8)=0x3f800000;*(unsigned*)(*(int*)(*p+36)+12)=0x3f800000;func_0011CDF0(q);func_0011CE10(q,0);func_0011CE20(q,0);func_0011CE30(q,0x41f00000,0x41b00000);func_0011CE50(q,0,0,0,0xbdcccccd);func_0011CF30(q,0,0);func_0011CFC0(q,0x41c80000);}
@@ -201,6 +202,8 @@ void func_00082820(int param_1, int param_2)
     }
   }
 }
+
+void func_00082930(int *p,int *q){extern float D_001D29E0,D_001D27AC,D_001D29D8,D_001D2C00,D_001D2A2C,D_001D27B0,D_001D2A14,D_001D31C8,D_001D3F88;int func_00131230(...),func_00131250(...),func_0011CF30(...);float func_00131760(...);int obj=*(int*)(*(int*)((char*)p+0x50)+0x2c);int j=0,k=0;float f,g;if(*q){do{f=(float)k*D_001D29E0*D_001D27AC;g=(func_00131760()*D_001D29D8+D_001D2C00)*D_001D2A2C;*(float*)(obj+12+j)=func_00131230(f)*g;*(float*)(obj+16+j)=func_00131760()+D_001D27B0;*(float*)(obj+20+j)=func_00131250(f)*g;if(++k==10)k=0;j+=12;}while(j<240);for(j=0;j<80;j+=8){*(float*)(obj+32+j)=func_00131760()*D_001D2A14+D_001D2A2C;*(unsigned*)(obj+28+j)=*(unsigned*)(obj+32+j);}func_0011CF30((char*)p+0x54,0x42200000,0x42200000);return;}do{f=(float)k*D_001D29E0*D_001D27AC;g=(func_00131760()*D_001D29D8+D_001D2C00)*D_001D31C8;*(float*)(obj+12+j)=func_00131230(f)*g;*(float*)(obj+16+j)=2*(func_00131760()+D_001D27B0);*(float*)(obj+20+j)=func_00131250(f)*g;if(++k==10)k=0;j+=12;}while(j<240);for(j=0;j<80;j+=8){*(float*)(obj+32+j)=func_00131760()*D_001D3F88+D_001D2A14;*(unsigned*)(obj+28+j)=*(unsigned*)(obj+32+j);}func_0011CF30((char*)p+0x54,0x42b40000,0x42b40000);}
 
 void func_00082B20(void)
 {
