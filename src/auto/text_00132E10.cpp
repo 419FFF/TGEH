@@ -3,7 +3,7 @@
 extern "C" __declspec(dllimport) void __stdcall RtlEnterCriticalSection(void*);
 extern "C" __declspec(dllimport) void __stdcall RtlLeaveCriticalSection(void*);
 
-struct S33860 { char kind; char pad[3]; int f4; void (__cdecl *f8)(S33860 *, int); int fc; unsigned int f10; char *f14; unsigned int f18; int *f1c; unsigned int f20; char *f24; char pad2[0x20]; unsigned short f48; };
+struct S33860 { char kind; char pad[3]; int f4; void (__cdecl *f8)(S33860 *, int); int fc; unsigned int f10; char *f14; unsigned int f18; int *f1c; unsigned int f20; char *f24; unsigned short f28; unsigned short indices[4]; unsigned short f32; float weights[4]; int f44; unsigned short f48; };
 signed char _func_00132F90(signed char index) { extern signed char _D_001E82AC[]; return _D_001E82AC[(int)index]; }
 
 extern "C" void *memset(void *, int, unsigned int);
@@ -75,6 +75,38 @@ int _func_00132FA0(float *arg)
 int _func_00133430(void) { return 0; }
 
 void _func_00133490(void *p) { extern unsigned int _D_001E82DC,_D_00331D68,_D_00331D6C,_D_00331D70; extern unsigned short _D_00331D74,_D_00331D78,_D_00331D7C,_D_00331D80; unsigned char*q=(unsigned char*)p; *(unsigned int*)(q+52)=_D_001E82DC; *(unsigned int*)(q+56)=_D_00331D68; *(unsigned int*)(q+60)=_D_00331D6C; *(unsigned int*)(q+64)=_D_00331D70; *(unsigned short*)(q+42)=_D_00331D74; *(unsigned short*)(q+44)=_D_00331D78; *(unsigned short*)(q+46)=_D_00331D7C; *(unsigned short*)(q+48)=_D_00331D80; }
+
+void func_001334F0(S33860 *p) {
+ extern float *D_00331C88; extern float D_001D27B8,D_001D27B0;
+ extern unsigned int D_001E82DC,D_00331D68,D_00331D6C,D_00331D70;
+ extern unsigned short D_00331D74,D_00331D78,D_00331D7C,D_00331D80;
+ void func_00133490(S33860 *); int __fastcall func_00133430(unsigned int,unsigned int);
+ unsigned short *idx=(unsigned short *)((char *)p+0x2a); float *out=(float *)((char *)p+0x34);
+ float *w; unsigned int i; unsigned short a,b,c,d; float x,y,z,t; double r;
+ if(!(p->f18&0x40000)) return;
+ w=D_00331C88;
+ if(!w){func_00133490(p);return;}
+ idx[0]=65;idx[1]=65;idx[2]=65;idx[3]=65;
+ for(i=0;i<*(unsigned short *)((char *)p+0x28);i++){
+ if((double)w[i]!=(double)D_001D27B8){
+ if(func_00133430(i,idx[0])>0){idx[3]=idx[2];idx[2]=idx[1];idx[1]=idx[0];idx[0]=(unsigned short)i;}
+ else if(func_00133430(i,idx[1])>0){idx[3]=idx[2];idx[2]=idx[1];idx[1]=(unsigned short)i;}
+ else if(func_00133430(i,idx[2])>0){idx[3]=idx[2];idx[2]=(unsigned short)i;}
+ else if(func_00133430(i,idx[3])>0)idx[3]=(unsigned short)i;
+ }}
+ a=idx[0];
+ if(a==65){
+ *(unsigned int *)&out[0]=D_001E82DC;*(unsigned int *)&out[1]=D_00331D68;*(unsigned int *)&out[2]=D_00331D6C;*(unsigned int *)&out[3]=D_00331D70;
+ idx[0]=D_00331D74;idx[1]=D_00331D78;idx[2]=D_00331D7C;idx[3]=D_00331D80;return;
+ }
+ x=w[a];b=idx[1];out[0]=(float)x;
+ y=b==65?(double)D_001D27B8:(double)w[b];c=idx[2];out[1]=(float)y;
+ z=c==65?(double)D_001D27B8:(double)w[c];d=idx[3];out[2]=(float)z;
+ t=d==65?(double)D_001D27B8:(double)w[d];
+ r=(double)D_001D27B0/((double)t+(double)z+(double)y+(double)x);
+ out[0]=(float)(x*r);out[1]=(float)(y*r);out[2]=(float)(z*r);out[3]=(float)(t*r);
+ if(b==65)idx[1]=a;if(c==65)idx[2]=idx[1];if(d==65)idx[3]=idx[2];
+}
 
 void func_001336F0(int *s)
 {
