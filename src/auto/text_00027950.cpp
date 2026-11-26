@@ -33,23 +33,25 @@ void func_00027A20(int param_1)
   return;
 }
 
+#pragma optimize("p", on)
 void func_00027A70(int a)
 {
  int func_001100A0(...),func_0009C7A0(...),func_001313C0(...),func_00110550(...),func_0009D3E0(...),func_0009C590(...),func_0011C3E0(...),func_0011C3B0(...),func_00110300(...),func_0011BDD0(...);
- float func_00131760(); long double func_0012E870(...);
+ float func_00131760(); float func_0012E870(...);
  extern char D_001D32D8,D_001D37C0,D_001D37B8;
  extern int D_00313B54;extern unsigned int D_003104B4;extern int D_0030C630[];extern float D_001D2888;
- int m,p,q;int object=a;unsigned int i;
+ int m,p,q,n;int object=a;unsigned int i;
  func_001100A0(*(int*)(object+44),&m);
  *(float*)(object+0x114)=0.0f;
  *(float*)(object+0x11c)=func_00131760();
- *(float*)(object+0x134)=-1.0f;
+ *(int*)(object+0x134)=0xbf800000;
  p=func_001313C0(*(int*)func_0009C7A0(object,&D_001D32D8,0));
  *(int*)(object+0x118)=p;
  if(p==21)func_00110550(*(int*)(*(int*)(object+0x110)+0xe0),*(int*)(object+44),8);
- if(*(char*)(object+19)==0x34 || D_00313B54==8){
+ if(*(char*)(object+19)==0x34) goto remove;
+ if(D_00313B54==8){
    p=*(int*)(object+0x118);
-   if(p==13){*(int*)(object+0x114)=6;func_0009D3E0(object);return;}
+   if(p==13){remove: *(int*)(object+0x114)=6;func_0009D3E0(object);return;}
    if(p==23){*(int*)(object+0x118)=13;return;}
  }
  for(i=0;i<D_003104B4;++i){
@@ -60,8 +62,8 @@ void func_00027A70(int a)
     if(object==q){*(int*)(object+0x114)=6;func_0009D3E0(object);break;}
    }
    if(*(char*)(D_0030C630[i]+19)==0x30){
-    func_001100A0(*(int*)(D_0030C630[i]+44),&a);
-    if(func_0012E870(m+48,a+48)<(long double)D_001D2888){
+    func_001100A0(*(int*)(D_0030C630[i]+44),&n);
+    if(func_0012E870(m+48,n+48)<D_001D2888){
      *(int*)(object+0x114)=6;func_0009D3E0(object);
      p=D_0030C630[i];
      *(short*)(p+0x12c+*(int*)(p+0x128)*2)=*(short*)(object+0x54);
@@ -77,7 +79,7 @@ void func_00027A70(int a)
   if(q){*(int*)(*(int*)(*(int*)(q+8)+40)+0x54)=1;--*(short*)(*(int*)(p+0xe0)+42);}
  }
 }
-
+#pragma optimize("", on)
 void _func_00027C80(int param_1)
 {
   int _func_0005C5E0(...);
