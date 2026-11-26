@@ -41,7 +41,7 @@ void func_00081FB0(int *p,unsigned int q) {
  }
  unsigned int i=0;offset=0;
  do {
- float angle=(float)i*D_001D2BF4*D_001D27AC;
+ float angle=(float)i*D_001D27AC*D_001D2BF4;
  float radius=func_00131760()*D_001D29D8+D_001D2C00;radius+=radius;
  *(float *)(*(int *)(*p+12)+offset)=func_00131230(angle)*radius;
  *(unsigned int *)(*(int *)(*p+12)+offset+4)=0x3f800000;
