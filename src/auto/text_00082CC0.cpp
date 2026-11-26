@@ -1,27 +1,7 @@
 /* 19 functions from 0x00082CC0 to 0x00083B2B, found by Ghidra. */
 #include "common.h"
 #include "ghidra.h"
-static int D_002FBB1C;
-float func_00131760(void);
-extern float D_001D29E0,D_001D29D8,D_001D2C00,D_001D27EC,D_001D28C0,D_001D27B0;
-static __forceinline void SetRandomColor0(volatile int *x) {
-    *(float *)(*(int *)(*(int *)(*x+0x2c)+0x14)+0)=func_00131760()*D_001D29E0+D_001D2C00;
-    *(int *)(*(int *)(*(int *)(*x+0x2c)+0x14)+4)=0x3f800000;
-    *(float *)(*(int *)(*(int *)(*x+0x2c)+0x14)+8)=func_00131760()*D_001D29E0+D_001D28C0;
-    *(float *)(*(int *)(*(int *)(*x+0x2c)+0x14)+12)=(func_00131760()+D_001D27B0)*D_001D29E0;
-}
-static __forceinline void SetRandomColor1(volatile int *x) {
-    *(int *)(*(int *)(*(int *)(*x+0x2c)+0x14)+0)=0x3f800000;
-    *(float *)(*(int *)(*(int *)(*x+0x2c)+0x14)+4)=func_00131760()*D_001D29E0+D_001D29D8;
-    *(float *)(*(int *)(*(int *)(*x+0x2c)+0x14)+8)=func_00131760()*D_001D29E0+D_001D27EC;
-    *(float *)(*(int *)(*(int *)(*x+0x2c)+0x14)+12)=func_00131760()*D_001D2C00+D_001D29E0;
-}
-static __forceinline void SetRandomColor2(volatile int *x) {
-    *(float *)(*(int *)(*(int *)(*x+0x2c)+0x14)+0)=func_00131760()*D_001D2C00+D_001D27EC;
-    *(float *)(*(int *)(*(int *)(*x+0x2c)+0x14)+4)=func_00131760()*D_001D2C00+D_001D27EC;
-    *(float *)(*(int *)(*(int *)(*x+0x2c)+0x14)+8)=func_00131760()*D_001D2C00+D_001D27EC;
-    *(float *)(*(int *)(*(int *)(*x+0x2c)+0x14)+12)=func_00131760()*D_001D2C00+D_001D29E0;
-}
+
 
 
 void func_00082CC0(int param_1)
@@ -46,7 +26,6 @@ void func_00082CC0(int param_1)
   int color[4];
   __declspec(align(16)) float local_50[16];
   int iVar2;
-  volatile int *x;
 
   local_70 = 0;
   func_00110060(*(int *)(param_1 + 0x2c), local_50);
@@ -68,29 +47,30 @@ void func_00082CC0(int param_1)
   color[3] = 0x3f800000;
   *(int *)&pos[2] = *(int *)&local_50[14];
   func_00090180(color, pos, 0x43c80000, 0x3f19999a, 0xffaae7ee, 1);
+  int y = D_002FBB1C;
   switch (D_003080F4) {
-  case 1:
-    x = (volatile int *)(D_002FBB1C+0x50);
+  case 1: {
+    volatile int *x = (volatile int *)(y+0x50);
     *(float *)(*(int *)(*(int *)(*x+0x2c)+0x14)+0)=func_00131760()*D_001D29E0+D_001D2C00;
     *(int *)(*(int *)(*(int *)(*x+0x2c)+0x14)+4)=0x3f800000;
     *(float *)(*(int *)(*(int *)(*x+0x2c)+0x14)+8)=func_00131760()*D_001D29E0+D_001D28C0;
     *(float *)(*(int *)(*(int *)(*x+0x2c)+0x14)+12)=(func_00131760()+D_001D27B0)*D_001D29E0;
-    break;
+    } break;
   case 2:
-  case 10:
-    x = (volatile int *)(D_002FBB1C+0x50);
+  case 10: {
+    volatile int *x = (volatile int *)(y+0x50);
     *(int *)(*(int *)(*(int *)(*x+0x2c)+0x14)+0)=0x3f800000;
     *(float *)(*(int *)(*(int *)(*x+0x2c)+0x14)+4)=func_00131760()*D_001D29E0+D_001D29D8;
     *(float *)(*(int *)(*(int *)(*x+0x2c)+0x14)+8)=func_00131760()*D_001D29E0+D_001D27EC;
     *(float *)(*(int *)(*(int *)(*x+0x2c)+0x14)+12)=func_00131760()*D_001D2C00+D_001D29E0;
-    break;
-  default:
-    x = (volatile int *)(D_002FBB1C+0x50);
+    } break;
+  default: {
+    volatile int *x = (volatile int *)(y+0x50);
     *(float *)(*(int *)(*(int *)(*x+0x2c)+0x14)+0)=func_00131760()*D_001D2C00+D_001D27EC;
     *(float *)(*(int *)(*(int *)(*x+0x2c)+0x14)+4)=func_00131760()*D_001D2C00+D_001D27EC;
     *(float *)(*(int *)(*(int *)(*x+0x2c)+0x14)+8)=func_00131760()*D_001D2C00+D_001D27EC;
     *(float *)(*(int *)(*(int *)(*x+0x2c)+0x14)+12)=func_00131760()*D_001D2C00+D_001D29E0;
-    break;
+    } break;
   }
 }
 
