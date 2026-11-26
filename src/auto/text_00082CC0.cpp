@@ -1,6 +1,7 @@
 /* 19 functions from 0x00082CC0 to 0x00083B2B, found by Ghidra. */
 #include "common.h"
 #include "ghidra.h"
+static int D_002FBB1C;
 float func_00131760(void);
 extern float D_001D29E0,D_001D29D8,D_001D2C00,D_001D27EC,D_001D28C0,D_001D27B0;
 static __forceinline void SetRandomColor0(volatile int *x) {
