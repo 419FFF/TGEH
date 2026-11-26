@@ -2,7 +2,59 @@
 #include "common.h"
 #include "ghidra.h"
 static undefined4 D_002FDDA0;
+extern int D_002FDDB0,D_002FDDB4,D_002FDD9C,D_002FDD98,D_002FDDAC,D_0030809C;
+extern unsigned int D_001E4618;
+extern float D_001D27B8,D_001D290C,D_001D27B0,D_001D65B0,D_001D27EC,D_001D2808,D_001D27D4;
 struct S856F0 { int unk0; float *a; int unk8; int *b; int unk10; int *c; int unk18; int *d; int unk20; int *e; };
+
+void func_000856F0(struct S856F0 **pp, int h)
+{
+  extern float D_001D27B0, D_001D2B64;
+  S856F0 *func_0011CD40(int,int,int,int,int);
+  float func_00131760(void);
+  float func_0012EA60(float *);
+  int func_0011CDF0(int);
+  int func_0011CE10(int,int);
+  int func_0011CE20(int,int);
+  int func_0011CE30(int,int,int);
+  int func_0011CE50(int,int,int,int,int);
+  int func_0011CF30(int,int,int);
+  int func_0011CFC0(int,int);
+  unsigned int i;
+  float *v;
+  *pp = func_0011CD40(10, 1, 1, 1, 1);
+  for (i = 0; i < 10; i++) {
+    (*pp)->a[i * 3] = func_00131760() * 2 - D_001D27B0;
+    ((int*)(*pp)->a)[i * 3 + 1] = 0;
+    (*pp)->a[i * 3 + 2] = func_00131760() * 2 - D_001D27B0;
+    v = &(*pp)->a[i * 3];
+    func_0012EA60(v);
+    v = &(*pp)->a[i * 3];
+    *v = func_00131760() * *v * D_001D2B64;
+    v = &(*pp)->a[i * 3 + 2];
+    *v = func_00131760() * *v * D_001D2B64;
+  }
+  (*pp)->b[0] = 0;
+  (*pp)->b[1] = 0x3f800000;
+  (*pp)->b[2] = 0;
+  (*pp)->c[0] = 0x3e4ccccd;
+  (*pp)->c[1] = 0x3e4ccccd;
+  (*pp)->c[2] = 0x3e4ccccd;
+  (*pp)->c[3] = 0x3f800000;
+  (*pp)->d[0] = 0x3f000000;
+  (*pp)->d[1] = 0x3f000000;
+  (*pp)->e[0] = 0;
+  (*pp)->e[1] = 0;
+  (*pp)->e[2] = 0x3f800000;
+  (*pp)->e[3] = 0x3f800000;
+  func_0011CDF0(h);
+  func_0011CE10(h, 0);
+  func_0011CE20(h, 0);
+  func_0011CE30(h, 0x41700000, 0x41c80000);
+  func_0011CE50(h, 0xbd4ccccd, 0xbd4ccccd, 0xbd4ccccd, 0xbf000000);
+  func_0011CF30(h, 0x40600000, 0x40c00000);
+  func_0011CFC0(h, 0x41200000);
+}
 
 void func_00085870(undefined4 param_1, int param_2)
 {
