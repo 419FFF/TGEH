@@ -1,5 +1,7 @@
 /* 20 functions from 0x00138E80 to 0x00139D80, found by Ghidra. */
 #include "common.h"
+struct Wave139200 { unsigned short tag,channels; unsigned int rate,average; unsigned short block,bits,extra; };
+struct Desc139200 { unsigned int flags,size; void* format; unsigned int a,b,c; };
 extern "C" void *memset(void *, int, unsigned int);
 extern "C" void *memcpy(void *, const void *, unsigned int);
 #pragma intrinsic(memset, memcpy)
@@ -157,11 +159,80 @@ void func_00139690(int self)
   func_00139460(self, *(int *)(self + 0xbc));
 }
 
+void _func_001396C0(int obj, int k)
+{
+    extern int D_00332AD8; extern char *D_00332AD4;
+    int func_0013AF70(...), func_0013AF50(...), func_0012E460(...), func_00131EB0(...), func_00131D60(...), func_00139200(...);
+    void func_00139690(int);
+    unsigned int rem, cnt;
+    int off;
+    char *buf;
+    struct { int a; unsigned int sz; int c; int d; int e; int f; } v;
+
+    if (*(int *)(obj + 0x90) == 1 && k == 0) {
+        func_0013AF70(D_00332AD8);
+        *(int *)(obj + 0xc) = func_0012E460(*(int *)(obj + 0x94));
+        func_00131EB0(*(int *)(obj + 0x94), *(int *)(*(int *)(obj + 0xc) + 0x1c), 0);
+        *(int *)(obj + 0x98) = 0;
+        func_00139200();
+        func_0013AF50(D_00332AD8);
+    }
+    buf = D_00332AD4;
+    rem = 0x12000;
+    off = 0;
+    func_0013AF70(D_00332AD8);
+    for (;;) {
+        cnt = *(int *)(*(int *)(obj + 0xc) + 0x20) - *(int *)(obj + 0x98);
+        if (rem <= cnt) {
+            func_00131D60(*(int *)(obj + 0x94), (int)buf + off, rem);
+            *(int *)(obj + 0x98) += rem;
+            break;
+        }
+        func_00131D60(*(int *)(obj + 0x94), (int)buf + off, cnt);
+        *(int *)(obj + 0x98) += cnt;
+        off += cnt;
+        rem -= cnt;
+        if ((*(unsigned char *)(obj + 0xb8) & 2) == 0) {
+            memset(buf + off, 0, rem);
+            *(char *)(obj + 0xba) = 1;
+            break;
+        }
+        func_00131EB0(*(int *)(obj + 0x94), *(int *)(*(int *)(obj + 0xc) + 0x1c), 0);
+        *(int *)(obj + 0x98) = 0;
+        if (rem == 0) break;
+    }
+    func_0013AF50(D_00332AD8);
+    memcpy(*(void **)(obj + 0xa0 + k * 4), buf, 0x12000);
+    v.a = *(int *)(obj + 0xa0 + k * 4);
+    v.c = 0;
+    v.e = 0;
+    v.f = 0;
+    v.d = (int)(obj + 0xac + k * 4);
+    *(int *)v.d = 0x8000000a;
+    v.sz = 0x12000;
+    {
+        int *dev = *(int **)(obj + 0x9c);
+        ((void (__stdcall *)(int *, void *, int))(*(int **)dev)[4])(dev, &v, 0);
+    }
+    cnt = *(int *)(obj + 0x90);
+    if ((cnt == 3 || cnt == 1) && k == 2) {
+        if (cnt == 1) {
+            if ((*(unsigned char *)(obj + 0xb8) & 4) == 0) {
+                *(int *)(obj + 0x90) = 2;
+                return;
+            }
+            func_00139690(obj);
+            return;
+        }
+        *(int *)(obj + 0x90) = 4;
+    }
+}
+
 void _func_001398C0(void)
 {
     extern int D_00332AD8, D_00332AE0, D_00332AEC, D_00332ACC;
     extern char D_00332ADC;
-    int func_0013AF50(...), func_0013AF70(...), func_00139170(...), func_0011C3E0(...), func_00139460(...), func_00116FB0(...), func_001396C0(...);
+    int func_0013AF50(...), func_0013AF70(...), func_00139170(...), func_0011C3E0(...), func_00139460(...), func_00116FB0(...),func_001396C0(...);
     void __stdcall func_00109CF3(int, int);
     void __stdcall func_00109C1F(int);
     unsigned int i, n, j;
@@ -186,6 +257,17 @@ void _func_001398C0(void)
                 for (i = 0; i < n; i++) {
                     obj = list[i];
                     switch (*(int *)(obj + 0x90)) {
+                    case 6:
+                        func_00139170();
+                        if (*(int *)(obj + 0xc0) != 0) func_0011C3E0(obj + 0xc4);
+                        *(int *)(obj + 0xc0) = 0;
+                        func_00139460(obj, *(int *)(obj + 0xbc));
+                        func_0011C3E0(obj);
+                        func_00116FB0(obj);
+                        func_00109C1F(D_00332AEC);
+                        did = 1;
+                        break;
+                        break;
                     case 1:
                     case 4:
                         if (*(char *)(obj + 0xba) == 0) {
@@ -210,16 +292,6 @@ void _func_001398C0(void)
                         break;
                     case 5:
                         func_00139170();
-                        did = 1;
-                        break;
-                    case 6:
-                        func_00139170();
-                        if (*(int *)(obj + 0xc0) != 0) func_0011C3E0(obj + 0xc4);
-                        *(int *)(obj + 0xc0) = 0;
-                        func_00139460(obj, *(int *)(obj + 0xbc));
-                        func_0011C3E0(obj);
-                        func_00116FB0(obj);
-                        func_00109C1F(D_00332AEC);
                         did = 1;
                         break;
                     }
