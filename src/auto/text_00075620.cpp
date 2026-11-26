@@ -322,3 +322,75 @@ void func_00075D70(int param_1)
   func_00100BE0((float)D_002FA610 * 1.0f);
 }
 
+void func_00075E50(void)
+{
+  int func_000707B0(...);
+  int func_000706B0(...);
+  int func_00073B40(...);
+  int func_0009F010(...);
+  int func_000716C0(...);
+  extern int D_002FA544;
+  extern int D_002FA574;
+  extern MenuEnt75 *D_002FA380[];
+  extern char D_002FA5B6;
+  extern char D_002FA5B7;
+  extern char *D_00313BAC;
+  extern int D_002FA4FC;
+  MenuEnt75 *e;
+  void (__cdecl *pcVar1)(int);
+  int iVar2;
+
+  if (func_000707B0(0x40) != 0 && D_002FA380[D_002FA544][D_002FA574].cb != 0) {
+    func_000706B0(3);
+    D_002FA380[D_002FA544][D_002FA574].cb(0x40);
+  }
+  if (func_000707B0(0x80) != 0 && D_002FA380[D_002FA544][D_002FA574].cb != 0) {
+    func_000706B0(3);
+    D_002FA380[D_002FA544][D_002FA574].cb(0x80);
+  }
+  if (func_000707B0(0x10) != 0 && D_002FA380[D_002FA544][D_002FA574].cb != 0) {
+    func_000706B0(3);
+    D_002FA380[D_002FA544][D_002FA574].cb(0x10);
+  }
+  if (func_000707B0(0x20) != 0 && D_002FA380[D_002FA544][D_002FA574].cb != 0) {
+    func_000706B0(3);
+    D_002FA380[D_002FA544][D_002FA574].cb(0x20);
+  }
+  if (func_000707B0(10) != 0) {
+    pcVar1 = D_002FA380[D_002FA544][D_002FA574].cb;
+    if (pcVar1 != 0) {
+      pcVar1(2);
+      func_000706B0(2);
+    } else if (D_002FA544 != 0) {
+      func_00073B40(2);
+    } else {
+      func_000706B0(2);
+    }
+  }
+  if (func_000707B0(4) != 0) {
+    func_000706B0(1);
+    iVar2 = D_002FA380[D_002FA544][D_002FA574].b;
+    e = &D_002FA380[D_002FA544][D_002FA574];
+    if (iVar2 != 10 && iVar2 != 7) {
+      pcVar1 = e->cb;
+      if (pcVar1 != 0) {
+        pcVar1(4);
+        return;
+      }
+      func_00073B40(4);
+      return;
+    }
+    D_002FA5B6 = 0;
+    D_002FA5B7 = 0;
+    if (e->b == 7) {
+      D_002FA5B7 = 1;
+      if (*D_00313BAC == 0 && D_00313BAC[0x106c] == 0 && D_00313BAC[0x20d8] == 0) {
+        D_002FA5B6 = 1;
+      }
+    }
+    func_0009F010();
+    func_000716C0();
+    D_002FA4FC = D_002FA380[D_002FA544][D_002FA574].b;
+  }
+}
+
