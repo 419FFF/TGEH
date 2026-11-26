@@ -3,7 +3,7 @@
 #include "ghidra.h"
 struct F4760Params {
  int kind; float color[3]; int flags[2]; float scale; int tail[2];
- F4760Params() { kind=0; color[0]=0; color[1]=0; color[2]=0; flags[0]=0; flags[1]=0; scale=0; tail[0]=0; tail[1]=0; }
+ F4760Params() { volatile int *p=(volatile int *)this; p[0]=0; p[1]=0; p[2]=0; p[3]=0; p[4]=0; p[5]=0; p[6]=0; p[7]=0; p[8]=0; }
 };
 
 struct F4Owner { char pad0[0x22]; unsigned char id; char pad1[0x101]; unsigned char flags; };
@@ -160,31 +160,35 @@ void func_000F4760(void)
   extern char D_001D29C7;
   int iVar1;
   undefined4 uVar2;
-  int a[9] = {0};
   __declspec(align(16)) char local_50[64];
   
   D_00324844 = func_001229B0(((undefined *)&D_001D5580));
   func_00063F30(D_00324844,0x3f99999a,0x3fcccccd);
-  a[4] = 0;
-  a[0] = 1;
-  a[5] = 0;
-  a[6] = 0x3f800000;
-  a[7] = 0;
-  a[8] = 0;
-  a[1] = 0x3f800000;
-  a[2] = 0x3f800000;
-  a[3] = 0x3f800000;
-  D_0032487C = func_0011F890(((undefined *)&D_001D68E4),&a[0]);
+  {
+  F4760Params a;
+  a.flags[0] = 0;
+  a.kind = 1;
+  a.flags[1] = 0;
+  a.scale = 1.0f;
+  a.tail[0] = 0;
+  a.tail[1] = 0;
+  a.color[0] = 1.0f;
+  a.color[1] = 1.0f;
+  a.color[2] = 1.0f;
+  D_0032487C = func_0011F890(((undefined *)&D_001D68E4),&a);
+  }
   func_0012F120(local_50);
   func_0012FE20(local_50,0xc02fedd6,0x4016cbdc,0);
   func_001105E0(D_0032487C,local_50,0);
-  for (int i=0;i<9;i++) a[i]=0;
-  a[0] = 0;
-  a[6] = 0x3f800000;
-  a[1] = 0x3e99999a;
-  a[2] = 0x3e99999a;
-  a[3] = 0x3ecccccd;
-  D_00324880 = func_0011F890(((undefined *)&D_001D68E4),&a[0]);
+  {
+  F4760Params a;
+  a.kind = 0;
+  a.scale = 1.0f;
+  a.color[0] = 0.3f;
+  a.color[1] = 0.3f;
+  a.color[2] = 0.4f;
+  D_00324880 = func_0011F890(((undefined *)&D_001D68E4),&a);
+  }
   func_0010FB70(D_00324844,D_0032487C,3);
   func_0010FB70(D_00324844,D_00324880,3);
   func_00131990(((undefined *)&D_001D29C7));
