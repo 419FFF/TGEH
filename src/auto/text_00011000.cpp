@@ -2,6 +2,41 @@
 #include "common.h"
 #include "ghidra.h"
 
+void __cdecl func_00011000(float param_1)
+{
+  extern undefined4 D_002EAF64;
+  extern undefined4 D_002EAF68;
+  extern undefined4 D_002EAF6C;
+  extern undefined4 D_002EAF70;
+  extern float D_001D27B0;
+  extern float D_001D27B4;
+  extern float D_001D27AC;
+  int func_0012FE20(void *, int, float, int);
+  char *p;
+  longdouble v;
+  param_1 = (float)(D_001D27B4 * (longdouble)param_1);
+  p = (char *)D_002EAF64;
+  v = *(float *)(p + 0x60) + (longdouble)param_1;
+  *(float *)(p + 0x60) = (float)v;
+  if (D_001D27B0 < v) *(float *)(p + 0x60) = (float)(v - D_001D27B0);
+  func_0012FE20(p + 0x20, 0, (float)((longdouble)D_001D27AC * *(float *)(p + 0x60)), 0);
+  p = (char *)D_002EAF68;
+  v = *(float *)(p + 0x60) + (longdouble)param_1;
+  *(float *)(p + 0x60) = (float)v;
+  if (D_001D27B0 < v) *(float *)(p + 0x60) = (float)(v - D_001D27B0);
+  func_0012FE20(p + 0x20, 0, (float)((longdouble)D_001D27AC * *(float *)(p + 0x60)), 0);
+  p = (char *)D_002EAF6C;
+  v = *(float *)(p + 0x60) + (longdouble)param_1;
+  *(float *)(p + 0x60) = (float)v;
+  if (D_001D27B0 < v) *(float *)(p + 0x60) = (float)(v - D_001D27B0);
+  func_0012FE20(p + 0x20, 0, (float)((longdouble)D_001D27AC * *(float *)(p + 0x60)), 0);
+  p = (char *)D_002EAF70;
+  v = *(float *)(p + 0x60) + (longdouble)param_1;
+  *(float *)(p + 0x60) = (float)v;
+  if (D_001D27B0 < v) *(float *)(p + 0x60) = (float)(v - D_001D27B0);
+  func_0012FE20(p + 0x20, 0, (float)((longdouble)D_001D27AC * *(float *)(p + 0x60)), 0);
+}
+
 void func_00011130(undefined4 param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4, undefined4 param_5)
 {
   extern undefined4 D_002EAF64;
@@ -68,8 +103,11 @@ long double func_00011D40(int param_1)
 {
   extern float D_001D280C;
   extern char D_002EB02D;
-  if (*(int *)(param_1 + 0x178) == 9 && !(*(float *)(param_1 + 0x1a0) >= D_001D280C)) D_002EB02D = 1;
-  return *(float *)(param_1 + 0x17c + *(int *)(param_1 + 0x178) * 4) * *(float *)(param_1 + 0x168);
+  if (((*((int *) (param_1 + 0x178))) == 9) && ((*((float *) (param_1 + 0x1a0))) < D_001D280C))
+  {
+    D_002EB02D = 1;
+  }
+  return (*((float *) (((0, param_1 + 0x17c)) + ((*((int *) (param_1 + 0x178))) * 4)))) * (*((float *) (param_1 + 0x168)));
 }
 
 longdouble func_00011D80(int param_1)
