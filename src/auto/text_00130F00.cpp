@@ -1,6 +1,7 @@
 /* 36 functions from 0x00130F00 to 0x00131EB0, found by Ghidra. */
 #include "common.h"
 
+struct V3_00131060 { float x, y, z; };
 extern "C" double __cdecl fabs(double);
 #pragma intrinsic(fabs)
 void func_00130F00(float *out, float *m)
@@ -9,15 +10,15 @@ void func_00130F00(float *out, float *m)
   float func_00131220(float);
   int n[3];
   int i = 0, j, k;
-  float tr;
+  double tr;
   double s;
   float *q = (float*)n;
   n[0] = 1;
   n[1] = 2;
   n[2] = i;
-  tr = (float)((double)m[5] + m[0] + m[10]);
+  tr = (double)m[5] + m[0] + m[10];
   if (tr > D_001D27B8) {
-    s = func_00131220(tr + D_001D27B0);
+    s = func_00131220((float)(tr + D_001D27B0));
     out[3] = (float)(D_001D27EC * s);
     s = D_001D27EC / s;
     out[0] = (float)((m[9] - m[6]) * s);
@@ -25,8 +26,8 @@ void func_00130F00(float *out, float *m)
     out[2] = (float)((m[4] - m[1]) * s);
     return;
   }
-  if (m[5] > m[0]) i = 1;
-  if (m[i * 5] < m[10]) i = 2;
+  if ((double)m[5] > m[0]) i = 1;
+  if ((double)m[10] > m[i * 5]) i = 2;
   j = n[i];
   k = n[j];
   s = func_00131220((float)(m[i * 5] - (m[k * 5] + (double)m[j * 5]) + D_001D27B0));
@@ -38,6 +39,36 @@ void func_00130F00(float *out, float *m)
   out[0] = q[0];
   out[1] = q[1];
   out[2] = q[2];
+}
+
+void func_00131060(float *p1, float *p2, float *out)
+{
+    float func_0012EA60(...); float func_00131210(...); float func_00131260(...); int func_00130DD0(...);
+    extern float D_001D27B8, D_001D27B0, D_001D5230;
+    float d[3], c[3], b[3], a[3];
+    float ang, dot;
+    b[0] = p2[0]; b[1] = p2[1]; b[2] = p2[2];
+    a[0] = p1[0]; a[1] = p1[1]; a[2] = p1[2];
+    func_0012EA60(b);
+    func_0012EA60(a);
+    c[0] = (float)((double)a[1] * b[2] - (double)a[2] * b[1]);
+    c[1] = (float)((double)a[2] * b[0] - (double)b[2] * a[0]);
+    c[2] = (float)((double)b[1] * a[0] - (double)a[1] * b[0]);
+    if ((double)c[0] == D_001D27B8 && (double)c[1] == D_001D27B8 && (double)c[2] == D_001D27B8) {
+        out[0] = 0; out[1] = 0; out[3] = 0; out[2] = 0;
+        return;
+    }
+    func_0012EA60(c);
+    dot = (float)((double)a[0] * b[0] + (double)a[1] * b[1] + (double)a[2] * b[2]);
+    if ((double)func_00131210(dot) > D_001D27B0) {
+        out[0] = 0; out[1] = 0; out[3] = 0; out[2] = 0;
+        return;
+    }
+    ang = func_00131260(dot);
+    func_00130DD0(d, b, c, ang);
+    if ((double)a[0] * d[0] + (double)d[1] * a[1] + (double)d[2] * a[2] < D_001D5230)
+        ang = -ang;
+    out[0] = c[0]; out[3] = ang; out[1] = c[1]; out[2] = c[2];
 }
 
 float func_00131210(volatile float param_1) {
@@ -284,3 +315,52 @@ void _func_00131C80(unsigned int a){extern int _D_00331B70,_D_003291C8;void _fun
 
 void _func_00131D10(char*p){int func_00148B10(int);int func_00116FB0(void*);void __stdcall func_0010B7F8(int);if(*p==0){int x=*(int*)(p+8);if(x){func_00148B10(x);func_00116FB0(p);return;}x=*(int*)(p+4);if(x!=-1)func_0010B7F8(x);func_00116FB0(*(void**)(p+0x28));func_00116FB0(p);}}
 
+#pragma optimize("t", on)
+int _func_00131D60(char *p, char *dst, int n)
+{
+  extern char D_00010000;
+  int func_00148800(int, char *, int);
+  int __stdcall func_0010BCE7(int, int, int, int);
+  int __stdcall func_0010BAA0(int, int, int, int *, int);
+  int got;
+  while (D_00331B70 != 0) {}
+  if (*p != 0) return 0;
+  if (*(int *)(p + 8) != 0) return func_00148800(*(int *)(p + 8), dst, n);
+  char *d = dst;
+  int total = 0;
+  while (n > 0) {
+    if (*(short *)(p + 0x16) != *(int *)(p + 0x1c)) {
+      int base;
+      *(int *)(p + 0x1c) = *(short *)(p + 0x16);
+      D_00331B70 = 0;
+      for (;;) {
+        int off = *(int *)(p + 0x1c) << 16;
+        if (*(int *)(p + 0x18) == off || func_0010BCE7(*(int *)(p + 4), off, 0, 0) != -1) {
+          if (func_0010BAA0(*(int *)(p + 4), *(int *)(p + 0x28), (int)&D_00010000, &got, 0) == 1)
+            break;
+          if (_func_0010AA7B() == 0x26) return total;
+        }
+        D_00331B70 = 5;
+        _func_00137400(5);
+      }
+      base = (*(int *)(p + 0x1c) << 16) + got;
+      D_00331B70 = 0;
+      *(int *)(p + 0x20) = got;
+      *(int *)(p + 0x18) = base;
+    }
+    {
+      int pos = *(int *)(p + 0x14) & 0xffff;
+      int lim = *(int *)(p + 0x20) - pos;
+      int avail;
+      if (lim > n) avail = n; else avail = lim;
+      if (avail <= 0) return total;
+      memcpy(d, (char *)*(int *)(p + 0x28) + pos, avail);
+      n -= avail;
+      *(int *)(p + 0x14) += avail;
+      total += avail;
+      d += avail;
+    }
+  }
+  return total;
+}
+#pragma optimize("", on)
