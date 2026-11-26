@@ -273,6 +273,64 @@ unsigned int func_000F8F40(int *p) {
  return 0;
 }
 
+extern "C" char* __cdecl strcpy(char*,const char*);
+extern "C" char* __cdecl strcat(char*,const char*);
+extern "C" unsigned __cdecl strlen(const char*);
+void _func_000F8FA0(int p)
+{
+extern unsigned short D_001D73E4;
+extern unsigned D_003104B4;
+extern int D_0030C630[], D_00308158;
+char func_0009CE20(...);
+int func_0011B530(...);
+int func_00103320(...);
+int func_000291F0(...);
+int func_000F8F40(...);
+int func_0011C3E0(...);
+int func_0011C3B0(...);
+int func_0009D780(...);
+int func_0009D640(...);
+char name[256];
+strcpy(name,*(char**)(p+12));
+strcat(name,".");
+for(unsigned i=*(unsigned short*)(p+0x54)+1; i<D_003104B4; ++i) {
+ if(D_0030C630[i]) {
+  if(func_0009CE20(name,D_0030C630[i])) _func_000F8FA0(D_0030C630[i]);
+  else { if(func_0011B530(*(int*)(D_0030C630[i]+12),name,strlen(name))) break; }
+ }
+}
+int owner;
+char type=*(char*)(p+0x13);
+if(type==8) owner=func_00103320(p);
+else if(type==4 || type==0x34) owner=func_000291F0(p);
+else owner=func_000F8F40(*(int*)(p+0x2c));
+func_0011C3E0(p);
+if(owner) {
+ if(*(unsigned char*)(*(int*)(p+0x2c)+0x20)&1) func_0011C3B0(owner+0x2d0,p,p);
+ else {
+ type=*(char*)(p+0x13);
+ if(type==4 || type==0x34) func_0011C3B0(owner+0x2a0,p,p);
+ else if(type==8) func_0011C3B0(owner+0x2c4,p,p);
+ else if(*(char*)(p+0x15)!=0 && *(char*)(p+0x15)!=1) func_0011C3B0(owner+0x294,p,p);
+ else if(*(char*)(p+0x14)) func_0011C3B0(owner+0x2b8,p,p);
+ else func_0011C3B0(owner+0x2ac,p,p);
+ }
+ if(*(char*)(p+0x13)==0x2a) {
+ unsigned i=0; int *q=(int*)(owner+0x2dc);
+ do { if(*q==p) break; if(!*q) { *(int*)(owner+0x2dc+i*4)=p; break; } ++i; ++q; } while(i<10);
+ }
+ if(!*(char*)(owner+0x284) && *(int*)(p+0x2c) && *(int*)(*(int*)(p+0x2c)+0x2c) && **(int**)(*(int*)(p+0x2c)+0x2c)==*(int*)(owner+0xe0)) {
+ *(unsigned char*)(*(int*)(*(int*)(*(int*)(p+0x2c)+0x2c)+8)+6)|=0x10;
+ }
+ if(!(*(unsigned char*)(p+0x11)&2)) *(char*)(owner+0x28d)=0;
+ unsigned short flags=*(unsigned short*)(p+0x10);
+ if(!(flags&0x40) && (flags&1)) {
+ if(flags&8) { if(*(char*)(owner+0x284)) func_0009D780(p); }
+ else if(!*(char*)(owner+0x284)) func_0009D640(p);
+ }
+} else if(p!=D_00308158) func_0011C3B0(D_00308158,p,p);
+}
+
 undefined4 func_000F91D0(undefined4 param_1)
 {
   extern undefined4 D_00324AF8;
@@ -347,6 +405,85 @@ void func_000F93A0(int a,int b) {
      } while(i<*(unsigned *)((char *)p+0xe4));
    }
  }
+}
+
+void func_000F9440(int param_1)
+{
+  extern unsigned int D_00324AF8, D_00324968[], D_003268B0;
+  int func_000F9330(...);
+  int func_000F7DE0(...);
+  int func_000F7E60(...);
+  int func_000F7F10(...);
+  int func_00116A90(...);
+  unsigned int z = 0;
+  int *piVar9;
+  unsigned int i, j, k;
+  int cnt;
+  D_00324AF8 = z;
+  piVar9 = *(int **)(param_1 + 0x28);
+  if (piVar9 != (int *)z) {
+    do {
+      if ((*(unsigned char *)(*piVar9 + 0x20) & 8) != 0) func_000F9330(*piVar9);
+      piVar9 = (int *)piVar9[3];
+    } while (piVar9 != (int *)z);
+  } else {
+    func_000F9330(param_1);
+  }
+  i = 0;
+  if (D_00324AF8 > z) {
+    do {
+      func_000F7DE0(D_00324968[i]);
+      i++;
+    } while (i < D_00324AF8);
+  }
+  k = z;
+  if (D_00324AF8 > z) {
+    unsigned int *q = D_00324968;
+    do {
+      bool swapped;
+      int off, b;
+      func_000F7E60(*q, *(int *)(*q + 0xe0), 0);
+      do {
+        b = *q;
+        j = 1;
+        swapped = false;
+        if (*(unsigned int *)(b + 0xe4) <= j) break;
+        off = 0xf0;
+        do {
+          if (*(unsigned int *)(off + 4 + *q) < *(unsigned int *)(off - 4 + *q)) {
+            int a0 = *(int *)(off - 8 + b);
+            int a1 = *(int *)(off - 4 + b);
+            *(int *)(off - 8 + b) = *(int *)(off + b);
+            *(int *)(off - 4 + b) = *(int *)(off + 4 + b);
+            b = *q;
+            *(int *)(off + b) = a0;
+            *(int *)(off + 4 + b) = a1;
+            swapped = true;
+          }
+          b = *q;
+          j++;
+          off += 8;
+        } while (j < *(unsigned int *)(b + 0xe4));
+      } while (swapped);
+      k++;
+      q++;
+    } while (k < D_00324AF8);
+  }
+  i = 0;
+  if (D_00324AF8 > 0) {
+    do {
+      int node;
+      cnt = (*(unsigned char *)(*(int *)(D_00324968[i] + 0xe0) + 0x22) == D_003268B0);
+      for (node = *(int *)(*(int *)(D_00324968[i] + 0xe0) + 0x28); node != 0; node = *(int *)(node + 0xc)) {
+        if ((*(unsigned char *)(node + 6) & 8) == 0)
+          cnt = func_000F7F10(*(int *)node, 0, cnt);
+      }
+      *(int *)(D_00324968[i] + 0x27c) = cnt;
+      *(int *)(D_00324968[i] + 0x280) = func_00116A90(*(int *)(D_00324968[i] + 0x27c) * 0x18, 1, 1);
+      func_000F7F10(*(int *)(D_00324968[i] + 0xe0), D_00324968[i], 0);
+      i++;
+    } while (i < D_00324AF8);
+  }
 }
 
 void func_000F9610(int param_1) {
