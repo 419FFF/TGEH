@@ -236,27 +236,38 @@ int func_00070D60(void) {
     return D_002FA2EC;
 }
 
-void func_00070D70(char c, int *p2, int *p3, int p4, int *p5, int *p6)
+void func_00070D70(char c, float *p2, float *p3, int p4, int *p5, int *p6)
 {
   extern int D_002FA320;
   extern char D_002FA31C;
-  extern struct { char pad[0xc]; char c; int a; int b; int e; int f; } D_002FA31C_dummy;
-  extern int D_00332740, D_00332738, D_0033273C;
+  extern float D_00332740, D_00332738, D_0033273C;
   int func_00137A20(void);
   int func_00137A60(int);
   int func_00137A90(int, int);
-  extern char D_002FA328[];
-  extern int D_002FA32C[], D_002FA330[], D_002FA334[], D_002FA338[];
+  extern EdgeSeg D_002FA328[];
+  extern int D_002FA334, D_002FA338;
   if (c == '>') {
-    int i = D_002FA320 * 5;
-    D_002FA334[i] = p3[0];
-    D_002FA338[i] = p3[1];
-    D_002FA328[i * 4] = 0;
+    int o = D_002FA320 * 20;
+    *(float *)((char *)&D_002FA334 + o) = p3[0];
+    *(float *)((char *)&D_002FA338 + o) = p3[1];
+    *((char *)D_002FA328 + o) = 0;
     D_002FA31C = 1;
     return;
   }
-  if (D_002FA31C == 0) {
-    int x, y;
+  if (D_002FA31C != 0) {
+    if (c == '<') {
+      *(float *)&D_002FA328[D_002FA320].a = p2[0];
+      *(float *)&D_002FA328[D_002FA320].b = p2[1];
+      D_002FA320++;
+      D_002FA31C = 0;
+      return;
+    }
+    if (D_002FA328[D_002FA320].c == 0)
+      D_002FA328[D_002FA320].c = c;
+    return;
+  }
+  {
+    float x, y;
     y = p2[1]; x = p2[0];
     func_00137A20();
     D_00332738 = x; D_0033273C = y; D_00332740 = 0;
@@ -287,16 +298,6 @@ void func_00070D70(char c, int *p2, int *p3, int p4, int *p5, int *p6)
     D_00332738 = x; D_0033273C = y; D_00332740 = 0;
     func_00137A60(p4);
     func_00137A90(p5[0], p6[0]);
-  } else {
-    if (c == '<') {
-      D_002FA32C[D_002FA320 * 5] = p2[0];
-      D_002FA330[D_002FA320 * 5] = p2[1];
-      D_002FA320++;
-      D_002FA31C = 0;
-      return;
-    }
-    if (D_002FA328[D_002FA320 * 20] == 0)
-      D_002FA328[D_002FA320 * 20] = c;
   }
 }
 
