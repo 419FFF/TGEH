@@ -1,6 +1,10 @@
 /* 10 functions from 0x000F41E0 to 0x000F4C88, found by Ghidra. */
 #include "common.h"
 #include "ghidra.h"
+struct F4760Params {
+ int kind; float color[3]; int flags[2]; float scale; int tail[2];
+ F4760Params() { kind=0; color[0]=0; color[1]=0; color[2]=0; flags[0]=0; flags[1]=0; scale=0; tail[0]=0; tail[1]=0; }
+};
 
 struct F4Owner { char pad0[0x22]; unsigned char id; char pad1[0x101]; unsigned char flags; };
 struct F4Link { char pad[0x28e]; char active; };
@@ -55,22 +59,24 @@ void func_000F4400(int param_1){extern int D_00324838;extern int D_00324834;int 
 void func_000F4460(void)
 {
   extern int D_00324838;
-  extern F4Ent *D_00324834;
+  extern F4St *D_00324834;
   extern int D_003268B0;
   extern float D_001D314C, D_001D2BB4, D_001D27B0, D_00329310, D_001D31C8, D_00329314, D_00329318;
   extern float D_001D6164, D_001D28E0, D_001D28E4, D_001D66D8, D_001D2B60;
   extern float D_001E5DE8[];
-  F4Ent *e;
+  F4St *s;
   F4Obj *o;
   F4Out *p;
   float *m;
+  float *f;
   int func_001100A0(...);
   int func_0013E3F4(...);
   char cl;
   int i;
 
-  for (i = 0, e = D_00324834; i < D_00324838; i++, e++) {
-    o = e->obj;
+  for (i = 0, s = (F4St *)((char *)D_00324834 + 0x10); i < D_00324838; i++, s++) {
+    f = (float *)s;
+    o = ((F4Obj **)s)[-4];
     if (o->type == 4 || o->type == 0x34) {
       cl = 0;
       if (o->owner->id == D_003268B0 && (o->owner->flags & 1)) {
@@ -82,48 +88,127 @@ void func_000F4460(void)
     }
     else if (o->flags & 2) {
 cleanup:
-      if (e->out != 0) {
-        *(int *)((char *)e->out + 0x20) = 0;
-        e->out = 0;
+      if (s->out != 0) {
+        *(int *)((char *)s->out + 0x20) = 0;
+        s->out = 0;
       }
       continue;
     }
-    if (e->state == 0) {
-      e->t = (double)e->t + D_001D314C;
-      if (e->t > e->limit) {
-        e->phase = 0;
-        e->state = 1;
-        e->out = (F4Out *)func_000F42D0();
+    if (s->state == 0) {
+      s->t = (double)s->t + D_001D314C;
+      if (s->t > s->limit) {
+        s->phase = 0;
+        s->state = 1;
+        s->out = (F4Out *)func_000F42D0();
       }
     }
     else {
-      e->phase = (double)e->phase + D_001D2BB4;
-      if (e->phase >= D_001D27B0) {
-        e->t = 0;
-        e->state = 0;
-        e->phase = 0;
-        if (e->out != 0) {
-          *(int *)((char *)e->out + 0x20) = 0;
-          e->out = 0;
+      s->phase += D_001D2BB4;
+      if (s->phase >= D_001D27B0) {
+        s->t = 0;
+        s->state = 0;
+        s->phase = 0;
+        if (s->out != 0) {
+          *(int *)((char *)s->out + 0x20) = 0;
+          s->out = 0;
         }
       }
     }
-    if (e->state != 0 && (p = e->out) != 0) {
+    if (s->state != 0 && (p = s->out) != 0) {
       func_001100A0(o->owner, &m);
-      p->x = (double)m[8] * e->z + m[4] * e->y + e->x * m[0] + m[12];
-      p->y = (double)m[9] * e->z + m[5] * e->y + e->x * m[1] + m[13];
-      p->z = (double)m[10] * e->z + m[6] * e->y + e->x * m[2] + m[14];
+      p->x = (double)m[8] * f[-1] + m[4] * f[-2] + m[0] * f[-3] + m[12];
+      p->y = (double)m[9] * f[-1] + m[5] * f[-2] + f[-3] * m[1] + m[13];
+      p->z = (double)m[10] * f[-1] + m[6] * f[-2] + f[-3] * m[2] + m[14];
       p->x = (double)p->x - (double)D_00329310 * D_001D31C8;
       p->y = (double)p->y - (double)D_00329314 * D_001D31C8;
       p->z = (double)p->z - (double)D_00329318 * D_001D31C8;
-      p->shade = (char)(int)(((double)D_001E5DE8[-(int)(e->phase * D_001D6164)] * D_001D28E0 + D_001D28E4) * D_001D66D8);
-      p->s0 = (double)D_001E5DE8[-(int)(e->phase * D_001D6164)] * D_001D2B60;
-      p->s1 = (double)D_001E5DE8[-(int)(e->phase * D_001D6164)] * D_001D2B60;
+      p->shade = (char)(int)(((double)D_001E5DE8[-(int)(s->phase * D_001D6164)] * D_001D28E0 + D_001D28E4) * D_001D66D8);
+      p->s0 = (double)D_001E5DE8[-(int)(s->phase * D_001D6164)] * D_001D2B60;
+      p->s1 = (double)D_001E5DE8[-(int)(s->phase * D_001D6164)] * D_001D2B60;
     }
   }
 }
 
 void func_000F46A0(void){int func_000B5650(...);int func_0012F120(...);int func_001364D0(...);int func_00133F30(...);int func_0013C980(...);extern int D_00324820;extern int D_00324824;extern int D_00324828;extern int D_0032483C;char a[0x50];char b[0x50];int t[21]={0};if(!func_000B5650(5)){func_0012F120(a);func_001364D0(b);t[0]=2;t[1]=2;t[3]=D_00324820;t[7]=3;t[11]=4;t[12]=5;func_00133F30(t);if(D_00324824)func_0013C980(D_0032483C,D_00324828,0);}}
+
+void func_000F4760(void)
+{
+  int func_001229B0(...);
+  extern undefined D_001D5580;
+  int func_00063F30(...);
+  int func_0011F890(...);
+  extern undefined D_001D68E4;
+  int func_0012FE20(...);
+  int func_001105E0(...);
+  int func_0010FB70(...);
+  extern undefined4 D_00324884;
+  int func_0009C590(...);
+  extern undefined D_001DCE38;
+  extern undefined4 D_0032485C;
+  extern undefined D_001DCE2C;
+  extern undefined4 D_00324888;
+  extern undefined D_001DCE24;
+  int func_00110300(...);
+  extern undefined D_001DCE18;
+  int func_00110330(...);
+  int func_00110420(...);
+  extern undefined4 D_00324848;
+  extern undefined4 D_00324850;
+  extern undefined4 D_003248A0;
+  extern int D_00324844,D_0032487C,D_00324880;
+  int func_0012F120(...),func_00131990(...);
+  extern char D_001D29C7;
+  int iVar1;
+  undefined4 uVar2;
+  int a[9] = {0};
+  __declspec(align(16)) char local_50[64];
+  
+  D_00324844 = func_001229B0(((undefined *)&D_001D5580));
+  func_00063F30(D_00324844,0x3f99999a,0x3fcccccd);
+  a[4] = 0;
+  a[0] = 1;
+  a[5] = 0;
+  a[6] = 0x3f800000;
+  a[7] = 0;
+  a[8] = 0;
+  a[1] = 0x3f800000;
+  a[2] = 0x3f800000;
+  a[3] = 0x3f800000;
+  D_0032487C = func_0011F890(((undefined *)&D_001D68E4),&a[0]);
+  func_0012F120(local_50);
+  func_0012FE20(local_50,0xc02fedd6,0x4016cbdc,0);
+  func_001105E0(D_0032487C,local_50,0);
+  for (int i=0;i<9;i++) a[i]=0;
+  a[0] = 0;
+  a[6] = 0x3f800000;
+  a[1] = 0x3e99999a;
+  a[2] = 0x3e99999a;
+  a[3] = 0x3ecccccd;
+  D_00324880 = func_0011F890(((undefined *)&D_001D68E4),&a[0]);
+  func_0010FB70(D_00324844,D_0032487C,3);
+  func_0010FB70(D_00324844,D_00324880,3);
+  func_00131990(((undefined *)&D_001D29C7));
+  D_00324884 = func_0009C590(((undefined *)&D_001DCE38));
+  D_0032485C = func_0009C590(((undefined *)&D_001DCE2C));
+  D_00324888 = func_0009C590(((undefined *)&D_001DCE24));
+  if (D_0032485C != 0) {
+    uVar2 = func_00110300(*(undefined4 *)(D_0032485C + 0x2c),((undefined *)&D_001DCE18),0x18,0);
+    func_00110330(uVar2);
+  }
+  if ((D_00324884 != 0) && (iVar1 = *(int *)(D_00324884 + 0x2c), *(int *)(iVar1 + 0x2c) != 0)) {
+    func_00110420(**(undefined4 **)(iVar1 + 0x2c),iVar1);
+  }
+  if ((D_0032485C != 0) && (iVar1 = *(int *)(D_0032485C + 0x2c), *(int *)(iVar1 + 0x2c) != 0)) {
+    func_00110420(**(undefined4 **)(iVar1 + 0x2c),iVar1);
+  }
+  if ((D_00324888 != 0) && (iVar1 = *(int *)(D_00324888 + 0x2c), *(int *)(iVar1 + 0x2c) != 0)) {
+    func_00110420(**(undefined4 **)(iVar1 + 0x2c),iVar1);
+  }
+  D_00324848 = 0;
+  D_00324850 = 0;
+  D_003248A0 = 0;
+  return;
+}
 
 void func_000F49A0(void)
 {
