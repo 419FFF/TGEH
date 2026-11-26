@@ -7,6 +7,7 @@ extern float D_001D27B8;
 extern float D_001D37AC;
 struct __declspec(align(16)) Mtx39F90 { float m[16]; };
 struct __declspec(align(16)) Vec39F90 { float v[4]; };
+struct Vec39D30 { int x,y,z; };
 
 extern char func_000A21A0(int);
 extern void func_000A1D10(int, int, int, int, int, int);
@@ -123,14 +124,12 @@ void func_00039D30(int a,int *p) {
  p[0]=4;p[0x104]=0x3f800000;((char*)p)[0x346]=0;((char*)p)[0x347]=0;
  }
  if(*(short*)(D_00307D08[4]+D_00313A68*24+16)!=0)p[0]=24;
- double f=(double)((float*)p)[0x27]-D_001E461C*D_001D39B4;
- ((float*)p)[0x27]=(float)f;
- if(f<D_001D3B18)p[0x27]=0xc53b8000;
+ ((float*)p)[0x27]-=D_001E461C*D_001D39B4;
+ if(((float*)p)[0x27]<D_001D3B18)p[0x27]=0xc53b8000;
  v[0]=0;v[1]=0;v[2]=0;
- double time=(double)D_001E461C+((float*)p)[0xc6];
- ((float*)p)[0xc6]=(float)time;
- if(time<((float*)p)[0xc7]){
- func_0012ED20(v,p+12,(float)((time*((float*)p)[0xc5]+((float*)p)[0xc4])*D_001E461C));
+ ((float*)p)[0xc6]+=D_001E461C;
+ if(((float*)p)[0xc6]<((float*)p)[0xc7]){
+ func_0012ED20(v,p+12,(float)((((float*)p)[0xc6]*((float*)p)[0xc5]+((float*)p)[0xc4])*D_001E461C));
  } else if(*(float*)(D_00307D08[4]+D_00313B34*24)!=D_001D27B8 || *(float*)(D_00307D08[4]+D_00313AD0*24)!=D_001D27B8)goto stop;
  if(func_000A2370(a+100)){
  float y=D_001E461C*((float*)p)[0x27]+v[1];
@@ -139,9 +138,9 @@ void func_00039D30(int a,int *p) {
  func_0006D7A0(a,p+4,s);
  D_00307DD8=s[58];D_003080FC=s[59];
  unsigned char flags=((char*)s)[0x40];
- for(int j=0;j<16;++j)D_003080B8[j]=s[42+j];
+ memcpy(D_003080B8,s+42,64);
  if(flags&2)return;
- p[0]=8;for(int k=0;k<16;++k)p[4+k]=p[20+k];
+ p[0]=8;memcpy(p+4,p+20,64);
  p[0x47]=p[0x10];p[0x48]=p[0x11];p[0x49]=p[0x12];return;
  }
  stop:p[0x27]=0;p[0]=2;p[0x47]=p[0x20];p[0x48]=p[0x21];p[0x49]=p[0x22];
