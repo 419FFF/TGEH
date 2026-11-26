@@ -2,6 +2,65 @@
 #include "common.h"
 #include "ghidra.h"
 
+void func_00087300(int *param_1, undefined4 param_2)
+{
+  int func_0011CD40(...),func_0011CDF0(...),func_0011CE10(...),func_0011CE20(...),func_0011CE30(...),func_0011CE50(...),func_0011CF30(...),func_0011CFC0(...);
+  float func_00131760(...),func_0012EA60(...);
+  extern float D_001D27EC,D_001D411C,D_001D27B0,D_001D2B64;
+  extern float D_001D2E24;
+  extern float D_001D4270;
+  extern float D_001D2C00;
+  float *pfVar1;
+  float *pfVar2;
+  int iVar3;
+  uint uVar4;
+  longdouble lVar5;
+  
+  iVar3 = func_0011CD40(10,10,1,4,1);
+  *param_1 = iVar3;
+ for(uVar4=0;uVar4<120;uVar4+=12) {
+ *(float *)(*(int *)(*param_1+4)+uVar4)=func_00131760()-D_001D27EC;
+ *(float *)(*(int *)(*param_1+4)+uVar4+4)=func_00131760()-D_001D27EC;
+ *(float *)(*(int *)(*param_1+4)+uVar4+8)=func_00131760()-D_001D27EC;
+ func_0012EA60((void *)(*(int *)(*param_1+4)+uVar4));
+ *(float *)(*(int *)(*param_1+4)+uVar4)=func_00131760()**(float *)(*(int *)(*param_1+4)+uVar4)*D_001D2E24;
+ *(float *)(*(int *)(*param_1+4)+uVar4+4)=func_00131760()**(float *)(*(int *)(*param_1+4)+uVar4+4)*D_001D4270;
+ *(float *)(*(int *)(*param_1+4)+uVar4+8)=func_00131760()**(float *)(*(int *)(*param_1+4)+uVar4+8)*D_001D2E24;
+ *(float *)(*(int *)(*param_1+4)+uVar4+4)=(float)((double)*(float *)(*(int *)(*param_1+4)+uVar4+4)+D_001D411C);
+ }
+ uVar4=0;
+ do {
+ *(float *)(*(int *)(*param_1+12)+uVar4)=(func_00131760()-D_001D27EC)*D_001D2C00;
+ *(int *)(*(int *)(*param_1+12)+uVar4+4)=0x3f800000;
+ float f=(func_00131760()-D_001D27EC)*D_001D2C00;
+ uVar4+=12;
+ *(float *)(*(int *)(*param_1+12)+uVar4-4)=f;
+ }while(uVar4<120);
+  **(undefined4 **)(*param_1 + 0x14) = 0x3f800000;
+  *(undefined4 *)(*(int *)(*param_1 + 0x14) + 4) = 0x3f800000;
+  *(undefined4 *)(*(int *)(*param_1 + 0x14) + 8) = 0x3f800000;
+  *(undefined4 *)(*(int *)(*param_1 + 0x14) + 0xc) = 0x3f4ccccd;
+ uVar4=0;
+ do {
+ *(float *)(*(int *)(*param_1+28)+uVar4)=(func_00131760()+D_001D27B0)*D_001D2B64;
+ float f=(func_00131760()+D_001D27B0)*D_001D2B64;
+ uVar4+=8;
+ *(float *)(*(int *)(*param_1+28)+uVar4-4)=f;
+ }while(uVar4<32);
+  **(undefined4 **)(*param_1 + 0x24) = 0;
+  *(undefined4 *)(*(int *)(*param_1 + 0x24) + 4) = 0;
+  *(undefined4 *)(*(int *)(*param_1 + 0x24) + 8) = 0x3f800000;
+  *(undefined4 *)(*(int *)(*param_1 + 0x24) + 0xc) = 0x3f800000;
+  func_0011CDF0(param_2);
+  func_0011CE10(param_2,0);
+  func_0011CE20(param_2,0);
+  func_0011CE30(param_2,0x42700000,0x42a00000);
+  func_0011CE50(param_2,0,0,0,0xbecccccd);
+  func_0011CF30(param_2,0x40a00000,0x40a00000);
+  func_0011CFC0(param_2,0x41c80000);
+  return;
+}
+
 void _func_00087520(void)
 {
   extern int _D_001D6C20;
@@ -43,6 +102,79 @@ extern unsigned char D_002FDE6D[12][8];
 extern float func_00131760(void);
 extern unsigned char func_0013E3F4(void);
 void func_00087570(void) { for(int i=0;i<12;i++){ float a=func_00131760(); a*=D_001D6160; unsigned char b=func_0013E3F4(); D_002FDE6C[i][0]=b; D_002FDE68[i][0]=i*D_001D6C2C-D_001D27EC; D_002FDE68[i][0]*=D_001D2A1C; float c=func_00131760(); D_002FDE6D[i][0]=(c>=D_001D27EC)?1:0xFF; } }
+
+void func_000875E0(void) {
+ extern int D_001E3F98,D_002FDE60,D_002FDEC8,D_002FDE64,D_001D6744,D_001D2868,D_001D411C;
+ extern int func_0008C380(...),func_00131230(...),func_00131250(...),func_00087570(...);
+ extern float D_002FDDE0,D_002FDDDC;
+ float v; int i; int cfg[14];
+ cfg[0]=D_001E3F98;cfg[1]=0x41200000;cfg[2]=0xffa061ff;cfg[3]=0xff7fb6f5;cfg[4]=0;cfg[5]=0x40000000;cfg[6]=12;
+ *((char*)&cfg[7])=0;*((char*)&cfg[7]+1)=0;*((char*)&cfg[7]+2)=0;*((char*)&cfg[7]+3)=0;*((char*)&cfg[7]+4)=0;*((char*)&cfg[7]+5)=0;cfg[9]=1;
+ D_002FDE60=func_0008C380(cfg);D_002FDEC8=0;D_002FDE64=0;
+ for(i=0;i<16;i++){v=(float)i*(float)D_001D6744*(float)D_001D2868;
+ *(float*)((char*)&D_002FDDE0+i*8)=(float)func_00131230(v)*(float)D_001D411C;
+ *(float*)((char*)&D_002FDDDC+(i+1)*8)=(float)func_00131250(v)*(float)D_001D411C;}
+ func_00087570();
+}
+
+void func_00087AF0(int *param_1, undefined4 param_2)
+{
+  int func_0011CD40(...);
+  extern float D_001D27B0;
+  float func_0012EA60(...);
+  float func_00131760(...);
+  int func_0011CFC0(...);
+  extern float D_001D2B64;
+  extern float D_001D2A2C;
+  extern float D_001D29F4;
+  int func_0011CDF0(...);
+  int func_0011CE10(...);
+  int func_0011CE20(...);
+  int func_0011CE30(...);
+  int func_0011CE50(...);
+  int func_0011CF30(...);
+  float *pfVar1;
+  int iVar2;
+  uint uVar3;
+  longdouble lVar4;
+  
+  iVar2 = func_0011CD40(10,0x10,1,1,1);
+  *param_1 = iVar2;
+  for(uVar3=0;uVar3<120;uVar3+=12) {
+ *(float *)(*(int *)(*param_1+4)+uVar3)=func_00131760()*2-D_001D27B0;
+ *(int *)(*(int *)(*param_1+4)+uVar3+4)=0;
+ *(float *)(*(int *)(*param_1+4)+uVar3+8)=func_00131760()*2-D_001D27B0;
+ func_0012EA60((void *)(*(int *)(*param_1+4)+uVar3));
+ *(float *)(*(int *)(*param_1+4)+uVar3)=func_00131760()**(float *)(*(int *)(*param_1+4)+uVar3)*D_001D2B64;
+ *(float *)(*(int *)(*param_1+4)+uVar3+8)=func_00131760()**(float *)(*(int *)(*param_1+4)+uVar3+8)*D_001D2B64;
+ }
+ uVar3=0;
+ do {
+ *(float *)(*(int *)(*param_1+12)+uVar3)=func_00131760()*D_001D2A2C-D_001D29F4;
+ *(float *)(*(int *)(*param_1+12)+uVar3+4)=func_00131760()*D_001D2A2C-D_001D29F4;
+ float f=func_00131760()*D_001D2A2C-D_001D29F4;
+ uVar3+=12;
+ *(float *)(*(int *)(*param_1+12)+uVar3-4)=f;
+ }while(uVar3<192);
+  **(undefined4 **)(*param_1 + 0x14) = 0x3f800000;
+  *(undefined4 *)(*(int *)(*param_1 + 0x14) + 4) = 0x3f63d70a;
+  *(undefined4 *)(*(int *)(*param_1 + 0x14) + 8) = 0x3f63d70a;
+  *(undefined4 *)(*(int *)(*param_1 + 0x14) + 0xc) = 0x3f7d70a4;
+  **(undefined4 **)(*param_1 + 0x1c) = 0x40000000;
+  *(undefined4 *)(*(int *)(*param_1 + 0x1c) + 4) = 0x40000000;
+  **(undefined4 **)(*param_1 + 0x24) = 0;
+  *(undefined4 *)(*(int *)(*param_1 + 0x24) + 4) = 0;
+  *(undefined4 *)(*(int *)(*param_1 + 0x24) + 8) = 0x3f800000;
+  *(undefined4 *)(*(int *)(*param_1 + 0x24) + 0xc) = 0x3f800000;
+  func_0011CDF0(param_2);
+  func_0011CE10(param_2,0);
+  func_0011CE20(param_2,0);
+  func_0011CE30(param_2,0x42a00000,0x42a00000);
+  func_0011CE50(param_2,0,0xbdcccccd,0xbdcccccd,0xbf666666);
+  func_0011CF30(param_2,0x3fc00000,0x3fc00000);
+  func_0011CFC0(param_2,0x41200000);
+  return;
+}
 
 void func_00087D00(int param_1)
 {
