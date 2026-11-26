@@ -72,6 +72,56 @@ unsigned char _func_000FCA30(int unused, int *msg)
     return 1;
 }
 
+char _func_000FCC40(void)
+{
+  char _func_000F8580(int);
+  int _func_00110330(int, int);
+  int _func_0002D030(int);
+  int _func_0012F120(void *);
+  int _func_001105E0(int, void *, int);
+  int _func_00110000(int);
+  int _func_0009D9E0(int);
+  int _func_000F8FA0(int);
+  extern int D_00324884, D_0032485C, D_00324888;
+  unsigned int uVar1, uVar2, uVar3;
+  __declspec(align(16)) char local_50[64];
+
+  if (_func_000F8580(*(int *)(D_00324884 + 0x2c)) &&
+      _func_000F8580(*(int *)(D_0032485C + 0x2c)) &&
+      _func_000F8580(*(int *)(D_00324888 + 0x2c))) {
+    uVar2 = *(unsigned short *)(*(int *)(D_00324884 + 0x2c) + 0x20);
+    uVar1 = *(unsigned short *)(*(int *)(D_0032485C + 0x2c) + 0x20);
+    uVar3 = *(unsigned short *)(*(int *)(D_00324888 + 0x2c) + 0x20);
+    _func_00110330(*(int *)(D_00324884 + 0x2c), 1);
+    _func_00110330(*(int *)(D_0032485C + 0x2c), 1);
+    _func_00110330(*(int *)(D_00324888 + 0x2c), 1);
+    _func_0002D030(D_00324884);
+    _func_0002D030(D_0032485C);
+    _func_0002D030(D_00324888);
+    _func_0012F120(local_50);
+    _func_001105E0(*(int *)(D_00324884 + 0x2c), local_50, 0);
+    _func_00110000(*(int *)(D_00324884 + 0x2c));
+    _func_001105E0(*(int *)(D_0032485C + 0x2c), local_50, 0);
+    _func_00110000(*(int *)(D_0032485C + 0x2c));
+    _func_001105E0(*(int *)(D_00324888 + 0x2c), local_50, 0);
+    _func_00110000(*(int *)(D_00324888 + 0x2c));
+    _func_0009D9E0(D_00324884);
+    _func_0009D9E0(D_0032485C);
+    _func_0009D9E0(D_00324888);
+    if (uVar2 & 1)
+      _func_00110330(*(int *)(D_00324884 + 0x2c), 0);
+    if (uVar1 & 1)
+      _func_00110330(*(int *)(D_0032485C + 0x2c), 0);
+    if (uVar3 & 1)
+      _func_00110330(*(int *)(D_00324888 + 0x2c), 0);
+    _func_000F8FA0(D_00324884);
+    _func_000F8FA0(D_0032485C);
+    _func_000F8FA0(D_00324888);
+    return 1;
+  }
+  return 0;
+}
+
 char func_000FCED0(void *param_1, int *param_2)
 {
   int func_000F91D0(int);
