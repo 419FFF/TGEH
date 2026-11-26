@@ -4,6 +4,7 @@
 
 struct V3_00102870 { int x, y, z; };
 struct F_00102A80 { unsigned short a:4, b:1, c:1; };
+struct G_00102F50 { unsigned char a:4, b:1, c:1; };
 
 void _func_00102870(int p)
 {
@@ -46,15 +47,14 @@ void _func_00102A80(int p)
 {
     extern float D_001D27B8; extern float D_001D290C;
     int func_0011BDD0(...); int func_001288B0(...);
-    int i;
-    unsigned char b = *(unsigned char *)(p + 0xb6);
-    b >>= 5;
-    if (b & 1) {
+    int i, n;
+    if ((*(unsigned char *)(p + 0xb6) >> 5) & 1) {
         int o = *(int *)(p + 0xb8);
         if (func_0011BDD0(*(int *)(o + 0xec), 0) == 0) return;
         (*(short *)(*(int *)(o + 0xec) + 0x2a))--;
+        n = *(unsigned char *)(*(int *)(p + 0x78) + 0x30) - 1;
         i = 0;
-        if (*(unsigned char *)(*(int *)(p + 0x78) + 0x30) - 1 > 0) {
+        if (n > 0) {
             int *q = (int *)(p + 0xbc);
             do {
                 int c = *q;
@@ -66,20 +66,16 @@ void _func_00102A80(int p)
         *(unsigned char *)(p + 0xb6) &= 0xdf;
     }
     unsigned short fl = *(unsigned short *)(p + 0xb6);
-    unsigned char c1 = fl;
-    c1 >>= 5;
-    if ((c1 & 1) == 0) {
-        unsigned char c2 = fl;
-        c2 >>= 4;
-        if ((c2 & 1) == 0) {
+    if (((fl >> 5) & 1) == 0 && ((fl >> 4) & 1) == 0) {
         if (*(float *)(*(int *)(p + 0x78) + 0x2c) == D_001D27B8 && *(int *)(p + 0xb8) != 0) {
             int r = func_001288B0(*(int *)(p + 0xb8));
             float f = (float)r;
             if (r < 0) f += D_001D290C;
             *(float *)(*(int *)(p + 0x78) + 0x2c) = f;
         }
+        n = *(unsigned char *)(*(int *)(p + 0x78) + 0x30) - 1;
         i = 0;
-        if (*(unsigned char *)(*(int *)(p + 0x78) + 0x30) - 1 > 0) {
+        if (n > 0) {
             int off = 0x50;
             int *q = (int *)(p + 0xbc);
             do {
@@ -91,7 +87,6 @@ void _func_00102A80(int p)
                 }
                 i++; q++; off += 4;
             } while (i < *(unsigned char *)(*(int *)(p + 0x78) + 0x30) - 1);
-        }
         }
     }
     if (*(float *)(p + 0xcc) == D_001D27B8) {
@@ -134,6 +129,55 @@ char __cdecl _func_00102810(void*);
 extern volatile float _D_001D2B60,_D_001D27B0,_D_001D27B8;
 if(_func_00102810(p)){float f=*(float*)((char*)p+0xa0)+_D_001D2B60;*(float*)((char*)p+0xa0)=f;if(_D_001D27B0<=f)*(int*)((char*)p+0xa0)=0x3f800000;}
 else{float f=*(float*)((char*)p+0xa0)-_D_001D2B60;*(float*)((char*)p+0xa0)=f;if(f<=_D_001D27B8)*(int*)((char*)p+0xa0)=0;}
+}
+
+void func_00102F50(float p)
+{
+    int func_001100A0(...); int func_0012E6D0(...); float func_0012E940(...); int func_00102A80(...); int func_0011C3E0(...); int func_00128C00(...);
+    extern int D_00324BD4; extern char D_001E5EC9;
+    int loc; char v[16];
+    int best = 0;
+    int *n;
+    int self = *(int*)&p;
+    func_001100A0(D_00324BD4, &loc);
+    func_0012E6D0(v, self + 0xe4, loc + 0x30);
+    p = func_0012E940(v);
+    for (n = *(int**)(*(int*)(self + 0x78) + 8); n; n = (int*)*n) {
+        int o = n[1];
+        unsigned char fl;
+        func_00102A80(o);
+        if (*(int*)(o + 0xb8)) {
+            fl = (unsigned char)*(volatile unsigned short*)(o + 0xb6);
+            if (!((fl >> 5) & 1) && !((fl >> 4) & 1)) {
+                func_001100A0(D_00324BD4, &loc);
+                func_0012E6D0(v, o + 0xe4, loc + 0x30);
+                float d = func_0012E940(v);
+                if (d > p) { p = d; best = o; }
+            }
+        }
+    }
+    if (best) {
+        int h;
+        unsigned short fa;
+        *(unsigned char*)(best + 0xb6) &= 0xfd;
+        h = *(int*)(best + 0xb8);
+        if (D_001E5EC9) {
+            if (*(int*)(best + 0x88) || *(int*)(best + 0x8c)) func_0011C3E0(best + 0x88);
+            *(int*)(best + 0x88) = 0;
+            *(int*)(best + 0x8c) = 0;
+            if (*(int*)(best + 0xb8)) func_00128C00(*(int*)(best + 0xb8));
+        }
+        *(int*)(best + 0xb8) = 0;
+        fa = *(unsigned short*)(self + 0xb6);
+        *(int*)(self + 0xb8) = h;
+        if (((*(unsigned char*)(best + 0xb6)) >> 4) & 1) fa |= 0x10; else fa &= 0xffef;
+        *(unsigned short*)(self + 0xb6) = fa;
+        if ((fa >> 4) & 1) *(unsigned char*)(best + 0xb6) |= 0x10; else *(unsigned char*)(best + 0xb6) &= 0xef;
+        fa = *(unsigned short*)(self + 0xb6);
+        if (((*(unsigned char*)(best + 0xb6)) >> 5) & 1) fa |= 0x20; else fa &= 0xffdf;
+        *(unsigned short*)(self + 0xb6) = fa;
+        if ((fa >> 5) & 1) *(unsigned char*)(best + 0xb6) |= 0x20; else *(unsigned char*)(best + 0xb6) &= 0xdf;
+    }
 }
 
 char _func_00103130(int p) { extern char D_001E5EC9; int _func_00128C50(int); if (D_001E5EC9 == 0) { return 1; } else { int v=*(int*)(p+0xb8); if(v == 0) return 1; else return (_func_00128C50(v) == 0) ? 1 : 0; } }
