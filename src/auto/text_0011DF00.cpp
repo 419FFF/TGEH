@@ -13,9 +13,8 @@ static __forceinline void Hermite3(float *o, float a, float b, FBox cb)
   long double lc = c;
   long double t = lc * D_001D2A2C;
   long double s = lb + la;
-  long double u = lb * D_001D2808;
   o[0] = (float)((s + s) - t);
-  o[1] = (float)(t - (u + la));
+  o[1] = (float)(t - (la + lb * (double)D_001D2808));
   o[2] = (float)lb;
 }
 struct Blk100 { int d[25]; };
