@@ -4,7 +4,7 @@
 
 extern int D_00332738, D_0033273C, D_00332740;
 extern int D_003326AC, D_003323A0, D_0033244C, D_00332340, D_003326D0;
-extern void __stdcall RtlEnterCriticalSection(int *);
+extern "C" __declspec(dllimport) void __stdcall RtlEnterCriticalSection(int *);
 extern void __stdcall __imp__RtlEnterCriticalSection(int *);
 extern void __stdcall RtlLeaveCriticalSection(int *);
 int func_001378E0(...);
@@ -16,7 +16,7 @@ int func_0012F310(...);
 int __stdcall func_0014ADB0(int, int *);
 int func_00011CB0(...);
 
-void func_00136440(void) { return; }
+int _func_00136440(void) { return 0; }
 
 void func_00136450(void) {
   RtlEnterCriticalSection(&D_003326AC);
@@ -67,7 +67,13 @@ int func_00136B30(void) {
   extern int D_0033269C, D_0033268C, D_00332694;
   int local[8];
   func_001472B7((int)local);
-  return (((D_0033269C - local[7]) - local[2]) - local[5]) + D_0033268C + D_00332694;
+  int result = D_0033269C;
+  result -= local[7];
+  result -= local[2];
+  result -= local[5];
+  result += D_0033268C;
+  result += D_00332694;
+  return result;
 }
 
 int func_00136B70(void) {
@@ -87,6 +93,23 @@ void func_00136F90(short x, short y) {
   else if (y > 15) y = 15;
   D_00332320 = x;
   D_00332318 = y;
+}
+
+void func_00136FF0(int n) {
+  RtlEnterCriticalSection(&D_003326AC);
+  unsigned int q = (unsigned long long)(unsigned)n * 0x51eb851f >> 32;
+  q >>= 5;
+  int __cdecl func_00088F10(int);
+  func_00088F10(0x95);
+  RtlLeaveCriticalSection(&D_003326AC);
+}
+
+void func_00137030(void) {
+  RtlEnterCriticalSection(&D_003326AC);
+  int __cdecl func_00088F10(int);
+  volatile unsigned int value = 0;
+  func_00088F10(0x95);
+  RtlLeaveCriticalSection(&D_003326AC);
 }
 
 void func_00137060(undefined4 *param_1, undefined4 *param_2, undefined4 *param_3, undefined4 *param_4)
