@@ -9,45 +9,47 @@ void func_00011E30(int param_1, int *param_2, int *param_3)
   float func_00131250(int);
   int func_0012ED20(...);
   int func_0012F730(...);
-  int func_0012EA60(...);
+  float func_0012EA60(...);
   int func_0012F610(...);
-  float lVar1, lVar2, lVar3, lVar4, lVar5;
+  float v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13;
   float e[3], c[3], d[3], a[3], b[3];
   char local_10[16];
 
   func_0012F120(param_2);
-  lVar1 = func_00131230(param_3[1]);
-  lVar2 = func_00131250(param_3[2]);
-  a[0] = (float)((long double)lVar2 * lVar1);
-  lVar1 = func_00131250(param_3[1]);
-  a[1] = lVar1;
-  lVar1 = func_00131230(param_3[1]);
-  lVar2 = func_00131230(param_3[2]);
-  a[2] = (float)((long double)lVar2 * lVar1);
+  v1 = func_00131230(param_3[1]);
+  v2 = func_00131250(param_3[2]);
+  a[0] = (float)((long double)v2 * v1);
+  v3 = func_00131250(param_3[1]);
+  a[1] = v3;
+  v4 = func_00131230(param_3[1]);
+  v5 = func_00131230(param_3[2]);
+  a[2] = (float)((long double)v5 * v4);
   func_0012ED20(local_10, a, *param_3);
   func_0012F730(b, local_10, param_1);
   param_2[0xc] = ((int *)b)[0];
   param_2[0xd] = ((int *)b)[1];
   param_2[0xe] = ((int *)b)[2];
-  lVar1 = func_00131250(param_3[1]);
-  lVar2 = func_00131230(param_3[2]);
-  lVar3 = func_00131230(param_3[1]);
-  lVar4 = func_00131250(param_3[1]);
-  lVar5 = func_00131250(param_3[2]);
-  c[0] = (float)-((long double)lVar5 * lVar4);
-  c[1] = lVar3;
-  c[2] = (float)-((long double)lVar2 * lVar1);
+  v6 = func_00131250(param_3[1]);
+  v7 = func_00131230(param_3[2]);
+  v8 = (float)-((long double)v7 * v6);
+  v9 = func_00131230(param_3[1]);
+  v10 = func_00131250(param_3[1]);
+  v11 = func_00131250(param_3[2]);
+  c[0] = (float)-((long double)v11 * v10);
+  ((int *)c)[1] = *(int *)&v9;
+  ((int *)c)[2] = *(int *)&v8;
   func_0012EA60(c);
   func_0012ED20(d, a, 0xbf800000);
   func_0012F610(d, param_1);
   func_0012EA60(d);
-  lVar1 = func_00131230(param_3[1]);
-  lVar2 = func_00131250(param_3[2]);
-  lVar3 = func_00131230(param_3[1]);
-  lVar4 = func_00131230(param_3[2]);
-  e[0] = (float)-((long double)lVar4 * lVar3);
+  v1 = func_00131230(param_3[1]);
+  v2 = func_00131250(param_3[2]);
+  v12 = (float)((long double)v2 * v1);
+  v4 = func_00131230(param_3[1]);
+  v5 = func_00131230(param_3[2]);
+  e[0] = (float)-((long double)v5 * v4);
   ((int *)e)[1] = 0;
-  e[2] = (float)((long double)lVar2 * lVar1);
+  ((int *)e)[2] = *(int *)&v12;
   func_0012EA60(e);
   func_0012F610(e, param_1);
   func_0012F610(c, param_1);
@@ -80,6 +82,51 @@ void func_000120B0(int param_1, undefined4 param_2, undefined4 param_3, undefine
   *(undefined1 *)(param_1 + 0x25) = 1;
   func_00099E70(param_1 + 0x20,param_3,param_4);
   return;
+}
+
+unsigned char func_00012120(int obj, int *pos, int *arg, int transform, unsigned char c)
+{
+ extern int D_00307DF8, D_003251B8, D_00325200, D_00325150;
+ void func_00011CB0(void *,int);
+ void func_0012F7A0(int *,int);
+ void func_00110060(int,void *);
+ void func_0012F310(void *,void *);
+ void func_0012F250(void *,void *,void *);
+ unsigned char func_00112250(int *,void *,int *);
+ void func_00107C40(int,int,int);
+ int pv[4]; int *p=pv;
+ int v[10];
+ int *q=v, *r=v+7, *d=v+4;
+ __declspec(align(16)) char m[64], n[64], t[64];
+ r[0]=arg[0]; r[1]=arg[1]; r[2]=arg[2];
+ func_00011CB0(n,transform);
+ p[0]=pos[0]; p[1]=pos[1]; p[2]=pos[2];
+ func_0012F7A0(p,transform);
+ ((int*)n)[12]=p[0]; ((int*)n)[13]=p[1]; ((int*)n)[14]=p[2];
+ func_00110060(*(int*)(D_00307DF8+0x2c),m);
+ q[0]=*(int*)(D_00307DF8+0xe8); q[1]=*(int*)(D_00307DF8+0xec); q[2]=*(int*)(D_00307DF8+0xf0);
+ func_0012F7A0(q,(int)m);
+ ((int*)m)[12]=q[0]; ((int*)m)[13]=q[1]; ((int*)m)[14]=q[2];
+ d[0]=*(int*)(D_00307DF8+0xf4); d[1]=*(int*)(D_00307DF8+0xf8); d[2]=*(int*)(D_00307DF8+0xfc);
+ func_0012F310(t,m);
+ func_0012F250(m,n,t);
+ if(func_00112250(d,m,r)) {
+ int *out=(int*)D_00307DF8;
+ char flag=*((char*)out+0x175);
+ out+=0x150/4;
+ if(flag==0 && *(char*)((int)out+0x24)==0) {
+ for(int i=0;i<11;i++)out[i]=0;
+ *(char*)(D_00307DF8+0x174)=1;
+ *(int*)(D_00307DF8+0x160)=obj;
+ *(int*)(D_00307DF8+0x178)=*(char*)(obj+0x13)==5;
+ out=(int*)(D_00307DF8+0x150);
+ out[0]=p[0];out[1]=p[1];out[2]=p[2];
+ *(float*)(D_00307DF8+0x168)=(float)c;
+ func_00107C40(D_003251B8,D_00307DF8,obj);
+ func_00107C40(D_00325200,D_00307DF8,obj);
+ func_00107C40(D_00325150,D_00307DF8,obj);
+ } return 1;
+ } return 0;
 }
 
 unsigned char _func_00012360(int obj, int *pos, int a, int b, unsigned char c)
