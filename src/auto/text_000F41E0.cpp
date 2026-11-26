@@ -3,7 +3,7 @@
 #include "ghidra.h"
 struct F4760Params {
  int kind; float color[3]; int flags[2]; float scale; int tail[2];
- F4760Params() { volatile int *p=(volatile int *)this; p[0]=0; p[1]=0; p[2]=0; p[3]=0; p[4]=0; p[5]=0; p[6]=0; p[7]=0; p[8]=0; }
+ F4760Params() { volatile F4760Params *p=this; p->kind=0; p->color[0]=0; p->color[1]=0; p->color[2]=0; p->flags[0]=0; p->flags[1]=0; p->scale=0; p->tail[0]=0; p->tail[1]=0; }
 };
 
 struct F4Owner { char pad0[0x22]; unsigned char id; char pad1[0x101]; unsigned char flags; };
