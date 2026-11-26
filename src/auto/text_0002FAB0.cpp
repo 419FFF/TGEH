@@ -1,6 +1,11 @@
 /* 8 functions from 0x0002FAB0 to 0x00030A7B, found by Ghidra. */
 #include "common.h"
 #include "ghidra.h"
+struct Vec30540 {
+ float x,y,z;
+ Vec30540(const float *v) { x=v[0];y=v[1];z=v[2]; }
+ Vec30540 &operator=(const Vec30540 &v) { x=v.x;y=v.y;z=v.z;return *this; }
+};
 extern float D_002EE848,D_002EE850,D_001D3E00,D_001D2B64,D_001D27B8,D_001D27B0,D_001D290C;
 extern int D_00307DB4;
 extern unsigned int D_002EEA94;
@@ -90,6 +95,45 @@ void __cdecl _func_000303F0(int param_1, int *param_2)
   param_2[0x70] = 0;
   _func_0002D030(param_1);
   *param_2 = 3;
+}
+
+void func_00030540(int p,int *s)
+{
+ int func_0009CC90(...),func_0002D030(...),func_0009C7A0(...),func_000A22B0(...);
+ float func_000A2310(int); int func_000A2350(...);
+ float *f=(float *)s;
+ f[0x24]=(float)D_002EE848*D_001D3E00+D_001D2B64;
+ f[0x25]=(float)D_002EE850*D_001D3E00+D_001D2B64;
+ float *v=(float *)(func_0009CC90(p,&D_001D3CC4)+0x54);
+ float a=v[0],b=v[1],c=*(float *)(p+0xf4),d=*(float *)(p+0xf8);
+ int e=*(int *)(p+0xfc),g=((int *)v)[2];
+ s[0x78]=0;s[0x79]=0x3dcccccd;
+ f[0x4d]=c;f[0x4e]=d;s[0x4f]=e;
+ s[0x52]=g;f[0x50]=a;f[0x51]=b;
+ *((char *)s+0x1ae)=0;*((char *)s+0x314)=1;s[0xc6]=0;
+ s[0x5e]=0;s[0x5c]=0;s[0x5d]=3;s[0x6e]=3;s[0x65]=D_00307DB4;
+ *((char *)s+0x35c)=1;s[0xd8]=0;s[0xd9]=0x3f800000;s[0xda]=0xbf800000;
+ s[0xdc]=0;*((char *)s+0x378)=0;s[0xdd]=0;
+ *((char *)s+0x1a3)=0;*((char *)s+0x1a4)=0;s[0x70]=0;
+ func_0002D030(p);*s=3;
+ unsigned int *range=(unsigned int *)func_0009C7A0(p,&D_001D2ACC,0);
+ D_00307CF8=1;
+ *(int *)func_0009C7A0(p,&D_001D3E04,0)=0x3f800000;
+ unsigned int n=range[0]; float t;
+ if(n==range[1]) t=D_001D27B8;
+ else {
+ float current=func_000A2310(p+100);
+ n=range[0];
+ t=(current-(float)n)/(float)(range[1]-n);
+ if(t>=D_001D27B8) {
+ if(t>D_001D27B0) t=D_001D27B0;
+ } else t=D_001D27B8;
+ }
+ float value=(float)n+(float)(range[1]-n)*t;
+ int bits=*(int *)&value;
+ func_000A22B0(p+100,2,n,range[1],range[2],0);
+ func_000A2350(p+100,bits);
+ s[0x5c]=0;s[0x5d]=3;D_002EEA94=3;s[0x80]=0;
 }
 
 void func_00030790(int param_1, int param_2)
