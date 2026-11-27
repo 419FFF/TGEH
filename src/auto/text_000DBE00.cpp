@@ -1,6 +1,10 @@
 /* 10 functions from 0x000DBE00 to 0x000DCD80, found by Ghidra. */
 #include "common.h"
 
+struct Buf28 { float a[28]; };
+extern "C" double fabs(double);
+#pragma intrinsic(fabs)
+
 void func_000DC430(void) { extern int D_0031E514,D_00307DF8,D_002EECA0,D_00308158,D_003251D8; extern char D_001D8018; int func_000687F0(...); int func_00136450(...); int func_000A29C0(...); int func_000A2840(...); int func_000A2780(...); int func_000A3070(...); int func_000DAE60(...); int func_0002DF20(...); int func_0009C590(...); int func_0009D3E0(...); int func_0009D640(...); int func_00107C40(...); int func_00116FB0(...); int func_000A2E30(...); char *p=(char*)D_0031E514,*q; func_000687F0();func_00136450();func_000A29C0(0);func_000A2840();q=(char*)D_0031E514;func_000A2780(0x3a,0,0);func_000A3070(q+0x9ec);func_000DAE60();func_0002DF20(D_00307DF8);D_002EECA0=1;func_0009D3E0(func_0009C590(&D_001D8018));func_0009D640(func_0009C590(&D_001D8018));if(*p)func_00107C40(D_003251D8,D_00308158,D_00308158);func_00116FB0(p);func_000A2E30(0); }
 
 #pragma float_control(precise, on)
