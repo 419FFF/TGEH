@@ -9,6 +9,7 @@ struct Base1D160 { int w[0x44]; };
 struct Args1D160 { int a, b, c, d; };
 struct Zero1D160b { union { double dd; int x[0x21]; }; };
 struct Zero1D160 { int x[0x21]; };
+struct Config1CE80 { union { double align; char bytes[244]; }; };
 
 Obj1D160 *func_0001D160(Obj1D160 *param_1)
 {
