@@ -44,7 +44,7 @@ float func_00068EA0(float a, float b, int p)
   return D_001D27B8;
 }
 
-static inline bool feq_00068F90(float a, float b) { return a == b; }
+struct V3_00068F90 { float x, y, z; };
 void func_00068F90(float *p, float *v, char *hit)
 {
   extern float D_001D27B8;
@@ -57,8 +57,7 @@ void func_00068F90(float *p, float *v, char *hit)
   double func_0012E8C0(float *, float *);
   void func_0012ED20(float *, float *, float);
   void func_0012E650(float *, float *);
-  float up[3], dir[3];
-  float a[3], b[3], c[3], t[3], m[9], tmp[3];
+  float dir[3], tmp[3], up[3], b[3], c[3], t[3], a[3], m[9];
   float r;
   int outside;
   float *r1, *r2;
