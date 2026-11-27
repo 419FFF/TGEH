@@ -9,6 +9,9 @@ extern "C" __declspec(dllimport) int __stdcall NtClose(int);
 extern "C" __declspec(dllimport) int __stdcall RtlInitAnsiString(void*, const char*);
 extern "C" __declspec(dllimport) int __stdcall NtOpenFile(int*, unsigned int, void*, void*, unsigned int, unsigned int);
 extern "C" __declspec(dllimport) int __stdcall NtQueryVolumeInformationFile(int, void*, void*, unsigned int, unsigned int);
+extern "C" __declspec(dllimport) int __stdcall NtReadFile(int, int, int, int, void *, void *, unsigned int, void *);
+extern "C" __declspec(dllimport) int __stdcall NtWriteFile(int, int, int, int, void *, void *, unsigned int, void *);
+extern "C" __declspec(dllimport) unsigned int *HalDiskCachePartitionCount;
 
 void _func_001095A0(void) { int func_001160B0(...); int func_0011D0E0(...); int func_00110760(...); extern unsigned int D_003252A8; extern unsigned int D_00325228[]; extern unsigned int D_00325268[]; unsigned int i=0; if(D_003252A8>0) do { func_001160B0(D_00325228[i]); func_0011D0E0(*(unsigned int*)((char*)D_00325268[i]+0x38)); func_00110760(D_00325268[i]); i++; } while(i<D_003252A8); D_003252A8=0; }
 
@@ -40,6 +43,44 @@ void _func_001096B0(unsigned int a, unsigned int b) { int func_0013F2E9(...); ex
 unsigned int _func_001096F0(void) { extern double D_003252C4,D_001D27B8,D_001D27B0; if(D_003252C4==D_001D27B8)return 0; if(D_003252C4==D_001D27B0)return 2; return 1; }
 
 #pragma optimize("y", on)
+void _func_00109830(void)
+{
+  extern float D_0032923C, D_003252C4, D_001D27B8, D_001D27B0, D_001D2800, D_001DAE38;
+  extern int D_003252BC;
+  int func_000688D0(...);
+  int func_001383B0(...);
+  int func_00133F30(...);
+  int func_0011E4A0(int, int, float, int, int, int, void*, int);
+  int func_00109730(...);
+  int a[25];
+  float &prev = *(float*)&D_003252C8;
+  float &div = *(float*)&D_003252B4;
+  float &mul = *(float*)&D_003252B8;
+  int &cur = *(int*)&D_003252C4;
+  double fVar1 = (double)D_0032923C - prev;
+  D_003252C8 = *(int*)&D_0032923C;
+  D_003252C4 = D_003252C4 - fVar1 / div * mul;
+  if (D_003252C4 < (double)D_001D27B8) {
+    cur = 0;
+    return;
+  }
+  if (D_003252C4 > (double)D_001D27B0) {
+    cur = 0x3f800000;
+  }
+  func_000688D0();
+  func_001383B0();
+  a[0] = 0; a[1] = 0; a[2] = 0; a[3] = 0; a[4] = 0; a[5] = 0; a[6] = 0;
+  a[10] = 3; a[14] = 1; a[15] = 0; a[16] = 0; a[22] = 6; a[21] = 0; a[23] = 2;
+  func_00133F30(&a[4]);
+  if (D_003252BC == 0) {
+    func_0011E4A0(0, 0, D_003252C4 * (double)D_001D2800, 0x43f00000, 0, 0, a, 0x3f800000);
+    func_0011E4A0(0x44200000, 0, D_001DAE38 - D_003252C4 * (double)D_001D2800, 0x43f00000, 0, 0, a, 0x3f800000);
+  }
+  if (D_003252C4 == (double)D_001D27B0) {
+    func_00109730();
+  }
+}
+#pragma optimize("", on)
 void _func_001099A0(void) { extern unsigned int D_00313A70,D_00332730; int func_000B0730(...); int func_000B09A0(...); unsigned int x[27]={0}; x[4]=2;x[5]=2;x[6]=1;D_00313A70=1;x[1]=0x280;x[2]=0x1e0;x[3]=0x20;x[7]=0x2800000;x[8]=30000;x[9]=0x20;x[16]=0x400000;x[12]=8;D_00332730=0;func_000B0730(x);for(;;)func_000B09A0(); }
 
 void __stdcall func_00109A27(unsigned int a,unsigned int b) { extern unsigned int D_001E3604,D_001E3608; int __stdcall _func_0010A6EB(unsigned int,unsigned int,int,int); unsigned int* p=&D_001E3604; while(p<&D_001E3608) { if(*p) { ((void (__cdecl *)(unsigned int,unsigned int,int,int))*p)(a,b,1,0); return; } p++; } _func_0010A6EB(a,b,0,0); }
@@ -112,6 +153,51 @@ int __stdcall func_00109D13(int path, unsigned long long *freeToCaller, unsigned
     }
     return 1;
 }
+
+int __stdcall func_0010A052(int p)
+{
+    int __stdcall func_00109E07(int, int*, int*);
+    int __stdcall func_0010B32A(void*, int);
+    int __stdcall func_0010AC5D(void*, int);
+    void __stdcall func_0010AAD1(int);
+    int func_0013F116(...);
+    extern unsigned int D_00010124;
+    extern char D_001DECD0[], D_001DECC0[];
+    char buf[0x104];
+    int blk[4];
+    int r, size, ok;
+
+    r = func_00109E07(p, &blk[3], &blk[1]);
+    if (r >= 0) {
+        p = (p != 0 || blk[1] != 0) ? 1 : 0;
+        size = 0x4000 << (D_00010124 >> 30);
+        func_0013F116(buf, 0x104, D_001DECD0, blk[3]);
+        RtlInitAnsiString(&blk[0], buf);
+        RtlInitAnsiString(&blk[2], buf);
+        (*(short*)&blk[2])--;
+        if (p) {
+            ok = func_0010B32A(&blk[2], size);
+            if (ok == 0)
+                return ok;
+        }
+        r = func_0010AC5D(&blk[0], size);
+        if (r < 0 && !p) {
+            if (func_0010B32A(&blk[2], size))
+                r = func_0010AC5D(&blk[0], size);
+        }
+        if (r >= 0) {
+            r = IoCreateSymbolicLink(D_001DECC0, &blk[2]);
+            ok = r >= 0;
+            if (ok)
+                return ok;
+        }
+    } else {
+        ok = 0;
+    }
+    func_0010AAD1(r);
+    return ok;
+}
+
 #pragma optimize("", on)
 extern "C" __declspec(dllimport) int __stdcall RtlInitAnsiString(void*, const char*);
 extern "C" __declspec(dllimport) int __stdcall NtOpenFile(int*, unsigned int, void*, void*, unsigned int, unsigned int);
