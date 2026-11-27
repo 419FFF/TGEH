@@ -1,7 +1,7 @@
 /* 10 functions from 0x000DBE00 to 0x000DCD80, found by Ghidra. */
 #include "common.h"
 
-struct Buf28 { float a[28]; };
+struct __declspec(align(16)) Buf28 { float a[28]; };
 extern "C" double fabs(double);
 #pragma intrinsic(fabs)
 
@@ -90,6 +90,76 @@ bool __cdecl _func_000DC610(int *param_1, float *param_2)
     param_2[13] = (float)((long double)v[1] - oy + param_2[13]);
   }
   return r;
+}
+
+char func_000DC740(int param_1, int param_2, float *param_3, int param_4, float *param_5)
+{
+    extern char D_0031EC00[];
+    extern float D_001D2A28, D_001D27B8;
+    extern int D_0031FCAC;
+    int func_001100A0(...), func_0012E6D0(...);
+    char local_c5;
+    float local_bc, local_b8, local_b4;
+    int local_b0;
+    float local_ac, local_a8;
+    int local_a4;
+    float local_a0, local_9c, local_98;
+    float local_90, local_8c, local_88;
+    Buf28 m;
+    float fVar2, fVar3;
+    int iVar4;
+
+    m = *(Buf28 *)(param_1 + 0xa0);
+    local_c5 = 0;
+    local_b0 = 0;
+    do {
+        iVar4 = *(int *)(D_0031EC00 + local_b0 * 0x310);
+        if (iVar4 != param_1 && iVar4 != param_4) {
+            local_a0 = m.a[18];
+            local_9c = m.a[19];
+            local_98 = m.a[20];
+            local_90 = *(float *)(iVar4 + 0xe8);
+            local_8c = *(float *)(iVar4 + 0xec);
+            local_88 = *(float *)(iVar4 + 0xf0);
+            func_001100A0(*(int *)(iVar4 + 0x2c), &local_a4);
+            local_a0 = local_a0 + *(float *)(param_2 + 0x30);
+            local_9c = local_9c + *(float *)(param_2 + 0x34);
+            local_90 = local_90 + *(float *)(local_a4 + 0x30);
+            local_8c = local_8c + *(float *)(local_a4 + 0x34);
+            fVar3 = m.a[27] * D_001D2A28;
+            fVar2 = *(float *)(iVar4 + 0xf8) * D_001D2A28;
+            local_ac = m.a[26] * D_001D2A28;
+            local_a8 = *(float *)(iVar4 + 0xf4) * D_001D2A28;
+            func_0012E6D0(&local_bc, &local_a0, &local_90);
+            fVar2 = fVar2 + fVar3;
+            local_b4 = 0;
+            if (fabs(local_b8) < fVar2 && fabs(local_bc) < local_a8 + local_ac) {
+                if (local_b0 != 3 || local_b8 <= fVar2 - local_a8 || fVar2 <= local_b8 ||
+                    fabs(local_bc) <= (fVar2 - local_b8) + local_ac) {
+                    D_0031FCAC = *(int *)(iVar4 + 0xc);
+                    param_3[0] = local_bc;
+                    local_c5 = 1;
+                    param_3[1] = local_b8;
+                    param_3[2] = 0.0f;
+                    if (local_bc == D_001D27B8 && local_b8 == D_001D27B8)
+                        param_3[1] = 1.0f;
+                }
+                param_5[0] = *(float *)(param_2 + 0x30);
+                param_5[1] = *(float *)(param_2 + 0x34);
+                param_5[2] = *(float *)(param_2 + 0x38);
+                if (local_bc <= D_001D27B8)
+                    param_5[0] = m.a[21] + param_5[0];
+                else
+                    param_5[0] = param_5[0] - m.a[21];
+                if (local_b8 <= D_001D27B8)
+                    param_5[1] = m.a[22] + param_5[1];
+                else
+                    param_5[1] = param_5[1] - m.a[22];
+            }
+        }
+        local_b0 = local_b0 + 1;
+    } while (local_b0 != 5);
+    return local_c5;
 }
 
 void func_000DC9E0(void) { extern float D_0031FC98,D_0031FC9C,D_0031FCA0,D_001D7FA0,D_001DB5F0; extern int D_0031E760; extern char D_001D70E8,D_001D70D4; int func_00091F00(...); int func_00091510(...); float v[16]; *(int*)((char*)v+0x30)=*(int*)&D_0031FC98;*(int*)((char*)v+0x38)=*(int*)&D_0031FC9C;*(int*)((char*)v+0x3c)=*(int*)&D_0031FCA0;func_00091F00(v);if(D_0031FC98>=D_001D7FA0&&D_0031FC98<=D_001DB5F0)func_00091510(&D_001D70E8,D_0031E760,v,0,0);else func_00091510(&D_001D70D4,D_0031E760,v,0,0); }
