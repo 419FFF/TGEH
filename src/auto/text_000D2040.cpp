@@ -18,8 +18,8 @@ void func_000D2750(void)
     int func_000CCB10(...); int func_00100C30(...);
     float c[16], b[16];
     __declspec(align(16)) float a[16];
-    D_00311524 |= 2;
     D_0031A9F6=0; D_0031A9F4=1; D_0031A9F5=0;
+    D_00311524 |= 2;
     func_00102E80(func_00103210(&D_001DAA80));
     if (**(unsigned **)(D_00313B60+0x2c)) func_00110420(**(unsigned **)(D_00313B60+0x2c),D_00313B60);
     func_00110480(**(unsigned **)(*(unsigned *)(D_00318D14+0x2c)+0x2c),D_00313B60,0);
