@@ -5,6 +5,8 @@
 struct S_00132C60 { char pad0[0x18]; unsigned int flags; int pad1c, pad20; void *f24; unsigned short n; char pad2a[0x1a]; char *f44; int pad48; unsigned int cnt; char *f50; };
 extern "C" __declspec(dllimport) void __stdcall RtlEnterCriticalSection(void*);
 extern "C" __declspec(dllimport) void __stdcall RtlLeaveCriticalSection(void*);
+struct S_132350_dst { char pad0[0x18]; unsigned int flags; char pad1c[0x2c]; unsigned short w; char pad4a[6]; int *tbl; };
+struct S_132350_src { char pad0[0x10]; void *f10; int f14, f18; void *f1c, *f20, *f24, *f28; int pad2c; void *f30; };
 struct C_001321C0 {
     int func_001321C0(void);
 };
@@ -112,11 +114,115 @@ void func_00132280(float *param) { (void)param; }
 
 void func_00132300(int *param) { (void)param; }
 
+void func_00132350(int a, int b)
+{
+    void* __stdcall func_0014E420(int, int);
+    void func_00132280(int);
+    void func_00132300(int);
+    void func_00136440(void);
+    unsigned int flags = *(unsigned int*)(a + 0x18);
+    int n;
+    int s;
+    volatile int *pn = 0;
+    if (flags & 0x40000) {
+        n = 4;
+    } else {
+        int *t = *(int**)(a + 0x50);
+        int sz = t[3];
+        unsigned short w = *(unsigned short*)(a + 0x48);
+        void *s = *(void**)(b + 0x10);
+        memcpy(func_0014E420((int)t, 0), s, w * sz);
+        n = 1;
+    }
+    if (flags & 1) {
+        s = *(int*)(b + 0x1c);
+        if (s) {
+            int t = *(int*)(a + 0x50);
+            unsigned short w = *(unsigned short*)(a + 0x48);
+            int sz = *(int*)(t + n * 16 + 0xc);
+            memcpy(func_0014E420(t + n * 16, 0), (void*)s, w * sz);
+            n++;
+        }
+    }
+    if (flags & 2) {
+        s = *(int*)(b + 0x20);
+        if (s) {
+            int t = *(int*)(a + 0x50);
+            unsigned short w = *(unsigned short*)(a + 0x48);
+            int sz = *(int*)(t + n * 16 + 0xc);
+            memcpy(func_0014E420(t + n * 16, 0), (void*)s, w * sz);
+            n++;
+        }
+    }
+    if (flags & 4) {
+        s = *(int*)(b + 0x24);
+        if (s) {
+            int t = *(int*)(a + 0x50);
+            unsigned short w = *(unsigned short*)(a + 0x48);
+            int sz = *(int*)(t + n * 16 + 0xc);
+            memcpy(func_0014E420(t + n * 16, 0), (void*)s, w * sz);
+            n++;
+        }
+    }
+    if (flags & 8) {
+        s = *(int*)(b + 0x28);
+        if (s) {
+            int t = *(int*)(a + 0x50);
+            unsigned short w = *(unsigned short*)(a + 0x48);
+            int sz = *(int*)(t + n * 16 + 0xc);
+            memcpy(func_0014E420(t + n * 16, 0), (void*)s, w * sz);
+            n++;
+        }
+    }
+    if (flags & 0x10) {
+        s = *(int*)(b + 0x14);
+        if (s) {
+            func_00132280(s);
+            n++;
+        }
+    }
+    if (flags & 0x100000) {
+        s = *(int*)(b + 0x18);
+        if (s) {
+            func_00132300(s);
+            n++;
+        }
+    }
+    if (flags & 0x20000) {
+        s = *(int*)(b + 0x30);
+        if (s) {
+            int t = *(int*)(a + 0x50);
+            unsigned short w = *(unsigned short*)(a + 0x48);
+            int sz = *(int*)(t + n * 16 + 0xc);
+            memcpy(func_0014E420(t + n * 16, 0), (void*)s, w * sz);
+        }
+    }
+    func_00136440();
+}
+
 void func_001325C0(int *p) {
  int __cdecl func_00116FB0(int);
  if(p[4])func_00116FB0(p[4]); if(p[5])func_00116FB0(p[5]); if(p[7])func_00116FB0(p[7]);
  if(p[8])func_00116FB0(p[8]); if(p[9])func_00116FB0(p[9]); if(p[10])func_00116FB0(p[10]);
  if(p[6])func_00116FB0(p[6]); if(p[12])func_00116FB0(p[12]); if(p[14])func_00116FB0(p[14]); func_00116FB0((int)p);
+}
+
+int func_00132660(int *s) {
+ int __stdcall func_00116A90(int,int,int);
+ int *d=(int*)func_00116A90(0x4c,1,0);
+ int i;
+ for(i=0;i<19;i++)d[i]=0;
+ d[13]=s[13]; d[3]=s[3]; d[11]=s[11];
+ if(s[4]){d[4]=func_00116A90(s[3]*12,1,1);memcpy((void*)d[4],(void*)s[4],s[3]*12);}
+ if(s[5]){d[5]=func_00116A90(s[3]*12,1,1);memcpy((void*)d[5],(void*)s[5],s[3]*12);}
+ if(s[7]){d[7]=func_00116A90(s[3]*8,1,1);memcpy((void*)d[7],(void*)s[7],s[3]*8);}
+ if(s[8]){d[8]=func_00116A90(s[3]*8,1,1);memcpy((void*)d[8],(void*)s[8],s[3]*8);}
+ if(s[9]){d[9]=func_00116A90(s[3]*8,1,1);memcpy((void*)d[9],(void*)s[9],s[3]*8);}
+ if(s[10]){d[10]=func_00116A90(s[3]*8,1,1);memcpy((void*)d[10],(void*)s[10],s[3]*8);}
+ if(s[6]){d[6]=func_00116A90(s[3]*16,1,1);memcpy((void*)d[6],(void*)s[6],s[3]*16);}
+ if(s[12]){d[12]=func_00116A90(s[11]*s[3]*4,1,1);memcpy((void*)d[12],(void*)s[12],s[11]*s[3]*4);}
+ if(s[14]){d[14]=func_00116A90(s[13]*2,1,1);memcpy((void*)d[14],(void*)s[14],s[13]*2);}
+ return (int)d;
 }
 
 void func_00132890(int p, int q) {(void)p;(void)q;}
@@ -145,7 +251,7 @@ int func_001329E0(int *arg)
   if (!*(int*)(src+0x34) || !*(int*)(src+0xc)) return 0;
   RtlEnterCriticalSection(&D_003326AC);
   int dst=func_00132950();
-  memset((void*)dst,0,0x54);
+  memset((void*)dst,0,84);
   *(int*)(dst+0x18)=**(int**)(src+4);
   *(int*)(dst+0x1c)=*(int*)(src+4);
   *(short*)(dst+0x48)=*(short*)(src+0xc);
