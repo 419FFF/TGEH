@@ -5,6 +5,9 @@ struct STRFLT_ { short decpt; char sign; char len; char mant[24]; };
 struct S6_ { char c[6]; };
 struct S7_ { char c[7]; };
 struct LD12_ { unsigned char b[12]; };
+#pragma pack(push, 1)
+struct LDX_ { unsigned short pad; unsigned int lo; unsigned int hi; unsigned short exp; };
+#pragma pack(pop)
 
 struct C_00147245 { unsigned int func_00147245(void); };
 struct C_0014726E { unsigned int func_0014726E(void); };
@@ -21,6 +24,120 @@ extern int func_001450B3(...);
 #define PIPECH_00146E4B(fh) (*((char *)_D_0037C300[(fh) >> 5] + ((fh) & 31) * 40 + 5))
 #define HANDLE_00146E4B(fh) (*(unsigned int *)((char *)_D_0037C300[(fh) >> 5] + ((fh) & 31) * 40))
 
+extern char _D_001E26F4[7], _D_001E26EC[6], _D_001E26E4[6], _D_001E26DC[7];
+void _func_00146CAD(void *, int, int);
+void _func_00146A8B(void *, void *);
+void _func_001463C7(void *);
+void _func_001463F5(void *);
+void _func_00146369(void *, void *);
+#pragma optimize("s", on)
+int _func_001464F0(LD80 ld, int ndigits, unsigned int flags, STRFLT_ *p)
+{
+    LD12_ tmp;
+    unsigned char tenth[12];
+    unsigned char ld12[12];
+    int cnt2;
+    volatile int retval;
+    unsigned short sign = (unsigned short)(ld.se & 0x8000);
+    unsigned short e = (unsigned short)(ld.se & 0x7fff);
+    unsigned short exp2;
+    register unsigned int hi;
+    char *src;
+    char *q, *first;
+    int decexp, cnt, n;
+
+    tenth[0] = 0xcc; tenth[1] = 0xcc; tenth[2] = 0xcc; tenth[3] = 0xcc; tenth[4] = 0xcc;
+    tenth[5] = 0xcc; tenth[6] = 0xcc; tenth[7] = 0xcc; tenth[8] = 0xcc; tenth[9] = 0xcc;
+    tenth[10] = 0xfb; tenth[11] = 0x3f;
+    retval = 1;
+    exp2 = e;
+    if (sign) p->sign = '-'; else p->sign = ' ';
+    hi = ld.hi;
+    if (exp2 == 0 && hi == 0 && ld.lo == 0) goto zero;
+    if (exp2 == 0x7fff) {
+        p->decpt = 1;
+        if (!((hi == 0x80000000 && ld.lo == 0) || (hi & 0x40000000))) {
+            src = _D_001E26F4;
+            goto six;
+        }
+        if (sign && hi == 0xc0000000 && ld.lo == 0) src = _D_001E26EC;
+        else if (hi == 0x80000000 && ld.lo == 0) src = _D_001E26E4;
+        else { src = _D_001E26DC; goto six; }
+        *(S6_ *)p->mant = *(S6_ *)src;
+        p->len = 5;
+        goto done0;
+six:
+        *(S7_ *)p->mant = *(S7_ *)src;
+        p->len = 6;
+done0:
+        retval = 0;
+        return retval;
+    }
+    *(unsigned short *)ld12 = 0;
+    *(unsigned int *)(ld12 + 2) = ld.lo;
+    *(unsigned int *)(ld12 + 6) = hi;
+    *(unsigned short *)(ld12 + 10) = exp2;
+    decexp = (int)(((exp2 >> 8) + (hi >> 24) * 2) * 0x4d + exp2 * 0x4d10 - 0x134312f4) >> 16;
+    _func_00146CAD(ld12, -(short)decexp, 1);
+    if (*(unsigned short *)(ld12 + 10) >= 0x3fff) {
+        decexp++;
+        _func_00146A8B(ld12, tenth);
+    }
+    p->decpt = (short)decexp;
+    if (flags & 1) {
+        ndigits += (short)decexp;
+        if (ndigits <= 0) {
+zero:
+            p->mant[0] = '0';
+            goto zero2;
+        }
+    }
+    if (ndigits > 0x15) ndigits = 0x15;
+    e = *(unsigned short *)(ld12 + 10);
+    *(unsigned short *)(ld12 + 10) = 0;
+    cnt = 8;
+    do { _func_001463C7(ld12); } while (--cnt);
+    n = (int)e - 0x3ffe;
+    if (n < 0) {
+        n = (-n) & 0xff;
+        while (n > 0) { _func_001463F5(ld12); n--; }
+    }
+    first = p->mant;
+    q = first;
+    if (ndigits + 1 > 0) {
+        cnt2 = ndigits + 1;
+        do {
+            tmp = *(LD12_ *)ld12;
+            _func_001463C7(ld12);
+            _func_001463C7(ld12);
+            _func_00146369(ld12, &tmp);
+            _func_001463C7(ld12);
+            *q++ = ld12[11] + '0';
+            ld12[11] = 0;
+        } while (--cnt2);
+    }
+    q--;
+    if (*q >= '5') {
+        while (q >= first && *q == '9') *q-- = '0';
+        if (q < first) { q++; p->decpt++; }
+        (*q)++;
+    } else {
+        while (q >= first && *q == '0') q--;
+        if (q < first) {
+            p->mant[0] = '0';
+zero2:
+            p->decpt = 0;
+            p->sign = ' ';
+            p->len = 1;
+            p->mant[1] = 0;
+            return 1;
+        }
+    }
+    p->len = (char)(q - (char *)p - 3);
+    p->mant[p->len] = 0;
+    return retval;
+}
+#pragma optimize("", on)
 unsigned int _func_00146767(unsigned int n) { int *e; if(n<_D_0037C2E0){e=(int*)((char*)_D_0037C300[n>>5]+(n&31)*40);if((((unsigned char*)e)[4]&1)&&*e!=-1){*e|=-1;return 0;}}*(unsigned int*)func_001460D6()=9;*(unsigned int*)func_001460DF()&=0;return -1;}
 
 unsigned int _func_001467B0(unsigned int n) { unsigned int *e; if(n<_D_0037C2E0){e=(unsigned int*)((char*)_D_0037C300[n>>5]+(n&31)*40);if(((unsigned char*)e)[4]&1)return *e;}*(unsigned int*)func_001460D6()=9;*(unsigned int*)func_001460DF()&=0;return -1;}
