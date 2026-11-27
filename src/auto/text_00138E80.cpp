@@ -6,7 +6,9 @@ struct Wave139200 { unsigned short tag,channels; unsigned int rate,average; unsi
 struct Desc139200 { unsigned int flags,size; void* format; unsigned int a,b,c; };
 extern "C" void *memset(void *, int, unsigned int);
 extern "C" void *memcpy(void *, const void *, unsigned int);
-#pragma intrinsic(memset, memcpy)
+extern "C" char *strcat(char *, const char *);
+extern "C" char *strcpy(char *, const char *);
+#pragma intrinsic(memset, memcpy, strcat, strcpy)
 
 void _func_00139170(void *p) {
 extern int _D_00332AC0;extern void __stdcall MmFreeContiguousMemory(void*);void _func_00131D10(void*);void _func_00116FB0(void*);void _func_0011C3E0(void*);void _func_0011C3B0(int,void*,void*);
@@ -17,24 +19,28 @@ x=*(int*)((char*)p+0xc);if(x){_func_00116FB0((void*)x);*(int*)((char*)p+0xc)=0;}
 _func_0011C3E0(p);_func_0011C3B0(_D_00332AC0,p,p);*(int*)((char*)p+0x90)=0;
 }
 
-void func_00139200(char* self)
+#pragma optimize("p", off)
+void __fastcall func_00139200(char* self)
 {
  int __stdcall func_001AEBB6(int,int,void*);
  int __stdcall func_0010C49A(int,int,int,int);
  int __stdcall func_001B1540(void*,void*);
  int __stdcall D_001AFA16(int,int);
  int __stdcall D_001AFA1B(int,int);
- Wave139200 a={0};
+ Wave139200 a;
  Desc139200 b;
- func_001AEBB6(1,*(int*)(*(int*)(self+12)+8),&a);
+ int* data=*(int**)(self+12);
+ memset(&a,0,sizeof(a));
+ func_001AEBB6(1,data[2],&a);
  a.channels=2;a.average*=2;a.block*=2;
- for(int i=0;i<3;i++) *(int*)(self+0xa0+i*4)=func_0010C49A(0x12000,-1,0,0x204);
+ int* dest=(int*)(self+0xa0);int i=3;
+ do{*dest++=func_0010C49A(0x12000,-1,0,0x204);}while(--i);
  memset(&b,0,sizeof(b));b.size=3;b.format=&a;
  func_001B1540(&b,self+0x9c);
  D_001AFA16(*(int*)(self+0x9c),600);
  D_001AFA1B(*(int*)(self+0x9c),1);
 }
-
+#pragma optimize("", on)
 void func_001392D0(void) {
     extern int D_00332ACC;
     int __stdcall func_00109C1F(int);
