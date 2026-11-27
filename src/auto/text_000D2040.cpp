@@ -2,7 +2,8 @@
 #include "common.h"
 #include "ghidra.h"
 static unsigned D_00311524;
-extern unsigned D_00313B60, D_00318D14, D_00318D10, D_0031A9B0, D_0031A9C4, D_0031A9AC, D_0031A9E8, D_0031A9D8;
+extern unsigned D_00313B60, D_00318D14, D_00318D10, D_0031A9AC, D_0031A9E8, D_0031A9D8;
+extern float D_0031A9B0, D_0031A9C4;
 extern char D_0031A9F6, D_0031A9F4, D_0031A9F5, D_0031AC49, D_00318D1C, D_00318E30, D_0031A9B4, D_0031A9E0, D_0031A954, D_0031A955, D_0031A9E4, D_0031151E, D_001DAA80, D_001DAA94;
 
 #pragma optimize("y", on)
@@ -14,8 +15,8 @@ void func_000D2750(void)
     int func_000CC130(...); int func_000CD0A0(...); int func_0009C7A0(...); int func_000CC7C0(...);
     int func_0005CCC0(...); int func_0002D7B0(...); int func_0009D3E0(...); int func_001033A0(...);
     int func_000CCB10(...); int func_00100C30(...);
-    unsigned c[16], b[16];
-    __declspec(align(16)) unsigned a[16];
+    float c[16], b[16];
+    __declspec(align(16)) float a[16];
     D_00311524 |= 2;
     D_0031A9F6=0; D_0031A9F4=1; D_0031A9F5=0;
     func_00102E80(func_00103210(&D_001DAA80));
