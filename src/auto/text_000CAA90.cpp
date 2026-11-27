@@ -2,6 +2,7 @@
 #include "common.h"
 
 struct Mat64 { float f[16]; };
+struct Vec3_CB540 { unsigned x, y, z; };
 extern Mat64 D_0031AA80[];
 
 void func_000CAA90(float *param_1)
@@ -241,6 +242,29 @@ void func_000CB500(void)
   --i;
  } while(i);
 }
+
+#pragma optimize("y", on)
+void func_000CB540(void) {
+ extern char D_00318E78,D_0031A978;extern unsigned D_001E4A30,D_001E4A34,D_001E4A38;extern int D_00318D10;
+ void func_00110060(int,void *);void func_0012F5B0(void *,void *,void *);void func_0012F7A0(void *,void *);void func_0012E5F0(void *,void *,void *);void func_0012ECA0(void *,float);void func_00068DA0(void *,void *,void *);void func_001105E0(int,void *,int);
+ __declspec(align(16)) unsigned tmp[16],axis[4],v1[4],v2[4],mid[4],mat[16];
+ unsigned *p=(unsigned *)&D_00318E78;
+ do {
+ unsigned *a=p-2;func_00110060(p[-14],a);
+ unsigned *b=p+14;func_00110060(p[-11],b);
+ unsigned z=D_001E4A38,y=D_001E4A34,x=D_001E4A30;((volatile unsigned *)p)[30]=0x40490fdb;p[-9]=x;p[-8]=y;p[-7]=z;
+ func_00110060(*(int *)(D_00318D10+0x2c),mat);func_0012F5B0(axis,p-9,mat);
+ unsigned *s=(unsigned *)p[-14];v1[0]=s[0];v1[1]=s[1];v1[2]=s[2];
+ s=(unsigned *)p[-11];v2[0]=s[0];v2[1]=s[1];v2[2]=s[2];
+ func_0012F7A0(v1,a);func_0012F7A0(v2,b);func_0012E5F0(mid,v1,v2);func_0012ECA0(mid,0.5f);
+ tmp[0]=a[0];tmp[1]=a[1];tmp[2]=a[2];tmp[3]=a[3];tmp[4]=a[4];tmp[5]=a[5];tmp[6]=a[6];tmp[7]=a[7];tmp[8]=a[8];tmp[9]=a[9];tmp[10]=a[10];tmp[11]=a[11];tmp[12]=a[12];tmp[13]=a[13];tmp[14]=a[14];tmp[15]=a[15];
+ axis[3]=p[30];func_00068DA0(tmp,axis,mid);func_001105E0(p[-14],tmp,0);
+ tmp[0]=b[0];tmp[1]=b[1];tmp[2]=b[2];tmp[3]=b[3];tmp[4]=b[4];tmp[5]=b[5];tmp[6]=b[6];tmp[7]=b[7];tmp[8]=b[8];tmp[9]=b[9];tmp[10]=b[10];tmp[11]=b[11];tmp[12]=b[12];tmp[13]=b[13];tmp[14]=b[14];tmp[15]=b[15];
+ axis[3]=p[30];func_00068DA0(tmp,axis,mid);func_001105E0(p[-11],tmp,0);
+ p+=48;
+ }while((int)p<(int)&D_0031A978);
+}
+#pragma optimize("", on)
 
 extern "C" void *memset(void *,int,unsigned int);
 extern "C" char *strcpy(char *,const char *);
