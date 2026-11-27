@@ -1,9 +1,62 @@
 /* 11 functions from 0x000D2040 to 0x000D2FEB, found by Ghidra. */
 #include "common.h"
 #include "ghidra.h"
-extern unsigned D_00311524, D_00313B60, D_00318D14, D_00318D10, D_0031A9B0, D_0031A9C4, D_0031A9AC, D_0031A9E8, D_0031A9D8;
+static unsigned D_00311524;
+extern unsigned D_00313B60, D_00318D14, D_00318D10, D_0031A9B0, D_0031A9C4, D_0031A9AC, D_0031A9E8, D_0031A9D8;
 extern char D_0031A9F6, D_0031A9F4, D_0031A9F5, D_0031AC49, D_00318D1C, D_00318E30, D_0031A9B4, D_0031A9E0, D_0031A954, D_0031A955, D_0031A9E4, D_0031151E, D_001DAA80, D_001DAA94;
 
+#pragma optimize("y", on)
+void func_000D2750(void)
+{
+    extern unsigned D_00308158, D_00307DF8;
+    int func_00103210(...); int func_00102E80(...); int func_00110420(...); int func_00110480(...);
+    int func_00110330(...); int func_00110060(...); int func_001105E0(...); int func_00110000(...);
+    int func_000CC130(...); int func_000CD0A0(...); int func_0009C7A0(...); int func_000CC7C0(...);
+    int func_0005CCC0(...); int func_0002D7B0(...); int func_0009D3E0(...); int func_001033A0(...);
+    int func_000CCB10(...); int func_00100C30(...);
+    unsigned c[16], b[16];
+    __declspec(align(16)) unsigned a[16];
+    D_00311524 |= 2;
+    D_0031A9F6=0; D_0031A9F4=1; D_0031A9F5=0;
+    func_00102E80(func_00103210(&D_001DAA80));
+    if (**(unsigned **)(D_00313B60+0x2c)) func_00110420(**(unsigned **)(D_00313B60+0x2c),D_00313B60);
+    func_00110480(**(unsigned **)(*(unsigned *)(D_00318D14+0x2c)+0x2c),D_00313B60,0);
+    func_00110330(*(unsigned *)(D_00318D14+0x2c),0);
+    func_00110330(*(unsigned *)(D_00318D10+0x2c),1);
+    func_00110060(*(unsigned *)(D_00318D10+0x2c),b);
+    b[12]=0;b[13]=0;b[14]=0;
+    func_001105E0(*(unsigned *)(D_00318D10+0x2c),b,1);
+    func_00110000(*(unsigned *)(D_00318D10+0x2c));
+    unsigned v=**(unsigned **)(*(unsigned *)(D_00318D10+0x2c)+0x2c);
+    if(v) func_00110420(v,*(unsigned *)(D_00318D10+0x2c));
+    func_00110480(**(unsigned **)(*(unsigned *)(D_00318D14+0x2c)+0x2c),*(unsigned *)(D_00318D10+0x2c),8);
+    func_000CC130();
+    D_0031A9B0=0;D_0031A9C4=0;
+    D_0031A9AC=((D_0031AC49!=0)-1)&2;
+    func_000CD0A0();
+    D_0031A9E8=0x3fa00000;
+    float *p=(float *)func_0009C7A0(D_00308158,&D_001DAA94,0);
+    if(p){
+        unsigned f=(int)*p;
+        D_00318D1C=f&1;D_00318E30=(f>>1)&1;D_0031A9B4=(f>>2)&1;D_0031A9E0=(f>>3)&1;
+    }
+    if(D_0031A9E0) D_0031A9D8=0x3f7d70a4;
+    func_00110060(*(unsigned *)(D_00318D14+0x2c),c);
+    func_00110060(*(unsigned *)(D_00318D10+0x2c),a);
+    a[12]=c[12];a[13]=c[13];a[14]=c[14];
+    func_001105E0(*(unsigned *)(D_00318D10+0x2c),a,1);
+    func_00110000(*(unsigned *)(D_00318D10+0x2c));
+    func_000CC7C0();
+    D_0031A954=1;D_0031A955=1;D_0031A9E4=0;
+    func_0005CCC0(8);
+    func_0002D7B0(D_00307DF8,1);
+    D_0031151E|=8;
+    func_0009D3E0(D_00307DF8);
+    func_00110330(*(unsigned *)(D_00307DF8+0x2c),0);
+    func_001033A0(&func_000CCB10);
+    func_00100C30(0x3f000000);
+}
+#pragma optimize("", on)
 void func_000D2A00(void)
 {
   int func_00136450(...);
