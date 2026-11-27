@@ -218,6 +218,63 @@ void func_000824C0(int p)
   }
 }
 
+void func_00082570(int *p,unsigned q) {
+ int func_0011CD40(...),func_0011CDF0(...),func_0011CE10(...),func_0011CE20(...),func_0011CE30(...),func_0011CE50(...),func_0011CF30(...),func_0011CFC0(...);
+ float func_00131760(void); float func_00131230(float);float func_00131250(float);
+ extern float D_001D29E0,D_001D4270,D_001D27B0,D_001D3F88,D_001D2A14;
+ *p=func_0011CD40(20,20,1,10,4);
+ float angle; volatile float row=0; int i=0;unsigned offset=0;
+ do {
+ angle=i*D_001D27AC*D_001D29E0;
+ float radius=row*D_001D4270;
+ float trig=func_00131230(angle);
+ *(float*)(*(int*)(*p+4)+offset)=func_00131760()*trig*radius;
+ *(unsigned*)(*(int*)(*p+4)+offset+4)=0x40a00000;
+ trig=func_00131250(angle);
+ *(float*)(*(int*)(*p+4)+offset+8)=func_00131760()*trig*radius;
+ if(++i==10){row+=D_001D27B0;i=0;}
+ offset+=12;
+ }while(offset<240);
+ i=0;offset=0;
+ do{
+ float radius;
+ angle=i*D_001D27AC*D_001D29E0;
+ radius=(func_00131760()*D_001D29D8+D_001D2C00)*D_001D31C8;
+ *(float*)(*(int*)(*p+12)+offset)=func_00131230(angle)*radius;
+ *(unsigned*)(*(int*)(*p+12)+offset+4)=0x3f800000;
+ *(float*)(*(int*)(*p+12)+offset+8)=func_00131250(angle)*radius;
+ if(++i==10)i=0;
+ offset+=12;
+ }while(offset<240);
+ *(unsigned*)(*(int*)(*p+20))=0x3f800000;
+ *(unsigned*)(*(int*)(*p+20)+4)=0;
+ *(unsigned*)(*(int*)(*p+20)+8)=0;
+ *(unsigned*)(*(int*)(*p+20)+12)=0x3e99999a;
+ offset=0;
+ do {
+ *(float*)(*(int*)(*p+28)+offset+4)=func_00131760()*D_001D3F88+D_001D2A14;
+ *(unsigned*)(*(int*)(*p+28)+offset)=*(unsigned*)(*(int*)(*p+28)+offset+4);
+ offset+=8;
+ }while(offset<80);
+ *(unsigned*)(*(int*)(*p+36)+0)=0x0;
+ *(unsigned*)(*(int*)(*p+36)+4)=0x0;
+ *(unsigned*)(*(int*)(*p+36)+8)=0x3f000000;
+ *(unsigned*)(*(int*)(*p+36)+12)=0x3f000000;
+ *(unsigned*)(*(int*)(*p+36)+16)=0x3f000000;
+ *(unsigned*)(*(int*)(*p+36)+20)=0x0;
+ *(unsigned*)(*(int*)(*p+36)+24)=0x3f800000;
+ *(unsigned*)(*(int*)(*p+36)+28)=0x3f000000;
+ *(unsigned*)(*(int*)(*p+36)+32)=0x0;
+ *(unsigned*)(*(int*)(*p+36)+36)=0x3f000000;
+ *(unsigned*)(*(int*)(*p+36)+40)=0x3f000000;
+ *(unsigned*)(*(int*)(*p+36)+44)=0x3f800000;
+ *(unsigned*)(*(int*)(*p+36)+48)=0x3f000000;
+ *(unsigned*)(*(int*)(*p+36)+52)=0x3f000000;
+ *(unsigned*)(*(int*)(*p+36)+56)=0x3f800000;
+ *(unsigned*)(*(int*)(*p+36)+60)=0x3f800000;
+ func_0011CDF0(q);func_0011CE20(q,0x3f000000);func_0011CE10(q,0);func_0011CE30(q,0x41f00000,0x41f00000);func_0011CE50(q,0,0,0,0xbecccccd);func_0011CF30(q,0x42200000,0x42200000);func_0011CFC0(q,0x447a0000);
+}
+
 void func_00082820(int param_1, int param_2)
 {
   extern float D_001D27B8;
