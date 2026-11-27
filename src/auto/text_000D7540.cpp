@@ -215,6 +215,127 @@ void func_000D7E40(void)
 #pragma optimize("", on)
 unsigned char func_000D7FE0(int *p,int *q){int *x=&D_001E54E8;if(q[1]!=20){while(*x!=-1){if(*x++==q[1])goto done;}if(*p==0)return 1;}done:return 0;}
 
+extern char D_001DB228, D_001DB20C, D_001DB1E8;
+extern int D_00307DF8, D_002EECA0, D_00308158, D_003251A4;
+void _func_000D8090(void)
+{
+    int func_00103210(...);
+    int func_001031A0(...);
+    int func_001033A0(...);
+    int func_001031C0(...);
+    int func_00102E80(...);
+    int func_00136450(...);
+    int func_000688D0(...);
+    int func_0011B990(...);
+    int func_00110760(...);
+    int func_0009D3E0(...);
+    int func_0009D640(...);
+    int func_0002DF20(...);
+    int func_00107C40(...);
+    int func_00116FB0(...);
+    int func_0010F8A0(...);
+    int func_0011BE30(...);
+    int func_000F8B60(...);
+    int func_000A2E30(...);
+    char *base = (char *)D_0031E508;
+    int *p, *q;
+    int i, j;
+    func_001031A0(func_00103210(&D_001DB228), 0x3f19999a);
+    func_001031A0(func_00103210(&D_001DB20C), 0x3ecccccd);
+    func_001033A0(0);
+    func_00102E80(func_001031C0(*(int *)(base + 0xefec), &D_001DB1E8));
+    func_00136450();
+    p = (int *)(base + 0xdaa4);
+    i = 5;
+    do {
+        func_000688D0();
+        *(short *)(*p + 0x2a) = *(short *)(*p + 0x2a) - 1;
+        func_0011B990(*p);
+        func_00110760(p[2]);
+        func_000688D0();
+        p += 5;
+    } while (--i);
+    p = (int *)(base + 0xdb08);
+    i = 0xe;
+    do {
+        func_000688D0();
+        *(short *)(*p + 0x2a) = *(short *)(*p + 0x2a) - 1;
+        func_0011B990(*p);
+        func_00110760(p[2]);
+        func_000688D0();
+        p += 5;
+    } while (--i);
+    func_000688D0();
+    *(short *)(*(int *)(base + 0xd8ac) + 0x2a) = *(short *)(*(int *)(base + 0xd8ac) + 0x2a) - 1;
+    func_0011B990(*(int *)(base + 0xd8ac));
+    func_00110760(*(int *)(base + 0xd8b4));
+    func_000688D0();
+    p = (int *)(base + 0xd820);
+    j = 4;
+    do {
+        i = 7;
+        q = p;
+        do {
+            func_000688D0();
+            *(short *)(*q + 0x2a) = *(short *)(*q + 0x2a) - 1;
+            func_0011B990(*q);
+            func_00110760(q[2]);
+            func_000688D0();
+            q += 5;
+        } while (--i);
+        p += 40;
+    } while (--j);
+    p = (int *)(base + 0xef44);
+    i = 8;
+    do {
+        func_000688D0();
+        *(short *)(*p + 0x2a) = *(short *)(*p + 0x2a) - 1;
+        func_0011B990(*p);
+        func_00110760(p[2]);
+        func_000688D0();
+        p += 5;
+    } while (--i);
+    func_000688D0();
+    *(short *)(*(int *)(base + 0xdcc0) + 0x2a) = *(short *)(*(int *)(base + 0xdcc0) + 0x2a) - 1;
+    func_0011B990(*(int *)(base + 0xdcc0));
+    func_00110760(*(int *)(base + 0xdcc8));
+    func_000688D0();
+    func_000688D0();
+    *(short *)(*(int *)(base + 0xe8a0) + 0x2a) = *(short *)(*(int *)(base + 0xe8a0) + 0x2a) - 1;
+    func_0011B990(*(int *)(base + 0xe8a0));
+    func_00110760(*(int *)(base + 0xe8a8));
+    func_000688D0();
+    func_000688D0();
+    *(short *)(*(int *)(base + 0xdcd4) + 0x2a) = *(short *)(*(int *)(base + 0xdcd4) + 0x2a) - 1;
+    func_0011B990(*(int *)(base + 0xdcd4));
+    func_00110760(*(int *)(base + 0xdcdc));
+    func_000688D0();
+    p = (int *)(base + 0xe8b4);
+    i = 8;
+    do {
+        func_000688D0();
+        *(short *)(*p + 0x2a) = *(short *)(*p + 0x2a) - 1;
+        func_0011B990(*p);
+        func_00110760(p[2]);
+        func_000688D0();
+        p += 5;
+    } while (--i);
+    func_0009D3E0(*(int *)(base + 0xefec));
+    func_0009D640(*(int *)(base + 0xefec));
+    func_0002DF20(D_00307DF8);
+    D_002EECA0 = 1;
+    if (*base) func_00107C40(D_003251A4, D_00308158, D_00308158);
+    func_00116FB0(base);
+    func_0010F8A0();
+    func_0010F8A0();
+    func_0010F8A0();
+    func_0011BE30();
+    func_0011BE30();
+    func_0011BE30();
+    func_000F8B60(1, 0);
+    func_000A2E30(0);
+}
+
 void func_000D8370(void)
 {
   int func_000B5650(...);
