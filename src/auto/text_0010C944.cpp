@@ -46,6 +46,48 @@ static __forceinline void RemoveHeapFreeEntry(Heap *heap, HeapFreeEntry *entry)
 
 #pragma optimize("y", off)
 #pragma optimize("s", on)
+void * __stdcall func_0010C944(Heap *heap, void *block, unsigned long *size, char flags)
+{
+ HeapFreeEntry *entry=(HeapFreeEntry*)block;
+ HeapFreeEntry *adj=entry-entry->PreviousSize;
+ if(adj!=entry && !(adj->Flags&1) && adj->Size+*size<=(unsigned long)&D_0000FF00){
+  if(flags){
+   RemoveHeapFreeEntry(heap,entry);
+   heap->TotalFreeSize-=entry->Size;
+   flags=0;
+  }
+  RemoveHeapFreeEntry(heap,adj);
+  adj->Flags=entry->Flags&0x10;
+  if(adj->Flags&0x10)
+   *(HeapFreeEntry**)((char*)heap->Segments[adj->SegmentIndex]+0x40)=adj;
+  *size+=adj->Size;
+  heap->TotalFreeSize-=adj->Size;
+  unsigned short merged=(unsigned short)*size;
+  entry=adj;
+  adj->Size=merged;
+  if(!(adj->Flags&0x10))(adj+*size)->PreviousSize=(unsigned short)*size;
+ }
+ if(!(entry->Flags&0x10)){
+  adj=entry+*size;
+  if(!(adj->Flags&1) && adj->Size+*size<=(unsigned long)&D_0000FF00){
+   if(flags){
+    RemoveHeapFreeEntry(heap,entry);
+    heap->TotalFreeSize-=entry->Size;
+   }
+   entry->Flags=adj->Flags&0x10;
+   if(entry->Flags&0x10)
+    *(HeapFreeEntry**)((char*)heap->Segments[entry->SegmentIndex]+0x40)=entry;
+   RemoveHeapFreeEntry(heap,adj);
+   *size+=adj->Size;
+   heap->TotalFreeSize-=adj->Size;
+   entry->Size=(unsigned short)*size;
+   if(!(entry->Flags&0x10))(entry+*size)->PreviousSize=(unsigned short)*size;
+  }
+ }
+ return entry;
+}
+#pragma optimize("", on)
+
 void __stdcall func_0010CBE9(Heap *heap, HeapFreeEntry *block, unsigned long freeSize)
 {
     unsigned char segIndex;
