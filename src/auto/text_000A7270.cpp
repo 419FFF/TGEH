@@ -2,6 +2,126 @@
 #include "common.h"
 #include "ghidra.h"
 
+void func_000A75D0(void)
+{
+  extern unsigned int D_00312B08,D_00312B10,D_00312B20,D_00312B24,D_00312B28,D_00312B2C,D_00312B40,D_00312B44,D_00312B48,D_00312B4C,D_00312B70,D_00312B74,D_00312B78,D_00312B7C,D_00312D74,D_00312C30,D_00312C38,D_00312C3C,D_00313B00,D_001E46B4;
+  extern char D_001D29C7;
+  int func_000688D0(...); int func_0013B380(...);
+  int func_000ECF20(...);
+  extern undefined D_001D7894;
+  int func_00131780(...);
+  extern undefined D_001D5CC4;
+  int func_00100790(...);
+  int func_00116780(...);
+  int func_00131990(...);
+  extern undefined D_001D788C;
+  int func_00120BF0(...);
+  extern undefined D_001D7880;
+  int func_0011BF40(...);
+  extern undefined D_001D7864;
+  extern undefined4 D_00312C50;
+  int func_0011BDD0(...);
+  extern undefined D_001D784C;
+  extern undefined4 D_00312C60;
+  extern undefined4 D_00312C64;
+  extern undefined4 D_00312C68;
+  extern undefined4 D_00312C6C;
+  extern undefined4 D_00313B6C;
+  extern undefined D_001D77B8;
+  extern undefined4 D_00312C80;
+  extern undefined D_001D7794;
+  extern undefined4 D_00312C84;
+  extern undefined D_001D7770;
+  extern undefined4 D_00312C88;
+  extern undefined D_001D774C;
+  extern undefined D_001D7830;
+  extern undefined D_001D7814;
+  extern undefined D_001D77F8;
+  extern undefined D_001D77DC;
+  extern undefined4 D_00312C8C;
+  extern undefined D_001D7730;
+  extern undefined4 D_00312CB0;
+  extern undefined D_001D7714;
+  extern undefined4 D_00312CB4;
+  extern undefined D_001D76F8;
+  extern undefined4 D_00312CB8;
+  extern undefined D_001D76DC;
+  extern undefined4 D_00312CBC;
+  extern undefined D_001D5238;
+  int func_0006E9B0(...);
+  int func_000AFB90(...);
+  extern undefined D_001D64A0;
+  extern undefined4 D_00312C34;
+  int func_00105BE0(...);
+  extern undefined4 D_00312C44;
+  int func_000A6F80(...);
+  extern unsigned int D_00312C48;
+  extern int D_00312B0C;
+  int iVar1;
+  undefined *puVar2;
+  
+  func_000ECF20(((undefined *)&D_001D7894));
+  func_000688D0();
+  func_00131780(((undefined *)&D_001D5CC4),((undefined *)&D_001D29C7));
+  func_000688D0();
+  func_00100790(0);
+  func_00116780(1);
+  func_000688D0();
+  func_00131990(((undefined *)&D_001D788C));
+  D_00312B08 = func_00120BF0(((undefined *)&D_001D7880));
+  func_00131990(((undefined *)&D_001D29C7));
+  func_000688D0();
+  func_000688D0();
+  D_00312B10 = func_0011BF40(((undefined *)&D_001D7864),0);
+  D_00312C50 = func_0011BDD0(D_00312B10,0);
+  D_00312B20 = func_0011BF40(((undefined *)&D_001D784C),0);
+  D_00312C60 = func_0011BDD0(D_00312B20,0);
+  D_00312B24 = func_0011BF40(((undefined *)&D_001D784C),0);
+  D_00312C64 = func_0011BDD0(D_00312B24,0);
+  D_00312B28 = func_0011BF40(((undefined *)&D_001D784C),0);
+  D_00312C68 = func_0011BDD0(D_00312B28,0);
+  D_00312B2C = func_0011BF40(((undefined *)&D_001D784C),0);
+  D_00312C6C = func_0011BDD0(D_00312B2C,0);
+  switch(D_00313B6C) { case 1:
+    D_00312B40 = func_0011BF40(((undefined *)&D_001D77B8),0);
+    D_00312C80 = func_0011BDD0(D_00312B40,0);
+    D_00312B44 = func_0011BF40(((undefined *)&D_001D7794),0);
+    D_00312C84 = func_0011BDD0(D_00312B44,0);
+    D_00312B48 = func_0011BF40(((undefined *)&D_001D7770),0);
+    D_00312C88 = func_0011BDD0(D_00312B48,0);
+    D_00312B4C = func_0011BF40(&D_001D774C,0);D_00312C8C = func_0011BDD0(D_00312B4C,0); break;
+  default:
+    D_00312B40 = func_0011BF40(((undefined *)&D_001D7830),0);
+    D_00312C80 = func_0011BDD0(D_00312B40,0);
+    D_00312B44 = func_0011BF40(((undefined *)&D_001D7814),0);
+    D_00312C84 = func_0011BDD0(D_00312B44,0);
+    D_00312B48 = func_0011BF40(((undefined *)&D_001D77F8),0);
+    D_00312C88 = func_0011BDD0(D_00312B48,0);
+    D_00312B4C = func_0011BF40(&D_001D77DC,0);D_00312C8C = func_0011BDD0(D_00312B4C,0); break;
+  }
+  D_00312B70 = func_0011BF40(((undefined *)&D_001D7730),0);
+  D_00312CB0 = func_0011BDD0(D_00312B70,0);
+  D_00312B74 = func_0011BF40(((undefined *)&D_001D7714),0);
+  D_00312CB4 = func_0011BDD0(D_00312B74,0);
+  D_00312B78 = func_0011BF40(((undefined *)&D_001D76F8),0);
+  D_00312CB8 = func_0011BDD0(D_00312B78,0);
+  D_00312B7C = func_0011BF40(((undefined *)&D_001D76DC),0);
+  D_00312CBC = func_0011BDD0(D_00312B7C,0);
+  D_00312D74 = func_0011BF40(((undefined *)&D_001D5238),0);
+  func_000688D0();
+  func_0006E9B0();
+  D_00312C30 = func_000AFB90(((undefined *)&D_001D64A0));
+  D_00312C34 = 0;
+  D_00312B0C = 0x19;
+  *(volatile unsigned*)&D_00312C48 = 0;
+  D_00312C38 = 0;
+  D_00312C3C = (unsigned)(D_00312B0C * func_0013B380(D_00313B00)) / D_001E46B4;
+  func_00105BE0();
+  D_00312C44 = 0;
+  func_000A6F80();
+  return;
+}
+
 void func_000A7890(void)
 {
   int func_000A7030(...);
