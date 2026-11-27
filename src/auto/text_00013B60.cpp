@@ -1,7 +1,7 @@
 /* 6 functions from 0x00013B60 to 0x00014A23, found by Ghidra. */
 #include "common.h"
 #include "ghidra.h"
-struct __declspec(align(16)) Vec13B60 { float x, y, z; };
+struct Vec13B60 { float x, y, z; };
 
 #pragma optimize("t", on)
 void func_00013B60(char *p)
