@@ -2,7 +2,7 @@
 #include "common.h"
 
 struct Mat64 { float f[16]; };
-struct Vec3_CB540 { unsigned x, y, z; };
+extern const char D_001DAA28[2] = "b";
 extern Mat64 D_0031AA80[];
 
 void func_000CAA90(float *param_1)
