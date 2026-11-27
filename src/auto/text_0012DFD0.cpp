@@ -2,6 +2,7 @@
 #include "common.h"
 #include "ghidra.h"
 struct V3 { float x, y, z; };
+struct S9_0012DFD0 { int a[9]; };
 union U_0012E2E0 { unsigned int u; unsigned char b[4]; };
 
 void _func_0012E280(unsigned int *out, unsigned char *in)
