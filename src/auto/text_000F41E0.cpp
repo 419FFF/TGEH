@@ -1,12 +1,14 @@
 /* 10 functions from 0x000F41E0 to 0x000F4C88, found by Ghidra. */
 #include "common.h"
 #include "ghidra.h"
-static __forceinline void DetachF49Frame(int frame)
-{
- int func_00110420(...);
- if(*(volatile int*)(frame+0x2c))
-  func_00110420(**(int**)(frame+0x2c),frame);
-}
+struct F49Frame {
+ char pad[0x2c]; int **parent;
+ __forceinline void detach() {
+  int func_00110420(...);
+  if(*(volatile int**)&parent)func_00110420(**parent,this);
+ }
+};
+static __forceinline void DetachF49Frame(int frame) { ((F49Frame*)frame)->detach(); }
 struct F4760Params {
  int kind; float color[3]; int flags[2]; float scale; int tail[2];
  F4760Params() { volatile F4760Params *p=this; p->kind=0; p->color[0]=0; p->color[1]=0; p->color[2]=0; p->flags[0]=0; p->flags[1]=0; p->scale=0; p->tail[0]=0; p->tail[1]=0; }
@@ -257,12 +259,9 @@ void func_000F49D0(int name, char activate)
  func_0009D3E0(D_003080B0);
  func_0009D3E0(D_00307D00);
  func_0009D3E0(D_00307CFC);
- int f=*(int*)(D_003080B0+0x2c);
- if(*(volatile int*)(f+0x2c))func_00110420(**(int**)(f+0x2c),f);
- f=*(int*)(D_00307D00+0x2c);
- if(*(volatile int*)(f+0x2c))func_00110420(**(int**)(f+0x2c),f);
- f=*(int*)(D_00307CFC+0x2c);
- if(*(volatile int*)(f+0x2c))func_00110420(**(int**)(f+0x2c),f);
+ DetachF49Frame(*(int*)(D_003080B0+0x2c));
+ DetachF49Frame(*(int*)(D_00307D00+0x2c));
+ DetachF49Frame(*(int*)(D_00307CFC+0x2c));
  int chosen;
  if(!func_0011B4F0(name,&D_001D734C))chosen=D_003080B0;
  else if(!func_0011B4F0(name,&D_001D42F0))chosen=D_00307D00;
