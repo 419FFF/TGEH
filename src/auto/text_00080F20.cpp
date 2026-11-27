@@ -1,10 +1,90 @@
 /* 19 functions from 0x00080F20 to 0x00081DB9, found by Ghidra. */
 #include "common.h"
 #include "ghidra.h"
+static char D_002FBAFC;
+static char D_002FBAFD;
 
 struct PEOut { float p[3]; float pad[5]; float s0, s1; float pad2[2]; };
 struct PEMgr { unsigned n; int a[64]; int b[64]; float c[64][3]; float d[64]; int unk[23]; int h; PEOut o[64]; int e[64]; int f[64]; };
 struct Emitter { int u0; float *pos; int u8; float *vel; int u10; float *col; int u18; float *size; int u20; float *tex; };
+
+void func_00080F20(int p,int object,int frame)
+{
+ int func_0011E3D0(...);
+ float func_0012E7B0(...),func_00131760(void);
+ void func_0011CE30(int,float,float),func_0011CFC0(int,float),func_0011CF30(int,float,float);
+ int func_00110330(...);
+ extern float D_001D2BF4,D_001D27B0,D_001D31C8,D_001D2B64,D_001D35F8,D_001D35FC,D_001D2BB4,D_001D2C00,D_001D27EC,D_001D29E0,D_001D29D8,D_001D28C0,D_001D27B8;
+ extern unsigned int D_003080F4;
+ extern char D_002FBAFC,D_002FBAFD;
+ func_0011E3D0(p);
+ int state=*(int*)(p+0x17c);
+ bool idle=false;
+ double factor=(double)func_0012E7B0(state+4,frame+0x30)*D_001D2BF4;
+ float scale=factor;
+ if(factor>D_001D27B0)*(int*)&scale=0x3f800000;
+ switch(D_003080F4){
+ case 1:case 2:case 3:case 5:case 6:case 10:case 12:case 13:case 14:case 0x200:{
+  int emitter=p+0x54;
+  func_0011CE30(emitter,(float)(scale*(double)D_001D2B64),(float)(scale*(double)D_001D31C8));
+  func_0011CFC0(emitter,(float)(scale*(double)D_001D35F8));
+  scale=scale*(double)D_001D35FC;
+  func_0011CF30(emitter,scale,scale);
+  D_002FBAFD=1;
+  break;
+ }
+ default:func_0011CFC0(p+0x54,0);idle=true;
+ }
+ if((double)*(float*)(p+0x178)>D_001D2BB4)*(int*)(p+0x178)=0x3ca3d70a;
+ *(int*)(state+4)=*(int*)(frame+0x30);*(int*)(state+8)=*(int*)(frame+0x34);*(int*)(state+12)=*(int*)(frame+0x38);
+ double value;
+ switch(D_003080F4){
+ default:
+  value=(double)func_00131760()*D_001D2C00+D_001D27EC;
+  (*(float**)(*(int*)(*(int*)(p+0x50)+0x2c)+0x14))[0]=value;
+  value=(double)func_00131760()*D_001D2C00+D_001D27EC;
+  (*(float**)(*(int*)(*(int*)(p+0x50)+0x2c)+0x14))[1]=value;
+  value=(double)func_00131760()*D_001D2C00;
+  goto blue;
+ case 2:case 10:
+  (*(int**)(*(int*)(*(int*)(p+0x50)+0x2c)+0x14))[0]=0x3f800000;
+  value=(double)func_00131760()*D_001D29E0+D_001D29D8;
+  (*(float**)(*(int*)(*(int*)(p+0x50)+0x2c)+0x14))[1]=value;
+  value=(double)func_00131760()*D_001D29E0;
+ blue:
+  (*(float**)(*(int*)(*(int*)(p+0x50)+0x2c)+0x14))[2]=value+D_001D27EC;
+  value=(double)func_00131760()*D_001D2C00+D_001D29E0;
+  break;
+ case 1:
+  value=(double)func_00131760()*D_001D29E0+D_001D2C00;
+  (*(float**)(*(int*)(*(int*)(p+0x50)+0x2c)+0x14))[0]=value;
+  (*(int**)(*(int*)(*(int*)(p+0x50)+0x2c)+0x14))[1]=0x3f800000;
+  value=(double)func_00131760()*D_001D29E0+D_001D28C0;
+  (*(float**)(*(int*)(*(int*)(p+0x50)+0x2c)+0x14))[2]=value;
+  value=((double)func_00131760()+D_001D27B0)*D_001D29E0;
+  break;
+ }
+ (*(float**)(*(int*)(*(int*)(p+0x50)+0x2c)+0x14))[3]=value;
+ if(idle){
+ unsigned int n=*(unsigned int*)(p+0x15c);
+ unsigned int i=0;
+ if(i<n){
+  float *v=(float*)(*(int*)(p+0x160)+0x20);
+  do{
+   if((double)*v!=(double)D_001D27B8)break;
+   i++;v+=0x16;
+  }while(i<*(volatile unsigned int*)(p+0x15c));
+ }
+ if(i==n){
+  if(D_002FBAFC>=20){
+   func_00110330(object,0);
+   *(float*)(p+0x178)=0.0f;D_002FBAFC=0;D_002FBAFD=0;return;
+  }
+  ++D_002FBAFC;
+ }
+ *(float*)(p+0x178)=0.0f;
+ }else D_002FBAFC=0;
+}
 
 void func_00081220(void) {
     extern int D_001D2F40;
@@ -366,84 +446,67 @@ void func_00081BD0(void)
   extern float D_001D541C;
   int func_00133F30(...);
   int func_0013C980(...);
-  float *pfVar1;
-  float fVar2;
-  char cVar3;
-  int *piVar4;
-  int iVar5;
-  int iVar6;
-  unsigned int *puVar7;
-  int iVar8;
-  unsigned int uVar9;
-  int local_18;
-  unsigned int local_14;
-  int local_10;
-  float local_c;
-  float local_8;
-  float local_4;
-
+  PEMgr *m;
+  unsigned i;
   if (D_002FBB00 != 0) {
     func_000688D0();
-    iVar8 = 0;
-    local_14 = 0;
-    local_10 = 0;
-    uVar9 = 0x1364;
-    puVar7 = (unsigned int *)D_002FBB00;
-    do {
-      pfVar1 = (float *)(local_10 + 0x664 + (int)puVar7);
-      if (local_14 < *puVar7) {
-        iVar6 = *(int *)((uVar9 - 0x1260) + (int)puVar7);
-        piVar4 = *(int **)(iVar6 + 0x2c);
-        iVar5 = iVar6;
-        while ((piVar4 != (int *)0x0 && ((*(unsigned char *)(iVar5 + 0x20) & 8) == 0))) {
-          iVar5 = *piVar4;
-          piVar4 = *(int **)(iVar5 + 0x2c);
+    m = (PEMgr *)D_002FBB00;
+    for (i = 0; i < 64; i++) {
+      PEOut *o = &m->o[i];
+      if (i < m->n) {
+        int ent = m->b[i];
+        int r = ent;
+        int *nx;
+        char flag;
+        while ((nx = *(int **)(r + 0x2c)) != 0 && (*(unsigned char *)(r + 0x20) & 8) == 0)
+          r = *nx;
+        if (r == m->e[i]) {
+          flag = *(char *)(m->f[i] + 0x284);
+          if (flag == 0) {
+            o->s0 = 0.0f;
+            o->s1 = 0.0f;
+            continue;
+          }
+        } else {
+          int t;
+          m->e[i] = r;
+          t = func_000F8F40(ent);
+          m = (PEMgr *)D_002FBB00;
+          m->f[i] = t;
+          flag = *(char *)(t + 0x284);
         }
-        if (iVar5 == *(int *)((uVar9 - 0x100) + (int)puVar7)) {
-          cVar3 = *(char *)(*(int *)(uVar9 + (int)puVar7) + 0x284);
+        if (flag == 0 || (*(unsigned char *)(m->b[i] + 0x20) & 1) != 0) {
+          o->s0 = 0.0f;
+          o->s1 = 0.0f;
+        } else {
+          int obj;
+          float v[3];
+          func_001100A0(m->a[i], &obj);
+          m = (PEMgr *)D_002FBB00;
+          o->p[0] = m->c[i][0] + *(float *)(obj + 0x30);
+          o->p[1] = m->c[i][1] + *(float *)(obj + 0x34);
+          o->p[2] = m->c[i][2] + *(float *)(obj + 0x38);
+          v[0] = -(D_00329320 - o->p[0]);
+          v[1] = -(D_00329324 - o->p[1]);
+          v[2] = -(D_00329328 - o->p[2]);
+          func_0012EA60(v);
+          m = (PEMgr *)D_002FBB00;
+          o->p[0] = o->p[0] - v[0] * D_001D541C;
+          o->p[1] = o->p[1] - v[1] * D_001D541C;
+          o->p[2] = o->p[2] - v[2] * D_001D541C;
+          {
+            float s = m->d[i];
+            o->s0 = s;
+            o->s1 = s;
+          }
         }
-        else {
-          *(int *)((uVar9 - 0x100) + (int)puVar7) = iVar5;
-          iVar6 = func_000F8F40(iVar6);
-          puVar7 = (unsigned int *)D_002FBB00;
-          *(int *)(uVar9 + (int)D_002FBB00) = iVar6;
-          cVar3 = *(char *)(iVar6 + 0x284);
-        }
-        if ((cVar3 == '\0') ||
-           ((*(unsigned char *)(*(int *)((uVar9 - 0x1260) + (int)puVar7) + 0x20) & 1) != 0)) {
-          pfVar1[8] = 0.0f;
-          pfVar1[9] = 0.0f;
-        }
-        else {
-          func_001100A0(*(int *)((uVar9 - 0x1360) + (int)puVar7),&local_18);
-          puVar7 = (unsigned int *)D_002FBB00;
-          *pfVar1 = *(float *)(iVar8 + 0x204 + (int)D_002FBB00) + *(float *)(local_18 + 0x30);
-          pfVar1[1] = *(float *)(iVar8 + 0x208 + (int)puVar7) + *(float *)(local_18 + 0x34);
-          pfVar1[2] = *(float *)(iVar8 + 0x20c + (int)puVar7) + *(float *)(local_18 + 0x38);
-          local_c = -(D_00329320 - *pfVar1);
-          local_8 = -(D_00329324 - pfVar1[1]);
-          local_4 = -(D_00329328 - pfVar1[2]);
-          func_0012EA60(&local_c);
-          puVar7 = (unsigned int *)D_002FBB00;
-          *pfVar1 = *pfVar1 - local_c * D_001D541C;
-          pfVar1[1] = pfVar1[1] - local_8 * D_001D541C;
-          pfVar1[2] = pfVar1[2] - local_4 * D_001D541C;
-          fVar2 = *(float *)((uVar9 - 0xe60) + (int)puVar7);
-          pfVar1[8] = fVar2;
-          pfVar1[9] = fVar2;
-        }
+      } else {
+        o->s0 = 0.0f;
+        o->s1 = 0.0f;
       }
-      else {
-        pfVar1[8] = 0.0f;
-        pfVar1[9] = 0.0f;
-      }
-      local_14 = local_14 + 1;
-      local_10 = local_10 + 0x30;
-      uVar9 = uVar9 + 4;
-      iVar8 = iVar8 + 0xc;
-    } while (uVar9 < 0x1464);
-    func_00133F30(puVar7 + 0x181);
-    func_0013C980(((unsigned int *)D_002FBB00)[0x198],(unsigned int *)D_002FBB00 + 0x199,8);
+    }
+    func_00133F30(&m->unk[0]);
+    func_0013C980(((PEMgr *)D_002FBB00)->h, &((PEMgr *)D_002FBB00)->o[0], 8);
   }
 }
 
