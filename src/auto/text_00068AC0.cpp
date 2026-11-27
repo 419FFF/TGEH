@@ -44,6 +44,63 @@ float func_00068EA0(float a, float b, int p)
   return D_001D27B8;
 }
 
+static inline bool feq_00068F90(float a, float b) { return a == b; }
+void func_00068F90(float *p, float *v, char *hit)
+{
+  extern float D_001D27B8;
+  void func_0012E6D0(float *, float *, float *);
+  void func_0012EE00(float *, float *, float *);
+  double func_0012EA60(float *);
+  void func_0012ECA0(float *, float);
+  double func_00068EA0(float, float, float *);
+  double func_0012EB70(float *, float *);
+  double func_0012E8C0(float *, float *);
+  void func_0012ED20(float *, float *, float);
+  void func_0012E650(float *, float *);
+  float up[3], dir[3];
+  float a[3], b[3], c[3], t[3], m[9], tmp[3];
+  float r;
+  int outside;
+  float *r1, *r2;
+
+  up[0] = 0.0f; up[1] = -1.0f; up[2] = 0.0f;
+  dir[0] = 0.0f; dir[1] = 0.0f; dir[2] = 0.0f;
+  if (!(*(int *)(p + 0xf) & 0x100)) {
+  r1 = p + 4; r2 = p + 8;
+  func_0012E6D0(a, r1, p);
+  func_0012E6D0(b, r2, p);
+  func_0012EE00(c, a, b);
+  func_0012EA60(c);
+  func_0012EE00(t, up, c);
+  func_0012EE00(dir, t, c);
+  func_0012EA60(dir);
+  if (dir[1] > D_001D27B8) func_0012ECA0(dir, -1.0f);
+  m[0] = p[0]; m[1] = p[1]; m[2] = p[2];
+  m[3] = r1[0]; m[4] = r1[1]; m[5] = r1[2];
+  m[6] = r2[0]; m[7] = r2[1]; m[8] = r2[2];
+  r = func_00068EA0(0.52359885f, 0.78539824f, m);
+  *hit = 0;
+  if ((double)D_001D27B8 == (double)r) *hit = 1;
+  outside = 0;
+  if ((double)D_001D27B8 != (double)v[0] || (double)D_001D27B8 != (double)v[2]) {
+    func_0012EB70(tmp, v);
+    tmp[1] = 0.0f;
+    if (func_0012E8C0(tmp, dir) < D_001D27B8) goto skip;
+  }
+  outside = 1;
+skip:
+  if (!*hit) {
+    tmp[0] = v[0]; tmp[2] = v[2]; tmp[1] = 0.0f;
+    func_0012ECA0(tmp, r);
+    v[0] = tmp[0]; v[2] = tmp[2];
+  } else if (!outside) {
+    r = func_0012E8C0(v, dir);
+    func_0012ED20(a, dir, r);
+    func_0012E650(v, a);
+  }
+  }
+}
+
 int _func_000692C0(int a,int b,int *out,int max,int *data,unsigned int count)
 {
  int _func_00068D10(...); char _func_001118C0(...);
@@ -107,7 +164,7 @@ void func_000693E0(int self, float *pos, float r, int out, int *cnt)
     if (!(fl & 1)) {
       if (*(unsigned char *)(obj + 0xd0) & 4) {
         float t = r * r + ((float *)e)[1];
-        if (func_0012E870(pos, (float *)(e + 2)) <= t) goto add;
+        if (!(func_0012E870(pos, (float *)(e + 2)) > t)) goto add;
       } else {
         if (!(func_00131210(pos[0] - ((float *)e)[2]) > r + *(float *)(*e + 0x10)) &&
             !(func_00131210(pos[1] - ((float *)e)[3]) > r + *(float *)(*e + 0x14)) &&
