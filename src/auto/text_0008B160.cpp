@@ -1,6 +1,7 @@
 /* 19 functions from 0x0008B160 to 0x0008C11F, found by Ghidra. */
 #include "common.h"
 #include "ghidra.h"
+static unsigned int D_002FE018,D_002FE024;
 
 extern char D_001D6E74[];
 extern char D_001D6E58[];
