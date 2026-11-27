@@ -14,6 +14,7 @@ extern "C" int (__stdcall * __imp__NtClose)(void*);
 extern "C" int (__stdcall * __imp__NtOpenFile)(void*, unsigned int, void*, void*, unsigned int, void*);
 extern "C" int (__stdcall * __imp__NtSetInformationFile)(void*, void*, void*, unsigned int, unsigned int);
 extern int _D_001E27B4;
+extern "C" int (__stdcall * __imp__RtlNtStatusToDosError)(int);
 #pragma optimize("s", on)
 int __stdcall func_001473F4(int h, unsigned short *name, unsigned short *out, int outlen)
 {
