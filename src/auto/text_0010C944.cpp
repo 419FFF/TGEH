@@ -25,7 +25,24 @@ extern "C" __declspec(dllimport) long __stdcall NtAllocateVirtualMemory(char **b
 void __stdcall func_0010C726(void *p, unsigned int a, unsigned int b);
 extern "C" __declspec(dllimport) long __stdcall NtFreeVirtualMemory(char **base, unsigned long *size, unsigned long type);
 void * __stdcall func_0010C7B9(Heap *heap, HeapSegment *seg, unsigned long *size, int flags);
-void * __stdcall func_0010C944(Heap *heap, void *block, unsigned long *size, int flags);
+void * __stdcall func_0010C944(Heap *heap, void *block, unsigned long *size, char flags);
+extern "C" __declspec(dllimport) unsigned long __stdcall RtlCompareMemoryUlong(void *, unsigned long, unsigned long);
+static __forceinline void RemoveHeapFreeEntry(Heap *heap, HeapFreeEntry *entry)
+{
+ HeapList *next=entry->FreeList.Flink;
+ HeapList *prev=entry->FreeList.Blink;
+ prev->Flink=next;
+ next->Blink=prev;
+ if(next==prev && entry->Size<0x80){
+  unsigned long size=entry->Size;
+  heap->FreeListsInUseBytes[size>>3]^=(unsigned char)(1<<(size&7));
+ }
+ if(entry->Flags&4){
+  unsigned long bytes=(entry->Size<<4)-0x18;
+  if((entry->Flags&2) && bytes>4)bytes-=4;
+  RtlCompareMemoryUlong((char*)entry+0x18,bytes,0xfeeefeee);
+ }
+}
 
 #pragma optimize("y", off)
 #pragma optimize("s", on)
@@ -144,5 +161,71 @@ unsigned char __stdcall func_0010D12C(Heap *heap, char *segment, unsigned char i
     func_0010CBE9(heap, (HeapFreeEntry *)first, (unsigned long)((cmt - first) >> 4));
     return 1;
 }
+
+#pragma optimize("y", off)
+#pragma optimize("s", on)
+void * __stdcall func_0010D24A(Heap *heap, unsigned long size)
+{
+    unsigned long pages = (size + 0xfff) >> 12;
+    unsigned long bytes = pages << 12;
+    unsigned long found;
+    unsigned char i;
+    char *seg;
+    unsigned long req;
+    unsigned long commit;
+    long status;
+    unsigned long lim;
+    *(unsigned char *)&found = 0x40;
+    i = 0;
+    do {
+        seg = (char *)heap->Segments[i];
+        if (seg != 0) {
+            if (pages <= *(unsigned long *)(seg + 0x30) && bytes <= *(unsigned long *)(seg + 0x1c)) {
+                void *blk = func_0010C7B9(heap, (HeapSegment *)seg, &bytes, 0);
+                if (blk) {
+                    void *r;
+                    bytes >>= 4;
+                    r = func_0010C944(heap, blk, &bytes, 0);
+                    func_0010CBE9(heap, (HeapFreeEntry *)r, bytes);
+                    return r;
+                }
+            }
+        } else {
+            if (*(unsigned char *)&found == 0x40)
+                *(unsigned char *)&found = i;
+        }
+        i++;
+    } while (i < 0x40);
+    if (*(unsigned char *)&found != 0x40 && (*(unsigned char *)((char *)heap + 0x14) & 2)) {
+        lim = *(unsigned long *)((char *)heap + 0x20);
+        seg = 0;
+        size = (req = size + 0x1000);
+        if (size <= lim)
+            req = lim;
+        status = NtAllocateVirtualMemory(&seg, 0, &req, 0x2000, 4);
+        while (status < 0) {
+            if (req == size) break;
+            req >>= 1;
+            if (req < size) req = size;
+            status = NtAllocateVirtualMemory(&seg, 0, &req, 0x2000, 4);
+        }
+        if (status < 0) return 0;
+        *(unsigned long *)((char *)heap + 0x20) += req;
+        commit = size;
+        if (size <= *(unsigned long *)((char *)heap + 0x24))
+            commit = *(unsigned long *)((char *)heap + 0x24);
+        status = NtAllocateVirtualMemory(&seg, 0, &commit, 0x1000, 4);
+        if (status >= 0) {
+            if (!func_0010D12C(heap, seg, *(unsigned char *)&found, 0, seg, seg + commit, seg + req))
+                status = 0xc0000017;
+            if (status >= 0)
+                return *(void **)(seg + 0x28);
+        }
+        NtFreeVirtualMemory(&seg, &req, 0x8000);
+    }
+    return 0;
+}
+#pragma optimize("", on)
+
 #pragma optimize("", on)
 
