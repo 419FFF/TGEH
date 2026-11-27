@@ -26,7 +26,8 @@ void __stdcall func_0010C726(void *p, unsigned int a, unsigned int b);
 extern "C" __declspec(dllimport) long __stdcall NtFreeVirtualMemory(char **base, unsigned long *size, unsigned long type);
 void * __stdcall func_0010C7B9(Heap *heap, HeapSegment *seg, unsigned long *size, int flags);
 void * __stdcall func_0010C944(Heap *heap, void *block, unsigned long *size, char flags);
-extern "C" __declspec(dllimport) unsigned long __stdcall RtlCompareMemoryUlong(void *, unsigned long, unsigned long);
+extern "C" unsigned long (__stdcall *__imp__RtlCompareMemoryUlong)(void *, unsigned long, unsigned long);
+#define RtlCompareMemoryUlong __imp__RtlCompareMemoryUlong
 static __forceinline void RemoveHeapFreeEntry(Heap *heap, HeapFreeEntry *entry)
 {
  HeapList *next=entry->FreeList.Flink;
