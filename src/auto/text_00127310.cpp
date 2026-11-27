@@ -10,7 +10,7 @@ struct PixelFormat127D60 {
   unsigned bits;
   if(flags&0x20)bits=8;else if(flags&0x40)bits=4;else {
    unsigned value=b|g|r|a;
-   if(value&0xffff0000)bits=32;else bits=(-(unsigned)((value&0xff00)!=0)&8)+8;
+   if(value&0xffff0000)bits=32;else bits=(value&0xff00)?16:8;
   }
   return bits>>3;
  }
@@ -265,30 +265,30 @@ int _func_00127C50(unsigned int *p){unsigned int n,a,b;int sum;if(!(*p&0x10000))
 
 unsigned int _func_00127CA0(unsigned int *p){unsigned int flags=*p,a,b,n,prod;unsigned int tmp[9];int i; if(!(flags&0x10000)){prod=p[10]*p[9];p[0xb]=1;}else{a=p[9];b=p[10];n=p[0xb];prod=0;while(n){prod+=a*b;a>>=1;b>>=1;--n;}}memcpy(tmp,p,0x24);if(tmp[0]&0x20)i=8;else if(tmp[0]&0x40)i=4;else{unsigned int x=tmp[1]|tmp[3]|tmp[5]|tmp[6];if(x&0xffff0000)i=32;else i=((x&0xff00)?0:8)+8;}prod*=i;prod>>=3;if(flags&1)return prod>>3;if((signed char)flags<0)return prod>>1;return prod;}
 
-void func_00127D60(unsigned *p,unsigned flags,unsigned r,unsigned rs,unsigned g,unsigned gs,unsigned b,unsigned bs,unsigned a,unsigned as) {
+void func_00127D60(unsigned *p,PixelFormat127D60 format) {
  unsigned func_00127C50(unsigned *);void *func_00116A90(unsigned,int,int);void func_00116FB0(void *);
- if(p[7]==a && p[1]==r && p[3]==g && p[5]==b && p[0]==flags)return;
+ if(p[7]==*(volatile unsigned *)&format.a && p[1]==*(volatile unsigned *)&format.r && p[3]==*(volatile unsigned *)&format.g && p[5]==*(volatile unsigned *)&format.b && p[0]==*(volatile unsigned *)&format.flags)return;
  unsigned old[9];unsigned char *oldData=(unsigned char *)p[12];memcpy(old,p,36);
  unsigned count=func_00127C50(p),size,oldSize,bits;
- if(flags&0x20)bits=8;else if(flags&0x40)bits=4;else {bits=r|g|b|a;if(bits&0xffff0000)bits=32;else bits=(bits&0xff00)?16:8;}size=bits>>3;
- if(old[0]&0x20)bits=8;else if(old[0]&0x40)bits=4;else{bits=old[1]|old[3]|old[5]|old[7];if(bits&0xffff0000)bits=32;else bits=(bits&0xff00)?16:8;}oldSize=bits>>3;
+ size=format.Bytes();
+ oldSize=((PixelFormat127D60 *)old)->Bytes();
  unsigned char *dst=(unsigned char *)func_00116A90(size*count,1,1);p[12]=(unsigned)dst;
- if(count){unsigned char *src=oldData+1;unsigned pixel=(unsigned)p;
+ if(count>0){unsigned char *src=oldData+1;unsigned pixel;
  do {
  if(oldSize==1)pixel=src[-1];
- else if(oldSize==2){pixel=src[-1];((unsigned char *)&pixel)[1]=src[0];}
+ else if(oldSize==2){pixel=src[-1]|((unsigned)src[0]<<8);}
  else if(oldSize==4)pixel=(((unsigned)src[2]<<8|src[1])<<8|src[0])<<8|src[-1];
- pixel=(((((pixel&old[1])>>*(unsigned short *)&old[2])<<*((unsigned short *)&old[2]+1))>>*((unsigned short *)&rs+1))<<*(unsigned short *)&rs)
- |(((((pixel&old[5])>>*(unsigned short *)&old[6])<<*((unsigned short *)&old[6]+1))>>*((unsigned short *)&bs+1))<<*(unsigned short *)&bs)
- |(((((pixel&old[3])>>*(unsigned short *)&old[4])<<*((unsigned short *)&old[4]+1))>>*((unsigned short *)&gs+1))<<*(unsigned short *)&gs)
- |(((((pixel&old[7])>>*(unsigned short *)&old[8])<<*((unsigned short *)&old[8]+1))>>*((unsigned short *)&as+1))<<*(unsigned short *)&as);
+ pixel=(((((pixel&old[1])>>*(unsigned short *)&old[2])<<*((unsigned short *)&old[2]+1))>>*((unsigned short *)&format.rs+1))<<*(unsigned short *)&format.rs)
+ |(((((pixel&old[5])>>*(unsigned short *)&old[6])<<*((unsigned short *)&old[6]+1))>>*((unsigned short *)&format.bs+1))<<*(unsigned short *)&format.bs)
+ |(((((pixel&old[3])>>*(unsigned short *)&old[4])<<*((unsigned short *)&old[4]+1))>>*((unsigned short *)&format.gs+1))<<*(unsigned short *)&format.gs)
+ |(((((pixel&old[7])>>*(unsigned short *)&old[8])<<*((unsigned short *)&old[8]+1))>>*((unsigned short *)&format.as+1))<<*(unsigned short *)&format.as);
  if(size==1)dst[0]=(unsigned char)pixel;
  else if(size==2){dst[1]=(unsigned char)(pixel>>8);dst[0]=(unsigned char)pixel;}
  else if(size==4){dst[1]=(unsigned char)(pixel>>8);dst[2]=(unsigned char)(pixel>>16);dst[3]=(unsigned char)(pixel>>24);dst[0]=(unsigned char)pixel;}
  src+=oldSize;dst+=size;
  }while(--count);
  }
- memcpy(p,&flags,36);func_00116FB0(oldData);
+ memcpy(p,&format,36);func_00116FB0(oldData);
 }
 
 void _func_00127FF0(unsigned short *p)
