@@ -10,7 +10,7 @@ struct HeapFreeEntry {
     unsigned char unk6[2];
     HeapList FreeList;
 };
-struct HeapSegment { unsigned char unk0[0x2c]; HeapFreeEntry *LastValidEntry; };
+struct HeapSegment { unsigned char unk0[0x2c]; HeapFreeEntry *LastValidEntry; unsigned long UnCommittedPages; unsigned char unk34[12]; HeapFreeEntry *LastEntry; };
 struct Heap {
     unsigned char unk0[0x30];
     unsigned long TotalFreeSize;
