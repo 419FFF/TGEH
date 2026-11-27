@@ -41,6 +41,7 @@ struct Obj21C0 {
     char padcc[0x110 - 0xcc];
 };
 struct Obj21C0Copy { int d[0x44]; };
+struct Bit0Byte { unsigned char b0:1; unsigned char rest:7; };
 void func_00101A10(int a, int b, int c) {}
 
 extern float D_00324D08;
@@ -114,6 +115,106 @@ void func_001020A0(int param_1, int *param_2, char *param_3, char param_4) {
         func_00128710(*param_2, 0, &info);
     func_00131990((int)D_001D29C7);
 }
+
+Obj21C0 *__cdecl _func_001021C0(char *param_1, Obj21C0 *param_2, unsigned int param_3)
+{
+  extern unsigned int D_00308158;
+  extern int D_00324E98, D_00326110, D_00324D00, D_001E5ED0;
+  extern unsigned char D_001E6230;
+  extern char D_00324BCC[], D_001D5814[], D_001DE724[], D_001DE71C[];
+  extern float D_001D27B8;
+  int func_000F91D0(...);
+  Obj21C0 *func_00116A90(...);
+  void func_0011C410(...);
+  int func_0010F750(...);
+  float *func_0009C7A0(...);
+  void func_001020A0(...);
+  int local_4;
+  Obj21C0 *p;
+  float *pf;
+  int i;
+  int iVar7;
+
+  local_4 = 0;
+  if (*param_1 != 0) {
+    local_4 = func_000F91D0(param_1);
+  }
+  if (param_3 == D_00308158 && (*(unsigned short *)&param_2->flags10 & 1) != 0 && local_4 == 0) {
+    *(unsigned short *)&param_2->flags10 &= 0xfffe;
+  }
+  p = func_00116A90(0x110, 1, 1);
+  *(Obj21C0Copy *)p = *(Obj21C0Copy *)param_2;
+  *(unsigned short *)&p->flags10 |= 0x4000;
+  p->b12 = 9;
+  func_0011C410(D_00324BCC, (char *)p + 0x68, p);
+  D_00324E98 = D_00324E98 + 1;
+  p->fb6 &= 0xffdf;
+  p->f7c = param_3;
+  if ((p->flags10 & 1) != 0) {
+    p->fb6 = p->fb6 | 0x10;
+  } else {
+    p->fb6 = p->fb6 & 0xffef;
+  }
+  p->f80 = 0;
+  if (D_001E5EC9 == 0) {
+    p->fb8 = 0;
+    p->f2c = func_0010F750(D_001D5814, D_00326110, 0xe0);
+    return p;
+  }
+  if (D_001E6230 == 0xff) {
+    p->fb4 = 1;
+  } else {
+    pf = func_0009C7A0(p, D_001DE724, 0);
+    if (pf == 0) {
+      p->fb4 = 0xff;
+    } else {
+      p->fb4 = (unsigned char)(int)*pf;
+    }
+    p->fb4 = p->fb4 & D_001E6230;
+  }
+  pf = func_0009C7A0(p, D_001DE71C, 0);
+  if (*pf != D_001D27B8 && *pf != (float)D_001E5ED0) {
+    p->fb4 = 0;
+  }
+  if (p->fb4 != 0) {
+    int a;
+    func_00101A10((int)param_2, (int)p, param_3);
+    a = p->f78;
+    if (((*(unsigned char *)(a + 0x32) >> 4) & 1) == 0) {
+      p->fb6 = p->fb6 & 0xfff7;
+    } else {
+      p->fb6 = p->fb6 | 8;
+    }
+    p->f94 = *(int *)(a + 0x3c);
+    p->fb0 = 0;
+    p->f98 = 0x3f800000;
+    if (*(unsigned char *)(a + 0x1b) != 0 && (unsigned short)*(unsigned char *)(a + 0x1b) < *(unsigned short *)(a + 0x18)) {
+      p->fb8 = 0;
+      p->f2c = D_00324D00;
+      return p;
+    }
+    p->f2c = D_00324D00;
+    if (p->f7c == D_00308158) {
+      p->f84 = local_4;
+    }
+    *(unsigned char *)&param_3 = p->flags10 & 1;
+    func_001020A0(a, &p->fb8, *(int *)(a + 0x28), param_3, 0);
+    i = 0;
+    do {
+      p->fbc[i] = 0;
+      iVar7 = p->f78;
+      if ((unsigned char)(i + 1) < *(unsigned char *)(iVar7 + 0x30)) {
+        func_001020A0(iVar7, &p->fbc[i], *(int *)(iVar7 + 0x40 + i * 4), param_3, i + 1);
+      }
+      i = i + 1;
+    } while (i < 4);
+    return p;
+  }
+  p->fb8 = func_0010F750(D_001D5814, D_00326110, 0xe0);
+  p->f2c = D_00324D00;
+  return p;
+}
+
 void func_00102470(void) {
     int func_001021C0(...);
     func_001021C0();
