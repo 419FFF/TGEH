@@ -90,9 +90,101 @@ int __stdcall func_001473F4(int h, unsigned short *name, unsigned short *out, in
   }
 }
 #pragma optimize("", on)
-int __stdcall func_00147577(int a,int b) { return b ? 0x491 : 0; }
+__declspec(noinline) int __stdcall func_00147577(int a,int b) { return b ? 0x491 : 0; }
 
 void __stdcall func_001475F7(int a) { int x=0; }
+
+#pragma optimize("s", on)
+unsigned int __stdcall func_00147653(char *name, int arg2, int mode, unsigned int flags, char *outbuf, unsigned int outlen)
+{
+  extern char D_001E282C[], D_001DEEFC[], D_001E280C[], D_001E2804[], D_001E27B4[], D_001E274C[];
+  int __stdcall func_0014731A(int, char *, int);
+  int __stdcall func_00147D18(void *, void *);
+  int __stdcall func_00147D84(void *);
+  int func_0013F32C(...);
+  int func_0013F47C(...);
+  int __stdcall func_0010BB8D(char *, void *, int, int *, int);
+  int __stdcall func_0010AA16(char *, char *, unsigned int);
+  char wbuf[0x130];
+  char buf[0x104];
+  struct { unsigned short len, max; char *p; } ansi;
+  int iosb[2];
+  struct { int root; void *obj; int attr; } oa;
+  struct { int lo, hi; } alloc;
+  char *s;
+  char c;
+  unsigned int len, err;
+  int status, n;
+  int r;
+
+  s = name;
+  do { c = *s; buf[s - name] = c; s++; } while (c);
+  s = buf; do { c = *s++; } while (c);
+  func_0014731A(arg2, buf + (s - buf - 1), 0xf7 - (s - buf - 1));
+  s = buf; do { c = *s++; } while (c);
+  len = s - (buf + 1);
+  if (mode == 3) {
+    s = D_001E274C;
+    do { c = *s; (buf + len)[s - D_001E274C] = c; s++; } while (c);
+    r = func_00147577((int)buf, arg2);
+    buf[len] = 0;
+    if (r != 0) return r;
+  } else {
+    if (func_00147D18(buf, 0) == 0) {
+      err = func_0010AA7B();
+      r = 0x491;
+      if (err == 0xb7) {
+        s = D_001E274C;
+        do { c = *s; (buf + len)[s - D_001E274C] = c; s++; } while (c);
+        r = func_00147577((int)buf, arg2);
+        buf[len] = 0;
+        if (r != 0) return 0x52;
+        func_001475F7((int)buf);
+      }
+      if (mode == 1) return err;
+      if (r != 0) return err;
+    } else {
+      s = D_001E274C;
+      do { c = *s; (buf + len)[s - D_001E274C] = c; s++; } while (c);
+      __imp__RtlInitAnsiString(&ansi, buf);
+      alloc.hi = 0;
+      oa.obj = &ansi;
+      oa.root = -3;
+      oa.attr = 0x40;
+      alloc.lo = 1;
+      status = __imp__NtCreateFile(&name, 0xc0100000, &oa, iosb, &alloc, 4, 0, 3, (void *)0x22);
+      buf[len] = 0;
+      if (status < 0) {
+        err = __imp__RtlNtStatusToDosError(status);
+        func_00147D84(buf);
+        return err;
+      }
+      func_0013F32C(wbuf, 0x98, 0xFEFF, (flags & 1) ? D_001E282C : D_001DEEFC, D_001E27B4, 0x3d, arg2, D_001E2804, D_001E280C);
+      n = func_0013F47C(wbuf) * 2;
+      if (n != 0) {
+        do {
+          if (func_0010BB8D(name, wbuf, n, &arg2, 0) == 0) {
+            err = func_0010AA7B();
+            func_0010B7F8((int)name);
+            func_00147D84(buf);
+            return err;
+          }
+          n -= arg2;
+        } while (n != 0);
+      }
+      func_0010B7F8((int)name);
+    }
+  }
+  if (outbuf) {
+    func_0010AA16(outbuf, buf, outlen);
+    if (len < outlen - 1) {
+      outbuf[len] = '\\';
+      outbuf[len + 1] = 0;
+    }
+  }
+  return 0;
+}
+#pragma optimize("", on)
 
 #pragma optimize("s", on)
 int __stdcall func_00147986(unsigned char *src, int len, int used, int max)
