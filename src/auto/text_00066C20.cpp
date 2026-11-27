@@ -18,15 +18,5 @@ void func_00066C20(void) {
     frame[0]=(char)mix;
 }
 
-void func_000679B0(int a0) {
-    extern int D_002F77A8;
-    D_002F77A8 = a0;
-}
-
-int func_000679C0(void) {
-    extern int D_002F77A8;
-    return D_002F77A8;
-}
-
-int _func_00067B00(const char *param_1) { int _func_000F91D0(const char *); char local[128]; char *dst=local; while(*param_1 && *param_1!='_'){ *dst++=*param_1++; } *dst=0; return *(int *)(_func_000F91D0(local)+0xe0); }
-
+extern "C" void* __cdecl memset(void*,int,unsigned int);
+#pragma optimize("p", on)
