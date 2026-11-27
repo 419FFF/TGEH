@@ -2,6 +2,7 @@
 #include "common.h"
 
 struct __declspec(align(16)) Buf28 { float a[28]; };
+struct __declspec(align(16)) V4a { float x, y, z, w; };
 extern "C" double fabs(double);
 #pragma intrinsic(fabs)
 
