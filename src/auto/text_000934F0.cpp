@@ -60,45 +60,38 @@ void func_00093980(void) {
 
 void func_00093990(void)
 {
-  extern char *D_00306E68;
-  extern float D_001D7180;
+  extern S_00306E68 *D_00306E68;
+  extern float D_001D7180, D_001D557C;
   float func_00131230(float);
   float func_00131210(int);
   int func_00131370(int);
   float func_00131760(void);
-  extern float D_001D557C;
   int func_00116A90(int, int, int);
-  short func_0013E3F4(float);
-  unsigned int i, off;
-  unsigned int n;
-  int row;
-  long double v;
-  *(float *)(D_00306E68 + 0x510) = 0.15f;
-  off = 0x108;
+  short __ftol2(float);
+  unsigned int i;
+  float v;
+  *(int *)&D_00306E68->scale = 0x3e19999a;
   i = 0;
   do {
     v = func_00131230((float)i * D_001D7180);
-    *(float *)(off + D_00306E68) = (float)v;
-    off += 4;
+    D_00306E68->tbl[i] = v;
+    D_00306E68->tbl[i] = v * D_00306E68->scale;
     i++;
-    *(float *)(off + D_00306E68 - 4) = (float)(v * *(float *)(D_00306E68 + 0x510));
-  } while (off < 0x508);
-  *(int *)(D_00306E68 + 0x514) = func_00116A90(*(int *)(*(int *)(D_00306E68 + 0xf8) + 0xc) << 1, 1, 0);
-  *(int *)(D_00306E68 + 0x518) = func_00116A90(*(int *)(*(int *)(D_00306E68 + 0xf8) + 0xc) << 1, 1, 0);
+  } while (i < 256);
+  D_00306E68->out1 = (short *)func_00116A90(D_00306E68->in->count << 1, 1, 0);
+  D_00306E68->out2 = (short *)func_00116A90(D_00306E68->in->count << 1, 1, 0);
   i = 0;
-  if (*(unsigned int *)(*(int *)(D_00306E68 + 0xf8) + 0xc) != 0) {
-    row = 0;
+  if (D_00306E68->in->count != 0) {
     do {
-      func_00131210(*(int *)(*(int *)(*(int *)(D_00306E68 + 0xf8) + 0x14) + row));
-      func_00131210(*(int *)(*(int *)(*(int *)(D_00306E68 + 0xf8) + 0x14) + row + 8));
-      func_00131370(*(int *)(*(int *)(*(int *)(D_00306E68 + 0xf8) + 0x14) + row + 8) + *(int *)(*(int *)(*(int *)(D_00306E68 + 0xf8) + 0x14) + row));
-      *(short *)(*(int *)(D_00306E68 + 0x514) + i * 2) = func_0013E3F4(func_00131760() * D_001D557C);
-      *(short *)(*(int *)(D_00306E68 + 0x518) + i * 2) = func_0013E3F4(func_00131760() * D_001D557C);
+      func_00131210(D_00306E68->in->rows[i].a);
+      func_00131210(D_00306E68->in->rows[i].c);
+      func_00131370(D_00306E68->in->rows[i].c + D_00306E68->in->rows[i].a);
+      D_00306E68->out1[i] = __ftol2(func_00131760() * D_001D557C);
+      D_00306E68->out2[i] = __ftol2(func_00131760() * D_001D557C);
       i++;
-      row += 12;
-    } while (i < *(unsigned int *)(*(int *)(D_00306E68 + 0xf8) + 0xc));
+    } while (i < D_00306E68->in->count);
   }
-  *(int *)(D_00306E68 + 0x520) = 0;
+  D_00306E68->flag = 0;
 }
 
 void _func_00093B10(int p){extern int _D_00306E68;int _func_00116FB0(...);int _func_000968D0(...);int _func_0011B990(...);int x=*(int*)(p+0x104);_D_00306E68=p;if(x){_func_00116FB0(x);p=_D_00306E68;*(int*)(p+0x104)=0;}_func_000968D0(*(int*)(p+0xf8));_func_00116FB0(*(int*)(_D_00306E68+0x514));_func_00116FB0(*(int*)(_D_00306E68+0x518));p=_D_00306E68;if(*(int*)(p+0x508)){--*(short*)(*(int*)(p+0x508)+0x2a);_func_0011B990(*(int*)(p+0x508));*(int*)(p+0x508)=0;}}

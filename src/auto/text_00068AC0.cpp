@@ -7,7 +7,7 @@ void func_00068AC0(int p,float t,int *out,int *out2){ extern float D_001D27B8; i
 
 float func_00068B80(int p) { extern float D_001D27B8; int func_000688E0(int); if ((unsigned)*(int*)(p+4)<2) return D_001D27B8; int x=func_000688E0(p); return *(float*)(x+8); }
 
-long double func_00068BA0(int p,float t){extern float D_001D27B8; int func_000688E0(int); int func_0013E3F4(); if((unsigned)*(int*)(p+4)<2)return D_001D27B8; int x=func_000688E0(p); if((double)t<(double)D_001D27B8)t=0; int n=func_0013E3F4(); long double s=D_001D27B8; int i=0; float *v=*(float**)(x+4); for(;i<n;i++)s+=v[i]; if(t<(float)*(int*)(x+12))s+=(t-n)*v[n]; return s;}
+long double func_00068BA0(int p,float t){extern float D_001D27B8; int func_000688E0(int); int __ftol2(); if((unsigned)*(int*)(p+4)<2)return D_001D27B8; int x=func_000688E0(p); if((double)t<(double)D_001D27B8)t=0; int n=__ftol2(); long double s=D_001D27B8; int i=0; float *v=*(float**)(x+4); for(;i<n;i++)s+=v[i]; if(t<(float)*(int*)(x+12))s+=(t-n)*v[n]; return s;}
 
 long double func_00068C50(int p,float t){extern float D_001D27B8; int func_000688E0(int); if((unsigned)*(int*)(p+4)<2)return D_001D27B8; int x=func_000688E0(p); int n=*(int*)(x+12); float *a=*(float**)(x+4); long double sum=D_001D27B8; int i=0; if(t>D_001D27B8){while(i<n){if(!(sum<t))break;sum+=a[i];++i;}} --i; long double v=((long double)t-(sum-a[i]))/a[i]+i; if(v<D_001D27B8)v=D_001D27B8; if((long double)n<v)v=n; return v;}
 
@@ -57,7 +57,9 @@ void func_00068F90(float *p, float *v, char *hit)
   double func_0012E8C0(float *, float *);
   void func_0012ED20(float *, float *, float);
   void func_0012E650(float *, float *);
-  float dir[3], tmp[3], up[3], b[3], c[3], t[3], a[3], m[9];
+  float up[3], dir[3];
+  float a[3], b[3], c[3], t[3], tmp[3];
+  V3_00068F90 m[3];
   float r;
   int outside;
   float *r1, *r2;
@@ -74,10 +76,10 @@ void func_00068F90(float *p, float *v, char *hit)
   func_0012EE00(dir, t, c);
   func_0012EA60(dir);
   if (dir[1] > D_001D27B8) func_0012ECA0(dir, -1.0f);
-  m[0] = p[0]; m[1] = p[1]; m[2] = p[2];
-  m[3] = r1[0]; m[4] = r1[1]; m[5] = r1[2];
-  m[6] = r2[0]; m[7] = r2[1]; m[8] = r2[2];
-  r = func_00068EA0(0.52359885f, 0.78539824f, m);
+  m[0] = *(V3_00068F90 *)p;
+  m[1] = *(V3_00068F90 *)r1;
+  m[2] = *(V3_00068F90 *)r2;
+  r = func_00068EA0(0.52359885f, 0.78539824f, &m[0].x);
   *hit = 0;
   if ((double)D_001D27B8 == (double)r) *hit = 1;
   outside = 0;

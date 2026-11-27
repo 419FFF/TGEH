@@ -36,7 +36,7 @@ void func_0006D7A0(int param_1, undefined4 *param_2, uint *param_3)
   int func_0012F250(...);
   int func_00112250(...);
   int func_0012ECA0(...);
-  int func_0013E3F4(...);
+  int __ftol2(...);
   int func_0012EB70(...);
   int func_0012E9D0(...);
   extern undefined4 D_001D27B8;
@@ -245,7 +245,7 @@ void func_0006D7A0(int param_1, undefined4 *param_2, uint *param_3)
       }
     }
     func_0012ECA0(&local_a68,local_b04);
-    iVar3 = func_0013E3F4();
+    iVar3 = __ftol2();
     func_0012EB70(&local_a94,&local_af0);
     func_0012ECA0(&local_a94,(float)lVar9 - (float)iVar3 * local_b04);
     local_b08 = 0;

@@ -24,7 +24,7 @@ int func_00105990(...);
 int func_00120E50(...);
 int func_000AFD10(...);
 int func_00121990(...);
-int func_0013E3F4(...);
+int __ftol2(...);
 void func_000BDCA0(void) {
  float f=(float)D_00314C74;
  int *p=(int *)func_0009C7A0(D_00308158,&D_001D9578,0);
@@ -51,7 +51,7 @@ void func_000BDD90(void) {
  int *q=(int *)func_0009C7A0(D_00308158,&D_001D9578,0);
  if (*q == 0x40400000) return;
  float *v=(float *)func_0009C7A0(D_00308158,&D_001D9578,0);
- int x=func_0013E3F4(*v);
+ int x=__ftol2(*v);
  if (x) func_000A3150(1,x);
 }
 
@@ -122,5 +122,79 @@ void _func_000BDF50(int *p1, float *p2)
     }
     D_00314DB8 = n + 1;
   }
+}
+
+void __cdecl _func_000BE0C0(void)
+{
+    extern float *_D_00314E54;
+    extern Part *_D_00314E58;
+    extern int _D_00314DB8;
+    extern float _D_001D3E00, _D_001D27B0, _D_001D9790, _D_001D333C, _D_001D29E0, _D_001D27B8;
+    float *p = _D_00314E54;
+    if (p) {
+        int i = 0;
+        int cnt = _D_00314DB8;
+        if (cnt > 0) {
+            Part *e = _D_00314E58;
+            Part *end = e + cnt;
+            do {
+                float v = _D_001D3E00 + e->f[6];
+                *(int *)&e->f[7] = *(int *)&e->f[6];
+                e->f[6] = v;
+                if (v > _D_001D27B0)
+                    e->f[6] = 1.0f;
+                if (e->f[7] > _D_001D9790) {
+                    end--;
+                    *e = *end;
+                    cnt--;
+                    i--;
+                    e--;
+                }
+                i++;
+                e++;
+            } while (i < cnt);
+            _D_00314DB8 = cnt;
+        }
+        if (p[0] > _D_001D333C) {
+            float v = p[0] - _D_001D29E0;
+            p[1] = p[0];
+            p[0x10] = p[2];
+            p[0] = v;
+            v = p[2] - _D_001D29E0;
+            p[2] = v;
+            if (v < _D_001D27B8)
+                p[2] = 0.0f;
+            if (p[0x10] <= _D_001D333C) {
+                p[2] = 1.0f;
+                p[0x10] = 0.0f;
+            }
+            p[0x1d] = p[0xf];
+            p[0xf] = p[0xe];
+            p[0x1c] = p[0xe];
+            p[0xe] = p[0xd];
+            p[0x1b] = p[0xd];
+            p[0xd] = p[0xc];
+            p[0x1a] = p[0xc];
+            p[0xc] = p[0xb];
+            p[0x19] = p[0xb];
+            p[0xb] = p[10];
+            p[0x18] = p[10];
+            p[10] = p[9];
+            p[0x17] = p[9];
+            p[9] = p[8];
+            p[0x16] = p[8];
+            p[8] = p[7];
+            float *q = p + 7;
+            int n = 5;
+            do {
+                q[0xe] = q[0];
+                q[0] = q[-1];
+                q--;
+                n--;
+            } while (n != 0);
+            if (p[0] > _D_001D27B0)
+                p[0] = 0.0f;
+        }
+    }
 }
 

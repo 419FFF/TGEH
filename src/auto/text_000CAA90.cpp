@@ -120,7 +120,7 @@ unsigned char func_000CAE20(int p, char flag)
 {
   extern int D_00317278[], D_001E4B50[];
   extern float D_001D2B64, D_001E4AC0[], D_001E4ADC[];
-  int func_0013E3F4(float);
+  int __ftol2(float);
   int i, j, k;
   for (i = 0; i < 242; i++) D_00317278[i] = 0;
   for (i = 0; i < 11; i++) {
@@ -131,10 +131,10 @@ unsigned char func_000CAE20(int p, char flag)
           if (v == p + 1) {
             float a = D_001D2B64 - D_001E4AC0[p];
             float b = D_001E4ADC[p] + D_001D2B64;
-            int r = func_0013E3F4((float)j - b);
+            int r = __ftol2((float)j - b);
             int c;
-            r = func_0013E3F4(-((float)j - b) + a);
-            c = func_0013E3F4((float)k - a + b);
+            r = __ftol2(-((float)j - b) + a);
+            c = __ftol2((float)k - a + b);
             if (flag && (c < 0 || c >= 11 || r < 0 || r >= 11 || D_00317278[(i * 11 + c) * 11 + r]))
               return 0;
             D_00317278[(i * 11 + c) * 11 + r] = p + 1;

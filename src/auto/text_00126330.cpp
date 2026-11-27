@@ -49,9 +49,9 @@ int func_00126750(unsigned char r, unsigned char g, unsigned char b, unsigned ch
   unsigned char mn, mx;
   unsigned int sum, den;
   double hue;
-  r = (r <= 0) ? 0 : ((r >= 255) ? 255 : r);
-  g = (g <= 0) ? 0 : ((g >= 255) ? 255 : g);
-  b = (b <= 0) ? 0 : ((b >= 255) ? 255 : b);
+  if (r > 0) { int t = r; if (t < 255) r = (unsigned char)t; else r = 255; } else r = 0;
+  if (g > 0) { int t = g; if (t < 255) g = (unsigned char)t; else g = 255; } else g = 0;
+  if (b > 0) { int t = b; if (t < 255) b = (unsigned char)t; else b = 255; } else b = 0;
   mn = r;
   if (g <= r) mn = g;
   if (mn < b) {
@@ -86,7 +86,7 @@ void func_00126960(undefined4 param_1, undefined4 param_2, float param_3)
   extern undefined4 D_001DF6E0;
   extern undefined4 D_001D27B8;
   extern undefined4 D_001D5444;
-  void func_0013E3F4(); // Prototype for the helper function
+  void __ftol2(); // Prototype for the helper function
 
   // fld st, dword ptr [esp+0xc] (param_2?)
   // fcom st, dword ptr [_D_001DF6E0]
@@ -117,7 +117,7 @@ void func_00126960(undefined4 param_1, undefined4 param_2, float param_3)
   // Given the high difference score (5300), I need more information or a break.
   // For now, I will re-submit the best attempt structure but acknowledge its limitations.
   if (param_3 < D_001D27B8) {
-    func_0013E3F4();
+    __ftol2();
     return;
   }
   if (param_3 < D_001D5444) {
@@ -136,7 +136,7 @@ extern float D_001D4524;
 extern float D_001D66D8;
 extern double D_001DF0B0;
 unsigned char func_00126960(float, float, float);
-unsigned char func_0013E3F4(float);
+unsigned char __ftol2(float);
 void func_00126A40(unsigned char a, unsigned char c, unsigned char b, unsigned char *p4, unsigned char *p5, unsigned char *p6) {
     unsigned char r;
     float f1, f2, f3;
@@ -166,7 +166,7 @@ void func_00126A40(unsigned char a, unsigned char c, unsigned char b, unsigned c
         *p6 = func_00126960(f3, f2, f1 - D_001D4524);
         return;
     }
-    r = func_0013E3F4(f3 * D_001D66D8 + (float)D_001DF0B0);
+    r = __ftol2(f3 * D_001D66D8 + (float)D_001DF0B0);
     *p6 = r;
     *p5 = r;
     *p4 = r;

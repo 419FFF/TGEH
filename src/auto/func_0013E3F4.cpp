@@ -1,7 +1,7 @@
-/* func_0013E3F4 - float to int conversion using x87 FPU */
+/* __ftol2 - float to int conversion using x87 FPU */
 #include "common.h"
 
-long long func_0013E3F4(float in) {
+long long __ftol2(float in) {
     unsigned int uin = *(unsigned int*)&in;
     
     if ((uin & 0x80000000) == 0) {

@@ -116,7 +116,7 @@ void func_000584D0(int p) {
 }
 
 void func_00058510(void *p) {
- int func_00116A90(...),func_0004FA80(...),func_0013E3F4(...),func_00048720(...),func_00056D50(...),func_00045A60(...),func_000A1BB0(...),func_00131990(...);
+ int func_00116A90(...),func_0004FA80(...),__ftol2(...),func_00048720(...),func_00056D50(...),func_00045A60(...),func_000A1BB0(...),func_00131990(...);
  extern int D_00307D10; extern char D_001D5210,D_001D29C7;
  int *s=(int*)func_00116A90(0x260,1,1);
  *(int**)((char*)p+0x110)=s;
@@ -126,7 +126,7 @@ void func_00058510(void *p) {
  *(int*)((char*)p+0x184)=0; *(int*)((char*)p+0x188)=0; *(int*)((char*)p+0x18c)=0; *(int*)((char*)p+0x190)=0; *(int*)((char*)p+0x194)=0; *(int*)((char*)p+0x198)=0; *(int*)((char*)p+0x1a0)=0;
  *((char*)s+0x99)=0;
  s[0x1a]=*(int*)((char*)p+0x130);
- int n=func_0013E3F4();
+ int n=__ftol2();
  s[0x21]=n*2;
  s[0x1b]=func_00048720(D_00307D10,s[0x21],s[0x1a],p);
  s[1]=10; func_00056D50(p,s+1);

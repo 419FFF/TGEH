@@ -562337,6 +562337,7 @@
   "func_0010F738": "XcSHAInit",
   "func_0010F73E": "XcHMAC",
   "func_0010F744": "DbgPrint",
+  "func_0013E3F4": "__ftol2",
   "func_001480BA": "RtlUnwind"
  }
 }

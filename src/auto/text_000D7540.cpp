@@ -8,13 +8,63 @@ struct E_001E5488 { unsigned char a, b; short x, y; unsigned char z, pad; };
 extern int D_001E54E8;
 extern int D_0031E508;
 extern unsigned char D_001E53A8[];
+void func_000D7540(int param_1, float *param_2, float *param_3, int param_4, int param_5, char param_6)
+{
+  extern float D_001D27EC;
+  int func_00133F30(...);
+  int func_001383B0(...);
+  int B0, B1, A0, A1;
+  float x, y;
+  T_000D7540 t;
+
+  x = *param_2 - *param_3 * D_001D27EC;
+  y = param_2[1] - param_3[1] * D_001D27EC;
+  switch (param_6) {
+  case 0:
+    A0 = 0;
+    A1 = 0;
+    B0 = 0x3f800000;
+    B1 = 0x3f800000;
+    break;
+  case 1:
+    A1 = 0;
+    B1 = 0x3f800000;
+    goto L1;
+  case 2:
+    A0 = 0;
+    A1 = 0x3f800000;
+    B0 = 0x3f800000;
+    B1 = 0;
+    break;
+  case 3:
+    A1 = 0x3f800000;
+    B1 = 0;
+L1:
+    A0 = 0x3f800000;
+    B0 = 0;
+  }
+  t.f0 = 1;
+  t.f4 = 1;
+  t.f8 = *(int *)(param_1 + 4);
+  t.f18 = 3;
+  t.f28 = param_4;
+  t.f2c = param_5;
+  t.f30 = 0;
+  t.f48 = 6;
+  t.f44 = 0;
+  t.f4c = 0;
+  func_00133F30(&t);
+  func_001383B0();
+  func_0011E4A0(x, y, x + *param_3, y + param_3[1], &A0, &B0, 0, 1.0f);
+}
+
 void func_000D7870(signed char *p){if(p){int i=(((p[1]+p[0]*6)*0x10+p[2])*0xc+p[3])*0xc;*(int*)(D_0031E508+i+4)=0;*(int*)(p+8)=1;}}
 
 void func_000D78C0(void)
 {
     extern int D_0031E508;
     extern float D_001D313C, D_001D27EC, D_00307DB4;
-    int func_0013E3F4(...);
+    int __ftol2(...);
     int func_000688D0(...);
     int func_000D7540(...);
     char c1, c2;
@@ -27,7 +77,7 @@ void func_000D78C0(void)
 
     base = D_0031E508;
     dt = (D_00307DB4 - *(float *)(base + 0xda8c)) * D_001D313C;
-    r = func_0013E3F4();
+    r = __ftol2();
     v[0] = *(float *)(base + 0xefe4) * D_001D313C;
     c1 = *(char *)(base + 0xd805);
     c2 = *(char *)(base + 0xd804);

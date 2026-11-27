@@ -22,7 +22,7 @@ extern float D_00324D08;
 extern float D_00324D0C;
 extern unsigned char D_001E5EC9;
 extern int D_00324D34;
-int func_0013E3F4(float);
+int __ftol2(float);
 int func_00128870(int, int);
 int func_00128840(int, float);
 void func_00110760(int);
@@ -96,8 +96,8 @@ void func_00102470(void) {
 
 void func_00102480(int a, int b) {
     int t;
-    unsigned short f;
-    unsigned char bit;
+    unsigned short fa, fb, saved;
+    unsigned char ba, bb;
 
     t = *(int *)(a + 0xb8);
     *(int *)(a + 0xb8) = *(int *)(b + 0xb8);
@@ -114,31 +114,34 @@ void func_00102480(int a, int b) {
     t = *(int *)(a + 0xc8);
     *(int *)(a + 0xc8) = *(int *)(b + 0xc8);
     *(int *)(b + 0xc8) = t;
-
-    f = *(unsigned short *)(b + 0xb6);
-    bit = (unsigned char)((*(unsigned char *)(a + 0xb6) >> 4) & 1);
-    if (bit)
-        f = (unsigned short)(f | 0x10);
+    fa = *(unsigned short *)(b + 0xb6);
+    fb = *(unsigned short *)(a + 0xb6);
+    saved = fb;
+    ba = (unsigned char)(fa >> 4);
+    bb = (unsigned char)(((unsigned char)fb >> 4) & 1);
+    if (ba & 1)
+        saved = (unsigned short)(saved | 0x10);
     else
-        f = (unsigned short)(f & 0xffef);
-    *(unsigned short *)(b + 0xb6) = f;
-    bit = (unsigned char)((*(unsigned char *)(b + 0xb6) >> 4) & 1);
-    if (bit)
-        *(unsigned char *)(a + 0xb6) = (unsigned char)(*(unsigned char *)(a + 0xb6) | 0x10);
+        saved = (unsigned short)(saved & 0xffef);
+    *(unsigned short *)(a + 0xb6) = saved;
+    if (bb)
+        *(unsigned char *)(b + 0xb6) |= 0x10;
     else
-        *(unsigned char *)(a + 0xb6) = (unsigned char)(*(unsigned char *)(a + 0xb6) & 0xef);
-
-    f = *(unsigned short *)(b + 0xb6);
-    bit = (unsigned char)(((unsigned char)f >> 5) & 1);
-    if ((*(unsigned char *)(a + 0xb6) >> 5) & 1)
-        f = (unsigned short)(f | 0x20);
+        *(unsigned char *)(b + 0xb6) &= 0xef;
+    fb = *(unsigned short *)(a + 0xb6);
+    fa = *(unsigned short *)(b + 0xb6);
+    saved = fb;
+    ba = (unsigned char)(fa >> 5);
+    bb = (unsigned char)(((unsigned char)fb >> 5) & 1);
+    if (ba & 1)
+        saved = (unsigned short)(saved | 0x20);
     else
-        f = (unsigned short)(f & 0xffdf);
-    *(unsigned short *)(b + 0xb6) = f;
-    if (bit)
-        *(unsigned char *)(a + 0xb6) = (unsigned char)(*(unsigned char *)(a + 0xb6) | 0x20);
+        saved = (unsigned short)(saved & 0xffdf);
+    *(unsigned short *)(a + 0xb6) = saved;
+    if (bb)
+        *(unsigned char *)(b + 0xb6) |= 0x20;
     else
-        *(unsigned char *)(a + 0xb6) = (unsigned char)(*(unsigned char *)(a + 0xb6) & 0xdf);
+        *(unsigned char *)(b + 0xb6) &= 0xdf;
 }
 
 void func_001026A0(int param_1)

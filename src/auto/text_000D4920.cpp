@@ -29,12 +29,43 @@ void func_000D4D90(void)
   } while (p < (int)&D_0031B494);
 }
 
+void func_000D4DC0(void) {
+ void func_000D4D90(); char func_000D5120(); void func_00110060(int,char*);
+ int func_000D56C0(...),func_0012E750(...),func_000D4920(...),func_000D2FF0(...),func_000D37F0(...),func_000B6C80(...),func_000B6BE0(...),func_000D2BC0(...),func_000D44A0(...),func_000D3300(...),func_000D36B0(...);
+ char func_000D32B0(...),func_000D3880(...),func_000D3960(...);
+ double func_0012E940(...),func_00131210(...);
+ extern int D_0031B9B0,D_0031ACA8,D_00307DB4,D_0031ACB0,D_0031B834,D_0031B830,D_0031B838;
+ extern char D_001DADE8,D_0031ADAC,D_0031ACA0; extern signed char D_0031B7C8;
+ extern float D_001D27EC,D_0031AD40,D_001DADB0,D_001D35F8;
+ __declspec(align(16)) char matrix[64];
+ switch(D_0031B9B0) {
+ case 8: func_000D56C0(&D_001DADE8,9);D_0031ACA8=D_00307DB4;break;
+ case 10: func_000D4920(1);if(!func_000D32B0())D_0031B9B0=9;break;
+ case 9:
+ if(func_0012E940(&D_0031ADAC)>D_001D27EC)func_000D4920(3);
+ else {func_0012E750(&D_0031ADAC);func_000D4920(0);}
+ func_000D2FF0();func_000D4D90();if(D_0031B7C8>=16)D_0031B9B0=11;break;
+ case 11:
+ func_000D4920(2);func_000D2FF0();func_00110060(D_0031ACB0,matrix);
+ if(func_00131210(D_0031AD40-(*(float *)(matrix+0x38)-D_001DADB0))<D_001D35F8) {
+ D_0031B9B0=14;D_0031B834=0;D_0031B830=0;D_0031B838=0xc1f00000;
+ }break;
+ case 14:func_000D37F0();if(func_000D3880())D_0031B9B0=15;break;
+ case 15:D_0031ACA0=1;break;
+ case 16:if(D_0031ACA0)func_000B6BE0();else func_000B6C80();break;
+ }
+ func_000D2BC0();func_000D44A0();func_000D3300();func_000D36B0();
+ if(!func_000D5120()&&!D_0031ACA0) {
+ if(func_000D3960()){D_0031ACA0=0;func_000B6C80();return;}
+ } else {D_0031ACA0=1;func_000B6BE0();}
+}
+
 unsigned char func_000D4FB0(int param_1, int param_2, float param_3, float param_4, int param_5, int param_6) {
     extern float D_001D27B8;
     int func_0009C7A0(int, int, int);
     void func_000A22B0(int, int, int, int, int, int);
     double func_000A2310(int);
-    int func_0013E3F4(...);
+    int __ftol2(...);
     unsigned int *p = (unsigned int *)func_0009C7A0(*(int *)(param_1 + 4), param_2, 0);
     if (p != *(unsigned int **)(param_1 + 0x90) && (double)param_3 > (double)D_001D27B8) {
         *(unsigned int **)(param_1 + 0x90) = p;
@@ -177,9 +208,7 @@ void func_000D54E0(int p, int a, int b) {
  obj=D_0031B914;
  func_00110060(*(int *)(obj+44),&D_0031B920);
  func_0012F730(v,obj+64,&D_0031B920);
- x=*(int *)&v[0];y=*(int *)&v[1];z=*(int *)&v[2]; D_0031B950=x; D_0031B9A4=x;
- D_0031B954=y; D_0031B958=z;
- D_0031B9A8=y; D_0031B9AC=z;
+ *(Vec_D54E0 *)&D_0031B950=*(Vec_D54E0 *)v; *(Vec_D54E0 *)&D_0031B9A4=*(Vec_D54E0 *)v;
  func_000D51E0((int)&D_0031B920,D_0031B914);
  strcpy(name,*(char **)(p+12)); strcat(name,".pinky");
  D_0031B864=func_0009CBE0(name);
@@ -187,9 +216,7 @@ void func_000D54E0(int p, int a, int b) {
  obj=D_0031B864;
  func_00110060(*(int *)(obj+44),&D_0031B870);
  func_0012F730(v,obj+64,&D_0031B870);
- x=*(int *)&v[0];y=*(int *)&v[1];z=*(int *)&v[2]; D_0031B8A0=x; D_0031B8F4=x;
- D_0031B8A4=y; D_0031B8A8=z;
- D_0031B8F8=y; D_0031B8FC=z;
+ *(Vec_D54E0 *)&D_0031B8A0=*(Vec_D54E0 *)v; *(Vec_D54E0 *)&D_0031B8F4=*(Vec_D54E0 *)v;
  func_000D51E0((int)&D_0031B870,D_0031B864);
  D_0031B9A0=0; D_0031B8F0=0;
 }

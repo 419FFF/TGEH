@@ -44,6 +44,92 @@ unsigned int _func_0012B1A0(char *p) {
  return h;
 }
 
+void _func_0012B1F0(unsigned char *param_1, int param_2)
+{
+  unsigned short local_c;
+  unsigned int local_10;
+  unsigned int *local_14;
+  short *psVar1;
+  unsigned char bVar2;
+  unsigned char bVar3;
+  unsigned char *pbVar4;
+  unsigned char *pbVar5;
+  unsigned char bVar6;
+  unsigned int uVar7;
+  unsigned char cVar8;
+  unsigned int uVar9;
+  unsigned int uVar10;
+  int iVar11;
+  unsigned int bits;
+
+  pbVar4 = param_1;
+  bVar2 = param_1[1];
+  bVar3 = *param_1;
+  cVar8 = bVar2 >> 7;
+  pbVar5 = param_1 + 1;
+  pbVar5++;
+  bVar6 = bVar2 & 0x7f;
+  if (cVar8) {
+    local_c = *(unsigned short *)pbVar5;
+    pbVar5 += 2;
+  }
+  local_14 = (unsigned int *)(pbVar5 + bVar6 * 2);
+  if (((int)local_14 - (int)pbVar4 & 3U) != 0) {
+    local_14 = (unsigned int *)((int)local_14 + 2);
+  }
+  if (bVar6 <= 2) {
+    local_10 = 1;
+    uVar7 = 1;
+  }
+  else if (bVar6 <= 4) {
+    local_10 = 3;
+    uVar7 = 2;
+  }
+  else if (bVar6 <= 0x10) {
+    local_10 = 0xf;
+    uVar7 = 4;
+  }
+  uVar10 = (unsigned int)bVar3 << 2;
+  iVar11 = 0;
+  uVar9 = 0;
+  if (uVar10 > 0) {
+    do {
+      if ((cVar8 == 0) || ((uVar9 & 3) != 3)) {
+        if (iVar11 == 0) {
+          bits = *local_14;
+          local_14 = local_14 + 1;
+          iVar11 = 0x20;
+        }
+        *(unsigned short *)(param_2 + uVar9 * 2) = *(unsigned short *)(pbVar5 + (bits & local_10) * 2);
+        iVar11 = iVar11 - uVar7;
+        bits = bits >> uVar7;
+      }
+      else {
+        *(unsigned short *)(param_2 + uVar9 * 2) = local_c;
+      }
+      uVar9 = uVar9 + 1;
+    } while (uVar9 < uVar10);
+  }
+  iVar11 = 0;
+  uVar7 = 0;
+  if (uVar10 > 0) {
+    do {
+      if ((cVar8 == 0) || ((uVar7 & 3) != 3)) {
+        if (iVar11 == 0) {
+          bits = *local_14;
+          local_14 = local_14 + 1;
+          iVar11 = 0x20;
+        }
+        iVar11 = iVar11 - 4;
+        psVar1 = (short *)(param_2 + uVar7 * 2);
+        *psVar1 = *psVar1 + (bits & 0xf);
+        bits = bits >> 4;
+      }
+      uVar7 = uVar7 + 1;
+    } while (uVar7 < uVar10);
+  }
+}
+
 #pragma optimize("", on)
 int func_0012B340(ushort *param_1, ushort *param_2)
 {
@@ -77,7 +163,7 @@ void func_0012B750(uint param_1)
   extern undefined4 D_001DF724;
   int func_00131210(...);
   extern undefined4 D_001D557C;
-  int func_0013E3F4(...);
+  int __ftol2(...);
   char cVar1;
   byte bVar2;
   uint uVar3;
@@ -89,7 +175,7 @@ void func_0012B750(uint param_1)
   case 0:
     lVar4 = (longdouble)func_00131230((float)(int)cVar1 * D_001DF724);
     func_00131210((float)(lVar4 * (longdouble)D_001D557C));
-    uVar3 = func_0013E3F4();
+    uVar3 = __ftol2();
     break;
   case 1:
     bVar2 = cVar1 * '\b';
@@ -109,6 +195,44 @@ void func_0012B750(uint param_1)
   *(uint *)(param_1 + 0x18) = uVar3;
   *(byte *)(param_1 + 2) = *(byte *)(param_1 + 2) | 1;
   return;
+}
+
+void func_0012B800(int param_1, int param_2)
+{
+  extern float D_001DF728, D_001D54D4;
+  float func_00131230(float);
+  int v;
+  switch (*(unsigned char *)(param_2 + 0x12a)) {
+  case 0:
+    v = (int)((double)func_00131230((float)((double)*(int *)(param_1 + 0x58) * D_001DF728)) * D_001D54D4);
+    break;
+  case 1:
+    v = (((*(int *)(param_1 + 0x58) >= 0x80) - 1) & 0x80) - 0x40;
+    break;
+  case 2:
+    v = (0x80 - (*(int *)(param_1 + 0x58) + 0x80) % 256) >> 1;
+    break;
+  case 3:
+    v = (0x80 - (0x180 - *(int *)(param_1 + 0x58)) % 256) >> 1;
+    break;
+  default:
+    v = param_2;
+    break;
+  }
+  v = *(unsigned char *)(param_2 + 0x12c) * v;
+  if (*(unsigned char *)(param_2 + 0x12b) != 0)
+    v = (*(int *)(param_1 + 0x5c) * v) / *(unsigned char *)(param_2 + 0x12b);
+  int n = *(int *)(param_1 + 0x5c) + 1;
+  *(int *)(param_1 + 0x18) += v >> 6;
+  *(int *)(param_1 + 0x5c) = n;
+  if (n > *(unsigned char *)(param_2 + 0x12b))
+    *(int *)(param_1 + 0x5c) = *(unsigned char *)(param_2 + 0x12b);
+  int b = *(int *)(param_1 + 0x58);
+  b += *(unsigned char *)(param_2 + 0x12d);
+  *(int *)(param_1 + 0x58) = b;
+  if (b > 0xff)
+    *(int *)(param_1 + 0x58) = b - 0x100;
+  *(unsigned char *)(param_1 + 2) |= 1;
 }
 
 void _func_0012B930(char *o)
@@ -179,6 +303,58 @@ void _func_0012B930(char *o)
     *((char *) (o + 0x85)) -= 0x40;
   }
   *((unsigned char *) (o + 2)) |= 2;
+}
+
+void _func_0012BA40(int param_1, int *param_2, int *param_3, unsigned char param_4, int param_5, int param_6, unsigned char param_7, unsigned char param_8, unsigned char param_9, unsigned int *param_10, int *param_11, unsigned char *param_12, int *param_13, unsigned char param_14)
+{
+  int iVar2;
+  unsigned short *t = (unsigned short *)param_6;
+
+  if (*param_2 < param_5) {
+    if ((unsigned int)*param_3 == t[*param_2 * 2]) {
+      if (((param_4 & 4) != 0) && (*param_2 == param_7)) {
+        *param_2 = (unsigned int)param_8;
+        *param_3 = t[param_8 * 2];
+      }
+      {
+        unsigned int a0 = t[*param_2 * 2];
+        unsigned int a2 = t[*param_2 * 2 + 1];
+        unsigned int a4 = t[*param_2 * 2 + 2];
+        unsigned int a6 = t[*param_2 * 2 + 3];
+        int lo = a2 << 16;
+        int hi = a6 << 16;
+        if (*param_2 == param_5 - 1) {
+          *param_10 = a2;
+          *param_12 = 1;
+          *(unsigned char *)(param_1 + 2) |= param_14;
+          return;
+        }
+        if ((((param_4 & 2) != 0) && (*param_2 == param_9)) && (*(char *)(param_1 + 0x61) == '\0')) {
+          *param_10 = a2;
+          *(unsigned char *)(param_1 + 2) |= param_14;
+          return;
+        }
+        iVar2 = a4 - a0;
+        if (iVar2 == 0) {
+          *param_13 = 0;
+          *param_11 = lo;
+          (*param_2)++;
+        }
+        else {
+          *param_13 = (hi - lo) / iVar2;
+          *param_11 = lo;
+          (*param_2)++;
+        }
+      }
+    }
+    else {
+      *param_11 = *param_11 + *param_13;
+    }
+  }
+  *param_10 = (int)*(short *)((int)param_11 + 2);
+  (*param_3)++;
+  *(unsigned char *)(param_1 + 2) |= param_14;
+  return;
 }
 
 void _func_0012BB70(Chan12BB70 *c, unsigned char cmd)
@@ -256,4 +432,4 @@ extern float _D_001DF724;
 extern float _D_001D557C;
 float _func_00131230(float);
 float _func_00131210(float);
-int _func_0013E3F4(void);
+int __ftol2(void);

@@ -11,7 +11,7 @@ extern unsigned int D_001DF6B8;
 extern unsigned char D_001DF6BC;
 
 #pragma optimize("y", off)
-void func_00124A10(void){extern unsigned int D_00331518,D_00331508,D_00331500,D_00331178,D_00331370[],D_00331520; extern float D_001E7D60,D_001D27FC; int func_0013E3F4(void); void func_001383B0(void); void func_00138440(int); void func_00138490(int); void func_0012F120(void*); void func_001364D0(void*); void func_00136FF0(int); void func_00123F90(int); void func_00137030(void); unsigned char buf[0x48]; if(D_00331518){func_001383B0();func_00138440(0);func_00138490(0);func_0012F120(buf);func_001364D0(buf);} D_00331500=D_00331518;D_00331178=D_00331508;func_00136FF0(func_0013E3F4()); for(unsigned i=0;i<D_00331518;++i){int ptr=D_00331370[i];func_00123F90(ptr);*(int*)(ptr+8)=D_00331520;}func_00137030();D_00331520++;}
+void func_00124A10(void){extern unsigned int D_00331518,D_00331508,D_00331500,D_00331178,D_00331370[],D_00331520; extern float D_001E7D60,D_001D27FC; int __ftol2(void); void func_001383B0(void); void func_00138440(int); void func_00138490(int); void func_0012F120(void*); void func_001364D0(void*); void func_00136FF0(int); void func_00123F90(int); void func_00137030(void); unsigned char buf[0x48]; if(D_00331518){func_001383B0();func_00138440(0);func_00138490(0);func_0012F120(buf);func_001364D0(buf);} D_00331500=D_00331518;D_00331178=D_00331508;func_00136FF0(__ftol2()); for(unsigned i=0;i<D_00331518;++i){int ptr=D_00331370[i];func_00123F90(ptr);*(int*)(ptr+8)=D_00331520;}func_00137030();D_00331520++;}
 #pragma optimize("", on)
 void func_00124AD0(void){extern unsigned D_00331508,D_00331518; extern int D_003311D8[]; void func_00133BB0(int); void func_00116FB0(int); for(unsigned i=0;i<D_00331508;i++){int p=D_003311D8[i];if(*(int*)(p+0x70))func_00116FB0(*(int*)(p+0x70));func_00133BB0(*(int*)(p+0xc));*(int*)(p+0xc)=0;func_00116FB0(p);}D_00331508=0;D_00331518=0;}
 
@@ -25,6 +25,79 @@ void func_00124BE0(int param_1, float param_2)
 {
   *(float *)(param_1 + 0xc) = param_2;
   *(unsigned char *)(param_1 + 0x12) = 1;
+}
+
+void func_00124BF0(RNode *list)
+{
+  RNode *b[256];
+  RNode *a[256];
+  RNode *n, *nx, *t;
+  unsigned i;
+  unsigned char c;
+
+  if (list == 0) return;
+  for (i = 0; i < 256; i++) b[i] = 0;
+  for (i = 0; i < 256; i++) a[i] = 0;
+  n = list;
+  do {
+    t = b[n->k[0]];
+    b[n->k[0]] = n;
+    nx = n->next;
+    n->next = t;
+    n = nx;
+  } while (n);
+  for (i = 0; i < 256; i++) {
+    n = b[i];
+    while (n) {
+      c = ~n->k[1];
+      t = a[c];
+      a[c] = n;
+      nx = n->next;
+      n->next = t;
+      n = nx;
+    }
+  }
+  for (i = 0; i < 256; i++) b[i] = 0;
+  for (i = 0; i < 256; i++) {
+    n = a[i];
+    while (n) {
+      t = b[n->k[2]];
+      b[n->k[2]] = n;
+      nx = n->next;
+      n->next = t;
+      n = nx;
+    }
+  }
+  for (i = 0; i < 256; i++) a[i] = 0;
+  for (i = 0; i < 256; i++) {
+    n = b[i];
+    while (n) {
+      c = ~n->k[3];
+      t = a[c];
+      a[c] = n;
+      nx = n->next;
+      n->next = t;
+      n = nx;
+    }
+  }
+  i = 0;
+  do {
+    if (a[i] != 0) break;
+    if (a[i + 1] != 0) { i = i + 1; break; }
+    if (a[i + 2] != 0) { i = i + 2; break; }
+    if (a[i + 3] != 0) { i = i + 3; break; }
+    i = i + 4;
+  } while (i < 256);
+  nx = a[i];
+  if (nx == 0) return;
+  for (n = nx; n->next != 0; n = n->next) ;
+  while (++i < 256) {
+    t = a[i];
+    if (t != 0) {
+      n->next = t;
+      for (n = t; n->next != 0; n = n->next) ;
+    }
+  }
 }
 
 void func_00124DC0(undefined4 *param_1)

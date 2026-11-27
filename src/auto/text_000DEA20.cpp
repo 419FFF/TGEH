@@ -2,6 +2,63 @@
 #include "common.h"
 #include "ghidra.h"
 
+void func_000DEA20(void)
+{
+  extern char *D_0031EA8C;
+  extern char *D_0031FB50;
+  extern float D_0031FC2C;
+  extern float D_001D2B64;
+  extern float D_001D515C;
+  extern int D_0031EA68;
+  extern int D_0031EA6C;
+  extern int D_0031EA70;
+  extern undefined D_0031ED20;
+  extern char D_0031FC1C;
+  extern float D_00307DB4;
+  extern float D_001D28E0;
+  extern float D_001D2A28;
+  int func_0012ECA0(...);
+  int func_000DCA80(...);
+  int func_000DE4F0(...);
+  int func_000DCE40(...);
+  int func_00110330(...);
+  char *p = D_0031EA8C;
+  char i;
+  float *pf;
+  int flag;
+  if (p == 0) {
+    if (D_0031FB50 != 0) {
+      func_0012ECA0(D_0031FB50 + 0x26c, 0x3f733333);
+      *(float *)(D_0031FB50 + 0x270) = D_0031FC2C * D_001D2B64 + *(float *)(D_0031FB50 + 0x270);
+      *(float *)(D_0031FB50 + 0x2f4) = *(float *)(D_0031FB50 + 0x2f4) * D_001D515C;
+      func_000DCA80(D_0031FB50 + 0x10, D_0031FB50);
+      func_000DE4F0(D_0031FB50);
+    }
+  } else {
+    *(int *)(p + 0x26c) = D_0031EA68;
+    *(int *)(p + 0x270) = D_0031EA6C;
+    *(int *)(p + 0x274) = D_0031EA70;
+    func_000DE4F0(p);
+  }
+  func_000DCE40();
+  i = 0;
+  pf = (float *)&D_0031ED20;
+  do {
+    if (i == D_0031FC1C && p == 0) {
+      flag = 1;
+      if (D_00307DB4 - *pf > D_001D28E0) {
+        flag = 0;
+        if (D_00307DB4 - *pf > D_001D2A28) *pf = D_00307DB4;
+      }
+    } else {
+      flag = 0;
+    }
+    func_00110330(*(int *)(pf - 0x23), flag);
+    i++;
+    pf += 0xc4;
+  } while (i < 5);
+}
+
 void func_000DEB50(void)
 {
   int func_000B54C0(...);
@@ -201,7 +258,7 @@ void func_000DED90(void)
   extern undefined D_0031FCEC;
   int func_0009C7A0(...);
   extern undefined D_001DB88C;
-  int func_0013E3F4(...);
+  int __ftol2(...);
   extern undefined4 D_0031FD00;
   extern volatile int D_0031FD04;
   extern undefined4 D_0031FD08;
@@ -293,7 +350,7 @@ void func_000DED90(void)
     iVar2 = iVar2 + 1;
   } while (iVar2 < 0x13);
   func_0009C7A0(D_00308158,((undefined *)&D_001DB88C),0);
-  iVar2 = func_0013E3F4();
+  iVar2 = __ftol2();
   D_0031FD00 = 1;
   D_0031FD04 = 1;
   D_0031FD08 = 0;

@@ -5,7 +5,7 @@
 
 extern float D_001D27B8; extern float D_001D27B0; extern float D_001DF0D4;
 int __stdcall func_00109BBE(int,int,int,int);
-short func_0013E3F4(...);
+short __ftol2(...);
 int __stdcall func_001CD3AF(int,void*);
 int __stdcall func_00109CF3(int,int);
 
@@ -17,8 +17,8 @@ int func_0013CB60(float a, float b) {
         if (b < D_001D27B8) b = 0; else if (b > D_001D27B0) b = 1.0f;
         v.a = 0; v.c = 0; v.d = 0; v.e = 0;
         v.b = func_00109BBE(0,0,0,0);
-        v.s0 = func_0013E3F4(a * D_001DF0D4);
-        v.s1 = func_0013E3F4(b * D_001DF0D4);
+        v.s0 = __ftol2(a * D_001DF0D4);
+        v.s1 = __ftol2(b * D_001DF0D4);
         if (func_001CD3AF(p[0x1e], &v) != 0x48f) func_00109CF3(v.b, -1);
     }
     return 0;
@@ -190,6 +190,57 @@ void func_0013D0F0(int param_1, uint param_2)
   return;
 }
 
+#pragma optimize("gty", on)
+void func_0013D1A0(char *indices,unsigned char *weights,float *values,unsigned count,unsigned rows) {
+extern float D_001D66D8;
+int maximum=0;
+char *p=indices+2;
+float *v=values;
+unsigned left=rows;
+if(left>0) do {
+ int used=0;
+ p[-2]='A';p[-1]='A';p[0]='A';p[1]='A';
+ unsigned j=0;
+ if(count) do {
+ if(v[j]!=D_001D27B8) {
+ int old=p[-2]; ++used;
+ if(old==65 || v[j]>v[old]) {p[1]=p[0];p[0]=p[-1];p[-1]=old;p[-2]=(char)j;}
+ else { old=p[-1];
+ if(old==65 || v[j]>v[old]) {p[1]=p[0];p[0]=old;p[-1]=(char)j;}
+ else {old=p[0];
+ if(old==65 || v[j]>v[old]) {p[1]=old;p[0]=(char)j;}
+ else if(p[1]==65 || v[j]>v[p[1]]) p[1]=(char)j;
+ }}
+ } ++j; } while(j<count);
+ if(!used) p[-2]=0;
+ if(used>maximum) maximum=used;
+ v+=count;p+=4;
+} while(--left);
+maximum=0;
+unsigned row=0,base=0;
+ int offset=(char*)weights-indices;
+p=indices+2;
+if(rows>0) do {
+ float a=p[-2]==65?0.0f:values[base+p[-2]];
+ int ib=base+p[-1], ic=base+p[0], id=base+p[1];
+ long double b=p[-1]==65?(double)D_001D27B8:values[ib];
+ long double c=p[0]==65?(double)D_001D27B8:values[ic];
+ long double d=p[1]==65?(double)D_001D27B8:values[id];
+ long double scale=D_001D66D8/(d+c+b+a);
+ unsigned char w1=(__int64)(scale*b);
+ p[offset-1]=w1;
+ unsigned char w2=(int)(scale*c);
+ p[offset]=w2;
+ unsigned char w3=(int)(scale*d);
+ p[offset+1]=w3;
+ weights[row*4]=(unsigned char)(255-w3-w2-w1);
+ if(p[-1]==65) p[-1]=p[-2];
+ if(p[0]==65) p[0]=p[-1];
+ if(p[1]==65) p[1]=p[0];
+ ++row;base+=count;p+=4;
+} while(row<rows);
+}
+#pragma optimize("", on)
 int _func_0013D400(uint param_1, int param_2, uint *param_3, int param_4, uint param_5)
 {
   char local_buffer[68];

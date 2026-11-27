@@ -200,6 +200,18 @@ void func_000AF540(void)
   return;
 }
 
+#pragma optimize("s", on)
+void func_000AF5D0(void) {
+extern int func_00120B80(...),func_0013B380(...),func_0011BDD0(...),func_0011F8D0(...),func_00120B60(...),func_000AF3C0(...),func_000AF540(...),func_00120BA0(...),__ftol2(...),func_00109D05_4(...),func_0013B280(...); extern int D_00313B00,D_001E46B4,D_00313950,D_0031392C,D_00313948,D_0031394C,D_00313940,D_00313924; extern float D_001D290C,D_0031393C,D_001D8904,D_001D2BF4,D_001D27B0,D_001D27F8,D_001D6160;
+int temp=0,id=0,hold=0,arg=0,counter=0;float val=0;int copy[9];int r,den;double f,g;
+again: func_00120B80(&val,0);r=func_0013B380(D_00313B00);temp=r;f=(double)r;if(r<0)f+=D_001D290C;den=D_001E46B4;g=(double)den;if(den<0)g+=D_001D290C;val=(float)(f/g);
+{int *ptr=(int*)(D_00313950+0xe0);int x=func_0011BDD0(ptr[0],0);*(float*)(x+0x14)=(val-D_0031393C)*D_001D8904;*(short*)(*ptr+0x2a)=*(short*)(*ptr+0x2a)-1;}
+for(r=0;r<9;r++)copy[r]=((int*)(D_0031392C+0xe4))[r];
+switch(D_00313948){case 0:counter=0x3f800000;break;case 2:counter=0x3f4ccccd;break;case 3:D_00313948=-1;case 1:counter=0x3f666666;break;}
+func_0011F8D0(copy,D_0031392C);func_00120B60(D_0031394C,0);if(D_00313940){hold=*(int*)&val;val+=D_001D2BF4;func_000AF3C0(&id);}func_000AF540();func_00120BA0();if(!(val<D_001D27B0)){func_0013B280(D_00313924,1);return;}r=func_0013B380(D_00313B00);f=(double)r;if(r<0)f+=D_001D290C;den=D_001E46B4;g=(double)den;if(den<0)g+=D_001D290C;if((float)(f/g-temp)*D_001D27F8<D_001D6160){r=__ftol2();func_00109D05_4(0x1f-r);}goto again;
+}
+#pragma optimize("", on)
+
 void func_000AFB10(void)
 {
     int value = func_00109B91();

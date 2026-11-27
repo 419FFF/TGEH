@@ -7,7 +7,7 @@ extern float D_001D2B64;
 int func_00106AC0(...);
 int func_00026F50(...);
 int func_00026EA0(...);
-int func_0013E3F4(float);
+int __ftol2(float);
 void func_00058B80(int, float, void *);
 void func_00059630(int, float, void *);
 int func_00106830(...);
@@ -91,27 +91,31 @@ int func_00046730(char *self, float *target)
  extern float D_001D27EC, D_001D27B0;
 
  int func_00106210(...);
- int index=0, row=0, best=-1;
+ int index, row, best;
  int *cells;
- float min=3.402823466e38f;
- float radius,scale;
+ unsigned int minbits;
+ volatile float radius;
+ float scale;
  int pos[2];
- float point[2], chosen[3];
+ float point[2]; int chosen[3];
  if(!*self)return 3;
  scale=(float)*(int*)(self+12) * *(float*)(*(int*)(self+8)+0x74) * D_001D27EC;
- radius=(func_00131760()+D_001D27B0)*scale*D_001D27EC;
+ radius=((double)func_00131760()+D_001D27B0)*(double)scale*(double)D_001D27EC;
  cells=*(int**)(*(int*)(self+40)+4);
+ minbits=0x7f7fffff;index=0;row=0;best=-1;
  if(*(int*)(self+12)!=0){
  do{
  int col=0;
- if(*(int*)(self+12)!=0) do {
+ if(*(volatile int*)(self+12)!=0) do {
  if((((unsigned char*)cells)[2]&0x50)==0x50){
  pos[0]=col; pos[1]=row;
  func_00106210(self+4,pos,point);
- float dx=point[0]-target[0], dz=point[1]-target[2];
- float delta=radius-func_00131220(dx*dx+dz*dz);
- if(func_00131210(delta)<min){
- min=func_00131210(delta);best=index;chosen[0]=point[0];chosen[2]=point[1];
+ double dz=(double)point[1]-target[2], dx=(double)point[0]-target[0];
+ float squared=(float)(dz*dz+dx*dx);
+ double dist=((double (__cdecl*)(int))func_00131220)(*(int*)&squared);
+ float delta=radius-dist;
+ if(func_00131210(delta)<*(volatile float*)&minbits){
+ *(float*)&minbits=(float)func_00131210(delta);best=index;chosen[0]=*(int*)&point[0];chosen[2]=*(int*)&point[1];
  }
  }
  ++index;++cells;++col;
@@ -119,7 +123,7 @@ int func_00046730(char *self, float *target)
  ++row;
  }while(row!=*(int*)(self+12));
  if(best!=-1){
- *(float*)(self+0x5d4)=chosen[0];*(float*)(self+0x5dc)=chosen[2];
+ *(int*)(self+0x5d4)=chosen[0];*(int*)(self+0x5dc)=chosen[2];
  int n=func_00026F50(*(int*)(self+40),best,self+0x118,300);
  if(n){*(int*)(self+0x5c8)=func_00026EA0(*(int*)(self+40),self+0x118,n);return 0;}
  }
@@ -210,7 +214,7 @@ bool func_00047050(int param_1, int param_2)
   int local_c;
   int local_8;
 
-  iVar2 = func_0013E3F4(*(float *)(param_2 + 0x1c) / *(float *)(param_1 + 0x74) * D_001D2B64);
+  iVar2 = __ftol2(*(float *)(param_2 + 0x1c) / *(float *)(param_1 + 0x74) * D_001D2B64);
   for (i = 0; i != iVar2; i++) {
     func_00058B80(param_2,(float)i / (float)iVar2,local_24);
     local_30[0] = local_c;
@@ -226,7 +230,7 @@ bool func_00047050(int param_1, int param_2)
 
 undefined4 func_00047100(int param_1, int param_2)
 {
-  int func_0013E3F4(...);
+  int __ftol2(...);
   int func_00059630(...);
   int func_00106830(...);
   undefined4 uVar1;
@@ -240,7 +244,7 @@ undefined4 func_00047100(int param_1, int param_2)
   undefined4 local_8;
   
   uVar1 = param_2;
-  iVar2 = func_0013E3F4();
+  iVar2 = __ftol2();
   param_2 = 0;
   if (iVar2 != 0) {
     do {

@@ -452,6 +452,51 @@ LAB_000028de:
   return;
 }
 
+#pragma optimize("y", on)
+void func_000CA850(void)
+{
+    int func_0013E469(char*, char*, ...);
+    int func_0009C590(char*);
+    int func_00110330(int, int);
+    int func_00110300(int, char*, int);
+    int func_0009C7A0(int, char*, int);
+    int __ftol2(...);
+    extern char D_001DA93C, D_001DA92C, D_001DA920, D_001DA9D8;
+    extern int D_00308158;
+    extern int D_001E4A00[], D_001E4A10[];
+    char buf[256];
+    int i = 1;
+    int n = 3;
+    do {
+        int j = 0;
+        do {
+            int p;
+            j++;
+            func_0013E469(buf, &D_001DA93C, i, j);
+            p = func_0009C590(buf);
+            func_00110330(*(int*)(p + 0x2c), 0);
+            func_00110330(func_00110300(*(int*)(p + 0x2c), &D_001DA92C, 0), 1);
+            func_00110330(func_00110300(*(int*)(p + 0x2c), &D_001DA920, 0), 0);
+        } while (j < 7);
+        func_0013E469(buf, &D_001DA9D8, i);
+        func_0009C7A0(D_00308158, buf, 0);
+        int k = __ftol2();
+        int c = D_001E4A00[k];
+        int s = D_001E4A10[k];
+        int e = s + c;
+        while (s < e) {
+            int q;
+            s++;
+            func_0013E469(buf, &D_001DA93C, i, s);
+            q = func_0009C590(buf);
+            func_00110330(*(int*)(q + 0x2c), 1);
+        }
+        i++;
+        n--;
+    } while (n != 0);
+}
+#pragma optimize("", on)
+
 void func_000CA970(void) {
   extern undefined D_00316968,D_00316990,D_00316B50; extern undefined4 D_00316964;
   int func_000CA850(...),func_001105E0(...),func_0005F310(...),func_0005CCC0(...),func_000B54A0(...),func_000B54B0(...);
@@ -462,12 +507,14 @@ void func_000CA970(void) {
 }
 
 void func_000CA9E0(void) {
-  extern undefined4 D_00318D10,D_00318D14,D_00313B60,D_001D9B70,D_001E4A2C,D_001D2A10;
-  int func_00110060(...),func_0012F0F0(...),func_0012F7A0(...),func_00011E30(...),func_001105E0(...);
-  char a[64],b[76]; unsigned int v[3]; float f;
-  func_00110060(*(int*)((char*)D_00318D10+0x2c),a); func_0012F0F0(a);
-  v[0]=*(unsigned int*)((char*)D_00318D14+0x40); v[1]=*(unsigned int*)((char*)D_00318D14+0x44); v[2]=*(unsigned int*)((char*)D_00318D14+0x48);
-  func_0012F7A0(v,a); f=(float)((*(float*)&D_001D9B70-*(float*)&D_001E4A2C)* *(float*)&D_001D2A10);
-  func_00011E30(a,b,&f); func_001105E0(D_00313B60,b,1);
+ extern undefined4 D_00318D10,D_00318D14,D_00313B60,D_001D9B70,D_001E4A2C,D_001D2A10;
+ int func_00110060(...),func_0012F0F0(...),func_0012F7A0(...),func_00011E30(...),func_001105E0(...);
+ char a[64]; char tail[76]; unsigned int v[3]; float angle;
+ func_00110060(*(int*)((char*)D_00318D10+0x2c),a);func_0012F0F0(a);
+ v[0]=*(unsigned int*)((char*)D_00318D14+0x40);v[1]=*(unsigned int*)((char*)D_00318D14+0x44);v[2]=*(unsigned int*)((char*)D_00318D14+0x48);
+ func_0012F7A0(v,a);
+ angle=*(float*)&D_001D9B70-*(float*)&D_001E4A2C; angle*=*(float*)&D_001D2A10;
+ *(unsigned int*)&tail[0]=0x42e60000;*(unsigned int*)&tail[4]=0x3fc90fdb;
+ func_00011E30(a,tail,&angle);func_001105E0(D_00313B60,tail,1);
 }
 

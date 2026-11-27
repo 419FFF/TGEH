@@ -70,7 +70,7 @@ void func_000F4460(void)
   float *m;
   float *f;
   int func_001100A0(...);
-  int func_0013E3F4(...);
+  int __ftol2(...);
   char cl;
   int i;
 
@@ -150,7 +150,7 @@ void func_000F4760(void)
   extern undefined D_001DCE24;
   int func_00110300(...);
   extern undefined D_001DCE18;
-  int func_00110330(...);
+  void func_00110330(int, int);
   int func_00110420(...);
   extern undefined4 D_00324848;
   extern undefined4 D_00324850;
@@ -166,7 +166,6 @@ void func_000F4760(void)
   func_00063F30(D_00324844,0x3f99999a,0x3fcccccd);
   {
   F4760Params a;
-  a.flags[0] = 0;
   a.kind = 1;
   a.flags[1] = 0;
   a.scale = 1.0f;
@@ -196,8 +195,7 @@ void func_000F4760(void)
   D_0032485C = func_0009C590(((undefined *)&D_001DCE2C));
   D_00324888 = func_0009C590(((undefined *)&D_001DCE24));
   if (D_0032485C != 0) {
-    uVar2 = func_00110300(*(undefined4 *)(D_0032485C + 0x2c),((undefined *)&D_001DCE18),0x18,0);
-    func_00110330(uVar2);
+    func_00110330(func_00110300(*(undefined4 *)(D_0032485C + 0x2c),((undefined *)&D_001DCE18),0x18),0);
   }
   if ((D_00324884 != 0) && (iVar1 = *(int *)(D_00324884 + 0x2c), *(volatile int *)(iVar1 + 0x2c) != 0)) {
     func_00110420(**(undefined4 **)(iVar1 + 0x2c),iVar1);

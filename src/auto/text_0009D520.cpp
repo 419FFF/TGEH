@@ -158,6 +158,48 @@ undefined4 func_0009DAC0(int param_1)
   return *(undefined4 *)(*(int *)(param_1 + 0x110) + 0xe0);
 }
 
+void _func_0009DAF0(int param_1)
+{
+ extern int D_001D28F0,D_001D2E34,D_001D2E38,D_001D2E30,D_001D2E28,D_003104B4,D_001D73F8;
+ extern char D_001D2E2C;
+ extern float D_001D27EC;
+ int _func_0009C7A0(...),_func_001319B0(...),_func_00131990(...),_func_000EBB10(...),_func_00110170(...),__ftol2(...),_func_0009C1F0(...);
+ unsigned char local_114[0x114];
+ unsigned char *p=local_114;
+ int *puVar2;
+ char *pcVar3,*pcVar8,*pcVar9,*pcVar10;
+ int iVar4,uVar5;
+ unsigned uVar7;
+ float *pfVar6;
+ unsigned char bVar13=0;
+ puVar2=(int*)_func_0009C7A0(param_1,&D_001D28F0,0);
+ if(puVar2){
+ *(int*)(p)=*(int*)(param_1+0x2c); *(int*)(p+4)=0; *(int*)(p+8)=0; *(int*)(p+12)=0;
+ *(p+16)=0;
+ if((*(unsigned char*)(param_1+0x10)&1)!=0) *(p+16)=1;
+ if(*(char*)(param_1+0x14)==1 || (*(p+16)=1,*(char*)(param_1+0x14)==3)) *(p+16)=0;
+ *(int*)(p+20)=D_001D2E34; *(int*)(p+24)=D_001D2E38;
+ pcVar8=(char*)*puVar2; pcVar3=pcVar8; do {char c=*pcVar3++;}while(pcVar3[-1]);
+ pcVar10=(char*)(p+19); do {pcVar9=pcVar10+1;pcVar10++;}while(*pcVar9);
+ pcVar9=pcVar8;
+ for(uVar7=(unsigned)(pcVar3-pcVar8)>>2;uVar7;uVar7--){*(int*)pcVar10=*(int*)pcVar9;pcVar9+=4;pcVar10+=4;}
+ for(uVar7=(unsigned)(pcVar3-pcVar8)&3;uVar7;uVar7--){*pcVar10++=*pcVar9++;}
+ {unsigned short *q=(unsigned short*)(p+19); do{pcVar8=(char*)q+1;q=(unsigned short*)((char*)q+1);}while(*pcVar8);*q=(unsigned short)D_001D2E30;}
+ _func_001319B0(p+0x94,0x80); _func_00131990(p+20);
+ pcVar3=(char*)*puVar2;pcVar8=(char*)(p+20);do{*pcVar8++=*pcVar3;}while(*pcVar3++);
+ {int *q=(int*)(p+19); do{puVar2=q;q=(int*)((char*)q+1);}while(*(char*)((char*)puVar2+1));*(int*)((char*)puVar2+1)=D_001D2E28;*(char*)((char*)puVar2+5)=D_001D2E2C;}
+ if(D_003104B4==0) *(int*)(p+12)=0; else {*(int*)(p+12)=param_1+100;*(char*)(param_1+0x94)=*(char*)(param_1+0x13)=='=';}
+ _func_000EBB10(p+20,p);
+ *(int*)(param_1+0x5c)=*(int*)(p+8); *(char*)(param_1+0x57)=*(char*)(p+4); *(int*)(param_1+0x2c)=*(int*)p;
+ _func_00110170(*(int*)p); _func_00131990(p+0x94);
+ iVar4=_func_0009C7A0(param_1,&D_001D73F8,0);
+ if(iVar4){uVar5=__ftol2();_func_0009C1F0(*(int*)(param_1+0x2c),uVar5);}
+ if(*(char*)(p+17)==0)_func_00110170(*(int*)(param_1+0x2c));
+ pfVar6=(float*)_func_0009C7A0(param_1,&D_001D73F8,0);
+ if(pfVar6){if(*pfVar6<D_001D27EC){_func_0009C1F0(*(int*)(param_1+0x2c),-1);return;}uVar5=__ftol2();_func_0009C1F0(*(int*)(param_1+0x2c),uVar5);}
+ }
+}
+
 int _func_00116A90(...);
 void _func_0009DAF0(int);
 int _func_0010F750(...);
@@ -177,6 +219,46 @@ int *_func_0009DD00(int *p)
     if (!_D_003104B4) _func_000F9440(q->v[0xb]);
     if (_func_0009C7A0((int)q,&_D_001D740C,0)) _func_0006E2C0((int)q);
     return (int *)q;
+}
+
+B9E *func_0009DD90(B9E *src)
+{
+  extern int D_001D745C, D_001D7450, D_001D7444, D_001D7438, D_001D742C, D_001D7424, D_001D68E4, D_001D7418;
+  int func_00116A90(...);
+  int *func_0009C7A0(void *, void *, void *);
+  int func_0012ED20(...);
+  int func_0011F890(...);
+  int func_0011FD30(...);
+  B9E *obj;
+  int *p;
+  int s[9];
+
+  obj = (B9E *)func_00116A90(0x110, 1, 1);
+  *obj = *src;
+  ((char *)obj)[0x12] = 8;
+  s[0] = 0; s[1] = 0; s[2] = 0; s[3] = 0; s[4] = 0; s[5] = 0; s[6] = 0; s[7] = 0;
+  s[8] = 0;
+  switch ((int)*(float *)func_0009C7A0(obj, &D_001D745C, 0)) {
+  case 0: s[0] = 0; break;
+  case 1: s[0] = 1; break;
+  case 2: s[0] = 2; break;
+  case 3: s[0] = 3; break;
+  case 4: s[0] = 4; break;
+  }
+  p = func_0009C7A0(obj, &D_001D7450, 0);
+  if (p) s[5] = (int)*(float *)p;
+  p = func_0009C7A0(obj, &D_001D7444, 0);
+  if (p) s[6] = *p;
+  p = func_0009C7A0(obj, &D_001D7438, 0);
+  if (p) s[7] = *p;
+  p = func_0009C7A0(obj, &D_001D742C, 0);
+  if (p) s[8] = *p;
+  p = func_0009C7A0(obj, &D_001D7424, 0);
+  if (p) func_0012ED20(&s[1], p, 0x3b808081);
+  obj->v[11] = func_0011F890(&D_001D68E4, s);
+  p = func_0009C7A0(obj, &D_001D7418, 0);
+  if (p) func_0011FD30(obj->v[11], (int)*(float *)p);
+  return obj;
 }
 
 void _func_000F4390(...);
@@ -280,6 +362,50 @@ B9E *func_0009E190(B9E *p)
   return b;
 }
 
+int *_func_00116A90(int, int, int);
+int _func_00088220(int *);
+int _func_0009C7A0(int *, void *, int);
+void _func_0009DAF0(int *);
+int _func_0010F750(void *, int, int);
+void _func_00012D60(int *, int);
+extern char _D_001D28F0;
+extern int _D_00326110;
+extern char _D_001D748C;
+#pragma code_seg(push, ".text$9E250")
+int *_func_0009E250(int *src)
+{
+    int *obj = _func_00116A90(0x1b0, 1, 1);
+    unsigned char kind;
+    memcpy(obj, src, 0x110);
+    *((unsigned char *)obj + 0x12) = 1;
+    obj[0xb] = _func_00088220(obj);
+    if (_func_0009C7A0(obj, &_D_001D28F0, 0))
+        _func_0009DAF0(obj);
+    if (obj[0xb] == 0)
+        obj[0xb] = _func_0010F750(&_D_001D748C, _D_00326110, 0xe0);
+    kind = *((unsigned char *)obj + 0x13);
+    switch (kind) {
+    case 0xe:
+        _func_00012D60(obj, 5);
+        return obj;
+    case 0x10:
+        _func_00012D60(obj, 6);
+        return obj;
+    case 0x3c:
+        _func_00012D60(obj, 0x21);
+        return obj;
+    case 5:
+        _func_00012D60(obj, 3);
+        return obj;
+    case 0x5e:
+        _func_00012D60(obj, 0x32);
+        return obj;
+    default:
+        _func_00012D60(obj, 1);
+        return obj;
+    }
+}
+#pragma code_seg(pop)
 B9E *func_0009E3B0(B9E *p)
 {
   int func_00116A90(...);

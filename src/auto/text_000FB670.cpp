@@ -91,7 +91,7 @@ unsigned char func_000FB9C0(unsigned int a,int *p){int o=*p;if(*(unsigned char*)
 
 unsigned char func_000FB9E0(unsigned int a,int p){extern float D_001D6008;int func_00123170(...);func_00123170(**(float**)(p+0x14)*D_001D6008,**(float**)(p+0xc)*D_001D6008,**(float**)(p+4)*D_001D6008);return 1;}
 
-unsigned char func_000FBA20(unsigned int a,int *p){int func_0013E3F4(float);int func_000ACFB0(...);int n=func_0013E3F4(*(float*)((char*)p+4));switch(n){case 0:func_000ACFB0(3,1);break;case 1:func_000ACFB0(4,1);break;case 2:func_000ACFB0(5,1);break;case 3:func_000ACFB0(6,1);break;case 4:func_000ACFB0(7,1);break;case 5:func_000ACFB0(8,1);}return 1;}
+unsigned char func_000FBA20(unsigned int a,int *p){int __ftol2(float);int func_000ACFB0(...);int n=__ftol2(*(float*)((char*)p+4));switch(n){case 0:func_000ACFB0(3,1);break;case 1:func_000ACFB0(4,1);break;case 2:func_000ACFB0(5,1);break;case 3:func_000ACFB0(6,1);break;case 4:func_000ACFB0(7,1);break;case 5:func_000ACFB0(8,1);}return 1;}
 
 #pragma intrinsic(strlen, strcpy, strcat)
 unsigned char func_000FBAB0(int a, int *p, int c)
@@ -260,7 +260,7 @@ unsigned char func_000FC4E0(unsigned int a,int *p){int obj=*p;int *q=*(int**)(ob
 
 unsigned char func_000FC510(unsigned int a,unsigned int *p){int func_00103180(...);func_00103180(*p,p[3]);return 1;}
 
-unsigned char func_000FC530(unsigned int a,int *p){int func_001060A0(...);int func_0013E3F4(float);int func_00106150(...);int x=func_001060A0(**(int**)((char*)p+4));int z=func_0013E3F4(*(float*)((char*)p+0x14));func_00106150(x,*(int*)((char*)p+8),z);return 1;}
+unsigned char func_000FC530(unsigned int a,int *p){int func_001060A0(...);int __ftol2(float);int func_00106150(...);int x=func_001060A0(**(int**)((char*)p+4));int z=__ftol2(*(float*)((char*)p+0x14));func_00106150(x,*(int*)((char*)p+8),z);return 1;}
 
 unsigned char func_000FC560(unsigned int a,int *p){int func_000F8F40(...);**(unsigned int**)((char*)p+4)=0x40400000;int *q=*(int**)((char*)p+0xc);func_000F8F40(q[0xb]);*(unsigned char*)((char*)q+0x308)=1;return 1;}
 
@@ -268,9 +268,9 @@ unsigned char func_000FC590(int *p){extern unsigned int _D_00324840;int func_000
 
 unsigned char func_000FC5B0(unsigned int a,int *p){int func_001060A0(...);int func_00012D60(...);int *out=(int*)(*p+0x130);out[0]=func_001060A0(*(int*)(p[3]+0x40));out[1]=*(int*)p[5];func_00012D60(*p,0x18);return 1;}
 
-unsigned char func_000FC5F0(unsigned int a,int *p){int func_0013E3F4(...);int func_000ECB20(...);int z=func_0013E3F4(**(int**)((char*)p+0xc),**(int**)((char*)p+0x14));func_000ECB20(z);return 1;}
+unsigned char func_000FC5F0(unsigned int a,int *p){int __ftol2(...);int func_000ECB20(...);int z=__ftol2(**(int**)((char*)p+0xc),**(int**)((char*)p+0x14));func_000ECB20(z);return 1;}
 
-unsigned char func_000FC620(unsigned int a,int *p){int __fastcall func_0013E3F4(float);int func_000ABE30(...);int z=func_0013E3F4(**(float**)((char*)p+4));func_000ABE30(z);return 1;}
+unsigned char func_000FC620(unsigned int a,int *p){int __fastcall __ftol2(float);int func_000ABE30(...);int z=__ftol2(**(float**)((char*)p+4));func_000ABE30(z);return 1;}
 
 unsigned char func_000FC640(unsigned int a,unsigned int *p){int func_00101680(int);func_00101680(*(unsigned int*)p[1]);return 1;}
 extern undefined4 L000FC3F0;

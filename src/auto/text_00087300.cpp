@@ -100,8 +100,8 @@ extern unsigned char D_002FDE6C[12][8];
 extern float D_002FDE68[12][2];
 extern unsigned char D_002FDE6D[12][8];
 extern float func_00131760(void);
-extern unsigned char func_0013E3F4(void);
-void func_00087570(void) { for(int i=0;i<12;i++){ float a=func_00131760(); a*=D_001D6160; unsigned char b=func_0013E3F4(); D_002FDE6C[i][0]=b; D_002FDE68[i][0]=i*D_001D6C2C-D_001D27EC; D_002FDE68[i][0]*=D_001D2A1C; float c=func_00131760(); D_002FDE6D[i][0]=(c>=D_001D27EC)?1:0xFF; } }
+extern unsigned char __ftol2(void);
+void func_00087570(void) { for(int i=0;i<12;i++){ float a=func_00131760(); a*=D_001D6160; unsigned char b=__ftol2(); D_002FDE6C[i][0]=b; D_002FDE68[i][0]=i*D_001D6C2C-D_001D27EC; D_002FDE68[i][0]*=D_001D2A1C; float c=func_00131760(); D_002FDE6D[i][0]=(c>=D_001D27EC)?1:0xFF; } }
 
 void func_000875E0(void) {
  extern int D_001E3F98,D_002FDE60,D_002FDEC8,D_002FDE64,D_001D6744,D_001D2868,D_001D411C;
