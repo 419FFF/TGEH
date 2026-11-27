@@ -15,7 +15,6 @@ struct PixelFormat127D60 {
   return bits>>3;
  }
 };
-static __forceinline unsigned PixelBytes127D60(PixelFormat127D60 format) { return format.Bytes(); }
 struct E38 { char pad[0x18]; int f18; char pad2[0x1c]; };
 struct E130 { char pad[0x18]; int n; E38 *a; char pad2[0x110]; };
 int _func_00116FB0(...);
