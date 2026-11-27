@@ -7,6 +7,16 @@ extern "C" __declspec(dllimport) void __stdcall RtlEnterCriticalSection(void*);
 extern "C" __declspec(dllimport) void __stdcall RtlLeaveCriticalSection(void*);
 struct S_132350_dst { char pad0[0x18]; unsigned int flags; char pad1c[0x2c]; unsigned short w; char pad4a[6]; int *tbl; };
 struct S_132350_src { char pad0[0x10]; void *f10; int f14, f18; void *f1c, *f20, *f24, *f28; int pad2c; void *f30; };
+void* __stdcall func_0014E420(int*, int);
+static inline void CopyPlane_132350(S_132350_dst *a, void *s, int *pn)
+{
+    int *t = a->tbl + *pn * 4;
+    unsigned w = a->w;
+    int sz = t[3];
+    void *d = func_0014E420(t, 0);
+    memcpy(d, s, w * sz);
+    (*pn)++;
+}
 struct C_001321C0 {
     int func_001321C0(void);
 };
@@ -114,88 +124,46 @@ void func_00132280(float *param) { (void)param; }
 
 void func_00132300(int *param) { (void)param; }
 
-void func_00132350(int a, int b)
+void func_00132350(S_132350_dst *a, S_132350_src *b)
 {
-    void* __stdcall func_0014E420(int, int);
+    void* __stdcall func_0014E420(int*, int);
     void func_00132280(int);
     void func_00132300(int);
     void func_00136440(void);
-    unsigned int flags = *(unsigned int*)(a + 0x18);
+    unsigned int flags = a->flags;
     int n;
-    int s;
-    volatile int *pn = 0;
+    void *s;
     if (flags & 0x40000) {
         n = 4;
     } else {
-        int *t = *(int**)(a + 0x50);
+        int *t = a->tbl;
         int sz = t[3];
-        unsigned short w = *(unsigned short*)(a + 0x48);
-        void *s = *(void**)(b + 0x10);
-        memcpy(func_0014E420((int)t, 0), s, w * sz);
+        unsigned w = a->w;
+        void *d = func_0014E420(t, 0);
+        memcpy(d, b->f10, w * sz);
         n = 1;
     }
-    if (flags & 1) {
-        s = *(int*)(b + 0x1c);
-        if (s) {
-            int t = *(int*)(a + 0x50);
-            unsigned short w = *(unsigned short*)(a + 0x48);
-            int sz = *(int*)(t + n * 16 + 0xc);
-            memcpy(func_0014E420(t + n * 16, 0), (void*)s, w * sz);
-            n++;
-        }
+#define CP(fl, fld) \
+    if ((flags & fl) && (s = b->fld) != 0) { \
+        int *t = a->tbl + n * 4; unsigned w = a->w; int sz = t[3]; \
+        void *d = func_0014E420(t, 0); \
+        memcpy(d, s, w * sz); n++; }
+    CP(1, f1c)
+    CP(2, f20)
+    CP(4, f24)
+    CP(8, f28)
+    if ((flags & 0x10) && b->f14) {
+        func_00132280(b->f14);
+        n++;
     }
-    if (flags & 2) {
-        s = *(int*)(b + 0x20);
-        if (s) {
-            int t = *(int*)(a + 0x50);
-            unsigned short w = *(unsigned short*)(a + 0x48);
-            int sz = *(int*)(t + n * 16 + 0xc);
-            memcpy(func_0014E420(t + n * 16, 0), (void*)s, w * sz);
-            n++;
-        }
+    if ((flags & 0x100000) && b->f18) {
+        func_00132300(b->f18);
+        n++;
     }
-    if (flags & 4) {
-        s = *(int*)(b + 0x24);
-        if (s) {
-            int t = *(int*)(a + 0x50);
-            unsigned short w = *(unsigned short*)(a + 0x48);
-            int sz = *(int*)(t + n * 16 + 0xc);
-            memcpy(func_0014E420(t + n * 16, 0), (void*)s, w * sz);
-            n++;
-        }
-    }
-    if (flags & 8) {
-        s = *(int*)(b + 0x28);
-        if (s) {
-            int t = *(int*)(a + 0x50);
-            unsigned short w = *(unsigned short*)(a + 0x48);
-            int sz = *(int*)(t + n * 16 + 0xc);
-            memcpy(func_0014E420(t + n * 16, 0), (void*)s, w * sz);
-            n++;
-        }
-    }
-    if (flags & 0x10) {
-        s = *(int*)(b + 0x14);
-        if (s) {
-            func_00132280(s);
-            n++;
-        }
-    }
-    if (flags & 0x100000) {
-        s = *(int*)(b + 0x18);
-        if (s) {
-            func_00132300(s);
-            n++;
-        }
-    }
-    if (flags & 0x20000) {
-        s = *(int*)(b + 0x30);
-        if (s) {
-            int t = *(int*)(a + 0x50);
-            unsigned short w = *(unsigned short*)(a + 0x48);
-            int sz = *(int*)(t + n * 16 + 0xc);
-            memcpy(func_0014E420(t + n * 16, 0), (void*)s, w * sz);
-        }
+    if ((flags & 0x20000) && (s = b->f30) != 0) {
+        int *t = a->tbl + n * 4; unsigned w = a->w; int sz = t[3];
+        void *d = func_0014E420(t, 0);
+        memcpy(d, s, w * sz);
     }
     func_00136440();
 }
