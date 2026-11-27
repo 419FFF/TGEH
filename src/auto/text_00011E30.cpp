@@ -1,6 +1,7 @@
 /* 15 functions from 0x00011E30 to 0x00012DBA, found by Ghidra. */
 #include "common.h"
 #include "ghidra.h"
+#include "string.h"
 
 void func_00011E30(int param_1, int *param_2, int *param_3)
 {
@@ -166,6 +167,102 @@ unsigned char _func_00012360(int obj, int *pos, int a, int b, unsigned char c)
     }
     return 0;
 }
+
+#pragma optimize("y", on)
+unsigned char func_000124E0(int param_1, undefined4 param_2, undefined4 param_3, float param_4)
+{
+  int func_00110300(...);
+  int func_00115100(...);
+  int func_00110060(...);
+  int func_0009C7A0(...);
+  extern undefined D_001D2878;
+  int func_0013E3F4(...);
+  unsigned char func_00012120(int, int *, int *, int, unsigned char);
+  extern undefined4 D_00307DF8;
+  int func_0012F7A0(...);
+  int func_00115170(...);
+  int func_0012F310(...);
+  int func_0012F120(...);
+  int func_00011CB0(...);
+  extern undefined D_002EAFC0;
+  extern undefined4 D_002EB000;
+  extern undefined4 D_002EB004;
+  extern undefined4 D_002EB008;
+  int func_0012F2E0(...);
+  unsigned char func_00112250(int *,void *,int *);
+  char cVar1;
+  unsigned int uVar2;
+  int iVar3;
+  int iVar4;
+  undefined4 *puVar5;
+  unsigned char uVar6;
+  byte bVar7;
+  int v[11]; int *p=v, *scale=v+4, *q=v+7;
+  __declspec(align(16)) int t[16], b[16], m[16], n[16];
+  
+  bVar7 = 0;
+  if ((*(char *)(param_1 + 0x175) == '\0') && (*(char *)(param_1 + 0x174) == '\0')) {
+    iVar3 = func_00110300(*(undefined4 *)(param_1 + 0x2c),param_3,0x18);
+    iVar4 = func_00115100(*(undefined4 *)(param_1 + 0x98),param_3);
+    if (iVar4 != -1) {
+      func_00110060(*(undefined4 *)(D_00307DF8 + 0x2c),m);
+      q[0] = *(undefined4 *)(D_00307DF8 + 0xe8);
+      q[1] = *(undefined4 *)(D_00307DF8 + 0xec);
+      q[2] = *(undefined4 *)(D_00307DF8 + 0xf0);
+      func_0012F7A0(&q[0],m);
+      m[12] = q[0];
+      m[13] = q[1];
+      m[14] = q[2];
+      func_00115170(*(undefined4 *)(param_1 + 0x98),iVar4,b);
+      p[0] = b[12];
+      p[1] = b[13];
+      p[2] = b[14];
+      func_0012F7A0(&p[0],param_2);
+      *(float *)&scale[0] = param_4;
+      *(float *)&scale[1] = param_4;
+      *(float *)&scale[2] = param_4;
+      func_0012F310(t,m);
+      func_0012F120(n);
+      n[12] = p[0];
+      n[13] = p[1];
+      n[14] = p[2];
+      func_00011CB0(((undefined *)&D_002EAFC0),n);
+      D_002EB000 = scale[0];
+      D_002EB004 = scale[1];
+      D_002EB008 = scale[2];
+      func_0012F2E0(n,t);
+      cVar1 = func_00112250(&scale[0],n,(int *)(D_00307DF8 + 0xf4));
+      if (cVar1 != '\0') {
+        if (*(char *)(D_00307DF8 + 0x175) == '\0') {
+          memset((void *)(D_00307DF8+0x150),0,44);
+          *(undefined1 *)(D_00307DF8 + 0x174) = 1;
+          *(int *)(D_00307DF8 + 0x160) = param_1;
+          *(undefined4 *)(D_00307DF8 + 0x178) = 0;
+          puVar5 = (undefined4 *)(D_00307DF8 + 0x150);
+          puVar5[0] = p[0]; puVar5[1] = p[1]; puVar5[2] = p[2];
+          puVar5 = (undefined4 *)func_0009C7A0(param_1,((undefined *)&D_001D2878),0);
+          if (puVar5 != (undefined4 *)0x0) {
+            *(undefined4 *)(D_00307DF8 + 0x168) = *puVar5;
+          }
+          return 1;
+        }
+      }
+        } else {
+      if (iVar3 != 0) {
+        func_00110060(iVar3,t);
+        iVar4 = func_0009C7A0(param_1,((undefined *)&D_001D2878),0);
+        if (iVar4 != 0) {
+          uVar2 = (unsigned char)(int)*(float *)iVar4;
+        }
+        else { uVar2 = 1; }
+        uVar6 = func_00012120(param_1,(int *)iVar3,(int *)(iVar3 + 0x10),(int)t,uVar2);
+        return uVar6;
+      }
+        }
+  }
+  return 0;
+}
+#pragma optimize("", on)
 
 void func_000127A0(void)
 {
