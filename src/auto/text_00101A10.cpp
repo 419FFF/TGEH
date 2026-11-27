@@ -16,6 +16,31 @@ struct SoundInfo {
     char buf[128];
 };
 
+struct Obj21C0 {
+    char pad0[0x10];
+    unsigned char flags10;
+    unsigned char flags11;
+    unsigned char b12;
+    char pad13[0x19];
+    int f2c;
+    char pad30[0x48];
+    int f78;
+    int f7c;
+    int f80;
+    int f84;
+    char pad88[0xc];
+    int f94;
+    int f98;
+    char pad9c[0x14];
+    int fb0;
+    unsigned char fb4;
+    char padb5;
+    unsigned short fb6;
+    int fb8;
+    int fbc[4];
+    char padcc[0x110 - 0xcc];
+};
+struct Obj21C0Copy { int d[0x44]; };
 void func_00101A10(int a, int b, int c) {}
 
 extern float D_00324D08;
