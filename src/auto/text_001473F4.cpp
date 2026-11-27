@@ -14,6 +14,8 @@ extern "C" int (__stdcall * __imp__NtClose)(void*);
 extern "C" int (__stdcall * __imp__NtOpenFile)(void*, unsigned int, void*, void*, unsigned int, void*);
 extern "C" int (__stdcall * __imp__NtSetInformationFile)(void*, void*, void*, unsigned int, unsigned int);
 extern int _D_001E27B4;
+extern "C" unsigned int __cdecl strlen(const char *);
+#pragma intrinsic(strlen)
 extern "C" int (__stdcall * __imp__RtlNtStatusToDosError)(int);
 #pragma optimize("s", on)
 int __stdcall func_001473F4(int h, unsigned short *name, unsigned short *out, int outlen)
@@ -111,23 +113,25 @@ unsigned int __stdcall func_00147653(char *name, int arg2, int mode, unsigned in
   int iosb[2];
   struct { int root; void *obj; int attr; } oa;
   struct { int lo, hi; } alloc;
-  char *s;
+  char *s, *q, *d;
   char c;
   unsigned int len, err;
   int status, n;
   int r;
 
   s = name;
-  do { c = *s; buf[s - name] = c; s++; } while (c);
-  s = buf; do { c = *s++; } while (c);
-  func_0014731A(arg2, buf + (s - buf - 1), 0xf7 - (s - buf - 1));
-  s = buf; do { c = *s++; } while (c);
-  len = s - (buf + 1);
+  do { c = *s; s[buf - name] = c; s++; } while (c);
+  s = buf; q = s + 1; do { c = *s++; } while (c);
+  len = s - q;
+  func_0014731A(arg2, buf + len, 0xf7 - len);
+  s = buf; q = s + 1; do { c = *s++; } while (c);
+  len = s - q;
+  d = buf + len;
   if (mode == 3) {
     s = D_001E274C;
-    do { c = *s; (buf + len)[s - D_001E274C] = c; s++; } while (c);
+    do { c = *s; s[d - D_001E274C] = c; s++; } while (c);
     r = func_00147577((int)buf, arg2);
-    buf[len] = 0;
+    *d = 0;
     if (r != 0) return r;
   } else {
     if (func_00147D18(buf, 0) == 0) {
@@ -135,9 +139,9 @@ unsigned int __stdcall func_00147653(char *name, int arg2, int mode, unsigned in
       r = 0x491;
       if (err == 0xb7) {
         s = D_001E274C;
-        do { c = *s; (buf + len)[s - D_001E274C] = c; s++; } while (c);
+        do { c = *s; s[d - D_001E274C] = c; s++; } while (c);
         r = func_00147577((int)buf, arg2);
-        buf[len] = 0;
+        *d = 0;
         if (r != 0) return 0x52;
         func_001475F7((int)buf);
       }
@@ -145,7 +149,7 @@ unsigned int __stdcall func_00147653(char *name, int arg2, int mode, unsigned in
       if (r != 0) return err;
     } else {
       s = D_001E274C;
-      do { c = *s; (buf + len)[s - D_001E274C] = c; s++; } while (c);
+      do { c = *s; s[d - D_001E274C] = c; s++; } while (c);
       __imp__RtlInitAnsiString(&ansi, buf);
       alloc.hi = 0;
       oa.obj = &ansi;
@@ -153,7 +157,7 @@ unsigned int __stdcall func_00147653(char *name, int arg2, int mode, unsigned in
       oa.attr = 0x40;
       alloc.lo = 1;
       status = __imp__NtCreateFile(&name, 0xc0100000, &oa, iosb, &alloc, 4, 0, 3, (void *)0x22);
-      buf[len] = 0;
+      *d = 0;
       if (status < 0) {
         err = __imp__RtlNtStatusToDosError(status);
         func_00147D84(buf);
