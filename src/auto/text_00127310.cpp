@@ -4,7 +4,17 @@
 #include <string.h>
 
 struct S127310 { int *p0; char *p4; int p8; int pc; int u10; int u14; short s18; short s1a; int u1c; int n20; short s24; unsigned char b26; };
-struct PixelFormat127D60 { unsigned flags, r, rs, g, gs, b, bs, a, as; };
+struct PixelFormat127D60 {
+ unsigned flags, r, rs, g, gs, b, bs, a, as;
+ unsigned Bytes() const {
+  unsigned bits;
+  if(flags&0x20)bits=8;else if(flags&0x40)bits=4;else {
+   unsigned value=b|g|r|a;
+   if(value&0xffff0000)bits=32;else bits=(-(unsigned)((value&0xff00)!=0)&8)+8;
+  }
+  return bits>>3;
+ }
+};
 struct E38 { char pad[0x18]; int f18; char pad2[0x1c]; };
 struct E130 { char pad[0x18]; int n; E38 *a; char pad2[0x110]; };
 int _func_00116FB0(...);
