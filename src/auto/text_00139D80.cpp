@@ -6,6 +6,7 @@ struct S960 { char pad0[0x10]; unsigned int flags; char pad14[8]; char a; char b
 struct SndData { int data; char adpcm; char pad5[3]; int size; int samples; char pad10[0x28]; int start; int end; };
 struct SndObj { char pad0[0x10]; int f10; int f14; char pad18[4]; char b1c; char b1d; char pad1e; char b1f; SndData *f20; int f24; char pad28[0x30]; float f58; float f5c; char pad60[0x28]; int f88; };
 struct DsDesc { int size; int flags; int bytes; void *wfx; void *mix; int mixIn; };
+extern "C" void *__cdecl memset(void *, int, unsigned int);
 struct Wfx { unsigned short tag, ch; unsigned int rate, avg; unsigned short align, bits, cb; };
 extern int _D_001E8878;
 int _func_00139F00(...);
