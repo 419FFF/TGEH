@@ -3,7 +3,77 @@
 #include "ghidra.h"
 struct V3 { float x, y, z; };
 struct S9_0012DFD0 { int a[9]; };
+struct Tex_0012DFD0 { char pad[0x24]; unsigned int w; unsigned int h; int unk2c; unsigned char *data; };
 union U_0012E2E0 { unsigned int u; unsigned char b[4]; };
+
+extern int D_00331B24;
+int func_00117100(...);
+int func_00132140(...);
+int func_00117130(...);
+int func_0012DF90(...);
+S9_0012DFD0 func_00128050(unsigned int, unsigned int, unsigned int, unsigned int, int);
+int func_00127B70(int, int, S9_0012DFD0);
+int func_00116FB0(...);
+extern char D_0000FF00;
+int _func_0012DFD0(int path)
+{
+    int buf, a, b, bpp, c;
+    unsigned char *src;
+    unsigned char *dst;
+    unsigned int x, y;
+    int tex;
+    bool is32;
+    func_00117100();
+    buf = func_00132140(path, 0);
+    func_00117130();
+    if (buf == 0) return 0;
+    D_00331B24 = buf;
+    func_0012DF90(1);
+    func_0012DF90(1);
+    func_0012DF90(4);
+    func_0012DF90(2);
+    func_0012DF90(2);
+    a = func_0012DF90(4);
+    func_0012DF90(4);
+    b = func_0012DF90(4);
+    c = func_0012DF90(4);
+    func_0012DF90(2);
+    bpp = func_0012DF90(2);
+    func_0012DF90(4);
+    func_0012DF90(4);
+    func_0012DF90(4);
+    func_0012DF90(4);
+    func_0012DF90(4);
+    if (bpp == 0x18) is32 = false;
+    else if (bpp == 0x20) is32 = true;
+    else return 0;
+    tex = func_00127B70(b, c, func_00128050(0xff000000, 0xff0000, (unsigned int)&D_0000FF00, 0xff, 0));
+    src = (unsigned char *)(buf + a);
+    if (is32) {
+        for (y = 0; y < *(unsigned int *)(tex + 0x28); y++) {
+            for (x = 0; x < *(unsigned int *)(tex + 0x24); x++) {
+                dst = (unsigned char *)(*(int *)(tex + 0x30) + (*(int *)(tex + 0x24) * y + x) * 4);
+                unsigned char *s = src + ((*(int *)(tex + 0x28) - y - 1) * *(int *)(tex + 0x24) + x) * 4;
+                dst[0] = s[0];
+                dst[1] = s[1];
+                dst[2] = s[2];
+                dst[3] = s[3];
+            }
+        }
+    } else {
+        for (y = 0; y < *(unsigned int *)(tex + 0x28); y++) {
+            for (x = 0; x < *(unsigned int *)(tex + 0x24); x++) {
+                dst = (unsigned char *)(*(int *)(tex + 0x30) + (*(int *)(tex + 0x24) * y + x) * 4);
+                unsigned char *s = src + ((*(int *)(tex + 0x28) - y - 1) * *(int *)(tex + 0x24) + x) * 3;
+                dst[0] = s[0];
+                dst[1] = s[1];
+                dst[2] = s[2];
+            }
+        }
+    }
+    func_00116FB0(buf);
+    return tex;
+}
 
 void _func_0012E280(unsigned int *out, unsigned char *in)
 {
