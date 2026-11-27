@@ -72,6 +72,7 @@ extern void __cdecl _func_0012FE20(void *, int, int, int);
 extern void __cdecl _func_0012F250(void *, void *, void *);
 extern void __cdecl _func_0012E590(void *, void *);
 extern void __cdecl _func_001105E0(int, void *, int);
+extern void __cdecl _func_0012E650(void *, void *);
 #pragma optimize("y", on)
 void __cdecl _func_000EE040(void)
 {
