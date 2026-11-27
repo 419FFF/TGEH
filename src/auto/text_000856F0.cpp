@@ -90,13 +90,74 @@ void func_000858F0(void) {
     func_0011D0E0((int)&D_001D6B9C);
 }
 
+void func_00085900(int*p,unsigned q){
+ int func_0011CD40(...),func_0011CDF0(...),func_0011CE10(...),func_0011CE20(...),func_0011CE30(...),func_0011CE50(...),func_0011CF30(...),func_0011CFC0(...);
+ float func_00131760(void);
+ extern float D_001D27EC,D_001D2808,D_001D2A2C,D_001D2A14,D_001D54E4;
+ *p=func_0011CD40(1,15,10,5,1);
+ *(unsigned*)(*(int*)(*p+4))=0;*(unsigned*)(*(int*)(*p+4)+4)=0;*(unsigned*)(*(int*)(*p+4)+8)=0;
+ unsigned offset=0;
+ do{
+ *(float*)(*(int*)(*p+12)+offset)=(func_00131760()-D_001D27EC)*D_001D2808;
+ *(float*)(*(int*)(*p+12)+offset+4)=func_00131760()*D_001D2A2C+D_001D2A14;
+ *(float*)(*(int*)(*p+12)+offset+8)=(func_00131760()-D_001D27EC)*D_001D2808;
+ offset+=12;
+ }while(offset<180);
+*(unsigned*)(*(int*)(*p+20)+0)=0x3f25a5a6;
+*(unsigned*)(*(int*)(*p+20)+4)=0x3f2dadae;
+*(unsigned*)(*(int*)(*p+20)+8)=0x3f79f9fa;
+*(unsigned*)(*(int*)(*p+20)+12)=0x3f800000;
+*(unsigned*)(*(int*)(*p+20)+16)=0x3f25a5a6;
+*(unsigned*)(*(int*)(*p+20)+20)=0x3f354ee9;
+*(unsigned*)(*(int*)(*p+20)+24)=0x3f79f9fa;
+*(unsigned*)(*(int*)(*p+20)+28)=0x3f800000;
+*(unsigned*)(*(int*)(*p+20)+32)=0x3f25a5a6;
+*(unsigned*)(*(int*)(*p+20)+36)=0x3f3cf023;
+*(unsigned*)(*(int*)(*p+20)+40)=0x3f79f9fa;
+*(unsigned*)(*(int*)(*p+20)+44)=0x3f800000;
+*(unsigned*)(*(int*)(*p+20)+48)=0x3f25a5a6;
+*(unsigned*)(*(int*)(*p+20)+52)=0x3f44915e;
+*(unsigned*)(*(int*)(*p+20)+56)=0x3f79f9fa;
+*(unsigned*)(*(int*)(*p+20)+60)=0x3f800000;
+*(unsigned*)(*(int*)(*p+20)+64)=0x3f25a5a6;
+*(unsigned*)(*(int*)(*p+20)+68)=0x3f4c3299;
+*(unsigned*)(*(int*)(*p+20)+72)=0x3f79f9fa;
+*(unsigned*)(*(int*)(*p+20)+76)=0x3f800000;
+*(unsigned*)(*(int*)(*p+20)+80)=0x3f25a5a6;
+*(unsigned*)(*(int*)(*p+20)+84)=0x3f53d3d4;
+*(unsigned*)(*(int*)(*p+20)+88)=0x3f79f9fa;
+*(unsigned*)(*(int*)(*p+20)+92)=0x3f800000;
+*(unsigned*)(*(int*)(*p+20)+96)=0x3f25a5a6;
+*(unsigned*)(*(int*)(*p+20)+100)=0x3f5b750f;
+*(unsigned*)(*(int*)(*p+20)+104)=0x3f79f9fa;
+*(unsigned*)(*(int*)(*p+20)+108)=0x3f800000;
+*(unsigned*)(*(int*)(*p+20)+112)=0x3f25a5a6;
+*(unsigned*)(*(int*)(*p+20)+116)=0x3f631649;
+*(unsigned*)(*(int*)(*p+20)+120)=0x3f79f9fa;
+*(unsigned*)(*(int*)(*p+20)+124)=0x3f800000;
+*(unsigned*)(*(int*)(*p+20)+128)=0x3f25a5a6;
+*(unsigned*)(*(int*)(*p+20)+132)=0x3f6ab784;
+*(unsigned*)(*(int*)(*p+20)+136)=0x3f79f9fa;
+*(unsigned*)(*(int*)(*p+20)+140)=0x3f800000;
+*(unsigned*)(*(int*)(*p+20)+144)=0x3f25a5a6;
+*(unsigned*)(*(int*)(*p+20)+148)=0x3f7258bf;
+*(unsigned*)(*(int*)(*p+20)+152)=0x3f79f9fa;
+*(unsigned*)(*(int*)(*p+20)+156)=0x3f800000;
+offset=0;do{
+ *(float*)(*(int*)(*p+28)+offset+4)=func_00131760()*D_001D54E4+D_001D2A14;
+ *(unsigned*)(*(int*)(*p+28)+offset)=*(unsigned*)(*(int*)(*p+28)+offset+4);
+ offset+=8;
+ }while(offset<40);
+ *(unsigned*)(*(int*)(*p+36))=0;*(unsigned*)(*(int*)(*p+36)+4)=0;*(unsigned*)(*(int*)(*p+36)+8)=0x3f800000;*(unsigned*)(*(int*)(*p+36)+12)=0x3f800000;
+ func_0011CDF0(q);func_0011CE20(q,0);func_0011CE10(q,0x3f000000);func_0011CE30(q,0x42200000,0x42200000);func_0011CE50(q,0xc0400000,0xc0400000,0xc0400000,0xc0000000);func_0011CF30(q,0x41400000,0x41400000);func_0011CFC0(q,0x42480000);
+}
+
 void func_00085BF0(int p)
 {
  float func_00131760(void); int func_00110420(...); int func_00110480(...);
- int *v=(int *)D_002FDDB0;
- **(int **)(*(int *)(*(int *)(p+0x50)+0x2c)+4)=v[0];
- ((int *)*(int *)(*(int *)(*(int *)(p+0x50)+0x2c)+4))[1]=v[1];
- ((int *)*(int *)(*(int *)(*(int *)(p+0x50)+0x2c)+4))[2]=v[2];
+ **(int **)(*(int *)(*(int *)(p+0x50)+0x2c)+4)=*(int *)D_002FDDB0;
+ ((int *)*(int *)(*(int *)(*(int *)(p+0x50)+0x2c)+4))[1]=((int *)D_002FDDB0)[1];
+ ((int *)*(int *)(*(int *)(*(int *)(p+0x50)+0x2c)+4))[2]=((int *)D_002FDDB0)[2];
  if(D_002FDD9C) {
  int count=*(int *)(p+0x15c),i=0;
  for(;i<count;++i) {
@@ -117,8 +178,10 @@ void func_00085BF0(int p)
  longdouble time=(longdouble)(int)D_001E4618;
  float *a=(float *)(*(int *)(p+0x160)+offset+0x34);
  if((int)D_001E4618<0) time+=D_001D290C;
- *a=(longdouble)*a-((longdouble)D_001D27B0/time)*D_001D65B0;
- ++i;offset+=0x58;
+ time=D_001D27B0/time;
+ time=time*D_001D65B0;
+ *a=*a-time;
+ offset+=0x58;++i;
  }while(i<*(int *)(p+0x15c));
  }
  int off=0;
