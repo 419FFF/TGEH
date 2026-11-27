@@ -1,6 +1,9 @@
 /* 23 functions from 0x000F96A0 to 0x000FA693, found by Ghidra. */
 #include "common.h"
 #include "ghidra.h"
+struct S3_ { char c[3]; };
+struct S11_ { char c[11]; };
+struct S12_ { int a, b, c; };
 
 void func_000F96A0(int param_1)
 {
@@ -259,6 +262,60 @@ void func_000FA2E0(int param_1, undefined4 param_2, undefined4 *param_3)
   uVar2 = func_00103210(local_80);
   *param_3 = uVar2;
   return;
+}
+
+extern char D_001DD160;
+void _func_000FA350(int a, char *s, int mode, int *out)
+{
+  int _func_0011B530(...); float _func_0013E9E0(...);
+  char buf[128];
+  volatile int len;
+  char *p, *q;
+  char c;
+  int i;
+  q = s;
+  do { c = *q; q[buf - s] = c; q++; } while (c);
+  if (_func_0011B530(buf, &D_001DD160, 3) == 0 && (i = buf[3] - 0x31) >= 0 && i <= 7 && *(int *)(*(int *)(a + 0x10) + 8 + i * 4) != 8) {
+    out[0] = *(int *)(a + 0x1c + i * 8);
+    out[1] = *(int *)(a + 0x20 + i * 8);
+    return;
+  }
+  switch (mode) {
+  case 0:
+    out[0] = *(int *)(a + 0xc);
+    if ((buf[0] >= '0' && buf[0] <= '9') || buf[0] == '-') {
+      *(float *)out[1] = _func_0013E9E0(buf);
+      return;
+    }
+    break;
+  case 1:
+    out[0] = *(int *)(a + 0xc);
+    p = buf;
+    while (*p++) ;
+    len = p - buf - 1;
+    if (len == 0) return;
+    if (buf[0] == '"') {
+      p = *(char **)out[1];
+      q = buf + 1;
+      do { c = *q++; *p++ = c; } while (c);
+      p = *(char **)out[1];
+      q = p;
+      while (*q++) ;
+      p[q - p - 2] = 0;
+      return;
+    }
+    break;
+  case 2:
+  case 3: break;
+  case 4: func_000FA0C0((int *)a, buf, out); return;
+  case 5: func_000FA000((int *)a, buf, out); return;
+  case 6: func_000F9F10((int *)a, buf, out); return;
+  case 7: func_000FA180((int *)a, buf, out); return;
+  case 8: func_000FA270(a, (undefined4)buf, (undefined4 *)out); return;
+  case 9: func_000FA2E0(a, (undefined4)buf, (undefined4 *)out); return;
+  default: return;
+  }
+  func_000F9E50((int *)a, buf, out);
 }
 
 unsigned char func_000FA580(void){extern int D_00324B68;unsigned char r=0;int p=D_00324B68;while(p){int d=*(int*)(p+8);p=*(int*)p;if(*(unsigned int*)(d+0x18)<*(unsigned short*)(*(int*)(d+0x10)+6))r|=*(unsigned char*)(d+0x15);}return r;}
