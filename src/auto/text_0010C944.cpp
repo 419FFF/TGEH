@@ -19,6 +19,30 @@ struct Heap {
     unsigned char FreeListsInUseBytes[32];
     HeapList FreeLists[128];
 };
+void * __stdcall func_0010C5E5(HeapSegment *);
+void __stdcall func_0010C705(HeapSegment *,void *);
+static __forceinline void InsertHeapFreeEntry(Heap *heap,HeapFreeEntry *entry,unsigned short size)
+{
+ HeapList *list;
+ entry->Flags &= 0xf8;
+ if(size<0x80){
+  list=&heap->FreeLists[size];
+  if(list->Flink==list)
+   heap->FreeListsInUseBytes[entry->Size>>3]|=(unsigned char)(1<<(entry->Size&7));
+ } else {
+  HeapList *head=&heap->FreeLists[0];
+  list=head->Flink;
+  while(head!=list){
+   if(size<=((HeapFreeEntry*)((char*)list-8))->Size)break;
+   list=list->Flink;
+  }
+ }
+ HeapList *prev=list->Blink;
+ entry->FreeList.Flink=list;
+ entry->FreeList.Blink=prev;
+ prev->Flink=&entry->FreeList;
+ list->Blink=&entry->FreeList;
+}
 extern unsigned char D_0000FF00;
 extern unsigned char D_0000FF01;
 extern "C" __declspec(dllimport) long __stdcall NtAllocateVirtualMemory(char **base, unsigned long zeroBits, unsigned long *size, unsigned long type, unsigned long protect);
