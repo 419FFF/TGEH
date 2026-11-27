@@ -4,7 +4,6 @@
 #include <string.h>
 
 struct S127310 { int *p0; char *p4; int p8; int pc; int u10; int u14; short s18; short s1a; int u1c; int n20; short s24; unsigned char b26; };
-union PixelWord127D60 { unsigned value; unsigned char bytes[4]; };
 struct PixelFormat127D60 {
  unsigned flags, r, rs, g, gs, b, bs, a, as;
  __forceinline unsigned Bytes() const {
@@ -271,7 +270,7 @@ unsigned int _func_00127CA0(unsigned int *p){unsigned int flags=*p,a,b,n,prod;un
 void func_00127D60(unsigned *p,PixelFormat127D60 format) {
  unsigned func_00127C50(unsigned *);void *func_00116A90(unsigned,int,int);void func_00116FB0(void *);
  if(p[7]==*(volatile unsigned *)&format.a && p[1]==*(volatile unsigned *)&format.r && p[3]==*(volatile unsigned *)&format.g && p[5]==*(volatile unsigned *)&format.b && p[0]==*(volatile unsigned *)&format.flags)return;
- unsigned old[9];memcpy(old,p,36);unsigned char *oldData=(unsigned char *)p[12];
+ unsigned old[9];memcpy(old,p,36);unsigned char *const oldData=(unsigned char *)p[12];
  unsigned count=func_00127C50(p),size,oldSize,bits;
  size=format.Bytes();
  oldSize=((PixelFormat127D60 *)old)->Bytes();
