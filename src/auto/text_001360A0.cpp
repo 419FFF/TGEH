@@ -16,15 +16,25 @@ int func_0012F310(...);
 int __stdcall func_0014ADB0(int, int *);
 int func_00011CB0(...);
 
+int func_00131460(float);
+static inline unsigned int pack_color_001360A0(float *color) {
+ unsigned int c=func_00131460(color[3]*255.0f);
+ c<<=8; c|=func_00131460(color[0]*255.0f)&255;
+ c<<=8; c|=func_00131460(color[1]*255.0f)&255;
+ c<<=8; c|=func_00131460(color[2]*255.0f)&255;
+ return c;
+}
+
 void func_001360A0(float *color,int *surface) {
  extern int D_00332454,D_003326A8,D_0033232C,D_0033228C,D_003291CC,D_003291D0;
  extern int D_003326A0,D_00332328,D_00332434,D_00332714;
- extern char D_00332711; extern float D_001D66D8;
+ extern char D_00332711;
  int __stdcall func_0014E340(int*,int); void __stdcall func_0014B1D0(int,int);
  void __stdcall func_0014B4E0(void*);
  void __stdcall func_0014E4A0(int,int,int,unsigned int,float,int);
  int func_00131460(float); int func_0010BA93(void);
  int viewport[6];
+ unsigned int c;
  RtlEnterCriticalSection(&D_003326AC);
  if(surface){
  D_00332454=func_0014E340(surface+8,0);
@@ -35,25 +45,25 @@ void func_001360A0(float *color,int *surface) {
  if(color){
  if(surface){
  if(surface[4]){
- unsigned int c=func_00131460(color[3]*D_001D66D8);
- c=(c<<8)|(func_00131460(color[0]*D_001D66D8)&255);
- c=(c<<8)|(func_00131460(color[1]*D_001D66D8)&255);
- c=(c<<8)|(func_00131460(color[2]*D_001D66D8)&255);
+ c=func_00131460(color[3]*255.0f);
+ c<<=8; c|=func_00131460(color[0]*255.0f)&255;
+ c<<=8; c|=func_00131460(color[1]*255.0f)&255;
+ c<<=8; c|=func_00131460(color[2]*255.0f)&255;
  func_0014E4A0(0,0,0xf1,c,1.0f,0);
  }else{
- unsigned int c=func_00131460(color[3]*D_001D66D8);
- c=(c<<8)|(func_00131460(color[0]*D_001D66D8)&255);
- c=(c<<8)|(func_00131460(color[1]*D_001D66D8)&255);
- c=(c<<8)|(func_00131460(color[2]*D_001D66D8)&255);
+ c=func_00131460(color[3]*255.0f);
+ c<<=8; c|=func_00131460(color[0]*255.0f)&255;
+ c<<=8; c|=func_00131460(color[1]*255.0f)&255;
+ c<<=8; c|=func_00131460(color[2]*255.0f)&255;
  func_0014E4A0(0,0,0xf0,c,1.0f,0);
  }
  }else{
  viewport[0]=0;viewport[1]=0;viewport[2]=D_003326A0;viewport[3]=D_00332328;viewport[4]=0;viewport[5]=0x3f800000;
  func_0014B4E0(viewport);
- unsigned int c=func_00131460(color[3]*D_001D66D8);
- c=(c<<8)|(func_00131460(color[0]*D_001D66D8)&255);
- c=(c<<8)|(func_00131460(color[1]*D_001D66D8)&255);
- c=(c<<8)|(func_00131460(color[2]*D_001D66D8)&255);
+ c=func_00131460(color[3]*255.0f);
+ c<<=8; c|=func_00131460(color[0]*255.0f)&255;
+ c<<=8; c|=func_00131460(color[1]*255.0f)&255;
+ c<<=8; c|=func_00131460(color[2]*255.0f)&255;
  func_0014E4A0(0,0,0xf3,c,1.0f,0);
  func_0014B4E0(&D_00332434);
  }
