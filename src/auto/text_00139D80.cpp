@@ -3,6 +3,10 @@
 #include "ghidra.h"
 
 struct S960 { char pad0[0x10]; unsigned int flags; char pad14[8]; char a; char b; char pad1e[6]; int c; char pad28[0x40]; unsigned int d; float e; char pad70[8]; char *f; char pad7c[0xc]; int g; };
+struct SndData { int data; char adpcm; char pad5[3]; int size; int samples; char pad10[0x28]; int start; int end; };
+struct SndObj { char pad0[0x10]; int f10; int f14; char pad18[4]; char b1c; char b1d; char pad1e; char b1f; SndData *f20; int f24; char pad28[0x30]; float f58; float f5c; char pad60[0x28]; int f88; };
+struct DsDesc { int size; int flags; int bytes; void *wfx; void *mix; int mixIn; };
+struct Wfx { unsigned short tag, ch; unsigned int rate, avg; unsigned short align, bits, cb; };
 extern int _D_001E8878;
 int _func_00139F00(...);
 int _func_00126180(...);
@@ -12,6 +16,58 @@ int _func_0011C3B0(...);
 int _func_00116FB0(...);
 extern int _D_00334C98;
 extern int _D_00334C8C;
+extern "C" double acos(double);
+#pragma intrinsic(acos)
+void func_00139D80(void)
+{
+  extern int D_00334C9C, D_00334C98, D_00332B80, D_00332B84, D_001E8878, D_00332B18, D_00332B00, D_00334C8C;
+  extern char D_001DF9FC, D_001E8334;
+  extern float D_00332C84[], D_001D27B0, D_001D27B8, D_001D2C6C, D_001DF9F8;
+  extern int D_00332B10[];
+  int func_0013AF00(...);
+  int func_00132140(...);
+  int func_00116FB0(...);
+  int func_00139CD0(...);
+  void __stdcall func_001B14F9(int, int, int);
+  void func_001AEB4D(...);
+  void __stdcall func_001AF922(int, int, int, int *, int *);
+  void __stdcall func_001B1333(int, void *, int);
+  void __stdcall func_001B12EB(int, int, int);
+  void __stdcall func_001B130F(int, int, int);
+  if (D_00334C9C == 0) {
+    int h;
+    unsigned int i;
+    D_00334C98 = func_0013AF00();
+    func_001B14F9(D_00332B80, (int)&D_00332B84, 0);
+    func_001AEB4D();
+    if (D_001E8878 == 8) {
+      int v[3];
+      int w[2];
+      h = func_00132140(&D_001DF9FC, &v[0]);
+      w[0] = 2;
+      w[1] = 3;
+      func_001AF922(D_00332B84, h, v[0], &w[0], &v[1]);
+      func_001B1333(D_00332B84, &D_001E8334, 0);
+      func_00116FB0(h);
+      func_001B12EB(D_00332B84, 0x3c23d70a, 0);
+      func_001B130F(D_00332B84, 0x3f800000, 0);
+      func_00139CD0(1);
+    }
+    for (i = 0; i < 0x801; ) {
+      float d = (float)i * D_001DF9F8 - D_001D27B0;
+      d = D_001D27B0 - (float)acos(d) * D_001D2C6C;
+      if (d > D_001D27B0) d = D_001D27B0;
+      else if (d < D_001D27B8) d = D_001D27B8;
+      i++;
+      D_00332C84[i] = d + d - D_001D27B0;
+    }
+    for (int k = 0; k < 0x1c; k++) D_00332B10[k] = 0;
+    *(int *)&D_00332B18 = 0x3f800000;
+    D_00332B00 = 0;
+    D_00334C8C = 0;
+  }
+  D_00334C9C++;
+}
 int *_func_00139F00(unsigned char *p)
 {
     int _func_0013AF50(...); void _func_0013AF70(...); int _func_00116A90(...);
@@ -70,6 +126,113 @@ int _func_0013A0A0(int param_1,int param_2){extern int _func_00116A90(int,int,in
 void _func_0013A120(float param_1){extern float _D_001D333C,_D_001DF7DC,_D_001DF7D8;extern double _D_001DF7E0,_D_001D27B8;extern double __cdecl _D_0014001C(float);extern int _func_001313C0(float);extern void __stdcall _func_001AF961(int,int);extern int _func_0013A120_obj;float v=-10000.0f;if(param_1>=_D_001D333C){double x=_D_001DF7E0; x=param_1; x=x*_D_001DF7DC; x=_D_001DF7DC-x; float a=(float)_D_0014001C((float)x);v=-a;if(v>_D_001D27B8)v=0.0f;if(v>=_D_001DF7D8)v=0.0f;}int h=_func_001313C0(v);_func_001AF961(_func_0013A120_obj,h);}
 
 void _func_0013A470(int param_1){extern int _D_00334C98,_D_001E8878,_D_00334CA4;extern void _func_0013AF50(int);extern void __stdcall _func_001AF9A1(int);extern void __stdcall _func_001AEB37(int);extern void _func_00139C70(void);extern void _func_0013AF70(int);int* edi=(int*)param_1;int zero=0;if(*((char*)edi+0x1d)==0||edi[5]==0)return;_func_0013AF50(_D_00334C98);_func_001AF9A1(edi[34]);if(*((char*)edi+0x1c)!=0&&_D_001E8878==8){int keep=edi[34];_func_00139C70();}else{_func_001AEB37(edi[34]);--_D_00334CA4;}int global=_D_00334C98;edi[34]=zero;edi[5]=zero;*((char*)edi+0x1d)=zero;_func_0013AF70(global);}
+
+void func_0013A700(int param_1)
+{
+  int func_0012E6D0(...);
+  extern char D_00332B60[], D_00332B50[], D_00332B30[], D_00332B70[];
+  double func_0012E940(...);
+  void func_0013A1B0(int, int);
+  int func_0012EA60(...);
+  double func_0012E8C0(...);
+  void func_0013A120(float);
+  extern float D_001D27EC, D_001D27B0, D_001D27B8, D_001D8FAC, D_001DFA18, D_001D290C, D_001DFA14, D_001DFA10, D_00332B18;
+  int __stdcall func_001B0346(int, int);
+  int func_0013E3F4(...);
+  int __stdcall func_001AF961(int, int);
+  void func_0013A470(int);
+  float fVar1, fVar2, local_1c;
+  double lVar4, lVar5;
+  char local_18[12], local_c[12];
+
+  func_0012E6D0(local_18, param_1 + 0x28, D_00332B60);
+  lVar4 = func_0012E940(local_18);
+  fVar1 = (float)lVar4;
+  if (lVar4 < (double)*(float *)(param_1 + 0x5c)) {
+    if (*(char *)(param_1 + 0x1d) == '\0') {
+      func_0013A1B0(param_1, *(int *)(param_1 + 0x24));
+    }
+    if (fVar1 < *(float *)(param_1 + 0x58) == (fVar1 == *(float *)(param_1 + 0x58))) {
+      local_1c = D_001D27B0 - (fVar1 - *(float *)(param_1 + 0x58)) / (*(float *)(param_1 + 0x5c) - *(float *)(param_1 + 0x58));
+      fVar2 = D_001D27B0;
+    } else {
+      local_1c = 1.0f;
+      fVar2 = (D_001D27B0 / *(float *)(param_1 + 0x58)) * fVar1;
+      fVar2 = fVar2 * fVar2;
+    }
+    fVar2 = D_001D27B0 - fVar2 * D_001D27EC;
+    func_0012EA60(local_18);
+    lVar4 = func_0012E8C0(D_00332B50, local_18);
+    lVar4 = (lVar4 + (double)D_001D27B0) * (double)D_001D27EC;
+    if (fVar1 < D_001D27B0 != (fVar1 == D_001D27B0)) {
+      lVar4 = (double)D_001D27EC;
+    }
+    lVar4 = (((double)D_001D27B0 - (double)fVar2) * lVar4 + (double)fVar2) * (double)local_1c;
+    if (*(int *)(param_1 + 0x78) != 0) {
+      lVar4 = lVar4 * (double)*(float *)(*(int *)(param_1 + 0x78) + 0x18);
+    }
+    func_0013A120((float)(lVar4 * (double)*(float *)(param_1 + 0x6c)));
+    func_0012E8C0(D_00332B30, local_18);
+    if (*(float *)(param_1 + 0x74) == D_001D27B8) {
+      lVar4 = (double)D_001D27B0;
+    } else {
+      func_0012E6D0(local_c, D_00332B70, param_1 + 0x48);
+      lVar4 = func_0012E8C0(local_c, local_18);
+      lVar4 = ((double)D_001D8FAC - lVar4 * (double)*(float *)(param_1 + 0x74) * (double)D_00332B18) * (double)D_001DFA18;
+    }
+    if (((*(unsigned char *)(param_1 + 0x10) & 0x20) != 0) || (lVar4 != (double)D_001D27B0)) {
+      lVar5 = (double)*(int *)(param_1 + 0x68);
+      if (*(int *)(param_1 + 0x68) < 0) {
+        lVar5 = lVar5 + (double)D_001D290C;
+      }
+      if (D_001DFA14 < (float)(lVar5 * lVar4)) {
+        func_001B0346(*(int *)(param_1 + 0x88), 0x2edef);
+        *(int *)(param_1 + 0x10) = 0;
+        return;
+      }
+      if ((float)(lVar5 * lVar4) < D_001DFA10) {
+        func_001B0346(*(int *)(param_1 + 0x88), 0xbc);
+        *(int *)(param_1 + 0x10) = 0;
+        return;
+      }
+      func_001B0346(*(int *)(param_1 + 0x88), func_0013E3F4());
+      *(int *)(param_1 + 0x10) = 0;
+      return;
+    }
+    *(int *)(param_1 + 0x10) = 0;
+  } else if ((*(char *)(param_1 + 0x1d) != '\0') && (*(int *)(param_1 + 0x24) != 0)) {
+    func_001AF961(*(int *)(param_1 + 0x88), 0xffffd8f0);
+    func_0013A470(param_1);
+    return;
+  }
+}
+
+void _func_0013A4F0(S960 *);
+void _func_0013A700(S960 *);
+void _func_0013A1B0(S960 *, int);
+void _func_0013A120(float);
+int __stdcall _func_001B0346(int, unsigned int);
+void _func_0013A960(S960 *p)
+{
+    if (p->a) {
+        if (_D_001E8878 == 8) { _func_0013A4F0(p); return; }
+        _func_0013A700(p);
+        return;
+    }
+    if (!p->b) _func_0013A1B0(p, p->c);
+    if (p->flags & 0x40) {
+        float v = p->e;
+        if (p->f) v = v * *(float *)(p->f + 0x18);
+        _func_0013A120(v);
+    }
+    if (p->flags & 0x20) {
+        unsigned int n = p->d;
+        if (n > 0x2edef) { _func_001B0346(p->g, 0x2edef); p->flags = 0; return; }
+        if (n < 0xbc) { _func_001B0346(p->g, 0xbc); p->flags = 0; return; }
+        _func_001B0346(p->g, n);
+    }
+    p->flags = 0;
+}
 
 int __stdcall func_001AF97D(int,int,int,int);
 int __stdcall func_001AF9A1(int);
