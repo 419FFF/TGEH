@@ -6,7 +6,7 @@
 struct S127310 { int *p0; char *p4; int p8; int pc; int u10; int u14; short s18; short s1a; int u1c; int n20; short s24; unsigned char b26; };
 struct PixelFormat127D60 {
  unsigned flags, r, rs, g, gs, b, bs, a, as;
- unsigned Bytes() const {
+ __forceinline unsigned Bytes() const {
   unsigned bits;
   if(flags&0x20)bits=8;else if(flags&0x40)bits=4;else {
    unsigned value=b|g|r|a;
