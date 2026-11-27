@@ -52,7 +52,63 @@ unsigned int _func_0013E5C0(char *a,char *b,int n){if(n==0)return 0;int limit=0;
 
 char *_func_0013E600(char *hay,char *needle){extern int _func_0013EA56(char);char *start;if(!needle[0])return hay;if(!needle[1])return (char*)_func_0013EA56(needle[0]);for(start=hay;*start;start++){char *h=start,*n=needle;while(*n&&*h==*n){n++;h++;}if(!*n)return start;}return 0;}
 
-void _func_0013E690(unsigned char *end,unsigned char *first,int width,int (__cdecl *cmp)(void *,void *)) { unsigned char *best; unsigned char *next; unsigned char tmp; int result; for (; first<end; end-=width) { best=first; next=first; for (;;) { next+=width; if (next>end) break; result=cmp(next,best); if (result>0) best=next; } if (best!=end && width!=0) { next=end; do { tmp=next[(int)best-(int)end]; next[(int)best-(int)end]=*next; *next=tmp; next++; width--; } while(width!=0); } } }
+static void _func_0013E690(unsigned char *end,unsigned char *first,int width,int (__cdecl *cmp)(void *,void *)) { unsigned char *best; unsigned char *next; unsigned char tmp; int result; for (; first<end; end-=width) { best=first; next=first; for (;;) { next+=width; if (next>end) break; result=cmp(next,best); if (result>0) best=next; } if (best!=end && width!=0) { next=end; do { tmp=next[(int)best-(int)end]; next[(int)best-(int)end]=*next; *next=tmp; next++; width--; } while(width!=0); } } }
+
+typedef int (__cdecl *cmpfn)(const void *, const void *);
+void _func_0013E690(char *hi, char *lo, unsigned width, cmpfn comp);
+void _func_0013E700(void *base, unsigned num, unsigned width, cmpfn comp)
+{
+    char *lo, *hi, *mid, *l, *h;
+    char *lostk[30], *histk[30];
+    int stkptr;
+    unsigned size;
+    if (num < 2 || width == 0) return;
+    stkptr = 0;
+    lo = (char *)base;
+    hi = (char *)base + width * (num - 1);
+recurse:
+    size = (hi - lo) / width + 1;
+    if (size <= 8) {
+        _func_0013E690(hi, lo, width, comp);
+    } else {
+        mid = lo + (size / 2) * width;
+        if (comp(lo, mid) > 0) qs_swap(lo, mid, width);
+        if (comp(lo, hi) > 0) qs_swap(lo, hi, width);
+        if (comp(mid, hi) > 0) qs_swap(mid, hi, width);
+        l = lo; h = hi;
+        for (;;) {
+            if (mid > l) {
+                do { l += width; } while (l < mid && comp(l, mid) <= 0);
+            }
+            if (mid <= l) {
+                do { l += width; } while (l <= hi && comp(l, mid) <= 0);
+            }
+            do { h -= width; } while (h > mid && comp(h, mid) > 0);
+            if (h < l) break;
+            qs_swap(l, h, width);
+            if (mid == h) mid = l;
+        }
+        h += width;
+        if (mid < h) {
+            do { h -= width; } while (h > mid && comp(h, mid) == 0);
+        }
+        if (mid >= h) {
+            do { h -= width; } while (h > lo && comp(h, mid) == 0);
+        }
+        if (h - lo >= hi - l) {
+            if (lo < h) { lostk[stkptr] = lo; histk[stkptr] = h; ++stkptr; }
+            if (l < hi) { lo = l; goto recurse; }
+        } else {
+            if (l < hi) { lostk[stkptr] = l; histk[stkptr] = hi; ++stkptr; }
+            if (lo < h) { hi = h; goto recurse; }
+        }
+    }
+    --stkptr;
+    if (stkptr >= 0) {
+        lo = lostk[stkptr]; hi = histk[stkptr];
+        goto recurse;
+    }
+}
 
 int _func_001415C9(int); int _func_0013E983(unsigned char *p) { int sign,c; do { ++p; c=*p; } while(_func_001415C9(c)); sign=c; ++p; c=*p++; int value=0; if(c==45)c=*p++; else if(c==43)c=*p++; for(;;){ int digit=(c<48||c>57)?-1:c-48; if(digit==-1)break; value=value*10+digit; c=*p++; } return sign==45?-value:value; }
 
