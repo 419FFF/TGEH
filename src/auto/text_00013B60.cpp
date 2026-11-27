@@ -1,7 +1,64 @@
 /* 6 functions from 0x00013B60 to 0x00014A23, found by Ghidra. */
 #include "common.h"
 #include "ghidra.h"
+struct __declspec(align(16)) Vec13B60 { float x, y, z; };
 
+#pragma optimize("t", on)
+void func_00013B60(char *p)
+{
+ int func_0007E470(...), func_000A22B0(...), func_00047960(...), func_001100A0(...), func_0012F7A0(...), func_0012ECA0(...), func_000A2370(...), func_00110060(...), func_0009C7A0(...), func_0003F820(...);
+ float func_0012EA60(...); char func_00012120(...);
+ extern float D_001D27B8, D_001E461C;
+ extern int D_00307DF8;
+ extern char D_001D2878;
+ int *s=*(int**)(p+0x110), *v, *q;
+ int a,b; unsigned int flag;
+ __declspec(align(16)) float x[3], y[3];
+ __declspec(align(16)) float m[16];
+ if (!*(int*)(p+0x60)) func_0007E470(p);
+ switch (*s) {
+ case 0:
+ v=(int*)s[2]; func_000A22B0(p+100,2,v[0],v[1],v[2],0x3e4ccccd); *s=1;
+ case 1:
+ if (*(float*)(s+10)<=D_001D27B8) {
+ if (func_00047960(p,s+4,0,0,25,0)&1) *s=2;
+ else *((char*)s+0x30)=1;
+ } else *(float*)(s+10)-=D_001E461C;
+ *(char*)(p+0x174)=0; return;
+ case 2:
+ if (*((char*)s+0x30)) {
+ *((char*)s+0x30)=0;
+ func_001100A0(*(int*)(p+0x2c),&a);
+ v=(int*)(s[3]+0x48);
+ ((int*)y)[0]=v[0]; ((int*)y)[1]=v[1]; ((int*)y)[2]=v[2];
+ func_0012F7A0(y,a);
+ v=(int*)(D_00307DF8+0xe8);
+ ((int*)x)[0]=v[0]; ((int*)x)[1]=v[1]; ((int*)x)[2]=v[2];
+ func_001100A0(*(int*)(D_00307DF8+0x2c),&b);
+ func_0012F7A0(x,b);
+ q=s+7; *(float*)q=x[0]-y[0]; s[8]=0; *(float*)(s+9)=x[2]-y[2];
+ func_0012EA60(q); func_0012ECA0(q,0x43fa0000);
+ }
+ v=(int*)s[1]; func_000A22B0(p+100,1,v[0],v[1],v[2],0x3e4ccccd); *s=3;
+ *(char*)(p+0x174)=0; return;
+ case 3:
+ if (!func_000A2370(p+100)) { *s=0; s[10]=s[11]; *(char*)(p+0x174)=0; return; }
+ func_00110060(*(int*)(p+0x2c),m);
+ v=(int*)func_0009C7A0(p,&D_001D2878,0);
+ if(v) flag=(unsigned char)(int)*(float*)v; else flag=1;
+ if (func_00012120(p,s[3]+0x48,s[3]+0x54,m,flag)) {
+ q=*(int**)(D_00307DF8+0x110);
+ q[0x53]=s[7]; q[0x54]=s[8]; q[0x55]=s[9];
+ if (*q==5) goto special;
+ func_0003F820(D_00307DF8,q); *q=4; q[0x104]=0x3f800000; setflag: *((char*)q+0x1a5)=1;
+ clear:
+ q[0x26]=0; q[0x27]=0; q[0x28]=0;
+ }
+ }
+ *(char*)(p+0x174)=0; return;
+ special: if(q[0xc4]>=5) goto setflag; *((char*)q+0x347)=1; goto clear;
+}
+#pragma optimize("", on)
 int _func_00013E30(void *arg)
 {
     int _func_00116FB0(...);
