@@ -1,6 +1,7 @@
 /* 8 functions from 0x0002DF20 to 0x0002ED28, found by Ghidra. */
 #include "common.h"
 
+struct V3_2E070 { float x, y, z; };
 struct Blk2DF20 { int d[0x118]; };
 extern Blk2DF20 _D_002ED780;
 extern char _D_002EDBF4, _D_002EDBF5, _D_00307D6C;
