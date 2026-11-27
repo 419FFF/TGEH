@@ -8,6 +8,10 @@ extern int __stdcall func_001473F4(int,int,void*,int);
 extern int __stdcall func_0013F44A(void*,int);
 extern int __stdcall func_0010B7F8(int);
 extern int __stdcall func_0010AA7B(void);
+extern int __stdcall func_001647DD(int, int, int, int, int, int, int, int, void*, void*);
+extern int __stdcall func_0010BB8D(int, void*, int, void*, int);
+extern "C" void *__cdecl memcpy(void *, const void *, unsigned int);
+#pragma intrinsic(memcpy)
 extern "C" void (__stdcall * __imp__RtlInitAnsiString)(void*, const char*);
 extern "C" int (__stdcall * __imp__NtCreateFile)(void*, unsigned int, void*, void*, void*, unsigned int, unsigned int, unsigned int, void*);
 extern "C" int (__stdcall * __imp__NtClose)(void*);
@@ -113,21 +117,19 @@ unsigned int __stdcall func_00147653(char *name, int arg2, int mode, unsigned in
   int iosb[2];
   struct { int root; void *obj; int attr; } oa;
   struct { int lo, hi; } alloc;
-  char *s, *q, *d;
+  char *s, *d;
   char c;
-  unsigned int len, err;
+  unsigned int len;
   int status, n;
   int r;
 
   s = name;
   do { c = *s; s[buf - name] = c; s++; } while (c);
-  s = buf; q = s + 1; do { c = *s++; } while (c);
-  len = s - q;
+  len = strlen(buf);
   func_0014731A(arg2, buf + len, 0xf7 - len);
-  s = buf; q = s + 1; do { c = *s++; } while (c);
-  len = s - q;
-  d = buf + len;
+  len = strlen(buf);
   if (mode == 3) {
+    d = buf + len;
     s = D_001E274C;
     do { c = *s; s[d - D_001E274C] = c; s++; } while (c);
     r = func_00147577((int)buf, arg2);
@@ -135,9 +137,10 @@ unsigned int __stdcall func_00147653(char *name, int arg2, int mode, unsigned in
     if (r != 0) return r;
   } else {
     if (func_00147D18(buf, 0) == 0) {
-      err = func_0010AA7B();
+      flags = func_0010AA7B();
       r = 0x491;
-      if (err == 0xb7) {
+      if (flags == 0xb7) {
+        d = buf + len;
         s = D_001E274C;
         do { c = *s; s[d - D_001E274C] = c; s++; } while (c);
         r = func_00147577((int)buf, arg2);
@@ -145,9 +148,10 @@ unsigned int __stdcall func_00147653(char *name, int arg2, int mode, unsigned in
         if (r != 0) return 0x52;
         func_001475F7((int)buf);
       }
-      if (mode == 1) return err;
-      if (r != 0) return err;
+      if (mode == 1) return flags;
+      if (r != 0) return flags;
     } else {
+      d = buf + len;
       s = D_001E274C;
       do { c = *s; s[d - D_001E274C] = c; s++; } while (c);
       __imp__RtlInitAnsiString(&ansi, buf);
@@ -159,19 +163,19 @@ unsigned int __stdcall func_00147653(char *name, int arg2, int mode, unsigned in
       status = __imp__NtCreateFile(&name, 0xc0100000, &oa, iosb, &alloc, 4, 0, 3, (void *)0x22);
       *d = 0;
       if (status < 0) {
-        err = __imp__RtlNtStatusToDosError(status);
+        flags = __imp__RtlNtStatusToDosError(status);
         func_00147D84(buf);
-        return err;
+        return flags;
       }
       func_0013F32C(wbuf, 0x98, 0xFEFF, (flags & 1) ? D_001E282C : D_001DEEFC, D_001E27B4, 0x3d, arg2, D_001E2804, D_001E280C);
       n = func_0013F47C(wbuf) * 2;
       if (n != 0) {
         do {
           if (func_0010BB8D(name, wbuf, n, &arg2, 0) == 0) {
-            err = func_0010AA7B();
+            flags = func_0010AA7B();
             func_0010B7F8((int)name);
             func_00147D84(buf);
-            return err;
+            return flags;
           }
           n -= arg2;
         } while (n != 0);
