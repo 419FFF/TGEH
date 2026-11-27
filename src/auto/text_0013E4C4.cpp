@@ -69,7 +69,7 @@ void _func_0013E700(void *base, unsigned num, unsigned width, cmpfn comp)
 recurse:
     size = (hi - lo) / width + 1;
     if (size <= 8) {
-        _func_0013E690(hi, lo, width, comp);
+        _func_0013E690((unsigned char *)hi, (unsigned char *)lo, width, (int (__cdecl *)(void *, void *))comp);
     } else {
         mid = lo + (size / 2) * width;
         if (comp(lo, mid) > 0) qs_swap(lo, mid, width);
