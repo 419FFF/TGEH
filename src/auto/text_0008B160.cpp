@@ -287,7 +287,8 @@ void func_0008BAE0(void)
   extern unsigned int D_002FE018,D_002FE024; extern int D_002FE01C,D_002FE028,D_0030809C;
   extern char D_002FE020,D_002FE02C,D_001D6E98,D_001D6EAC;
   int func_0011DEF0(...); int func_00110480(...);
-  __declspec(align(8)) unsigned int a[61];
+  double storage[31];
+  unsigned int *a=(unsigned int*)storage;
   int iVar1; unsigned int *puVar2;
 
   puVar2 = a;
@@ -297,9 +298,9 @@ void func_0008BAE0(void)
   }
   a[46] = 1;
   a[47] = 1;
-  a[2] = D_001D6EF0;
   a[0] = D_001D6EE8;
   a[1] = D_001D6EEC;
+  a[2] = D_001D6EF0;
   a[36] = 2;
   a[37] = 2;
   a[32] = 0;
@@ -340,9 +341,9 @@ void func_0008BAE0(void)
   a[34] = 0;
   a[35] = 0;
   a[42] = 3;
-  a[2] = D_001D6EF0;
   a[0] = D_001D6EE8;
   a[1] = D_001D6EEC;
+  a[2] = D_001D6EF0;
   a[43] = 3;
   a[44] = 3;
   a[45] = 3;
