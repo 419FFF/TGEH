@@ -42,7 +42,7 @@ struct Obj21C0 {
 };
 struct Obj21C0Copy { int d[0x44]; };
 struct Bit0Byte { unsigned char b0:1; unsigned char rest:7; };
-void func_00101A10(int a, int b, int c) {}
+__declspec(noinline) void func_00101A10(int a, int b, int c) {}
 
 extern float D_00324D08;
 extern float D_00324D0C;
@@ -139,18 +139,18 @@ Obj21C0 *__cdecl _func_001021C0(char *param_1, Obj21C0 *param_2, unsigned int pa
   if (*param_1 != 0) {
     local_4 = func_000F91D0(param_1);
   }
-  if (param_3 == D_00308158 && (*(unsigned short *)&param_2->flags10 & 1) != 0 && local_4 == 0) {
-    *(unsigned short *)&param_2->flags10 &= 0xfffe;
+  if (param_3 == D_00308158 && ((*(volatile unsigned char *)&param_2->flags10) & 1) && local_4 == 0) {
+    *(volatile unsigned char *)&param_2->flags10 &= 0xfe;
   }
   p = func_00116A90(0x110, 1, 1);
   *(Obj21C0Copy *)p = *(Obj21C0Copy *)param_2;
-  *(unsigned short *)&p->flags10 |= 0x4000;
+  *(volatile unsigned char *)&p->flags11 |= 0x40;
   p->b12 = 9;
   func_0011C410(D_00324BCC, (char *)p + 0x68, p);
   D_00324E98 = D_00324E98 + 1;
   p->fb6 &= 0xffdf;
   p->f7c = param_3;
-  if ((p->flags10 & 1) != 0) {
+  if (((Bit0Byte *)&p->flags10)->b0) {
     p->fb6 = p->fb6 | 0x10;
   } else {
     p->fb6 = p->fb6 & 0xffef;
