@@ -11,17 +11,17 @@ int func_00117100(...);
 int func_00132140(...);
 int func_00117130(...);
 int func_0012DF90(...);
-S9_0012DFD0 func_00128050(unsigned int, unsigned int, unsigned int, unsigned int, int);
+S9_0012DFD0 *func_00128050(void *, unsigned int, unsigned int, unsigned int, unsigned int, int);
 int func_00127B70(int, int, S9_0012DFD0);
 int func_00116FB0(...);
 extern char D_0000FF00;
 int _func_0012DFD0(int path)
 {
     int buf, a, b, bpp, c;
+    char out[44];
     unsigned char *src;
-    unsigned char *dst;
     unsigned int x, y;
-    int tex;
+    Tex_0012DFD0 *tex;
     bool is32;
     func_00117100();
     buf = func_00132140(path, 0);
@@ -44,35 +44,32 @@ int _func_0012DFD0(int path)
     func_0012DF90(4);
     func_0012DF90(4);
     func_0012DF90(4);
+    func_0012DF90(4);
     if (bpp == 0x18) is32 = false;
     else if (bpp == 0x20) is32 = true;
     else return 0;
-    tex = func_00127B70(b, c, func_00128050(0xff000000, 0xff0000, (unsigned int)&D_0000FF00, 0xff, 0));
+    tex = (Tex_0012DFD0 *)func_00127B70(b, c, *func_00128050(out, 0xff000000, 0xff0000, (unsigned int)&D_0000FF00, 0xff, 0));
     src = (unsigned char *)(buf + a);
-    if (is32) {
-        for (y = 0; y < *(unsigned int *)(tex + 0x28); y++) {
-            for (x = 0; x < *(unsigned int *)(tex + 0x24); x++) {
-                dst = (unsigned char *)(*(int *)(tex + 0x30) + (*(int *)(tex + 0x24) * y + x) * 4);
-                unsigned char *s = src + ((*(int *)(tex + 0x28) - y - 1) * *(int *)(tex + 0x24) + x) * 4;
-                dst[0] = s[0];
-                dst[1] = s[1];
-                dst[2] = s[2];
-                dst[3] = s[3];
+    if (!is32) {
+        for (y = 0; y < tex->h; y++) {
+            for (x = 0; x < tex->w; x++) {
+                tex->data[(tex->w * y + x) * 4] = src[((tex->h - y - 1) * tex->w + x) * 3];
+                tex->data[(tex->w * y + x) * 4 + 1] = src[((tex->h - y - 1) * tex->w + x) * 3 + 1];
+                tex->data[(tex->w * y + x) * 4 + 2] = src[((tex->h - y - 1) * tex->w + x) * 3 + 2];
             }
         }
     } else {
-        for (y = 0; y < *(unsigned int *)(tex + 0x28); y++) {
-            for (x = 0; x < *(unsigned int *)(tex + 0x24); x++) {
-                dst = (unsigned char *)(*(int *)(tex + 0x30) + (*(int *)(tex + 0x24) * y + x) * 4);
-                unsigned char *s = src + ((*(int *)(tex + 0x28) - y - 1) * *(int *)(tex + 0x24) + x) * 3;
-                dst[0] = s[0];
-                dst[1] = s[1];
-                dst[2] = s[2];
+        for (y = 0; y < tex->h; y++) {
+            for (x = 0; x < tex->w; x++) {
+                tex->data[(tex->w * y + x) * 4] = src[((tex->h - y - 1) * tex->w + x) * 4];
+                tex->data[(tex->w * y + x) * 4 + 1] = src[((tex->h - y - 1) * tex->w + x) * 4 + 1];
+                tex->data[(tex->w * y + x) * 4 + 2] = src[((tex->h - y - 1) * tex->w + x) * 4 + 2];
+                tex->data[(tex->w * y + x) * 4 + 3] = src[((tex->h - y - 1) * tex->w + x) * 4 + 3];
             }
         }
     }
     func_00116FB0(buf);
-    return tex;
+    return (int)tex;
 }
 
 void _func_0012E280(unsigned int *out, unsigned char *in)
