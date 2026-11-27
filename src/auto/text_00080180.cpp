@@ -2,81 +2,75 @@
 #include "common.h"
 #include "ghidra.h"
 struct S80570 { char pad[0xe0]; float e0, e4, e8, ec, f0, f4; unsigned int count; float *items; int *obj; };
+struct V3_80570 { float x, y, z; };
 struct C80A70 { float x, y, z, w; };
 struct S80A70 { int p[3]; char r, g, b, a; int u[2]; int v[2]; int t[2]; int pad[2]; };
 
 void func_00080540(void *p){void func_00110760(...); void func_00116FB0(...); func_00110760(*(int*)((char*)p+0x100)); func_00116FB0(*(int*)((char*)p+0xfc));}
 
-void __cdecl _func_00080570(unsigned int param_1)
+void __cdecl _func_00080570(S80570 *self)
 {
   extern unsigned int D_002FBA88, D_002FBA84;
-  extern float D_002FB988[];
+  extern char D_002FB988[];
   extern float D_001D31C8, D_001D2B64, D_001D386C, D_001D37D0, D_001D65B4, D_001D6784, D_001D27B0;
   float func_00131760(void);
   int func_0011E690(...);
-  float fVar1, fVar2, t;
-  int iVar3;
-  unsigned int uVar4, uVar7, local_4;
-  float *pfVar5, *pfVar8, *a;
+  float t;
+  unsigned int uVar7, local_4, off;
+  float *pfVar5, *pfVar8;
   int iVar6, local_8;
 
-  uVar4 = param_1;
   D_002FBA88 = D_002FBA88 + 1;
-  uVar7 = param_1;
+  uVar7 = (unsigned int)self;
   if (D_002FBA88 >= D_002FBA84) {
-    unsigned int i;
-    for (i = 0; i < 0x78; i += 0xc) {
-      a = (float *)((char *)D_002FB988 + i);
-      a[0] = (func_00131760() * D_001D31C8 - D_001D2B64) * D_001D386C + a[0] * D_001D37D0;
-      a[1] = (func_00131760() * D_001D31C8 - D_001D2B64) * D_001D386C + a[1] * D_001D37D0;
-      t = (func_00131760() * D_001D31C8 - D_001D2B64) * D_001D386C + a[2] * D_001D37D0;
-      a[2] = t;
-      if (a[0] < D_001D65B4) *(unsigned int *)&a[0] = 0xc0a00000;
-      if (a[1] < D_001D65B4) *(unsigned int *)&a[1] = 0xc0a00000;
-      if (t < D_001D65B4) *(unsigned int *)&a[2] = 0xc0a00000;
-      if (a[0] > D_001D2B64) *(unsigned int *)&a[0] = 0x40a00000;
-      if (a[1] > D_001D2B64) *(unsigned int *)&a[1] = 0x40a00000;
-      if (a[2] > D_001D2B64) *(unsigned int *)&a[2] = 0x40a00000;
-    }
+    uVar7 = 0;
+    do {
+      *(float *)(D_002FB988 + uVar7) = D_001D37D0 * *(float *)(D_002FB988 + uVar7) + (func_00131760() * D_001D31C8 - D_001D2B64) * D_001D386C;
+      *(float *)(D_002FB988 + uVar7 + 4) = D_001D37D0 * *(float *)(D_002FB988 + uVar7 + 4) + (func_00131760() * D_001D31C8 - D_001D2B64) * D_001D386C;
+      t = D_001D37D0 * *(float *)(D_002FB988 + uVar7 + 8) + (func_00131760() * D_001D31C8 - D_001D2B64) * D_001D386C;
+      *(float *)(D_002FB988 + uVar7 + 8) = t;
+      if (*(float *)(D_002FB988 + uVar7) < D_001D65B4) *(unsigned int *)(D_002FB988 + uVar7) = 0xc0a00000;
+      if (*(float *)(D_002FB988 + uVar7 + 4) < D_001D65B4) *(unsigned int *)(D_002FB988 + uVar7 + 4) = 0xc0a00000;
+      if (t < D_001D65B4) *(unsigned int *)(D_002FB988 + uVar7 + 8) = 0xc0a00000;
+      if (*(float *)(D_002FB988 + uVar7) > D_001D2B64) *(unsigned int *)(D_002FB988 + uVar7) = 0x40a00000;
+      if (*(float *)(D_002FB988 + uVar7 + 4) > D_001D2B64) *(unsigned int *)(D_002FB988 + uVar7 + 4) = 0x40a00000;
+      if (*(float *)(D_002FB988 + uVar7 + 8) > D_001D2B64) *(unsigned int *)(D_002FB988 + uVar7 + 8) = 0x40a00000;
+      uVar7 = uVar7 + 0xc;
+    } while (uVar7 < 0x78);
     D_002FBA88 = 0;
     uVar7 = 10;
   }
   local_4 = 0;
-  if (*(unsigned int *)(param_1 + 0xf8) != 0) {
-    iVar6 = (uVar7 % 10) * 3;
+  if (self->count != 0) {
+    iVar6 = (uVar7 % 10) * 0xc;
     local_8 = 0;
-    param_1 = 0;
+    off = 0;
     do {
-      fVar1 = *(float *)(*(int *)(uVar4 + 0xfc) + 0x24 + param_1) + D_001D6784;
-      iVar3 = *(int *)(*(int *)(uVar4 + 0x100) + 0x14c);
-      pfVar8 = (float *)(*(int *)(uVar4 + 0xfc) + param_1);
+      float fVar1 = *(float *)((char *)self->items + 0x24 + off) + D_001D6784;
+      pfVar8 = (float *)((char *)self->items + off);
+      pfVar5 = (float *)(self->obj[0x14c / 4] + local_8);
       pfVar8[9] = fVar1;
-      pfVar5 = (float *)(iVar3 + local_8);
       if (fVar1 >= D_001D27B0) {
-        *pfVar8 = *pfVar8 - pfVar8[6];
+        pfVar8[0] = pfVar8[0] - pfVar8[6];
         pfVar8[1] = pfVar8[1] - pfVar8[7];
         pfVar8[2] = pfVar8[2] - pfVar8[8];
-        fVar1 = func_00131760() * *(float *)(uVar4 + 0xec);
-        pfVar8[3] = (*(float *)(uVar4 + 0xe0) - *(float *)(uVar4 + 0xec)) + fVar1 + fVar1;
-        fVar1 = func_00131760() * *(float *)(uVar4 + 0xf0);
-        pfVar8[4] = (*(float *)(uVar4 + 0xe4) - *(float *)(uVar4 + 0xf0)) + fVar1 + fVar1;
-        fVar1 = func_00131760() * *(float *)(uVar4 + 0xf4);
-        fVar2 = *(float *)(uVar4 + 0xe8) - *(float *)(uVar4 + 0xf4);
+        pfVar8[3] = func_00131760() * self->ec * 2 + (self->e0 - self->ec);
+        pfVar8[4] = func_00131760() * self->f0 * 2 + (self->e4 - self->f0);
+        pfVar8[5] = func_00131760() * self->f4 * 2 + (self->e8 - self->f4);
         pfVar8[9] = 0.0f;
-        pfVar8[5] = fVar2 + fVar1 + fVar1;
-        pfVar8[6] = *pfVar8 - pfVar8[3];
+        pfVar8[6] = pfVar8[0] - pfVar8[3];
         pfVar8[7] = pfVar8[1] - pfVar8[4];
         pfVar8[8] = pfVar8[2] - pfVar8[5];
       }
       local_4 = local_4 + 1;
       local_8 = local_8 + 0x30;
-      *pfVar5 = (*pfVar8 - pfVar8[6] * pfVar8[9]) + D_002FB988[iVar6];
-      pfVar5[1] = (pfVar8[1] - pfVar8[7] * pfVar8[9]) + D_002FB988[iVar6 + 1];
-      param_1 = param_1 + 0x28;
-      pfVar5[2] = (pfVar8[2] - pfVar8[8] * pfVar8[9]) + D_002FB988[iVar6 + 2];
-    } while (local_4 < *(unsigned int *)(uVar4 + 0xf8));
+      *pfVar5 = (*pfVar8 - pfVar8[6] * pfVar8[9]) + *(float *)(D_002FB988 + iVar6);
+      pfVar5[1] = (pfVar8[1] - pfVar8[7] * pfVar8[9]) + *(float *)(D_002FB988 + iVar6 + 4);
+      off = off + 0x28;
+      pfVar5[2] = (pfVar8[2] - pfVar8[8] * pfVar8[9]) + *(float *)(D_002FB988 + iVar6 + 8);
+    } while (local_4 < self->count);
   }
-  func_0011E690(*(int *)(uVar4 + 0x100), 0, 1);
+  func_0011E690(self->obj, 0, 1);
 }
 
 void __cdecl _func_00080860(void)
