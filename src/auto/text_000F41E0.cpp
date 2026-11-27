@@ -1,6 +1,12 @@
 /* 10 functions from 0x000F41E0 to 0x000F4C88, found by Ghidra. */
 #include "common.h"
 #include "ghidra.h"
+static __forceinline void DetachF49Frame(int frame)
+{
+ int func_00110420(...);
+ if(*(volatile int*)(frame+0x2c))
+  func_00110420(**(int**)(frame+0x2c),frame);
+}
 struct F4760Params {
  int kind; float color[3]; int flags[2]; float scale; int tail[2];
  F4760Params() { volatile F4760Params *p=this; p->kind=0; p->color[0]=0; p->color[1]=0; p->color[2]=0; p->flags[0]=0; p->flags[1]=0; p->scale=0; p->tail[0]=0; p->tail[1]=0; }
@@ -223,6 +229,68 @@ void func_000F49A0(void)
   func_00110760(D_00324844);
   return;
 }
+
+void func_000F49D0(int name, char activate)
+{
+ extern int D_00307DF8,D_003080B0,D_00307D00,D_00307CFC,D_002EED64;
+ extern unsigned int D_00325160,D_003251C8,D_00325214,D_00325220,D_00325200,D_003251C4,D_00325150,D_003251AC;
+ extern int D_00325218;
+ extern char D_001D46D8,D_001D734C,D_001D42F0,D_001DCE44;
+ int func_0009C590(...),func_00012D60(...),func_000F8FA0(...),func_0009D640(...),func_00110060(...),func_0009D3E0(...),func_00110420(...),func_0011B4F0(...),func_0009D280(...),func_0009D780(...),func_001105E0(...),func_00110000(...),func_00110480(...),func_0011BED0(...),func_0009BF40(...),func_0002FD50(...),func_000F9C00(...),func_000FA750(...);
+ __declspec(align(16)) char matrix[64];
+ int root;
+ if(D_00307DF8){
+  if(D_00307DF8==D_003080B0){
+   int o=func_0009C590(&D_001D46D8);
+   if(*(char*)(o+0x15)==0x1d)func_00012D60(o,0);
+  }
+  func_00012D60(D_00307DF8,0);
+  func_000F8FA0(D_00307DF8);
+  func_0009D640(D_00307DF8);
+  func_00110060(*(int*)(D_00307DF8+0x2c),matrix);
+  root=**(int**)(*(int*)(D_00307DF8+0x2c)+0x2c);
+ }else{
+  int f=*(int*)(D_003080B0+0x2c);
+  root=**(int**)(f+0x2c);
+  func_00110060(f,matrix);
+ }
+ func_0009D3E0(D_003080B0);
+ func_0009D3E0(D_00307D00);
+ func_0009D3E0(D_00307CFC);
+ int f=*(int*)(D_003080B0+0x2c);
+ if(*(volatile int*)(f+0x2c))func_00110420(**(int**)(f+0x2c),f);
+ f=*(int*)(D_00307D00+0x2c);
+ if(*(volatile int*)(f+0x2c))func_00110420(**(int**)(f+0x2c),f);
+ f=*(int*)(D_00307CFC+0x2c);
+ if(*(volatile int*)(f+0x2c))func_00110420(**(int**)(f+0x2c),f);
+ int chosen;
+ if(!func_0011B4F0(name,&D_001D734C))chosen=D_003080B0;
+ else if(!func_0011B4F0(name,&D_001D42F0))chosen=D_00307D00;
+ else chosen=D_00307CFC;
+ D_00307DF8=chosen;
+ if(activate)func_0009D280(chosen);
+ func_0009D780(D_00307DF8);
+ func_001105E0(*(int*)(D_00307DF8+0x2c),matrix,0);
+ func_00110000(*(int*)(D_00307DF8+0x2c));
+ func_00110480(root,*(int*)(D_00307DF8+0x2c),8);
+ if(activate){
+  func_0011BED0();func_0009BF40(D_00307DF8);func_00012D60(D_00307DF8,0x15);func_0011BED0();func_0002FD50(D_00307DF8);
+ }else func_00012D60(D_00307DF8,0x15);
+ func_000F8FA0(D_00307DF8);
+ func_000FA750(func_000F9C00(D_00307DF8,&D_001DCE44));
+ D_002EED64=D_00307DF8;
+ unsigned int i=0;
+ if(i<D_00325160)do{
+  int e=*(int*)(D_00325218+i*4);
+  unsigned int type=*(unsigned short*)(e+2);
+  if(type==D_003251C8 || type==D_00325214 || type==D_00325220 || type==D_00325200 || type==D_003251C4 || type==D_00325150 || type==D_003251AC){
+   int o=*(int*)(e+4);
+   if(o==D_003080B0 || o==D_00307D00 || o==D_00307CFC)*(int*)(e+4)=D_00307DF8;
+  }
+  i++;
+ }while(i<D_00325160);
+}
+
 // Global data definitions (inferred from usage)
 extern int D_00324828;
 extern int D_00324834;
