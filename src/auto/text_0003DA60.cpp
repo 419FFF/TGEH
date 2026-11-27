@@ -33,6 +33,83 @@ void func_0003E500(undefined4 param_1, int param_2)
   return;
 }
 
+void _func_0003E540(int param_1, int *param_2)
+{
+    int func_000A1F50(...);
+    int func_000A1D10(...);
+    int func_0009D280(...);
+    int func_00089320(...);
+    int func_001031C0(...);
+    int func_00103990(...);
+    int func_00110060(...);
+    int func_001100A0(...);
+    int func_0012F560(...);
+    int func_00115170(...);
+    int func_00115260(...);
+    int func_0012F2E0(...);
+    int func_00116160(...);
+    int func_00115AB0(...);
+    int func_0010FBA0(...);
+    int func_001105E0(...);
+    int func_00110000(...);
+    extern int D_00307DF8;
+    extern char D_001D4818, D_001D3BE4;
+    int *p;
+    int r;
+    int local_94;
+    __declspec(align(16)) char local_90[64];
+    char local_50[64];
+
+    switch (param_2[0xc4]) {
+    case 0:
+        if (func_000A1F50(param_2[0x8f]) == 0) {
+            p = (int *)param_2[0xba];
+            func_000A1D10(param_2[0x8f], 1, p[0], p[1], p[2], 0);
+            func_0009D280(param_2[0x6d]);
+            func_00116160(*(int *)(*(int *)(param_2[0x6d] + 0x58) + param_2[0x74] * 4));
+            r = func_00115AB0(*(int *)(*(int *)(param_2[0x8f] + 0x18) + 0x34), param_2[0x75]);
+            *(int *)(*(int *)(param_2[0x6d] + 0x58) + param_2[0x74] * 4) = r;
+            func_0010FBA0(*(int *)(param_2[0x6d] + 0x2c), *(int *)(*(int *)(param_2[0x6d] + 0x58) + param_2[0x74] * 4));
+            func_001100A0(*(int *)(param_1 + 0x2c), &local_94);
+            func_001105E0(*(int *)(param_2[0x6d] + 0x2c), local_94, 0);
+            func_00110000(*(int *)(param_2[0x6d] + 0x2c));
+            param_2[0xc4] = 1;
+        }
+        break;
+    case 1:
+        if (func_000A1F50(param_2[0x8f]) == 0) {
+            p = (int *)param_2[0xbb];
+            func_000A1D10(param_2[0x8f], 1, p[0], p[1], p[2], 0);
+            func_00089320(1, 1);
+            r = func_001031C0(D_00307DF8, &D_001D4818);
+            if (r != 0) func_00103990(r, 0);
+            r = func_001031C0(D_00307DF8, &D_001D3BE4);
+            if (r != 0) func_00103990(r, 1);
+            func_00110060(*(int *)(param_2[0x6d] + 0x2c), local_90);
+            func_001100A0(*(int *)(param_1 + 0x2c), &local_94);
+            func_0012F560(local_90, local_94);
+            func_00115170(*(int *)(*(int *)(param_2[0x8f] + 0x18) + 0x34), param_2[0x76], local_50);
+            func_0012F560(local_90, local_50);
+            func_00115260(*(int *)(*(int *)(param_2[0x8f] + 0x18) + 0x34), param_2[0x76], local_50);
+            func_0012F2E0(local_90, local_50);
+            func_0012F2E0(local_90, local_94);
+            func_00116160(*(int *)(*(int *)(param_2[0x6d] + 0x58) + param_2[0x74] * 4));
+            r = func_00115AB0(*(int *)(*(int *)(param_2[0x8f] + 0x18) + 0x34), param_2[0x76]);
+            *(int *)(*(int *)(param_2[0x6d] + 0x58) + param_2[0x74] * 4) = r;
+            func_0010FBA0(*(int *)(param_2[0x6d] + 0x2c), *(int *)(*(int *)(param_2[0x6d] + 0x58) + param_2[0x74] * 4));
+            func_001105E0(*(int *)(param_2[0x6d] + 0x2c), local_90, 0);
+            func_00110000(*(int *)(param_2[0x6d] + 0x2c));
+            param_2[0xc4] = 2;
+        }
+        break;
+    case 2:
+        if (func_000A1F50(param_2[0x8f]) == 0) {
+            param_2[0] = 2;
+        }
+        break;
+    }
+}
+
 void func_0003E840(undefined4 param_1, int param_2) {
  int func_000A1D10(...); undefined4 *p;
  p=*(undefined4 **)(param_2+0x2f0);
@@ -59,43 +136,44 @@ void func_0003E880(int param_1, int *param_2)
   int func_0009D3E0(...);
   int func_000A1D10(...);
   int *puVar1;
-  Obj3E880 *self = (Obj3E880 *)param_2;
+  int *puVar2;
   int iVar3;
   int uVar4;
 
-  switch (self->state) {
+  puVar2 = param_2;
+  switch (param_2[0xc5]) {
   case 0:
-    if (func_000A1F50(self->handle) == 0) {
-      puVar1 = self->cfgA;
-      func_000A1D10(self->handle,1,*puVar1,puVar1[1],puVar1[2],0);
-      func_00116160(*(int *)(*(int *)(self->obj + 0x58) + self->idx * 4));
-      uVar4 = func_00115AB0(*(int *)(*(int *)(self->owner + 0x18) + 0x34),self->idx2);
-      *(int *)(*(int *)(self->obj + 0x58) + self->idx * 4) = uVar4;
-      func_0010FBA0(*(int *)(self->obj + 0x2c),
-                     *(int *)(*(int *)(self->obj + 0x58) + self->idx * 4));
+    if (func_000A1F50(puVar2[0x90]) == 0) {
+      puVar1 = (int *)puVar2[0xbd];
+      func_000A1D10(puVar2[0x90],1,*puVar1,puVar1[1],puVar1[2],0);
+      func_00116160(*(int *)(*(int *)(puVar2[0x6d] + 0x58) + puVar2[0x74] * 4));
+      uVar4 = func_00115AB0(*(int *)(*(int *)(puVar2[0x8f] + 0x18) + 0x34),puVar2[0x75]);
+      *(int *)(*(int *)(puVar2[0x6d] + 0x58) + puVar2[0x74] * 4) = uVar4;
+      func_0010FBA0(*(int *)(puVar2[0x6d] + 0x2c),
+                     *(int *)(*(int *)(puVar2[0x6d] + 0x58) + puVar2[0x74] * 4));
       func_001100A0(*(int *)(param_1 + 0x2c),&param_2);
-      func_001105E0(*(int *)(self->obj + 0x2c),param_2,0);
-      func_00110000(*(int *)(self->obj + 0x2c));
+      func_001105E0(*(int *)(puVar2[0x6d] + 0x2c),param_2,0);
+      func_00110000(*(int *)(puVar2[0x6d] + 0x2c));
       func_00089320(0,0);
       func_0002D450(&D_001D3BE4);
       iVar3 = func_001031C0(D_00307DF8,&D_001D4828);
       if (iVar3 != 0) {
         func_00103990(iVar3,0);
       }
-      self->state = 1;
+      puVar2[0xc5] = 1;
     }
     break;
   case 1:
-    if (func_000A1F50(self->handle) == 0) {
-      puVar1 = self->cfgB;
-      func_000A1D10(self->handle,1,*puVar1,puVar1[1],puVar1[2],0);
-      func_0009D3E0(self->obj);
-      self->state = 2;
+    if (func_000A1F50(puVar2[0x90]) == 0) {
+      puVar1 = (int *)puVar2[0xbe];
+      func_000A1D10(puVar2[0x90],1,*puVar1,puVar1[1],puVar1[2],0);
+      func_0009D3E0(puVar2[0x6d]);
+      puVar2[0xc5] = 2;
     }
     break;
   case 2:
-    if (func_000A1F50(self->handle) == 0) {
-      self->next = self->nextState;
+    if (func_000A1F50(puVar2[0x90]) == 0) {
+      *puVar2 = puVar2[0xc6];
     }
     break;
   }
