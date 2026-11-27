@@ -2,10 +2,10 @@
 #include "common.h"
 #include "ghidra.h"
 struct F49Frame {
- char pad[0x2c]; int **parent;
+ char pad[0x2c]; int *volatile parent;
  __forceinline void detach() {
   int func_00110420(...);
-  if(*(volatile int**)&parent)func_00110420(**parent,this);
+  if(parent)func_00110420(*parent,this);
  }
 };
 static __forceinline void DetachF49Frame(int frame) { ((F49Frame*)frame)->detach(); }
