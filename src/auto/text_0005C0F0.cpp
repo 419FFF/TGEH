@@ -2,6 +2,7 @@
 #include "common.h"
 #include "ghidra.h"
 struct CameraVec { float x,y,z,w; };
+struct CameraPoint { float x,y,z; };
 
 void func_0005C500(int *p)
 {
