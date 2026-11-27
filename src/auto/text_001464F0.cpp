@@ -1,5 +1,10 @@
 /* 33 functions from 0x001464F0 to 0x001473F4, found by Ghidra. */
 #include "common.h"
+struct LD80 { unsigned int lo; unsigned int hi; unsigned short se; };
+struct STRFLT_ { short decpt; char sign; char len; char mant[24]; };
+struct S6_ { char c[6]; };
+struct S7_ { char c[7]; };
+struct LD12_ { unsigned char b[12]; };
 
 struct C_00147245 { unsigned int func_00147245(void); };
 struct C_0014726E { unsigned int func_0014726E(void); };
@@ -78,6 +83,125 @@ int _func_00146A77(void) {
     int func_0013EF1F(...);
     *(int *)func_001460D6() = 9;
     return func_0013EF1F() | -1;
+}
+
+void func_00146A8B(unsigned short *px, const unsigned short *py)
+{
+  int func_00146348(unsigned int, unsigned int, unsigned int *);
+  void func_001463C7(void *);
+  void func_001463F5(void *);
+  unsigned int acc[3];
+  unsigned int *xi = (unsigned int *)px;
+  const unsigned int *yi = (const unsigned int *)py;
+  int sticky = 0;
+  int s;
+  int n;
+  int i;
+  int k;
+  unsigned short xe, ye, sign;
+  unsigned short *pp;
+  unsigned short *xs;
+  const unsigned short *ys;
+  unsigned short e;
+
+  acc[0] = 0;
+  acc[1] = 0;
+  acc[2] = 0;
+  xe = px[5] & 0x7fff;
+  ye = py[5] & 0x7fff;
+  sign = (py[5] ^ px[5]) & 0x8000;
+  s = ye + xe;
+  if (xe < 0x7fff && ye < 0x7fff && (unsigned short)s < 0xbffe) {
+    if ((unsigned short)s < 0x3fc0) goto zero;
+    e = xe;
+    if (xe == 0) {
+      s++;
+      e = 0;
+      if (!((xi[2] & 0x7fffffff) != 0 || xi[1] != 0 || xi[0] != 0)) goto store;
+    }
+    if (ye == 0) {
+      s++;
+      if ((yi[2] & 0x7fffffff) == 0 && yi[1] == 0 && yi[0] == 0) {
+zero:
+        xi[2] = 0;
+        xi[1] = 0;
+        xi[0] = 0;
+        return;
+      }
+    }
+    i = 0;
+    pp = (unsigned short *)acc + 2;
+    n = 5;
+    do {
+      if (0 < n) {
+        xs = px + i;
+        ys = py + 4;
+        k = n;
+        do {
+          if (func_00146348(*(unsigned int *)(pp - 2), (unsigned int)*ys * (unsigned int)*xs, (unsigned int *)(pp - 2)) != 0) {
+            (*pp)++;
+          }
+          xs++;
+          ys--;
+          k--;
+        } while (k != 0);
+      }
+      pp++;
+      i++;
+      n--;
+    } while (0 < n);
+    s += 0xc002;
+    if ((short)s > 0) {
+      do {
+        if (((unsigned char *)acc)[11] & 0x80) break;
+        func_001463C7(acc);
+        s += 0xffff;
+      } while ((short)s > 0);
+    }
+    if ((short)s <= 0) {
+      s += 0xffff;
+      if ((short)s < 0) {
+        n = (unsigned short)-s;
+        s += n;
+        do {
+          if (((unsigned char *)acc)[0] & 1) sticky++;
+          func_001463F5(acc);
+          n--;
+        } while (n != 0);
+        if (sticky != 0) ((unsigned char *)acc)[0] |= 1;
+      }
+    }
+    if (*(unsigned short *)acc > 0x8000 || (acc[0] & 0x1ffff) == 0x18000) {
+      if (*(unsigned int *)((char *)acc + 2) == 0xffffffff) {
+        *(unsigned int *)((char *)acc + 2) = 0;
+        if (*(unsigned int *)((char *)acc + 6) == 0xffffffff) {
+          *(unsigned int *)((char *)acc + 6) = 0;
+          if (*(unsigned short *)((char *)acc + 10) == 0xffff) {
+            s++;
+            *(unsigned short *)((char *)acc + 10) = 0x8000;
+          } else {
+            (*(unsigned short *)((char *)acc + 10))++;
+          }
+        } else {
+          (*(unsigned int *)((char *)acc + 6))++;
+        }
+      } else {
+        (*(unsigned int *)((char *)acc + 2))++;
+      }
+    }
+    if ((unsigned short)s < 0x7fff) {
+      px[0] = *(unsigned short *)((char *)acc + 2);
+      *(unsigned int *)((char *)px + 2) = *(unsigned int *)((char *)acc + 4);
+      *(unsigned int *)((char *)px + 6) = *(unsigned int *)((char *)acc + 8);
+      e = s;
+store:
+      px[5] = e | sign;
+      return;
+    }
+  }
+  xi[1] = 0;
+  xi[0] = 0;
+  xi[2] = (-(unsigned int)(sign != 0) & 0x80000000) + 0x7fff8000;
 }
 
 extern void func_00146A8B(unsigned short *, const unsigned short *);
@@ -174,6 +298,85 @@ unsigned short _func_00146D23(int ch, int *str) {
     }
     return ch & 0xffff;
 }
+
+int _func_00146E4B(int fh, char *buf, unsigned int cnt)
+{
+    int bytes_read = 0;
+    char *q = buf;
+    char *&p = (char *&)cnt;
+    unsigned int num_read;
+    char peekchr;
+    int err;
+
+    if (cnt != 0 && !(OSFILE_00146E4B(fh) & 2)) {
+        if ((OSFILE_00146E4B(fh) & 0x48) && PIPECH_00146E4B(fh) != '\n') {
+            *q = PIPECH_00146E4B(fh);
+            cnt--;
+            q++;
+            bytes_read = 1;
+            PIPECH_00146E4B(fh) = '\n';
+        }
+        if (!func_0010BAA0(HANDLE_00146E4B(fh), q, cnt, &num_read, 0)) {
+            err = func_0010AA7B();
+            if (err == 5) {
+                *(int *)func_001460D6() = 9;
+                *(int *)func_001460DF() = 5;
+            } else {
+                if (err == 0x6d) return 0;
+                func_001460E8(err);
+            }
+            return -1;
+        }
+        bytes_read += num_read;
+        if (OSFILE_00146E4B(fh) & 0x80) {
+            if (num_read != 0 && *buf == '\n')
+                OSFILE_00146E4B(fh) |= 4;
+            else
+                OSFILE_00146E4B(fh) &= ~4;
+            bytes_read += (int)buf;
+            p = q = buf;
+            while (p < (char *)bytes_read) {
+                if (*p == 0x1a) {
+                    if (!(OSFILE_00146E4B(fh) & 0x40)) OSFILE_00146E4B(fh) |= 2;
+                    break;
+                }
+                if (*p != '\r') {
+                    *q++ = *p++;
+                } else if (p < (char *)bytes_read - 1) {
+                    if (p[1] == '\n') {
+                        p += 2;
+                        *q++ = '\n';
+                    } else {
+                        *q++ = *p++;
+                    }
+                } else {
+                    p++;
+                    if ((func_0010BAA0(HANDLE_00146E4B(fh), &peekchr, 1, &num_read, 0) || func_0010AA7B() == 0) && num_read != 0) {
+                        if (OSFILE_00146E4B(fh) & 0x48) {
+                            if (peekchr == '\n') {
+                                *q++ = '\n';
+                            } else {
+                                *q++ = '\r';
+                                PIPECH_00146E4B(fh) = peekchr;
+                            }
+                        } else if (q == buf && peekchr == '\n') {
+                            *q++ = '\n';
+                        } else {
+                            func_001450B3(fh, -1, 1);
+                            if (peekchr != '\n') *q++ = '\r';
+                        }
+                    } else {
+                        *q++ = '\r';
+                    }
+                }
+            }
+            bytes_read = (int)(q - buf);
+        }
+        return bytes_read;
+    }
+    return 0;
+}
+
 #pragma optimize("", on)
 int _func_001460D6(...);
 int _func_001460DF(...);
