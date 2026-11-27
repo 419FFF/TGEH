@@ -11,6 +11,7 @@ extern int D_001D9678;
 extern int D_001D967C;
 extern float D_001D27B8;
 struct Part { float f[9]; };
+struct Slot_BD9D0 { int a, b; int state; int f0c; int pad10[4]; int f20; int pad24[3]; };
 int func_0009C7A0(...);
 int func_0005F310(...);
 int func_0005CCC0(...);
@@ -25,6 +26,88 @@ int func_00120E50(...);
 int func_000AFD10(...);
 int func_00121990(...);
 int __ftol2(...);
+void func_000BD9D0(void)
+{
+    extern float D_00314BB0, D_001E461C, D_001D29F4, D_001D27B0, D_001D27EC;
+    extern unsigned int D_00314BB4;
+    extern char D_00314BC0[], D_00314BC4[], D_00314BD8[], D_00314BB8[], D_00314C48[], D_0000FFFF[];
+    extern int D_00314C54, D_00314C4C, D_00314C50, D_00314CC4, D_00314BF0, D_00314C20, D_00307DF8;
+    extern char D_001D9668[], D_001D9658[], D_001D9648[], D_001D9634[], D_001D9620[], D_001D960C[];
+    int func_000BC9D0(...);
+    int func_000A1D10(...);
+    int func_000F9C00(...);
+    int func_001007B0(...);
+    int func_000B6600(...);
+    int func_000BD6E0(...);
+    int func_000BD440(...);
+    void func_000BCBB0(void);
+    int n;
+    char *p;
+    D_00314BB0 += D_001E461C;
+    switch (D_00314BB4) {
+    case 0:
+        if (D_00314BB0 > D_001D29F4) {
+            D_00314BB4 = 1;
+            D_00314BB0 = 0;
+            func_000BC9D0(0);
+            *(int *)(D_00314BC0 + D_00314C74 * 0x30) = 2;
+            *(int *)(D_00314BC4 + D_00314C74 * 0x30) = 0;
+            func_000A1D10(*(int *)(D_00314BD8 + D_00314C74 * 0x30), 1, 0, D_0000FFFF, 0x41c00000, 0);
+            func_000A1D10(D_00314C54, 1, 0, D_0000FFFF, 0x41c00000, 0);
+            D_00314C4C = 1;
+            D_00314C50 = 0;
+            D_00314CC4 = 0;
+        }
+        break;
+    case 1:
+        if (*(int *)(D_00314BC0 + D_00314C74 * 0x30) == 8) {
+            D_00314C74 = D_00314C74 + 1;
+            if (D_00314C74 == 1) func_000F9C00(D_00308158, D_001D9668);
+            if (D_00314C74 == 2) func_000F9C00(D_00308158, D_001D9658);
+            if (D_00314C74 == 3) {
+                func_000F9C00(D_00308158, D_001D9648);
+                if (D_00314C74 == 3) {
+                    D_00314BB4 = 2;
+                    func_001007B0(0);
+                    D_00314BB0 = 0;
+                    D_00314C4C = 10;
+                    *(int *)D_00314BC0 = 10;
+                    D_00314BF0 = 10;
+                    D_00314C20 = 10;
+                    break;
+                }
+            }
+            D_00314BB4 = 0;
+            func_001007B0(*(int *)(D_00307DF8 + 0x2c));
+            D_00314BB0 = 0;
+        }
+        break;
+    case 2:
+        if (D_00314BB0 > D_001D27B0) {
+            func_000B6600(0xb);
+            func_000A3150(0, 0);
+        }
+        break;
+    case 3:
+        if (D_00314BB0 > D_001D27EC) {
+            func_000B6600(0xb);
+            if (D_00314C74 == 0) func_000F9C00(D_00308158, D_001D9634);
+            if (D_00314C74 == 1) func_000F9C00(D_00308158, D_001D9620);
+            if (D_00314C74 == 2) func_000F9C00(D_00308158, D_001D960C);
+        }
+    }
+    n = (int)*(float *)func_0009C7A0(D_00308158, &D_001D9578, 0);
+    if (n < 3) {
+        p = D_00314BB8 + n * 0x30;
+        do {
+            func_000BD6E0(p);
+            p += 0x30;
+        } while (p < D_00314C48);
+    }
+    func_000BD440(D_00314C48);
+    func_000BCBB0();
+}
+
 void func_000BDCA0(void) {
  float f=(float)D_00314C74;
  int *p=(int *)func_0009C7A0(D_00308158,&D_001D9578,0);
