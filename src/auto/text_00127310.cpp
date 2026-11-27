@@ -4,6 +4,7 @@
 #include <string.h>
 
 struct S127310 { int *p0; char *p4; int p8; int pc; int u10; int u14; short s18; short s1a; int u1c; int n20; short s24; unsigned char b26; };
+struct PixelFormat127D60 { unsigned flags, r, rs, g, gs, b, bs, a, as; };
 struct E38 { char pad[0x18]; int f18; char pad2[0x1c]; };
 struct E130 { char pad[0x18]; int n; E38 *a; char pad2[0x110]; };
 int _func_00116FB0(...);
@@ -18,15 +19,14 @@ char func_00127310(S127310 *p)
 {
   int func_0013A000(...);
   int func_00116FB0(...);
-  int i, j, k;
+  int i, j;
   int v;
 
   if (p == 0) return 0;
   for (i = 0; i < p->s24; i++) {
-    char *e = p->p4 + i * 0x130;
-    for (j = 0; j < *(int *)(e + 0x18); j++) {
-      char *q = *(char **)(e + 0x1c) + j * 0x38;
-      v = *(int *)(q + 0x18);
+    E130 *e = (E130 *)(p->p4 + i * 0x130);
+    for (j = 0; j < e->n; j++) {
+      v = e->a[j].f18;
       if (v != 0) func_0013A000(v);
     }
   }
@@ -37,9 +37,7 @@ char func_00127310(S127310 *p)
       func_00116FB0(p->p4);
     }
     if (p->p0 != 0) {
-      i = 0;
-      if (p->n20 > 0) {
-      do {
+      for (i = 0; i < p->n20; i++) {
         if (p->p0[i * 2 + 1] != 0) {
           for (j = 0; j < p->s18; j++) {
             v = *(int *)(p->p0[i * 2 + 1] + 4 + j * 8);
@@ -47,8 +45,6 @@ char func_00127310(S127310 *p)
           }
           func_00116FB0(p->p0[i * 2 + 1]);
         }
-        i++;
-      } while (i < p->n20);
       }
       if (p->p0 != 0) func_00116FB0(p->p0);
     }
@@ -258,6 +254,32 @@ void func_00127C30(int param_1)
 int _func_00127C50(unsigned int *p){unsigned int n,a,b;int sum;if(!(*p&0x10000)){p[0xb]=1;return p[10]*p[9];}n=p[0xb];a=p[9];b=p[10];sum=0;while(n>0){sum+=a*b;a>>=1;b>>=1;n--;}return sum;}
 
 unsigned int _func_00127CA0(unsigned int *p){unsigned int flags=*p,a,b,n,prod;unsigned int tmp[9];int i; if(!(flags&0x10000)){prod=p[10]*p[9];p[0xb]=1;}else{a=p[9];b=p[10];n=p[0xb];prod=0;while(n){prod+=a*b;a>>=1;b>>=1;--n;}}memcpy(tmp,p,0x24);if(tmp[0]&0x20)i=8;else if(tmp[0]&0x40)i=4;else{unsigned int x=tmp[1]|tmp[3]|tmp[5]|tmp[6];if(x&0xffff0000)i=32;else i=((x&0xff00)?0:8)+8;}prod*=i;prod>>=3;if(flags&1)return prod>>3;if((signed char)flags<0)return prod>>1;return prod;}
+
+void func_00127D60(unsigned *p,unsigned flags,unsigned r,unsigned rs,unsigned g,unsigned gs,unsigned b,unsigned bs,unsigned a,unsigned as) {
+ unsigned func_00127C50(unsigned *);void *func_00116A90(unsigned,int,int);void func_00116FB0(void *);
+ if(p[7]==a && p[1]==r && p[3]==g && p[5]==b && p[0]==flags)return;
+ unsigned old[9];unsigned char *oldData=(unsigned char *)p[12];memcpy(old,p,36);
+ unsigned count=func_00127C50(p),size,oldSize,bits;
+ if(flags&0x20)bits=8;else if(flags&0x40)bits=4;else {bits=r|g|b|a;if(bits&0xffff0000)bits=32;else bits=(bits&0xff00)?16:8;}size=bits>>3;
+ if(old[0]&0x20)bits=8;else if(old[0]&0x40)bits=4;else{bits=old[1]|old[3]|old[5]|old[7];if(bits&0xffff0000)bits=32;else bits=(bits&0xff00)?16:8;}oldSize=bits>>3;
+ unsigned char *dst=(unsigned char *)func_00116A90(size*count,1,1);p[12]=(unsigned)dst;
+ if(count){unsigned char *src=oldData+1;unsigned pixel=(unsigned)p;
+ do {
+ if(oldSize==1)pixel=src[-1];
+ else if(oldSize==2){pixel=src[-1];((unsigned char *)&pixel)[1]=src[0];}
+ else if(oldSize==4)pixel=(((unsigned)src[2]<<8|src[1])<<8|src[0])<<8|src[-1];
+ pixel=(((((pixel&old[1])>>*(unsigned short *)&old[2])<<*((unsigned short *)&old[2]+1))>>*((unsigned short *)&rs+1))<<*(unsigned short *)&rs)
+ |(((((pixel&old[5])>>*(unsigned short *)&old[6])<<*((unsigned short *)&old[6]+1))>>*((unsigned short *)&bs+1))<<*(unsigned short *)&bs)
+ |(((((pixel&old[3])>>*(unsigned short *)&old[4])<<*((unsigned short *)&old[4]+1))>>*((unsigned short *)&gs+1))<<*(unsigned short *)&gs)
+ |(((((pixel&old[7])>>*(unsigned short *)&old[8])<<*((unsigned short *)&old[8]+1))>>*((unsigned short *)&as+1))<<*(unsigned short *)&as);
+ if(size==1)dst[0]=(unsigned char)pixel;
+ else if(size==2){dst[1]=(unsigned char)(pixel>>8);dst[0]=(unsigned char)pixel;}
+ else if(size==4){dst[1]=(unsigned char)(pixel>>8);dst[2]=(unsigned char)(pixel>>16);dst[3]=(unsigned char)(pixel>>24);dst[0]=(unsigned char)pixel;}
+ src+=oldSize;dst+=size;
+ }while(--count);
+ }
+ memcpy(p,&flags,36);func_00116FB0(oldData);
+}
 
 void _func_00127FF0(unsigned short *p)
 {
