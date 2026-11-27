@@ -11,6 +11,46 @@ struct Zero1D160b { union { double dd; int x[0x21]; }; };
 struct Zero1D160 { int x[0x21]; };
 struct Config1CE80 { union { double align; char bytes[244]; }; };
 
+extern "C" void* __cdecl memset(void*,int,unsigned);
+#pragma optimize("y", on)
+char *func_0001CE80(char *input,int param) {
+ int func_00116A90(...),func_0009C7A0(...),func_001313C0(...),func_0011E840(...),func_0011B4F0(...),func_0011E7E0(...),func_00117100(...),func_0011E800(...),func_00117130(...),func_0011DD60(...),func_0011E830(...),func_0001D2D0(...),func_0011E3A0(...),func_0011E9E0(...),func_0001CC10(...);
+ void __cdecl func_0001C990(char*);
+ extern char D_001D2DDC,D_001D302C,D_001D3024,D_001D301C,D_001D3014,D_001D3008,D_001D2F4C,D_001D2F40,D_001D2F38,D_001D2F30,D_001D2F28;
+ extern float D_001D27B8;
+ Config1CE80 config;Zero1D160b zero;
+ char *obj=(char*)func_00116A90(0x120,1,1);
+ *(Base1D160*)obj=*(Base1D160*)input;
+ obj[0x12]=4;
+ memset(config.bytes,0,244);
+ int *state=(int*)(config.bytes+128);
+ state[4]=2;state[5]=2;state[14]=4;state[15]=5;
+ state[0]=0;state[1]=0;state[2]=0;state[3]=0;state[10]=3;state[11]=3;state[12]=3;state[13]=3;state[16]=0;state[22]=0;state[21]=0;state[23]=0;
+ char *src=*(char**)func_0009C7A0(obj,&D_001D2DDC,0),*dst=config.bytes;
+ char c;do{c=*src++;*dst++=c;}while(c);
+ state[25]=func_001313C0(*(int*)func_0009C7A0(obj,&D_001D302C,0));state[28]=10;
+ float *v=(float*)func_0009C7A0(obj,&D_001D3024,0);
+ if(v){ double value=*v; if(D_001D27B8!=value)state[28]&=~8;}
+ int *kind=(int*)func_0009C7A0(obj,&D_001D301C,0);
+ if(kind && *kind==0x40000000){
+ state[27]=0x58;
+ int resource=func_0011E840(&D_001D3014,config.bytes);
+ int name=*(int*)func_0009C7A0(obj,&D_001D3008,0);
+ if(func_0011B4F0(name,&D_001D2F4C)&&func_0011B4F0(name,&D_001D2F40)&&func_0011B4F0(name,&D_001D2F38)&&func_0011B4F0(name,&D_001D2F30)&&func_0011B4F0(name,&D_001D2F28)){
+ func_0011E7E0(resource);func_00117100();func_0011E800(resource);func_00117130();
+ }
+ *(int*)(obj+0x2c)=resource;
+ int inst=func_0011DD60(name,state[25],resource,*(int*)(resource+0x14c));
+ *(int*)(obj+0x110)=inst;func_0011E830(*(int*)(obj+0x2c),inst);
+ func_0001D2D0(obj);func_0011E3A0(*(int*)(obj+0x110),param);func_0001C990(obj);return obj;
+ }
+ state[27]=0x30;
+ int resource=func_0011E840(&D_001D3014,config.bytes);
+ *(int*)(obj+0x2c)=resource;func_0011E7E0(resource);func_00117100();func_0011E800(*(int*)(obj+0x2c));func_00117130();
+ memset(&zero,0,132);zero.x[0]=state[25];
+ int inst=func_0011E9E0(&zero);*(int*)(obj+0x110)=inst;func_0011E830(*(int*)(obj+0x2c),inst);func_0001CC10(obj);func_0001C990(obj);return obj;
+}
+#pragma optimize("", on)
 Obj1D160 *func_0001D160(Obj1D160 *param_1)
 {
   int func_00116A90(...);
