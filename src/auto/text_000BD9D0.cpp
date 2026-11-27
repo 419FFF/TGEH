@@ -28,13 +28,16 @@ int func_00121990(...);
 int __ftol2(...);
 void func_000BD9D0(void)
 {
-    extern float D_00314BB0, D_001E461C, D_001D29F4, D_001D27B0, D_001D27EC;
+    extern float D_001E461C, D_001D29F4, D_001D27B0, D_001D27EC;
+    extern float D_00314BB0;
     extern unsigned int D_00314BB4;
-    extern char D_00314BC0[], D_00314BC4[], D_00314BD8[], D_00314BB8[], D_00314C48[], D_0000FFFF[];
-    extern int D_00314C54, D_00314C4C, D_00314C50, D_00314CC4, D_00314BF0, D_00314C20, D_00307DF8;
+    extern Slot_BD9D0 D_00314BB8[];
+    extern char D_00314C48[], D_0000FFFF[];
+    extern float D_00314C50, D_00314CC4;
+    extern int D_00314C54, D_00314C4C, D_00314BF0, D_00314C20, D_00307DF8;
     extern char D_001D9668[], D_001D9658[], D_001D9648[], D_001D9634[], D_001D9620[], D_001D960C[];
-    int func_000BC9D0(...);
-    int func_000A1D10(...);
+    int func_000BC9D0(float);
+    int func_000A1D10(int, int, float, char *, float, float);
     int func_000F9C00(...);
     int func_001007B0(...);
     int func_000B6600(...);
@@ -42,25 +45,29 @@ void func_000BD9D0(void)
     int func_000BD440(...);
     void func_000BCBB0(void);
     int n;
-    char *p;
-    D_00314BB0 += D_001E461C;
+    int p;
+    float t;
+#define IDX (*(volatile int *)&D_00314C74)
+    t = D_00314BB0;
+    t += D_001E461C;
+    D_00314BB0 = t;
     switch (D_00314BB4) {
     case 0:
         if (D_00314BB0 > D_001D29F4) {
             D_00314BB4 = 1;
             D_00314BB0 = 0;
             func_000BC9D0(0);
-            *(int *)(D_00314BC0 + D_00314C74 * 0x30) = 2;
-            *(int *)(D_00314BC4 + D_00314C74 * 0x30) = 0;
-            func_000A1D10(*(int *)(D_00314BD8 + D_00314C74 * 0x30), 1, 0, D_0000FFFF, 0x41c00000, 0);
-            func_000A1D10(D_00314C54, 1, 0, D_0000FFFF, 0x41c00000, 0);
+            D_00314BB8[IDX].state = 2;
+            *(volatile int *)&D_00314BB8[IDX].f0c = 0;
+            func_000A1D10(D_00314BB8[IDX].f20, 1, 0, D_0000FFFF, 24.0f, 0);
+            func_000A1D10(D_00314C54, 1, 0, D_0000FFFF, 24.0f, 0);
             D_00314C4C = 1;
             D_00314C50 = 0;
             D_00314CC4 = 0;
         }
         break;
     case 1:
-        if (*(int *)(D_00314BC0 + D_00314C74 * 0x30) == 8) {
+        if (D_00314BB8[D_00314C74].state == 8) {
             D_00314C74 = D_00314C74 + 1;
             if (D_00314C74 == 1) func_000F9C00(D_00308158, D_001D9668);
             if (D_00314C74 == 2) func_000F9C00(D_00308158, D_001D9658);
@@ -71,7 +78,7 @@ void func_000BD9D0(void)
                     func_001007B0(0);
                     D_00314BB0 = 0;
                     D_00314C4C = 10;
-                    *(int *)D_00314BC0 = 10;
+                    D_00314BB8[0].state = 10;
                     D_00314BF0 = 10;
                     D_00314C20 = 10;
                     break;
@@ -98,11 +105,11 @@ void func_000BD9D0(void)
     }
     n = (int)*(float *)func_0009C7A0(D_00308158, &D_001D9578, 0);
     if (n < 3) {
-        p = D_00314BB8 + n * 0x30;
+        p = (int)&D_00314BB8[n];
         do {
             func_000BD6E0(p);
             p += 0x30;
-        } while (p < D_00314C48);
+        } while (p < (int)D_00314C48);
     }
     func_000BD440(D_00314C48);
     func_000BCBB0();
