@@ -2,6 +2,8 @@
 #include "common.h"
 static inline int slen_00127200(const char* s) { const char* t = s + 1; char c; do { c = *s++; } while (c != 0); return (int)(s - t); }
 #include "ghidra.h"
+#include "string.h"
+struct S36_00126EC0 { int v[9]; };
 static inline void clampb_00126750(unsigned char *p) { int v = *p; if (v <= 0) *p = 0; else if (v >= 255) *p = 255; else *p = (unsigned char)v; }
 
 void func_001266B0(int param_1)
