@@ -4,6 +4,7 @@
 #include <string.h>
 
 struct S127310 { int *p0; char *p4; int p8; int pc; int u10; int u14; short s18; short s1a; int u1c; int n20; short s24; unsigned char b26; };
+union PixelWord127D60 { unsigned value; unsigned char bytes[4]; };
 struct PixelFormat127D60 {
  unsigned flags, r, rs, g, gs, b, bs, a, as;
  __forceinline unsigned Bytes() const {
@@ -265,14 +266,15 @@ int _func_00127C50(unsigned int *p){unsigned int n,a,b;int sum;if(!(*p&0x10000))
 
 unsigned int _func_00127CA0(unsigned int *p){unsigned int flags=*p,a,b,n,prod;unsigned int tmp[9];int i; if(!(flags&0x10000)){prod=p[10]*p[9];p[0xb]=1;}else{a=p[9];b=p[10];n=p[0xb];prod=0;while(n){prod+=a*b;a>>=1;b>>=1;--n;}}memcpy(tmp,p,0x24);if(tmp[0]&0x20)i=8;else if(tmp[0]&0x40)i=4;else{unsigned int x=tmp[1]|tmp[3]|tmp[5]|tmp[6];if(x&0xffff0000)i=32;else i=((x&0xff00)?0:8)+8;}prod*=i;prod>>=3;if(flags&1)return prod>>3;if((signed char)flags<0)return prod>>1;return prod;}
 
+#pragma optimize("", on)
 void func_00127D60(unsigned *p,PixelFormat127D60 format) {
  unsigned func_00127C50(unsigned *);void *func_00116A90(unsigned,int,int);void func_00116FB0(void *);
  if(p[7]==*(volatile unsigned *)&format.a && p[1]==*(volatile unsigned *)&format.r && p[3]==*(volatile unsigned *)&format.g && p[5]==*(volatile unsigned *)&format.b && p[0]==*(volatile unsigned *)&format.flags)return;
- unsigned old[9];unsigned char *oldData=(unsigned char *)p[12];memcpy(old,p,36);
+ unsigned old[9];memcpy(old,p,36);unsigned char *oldData=(unsigned char *)p[12];
  unsigned count=func_00127C50(p),size,oldSize,bits;
  size=format.Bytes();
  oldSize=((PixelFormat127D60 *)old)->Bytes();
- unsigned char *dst=(unsigned char *)func_00116A90(size*count,1,1);p[12]=(unsigned)dst;
+ p[12]=(unsigned)func_00116A90(size*count,1,1);unsigned char *dst=(unsigned char *)p[12];
  if(count>0){unsigned char *src=oldData+1;unsigned pixel;
  do {
  if(oldSize==1)pixel=src[-1];
@@ -290,7 +292,6 @@ void func_00127D60(unsigned *p,PixelFormat127D60 format) {
  }
  memcpy(p,&format,36);func_00116FB0(oldData);
 }
-
 void _func_00127FF0(unsigned short *p)
 {
  int i;
