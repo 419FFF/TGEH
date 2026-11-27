@@ -245,14 +245,14 @@ void func_000CB500(void)
 
 #pragma optimize("y", on)
 void func_000CB540(void) {
- extern char D_00318E78,D_0031A978;extern unsigned D_001E4A30,D_001E4A34,D_001E4A38;extern int D_00318D10;
+ extern char D_00318E78,D_0031A978;extern unsigned D_001E4A30,D_001E4A34,D_001E4A38;extern volatile int D_00318D10;
  void func_00110060(int,void *);void func_0012F5B0(void *,void *,void *);void func_0012F7A0(void *,void *);void func_0012E5F0(void *,void *,void *);void func_0012ECA0(void *,float);void func_00068DA0(void *,void *,void *);void func_001105E0(int,void *,int);
  __declspec(align(16)) unsigned tmp[16],axis[4],v1[4],v2[4],mid[4],mat[16];
  unsigned *p=(unsigned *)&D_00318E78;
  do {
  unsigned *a=p-2;func_00110060(p[-14],a);
  unsigned *b=p+14;func_00110060(p[-11],b);
- unsigned z=D_001E4A38,y=D_001E4A34,x=D_001E4A30;((volatile unsigned *)p)[30]=0x40490fdb;p[-9]=x;p[-8]=y;p[-7]=z;
+ unsigned z=D_001E4A38,y=D_001E4A34,x=D_001E4A30;((volatile unsigned *)p)[30]=0x40490fdb;((volatile unsigned *)p)[-9]=x;((volatile unsigned *)p)[-8]=y;((volatile unsigned *)p)[-7]=z;
  func_00110060(*(int *)(D_00318D10+0x2c),mat);func_0012F5B0(axis,p-9,mat);
  unsigned *s=(unsigned *)p[-14];v1[0]=s[0];v1[1]=s[1];v1[2]=s[2];
  s=(unsigned *)p[-11];v2[0]=s[0];v2[1]=s[1];v2[2]=s[2];
