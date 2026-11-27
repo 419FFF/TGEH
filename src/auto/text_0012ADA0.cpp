@@ -1,6 +1,7 @@
 /* 15 functions from 0x0012ADA0 to 0x0012BD3A, found by Ghidra. */
 #include "common.h"
 #include "ghidra.h"
+struct AnimData12AE40 { char bits, flags; short pad2; int pad4; float *scale; short *rotation; void *size; void *position; void *rotationIndex; void *sizeIndex; void *positionIndex; };
 
 struct Chan12BB70 {
   char p0[2];
@@ -20,7 +21,101 @@ struct Chan12BB70 {
 
 void _func_0012AE40(int, int, void *);
 void _func_0012FA20(int, void *, int, void *, int);
-#pragma optimize("y", off)
+#pragma optimize("y", on)
+void func_0012AE40(char *param_1, int param_2, float *param_3)
+{
+  void func_0012FE20(float *,float,float,float);
+  extern float D_001DF720;
+  void func_0012ECA0(float *,float);
+  ushort *puVar1;
+  uint uVar2;
+  int iVar3;
+  int iVar4;
+  uint uVar5;
+  float *pfVar6;
+  float *pfVar7;
+  volatile uint local_4;
+  
+  uVar5 = 0;
+  uVar2 = 0;
+  
+  local_4 = 0;
+  if (*param_1 == '\b') {
+    if (*(int *)(param_1 + 0x18) != 0) {
+      uVar2 = (uint)*(byte *)(*(int *)(param_1 + 0x18) + param_2);
+    }
+    if (*(int *)(param_1 + 0x1c) != 0) {
+      uVar5 = (uint)*(byte *)(*(int *)(param_1 + 0x1c) + param_2);
+    }
+    if (*(int *)(param_1 + 0x20) != 0) {
+      local_4 = (uint)*(byte *)(*(int *)(param_1 + 0x20) + param_2);
+    }
+  }
+  else {
+    if (iVar4 != 0) {
+      uVar2 = (uint)*(ushort *)(*(int *)(param_1 + 0x18) + param_2 * 2);
+    }
+    if (*(int *)(param_1 + 0x1c) != 0) {
+      uVar5 = (uint)*(ushort *)(*(int *)(param_1 + 0x1c) + param_2 * 2);
+    }
+    if (*(int *)(param_1 + 0x20) != 0) {
+      local_4 = (uint)*(ushort *)(*(int *)(param_1 + 0x20) + param_2 * 2);
+    }
+  }
+  *(int *)&param_3[3] = 0;
+  *(int *)&param_3[7] = 0;
+  *(int *)&param_3[0xb] = 0;
+  *(int *)&param_3[0xf] = 0x3f800000;
+  pfVar7 = *(float **)(param_1 + 8);
+  iVar4 = *(int *)(param_1 + 0xc);
+  if (param_1[1] & 1U) {
+    iVar3 = uVar2 * 0x12;
+    *param_3 = (double)(int)*(short *)(iVar3 + iVar4) * *pfVar7++;
+    param_3[1] = (double)(int)*(short *)(iVar3 + 2 + *(int *)(param_1 + 0xc)) * *pfVar7++;
+    param_3[2] = (double)(int)*(short *)(iVar3 + 4 + *(int *)(param_1 + 0xc)) * *pfVar7++;
+    param_3[4] = (double)(int)*(short *)(iVar3 + 6 + *(int *)(param_1 + 0xc)) * *pfVar7++;
+    param_3[5] = (double)(int)*(short *)(iVar3 + 8 + *(int *)(param_1 + 0xc)) * *pfVar7++;
+    param_3[6] = (double)(int)*(short *)(iVar3 + 10 + *(int *)(param_1 + 0xc)) * *pfVar7++;
+    param_3[8] = (double)(int)*(short *)(iVar3 + 0xc + *(int *)(param_1 + 0xc)) * *pfVar7++;
+    param_3[9] = (double)(int)*(short *)(iVar3 + 0xe + *(int *)(param_1 + 0xc)) * *pfVar7++;
+    param_3[10] = (double)(int)*(short *)(iVar3 + 0x10 + *(int *)(param_1 + 0xc)) * *pfVar7;
+    } else {
+    puVar1 = (ushort *)(iVar4 + uVar2 * 6);
+    func_0012FE20(param_3,(double)*puVar1 * D_001DF720,(double)puVar1[1] * D_001DF720,
+                   (double)*(ushort *)(iVar4 + 4 + uVar2 * 6) * D_001DF720);
+    if ((param_1[1] & 2U) != 0) {
+      iVar4 = uVar5 * 0xc;
+      func_0012ECA0(param_3,*(float *)(*(int *)(param_1 + 0x10) + iVar4));
+      func_0012ECA0(param_3 + 4,*(float *)(*(int *)(param_1 + 0x10) + 4 + iVar4));
+      func_0012ECA0(param_3 + 8,*(float *)(*(int *)(param_1 + 0x10) + 8 + iVar4));
+      goto LAB_00002315;
+    }
+    iVar4 = uVar5 * 6;
+    func_0012ECA0(param_3,(double)(int)*(short *)(*(int *)(param_1 + 0x10) + iVar4) * *pfVar7++);
+    func_0012ECA0(param_3 + 4,
+                   (double)(int)*(short *)(*(int *)(param_1 + 0x10) + 2 + iVar4) * *pfVar7++);
+    pfVar6 = pfVar7;
+    func_0012ECA0(param_3 + 8,
+                   (double)(int)*(short *)(*(int *)(param_1 + 0x10) + 4 + iVar4) * *pfVar6);
+      pfVar7 = pfVar6 + 1;
+  }
+  pfVar7 = pfVar7;
+LAB_00002315:
+  if ((param_1[1] & 4U) != 0) {
+    iVar4 = local_4 * 0xc;
+    param_3[0xc] = *(float *)(iVar4 + *(int *)(param_1 + 0x14));
+    param_3[0xd] = *(float *)(iVar4 + 4 + *(int *)(param_1 + 0x14));
+    param_3[0xe] = *(float *)(iVar4 + 8 + *(int *)(param_1 + 0x14));
+    return;
+  }
+  iVar4 = local_4 * 6;
+  param_3[0xc] = (double)(int)*(short *)(iVar4 + *(int *)(param_1 + 0x14)) * *pfVar7++;
+  param_3[0xd] = (double)(int)*(short *)(iVar4 + 2 + *(int *)(param_1 + 0x14)) * *pfVar7;
+  param_3[0xe] = (double)(int)*(short *)(iVar4 + 4 + *(int *)(param_1 + 0x14)) * pfVar7[1];
+  return;
+}
+#pragma optimize("", on)
+
 void _func_0012B140(int param_1, int *param_2, int param_3)
 {
     volatile char local_110[0x40];
