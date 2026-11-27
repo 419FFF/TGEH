@@ -14,58 +14,207 @@ extern "C" int (__stdcall * __imp__NtClose)(void*);
 extern "C" int (__stdcall * __imp__NtOpenFile)(void*, unsigned int, void*, void*, unsigned int, void*);
 extern "C" int (__stdcall * __imp__NtSetInformationFile)(void*, void*, void*, unsigned int, unsigned int);
 extern int _D_001E27B4;
+#pragma optimize("s", on)
+int __stdcall func_001473F4(int h, unsigned short *name, unsigned short *out, int outlen)
+{
+  extern int _D_001E2804;
+  int func_0013F47C(...);
+  int __stdcall func_0010BAA0(int, void *, int, int *, int);
+  unsigned short *func_00148BC5(...);
+  int func_0013EB10(...);
+  int func_0013F492(...);
+  int __stdcall func_0010BCE7(int, int, int, int);
+  int cur;
+  int gotv = 0;
+  int bytes;
+  volatile int ok = 0;
+  int namelen;
+  volatile unsigned short z;
+  unsigned short buf[0x8c];
+  unsigned short *p = buf;
+  int skipping = 0;
+  unsigned short *q, *e;
+  unsigned int total, off;
+  int n;
+
+  cur = 0x8c;
+  namelen = func_0013F47C(name);
+  z = 0;
+  for (;;) {
+    if (!gotv) {
+      if (!func_0010BAA0(h, p, cur * 2, &bytes, 0) || !bytes)
+        return ok;
+    }
+    gotv = 0;
+    total = bytes + ((p - buf) * 2);
+    if (skipping) {
+      q = func_00148BC5(buf, &_D_001E2804);
+      p = buf;
+      cur = 0x8c;
+      if (q) {
+        off = ((char *)q - (char *)buf) + 4;
+        if (off < total) {
+          total -= off;
+          func_0013EB10(p, (char *)buf + off, total);
+          p = (unsigned short *)((char *)buf + total);
+          cur = 0x8c - (total >> 1);
+        }
+        skipping = 0;
+      }
+    } else {
+      q = func_00148BC5(buf, name);
+      if (!q || *(unsigned short *)((char *)q + namelen * 2) != 0x3d) {
+        skipping = 1;
+        gotv = 1;
+      } else {
+        cur = (int)((char *)q + namelen * 2 + 2);
+        e = func_00148BC5((unsigned short *)cur, &_D_001E2804);
+        if (e) {
+          n = (e - (unsigned short *)cur);
+          if (n > outlen - 1)
+            n = outlen - 1;
+          func_0013F492(out, cur, n);
+          out[n] = 0;
+          off = ((char *)e - (char *)buf) + 4;
+          if (off < total)
+            func_0010BCE7(h, off - total, 0, 1);
+          ok = 1;
+          return ok;
+        }
+        skipping = 1;
+        p = buf;
+        cur = 0x8c;
+      }
+    }
+  }
+}
+#pragma optimize("", on)
 int __stdcall func_00147577(int a,int b) { return b ? 0x491 : 0; }
 
 void __stdcall func_001475F7(int a) { int x=0; }
 
 #pragma optimize("s", on)
-int __stdcall func_00147986(unsigned char *src, int len, unsigned short *dst, int max)
+int __stdcall func_00147986(unsigned char *src, int len, int used, int max)
 {
   extern signed char D_002E99D0[];
   extern int D_002E99B8[];
-  extern unsigned int D_002E9AD4, D_002E9AD8;
+  extern unsigned int D_002E9AD4;
+  extern unsigned int D_002E9AD8;
   extern unsigned short D_002E9AD0;
-  extern int D_002E9ADC, D_002E9AE0, D_002E9AE4, D_002E9AE8, D_002E9AEC;
+  extern int D_002E9ADC;
+  extern int D_002E9AE0;
+  extern int D_002E9AE4;
+  extern int D_002E9AE8;
+  extern int D_002E9AEC;
   extern int __stdcall func_0010AAA3(int);
+  unsigned short *dst = (unsigned short *) used;
   int count = 0;
   unsigned char *p = src;
-  int used;
-  if (len == -1) {
+  if (len == (-1))
+  {
+    unsigned char *s1 = src + 1;
     unsigned char *q = src;
-    while (*q++) ;
-    len = (q - (src + 1)) + 1;
+    unsigned char b;
+    do
+    {
+      b = *q;
+      q++;
+    }
+    while (b != 0);
+    len = (q - s1) + 1;
   }
-  if (len > 0) {
-    used = 0;
-    do {
+  if (len > 0)
+  {
+    used = (0, 0);
+    do
+    {
       unsigned int c = *p;
-      int extra = (unsigned short)(short)D_002E99D0[c];
+      int extra = (unsigned short) ((short) D_002E99D0[c]);
       unsigned int v = 0;
-      if (p + extra - src > len) break;
-      switch (extra) {
-      case 5: v = (v + *p) << 6; p++; used++;
-      case 4: v = (v + *p) << 6; p++; used++;
-      case 3: v = (v + *p) << 6; p++; used++;
-      case 2: v = (v + *p) << 6; p++; used++;
-      case 1: v = (v + *p) << 6; p++; used++;
-      case 0: v = v + *p; p++; used++;
+      if (((p + extra) - src) > len)
+      {
+        break;
       }
+      switch (extra)
+      {
+        case 5:
+          p++;
+          used++;
+          v = ((((((((((c & 0xFFFF) & 0xFFFF) & 0xFFFF) & 0xFFFF) & 0xFFFF) & 0xFFFF) & 0xFFFF) & 0xFFFF) & 0xFFFF) & 0xFFFF) & 0xFFFF;
+          v <<= 6;
+
+        case 4:
+          v += *p;
+          p++;
+          used++;
+          v <<= 6;
+
+        case 3:
+          v += *p;
+          p++;
+          used++;
+          v <<= 6;
+
+        case 2:
+          v += *p;
+          p++;
+          used++;
+          v <<= 6;
+
+        case 1:
+          v += *p;
+          p++;
+          used++;
+          v <<= 6;
+
+        case 0:
+          v += *p;
+          p++;
+          used++;
+
+      }
+
       v -= D_002E99B8[extra];
-      if (v <= D_002E9AD4) {
+      if (v <= D_002E9AD4)
+      {
         count++;
-        if (count <= max) { *dst = (unsigned short)v; dst++; }
-      } else if (v > D_002E9AD8) {
-        count++;
-        if (count <= max) { *dst = D_002E9AD0; dst++; }
-      } else {
-        v -= D_002E9AE0;
-        if (count + 1 <= max) { *dst = (unsigned short)((v >> D_002E9ADC) + D_002E9AE8); dst++; }
-        count += 2;
-        if (count <= max) { *dst = (unsigned short)((D_002E9AE4 & v) + D_002E9AEC); dst++; }
+        if (count <= max)
+        {
+          *dst = (unsigned short) v;
+          dst++;
+        }
       }
-    } while (used < len);
+      else
+        if (v > D_002E9AD8)
+      {
+        count++;
+        if (count <= max)
+        {
+          *dst = D_002E9AD0;
+          dst++;
+        }
+      }
+      else
+      {
+        v -= D_002E9AE0;
+        count++;
+        if (count <= max)
+        {
+          *dst = (unsigned short) ((v >> D_002E9ADC) + D_002E9AE8);
+          dst++;
+        }
+        count++;
+        if (count <= max)
+        {
+          *dst = (unsigned short) ((D_002E9AE4 & v) + D_002E9AEC);
+          dst++;
+        }
+      }
+    }
+    while (used < len);
   }
-  if (max != 0 && max < count) {
+  if ((max != 0) && (max < count))
+  {
     func_0010AAA3(0x7a);
     count = 0;
   }
@@ -173,27 +322,6 @@ void RtlNtStatusToDosError();
 #endif
 extern char D_001E2854[];
 extern char D_001E274C[];
-void __imp__RtlNtStatusToDosError();
+extern "C" int (__stdcall * __imp__RtlNtStatusToDosError)(int);
 #include <string.h>
 #include <stddef.h>
-
-// External Data Declarations
-extern char D_001E2854[];
-extern char D_001E274C[];
-
-// External Function Prototypes (from assembly calls)
-void _func_0014731A_12(void);
-void _func_00147577_8(void);
-void _func_0010F188_8(void);
-extern void __imp__RtlNtStatusToDosError(void);
-extern char D_001E2854[];
-extern char D_001E274C[];
-extern char D_001E2854[];
-extern char D_001E274C[];
-extern char D_001E2854[];
-extern char D_001E274C[];
-
-// Function declarations for calls found in assembly
-void func_0014731A_12();
-void func_00147577_8();
-void __imp__RtlNtStatusToDosError();
