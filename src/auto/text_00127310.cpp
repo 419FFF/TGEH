@@ -16,6 +16,7 @@ struct PixelFormat127D60 {
   return bits>>3;
  }
 };
+static __forceinline unsigned PixelBytes127D60(PixelFormat127D60 format) { return format.Bytes(); }
 struct E38 { char pad[0x18]; int f18; char pad2[0x1c]; };
 struct E130 { char pad[0x18]; int n; E38 *a; char pad2[0x110]; };
 int _func_00116FB0(...);
@@ -275,14 +276,14 @@ void func_00127D60(unsigned *p,PixelFormat127D60 format) {
  size=format.Bytes();
  oldSize=((PixelFormat127D60 *)old)->Bytes();
  p[12]=(unsigned)func_00116A90(size*count,1,1);unsigned char *dst=(unsigned char *)p[12];
- if(count>0){unsigned char *src=oldData+1;unsigned pixel;
+ if(count>0){unsigned char *src=oldData;unsigned pixel;
  do {
- if(oldSize==1)pixel=src[-1];
- else if(oldSize==2){pixel=src[-1]|((unsigned)src[0]<<8);}
- else if(oldSize==4)pixel=(((unsigned)src[2]<<8|src[1])<<8|src[0])<<8|src[-1];
+ if(oldSize==1)pixel=src[0];
+ else if(oldSize==2){pixel=src[0]|((unsigned)src[1]<<8);}
+ else if(oldSize==4)pixel=(((unsigned)src[3]<<8|src[2])<<8|src[1])<<8|src[0];
  pixel=(((((pixel&old[1])>>*(unsigned short *)&old[2])<<*((unsigned short *)&old[2]+1))>>*((unsigned short *)&format.rs+1))<<*(unsigned short *)&format.rs)
- |(((((pixel&old[5])>>*(unsigned short *)&old[6])<<*((unsigned short *)&old[6]+1))>>*((unsigned short *)&format.bs+1))<<*(unsigned short *)&format.bs)
  |(((((pixel&old[3])>>*(unsigned short *)&old[4])<<*((unsigned short *)&old[4]+1))>>*((unsigned short *)&format.gs+1))<<*(unsigned short *)&format.gs)
+ |(((((pixel&old[5])>>*(unsigned short *)&old[6])<<*((unsigned short *)&old[6]+1))>>*((unsigned short *)&format.bs+1))<<*(unsigned short *)&format.bs)
  |(((((pixel&old[7])>>*(unsigned short *)&old[8])<<*((unsigned short *)&old[8]+1))>>*((unsigned short *)&format.as+1))<<*(unsigned short *)&format.as);
  if(size==1)dst[0]=(unsigned char)pixel;
  else if(size==2){dst[1]=(unsigned char)(pixel>>8);dst[0]=(unsigned char)pixel;}
