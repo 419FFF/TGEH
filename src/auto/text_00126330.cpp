@@ -4,6 +4,7 @@ static inline int slen_00127200(const char* s) { const char* t = s + 1; char c; 
 #include "ghidra.h"
 #include "string.h"
 struct S36_00126EC0 { int v[9]; };
+struct Hdr_00126EC0 { int idlen, f1, f2, f3, f4, depth, f6, f7, w, h, bpp, f11; };
 static inline void clampb_00126750(unsigned char *p) { int v = *p; if (v <= 0) *p = 0; else if (v >= 255) *p = 255; else *p = (unsigned char)v; }
 
 void func_001266B0(int param_1)
@@ -139,39 +140,90 @@ extern float D_001D66D8;
 extern double D_001DF0B0;
 unsigned char func_00126960(float, float, float);
 unsigned char __ftol2(float);
-void func_00126A40(unsigned char a, unsigned char c, unsigned char b, unsigned char *p4, unsigned char *p5, unsigned char *p6) {
-    unsigned char r;
-    float f1, f2, f3;
-    if (a == 0)
-        a = 0;
-    else if (a >= 0xef)
-        a = 0xef;
-    if (c == 0)
-        c = 0;
-    else if (c >= 0xf0)
-        c = 0xf0;
-    if (b == 0)
-        b = 0;
-    else if (b >= 0xf0)
-        b = 0xf0;
-    f1 = (float)(a * 0x168) * D_001D6014;
-    f2 = (float)c * D_001D6014;
-    f3 = (float)b * D_001D6014;
-    if (f2 != D_001D27B8) {
-        if (b < 0x79)
-            f2 = (f2 + D_001D27B0) * f3;
-        else
-            f2 = (f2 + f3) - f3 * f2;
-        f3 = (f3 + f3) - f2;
-        *p4 = func_00126960(f3, f2, f1 + D_001D4524);
-        *p5 = func_00126960(f3, f2, f1);
-        *p6 = func_00126960(f3, f2, f1 - D_001D4524);
-        return;
+void func_00126A40(unsigned char a,unsigned char c,unsigned char b,unsigned char *p4,unsigned char *p5,unsigned char *p6)
+{
+ unsigned char r;
+ float hue,saturation;
+ double light;
+ if(a>0){int v=a;if(v<239)a=(unsigned char)v;else a=239;}else a=0;
+ if(c>0){int v=c;if(v<240)c=(unsigned char)v;else c=240;}else c=0;
+ if(b>0){int v=b;if(v<240)b=(unsigned char)v;else b=240;}else b=0;
+ hue=(double)(int)(a*360)*D_001D6014;
+ saturation=(double)(int)c*D_001D6014;
+ light=(double)(int)b*D_001D6014;
+ if((double)saturation!=D_001D27B8){
+  if(b<=120)saturation=((double)saturation+D_001D27B0)*light;
+  else saturation=((double)saturation+light)-light*saturation;
+  light=(light+light)-saturation;
+  float low=light;
+  *p4=func_00126960(low,saturation,(float)((double)hue+D_001D4524));
+  *p5=func_00126960(low,saturation,hue);
+  *p6=func_00126960(low,saturation,(float)((double)hue-D_001D4524));
+  return;
+ }
+ r=(unsigned char)(int)(light*D_001D66D8+D_001DF0B0);
+ *p6=r;*p5=r;*p4=r;
+}
+
+void func_00126B90(unsigned char *dst,int info,unsigned char *src,int stride)
+{
+ extern float D_00331958,D_001E7D6C,D_00331550[],D_001D27D0;
+ unsigned int bytes=*(unsigned int*)(info+0x28)>>3;
+ if(*(int*)(info+4))src+=(*(unsigned int*)(info+0x14)>>3)**(int*)(info+0x10);
+ int rowStep;
+ if(*(unsigned int*)(info+0x2c)&0x20)rowStep=0;
+ else{
+  rowStep=-2**(int*)(info+0x20)*stride;
+  dst+=(*(int*)(info+0x24)-1)**(int*)(info+0x20)*stride;
+ }
+ if(*(unsigned int*)(info+0x2c)&0x10){
+  dst+=(*(int*)(info+0x20)-1)*stride;stride=-stride;
+ }
+ bool compressed;
+ int type=*(int*)(info+8);
+ compressed=type==9 || type==10 || type==11;
+ unsigned int width=*(unsigned int*)(info+0x20);
+ unsigned int run=width,advance=bytes;
+ for(unsigned int y=0;y<*(unsigned int*)(info+0x24);++y){
+  unsigned int x=0;
+  if(width)do{
+   if(compressed){
+    unsigned char packet=*src;
+    advance=packet&0x80?0:bytes;
+    run=(packet&0x7f)+1;
+    if(x+run>width)return;
+    ++src;
+   }
+   unsigned int count=run;
+   if(count)do{
+    dst[0]=src[0];dst[1]=src[1];dst[2]=src[2];
+    if(bytes!=3)dst[3]=src[3];
+    if((double)D_00331958!=D_001D27B8){
+     unsigned char r=dst[2],g=dst[1],b=dst[0];
+     unsigned char h,s,l;
+     if(func_00126750(r,g,b,&h,&s,&l)){
+      double saturation=(double)(unsigned int)s*D_001D6014+D_00331958;
+      if(saturation>D_001D27B0)saturation=D_001D27B0;
+      else if(saturation<D_001D27B8)saturation=D_001D27B8;
+      s=(unsigned char)(int)(saturation*D_001D27D0);
+      func_00126A40(h,s,l,&r,&g,&b);
+      dst[2]=r;dst[1]=g;dst[0]=b;
+     }
     }
-    r = __ftol2(f3 * D_001D66D8 + (float)D_001DF0B0);
-    *p6 = r;
-    *p5 = r;
-    *p4 = r;
+    if((double)D_001E7D6C!=D_001D27B0){
+     dst[2]=(unsigned char)(int)((double)D_00331550[dst[2]]*D_001D66D8);
+     dst[1]=(unsigned char)(int)((double)D_00331550[dst[1]]*D_001D66D8);
+     dst[0]=(unsigned char)(int)((double)D_00331550[dst[0]]*D_001D66D8);
+    }
+    src+=advance;dst+=stride;
+   }while(--count);
+   if(!advance)src+=bytes;
+   x+=run;width=*(unsigned int*)(info+0x20);
+  }while(x<width);
+  dst+=rowStep;
+ }
+ *(int*)&D_00331958=0;
+ *(int*)&D_001E7D6C=0x3f800000;
 }
 
 int __cdecl _func_00126E80(int param_1)
@@ -183,6 +235,99 @@ int __cdecl _func_00126E80(int param_1)
         value = value * 0x100 + *(unsigned char *)(_D_00331950 + i);
     _D_00331950 += param_1;
     return value;
+}
+
+int _func_00126EC0(int param_1)
+{
+  extern int D_00331950;
+  extern char D_0000FF00;
+  int func_00117100(...);
+  int func_00132140(...);
+  int func_00117130(...);
+  int func_00126E80(...);
+  S36_00126EC0 *func_00128050(...);
+  int func_00127B70(int, int, S36_00126EC0);
+  int func_00126B90(...);
+  int func_00116A90(...);
+  int func_00116FB0(...);
+  int iVar2;
+  int obj;
+  unsigned int uVar3;
+  unsigned char *src;
+  unsigned char *dst;
+  unsigned int uVar9;
+  int flag;
+  int depth, w, hgt, bpp;
+  int h[12];
+  S36_00126EC0 b4;
+  char buf0[36], buf1[36], buf2[36], buf3[36];
+
+  func_00117100();
+  iVar2 = func_00132140(param_1, 0);
+  D_00331950 = iVar2;
+  func_00117130();
+  if (iVar2 == 0) {
+    return 0;
+  }
+  h[0] = func_00126E80(1);
+  h[1] = func_00126E80(1);
+  h[2] = func_00126E80(1);
+  h[3] = func_00126E80(2);
+  uVar3 = h[4] = func_00126E80(2);
+  depth = h[5] = func_00126E80(1);
+  h[6] = func_00126E80(2);
+  h[7] = func_00126E80(2);
+  w = h[8] = func_00126E80(2);
+  hgt = h[9] = func_00126E80(2);
+  bpp = h[10] = func_00126E80(1);
+  h[11] = func_00126E80(1);
+  switch (bpp) {
+  case 8:
+    if (depth != 0x18) {
+      b4 = *func_00128050(buf1, 0xff000000, 0xff0000, &D_0000FF00, 0xff, 0x20);
+    } else {
+      b4 = *func_00128050(buf2, 0, 0xff0000, &D_0000FF00, 0xff, 0x20);
+    }
+    break;
+  case 0x18:
+    flag = 4;
+    b4 = *func_00128050(buf3, 0, 0xff0000, &D_0000FF00, 0xff, 0);
+    break;
+  case 0x20:
+    flag = 4;
+    b4 = *func_00128050(buf0, 0xff000000, 0xff0000, &D_0000FF00, 0xff, 0);
+    break;
+  }
+  obj = func_00127B70(w, hgt, b4);
+  if (bpp == 0x18 || bpp == 0x20) {
+    func_00126B90(*(int *)(obj + 0x30), h[0] + 0x12 + iVar2, h, flag);
+  } else {
+    src = (unsigned char *)(h[0] + 0x12 + iVar2);
+    *(unsigned int *)(obj + 0x34) = uVar3;
+    if (depth == 0x20) {
+      *(int *)(obj + 0x38) = func_00116A90(0x400, 1, 1);
+      for (uVar9 = 0; uVar9 < uVar3; uVar9++) {
+        *(unsigned char *)(*(int *)(obj + 0x38) + uVar9 * 4) = src[0];
+        *(unsigned char *)(*(int *)(obj + 0x38) + 1 + uVar9 * 4) = src[1];
+        *(unsigned char *)(*(int *)(obj + 0x38) + 2 + uVar9 * 4) = src[2];
+        *(unsigned char *)(*(int *)(obj + 0x38) + 3 + uVar9 * 4) = src[3];
+        src += 4;
+      }
+    } else {
+      *(int *)(obj + 0x38) = func_00116A90(0x400, 1, 1);
+      for (uVar9 = 0; uVar9 < uVar3; uVar9++) {
+        *(unsigned char *)(*(int *)(obj + 0x38) + uVar9 * 4) = src[0];
+        *(unsigned char *)(*(int *)(obj + 0x38) + 1 + uVar9 * 4) = src[1];
+        *(unsigned char *)(*(int *)(obj + 0x38) + 2 + uVar9 * 4) = src[2];
+        src += 3;
+      }
+    }
+    dst = (unsigned char *)func_00116A90(hgt * w, 1, 1);
+    *(unsigned char **)(obj + 0x30) = dst;
+    memcpy(dst, src, hgt * w);
+  }
+  func_00116FB0(iVar2);
+  return obj;
 }
 
 void func_00127170(void) {
