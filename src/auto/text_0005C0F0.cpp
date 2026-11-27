@@ -3,6 +3,7 @@
 #include "ghidra.h"
 struct CameraVec { float x,y,z,w; };
 struct CameraPoint { float x,y,z; };
+struct CameraBits { unsigned int x,y,z; };
 
 void func_0005C500(int *p)
 {
