@@ -1,6 +1,7 @@
 /* 16 functions from 0x000AEFA0 to 0x000AFE83, found by Ghidra. */
 #include "common.h"
 #include "ghidra.h"
+#include <xmmintrin.h>
 
 struct S14 { int a, b, c; short d; };
 int func_00133F30(int *);
