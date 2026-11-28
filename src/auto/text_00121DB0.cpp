@@ -2,7 +2,7 @@
 #include "common.h"
 #include "ghidra.h"
 
-struct V3_ { float x, y, z; };
+struct V3_ { float x; int y, z; };
 
 unsigned short func_00121DB0(short*out,float bias,float scale,int *v){extern float D_001E7D70,D_001E7D74,D_001E7D78,D_001DF668,D_001DF664;extern int func_001313C0(...);float x=*(float*)((char*)v+0x30),y=*(float*)((char*)v+0x34),z=*(float*)((char*)v+0x38);unsigned i=0;do{long double q=(long double)x**(float*)((char*)&D_001E7D78+i)+(long double)y**(float*)((char*)&D_001E7D74+i)+(long double)z**(float*)((char*)&D_001E7D70+i);q=(q-bias)*scale;if(q>D_001DF668)return 0;if(q<D_001DF664)q=-32767.0;out[i/12]=(short)func_001313C0((float)q);i+=12;}while(i<0x138);return 1;}
 
@@ -10,7 +10,7 @@ unsigned short func_00121E60(short*out,float*a,float*b,float scale){extern float
 
 void func_00121F20(int p,int *list){extern int D_0032B710[],D_0032F750;int n=0;D_0032B710[0]=(int)list;int count=1;for(int j=0;j<count;j++){int d=D_0032B710[j];int k=0;for(;k<0x1a;k+=2){short a=*(short*)(p+k),b=*(short*)(d+k);if(a>b)break;if(*(short*)(p+k+2)>*(short*)(d+k+2)){k++;break;}}if(k==0x1a){if(*(char*)(d+0x34))D_0032B710[n++]=d;else {D_0032B710[count++]=*(int*)(d+0x38);D_0032B710[count++]=*(int*)(d+0x38)+0x40;}}}D_0032F750=n;}
 
-unsigned char _func_00121FC0(int param_1, int param_2, int *param_3, float *param_4, int param_5, float *param_6, int param_7)
+unsigned char _func_00121FC0(int param_1, int param_2, int *param_3, V3_ *param_4, int param_5, int *param_6, int param_7)
 {
     int _func_0012F810(...); extern unsigned int D_0032F750; char _func_00121E60(...); int _func_00121F20(...);
     extern int D_0032B710[]; int _func_0012B1F0(...); extern char D_0032F720, D_0032F730; char _func_00110A80(...); int _func_00121AD0(...);
@@ -21,22 +21,20 @@ unsigned char _func_00121FC0(int param_1, int param_2, int *param_3, float *para
     unsigned int bVar8;
     unsigned short *puVar17, uVar9, uVar10, uVar11;
     char cVar15;
-    struct { unsigned char b[16]; unsigned char m[16]; unsigned char v[16]; unsigned char a134[52]; unsigned short a100[128]; } L;
+    struct { V3_ b; float pb_[1]; unsigned char m[16]; V3_ v; float pv_[1]; unsigned char a134[52]; unsigned short a100[128]; } L;
     unsigned char *pb;
 
     local_185 = 0;
     _func_0012F810(L.m, param_1, param_7);
-    _func_0012F810(L.b, param_2, param_7);
+    _func_0012F810(&L.b, param_2, param_7);
     D_0032F750 = 0;
-    cVar15 = _func_00121E60(L.a134, L.m, L.b, param_3[4]);
+    cVar15 = _func_00121E60(L.a134, L.m, &L.b, param_3[4]);
     if (cVar15 != 0) {
         _func_00121F20(L.a134, param_3[1]);
     }
     if (D_0032F750 != 0) {
         iVar12 = param_3[3];
-        *(int *)param_4 = *(int *)L.b;
-        ((int *)param_4)[1] = ((int *)L.b)[1];
-        ((int *)param_4)[2] = ((int *)L.b)[2];
+        *param_4 = L.b;
         for (local_178 = 0; local_178 < D_0032F750; local_178++) {
             iVar13 = D_0032B710[local_178];
             pb = *(unsigned char **)(iVar13 + 0x38);
@@ -53,31 +51,29 @@ unsigned char _func_00121FC0(int param_1, int param_2, int *param_3, float *para
                 uVar10 = *puVar17++;
                 uVar11 = *puVar17++;
                 unsigned short uVarF = *puVar17++;
-                if (D_0032F720 == 0) {
-                    ((int *)L.v)[0] = ((int *)param_4)[0];
-                    ((int *)L.v)[1] = ((int *)param_4)[1];
-                    ((int *)L.v)[2] = ((int *)param_4)[2];
-                    int *a = (int *)(iVar12 + uVar11 * 0xc);
-                    int *b = (int *)(iVar12 + uVar10 * 0xc);
-                    int *c = (int *)(iVar12 + uVar9 * 0xc);
-                    if (_func_00110A80(L.m, L.v, c, b, a, param_4, param_5)) {
-                        if (param_6) {
-                            ((int *)param_6)[0] = c[0]; ((int *)param_6)[1] = c[1]; ((int *)param_6)[2] = c[2]; ((int *)param_6)[3] = 0x3f800000;
-                            ((int *)param_6)[4] = b[0]; ((int *)param_6)[5] = b[1]; ((int *)param_6)[6] = b[2]; ((int *)param_6)[7] = 0x3f800000;
-                            ((int *)param_6)[8] = a[0]; ((int *)param_6)[9] = a[1]; ((int *)param_6)[10] = a[2]; ((int *)param_6)[11] = 0x3f800000;
-                            ((int *)param_6)[15] = uVarF;
-                        }
-                        if (*(int *)(iVar13 + 0x3c) != 0) D_0032F74C = *(int *)(iVar13 + 0x3c) + local_17c;
-                        else D_0032F74C = 0;
-                        local_185 = 1;
-                    }
-                } else {
+                if (D_0032F720 != 0) {
                     if (D_0032F730 != 0) return 1;
                     int a = iVar12 + uVar11 * 0xc;
                     int b = iVar12 + uVar10 * 0xc;
                     int c = iVar12 + uVar9 * 0xc;
-                    if (_func_00110A80(L.m, L.b, c, b, a, 0, 0)) {
+                    if (_func_00110A80(L.m, &L.b, c, b, a, 0, 0)) {
                         _func_00121AD0(c, b, a, uVarF);
+                        local_185 = 1;
+                    }
+                } else {
+                    L.v = *param_4;
+                    int *a = (int *)(iVar12 + uVar11 * 0xc);
+                    int *b = (int *)(iVar12 + uVar10 * 0xc);
+                    int *c = (int *)(iVar12 + uVar9 * 0xc);
+                    if (_func_00110A80(L.m, &L.v, c, b, a, param_4, param_5)) {
+                        if (param_6) {
+                            param_6[0] = c[0]; param_6[1] = c[1]; param_6[2] = c[2]; param_6[3] = 0x3f800000;
+                            param_6[4] = b[0]; param_6[5] = b[1]; param_6[6] = b[2]; param_6[7] = 0x3f800000;
+                            param_6[8] = a[0]; param_6[9] = a[1]; param_6[10] = a[2]; param_6[11] = 0x3f800000;
+                            param_6[15] = uVarF;
+                        }
+                        if (*(int *)(iVar13 + 0x3c) != 0) D_0032F74C = *(int *)(iVar13 + 0x3c) + local_17c;
+                        else D_0032F74C = 0;
                         local_185 = 1;
                     }
                 }
