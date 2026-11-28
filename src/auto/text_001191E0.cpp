@@ -6,6 +6,71 @@ int _func_0013E9DB(int);
 float _func_0013E9E0(int);
 void _func_001191E0(int a, int *b) { if (*(int *)(a + 0xb0)) { *(float *)(*(int *)(a + 0xb0)+0x34) = _func_0013E9E0(b[0]); *(float *)(*(int *)(a + 0xb0)+0x38) = _func_0013E9E0(b[1]); *(float *)(*(int *)(a + 0xb0)+0x3c) = _func_0013E9E0(b[2]); *(float *)(*(int *)(a + 0xb0)+0x40) = _func_0013E9E0(b[3]); } }
 
+void func_00119750(int p,char **q) {
+int func_0011B4F0(...); char *func_0013E600(...);
+extern char D_001DF36C[],D_001DF4B0[]; extern char D_001DF4AC[];
+extern char D_001DF4A4[];
+extern char D_001DF49C[];
+extern char D_001DF494[];
+extern char D_001DF484[];
+extern char D_001DF474[];
+extern char D_001DF464[];
+extern char D_001DF458[];
+extern char D_001DF44C[];
+extern char D_001DF438[];
+extern char D_001DF42C[];
+extern char D_001DF418[];
+extern char D_001DF40C[];
+extern char D_001DF3FC[];
+extern char D_001DF3E8[];
+extern char D_001DF3D4[];
+extern char D_001DF3BC[];
+extern char D_001DF3A8[];
+extern char D_001DF38C[];
+extern char D_001DF37C[];
+extern char D_001DF370[];
+int value; char buffer[128];
+if(*(int*)(p+0xb0)){
+char *src=*q; int offset=(int)buffer-(int)src; char c;
+do { c=*src; *(char*)((int)src+offset)=c; ++src;}while(c);
+char *s=buffer; int i=0;
+do {
+while(*s==' ')++s;
+char *end=func_0013E600(s,D_001DF36C);
+if(end){while(*end==' '||*end==',')--end; ++end; *end=0;}
+if(!func_0011B4F0(s,D_001DF4B0)){
+value=0;
+if(!i){*(int*)(*(int*)(p+0xb0)+4)=0; goto first;}
+else goto second;
+} else {
+if(!func_0011B4F0(s,D_001DF4AC))value=1;
+else if(!func_0011B4F0(s,D_001DF4A4))value=4;
+else if(!func_0011B4F0(s,D_001DF49C))value=11;
+else if(!func_0011B4F0(s,D_001DF494))value=2;
+else if(!func_0011B4F0(s,D_001DF484))value=5;
+else if(!func_0011B4F0(s,D_001DF474))value=6;
+else if(!func_0011B4F0(s,D_001DF464))value=7;
+else if(!func_0011B4F0(s,D_001DF458))value=8;
+else if(!func_0011B4F0(s,D_001DF44C))value=9;
+else if(!func_0011B4F0(s,D_001DF438))value=10;
+else if(!func_0011B4F0(s,D_001DF42C))value=12;
+else if(!func_0011B4F0(s,D_001DF418))value=23;
+else if(!func_0011B4F0(s,D_001DF40C))value=14;
+else if(!func_0011B4F0(s,D_001DF3FC))value=15;
+else if(!func_0011B4F0(s,D_001DF3E8))value=16;
+else if(!func_0011B4F0(s,D_001DF3D4))value=18;
+else if(!func_0011B4F0(s,D_001DF3BC))value=19;
+else if(!func_0011B4F0(s,D_001DF3A8))value=20;
+else if(!func_0011B4F0(s,D_001DF38C))value=22;
+else if(!func_0011B4F0(s,D_001DF37C))value=24;
+else if(!func_0011B4F0(s,D_001DF370))value=25;
+if(!i){first: **(int**)(p+0xb0)=value;}else { second: *(int*)(*(int*)(p+0xb0)+4)=value; }
+}
+s=end;if(end)s=end+1;++i;
+}while(s);
+}
+}
+
 void _func_00119A80(int a, int *b)
 {
   int new_var;
@@ -35,6 +100,8 @@ void _func_00119A80(int a, int *b)
 }
 
 void _func_00119B00(int a, int *b) { if (*(int *)(a+0xb0)) { unsigned int i=0; float *p=(float *)(a+0x8c); do { if (!b[i*2]) return; p[-1]=_func_0013E9E0(b[i*2]); p[0]=_func_0013E9E0(b[i*2+1]); ++i; p+=2; } while(i<4); } }
+
+void func_00119B50(int param_1,int param_2){int func_0011B4F0(...),func_0013E9DB(...);extern undefined D_001DF508,D_001DF504,D_001DF4F8,D_001DF4E8,D_001DF4DC,D_001DF4D0,D_001DF4C4,D_001DF4B4;int iVar1;int iVar2=param_1;uint uVar3=0;if(*(int*)(param_1+0xb0)!=0){do{if(!func_0011B4F0(*(undefined4*)(param_2+uVar3*4),&D_001DF508))iVar2=0;else if(!func_0011B4F0(*(undefined4*)(param_2+uVar3*4),&D_001DF504))iVar2=1;else if(!func_0011B4F0(*(undefined4*)(param_2+uVar3*4),&D_001DF4F8))iVar2=2;else if(!func_0011B4F0(*(undefined4*)(param_2+uVar3*4),&D_001DF4E8))iVar2=3;else if(!func_0011B4F0(*(undefined4*)(param_2+uVar3*4),&D_001DF4DC))iVar2=4;else if(!func_0011B4F0(*(undefined4*)(param_2+uVar3*4),&D_001DF4D0))iVar2=5;else if(!func_0011B4F0(*(undefined4*)(param_2+uVar3*4),&D_001DF4C4))iVar2=6;else if(!func_0011B4F0(*(undefined4*)(param_2+uVar3*4),&D_001DF4B4))iVar2=7;if(!uVar3){if(iVar2!=1){*(int*)(*(int*)(param_1+0xb0)+0x44)=0;*(int*)(*(int*)(param_1+0xb0)+0x28)=iVar2;}else{*(int*)(*(int*)(param_1+0xb0)+0x44)=1;*(int*)(*(int*)(param_1+0xb0)+0x28)=iVar2;}}else{*(int*)(*(int*)(param_1+0xb0)+0x2c)=iVar2;iVar1=*(int*)(param_1+0xb0);if(*(int*)(iVar1+0x28)==1&&*(int*)(iVar1+0x2c)!=0)*(int*)(iVar1+0x44)=0;}++uVar3;}while(uVar3<2);if(*(int*)(param_2+8)){iVar2=func_0013E9DB(*(int*)(param_2+8));if(iVar2==0){*(int*)(*(int*)(param_1+0xb0)+0x30)=iVar2;return;}*(int*)(*(int*)(param_1+0xb0)+0x30)=1;}}}
 
 void _func_00119CF0(int a, int *b) { if (_func_0013E9DB(*b)) *(unsigned char *)(a + 0xb6) |= 1; }
 
