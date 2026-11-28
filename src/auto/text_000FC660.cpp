@@ -18,6 +18,13 @@ unsigned char func_000FC730(void)
   return 1;
 }
 
+char __cdecl _func_000FC740(int a, int *b)
+{
+ int func_000E1270(int);
+ func_000E1270((int)**(float **)(b + 1));
+ return 1;
+}
+
 char _func_000FC880(void) {
     int func_000493C0(...);
     func_000493C0();
