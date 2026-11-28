@@ -256,7 +256,7 @@ void func_000C9270(void)
   }
 }
 
-#pragma optimize("y", off)
+#pragma optimize("y", on)
 void func_000C93F0(int param_1)
 {
   extern int D_00316D58, D_00316D54, D_001E4A20, D_00308158, D_00316B98;
@@ -276,17 +276,18 @@ void func_000C93F0(int param_1)
   void func_0012F120(void *);
   void func_00011E30(void *, void *, void *);
   void func_00110330(int, int);
-  int func_00110300(int, char *, int, int);
-  void func_0012EA60(void *);
+  int func_00110300(int, char *, int);
+  float func_0012EA60(void *);
   void func_000B54A0(int);
   void func_000B54B0(int);
-  int a, b, c, n, i;
+  int a, b, c, n, i, k;
   float fVar1;
   char name[64];
   float m1[16];
   float m2[16];
-  struct { float x, y, z; } pt;
+  float pt[3];
   char *p;
+  __m128 dummy = _mm_setzero_ps();
 
   D_00316D58 = param_1;
   a = (int)*func_0009C7A0(D_00308158, &D_001DA980, 0);
@@ -310,25 +311,27 @@ void func_000C93F0(int param_1)
   func_0013E469(name, &D_001DA948, D_00316D58);
   func_00110060(*(int *)(func_0009C590(name) + 0x2c), m2);
   func_0012F120(m1);
-  pt.z = fVar1 * D_001D2BC0;
+  fVar1 = (float)((double)D_001D2BC0 * (double)fVar1);
   m1[12] = m2[12];
   m1[13] = m2[13];
   m1[14] = m2[14];
-  pt.x = 300.0f;
-  *(int *)&pt.y = 0x3f91361e;
-  func_00011E30(m1, &D_002EECC0, &pt);
+  pt[0] = 300.0f;
+  *(int *)&pt[1] = 0x3f91361e;
+  pt[2] = fVar1;
+  func_00011E30(m1, &D_002EECC0, pt);
   D_00316D4C = 0;
-  p = D_00316990;
   i = 0;
+  p = D_00316990;
   do {
-    func_0013E469(name, &D_001DA93C, D_00316D58, i + 1);
+    k = i + 1;
+    func_0013E469(name, &D_001DA93C, D_00316D58, k);
     D_00316968[i] = func_0009C590(name);
     func_00110330(*(int *)(D_00316968[i] + 0x2c), 0);
-    func_00110330(func_00110300(*(int *)(D_00316968[i] + 0x2c), &D_001DA92C, 0, 1), 0);
-    func_00110330(func_00110300(*(int *)(D_00316968[i] + 0x2c), &D_001DA920, 0, 0), 0);
+    func_00110330(func_00110300(*(int *)(D_00316968[i] + 0x2c), &D_001DA92C, 0), 1);
+    func_00110330(func_00110300(*(int *)(D_00316968[i] + 0x2c), &D_001DA920, 0), 0);
     func_00110060(*(int *)(D_00316968[i] + 0x2c), p);
     p += 0x40;
-    i++;
+    i = k;
   } while ((int)p < (int)D_00316B50);
   i = 0;
   if (0 < D_00316B90) {
@@ -353,7 +356,7 @@ void func_000C93F0(int param_1)
   func_000B54A0(1);
   func_000B54B0(0);
 }
-#pragma optimize("y", on)
+#pragma optimize("y", off)
 void _func_000C9770(void)
 {
     float func_00131760(...); int func_00131310(...);
