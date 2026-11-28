@@ -285,8 +285,8 @@ void func_000A8AC0(){
  extern char D_001D7B64;
  int func_00110330(...),func_00103990(...),func_00048430(...),func_0012F120(...),func_0012ECA0(...),func_0012EE00(...),func_00110000(...),func_00110060(...),func_001105E0(...),func_00102E80(...),func_0009CB40(...),func_001100A0(...);
  float func_0012EA60(...);int func_001031A0(int,float);
- int local_8c;float local_8c_time,local_88[3],local_7c[3],local_70[3],local_60[3];
- __declspec(align(16)) float local_50[16];
+ A8AC0Work work;
+ __declspec(align(16)) float matrix[16];
  if(D_003080AC==2)return;
  switch(D_00313040){
  case 0:return;
@@ -295,15 +295,15 @@ void func_000A8AC0(){
   if(D_00313044>D_001D27F4){
    D_00313044=0;D_00313040=2;
    func_00110330(*(int*)(D_00312E18+0x2c),1);func_00103990(D_00312DE4,0);
-   local_8c_time=0;func_00048430(D_00313048,&local_8c_time,local_60,local_70,0,1);func_0012F120(local_50);
-   *(int*)&local_50[8]=*(int*)&local_70[0];*(int*)&local_50[9]=*(int*)&local_70[1];*(int*)&local_50[10]=*(int*)&local_70[2];
-   func_0012ECA0(&local_50[8],0xbf800000);
-   *(int*)&local_88[0]=0;*(int*)&local_88[1]=0x3f800000;*(int*)&local_88[2]=0;
-   func_0012EE00(local_7c,local_88,&local_50[8]);func_0012EA60(local_7c);
-   func_0012EE00(&local_50[4],&local_50[8],local_7c);func_0012EA60(&local_50[4]);
-   func_0012EE00(local_50,&local_50[4],&local_50[8]);func_0012EA60(local_50);
-   *(int*)&local_50[12]=*(int*)&local_60[0];*(int*)&local_50[13]=*(int*)&local_60[1];*(int*)&local_50[14]=*(int*)&local_60[2];
-   func_001105E0(*(int*)(D_00312E18+0x2c),local_50,0);func_00110000(*(int*)(D_00312E18+0x2c));func_001031A0(D_00312DE0,1.0f);
+   work.basis.time=0;func_00048430(D_00313048,&work.basis.time,work.basis.position,work.basis.tangent,0,1);func_0012F120(matrix);
+   *(int*)&matrix[8]=*(int*)&work.basis.tangent[0];*(int*)&matrix[9]=*(int*)&work.basis.tangent[1];*(int*)&matrix[10]=*(int*)&work.basis.tangent[2];
+   func_0012ECA0(&matrix[8],0xbf800000);
+   *(int*)&work.basis.up[0]=0;*(int*)&work.basis.up[1]=0x3f800000;*(int*)&work.basis.up[2]=0;
+   func_0012EE00(work.basis.cross,work.basis.up,&matrix[8]);func_0012EA60(work.basis.cross);
+   func_0012EE00(&matrix[4],&matrix[8],work.basis.cross);func_0012EA60(&matrix[4]);
+   func_0012EE00(matrix,&matrix[4],&matrix[8]);func_0012EA60(matrix);
+   *(int*)&matrix[12]=*(int*)&work.basis.position[0];*(int*)&matrix[13]=*(int*)&work.basis.position[1];*(int*)&matrix[14]=*(int*)&work.basis.position[2];
+   func_001105E0(*(int*)(D_00312E18+0x2c),matrix,0);func_00110000(*(int*)(D_00312E18+0x2c));func_001031A0(D_00312DE0,1.0f);
    goto moving;
   }
   func_001031A0(D_00312DE0,D_001D27B0-(D_001D27F4-D_00313044)*D_001D4508);break;
@@ -312,9 +312,9 @@ moving:
   if((float)*D_00313048<D_00313044){
    func_00110330(*(int*)(D_00312E18+0x2c),0);D_00313040=3;D_00313044=D_001D27B8;goto ending;
   }
-  func_00110060(*(int*)(D_00312E18+0x2c),local_50);
-  func_00048430(D_00313048,&D_00313044,&local_50[12],0,0x44960000,1);
-  func_001105E0(*(int*)(D_00312E18+0x2c),local_50,0);break;
+  func_00110060(*(int*)(D_00312E18+0x2c),matrix);
+  func_00048430(D_00313048,&D_00313044,&matrix[12],0,0x44960000,1);
+  func_001105E0(*(int*)(D_00312E18+0x2c),matrix,0);break;
  case 3:
 ending:
   D_00313044+=D_001E461C;
@@ -322,7 +322,7 @@ ending:
    func_00102E80(D_00312DE0);*(short*)func_0009CB40(D_00308158,&D_001D7B64)=1;
   }else func_001031A0(D_00312DE0,(D_001D27F4-D_00313044)*D_001D4508);
  }
- if(D_00313040>0){func_001100A0(D_00313B60,&local_8c);func_001105E0(*(int*)(D_00312DE0+0x2c),local_8c,0);func_001105E0(*(int*)(D_00312DE4+0x2c),local_8c,0);}
+ if(D_00313040>0){func_001100A0(D_00313B60,&work.pointer);func_001105E0(*(int*)(D_00312DE0+0x2c),work.pointer,0);func_001105E0(*(int*)(D_00312DE4+0x2c),work.pointer,0);}
 }
 
 void __cdecl _func_000A8E00(void)
