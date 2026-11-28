@@ -1,6 +1,7 @@
 /* 15 functions from 0x00148220 to 0x00148CF6, found by Ghidra. */
 #include "common.h"
 #include "ghidra.h"
+#include <string.h>
 
 void _func_0013AF30(void *);
 void _func_00131D10(void *);
