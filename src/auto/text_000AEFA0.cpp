@@ -211,6 +211,121 @@ for(r=0;r<9;r++)copy[r]=((int*)(D_0031392C+0xe4))[r];
 switch(D_00313948){case 0:counter=0x3f800000;break;case 2:counter=0x3f4ccccd;break;case 3:D_00313948=-1;case 1:counter=0x3f666666;break;}
 func_0011F8D0(copy,D_0031392C);func_00120B60(D_0031394C,0);if(D_00313940){hold=*(int*)&val;val+=D_001D2BF4;func_000AF3C0(&id);}func_000AF540();func_00120BA0();if(!(val<D_001D27B0)){func_0013B280(D_00313924,1);return;}r=func_0013B380(D_00313B00);f=(double)r;if(r<0)f+=D_001D290C;den=D_001E46B4;g=(double)den;if(den<0)g+=D_001D290C;if((float)(f/g-temp)*D_001D27F8<D_001D6160){r=__ftol2();func_00109D05_4(0x1f-r);}goto again;
 }
+
+static undefined4 D_0031392C;
+extern undefined4 D_00313934,D_003291E0,D_00313944,D_0031394C,D_00313950,D_00313928,D_00313930,D_00313938,D_00313924,D_00313954,D_00313B00;
+extern unsigned int D_001E46B4;
+extern float D_0031393C;
+extern unsigned char D_00313940,D_00313948;
+#pragma optimize("s", off)
+#pragma optimize("t", on)
+#pragma optimize("y", on)
+void func_000AF7D0(void)
+{
+int func_00116FB0(...); int func_0013B280(...); int func_0013B380(...); void func_000AF5D0();
+  int func_00116780(...);
+  int func_00117100(...);
+  int func_00117000(...);
+  int func_000F7C60(...);
+  int func_00105380(...);
+  extern undefined4 D_001E5998;
+  extern undefined4 D_00313B54;
+  extern undefined4 D_00307D18;
+  int func_0013E469(...);
+  extern undefined D_001D8970;
+  int func_0009EEA0(...);
+  extern undefined D_001D895C;
+  int func_001229B0(...);
+  extern undefined D_001D894C;
+  int func_00063F30(...);
+  int func_00110480(...);
+  extern undefined4 D_0030C630;
+  extern undefined4 D_0030C634;
+  int func_00110300(...);
+  extern undefined D_001D8940;
+  extern undefined D_001D8934;
+  int func_0011AF70(...);
+  extern undefined D_001D8924;
+  extern undefined D_001D8918;
+  extern undefined D_001D8908;
+  extern undefined4 D_0030C638;
+  extern undefined4 D_003104B4;
+  extern undefined4 D_00308158;
+  extern unsigned int D_0030C498;
+  extern undefined D_0030BFE8;
+  int func_00122A50(...);
+  int func_001105E0(...);
+  int func_00110000(...);
+  int func_0013B250(...);
+  int func_0013AFB0(...);
+  int func_000F7CE0(...);
+  int func_00117130(...);
+  int func_001167C0(...);
+  __m128 dummy = _mm_setzero_ps();
+  float fVar1;
+  undefined4 uVar2;
+  int iVar3;
+  uint uVar4;
+  
+  char local_50[64];
+  
+  func_00116780(2);
+  func_00117100();
+  func_00117000(1);
+  func_000F7C60();
+  D_00313934 = D_003291E0;
+  D_003291E0 = 1;
+  D_00313944 = func_00105380(0x800);
+  D_00307D18 = D_00313944;
+  D_001E5998 = D_00313B54 + -3;
+  func_0013E469(local_50,((undefined *)&D_001D8970),D_001E5998);
+  func_0009EEA0(((undefined *)&D_001D895C));
+  D_001E5998 = 0xffffffff;
+  D_0031394C = func_001229B0(((undefined *)&D_001D894C));
+  func_00063F30(D_0031394C,0x3ff8e475,0x4025e304);
+  func_00110480(*(undefined4 *)(D_0030C630 + 0x2c),D_0031394C,8);
+  D_0031392C = *(undefined4 *)(D_0030C634 + 0x2c);
+  D_00313950 = func_00110300(*(undefined4 *)(D_0030C630 + 0x2c),((undefined *)&D_001D8940),0x18);
+  if (D_00313B54 != 9) {
+    func_0011AF70(func_00110300(*(undefined4 *)(D_0030C630 + 0x2c),((undefined *)&D_001D8934),0x18),1);
+    func_0011AF70(func_00110300(*(undefined4 *)(D_0030C630 + 0x2c),((undefined *)&D_001D8924),0x18),1);
+    func_0011AF70(func_00110300(*(undefined4 *)(D_0030C630 + 0x2c),((undefined *)&D_001D8918),0x18),1);
+    func_0011AF70(func_00110300(*(undefined4 *)(D_0030C630 + 0x2c),((undefined *)&D_001D8908),0x18),1);
+    uVar2 = func_00110300(*(undefined4 *)(D_0030C630 + 0x2c),local_50,0x18);
+    func_0011AF70(uVar2,2);
+  }
+  D_00313928 = D_0030C634;
+  uVar4 = 0;
+  D_00313930 = D_0030C630;
+  D_00313938 = D_0030C638;
+  D_003104B4 = 0;
+  D_00308158 = 0;
+  if (D_0030C498 > 0) {
+    do {
+      func_00116FB0(*(undefined4 *)(((undefined *)&D_0030BFE8) + uVar4 * 4));
+      uVar4 = uVar4 + 1;
+    } while (uVar4 < D_0030C498);
+  }
+  D_0030C498 = 0;
+  unsigned int matrix[16] = {0xbf75d5d4,0,0x3e8ed7e9,0,0xbc5a61e1,0x3f7fb528,0xbd3bea92,0,0xbe8eae3a,0xbd43afb8,0xbf758def,0,0x43c7b004,0x42f82bf4,0x449f675a,0x3f800000};
+  func_00122A50(D_0031394C,0x3ff8e38a,0x4025e269);
+  func_001105E0(D_0031394C,&matrix[0],0);
+  func_00110000(D_0031394C);
+  D_00313940 = 0;
+  D_00313924 = func_0013B250();
+  func_0013B280(D_00313924,0);
+  iVar3 = func_0013B380(D_00313B00);
+  D_0031393C = (float)(unsigned int)iVar3 / (float)D_001E46B4;
+  D_00313948 = 0;
+  D_00313954 = func_0013AFB0(&func_000AF5D0,0,0x2800);
+  func_000F7CE0();
+  func_00117130();
+  func_001167C0();
+  func_00117000(1);
+  return;
+}
+#pragma optimize("y", off)
+
 #pragma optimize("", on)
 
 void func_000AFB10(void)
