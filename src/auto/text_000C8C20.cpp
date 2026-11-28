@@ -1,5 +1,6 @@
 /* 10 functions from 0x000C8C20 to 0x000C9AD9, found by Ghidra. */
 #include "common.h"
+#include <xmmintrin.h>
 extern char D_00316D00, D_001DA990;
 extern int D_00316B90, D_00316BE0, D_00316BE4, D_00316C70, D_00316C74, D_00316B94, D_00316D4C, D_00316D48;
 extern int D_00316948[];
@@ -253,5 +254,157 @@ void func_000C9270(void)
     func_00120E50(320.0f, 110.0f);
     func_00121990(&D_001DA8BC, D_00316258);
   }
+}
+
+#pragma optimize("y", off)
+void func_000C93F0(int param_1)
+{
+  extern int D_00316D58, D_00316D54, D_001E4A20, D_00308158, D_00316B98;
+  extern char D_001DA980, D_001DA970, D_001DA960, D_001DA948, D_001DA93C, D_001DA92C, D_001DA920, D_001DA914;
+  float *func_0009C7A0(int, char *, int);
+  extern float D_00316D08, D_00316D0C, D_00316D10;
+  extern int D_00316D14;
+  extern float D_001E49C4[], D_001E49DC[], D_001E49E8[], D_001E49F0[];
+  extern int D_001E49D0[], D_001E49A0[], D_001E49B8[], D_001E49AC[];
+  extern int D_00316940, D_00316944[], D_00316964, D_00316968[];
+  extern char D_00316990[], D_00316B50[], D_002EECC0;
+  extern float D_001D2BC0;
+  void func_0005CCC0(int);
+  void func_0013E469(char *, char *, ...);
+  int func_0009C590(char *);
+  void func_00110060(...);
+  void func_0012F120(void *);
+  void func_00011E30(void *, void *, void *);
+  void func_00110330(int, int);
+  int func_00110300(int, char *, int, int);
+  void func_0012EA60(void *);
+  void func_000B54A0(int);
+  void func_000B54B0(int);
+  int a, b, c, n, i;
+  float fVar1;
+  char name[64];
+  float m1[16];
+  float m2[16];
+  struct { float x, y, z; } pt;
+  char *p;
+
+  D_00316D58 = param_1;
+  a = (int)*func_0009C7A0(D_00308158, &D_001DA980, 0);
+  b = (int)*func_0009C7A0(D_00308158, &D_001DA970, 0);
+  c = (int)*func_0009C7A0(D_00308158, &D_001DA960, 0);
+  D_00316D54 = c + b + a;
+  if (D_001E4A20 != -1) {
+    D_00316D54 = D_001E4A20;
+  }
+  n = D_00316D54;
+  D_00316D04 = D_001E49C4[n];
+  D_00316D48 = D_001E49D0[n];
+  D_00316B90 = D_001E49A0[n];
+  D_00316D44 = D_001E49DC[n];
+  D_00316B94 = D_001E49B8[n];
+  D_00316D40 = D_001E49E8[n];
+  a = D_001E49AC[n];
+  fVar1 = D_001E49F0[D_00316D58];
+  D_00316B98 = D_00316B94;
+  func_0005CCC0(0xe);
+  func_0013E469(name, &D_001DA948, D_00316D58);
+  func_00110060(*(int *)(func_0009C590(name) + 0x2c), m2);
+  func_0012F120(m1);
+  pt.z = fVar1 * D_001D2BC0;
+  m1[12] = m2[12];
+  m1[13] = m2[13];
+  m1[14] = m2[14];
+  pt.x = 300.0f;
+  *(int *)&pt.y = 0x3f91361e;
+  func_00011E30(m1, &D_002EECC0, &pt);
+  D_00316D4C = 0;
+  p = D_00316990;
+  i = 0;
+  do {
+    func_0013E469(name, &D_001DA93C, D_00316D58, i + 1);
+    D_00316968[i] = func_0009C590(name);
+    func_00110330(*(int *)(D_00316968[i] + 0x2c), 0);
+    func_00110330(func_00110300(*(int *)(D_00316968[i] + 0x2c), &D_001DA92C, 0, 1), 0);
+    func_00110330(func_00110300(*(int *)(D_00316968[i] + 0x2c), &D_001DA920, 0, 0), 0);
+    func_00110060(*(int *)(D_00316968[i] + 0x2c), p);
+    p += 0x40;
+    i++;
+  } while ((int)p < (int)D_00316B50);
+  i = 0;
+  if (0 < D_00316B90) {
+    do {
+      func_0013E469(name, &D_001DA93C, D_00316D58, a + 1 + i);
+      D_00316948[i] = func_0009C590(name);
+      func_00110330(*(int *)(D_00316948[i] + 0x2c), 1);
+      i++;
+    } while (i < D_00316B90);
+  }
+  func_0013E469(name, &D_001DA914, D_00316D58);
+  D_00316964 = func_0009C590(name);
+  func_00110060(*(int *)(D_00316964 + 0x2c), D_00316B50);
+  D_00316940 = 0;
+  func_00110060(*(int *)(D_00316948[0] + 0x2c), &D_00316BF0);
+  func_00110060(*(int *)(D_00316944[D_00316B90] + 0x2c), &D_00316C30);
+  D_00316D08 = D_00316C20 - D_00316C60;
+  D_00316D14 = 0x3f800000;
+  D_00316D0C = D_00316C24 - D_00316C64;
+  D_00316D10 = D_00316C28 - D_00316C68;
+  func_0012EA60(&D_00316D08);
+  func_000B54A0(1);
+  func_000B54B0(0);
+}
+#pragma optimize("y", on)
+void _func_000C9770(void)
+{
+    float func_00131760(...); int func_00131310(...);
+    void func_00110060(...); int func_001031C0(...); int func_00103990(...);
+    void func_0012EE00(unsigned *, unsigned *, unsigned *); float func_0012EA60(unsigned *);
+    unsigned up[3];
+    float r = func_00131760();
+    D_00316D00 = 1;
+    if (r < D_00316D04) {} else D_00316D00 = 0;
+    do {
+        D_00316BE0 = (func_00131310() & 0x7fff) % D_00316B90;
+        D_00316BE4 = (func_00131310() & 0x7fff) % D_00316B90;
+    } while (D_00316BE0 == D_00316BE4);
+    if (D_00316D00) {
+        do { D_00316C70 = (func_00131310() & 0x7fff) % D_00316B90; }
+        while (D_00316BE0 == D_00316C70 || D_00316BE4 == D_00316C70);
+        do { D_00316C74 = (func_00131310() & 0x7fff) % D_00316B90; }
+        while (D_00316BE0 == D_00316C74 || D_00316BE4 == D_00316C74 || D_00316C70 == D_00316C74);
+        int t; int n=4;
+        do {
+            if(D_00316BE0>D_00316BE4){t=D_00316BE0;D_00316BE0=D_00316BE4;D_00316BE4=t;}
+            if(D_00316BE0>D_00316C70){t=D_00316BE0;D_00316BE0=D_00316C70;D_00316C70=t;}
+            if(D_00316BE0>D_00316C74){t=D_00316BE0;D_00316BE0=D_00316C74;D_00316C74=t;}
+            if(D_00316BE4>D_00316BE0){t=D_00316BE4;D_00316BE4=D_00316BE0;D_00316BE0=t;}
+            if(D_00316BE4>D_00316C70){t=D_00316BE4;D_00316BE4=D_00316C70;D_00316C70=t;}
+            if(D_00316BE4>D_00316C74){t=D_00316BE4;D_00316BE4=D_00316C74;D_00316C74=t;}
+            if(D_00316C70>D_00316BE0){t=D_00316C70;D_00316C70=D_00316BE0;D_00316BE0=t;}
+            if(D_00316C70>D_00316BE4){t=D_00316C70;D_00316C70=D_00316BE4;D_00316BE4=t;}
+            if(D_00316C70>D_00316C74){t=D_00316C70;D_00316C70=D_00316C74;D_00316C74=t;}
+            if(D_00316C74>D_00316BE0){t=D_00316C74;D_00316C74=D_00316BE0;D_00316BE0=t;}
+            if(D_00316C74>D_00316BE4){t=D_00316C74;D_00316C74=D_00316BE4;D_00316BE4=t;}
+            if(D_00316C74>D_00316C70){t=D_00316C74;D_00316C74=D_00316C70;D_00316C70=t;}
+        } while (--n);
+        if ((func_00131310() & 0x7fff) % 2) {t=D_00316BE4;D_00316BE4=D_00316C70;D_00316C70=t;}
+    }
+    func_00110060(*(int *)(D_00316948[D_00316BE0]+0x2c),&D_00316BF0);
+    func_00110060(*(int *)(D_00316948[D_00316BE4]+0x2c),&D_00316C30);
+    D_00316D18=(float)((double)D_00316C20-D_00316C60);
+    D_00316D1C=(float)((double)D_00316C24-D_00316C64);
+    D_00316D20=(float)((double)D_00316C28-D_00316C68);
+    if(D_00316D00){
+        func_00110060(*(int *)(D_00316948[D_00316C70]+0x2c),&D_00316C80);
+        func_00110060(*(int *)(D_00316948[D_00316C74]+0x2c),&D_00316CC0);
+        D_00316D24=(float)((double)D_00316CB0-D_00316CF0);
+        D_00316D28=(float)((double)D_00316CB4-D_00316CF4);
+        D_00316D2C=(float)((double)D_00316CB8-D_00316CF8);
+    }
+    up[0]=0;up[1]=0x3f800000;up[2]=0;
+    func_0012EE00(&D_00316D30,up,(unsigned *)&D_00316D18);
+    func_0012EA60(&D_00316D30);
+    D_00316D3C=(float)(((double)D_00316D40-D_00316D44)*((double)D_00316D4C/D_00316D48)+D_00316D44);
+    func_00103990(func_001031C0(D_00316948[D_00316B94],&D_001DA990,1));
 }
 
