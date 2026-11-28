@@ -5,12 +5,119 @@ struct Tri64 { char v[0x40]; };
 
 extern "C" unsigned int strlen(const char *);
 #pragma intrinsic(strlen)
+extern "C" void * __cdecl memcpy(void *, const void *, unsigned int);
+#pragma intrinsic(memcpy)
 struct S_125350 { short a; short pad; int b; int c; };
 struct RNode { unsigned char k[4]; RNode *next; };
 extern unsigned int D_001DF6B8;
 extern unsigned char D_001DF6BC;
 
 #pragma optimize("y", off)
+void _func_00124700(void)
+{
+  extern int D_00331504, D_00331508, D_00331520, D_00331518, D_00331120, D_001E7D64;
+  extern int *D_003311D8[];
+  extern int *D_00331370[];
+  extern float D_001D27B0, D_001D27B8;
+  int func_00116FB0(...); int func_00133BB0(...); int func_0011BDD0(...); int func_001235F0(...);
+  int iVar5, iVar6, iVar7, iVar1, local_4, r;
+  unsigned int uVar4;
+  int **piVar8, **piVar9, **piVar10;
+  int *t;
+  char *q;
+  int *p;
+
+  if (D_00331504 != 0) {
+    iVar7 = 0;
+    uVar4 = D_00331508;
+    if (0 < (int)D_00331508) {
+      piVar8 = D_003311D8;
+      do {
+        p = *piVar8;
+        if ((unsigned int)(D_00331520 - p[2]) > 2) {
+          if (p[0x70 / 4] != 0) func_00116FB0(p[0x70 / 4]);
+          func_00133BB0(p[3]);
+          p[3] = 0;
+          func_00116FB0(p);
+          if (iVar7 < D_00331508 - 1) {
+            piVar9 = piVar8 + 1;
+            piVar10 = piVar8;
+            for (iVar5 = D_00331508 - 1 - iVar7; iVar5 != 0; iVar5--) *piVar10++ = *piVar9++;
+          }
+          uVar4 = D_00331508 - 1;
+          D_00331508 = uVar4;
+        }
+        iVar7++;
+        piVar8++;
+      } while (iVar7 < (int)uVar4);
+    }
+    if (uVar4 > 1) {
+      iVar7 = uVar4 - 1;
+      iVar5 = iVar7;
+      local_4 = iVar7;
+      if (iVar7 > 0) {
+        do {
+          iVar6 = 0;
+          for (; iVar6 < iVar5; iVar6++) {
+            t = D_003311D8[iVar6];
+            if (*(float *)((char *)D_003311D8[iVar6 + 1] + 100) < *(float *)((char *)t + 100)) {
+              D_003311D8[iVar6] = D_003311D8[iVar6 + 1];
+              D_003311D8[iVar6 + 1] = t;
+            }
+          }
+          local_4--;
+          iVar5--;
+        } while (local_4 != 0);
+      }
+      for (; iVar7 >= 0; iVar7--) {
+        if (D_003311D8[iVar7][0x54 / 4] != 0 && (*(unsigned char *)(D_003311D8[iVar7][0x54 / 4] + 0x13) & 0x10) != 0) {
+          for (iVar5 = iVar7; iVar5 >= 1; iVar5--) {
+            t = D_003311D8[iVar5 - 1];
+            D_003311D8[iVar5 - 1] = D_003311D8[iVar5];
+            D_003311D8[iVar5] = t;
+          }
+        }
+      }
+    }
+    iVar5 = 0;
+    r = func_0011BDD0(D_00331504, 0);
+    if (r != 0) {
+      uVar4 = D_00331508;
+      if (D_001E7D64 < (int)D_00331508) uVar4 = D_001E7D64;
+      D_00331518 = 0;
+      D_00331120 = r;
+      if (0 < (int)uVar4) {
+        do {
+          p = D_003311D8[iVar5];
+          q = (char *)p[0x54 / 4];
+          p[2] = D_00331520;
+          if (*(float *)((char *)p + 100) > *(float *)(q + 4)) {
+            *(float *)((char *)p + 0x68) = (*(float *)((char *)p + 100) - *(float *)(q + 4)) / (*(float *)(q + 8) - *(float *)(q + 4));
+            if (*(float *)((char *)p + 0x68) > D_001D27B0) p[0x68 / 4] = 0x3f800000;
+            *(float *)((char *)p + 0x68) = D_001D27B0 - *(float *)((char *)p + 0x68);
+          } else {
+            p[0x68 / 4] = 0x3f800000;
+          }
+          if (*(float *)((char *)p + 0x68) > D_001D27B8) {
+            func_001235F0();
+            D_00331370[D_00331518] = p;
+            D_00331518++;
+          }
+          iVar5++;
+        } while (iVar5 < (int)uVar4);
+      }
+      (*(short *)(D_00331504 + 0x2a))--;
+      iVar7 = 0;
+      if (0 < D_00331508) {
+        do {
+          *(int *)((char *)D_003311D8[iVar7] + 100) = 0x4cbebc20;
+          iVar7++;
+        } while (iVar7 < D_00331508);
+      }
+    }
+  }
+}
+
 void func_00124A10(void){extern unsigned int D_00331518,D_00331508,D_00331500,D_00331178,D_00331370[],D_00331520; extern float D_001E7D60,D_001D27FC; int __ftol2(void); void func_001383B0(void); void func_00138440(int); void func_00138490(int); void func_0012F120(void*); void func_001364D0(void*); void func_00136FF0(int); void func_00123F90(int); void func_00137030(void); unsigned char buf[0x48]; if(D_00331518){func_001383B0();func_00138440(0);func_00138490(0);func_0012F120(buf);func_001364D0(buf);} D_00331500=D_00331518;D_00331178=D_00331508;func_00136FF0(__ftol2()); for(unsigned i=0;i<D_00331518;++i){int ptr=D_00331370[i];func_00123F90(ptr);*(int*)(ptr+8)=D_00331520;}func_00137030();D_00331520++;}
 #pragma optimize("", on)
 void func_00124AD0(void){extern unsigned D_00331508,D_00331518; extern int D_003311D8[]; void func_00133BB0(int); void func_00116FB0(int); for(unsigned i=0;i<D_00331508;i++){int p=D_003311D8[i];if(*(int*)(p+0x70))func_00116FB0(*(int*)(p+0x70));func_00133BB0(*(int*)(p+0xc));*(int*)(p+0xc)=0;func_00116FB0(p);}D_00331508=0;D_00331518=0;}
