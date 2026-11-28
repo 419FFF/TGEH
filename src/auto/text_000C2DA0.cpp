@@ -1,6 +1,7 @@
 /* 10 functions from 0x000C2DA0 to 0x000C3BD1, found by Ghidra. */
 #include "common.h"
 #include "ghidra.h"
+#include <xmmintrin.h>
 
 void func_000C2DA0(void)
 {
@@ -80,6 +81,56 @@ void func_000C2F40(void)
   func_00012040(D_00307DF8,**(undefined4 **)(*(int *)(D_00314E7C + 0x2c) + 0x2c));
   func_000B6510(4,0);
   return;
+}
+
+extern "C" void *memset(void*,int,unsigned);
+void func_000C32F0(void) {
+ extern char D_00316178; extern float D_001D9C1C,D_001D9C18,D_001D29E0,D_001D2C00,D_001D314C,D_001D27EC,D_001D313C;
+ extern float D_003160B0,D_003160AC,D_003160A8,D_00316118[],D_003160B8[];
+ extern int D_0031609C;
+ float func_00131230(float);float func_00131250(float);float func_00131760(void);
+ int func_0011BDD0(int,int); int func_00133F30(void*); int func_001383B0(void);
+ int func_0012F120(void*); int func_001364D0(void*); int func_001378E0(int,int);
+ int func_0012FE20(void*,float,float,float);int func_0012F610(void*,void*);
+ int func_000C2F80(void*,void*);int func_00137AB0(void);
+ __declspec(align(16)) float high[100];
+ __declspec(align(16)) float low[100];
+ float matrix[16]; unsigned desc[21];
+ __declspec(align(16)) float mat[16];
+ float temp;
+ int pass,i,offset;
+ if(!D_00316178) {
+  *(volatile unsigned*)&temp=0;
+  i=0; do{
+   temp=(float)((double)*(volatile float*)&temp+D_001D9C1C);
+   D_00316118[i]=(float)((double)func_00131230(temp)*D_001D9C18);
+   D_003160B8[i]=(float)((double)func_00131250(temp)*D_001D9C18);i++;
+  }while(i<24);D_00316178=1;
+ }
+ D_003160B0=(float)((double)*(volatile float*)&D_003160B0+D_001D29E0);
+ memset(desc,0,84);
+ D_003160AC=(float)((double)*(volatile float*)&D_003160AC+D_001D2C00);
+ desc[10]=1;desc[11]=1;
+ D_003160A8=(float)((double)*(volatile float*)&D_003160A8+D_001D314C);
+ desc[0]=2;desc[1]=2;desc[19]=2;desc[12]=0;desc[18]=0;desc[17]=0;desc[20]=0;
+ desc[2]=func_0011BDD0(D_0031609C,0);desc[6]=0;
+ func_00133F30(desc);func_001383B0();func_0012F120(matrix);func_001364D0(matrix);func_001378E0(4,7);
+ func_0012F120(mat);func_0012FE20(mat,D_003160B0,D_003160AC,D_003160A8); pass=0;
+ do {
+  if(pass==1){unsigned a=((unsigned*)mat)[2],b=((unsigned*)mat)[10];*(volatile float*)(mat+2)=(float)(double)*(volatile float*)mat;((unsigned*)mat)[0]=a;*(volatile float*)(mat+10)=(float)(double)*(volatile float*)(mat+8);((unsigned*)mat)[8]=b;}
+  high[0]=0;high[1]=40;high[2]=170;func_0012F610(high,mat);
+  low[0]=0;low[1]=-40;low[2]=170;func_0012F610(low,mat);
+  for(i=0,offset=0;i<24;i++,offset+=4){
+   double r=(double)func_00131760()-D_001D27EC;
+   double noise=(r+r)*(double)*(volatile float*)&D_001D313C; temp=(float)noise;
+   high[4+offset]=D_00316118[i];high[6+offset]=D_003160B8[i];
+   high[5+offset]=(float)(noise+D_001D313C);func_0012F610(high+4+offset,mat);
+   low[4+offset]=D_00316118[i];low[5+offset]=(float)((double)temp-D_001D313C);low[6+offset]=D_003160B8[i];
+   func_0012F610(low+4+offset,mat);
+  }
+  func_000C2F80(high,low);pass++;
+ }while(pass<2);
+ func_00137AB0();--*(short*)(D_0031609C+0x2a);
 }
 
 void func_000C35B0(void)
