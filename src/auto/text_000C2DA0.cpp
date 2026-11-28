@@ -2,7 +2,7 @@
 #include "common.h"
 #include "ghidra.h"
 #include <xmmintrin.h>
-struct C2FVec { float x, y, z; };
+struct C2FVec { float x, y, z, w; };
 
 void func_000C2DA0(void)
 {
@@ -99,16 +99,8 @@ void func_000C2F80(float *param_1, float *param_2)
   extern float D_001D2A2C;
 extern char D_00315995;
   __m128 dummy = _mm_setzero_ps();
-  float fVar1;
-  float fVar2;
-  float fVar3;
-  float fVar4;
-  float fVar5;
-  float fVar6;
-  float fVar7;
   float *pfVar8;
-  float fVar9;
-  float fVar10;
+  C2FVec first, second, temp;
   float fVar11;
   float *pfVar12;
   int local_88;
@@ -119,57 +111,45 @@ extern char D_00315995;
   do {
     if ((local_84[-1] != '\0') && (*local_84 == '\0')) {
       func_0011FED0(*(undefined4 *)(*(int *)(local_84 + 0x23) + 0x2c),matrix);
-      fVar1 = (float)((double)matrix[12] + *param_1);
-      fVar2 = (float)((double)matrix[13] + param_1[1]);
-      fVar3 = (float)((double)matrix[14] + param_1[2]);
+      first.x = (float)((double)*(volatile float*)&matrix[12] + (double)*param_1);
+      first.y = (float)((double)*(volatile float*)&matrix[13] + (double)param_1[1]);
+      first.z = (float)((double)*(volatile float*)&matrix[14] + (double)param_1[2]);
       func_00137A20();
-      D_00332738 = *(unsigned int*)&fVar1;
-      D_0033273C = *(unsigned int*)&fVar2;
-      D_00332740 = *(unsigned int*)&fVar3;
+      *(C2FVec*)&D_00332738 = first;
       func_00137A60(0xffffffff);
       func_00137A90(0,0);
-      fVar4 = (float)((double)matrix[12] + *param_2);
-      fVar5 = (float)((double)matrix[13] + param_2[1]);
-      fVar6 = (float)((double)matrix[14] + param_2[2]);
+      second.x = (float)((double)*(volatile float*)&matrix[12] + (double)*param_2);
+      second.y = (float)((double)*(volatile float*)&matrix[13] + (double)param_2[1]);
+      second.z = (float)((double)*(volatile float*)&matrix[14] + (double)param_2[2]);
       func_00137A20();
-      D_00332738 = *(unsigned int*)&fVar1;
-      D_0033273C = *(unsigned int*)&fVar2;
-      D_00332740 = *(unsigned int*)&fVar3;
+      *(C2FVec*)&D_00332738 = first;
       func_00137A60(0xffffffff);
       func_00137A90(0,0x3f800000);
       func_00137A20();
-      D_00332738 = *(unsigned int*)&fVar1;
-      D_0033273C = *(unsigned int*)&fVar2;
-      D_00332740 = *(unsigned int*)&fVar3;
+      *(C2FVec*)&D_00332738 = first;
       func_00137A60(0xffffffff);
       func_00137A90(0,0);
       func_00137A20();
-      D_00332738 = *(unsigned int*)&fVar4;
-      D_0033273C = *(unsigned int*)&fVar5;
-      D_00332740 = *(unsigned int*)&fVar6;
+      *(C2FVec*)&D_00332738 = second;
       func_00137A60(0xffffffff);
       func_00137A90(0,0x3f800000);
       local_88 = 0;
       pfVar12 = param_1 + 5;
       pfVar8 = param_2;
       do {
-        fVar7 = (float)((double)matrix[14] + pfVar12[1]);
-        fVar9 = (float)((double)matrix[13] + *pfVar12);
-        fVar10 = (float)((double)matrix[12] + pfVar12[-1]);
+        temp.z = (float)((double)*(volatile float*)&matrix[14] + (double)pfVar12[1]);
+        temp.y = (float)((double)*(volatile float*)&matrix[13] + (double)*pfVar12);
+        temp.x = (float)((double)*(volatile float*)&matrix[12] + (double)pfVar12[-1]);
         func_00137A20();
-        D_00332738 = *(unsigned int*)&fVar10;
-        D_0033273C = *(unsigned int*)&fVar9;
-        D_00332740 = *(unsigned int*)&fVar7;
+        *(C2FVec*)&D_00332738 = temp;
         func_00137A60(0xffffffff);
         fVar11 = (float)((double)local_88 * D_001D2F24 * D_001D2A2C);
         func_00137A90(*(unsigned int*)&fVar11,0);
-        fVar7 = (float)((double)matrix[14] + pfVar8[6]);
-        fVar9 = (float)((double)matrix[13] + *(float *)(((int)param_2 - (int)param_1) + (int)pfVar12));
-        fVar10 = (float)((double)matrix[12] + pfVar8[4]);
+        temp.z = (float)((double)*(volatile float*)&matrix[14] + (double)pfVar8[6]);
+        temp.y = (float)((double)*(volatile float*)&matrix[13] + (double)*(float *)(((int)param_2 - (int)param_1) + (int)pfVar12));
+        temp.x = (float)((double)*(volatile float*)&matrix[12] + (double)pfVar8[4]);
         func_00137A20();
-        D_00332738 = *(unsigned int*)&fVar10;
-        D_0033273C = *(unsigned int*)&fVar9;
-        D_00332740 = *(unsigned int*)&fVar7;
+        *(C2FVec*)&D_00332738 = temp;
         func_00137A60(0xffffffff);
         func_00137A90(*(unsigned int*)&fVar11,0x3f800000);
         local_88 = local_88 + 1;
@@ -177,27 +157,19 @@ extern char D_00315995;
         pfVar8 = pfVar8 + 4;
       } while (local_88 < 0x18);
       func_00137A20();
-      D_00332738 = *(unsigned int*)&fVar1;
-      D_0033273C = *(unsigned int*)&fVar2;
-      D_00332740 = *(unsigned int*)&fVar3;
+      *(C2FVec*)&D_00332738 = first;
       func_00137A60(0xffffffff);
       func_00137A90(0,0);
       func_00137A20();
-      D_00332738 = *(unsigned int*)&fVar4;
-      D_0033273C = *(unsigned int*)&fVar5;
-      D_00332740 = *(unsigned int*)&fVar6;
+      *(C2FVec*)&D_00332738 = second;
       func_00137A60(0xffffffff);
       func_00137A90(0,0x3f800000);
       func_00137A20();
-      D_00332738 = *(unsigned int*)&fVar1;
-      D_0033273C = *(unsigned int*)&fVar2;
-      D_00332740 = *(unsigned int*)&fVar3;
+      *(C2FVec*)&D_00332738 = first;
       func_00137A60(0xffffffff);
       func_00137A90(0,0);
       func_00137A20();
-      D_00332738 = *(unsigned int*)&fVar1;
-      D_0033273C = *(unsigned int*)&fVar2;
-      D_00332740 = *(unsigned int*)&fVar3;
+      *(C2FVec*)&D_00332738 = first;
       func_00137A60(0xffffffff);
       func_00137A90(0,0x3f800000);
     }
@@ -205,7 +177,6 @@ extern char D_00315995;
   } while ((int)local_84 < (int)&D_00315995);
   return;
 }
-
 extern "C" void *memset(void*,int,unsigned);
 void func_000C32F0(void) {
  extern char D_00316178; extern float D_001D9C1C,D_001D9C18,D_001D29E0,D_001D2C00,D_001D314C,D_001D27EC,D_001D313C;
