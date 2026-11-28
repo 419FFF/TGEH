@@ -1,6 +1,7 @@
 /* 5 functions from 0x00069AC0 to 0x0006A49F, found by Ghidra. */
 #include "common.h"
 #include <xmmintrin.h>
+#include <string.h>
 struct Blk64 { int d[16]; };
 extern int D_002F82F8;
 extern float D_001D28E4;
@@ -94,7 +95,7 @@ char _func_00069D30(int a, int *b, int c, float *out){
 char _func_00069E60(int a, int *b, int c, int *out, char flag){
  int func_00110060(...); int func_0012F810(...); char func_0011B020(...); int func_0012F7A0(...); char func_00112BF0(...); float func_0012E870(...);
  __m128 dummy = _mm_setzero_ps();
- int cur[4]; int r[4]; int r2[4]; int v[4]; int r50[16]; char m1[16]; char m2[16]; char n1[16]; char n2[16]; char mtx[0x40]; char mtx2[0x30];
+ int cur[4]; int v[4]; int r[4]; int r2[4]; char n2[16]; char n1[16]; char mtx2[0x30]; int tmp[4]; char m2[16]; char m1[16]; char mtx[0x40]; int r50[19];
  char found=0;
  int i=0;
  cur[0]=b[0]; cur[1]=b[1]; cur[2]=b[2]; cur[3]=b[3];
@@ -115,7 +116,7 @@ char _func_00069E60(int a, int *b, int c, int *out, char flag){
        func_0012F7A0(r50+4,mtx);
        func_0012F7A0(r50+8,mtx);
        cur[0]=r[0]; cur[1]=r[1]; cur[2]=r[2];
-       for(int k=0;k<16;k++) out[2+k]=r50[k];
+       *(Blk64*)(out+2)=*(Blk64*)r50;
        out[0]=p[0]; out[1]=p[-1];
        found=1;
       }
@@ -128,15 +129,16 @@ char _func_00069E60(int a, int *b, int c, int *out, char flag){
      func_00110060(*(int*)(o+0x2c),mtx2);
      v[0]=*(int*)(o+0xe8); v[1]=*(int*)(o+0xec); v[2]=*(int*)(o+0xf0);
      func_0012F7A0(v,mtx2);
+     tmp[0]=v[0]; tmp[1]=v[1]; tmp[2]=v[2]; tmp[3]=v[3];
      func_0012F810(n1,a,mtx2);
      func_0012F810(n2,cur,mtx2);
      int k=*(int*)(p[0]+0xe4);
      if(k>=3 && k<=4){
       if(func_00112BF0(n1,n2,p[0]+0xf4,r2)){
-       if(func_0012E870(n1,n2)>=D_001D28E4){
+       if(!(func_0012E870(n1,n2)<D_001D28E4)){
         func_0012F7A0(r2,mtx2);
         cur[0]=r2[0]; cur[1]=r2[1]; cur[2]=r2[2];
-        for(int j=0;j<16;j++) out[2+j]=0;
+        Blk64 z={0}; *(Blk64*)(out+2)=z;
         out[0]=p[0]; out[1]=0;
         found=1;
        }
